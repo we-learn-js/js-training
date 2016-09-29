@@ -52,6 +52,11 @@ A programming paradigm.
 ### Functions are objects
 
 ```js
+
+var logToConsole = function (text) {
+  console.log(text)
+}
+
 console.log(typeof logToConsole);
 // object
 ```
