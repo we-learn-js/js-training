@@ -11,6 +11,8 @@
 
 Me. I'm a guy who thinks he knows JS.
 
+[david.almeida@soyun.es](david.almeida@soyun.es)
+
 ---
 
 ## Why?
@@ -62,6 +64,9 @@ A few steps
 ----
 
 **3. Do your homework** with the refactor project
+
+* Repo: https://github.com/soyundev/js-training-practice
+* Deadline: Send your pull request before wednesday
 
 ----
 

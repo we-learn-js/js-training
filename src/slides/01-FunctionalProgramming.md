@@ -117,6 +117,8 @@ increment3(5)
 
 ----
 
+### Data mutation in a function
+
 ```js
 function increment1 (numbers) {
   for (var i in numbers) {
@@ -127,17 +129,16 @@ function increment1 (numbers) {
 var numbers = [4,5,6]
 var incrementedNumbers = increment1(numbers)
 
-console.log(numbers)
-console.log(incrementedNumbers)
-// [5, 6, 7]
-// [5, 6, 7]
+console.log(numbers) // [5, 6, 7]
+console.log(incrementedNumbers) // [5, 6, 7]
+
 ```
 
 Note: in this function, `numbers` is mutated by `increment1`
 
 ----
 
-### Data mutation in a function
+### Without mutation
 
 ```js
 function increment1 (numbers) {
@@ -150,11 +151,9 @@ function increment1 (numbers) {
 var numbers = [4,5,6]
 var incrementedNumbers = increment1(numbers)
 
-console.log(numbers)
-console.log(incrementedNumbers)
+console.log(numbers) // [4, 5, 6]
+console.log(incrementedNumbers) // [5, 6, 7]
 
-// [4, 5, 6]
-// [5, 6, 7]
 ```
 
 Note: in this function, `numbers` is not mutated and an output array is created instead.
@@ -177,14 +176,14 @@ Note: In JavaScript, not all lambdas are anonymous, and not all anonymous functi
 > λx.x*x
 
 ```js
-var squares = [3,4,6].map( x => x*x )
-```
-
-```js
 function square(x) {
   return x * x;
 }
 var squares = [3,4,6].map( square )
+```
+
+```js
+var squares = [3,4,6].map( x => x*x )
 ```
 
 Note: Both `square` functions can be considered lambdas, but the first one would be the more pure as expressed as an expression
@@ -390,7 +389,7 @@ var squares = numbers.map( function (num) {
 
 ----
 
-#### And it's also be  Object-oriented
+#### And it's also Object-oriented
 
 > Concept of "objects", which may contain data, in the form of fields, often known as attributes; and code, in the form of procedures, often known as methods.
 
@@ -425,12 +424,45 @@ Note: program state change is achieved by executing a series of statements, and 
 
 ```js
 function simpleJoin(stringArray, i, accumulator) {
- return (i === stringArray.length) ? accumulator :
-   simpleJoin(stringArray, i + 1, accumulator + stringArray[i])
+ if (i === stringArray.length) {
+   return accumulator
+ } else {
+   return simpleJoin(stringArray, i+1, accumulator+stringArray[i])
+ }
 }
 ```
 
-Note: does not have any loop statements. Instead it uses recursion for iteration. does not have any `if`. It uses an expression that evaluate to some value, instead of statements that don’t evaluate to anything.
+https://jsbin.com/mocaya/edit?js,console,output
+
+Note: does not have any loop statements. Instead it uses recursion for iteration.
+
+----
+
+And even more functional:
+
+```js
+function simpleJoin(stringArray, i, accumulator) {
+ return (i === stringArray.length) ? accumulator
+   : simpleJoin(stringArray, i+1, accumulator+stringArray[i])
+}
+simpleJoin(['a', 'b', 'c'] , 0, '')
+```
+
+Note: does not have any `if`. It uses an expression that evaluate to some value, instead of statements that don’t evaluate to anything.
+
+----
+
+Taking advantage of ES6:
+
+```js
+function simpleJoin(stringArray, i = 0, accumulator = '') {
+ return (i === stringArray.length) ? accumulator
+   : simpleJoin(stringArray, i+1, accumulator+stringArray[i])
+}
+
+simpleJoin(['a', 'b', 'c'])
+
+```
 
 ----
 
@@ -447,6 +479,18 @@ Array.prototype.simpleJoin = function() {
 ```
 
 Note: Object oriented languages tend to be imperative languages also. In this case the statements act on array object, not a given array.
+
+----
+
+### Functional libraries for javascript
+
+* [underscore-js](http://underscorejs.org/)
+* [functional-js](http://functionaljs.com/)
+* [ramda-js](https://github.com/ramda/ramda)
+* [lazy-js](http://danieltao.com/lazy.js/)
+* etc
+
+
 
 ---
 
@@ -709,6 +753,53 @@ function repeat(operation, num) {
 
 ----
 
+### Exercise: immutability
+
+> Replace `cloneDeep` to avoid data mutation
+
+* Loops are not allowed
+
+```js
+var data = { /* ... */ }
+
+function clone(data) {
+  // YOUR CODE GOES HERE
+  return data;
+}
+
+clonedData = clone(data)
+clonedData.users[2].name = 'Fake user name'
+clonedData.users[0].games[0].name = 'Fake game name'
+
+```
+
+https://jsbin.com/kulufo/edit?js,console,output
+
+----
+
+#### Solution
+
+```js
+function clone(data) {
+  var result;
+
+  if (isArray(data)) {
+    result = data.map( child => clone( child ) )
+  } else if (typeof data == "object") {
+    result = {}
+    Object.keys(data).forEach(function(i){
+      result[i] = clone( data[i] );
+    })
+  } else {
+    result = data;
+  }
+
+  return result;
+}
+```
+
+----
+
 ### Exercise: reduce
 
 > Write a function `countZeroes`, which takes an array of numbers as its argument and returns the amount of zeroes that occur in it. Use `Array#reduce`.
@@ -782,3 +873,7 @@ Note: now the code is pure and much more functional and reusable; each function 
 ---
 
 ## The end
+
+Apply your new knowledge to
+
+[/github/js-training-practice/functional-programming](https://github.com/soyundev/js-training-practice/tree/functional-programming)
