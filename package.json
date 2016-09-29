@@ -4,7 +4,8 @@
   "description": "JS Training Slides",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "slideshow": "reveal-md ./src/slides/"
   },
   "repository": {
     "type": "git",
@@ -14,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/soyundev/js-training/issues"
   },
-  "homepage": "https://github.com/soyundev/js-training#readme"
+  "homepage": "https://github.com/soyundev/js-training#readme",
+  "devDependencies": {
+    "reveal-md": "0.0.30"
+  }
 }

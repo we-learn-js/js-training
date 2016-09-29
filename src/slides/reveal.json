@@ -1,0 +1,9 @@
+{
+  "controls": true,
+  "progress": true,
+  "transition": "slide",
+  "transitionSpeed": "fast",
+  "parallaxBackgroundHorizontal": 40,
+  "parallaxBackgroundVertical": 40,
+  "parallaxBackgroundImage": "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg"
+}
