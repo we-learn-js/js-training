@@ -1,5 +1,7 @@
 # Functional Programming in javascript
 
+Note: Estimated time: 1h
+
 ---
 
 ## What is functional programming?
@@ -60,6 +62,26 @@ var logToConsole = function (text) {
 console.log(typeof logToConsole);
 // object
 ```
+
+[Function at MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)
+
+----
+
+### Functions are objects
+
+```js
+var logToConsole = function (text) {
+  console.log(text)
+}
+```
+
+Is the same as:
+
+```js
+var logToConsole = new Function('text', 'console.log(text)');
+```
+
+----
 
 As objects, they can have properties, methods, etc.
 ```js
@@ -622,7 +644,7 @@ Note: Why not using map? Map is to created to return a new array. We don´t need
 
 ### Exercise: map implementation
 
-> Implement `map` function to obtain same output as `map`
+> Implement `map2` function to obtain same output as `map`
 
 * Do not use any for/while loops.
 
@@ -657,42 +679,6 @@ Array.prototype.map2 = function(func) {
 ----
 
 ### Exercise: chaining
-
-> Create array with ids of videos that have a rating of 5.0
-
-* Use only Array# higher-order methods
-
-```js
-var videos = [{...},, ...];
-
-function getBestVideosIds (videos) {
-  // SOLUTION GOES HERE
-}
-
-console.log(getBestVideosIds(videos)) // OUTPUT [654356453, 675465]
-
-```
-
-https://jsbin.com/junawu/edit?js,console
-
-----
-
-#### Solution
-
-```js
-function getBestVideosIds (videos) {
-  return videos.filter(function(video) {
-    return video.rating === 5.0;
-  })
-  .map(function(video) {
-    return video.id;
-  })
-}
-```
-
-----
-
-### Exercise: flatten
 
 > Create array with ids of videos that have a rating of 5.0
 
