@@ -364,6 +364,9 @@ function isMillennial(birthday) {
 
 > As opposed to iteration, method where the solution to a problem depends on solutions to smaller instances of the same problem
 
+> A recursive function, as you saw in CS100, is one that
+calls itself
+
 
 ----
 
@@ -388,6 +391,88 @@ var numbers = [1,3,5,6]
 var squares = numbers.map( function (num) {
   return num * num
 } )
+```
+
+---
+
+## More about functions
+
+----
+
+### Pure functions
+
+* Giving same input will always return same output
+* Produces no side effect: user output, memory writing, logging...
+* Does not mutate input
+
+----
+
+
+### Impure functions
+
+* Relies on current time
+* Random numbers
+* Side effects
+* Mutation
+
+----
+
+
+### Higher-order functions
+
+> A higher-order function is a function that does at least one of the following:
+* Take one or more functions as an input
+* Output a function
+
+> All other functions are first order functions.
+
+
+```js
+function negate(func) {
+  return function(x) {
+    return !func(x);
+  };
+}
+var isNotNaN = negate(isNaN);
+show(isNotNaN(NaN));
+```
+
+----
+
+#### map()
+
+> The `map()` method creates a new array with the results of calling a provided function on every element in this array.
+
+```js
+
+var numbers = [1, 4, 9];
+var doubles = numbers.map(function(num) {
+  return num * 2;
+});
+// doubles is now [2, 8, 18]. numbers is still [1, 4, 9]
+
+```
+
+----
+
+#### reduce()
+
+> The `reduce()` method applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.
+
+```js
+
+var result = [0,1,2,3,4].reduce( (previousValue, currentValue, currentIndex, array) => {
+  return previousValue + currentValue;
+}, 10);
+// 20
+
+```
+
+```js
+var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
+  return a.concat(b);
+}, []);
+// flattened is [0, 1, 2, 3, 4, 5]
 ```
 
 
@@ -517,90 +602,88 @@ Note: Object oriented languages tend to be imperative languages also. In this ca
 * [lazy-js](http://danieltao.com/lazy.js/)
 * etc
 
-
-
 ---
 
-## More about functions
+## Questions
 
 ----
 
-### Pure functions
-
-* Giving same input will always return same output
-* Produces no side effect: user output, memory writing, logging...
-* Does not mutate input
-
-----
+### Recursion
 
 
-### Impure functions
-
-* Relies on current time
-* Random numbers
-* Side effects
-* Mutation
+#### Should we choose recursion over loops?
 
 ----
 
+> "Recursion is not intrinsically better or worse than loops - each has advantages and disadvantages, and those even depend on the programming language (and implementation)."
 
-### Higher-order functions
+> "Iterative loops require destructive state updates, which makes them incompatible with pure (side-effect free) language semantics"
 
-> A higher-order function is a function that does at least one of the following:
-* Take one or more functions as an input
-* Output a function
+[Source (stackoferflow)](http://programmers.stackexchange.com/questions/182314/recursion-or-while-loops)
 
-> All other functions are first order functions.
+----
 
+> "The problem with recursion is that it (usually) uses more memory, a lot more. That's because each active call to a function is stored on what's called a [call stack](https://egghead.io/lessons/javascript-call-stack)."
 
+[Watch animated explanation](https://youtu.be/FyHloXKnPWc?t=41s)
+
+> "Use recursion when it's the easier option (and N won't be that large)."
+
+[Source (reddit)](https://www.reddit.com/r/javascript/comments/2byqst/recursion_vs_while_loops_js/)
+
+----
+
+> "In my opinion, recursive algorithms are a natural fit when the data structure is also recursive."
+
+[Source (stackoverflow)](http://stackoverflow.com/questions/1011448/necessary-uses-of-recursion-in-imperative-languages)
+
+----
+
+> "Practically speaking, if you're not using recursion for the following (even in imperative languages) you're a little mad:
+> * Tree traversal
+> * Graphs
+> * Lexing/Parsing
+> * Sorting"
+
+[Source (stackoverflow)](http://stackoverflow.com/questions/1011448/necessary-uses-of-recursion-in-imperative-languages)
+
+----
+
+Traverse with recursion
 ```js
-function negate(func) {
-  return function(x) {
-    return !func(x);
-  };
+function traverse (current, depth) {
+  var children = current.childNodes
+  for (var i = 0, len = children.length; i < len; i++) {
+    // DO STUFF
+    traverse(children[i], depth + 1)
+  }
 }
-var isNotNaN = negate(isNaN);
-show(isNotNaN(NaN));
 ```
 
 ----
 
-#### map()
-
-> The `map()` method creates a new array with the results of calling a provided function on every element in this array.
-
+Traverse with iteration
 ```js
+function traverse (current) {
+  var stack = [current]
+  var stackIdx = 0
+  var children, i, len
 
-var numbers = [1, 4, 9];
-var doubles = numbers.map(function(num) {
-  return num * 2;
-});
-// doubles is now [2, 8, 18]. numbers is still [1, 4, 9]
-
+  while (current = stack[stackIdx++]) {
+    children = current.childNodes
+    for (i = 0, len = children.length; i < len; i++) {
+      // DO STUFF
+      stack.push(children[i])
+    }
+  }
+}
 ```
 
 ----
 
-#### reduce()
+Let's see if what we've read is true.
 
-> The `reduce()` method applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.
-
-```js
-
-var result = [0,1,2,3,4].reduce( (previousValue, currentValue, currentIndex, array) => {
-  return previousValue + currentValue;
-}, 10);
-// 20
-
-```
-
-```js
-var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
-  return a.concat(b);
-}, []);
-// flattened is [0, 1, 2, 3, 4, 5]
-```
-
+https://jsbin.com/qajegal/edit?js,console
 
 ---
 
