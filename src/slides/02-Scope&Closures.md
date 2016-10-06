@@ -62,7 +62,7 @@ Note:
 
 #### block scope
 
-> Accesible only from the inner block where is was declared
+> Accesible only from the inner block where is was declared. Introduced with ES6.
 
 ```js
 var a = 1
@@ -207,6 +207,27 @@ console.log(b);
 
 Note: variable a is declared using the keyword var. What this means is that a is a local variable of the function. On the contrary, b is assigned to the global scope.
 
+----
+
+`var` declares `a` but `b` is declared as a global variable...
+```js
+(function() {
+   var a = b = 5;
+})();
+
+console.log(b); // 5
+```
+
+fix:
+
+```js
+(function() {
+  var a, b;
+  a = b = 5;
+})();
+console.log(b); // b is not defined
+```
+
 ---
 
 ## Closures
@@ -219,36 +240,49 @@ Note: variable a is declared using the keyword var. What this means is that a is
 
 ----
 
+Here's an example:
 ```js
 function foo() {
-    var a = 2;
-    function baz() {
-        console.log( a ); // 2
-    }
-    bar( baz );
+  var a = 2;
+  return function () { console.log( a ); }   
 }
 
 function bar(fn) {
-    fn();
+  fn();
 }
 
-foo() // 2
+bar(foo()) // 2
 ```
-
-Note: We pass the inner function `baz` over to `bar`, and call that inner function (labeled `fn` now), and when we do, its closure over the inner scope of `foo()` is observed, by accessing a.
 
 ----
 
-### Question
+Here's a little more complicated one:
 
-**What would be the ouput if user clicks on "button 6"?**
+```js
+function foo(a) {
+  return function () { console.log( a ); }   
+}
+
+function bar(fn) {
+  fn();
+}
+
+bar(foo(5)) // 5
+bar(foo(8)) // 8
+```
+
+----
+
+### Practice
+
+**What would be the output if user clicks on "Button 6"?**
 
 
 ```js
 
 function addButtons (num) {
    for(var i = 0; i < num; i++ ) {
-     var $button = $('<button>Button '+ i+'</button>')
+     var $button = jQuery('<button>Button '+ i+'</button>')
 
      $button.click( function() {
        console.log('This is button' + i)
@@ -290,20 +324,21 @@ addButtons(10)
 
 https://jsbin.com/laturas/edit?js,console,output
 
-Note: Whe needed to create a new closure with local `i` for each click callback. Now, the callback is created in a new function scope when the local `i` exists with its evaluated value at that moment.
-
+Note: We need to create a new closure with local `i` for each click callback. Now, the callback is created in a new function scope when the local `i` exists with its evaluated value at that moment.
 
 ---
 
 ### Practice
 
-**Make console to log numbers 1,2,3,4,5**
+**Make the countdown to work**
 
 ```js
-for (var i = 1; i <= 5; i++) {
-  setTimeout(function timer() {
-    console.log(i);
-  }, i * 1000);
+function countdown (num) {
+  for (var i = 0; i <= num; i += 1) {
+    setTimeout(function () {
+      console.log(num - i);
+    }, i * 1000);
+  }
 }
 
 ```
@@ -315,12 +350,14 @@ https://jsbin.com/xaxerim/edit?js,console
 #### Solution
 
 ```js
-for (var i = 1; i <= 5; i++) {
-  (function(j) {
-    setTimeout(function timer() {
-      console.log(j);
-    }, j * 1000);
-  })(i);
+function countdown (num) {
+  for (var i = 0; i <= num; i += 1) {
+    (function(i) {
+      setTimeout(function () {
+        console.log(num - i);
+      }, i * 1000);
+    })(i);
+  }
 }
 ```
 https://jsbin.com/mabono/edit?js,console
