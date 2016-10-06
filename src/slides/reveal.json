@@ -3,6 +3,7 @@
   "progress": true,
   "transition": "slide",
   "transitionSpeed": "fast",
+  "parallaxBackgroundSize": "3150px 1350px", 
   "parallaxBackgroundHorizontal": 40,
   "parallaxBackgroundVertical": 40,
   "parallaxBackgroundImage": "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg"

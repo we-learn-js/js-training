@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "slideshow": "reveal-md ./src/slides/"
+    "slideshow": "reveal-md --theme js-training ./src/slides/",
+    "slideshow-refresh": "reveal-md ./src/slides/ --theme js-training --disableAutoOpen"
   },
   "repository": {
     "type": "git",
