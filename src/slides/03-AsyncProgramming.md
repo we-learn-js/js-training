@@ -6,13 +6,36 @@
 
 ----
 
+> It’s easier to understand "asynchrony" if you first understand what “synchrony”, the opposite, means.
+
+----
+
+### Synchronous code
+
+> Synchronous code as “a bunch of statements in sequence”; so each statement in your code is executed one after the other.
+
+```js
+console.log('First');
+console.log('Second');
+console.log('Third');
+// OUTPUT: "First" "Second" "Third"
+```
+
+----
+
+### Asynchronous code
+
+> Asynchronous code takes statements outside of the main program flow, allowing the code after the asynchronous call to be executed immediately without waiting.
+
+----
+
 ### Let's see it in action
 
 ----
 
 Consider:
 ```js
-var users = $.get('//jsonplaceholder.typicode.com/users')
+var users = jQuery.get('//jsonplaceholder.typicode.com/users')
   .done(function(response){
     console.log('first log: ' + response.length)
   })
@@ -20,8 +43,6 @@ var users = $.get('//jsonplaceholder.typicode.com/users')
 console.log('second log: ' + users.length)
 
 ```
-
-----
 
 Output:
 ```
@@ -36,7 +57,7 @@ Output:
 
 Code executed now:
 ```js
-var users = $.get('//jsonplaceholder.typicode.com/users')
+var users = jQuery.get('//jsonplaceholder.typicode.com/users')
   .done( ... )
 console.log('second log: ' + users.length)
 
@@ -86,7 +107,7 @@ Output:
 3
 ```
 
-Why is `3` after `4` if the timeout has no time to wait.
+Why is `3` after `4` if the timeout has no time to wait?
 
 ----
 
@@ -105,11 +126,11 @@ Javascript engine is composed of:
 
 ----
 
-![runtime](https://mdn.mozillademos.org/files/4617/default.svg)
+![runtime](http://www.appsdev.is.ed.ac.uk/blog/wp-content/uploads/2015/03/Event-loop.png)
 
 ----
 
-** Event loop **
+#### Event loop
 
 > The event loop got its name because of how it's usually implemented, which usually resembles:
 
@@ -143,6 +164,45 @@ printing();
 [http://latentflip.com/loupe/](http://latentflip.com/loupe/?code=ZnVuY3Rpb24gbG9nIChjb250ZW50KSB7CiAgY29uc29sZS5sb2coY29udGVudCkKfQpmdW5jdGlvbiBwcmludGluZygpIHsKICAgbG9nKDEpOwogICBzZXRUaW1lb3V0KGZ1bmN0aW9uIGNhbGxiYWNrMSgpIHsgbG9nKDIpOyB9LCAwKTsKICAgc2V0VGltZW91dChmdW5jdGlvbiBjYWxsYmFjazIoKSB7IGxvZygzKTsgfSwgMTAwMCk7CiAgIGxvZyg0KTsKfQpwcmludGluZygpOwo%3D!!!)
 
 
+----
+
+### Making the synchronous, asynchronous
+
+> Sometimes, synchronous heavy tasks blocks runtime until the end.
+> It can really damage user's experience.
+
+But now that you understand asynchony in javascript, you can take advantage of it...
+
+----
+
+Consider:
+```js
+function traverseRecursion (current, depth) {
+  var children = current.childNodes
+  for (var i = 0, len = children.length; i < len; i++) {
+    traverseRecursion(children[i], depth + 1)
+  }
+}
+```
+
+----
+
+Make it asynchronous, non blocking:
+```js
+function traverseRecursion (current, depth) {
+  var children = current.childNodes
+  for (var i = 0, len = children.length; i < len; i++) {
+    setTimeout(
+      (function(current, depth) {
+        traverseRecursion(current, depth)
+      })(children[i], depth + 1)
+    , 0)
+  }
+}
+```
+
+https://jsbin.com/fupuveh/9/edit?js,console
+
 ---
 
 ## Callbacks
@@ -155,6 +215,7 @@ printing();
 
 ### Practice
 
+Implement `getUsersPhotos()` to retrieve photos of all users.
 ```js
 var getUsers = function (callback, limit) { ... }
 var getUserAlbums = function (userId, callback, limit) { ... }
@@ -169,7 +230,7 @@ https://jsbin.com/rojomaf/edit?js,console,output
 
 ----
 
-You've probably ended up but that kind of code
+You've probably ended up with that kind of code
 
 ```js
 function getUsersPhotos(callback, limit) {
@@ -193,9 +254,13 @@ function getUsersPhotos(callback, limit) {
 }
 ```
 
+Note: We call that the "Pyramid of Doom"
+
 ----
 
-### Callbacks deficiencies
+### The problem with callbacks
+
+----
 
 #### Callback hell | Pyramid of doom
 
@@ -238,7 +303,7 @@ promise
 ```
 
 Note: `getUsers` returns a promise. Promise always provides functions `then` and `catch`.
-`then` handler will be called with the value if the promise is fulfilled
+`then` handler will be called with the value if the promise is resolved
 `catch` handler will be called with the value if the promise is rejected explicitly or any error occurs during the execution
 
 
@@ -246,17 +311,17 @@ Note: `getUsers` returns a promise. Promise always provides functions `then` and
 
 ### States of a promise
 
-* **fulfilled** -  The action relating to the promise succeeded
+* **pending** -  Hasn't resolved or rejected yet
+* **resolved** -  The action relating to the promise succeeded
 * **rejected** -  The action relating to the promise failed
-* **pending** -  Hasn't fulfilled or rejected yet
-* **settled** -  Has fulfilled or rejected
+* **settled** -  Has resolved or rejected
 
 ----
 
 ```js
 var promise = getUsers() // Promise is pending
 promise
-  .then(function(users){ // Promise is fulfilled and settled
+  .then(function(users){ // Promise is resolved and settled
     console.log(users)
   },
   function(e){ // Promise is rejected and settled
@@ -269,11 +334,11 @@ promise
 
 ### Immutability of settled promises
 
-* A promise is fulfilled with a **value**, passed to **fulfillment handler**
+* A promise is resolved with a **value**, passed to **resolution handler**
 
 * A promise is rejected for a **reason** or **a thrown exception**, passed to the **rejection handler**
 
-* Once a promise is settled (fulfilled or rejected), it's immutable and can't be **resolved** with a different value or **rejected** afterwards
+* Once a promise is settled (resolved or rejected), it's immutable and can't be **resolved** with a different value or **rejected** afterwards
 
 [Check full specs](https://promisesaplus.com/)
 
@@ -284,22 +349,70 @@ promise
 
 > **Race condition**: output is dependent on the sequence or timing of other uncontrollable events.
 
-* If the promise is settled when a corresponding handler is attached, the handler will be called.
+If the promise is settled when a corresponding handler is attached, the handler will be called.
 
-* Then, so there is no race condition between an asynchronous operation completing and its handlers being attached.
+Then, so there is no race condition between an asynchronous operation completing and its handlers being attached.
+
+----
+
+**http get with callbacks**
+
+```js
+function reqListener () {
+  console.log(this.responseText);
+}
+
+var oReq = new XMLHttpRequest();
+oReq.addEventListener("load", reqListener);
+oReq.open("GET", "http://www.example.org/example.txt");
+oReq.send();
+
+```
+
+If `load` handler is attached **after** the response, the handler **will not** be executed
+
+----
+
+**http get with promises**
+
+```js
+function reqListener (response) {
+  console.log(response.text());
+}
+
+var oReq = fetch('flowers.jpg');
+
+oReq.then(reqListener)
+
+```
+
+If `then` handler is attached **after** the response, the handler **will** be executed
+
 
 ---
 
 ### Consume Promises
 
+----
+
+#### `Promise.prototype.then( onresolved, onRejected )`
+
+> `promise.then` accepts both resolution and rejection handlers
+
+```js
+getUsers() // returns a promise
+  .then(function(users){
+    console.log(users)
+  }, function(e){
+    console.error(e.message)
+  })
+```
 
 ----
 
-#### `Promise.prototype.then`
+##### Resolution handling
 
-> promise.then( onFulfilled, onRejected )
-
-> `promise.then` accepts both fulfillment and rejection handlers
+> If the promise returned by `getUsers` is resolved, resolution handler will be called with the value.
 
 ```js
 getUsers()
@@ -314,7 +427,7 @@ getUsers()
 
 ##### Rejection handling
 
-> If promise return by `getUsers` is rejected, rejection handler will be called.
+> If the promise returned by `getUsers` is rejected, rejection handler will be called with a reason or `Error`.
 
 ```js
 getUsers()
@@ -331,7 +444,7 @@ getUsers()
 
 > `promise.then` always returns a new promise.
 
-> The returned value in the attached handler will fulfilled a newly created promise.
+> The returned value in the attached handler will resolved a newly created promise.
 
 ```js
 getUsers() // promise 1
@@ -350,7 +463,7 @@ getUsers() // promise 1
 
 > As each `then` returns a **new independant promise**, the rejection handler is only triggered if something happens is the 'previous' promise.
 
-> Also, the fulfillment handler will not be called on the next promise if first promise is rejected
+> Also, the resolution handler will not be called on the next promise if first promise is rejected
 
 ----
 
@@ -358,25 +471,25 @@ getUsers() // promise 1
 
 getUsers() // promise 1
   .then(
-    function onFullfill1(users){
+    function onResolved1(users){
       throw new Error( 'No users' )
       return users.filter( user => !!user.active )
     },
     function onReject1(e) { console.error(e)} )
   .then(
-    function onFullfill2(activeUsers){
+    function onResolved2(activeUsers){
       console.log(activeUsers)
     },
     function onReject2(e) { console.error(e) })
 
-// Only `onFullfill1` and `onRejection2` will be called
+// Only `onResolved1` and `onRejection2` will be called
 ```
 
 ----
 
 ##### Casting
 
-> In a fulfillment handler, you can either return a plain value or **a new promise**
+> In a resolution handler, you can either return a plain value or **a new promise**
 
 ```js
 getUsers() // promise 1
@@ -384,7 +497,7 @@ getUsers() // promise 1
     return users.filter( user => !!user.active )
   }) // promise 2
   .then(function(activeUsers){
-    return getAlbums( activeUsers[0].id )
+    return getAlbums( activeUsers[0].id ) // promise 3
   }) // promise 3
   .then(function(firstActiveUserAlbums){
     console.log(firstActiveUserAlbums)
@@ -402,7 +515,7 @@ getUsers() // promise 1
 
 > In ES6, `Promise` is a new Object can instantiate
 
-> A `resolve` and `reject` function are provided to either fulfill or reject the promise.
+> A `resolve` and `reject` function are provided to either resolve or reject the promise.
 
 ```js
 var promise = new Promise(function(resolve, reject){
@@ -421,7 +534,7 @@ var promise = new Promise(function(resolve, reject){
 This code:
 ```js
 var getUsers = function (callback, limit) {
-  $.get('//jsonplaceholder.typicode.com/users')
+  jQuery.get('//jsonplaceholder.typicode.com/users')
     .done(function (response) {
       callback(response.slice(0, limit))
     })
@@ -438,7 +551,7 @@ Becomes:
 ```js
 var getUsers = function (limit) {
   return new Promise(function(resolve, reject){
-    $.get('//jsonplaceholder.typicode.com/users')
+    jQuery.get('//jsonplaceholder.typicode.com/users')
       .done(function (response) {
         resolve(response.slice(0, limit))
       })
@@ -454,6 +567,8 @@ getUsers(5)
 ----
 
 ### Practice
+
+Print the number of photos of a user.
 
 ```js
 var getOneUser = function () { ... }
@@ -489,7 +604,7 @@ var printUserFirstPhotos = function(){
 }
 ```
 
-You are still stuck with pyramides and not taking advantage of promises...
+You are still stuck with pyramides and not understanding promises...
 
 ----
 
@@ -586,7 +701,7 @@ var promise = new Promise(function(resolve, reject){
 
 #### Promise.all(iterable)
 
-> A static method that returns a promise that will be resolved an array of values of all given promises in the array.
+> A static method that returns a promise that will be resolved in an array of values of all given promises in the array.
 
 
 ```js
@@ -603,8 +718,6 @@ promise.then( values => console.log(values) ) // [4,5,"6",{}]
 ----
 
 `Promise.all` executes promises **in parallel**, not sequentially
-
-----
 
 ```js
 var getUserPhotos = function (userId) {
@@ -624,7 +737,7 @@ Promise.all([
 
 #### Promise.race(iterable)
 
-> A static method that returns a promise that resolves or rejects as soon as one of the promises in the iterable resolves or rejects, with the value or reason from that promise.
+> A static method that returns a promise that resolves or rejects as soon as **one of the promises** in the iterable resolves or rejects, with the value or reason from that promise.
 
 ----
 
@@ -637,9 +750,9 @@ var getTimeoutPromise = function(time) {
   })
 }
 
-var promise = Promise.all([
+var promise = Promise.race([
   getUserPhotos(),
-  timeoutRejection(3000)
+  getTimeoutPromise(3000)
 ])
 
 ```
@@ -648,7 +761,7 @@ If `getUserPhotos()` lasts more than 3 seconds, `promise` will be rejected with 
 
 ----
 
-#### Promises are... asynchronous
+#### Remember: promises are... asynchronous
 
 ```js
 console.log('###### case 1 #####')
@@ -673,7 +786,7 @@ https://jsbin.com/kecemib/edit?js,console,output
 Note: handlers are callbacks. Then, they get involved in the event loop.
 
 
----
+----
 
 ### Practice
 
@@ -711,13 +824,13 @@ function getUsersPhotos(limit) {
 }
 ```
 
+---
+
+### Catching Rejections
+
 ----
 
-#### Catching errors with `catch`
-
-----
-
-##### `Promise.prototype.catch`
+#### `Promise.prototype.catch`
 
 > The `catch()` method returns a Promise and deals with rejected cases only. It behaves the same as calling `Promise.prototype.then(undefined, onRejected)`.
 
@@ -756,7 +869,7 @@ function getUsersPhotos(limit) {
 
 ----
 
-##### A thing to remember
+#### A thing to remember
 
 > `catch()` is just sugar for `then(null, onRejection)``
 
@@ -777,13 +890,13 @@ getUsersPhotos(limit)
 On the other hand. This snippet...
 ```js
 getUsersPhotos(limit)
-  .then(onFulfilled)
+  .then(onresolved)
   .catch(onRejected)
 ```
 ... is **NOT** the same as:
 ```js
 getUsersPhotos(limit)
-  .then(onFulfilled, onRejected)
+  .then(onresolved, onRejected)
 ```
 
 ----
@@ -791,14 +904,18 @@ getUsersPhotos(limit)
 It's **exactly THE SAME** as
 ```js
 getUsersPhotos(limit)
-  .then(onFulfilled)
+  .then(onresolved)
   .then(null, onRejected)
 ```
 
-> Remember that the `onRejected` catches errors from **'previous'** promise.
+Remember that the `onRejected` catches errors from **'previous'** promise that has not a **rejection handler**.
 
 
 ---
+
+## Master Promises
+
+----
 
 ### Old promises patterns you must avoid
 
@@ -807,6 +924,8 @@ getUsersPhotos(limit)
 ----
 
 #### `finally` handler
+
+> Handler exexuted whatever the promise is resolved or rejected.
 
 ```js
 showLoadingSpinner()
@@ -820,8 +939,10 @@ getUsersPhotos(6)
 
 #### `progress` handler
 
+> Handler to notify of value resolution progress.
+
 ```js
-getJSON().then(function(){ // fulfillment handler
+getJSON().then(function(){ // resolution handler
   console.log('JSON loaded !')
 },function(e){ // rejection handler
   console.log('Error !')
@@ -832,7 +953,7 @@ getJSON().then(function(){ // fulfillment handler
 
 ----
 
-#### The deferred pattern
+#### The deferred pattern (deferred objects)
 
 ```js
 var deferred = Q.defer();
@@ -846,7 +967,7 @@ FS.readFile("foo.txt", "utf-8", function (error, text) {
 return deferred.promise;
 ```
 
----
+----
 
 ### More promise treats
 
@@ -863,13 +984,13 @@ FS.readFile("foo.txt", "utf-8", function (error, text) {
 ```js
 var readFile = Q.denodeify(FS.readFile);
 readFile("foo.txt", "utf-8")
-  .then(onFulfilled)
+  .then(onresolved)
   .catch(onRejected)
 ```
 
 ```js
 Q.nfcall(FS.readFile, "foo.txt", "utf-8")
-  .then(onFulfilled)
+  .then(onresolved)
   .catch(onRejected)
 ```
 
@@ -877,7 +998,7 @@ Q.nfcall(FS.readFile, "foo.txt", "utf-8")
 
 ----
 
-#### Convert promises to callbacks
+#### Convert promises to callbacks based libs
 
 ```js
 var getUsers = function (callback, limit) {
@@ -944,13 +1065,110 @@ Promise
 
 ----
 
-# Implement `Promise.prototype.delay`
+Write `getFirstCharNumber` body code so it would return a promise resolved with the char number of the uppercase first letter of a given string.
+
+```js
+function upper(text) { ... }
+
+function firstChar(text) { ... }
+
+function getChartCode(text) { ... }
+
+getFirstCharNumber('abcde').then( console.log )
+
+function getFirstCharNumber(text) {
+  // YOUR CODE GOES HERE
+}
+```
+
+https://jsbin.com/zidohun/edit?js,console,output
 
 ----
 
-# Implement `Promise.prototype.series`
+#### Possible solutions
 
----
+```js
+function getFirstCharNumber(text) {
+  return firstChar(text)
+    .then( upper )
+    .then( text => getChartCode(text)() )
+}
+```
 
+```js
+function getFirstCharNumber(text) {
+  return Promise.resolve( upper(text) )
+    .then( text => getChartCode(text)() )
+}
 
-callback de tweets y de facebook con callbacks.
+```
+
+----
+
+### Implement `Promise.delay(ms)`
+
+Returns a promise that will resolved after given milliseconds.
+
+```js
+Promise.delay = function(ms){
+  // YOUR CODE GOES HERE
+}
+
+Promise.delay(1000)
+  .then(function(){
+    console.log('delayed 1000ms')
+  })
+
+setTimeout(function(){
+  console.log('delayed 500ms')
+}, 500)
+
+// OUTPUT "delayed 500ms" "delayed 1000ms"
+```
+
+https://jsbin.com/qidokig/edit?js,console,output
+
+----
+
+### Solution
+
+```js
+Promise.delay = function(ms){
+  return new Promise(function(resolve){
+    setTimeout(resolve, ms)  
+  })
+}
+```
+
+----
+
+### Implement `Promise.series(iterable)`
+
+Works like `Promise.all`, but executes the promises **sequentially** instead of in parallel.
+
+```js
+var getDelayed = function(ms, name){ ... }
+
+Promise.series = function(promises) {
+  // YOUR CODE GOES HERE
+}
+
+Promise.series([
+  getDelayed(500, 'promise 1'),
+  getDelayed(400, 'promise 2'),
+  getDelayed(300, 'promise 3')
+])
+
+// OUTPUT: "promise 1" "promise 2" "promise 3"
+
+```
+
+https://jsbin.com/mecalow/edit?js,console,output
+
+----
+
+#### Solution
+
+NONE. You can't make promises change their execution order.
+
+Once a promises is pending, it's in progress...
