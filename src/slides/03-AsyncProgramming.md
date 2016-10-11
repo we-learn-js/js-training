@@ -810,6 +810,7 @@ https://jsbin.com/wemevaj/1/edit?js,console,output
 
 ----
 
+
 #### Possible solution
 
 ```js
@@ -901,6 +902,13 @@ getUsersPhotos(limit)
 
 ----
 
+The snippet...
+```js
+getUsersPhotos(limit)
+  .then(onresolved)
+  .catch(onRejected)
+```
+
 It's **exactly THE SAME** as
 ```js
 getUsersPhotos(limit)
@@ -910,6 +918,44 @@ getUsersPhotos(limit)
 
 Remember that the `onRejected` catches errors from **'previous'** promise that has not a **rejection handler**.
 
+----
+
+### Each `then`, each `catch` returns a **NEW** Promise
+
+What would be the output of this code?
+```js
+var promise = Promise.resolve(1)
+
+promise.then(x => { return x+1 })
+  .then(x => { return x+1 })
+
+var promise2 = promise.then( x => { return x+1 } )
+var promise3 = promise2.then( x => { throw "Error" } )
+                 .catch( x => { return x })
+
+promise.then(console.log)
+promise2.then(console.log)
+promise3.then(console.log)
+```
+
+https://jsbin.com/sigefo/edit?js,console,output
+
+----
+
+```js
+var promise = Promise.resolve(1) // Promise 1: value(1)
+
+promise.then(x => { return x+1 }) // Promise 2: value(2)
+  .then(x => { return x+1 }) // Promise 3: value(3)
+
+var promise2 = promise.then( x => { return x+1 } ) // Promise 4: value(2)
+var promise3 = promise2.then( x => { throw "Error" } ) // Promise 5: reason("Error")
+                 .catch( x => { return x }) // Promise 5: value("Error")
+
+promise.then(console.log) // 1
+promise2.then(console.log) // 2
+promise3.then(console.log) // 3
+```
 
 ---
 
