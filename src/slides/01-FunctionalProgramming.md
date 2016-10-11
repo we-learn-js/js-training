@@ -364,8 +364,7 @@ function isMillennial(birthday) {
 
 > As opposed to iteration, method where the solution to a problem depends on solutions to smaller instances of the same problem
 
-> A recursive function, as you saw in CS100, is one that
-calls itself
+> A recursive function is one that calls itself
 
 
 ----
