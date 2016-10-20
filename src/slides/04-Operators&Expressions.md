@@ -455,6 +455,19 @@ console.log(first); // 42
 console.log(second); // 'David'
 ```
 
+----
+
+#### Default values
+
+```js
+var o = {a: 42, b: true, c: 36, d: 'David'};
+var {a: first, d: second, e: third=6} = o;
+
+console.log(first); // 42
+console.log(second); // 'David'
+console.log(third); // 6
+```
+
 
 ----
 
