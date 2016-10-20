@@ -1218,3 +1218,28 @@ https://jsbin.com/mecalow/edit?js,console,output
 NONE. You can't make promises change their execution order.
 
 Once a promises is pending, it's in progress...
+
+We could only implement it with:
+
+```js
+
+Promise.series([
+  function() { getDelayed(500, 'promise 1') },
+  function() { getDelayed(400, 'promise 2') },
+  function() { getDelayed(300, 'promise 3') }
+])
+
+Promise.series = function(promiseConstructors) {
+  // YOUR CODE GOES HERE
+}
+
+```
+
+
+---
+
+## Homework
+
+https://github.com/soyundev/js-training-practice/tree/async-programming
+
+* Convert all callback functions to promise based functions
