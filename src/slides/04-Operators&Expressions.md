@@ -681,13 +681,13 @@ a == 'foo' // true as the Object (a) is converted to String 'foo' before compari
 ##### Strict equality
 
 ```js
-1    ==  1        // true (is true  in abstract)
-"1"  ==  1        // false (is true in abstract)
-1    == '1'       // false (is true in abstract)
-0    == false     // false (is true in abstract)
-0    == null      // false (is false in abstract)
-0    == undefined // false (is false in abstract)
-null == undefined // false (is true in abstract)
+1    ===  1        // true (is true  in abstract)
+"1"  ===  1        // false (is true in abstract)
+1    === '1'       // false (is true in abstract)
+0    === false     // false (is true in abstract)
+0    === null      // false (is false in abstract)
+0    === undefined // false (is false in abstract)
+null === undefined // false (is true in abstract)
 ```
 
 ----
