@@ -2,6 +2,186 @@
 
 ---
 
+## Objects or not, that's the question
+
+----
+
+### What is an object?
+
+> Objects are key to understanding object-oriented technology
+> &nbsp;
+> Real-world objects share two characteristics: They all have state and behavior. Dogs have state (name, color, hungry) and behavior (barking, fetching, wagging tail).
+
+[Java Docs](https://docs.oracle.com/javase/tutorial/java/concepts/object.html)
+
+----
+
+> "In javascript", everything is an object
+
+```js
+log(typeof []) // "object"
+log(typeof {}) // "object"
+log(typeof document.createElement('DIV') ) // "object"
+log(typeof new String('5') ) // "object"
+log(typeof new Number(5) ) // "object"
+```
+
+It's "almost" true
+
+----
+
+### Primitives
+
+> The simple types of JavaScript are `numbers`, `strings`, `booleans` (true and false), null, and undefined. All other values are objects.
+
+----
+
+Let's check:
+
+```js
+log( typeof '5' ) // "string"
+log( typeof 5 ) // "number"
+log( typeof false ) // "boolean"
+log( typeof true ) // "boolean"
+log( typeof null ) // "object"
+log( typeof undefined ) // "undefined"
+```
+
+----
+
+How weird is that?
+```js
+log( typeof null ) // "object"
+```
+
+----
+
+#### typeof null === "object"
+
+> `null` is often used to signify an empty reference to an object.
+>
+> In fact, the ECMAScript specification defines null as the primitive value that represents the intentional absence of any object value.
+>
+> However, it's still widely considered as an "official mistake" of the language.
+
+[Spec](http://www.ecma-international.org/ecma-262/5.1/#sec-11.4.3)
+
+
+Note: as in javascript everything is an object assigned by reference , a defined but "empty" value is considered as a reference to an object. In case of `null`, it's an empty reference.
+
+
+----
+
+So let's check everything else
+
+```js
+log(typeof []) // "object"
+log(typeof {}) // "object"
+log(typeof document.createElement('DIV') ) // "object"
+log(typeof /javascript/i) // "object"
+log(typeof new RegExp("javascript", "i")) // "object"
+log(typeof function (x) { return x*x } ) // "function"
+log(typeof new Function("x", "return x*x") ) // "function"
+```
+
+https://jsbin.com/zojele/edit?js,console,output
+
+----
+
+Again weird...
+
+```js
+log(typeof function (x) { return x*x } ) // "function"
+log(typeof new Function("x", "return x*x") ) // "function"
+```
+
+----
+
+### Functions
+
+> The `Function constructor` creates a new Function object. In JavaScript every function is actually a Function object.
+
+[MDN] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function
+
+A functions is still an object (inherit from `Object`)
+```js
+var func =  function () {}
+func.name = 'Sarah'
+func.hasOwnProperty('name') // true
+```
+
+----
+
+An object is not a function, thought...
+
+```js
+var obj =  {}
+obj.name = 'Sarah'
+obj.hasOwnProperty('name') // true
+
+obj() // TypeError: obj is not a function
+```
+
+Note: [Object.prototype.hasOwnProperty()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty)
+
+----
+
+Last but not least...
+
+> String literals and strings returned from String calls in a non-constructor context are primitive strings.
+>
+> JavaScript automatically converts primitives to String objects, so that it's possible to use String object methods for primitive strings.
+
+
+```js
+log(typeof new String('5') ) // "object"
+log(typeof '5' ) // "string"
+log(typeof new Number(5) ) // "object"
+log(typeof 5 ) // "number"
+```
+
+----
+
+```js
+var prim = 'foo';
+var obj = new String('foo');
+
+console.log(prim.split('')); // ["f", "o", "o"]
+console.log(obj.split('')); // ["f", "o", "o"]
+console.log('foo'.split('')); // ["f", "o", "o"]
+```
+
+[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String?redirectlocale=en-US&redirectslug=JavaScript/Reference/Global_Objects/String#Description)
+
+
+----
+
+Same happens with numbers.
+
+```js
+var prim = 3.1415;
+var obj = new Number(3.1415);
+
+console.log(prim.toFixed(2)); // "3.14"
+console.log(obj.toFixed(2)); // "3.14"
+console.log(3.1415.toFixed(2)); // "3.14"
+```
+
+----
+
+You can always retrieve the primitive value of an object
+
+```js
+var str = new String('js')
+console.log(typeof str ) // "object"
+console.log(typeof str.valueOf() ) // "string"
+```
+
+Note: [Object.prototype.valueOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf)
+
+
+---
+
 
 ## What is an object?
 
@@ -27,12 +207,31 @@ var user = {
 
 ```js
 var obj = {}
-obj[''] = 1,
-obj[2] = 2,
-obj[null] = 3,
-obj.property4 = 4,
-obj['property: 5'] = 5,
-obj[true] = 6
+obj[''] = 1
+obj[2] = 2
+obj[null] = 3 // obj["null"]
+obj.property4 = 4 // obj["property4"]
+obj['property: 5'] = 5
+obj[true] = 6 // obj["true"]
+```
+
+----
+
+> Properties can also be assign by variable name
+
+this code
+```js
+var name = 'Evan'
+var surname = 'Graham'
+var user = { name, surname }
+```
+
+is the same as
+
+```js
+var name = 'Evan'
+var surname = 'Graham'
+var user = { name: name, surname: surname }
 ```
 
 ----
@@ -51,8 +250,8 @@ var door = {
   state: 'open', // property named state
   width: 123, // property named width
   height: 213, // property named height
-  openDoor: => this.state = 'open' // method named openDoor
-  closeDoor: => this.state = 'closed' // method named closeDoor
+  openDoor: function (){ this.state = 'open' } // method named openDoor
+  closeDoor: function (){ this.state = 'closed' } // method named closeDoor
 }
 ```
 
@@ -61,7 +260,7 @@ var door = {
 
 ---
 
-## Manipulating objects
+## Working with objects
 
 ----
 
@@ -155,8 +354,6 @@ Note: quotes around a property’s name in an object literal are optional
 > `Object` is a `function` , which is an `object`.
 >
 > If a function is invoked with the `new` prefix, then a new object will be created. It's called the **constructor invocation pattern**.
->
-> `new` Object()
 
 
 ```js
@@ -232,25 +429,6 @@ console.log(mouse.firstName) // "Jerry"
 
 Note: "new" is not used, so no new instance of `animal` is created, the function `animal` (which is also an object) is just assigned by reference.
 
-----
-
-### Test objects prototypes with `instanceof` operator
-
-> The `instanceof` operator tests whether an object has in its prototype chain the prototype property of a constructor.
-
-```js
-function Animal () {}
-
-var cat = new Animal(); // New object is constructed
-
-console.log(cat instanceof Animal) // true
-console.log(cat instanceof Object) // true
-console.log(cat instanceof Array) // false
-console.log(Animal instanceof Object) // true
-
-```
-
-[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof)
 
 ----
 
@@ -298,8 +476,6 @@ emptyObj.hasOwnProperty('name') // false
 ```
 
 Note: Both `obj` and `emptyObj` are instances of `Object`
-
-
 
 ---
 
@@ -500,7 +676,7 @@ var Array = {
     push: function(){...}, // Adds one or more elements to the end of an array.
     toString: function(){...} // Returns a string representing the array and its elements.
     /* [...] */
-    prototype: Object.prototype
+    __proto__: Object.prototype
   }
 }
 ```
@@ -517,7 +693,7 @@ Note: As `Array` inherits from `Object`, it only has access to `Object`'s protot
 >
 > `Array.prototype` has a prototype, `Object.prototype`
 >
-> Instances of `Array` as linked to `Array.prototype`, which is linked to `Object.prototype`.
+> Instances of `Array` are linked to `Array.prototype`, which is linked to `Object.prototype`.
 
 ```js
 var odd = new Array(1, 3, 5);
@@ -618,10 +794,9 @@ function getObjectProperty(obj, propName) {
     return undefined
   }
 }
+```
 
 https://jsbin.com/nazefo/edit?js,console,output
-
-```
 
 Note: This is a programatic representation of the prototype chain
 
@@ -748,6 +923,54 @@ console.log(user2.name) // "Rachel"
 
 Note: as `this` refers to the instance being created, we are defining properties of the instance.
 
+----
+
+### Practice: Mutating Array prototype
+
+> Implement new method on arrays, so the following output matches
+
+```js
+var arr = [ 1, "", 8, null, "Evan", true, false]
+
+console.log(arr.compact()) // [1, 8, "Evan", true]
+console.log(arr.first()) // 1
+console.log(arr.last()) // false
+
+arr.remove( x => typeof x === 'string' )
+console.log(arr) // [1, 8, null, true, false]
+```
+
+https://jsbin.com/fovasetuse/1/edit?js,console,output
+
+----
+
+```js
+Array.prototype.compact = function () {
+  return this.filter( x => !!x )
+}
+Array.prototype.first = function () {
+  return this[0]
+}
+Array.prototype.last = function () {
+  return this[this.length-1]
+}
+Array.prototype.remove = function (func) {
+  this.forEach((item, i, array) => {
+    if(func(item, i, array)){
+      this.splice(i, 1)
+    }
+  })
+  return this
+}
+```
+
+----
+
+### Caution! Don't mutate prototypes
+
+> Prototype mutation can slow your app
+
+[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/The_performance_hazards_of__%5B%5BPrototype%5D%5D_mutation)
 
 ---
 
@@ -836,191 +1059,69 @@ user2.orderItem('TV') // "TV purchased: delivery in 1 day"
 
 https://jsbin.com/bajura/edit?js,console,output
 
----
-
-## Objects or not, that's the question
-
 ----
 
-### What is an object?
+### Test objects prototypes with `instanceof` operator
 
-> Objects are key to understanding object-oriented technology
-> &nbsp;
-> Real-world objects share two characteristics: They all have state and behavior. Dogs have state (name, color, hungry) and behavior (barking, fetching, wagging tail).
-
-[Java Docs](https://docs.oracle.com/javase/tutorial/java/concepts/object.html)
-
-----
-
-> "In javascript", everything is an object
+> The `instanceof` operator tests whether an object has in its prototype chain the prototype property of a constructor.
 
 ```js
-log(typeof []) // "object"
-log(typeof {}) // "object"
-log(typeof document.createElement('DIV') ) // "object"
-log(typeof new String('5') ) // "object"
-log(typeof new Number(5) ) // "object"
+function Animal () {}
+
+var cat = new Animal(); // New object is constructed
+
+console.log(cat instanceof Animal) // true
+console.log(cat instanceof Object) // true
+console.log(cat instanceof Array) // false
+console.log(Animal instanceof Object) // true
+
 ```
 
-It's "almost" true
+[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof)
 
 ----
 
-### Primitives
+### Practice: Mutating Array prototype
 
-> The simple types of JavaScript are `numbers`, `strings`, `booleans` (true and false), null, and undefined. All other values are objects.
-
-----
-
-Let's check:
+> Implement `Collection`, as an array of objects, , so the following output matches
 
 ```js
-log( typeof '5' ) // "string"
-log( typeof 5 ) // "number"
-log( typeof false ) // "boolean"
-log( typeof true ) // "boolean"
-log( typeof null ) // "object"
-log( typeof undefined ) // "undefined"
+var collection = new Collection()
+collection.push(
+  { name: 'Evan', lastName: 'Graham' },
+  { name: 'Rachel', lastName: 'Green' },
+  { name: 'Janice', lastName: 'Yemen' },
+  { name: 'Ross', lastName: 'Green' }
+)
+
+console.log(collection.length) // 4
+console.log(collection.findBy('lastName', 'Green'))
+// [object Object] { lastName: "Green", name: "Rachel" }
+console.log(collection.sortBy('name'))
+// 0: [object Object] { lastName: "Graham", name: "Evan" },
+// 1: [object Object] { lastName: "Yemen", name: "Janice" },
+// ...
 ```
 
-----
-
-How weird is that?
-```js
-log( typeof null ) // "object"
-```
-
-----
-
-#### typeof null === "object"
-
-> `null` is often used to signify an empty reference to an object.
-> &nbsp;
-> In fact, the ECMAScript specification defines null as the primitive value that represents the intentional absence of any object value.
-> &nbsp;
-> However, it's still widely considered as an "official mistake" of the language.
-
-[Spec](http://www.ecma-international.org/ecma-262/5.1/#sec-11.4.3)
-
-
-Note: as in javascript everything is an object assigned by reference , a defined but "empty" value is considered as a reference to an object. In case of `null`, it's an empty reference.
-
-
-----
-
-So let's check everything else
-
-```js
-log(typeof []) // "object"
-log(typeof {}) // "object"
-log(typeof document.createElement('DIV') ) // "object"
-log(typeof /javascript/i) // "object"
-log(typeof new RegExp("javascript", "i")) // "object"
-log(typeof function (x) { return x*x } ) // "function"
-log(typeof new Function("x", "return x*x") ) // "function"
-```
-
-https://jsbin.com/zojele/edit?js,console,output
-
-----
-
-Again weird...
-
-```js
-log(typeof function (x) { return x*x } ) // "function"
-log(typeof new Function("x", "return x*x") ) // "function"
-```
-
-----
-
-### Functions
-
-> The `Function constructor` creates a new Function object. In JavaScript every function is actually a Function object.
-
-[MDN] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function
-
-A functions is still an object (inherit from `Object`)
-```js
-var func =  function () {}
-func.name = 'Sarah'
-func.hasOwnProperty('name') // true
-```
-
-----
-
-An object is not a function, thought...
-
-```js
-var obj =  {}
-obj.name = 'Sarah'
-obj.hasOwnProperty('name') // true
-
-obj() // TypeError: obj is not a function
-```
-
-Note: [Object.prototype.hasOwnProperty()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty)
-
-----
-
-Last but not least...
-
-> String literals and strings returned from String calls in a non-constructor context are primitive strings. JavaScript automatically converts primitives to String objects, so that it's possible to use String object methods for primitive strings.
-
-
-```js
-log(typeof new String('5') ) // "object"
-log(typeof '5' ) // "string"
-log(typeof new Number(5) ) // "object"
-log(typeof 5 ) // "number"
-```
+https://jsbin.com/naqogu/edit?js,console,output
 
 ----
 
 ```js
-var prim = 'foo';
-var obj = new String('foo');
 
-console.log(prim.split('')); // ["f", "o", "o"]
-console.log(obj.split('')); // ["f", "o", "o"]
-console.log('foo'.split('')); // ["f", "o", "o"]
+function Collection() {}
+Collection.prototype = new Array()
+
+Collection.prototype.sortBy = function (property) {
+  return this.sort(function(obj1, obj2){
+    return obj1[property] > obj2[property]
+  })
+}
+Collection.prototype.findBy = function (prop, value) {
+  var result
+  this.forEach(function(obj){
+    result = result || (obj[prop] === value ? obj : undefined);
+  })
+  return result
+}
 ```
-
-[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String?redirectlocale=en-US&redirectslug=JavaScript/Reference/Global_Objects/String#Description)
-
-
-----
-
-Same happens with numbers.
-
-```js
-var prim = 3.1415;
-var obj = new Number(3.1415);
-
-console.log(prim.toFixed(2)); // "3.14"
-console.log(obj.toFixed(2)); // "3.14"
-console.log(3.1415.toFixed(2)); // "3.14"
-```
-
-----
-
-You can always retrieve the primitive value of an object
-
-```js
-var str = new String('js')
-console.log(typeof str ) // "object"
-console.log(typeof str.valueOf() ) // "string"
-```
-
-Note: [Object.prototype.valueOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf)
-
-
-
-> > Literals VS class instances
-> > Mutability
-> > Object API
-> > Destructuring
-
-## Must Read
-
-* [JavaScript: The Good Parts](http://shop.oreilly.com/product/9780596517748.do)
-https://www.youtube.com/watch?v=DqGwxR_0d1M

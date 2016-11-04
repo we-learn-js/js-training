@@ -91,7 +91,7 @@ var status = (age >= 18) ? "adult" : "minor";
 var x = 3;
 y = -x; // y = -3, x = 3
 
--"4" // 4
+-"4" // -4
 
 ```
 
@@ -369,7 +369,7 @@ console.log(a, b, c, d, e)
 // 1, "b", 3, null, ""
 ```
 
-Note: Notice that default values only works with undefined values, not with `null` or falsy values.
+Note: Notice that default values only works with undefined values, not with `null` or falsey values.
 
 ----
 
@@ -776,7 +776,7 @@ so if these operators are used with non-Boolean values, they may return a non-Bo
 
 ##### Expression conversion
 
-> With non-Boolean values, "falsy" expressions are converted to false:
+> With non-Boolean values, "falsey" expressions are converted to false:
 * null
 * NaN
 * 0
@@ -844,7 +844,7 @@ false || "Cat";    // f || t returns Cat
 
 ```js
 3 && "" && "Cat" // false | 3 and "" are evaluated
-// "Cat" isn't evaluated as  "" was falsy
+// "Cat" isn't evaluated as  "" was falsey
 ```
 
 ```js
@@ -1195,4 +1195,247 @@ var coldSeason, otherSeasons;
 [coldSeason, ...otherSeasons] = seasons;
 console.log(coldSeason);   // => 'winter'  
 console.log(otherSeasons); // => ['spring', 'summer', 'autumn']  
+```
+
+---
+
+## Quiz
+
+Read the slides again, and we'll start a small quiz on operators.
+
+----
+
+
+### 01. What would be the output of each code?
+
+```js
+/* 1 */ true && (3 == '3')
+```
+```js
+/* 2 */ false || (3 == '3')
+```
+```js
+/* 3 */ (3 != '3') || (3 === 3)
+```
+```js
+/* 4 */ "Cat" || "Dog"
+```
+```js
+/* 5 */ "Cat" && "Dog"
+```
+```js
+/* 6 */ "" || "Dog"
+```
+```js
+/* 7 */ !!"" && !!"Cat"
+```
+```js
+/* 8 */ (18 >= 18) ? "adult" : "minor"
+```
+
+----
+
+### 02. What would be the output of this code?
+
+```js
+var names = ["David", "Tim", "Roger", "Monica"];
+delete names[2];
+console.log(names)
+```
+
+----
+
+### 03. What would be the output of this code?
+
+```js
+var animals = ["Dog", "Cat", "Rabbit", "Mouse"];
+delete animals;
+console.log(animals)
+```
+
+----
+
+### 04. What would be the output of this code?
+
+```js
+var arr1 = [0, 4, 2];
+var arr2 = [3, 1, 5];
+arr1.push(...arr2);
+
+console.log(arr1)
+```
+
+----
+
+### 05. What would be the output of this code?
+
+```js
+var arr1 = [8, 7, 6, 14, 17];
+var arr2 = [3, 1, 5, 3];
+
+[a, b, ...cd]=arr1
+arr3 = [a,...arr2, b, ...cd]
+
+console.log(arr3)
+```
+
+----
+
+### 06. What would be the output of this code?
+
+```js
+var str = 'javascript'
+console.log([...str].join('|'))
+```
+
+----
+
+### 07. What would be the output of this code?
+
+```js
+var str = 'javascript'
+var [a, b, , , c, ...d] = str
+
+console.log(a, b, c, d)
+```
+
+----
+
+### 08. What would be the output of this code?
+
+```js
+var {
+  prop: a=5,
+  prop2: {
+    prop2: {
+      nested: [ , , b]
+    }
+  },
+  prop3: c=10
+} = { prop: "Hello", prop2: { prop2: { nested: ["a", "b", "c"]}}};
+console.log(a, b, c);
+```
+
+
+----
+
+## Quiz responses
+
+----
+
+
+### 01. What would be the output of each code?
+
+
+```js
+true && (3 == '3') // true
+false || (3 == '3') // true
+(3 != '3') || (3 === 3)) // true
+"Cat" || "Dog" // "Cat"
+"Cat" && "Dog" // "Dog"
+"" || "Dog" // "Dog"
+!!"" && !!"Cat" // false
+(18 >= 18) ? "adult" : "minor" // "adult"
+```
+
+----
+
+### 02. What would be the output of this code?
+
+```js
+var names = ["David", "Tim", "Roger", "Monica"];
+delete names[2];
+console.log(names)
+// ["David", "Tim", undefined, "Monica"]
+```
+
+----
+
+### 03. What would be the output of this code?
+
+
+```js
+var animals = ["Dog", "Cat", "Rabbit", "Mouse"];
+delete animals;
+console.log(animals)
+// ["Dog", "Cat", "Rabbit", "Mouse"]
+```
+
+----
+
+### 04. What would be the output of this code?
+
+```js
+var arr1 = [0, 4, 2];
+var arr2 = [3, 1, 5];
+arr1.push(...arr2);
+
+console.log(arr1)
+
+// [0, 4, 2, 3, 1, 5]
+```
+
+----
+
+### 05. What would be the output of this code?
+
+```js
+var arr1 = [8, 7, 6, 14, 17];
+var arr2 = [3, 1, 5, 3];
+
+[a, b, ...cd]=arr1
+arr3 = [a,...arr2, b, ...cd]
+
+console.log(arr3)
+
+// [8, 3, 1, 5, 3, 7, 6, 14, 17]
+```
+
+----
+
+### 06. What would be the output of this code?
+
+```js
+var str = 'javascript'
+console.log([...str].join('|'))
+
+// "j|a|v|a|s|c|r|i|p|t"
+```
+
+String is iterable, so you can spread them.
+
+----
+
+### 07. What would be the output of this code?
+
+```js
+var str = 'javascript'
+var [a, b, , , c, ...d] = str
+console.log(a, b, c, d)
+
+// "j"
+// "a"
+// "s"
+// ["c", "r", "i", "p", "t"]
+```
+
+----
+
+### 08. What would be the output of this code?
+
+```js
+var {
+  prop: a=5,
+  prop2: {
+    prop2: {
+      nested: [ , , b]
+    }
+  },
+  prop3: c=10
+} = { prop: "Hello", prop2: { prop2: { nested: ["a", "b", "c"]}}};
+console.log(a, b, c);
+
+// "Hello"
+// "c"
+// 10
 ```
