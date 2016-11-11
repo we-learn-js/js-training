@@ -9,7 +9,7 @@
 ### What is an object?
 
 > Objects are key to understanding object-oriented technology
-> &nbsp;
+> &nbsp
 > Real-world objects share two characteristics: They all have state and behavior. Dogs have state (name, color, hungry) and behavior (barking, fetching, wagging tail).
 
 [Java Docs](https://docs.oracle.com/javase/tutorial/java/concepts/object.html)
@@ -143,12 +143,12 @@ log(typeof 5 ) // "number"
 ----
 
 ```js
-var prim = 'foo';
-var obj = new String('foo');
+var prim = 'foo'
+var obj = new String('foo')
 
-console.log(prim.split('')); // ["f", "o", "o"]
-console.log(obj.split('')); // ["f", "o", "o"]
-console.log('foo'.split('')); // ["f", "o", "o"]
+console.log(prim.split('')) // ["f", "o", "o"]
+console.log(obj.split('')) // ["f", "o", "o"]
+console.log('foo'.split('')) // ["f", "o", "o"]
 ```
 
 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String?redirectlocale=en-US&redirectslug=JavaScript/Reference/Global_Objects/String#Description)
@@ -159,12 +159,12 @@ console.log('foo'.split('')); // ["f", "o", "o"]
 Same happens with numbers.
 
 ```js
-var prim = 3.1415;
-var obj = new Number(3.1415);
+var prim = 3.1415
+var obj = new Number(3.1415)
 
-console.log(prim.toFixed(2)); // "3.14"
-console.log(obj.toFixed(2)); // "3.14"
-console.log(3.1415.toFixed(2)); // "3.14"
+console.log(prim.toFixed(2)) // "3.14"
+console.log(obj.toFixed(2)) // "3.14"
+console.log(3.1415.toFixed(2)) // "3.14"
 ```
 
 ----
@@ -605,7 +605,7 @@ var Array = {
 > `Array` is an object, which can contain properties and methods.
 
 ```js
-var numbers = Array.of(0,1,2,3,4);
+var numbers = Array.of(0,1,2,3,4)
 console.log(numbers)  // [0, 1, 2, 3, 4]
 ```
 
@@ -616,8 +616,8 @@ console.log(numbers)  // [0, 1, 2, 3, 4]
 > As a function, `Array` is a **constructor** and can be invoked with **new** to create  instances.
 
 ```js
-var odd = new Array(1, 3, 5);
-var even = new Array(2, 4, 6);
+var odd = new Array(1, 3, 5)
+var even = new Array(2, 4, 6)
 odd[0] = 2
 even[0] = 1
 
@@ -632,8 +632,8 @@ console.log(even) // [1, 4, 6]
 > As a constructor, `Array` contains a prototype object that will be linked to any instances of `Array`.
 
 ```js
-var odd = new Array(1, 3, 5);
-var even = new Array(2, 4, 6);
+var odd = new Array(1, 3, 5)
+var even = new Array(2, 4, 6)
 
 odd.push(7)
 even.push(8)
@@ -696,7 +696,7 @@ Note: As `Array` inherits from `Object`, it only has access to `Object`'s protot
 > Instances of `Array` are linked to `Array.prototype`, which is linked to `Object.prototype`.
 
 ```js
-var odd = new Array(1, 3, 5);
+var odd = new Array(1, 3, 5)
 
 console.log(odd.hasOwnProperty(0)) // true
 console.log(odd.hasOwnProperty(7)) // false
@@ -709,8 +709,8 @@ console.log(odd.hasOwnProperty(7)) // false
 `Array` does not implement `Object` methods
 
 ```js
-var odd = new Array(1, 3, 5);
-var even = new Array(2, 4, 6);
+var odd = new Array(1, 3, 5)
+var even = new Array(2, 4, 6)
 
 Array.keys(odd) // TypeError: Array.keys is not a function
 ```
@@ -726,7 +726,7 @@ Array.keys(odd) // TypeError: Array.keys is not a function
 > `Array.prototype.toString()` overrides `Object.prototype.toString()`
 
 ```js
-var odd = new Array(1, 3, 5);
+var odd = new Array(1, 3, 5)
 odd.push(7)
 
 console.log(odd.toString()) // "1,3,5,7"
@@ -895,7 +895,7 @@ user.forEach(function(value, key){
 // "lastName=Graham"
 ({ hello: 'world' }).forEach(function(value, key){
   console.log(key + '=' + value)
-});
+})
 // "hello=world"
 
 
@@ -990,7 +990,7 @@ Consider:
 var User = function(name) {
   this.name = name
 }
-User.prototype.sayName = function(item) {
+User.prototype.sayName = function() {
   console.log('My name is ' + this.name )
 }
 User.prototype.orderItem = function(item) {
@@ -1068,7 +1068,7 @@ https://jsbin.com/bajura/edit?js,console,output
 ```js
 function Animal () {}
 
-var cat = new Animal(); // New object is constructed
+var cat = new Animal() // New object is constructed
 
 console.log(cat instanceof Animal) // true
 console.log(cat instanceof Object) // true
@@ -1120,8 +1120,259 @@ Collection.prototype.sortBy = function (property) {
 Collection.prototype.findBy = function (prop, value) {
   var result
   this.forEach(function(obj){
-    result = result || (obj[prop] === value ? obj : undefined);
+    result = result || (obj[prop] === value ? obj : undefined)
   })
   return result
 }
+```
+
+
+---
+
+## Mastering Objects
+
+----
+
+###  Object.getPrototypeOf()
+
+> The `Object.getPrototypeOf()` method returns the prototype of the specified instance.
+> ```js
+> Object.getPrototypeOf(obj)
+> ```
+
+```js
+
+Object.getPrototypeOf(new String("foo")) // String.prototype
+Object.getPrototypeOf([]) // Array.prototype
+Object.getPrototypeOf({}) // Object.prototype
+
+```
+
+----
+
+### Object.assign()
+
+> The Object.assign() method is used to copy the values of all enumerable own properties from one or more source objects to a target object.
+>
+> It will return the target object.
+>
+> ```js
+> Object.assign(target, ...sources)
+> ```
+
+
+[MDN - Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+
+----
+
+Merging objects
+
+```js
+var o1 = { a: 1 }
+var o2 = { b: 2 }
+var o3 = { c: 3 }
+
+var obj = Object.assign(o1, o2, o3)
+console.log(obj) // { a: 1, b: 2, c: 3 }
+console.log(o1)  // { a: 1, b: 2, c: 3 }
+console.log(o2)  // { b: 2 }
+console.log(o3)  // { c: 3 }
+```
+
+----
+
+#### Caution! Not suitable for deep objects
+
+```js
+var o1 = { a: 1  }
+var o2 = { b: { c: 2 } }
+
+var obj = Object.assign(o1, o2)
+console.log(o1) // { a: 1, b: { c: 2 } }
+console.log(o2) // { b: { c: 2 } }
+o2.b.c = 3
+console.log(o1) // // { a: 1, b: { c: 3 } }
+```
+
+----
+
+### Object.defineProperty()
+
+> The `Object.defineProperty()` method defines a new property directly on an object, or modifies an existing property on an object, and returns the object.
+> ```js
+> Object.defineProperty(obj, prop, descriptor)
+> ```
+>
+> * **obj**: The object on which to define the property.
+> * **prop**: The name of the property to be defined or modified.
+> * **descriptor**: The descriptor for the property being defined or modified.
+
+
+[MDN - Object.defineProperty() ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+
+----
+
+#### descriptor.enumerable
+
+> true if and only if this property shows up during enumeration of the properties on the corresponding object.
+>
+> Defaults to `false`.
+
+```js
+var obj = { name: 'Evan', surname: 'Graham'}
+Object.defineProperty(obj, 'name', { enumerable: false })
+Object.defineProperty(obj, 'surname', { enumerable: true })
+
+
+console.log(Object.keys(obj)) // ["surname"]
+for (var key in obj) {
+  console.log(key)
+}
+// "surname"
+
+```
+
+----
+
+#### descriptor.value
+
+> The value associated with the property. Can be any valid JavaScript value (number, object, function, etc).
+>
+> Defaults to `undefined`.
+
+```js
+var obj = { name: 'Evan', surname: 'Graham'}
+Object.defineProperty(obj, 'name', { value: "Rachel" })
+
+console.log(obj) // { name: "Rachel", surname: "Graham" }
+```
+
+----
+
+#### descriptor.writable
+
+> true if and only if the value associated with the property may be changed with an assignment operator.
+>
+> Defaults to `false`.
+
+```js
+var obj = { name: 'Evan', surname: 'Graham'}
+Object.defineProperty(obj, 'name', { writable: false })
+
+obj.name = 'Rachel'
+obj.surname = 'Green'
+console.log(obj) // {  name: "Evan", surname: "Green" }
+```
+
+----
+
+#### descriptor.get
+
+> A function which serves as a getter for the property
+
+```js
+var obj = { name: 'Evan', surname: 'Graham'}
+Object.defineProperty(obj, 'fullName', { get: function(){ return this.name + ' ' + this.surname} })
+
+console.log(obj.fullName) // "Evan Graham"
+```
+
+----
+
+#### descriptor.set
+
+> A function which serves as a setter for the property
+
+```js
+var obj = { name: 'Evan', surname: 'Graham'}
+Object.defineProperty(obj, 'fullName', { set: function(name){
+  var words = name.toString().split(' ')
+  this.name = words[0] || ''
+  this.surname = words[1] || ''
+} })
+
+obj.fullName = 'Rachel Green'
+console.log(obj.name, obj.surname) // "Rachel" "Green"
+```
+
+
+----
+
+This code...
+```js
+obj.name = 'Evan'
+```
+
+Is the same as...
+```js
+Object.defineProperty(obj, 'name', {
+  enumerable: true,
+  writable: true,
+  value: 'Evan'
+})
+```
+
+----
+
+### Object.defineProperties()
+
+> The `Object.defineProperties()`  method defines new or modifies existing properties directly on an object, returning the object.
+>
+> ```js
+> Object.defineProperties(obj, props)
+> ```
+
+[MDN - Object.defineProperties() ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties)
+
+----
+
+```js
+var obj = {};
+Object.defineProperties(obj, {
+  name: {
+    value: 'Evan',
+    writable: true
+  },
+  surname: {
+    value: 'Graham',
+    writable: false
+  }
+})
+```
+
+----
+
+#### Practice
+
+> Retrieving values from checkbozes is tricky. Let's make it easier
+
+```js
+var form = document.getElementById('my-form')
+
+console.log(form.color.value) // ["Green", "Blue", "Black"]
+
+form.color.value = ["Red"]
+console.log(form.color.value) // ["Red"]
+
+```
+
+https://jsbin.com/nerila/edit?js,output
+
+----
+
+```js
+Object.defineProperty(RadioNodeList.prototype, 'value', {
+  get () {
+    var result = []
+    this.forEach(function(input){
+      input.checked && result.push(input.value)
+    })
+    return result
+  },
+  set (values = []) {
+    this.forEach(function(input){
+      input.checked  = values.indexOf(input.value) !== -1
+    })
+  }
+})
 ```
