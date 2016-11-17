@@ -690,3 +690,12 @@ person.takePicture()
 Identify classes, interfaces, abstract actions and implement calculation of the interest functionality.
 
 ---
+
+
+## Must read
+
+[EloquentJs](http://eloquentjavascript.net/1st_edition/chapter8.html)
+
+[Youtube - Composition over Inheritance](https://www.youtube.com/watch?v=wfMtDGfHWpA)
+
+[Youtube - Object-Oriented is bad](https://www.youtube.com/watch?v=QM1iUe6IofM)
