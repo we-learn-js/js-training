@@ -525,6 +525,31 @@ var colorPoint = new ColorPoint(5, 10, "Green")
 console.log(colorPoint.toString()) // "(5, 10) in Green"
 ```
 
+----
+
+#### Super in static methods
+
+> `super` can be used in static methods as well
+
+```js
+class Tripple {
+  static tripple(n) {
+    n = n | 1;
+    return n * 3;
+  }
+}
+
+class BiggerTripple extends Tripple {
+  static tripple(n) {
+    return super.tripple(n) * super.tripple(n);
+  }
+}
+
+console.log(Tripple.tripple());
+console.log(Tripple.tripple(6));
+console.log(BiggerTripple.tripple(3));
+```
+
 ---
 
 ### Practice
