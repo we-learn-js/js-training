@@ -84,6 +84,23 @@ Here comes the light !
 
 ----
 
+* Operators and Expressions
+* Functions
+* Scopes and Closures
+* Functional programming
+* Objects
+* Classes
+* OOP
+* Modules
+* AsyncProgramming
+* Generators
+* OOP
+* Design Patterns
+* Testing
+* DDD
+
+----
+
 ## Are you ready?
 
 functional programming · scopes · repositories · value objects · closures · require ·  design patterns · webpack · react · objects · asserts · functions · this · ecmascript · npm install · state · debugging · events · promises · domain · modules · testing · oop
