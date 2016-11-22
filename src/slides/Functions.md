@@ -322,7 +322,7 @@ console.log(user.name) // "Evan"
 
 
 ```js
-function sum(args) {
+function sum() {
   return Array.prototype.reduce.call(arguments, function(x, y) {
     return x + y
   })
@@ -366,8 +366,8 @@ Make it work:
 function flatten (arr) {
 
 }
-var arr = [[1], [2, 3], [4], [5, 6, 7]]
-console.log(flatten(arr)); // [1, 2, 3, 4, 5, 6, 7]
+var arr = [[1], ["2", 3], [4], [5, "6", "7"]]
+console.log(flatten(arr)); // [1, "2", 3, 4, 5, "6", "7"]
 ```
 
 https://jsbin.com/tigotu/edit?js,console,output
@@ -409,10 +409,23 @@ object.enable()
 
 ----
 
+How it works
+```js
+Function.prototype.bind = function(bindThis, ...bindArgs) {
+  var func = this
+  return function(...args) {
+    func.call(bindThis, ...bindArgs, ...args )
+  }
+}
+
+```
+
+----
+
 ```js
 
 function times (count, func) {
-  for (var index = 0 index < count ++index) {
+  for (var index = 0; index < count; ++index) {
     func()
   }
 }
@@ -420,6 +433,9 @@ var threeTimes = times.bind(null, 3)
 threeTimes(function(){ console.log('hello') }) // "hello" "hello" "hello"
 threeTimes(console.log.bind(null,'world')) // "world" "world" "world"
 ```
+
+
+
 
 ----
 

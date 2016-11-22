@@ -641,8 +641,8 @@ Solution:
 
 ```js
 class Manager extends Employee {
-  constructor(firstName, familyName) {
-    super(firstName, familyName);
+  constructor(...args) {
+    super(...args);
     this._managedEmployees = [];
   }
 
@@ -672,8 +672,8 @@ https://jsbin.com/labubu/edit?js,console,output
 
 ```js
 class Manager extends Employee {
-  constructor(firstName, familyName) {
-    super(firstName, familyName);
+  constructor(...args) {
+    super(...args);
     this._managedEmployees = [];
   }
   addEmployee(...args) {
