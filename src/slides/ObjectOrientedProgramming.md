@@ -5,10 +5,12 @@
 ### What is it for?
 
 > Procedural or functional programming, functions are not related to any type of data. They receive data as input, execute a task and return an output.
->
-> OOP another way to organize code. OOP is data oriented.
->
-> Data and tasks are encapsulated in an object. Methods of the object are directly related to the object's state.
+
+> OOP is another way to organize code. OOP is data oriented.
+
+> Data and tasks are encapsulated in a single piece of code: an object.
+
+> Methods of the object are directly related to the object's state.
 
 ----
 
@@ -20,7 +22,7 @@
 
 ### What is a class?
 
-> Class is a blueprint, the definition, the description of an object.
+> Class is a blueprint: the definition, the description of an object.
 >
 > Describes what **objects are** with attributes (properties) that describe the state : name, height, weight, gender, age, ...
 >
@@ -41,11 +43,12 @@
 
 ### What is an object?
 
-> An object is an instance of a class.
->
+
 > It's a thing created based on the blueprint (the class).
->
-> One class can create multiple objects, like you create multiple houses based on the same blueprint.
+
+> An object is an instance of a class.
+
+> One class can create multiple objects, like you create multiple houses based on a unique blueprint.
 
 ---
 
@@ -77,38 +80,27 @@
 
 > In a city, there lot of things (buildings, people, animals), and they do a lot of things (eat, drive, shop, ...)
 
-> There are cars, citizens, companies, a city hall, hospitals, ... All of theses are entities are concepts that have characteristics and capabilities we all know.
+> There are cars, citizens, companies, a city hall, hospitals, ... All of them are learnt concepts that have characteristics and capabilities we all know.
 
-> We know that a person can drive or not. But a dog can't drive.
+> For instance, we know that a person can drive or not. But a dog can't drive.
 
 ----
 
-> A hospital have rooms, doctors, nurses. A hospital have a set of capabilities related to its nature: provide a set of treatments to people, intensive care, ...
+> A hospital has rooms, doctors, nurses.
 
-> But a hospital can't deliver an ID (card). For that, you can to request it to another entity: the City Hall.
+> It has a set of capabilities related to its nature: emergency, blood analysis, intensive care, ...
 
-> Abstracting is extracting what entities have your program and which capabilities belong to each of them.
+> But we know a hospital can't deliver an ID (card). For that, you can to request it to another entity: the City Hall.
+
+> **Abstracting is extracting what concepts/entities have your program and which capabilities belong to each of them**
 
 ----
 
 > **Abstracting is hard** and usually you can abstract a program in many different ways.
 
-> You can say that a hospital and a school are both buildings.
-> Or you can say that a hospital is a health service that have a building as location and a school another service.
+> You could say that a hospital and a school are both buildings.
 
-----
-
-### Exercise: The School
-
-> We are given a School.
->
-> In the scholl there are classes of students. Each class has a set of teachers. Each teacher a set of disciplines.
->
-> Students have a name and are assigned to a unique class. Classes have a unique text identifier. Teachers have name. Disciplines have name, number of lectures and number of exercises.
->
-> Both teachers and students are people
-
-Identify the classes. Define the classes properties and methods with a hierarchy.
+> But a teammate could see a hospital is a health service that have a building as location and a school another service.
 
 ---
 
@@ -124,11 +116,13 @@ Identify the classes. Define the classes properties and methods with a hierarchy
 
 > A class is a single logically organized unit where are enclosed operations (methods) to its related data (properties).
 
-> The idea of encapsulation is to keep classes separated and prevent them from having tightly coupled with each other.
+> The idea of encapsulation is to keep classes separated and prevent them from being tightly coupled with each other.
 
 ----
 
-> Classes announces some operations (methods) available for consume, its public interface.
+> Classes announces some operations (methods) available for consume.
+
+> The set of declared operations with its names are called its **interface**.
 
 > Encapsulation hides the implementation details.
 
@@ -140,11 +134,11 @@ Identify the classes. Define the classes properties and methods with a hierarchy
 
 > A city hall has a lot of services (operations). You don't know them all, just the ones you use.
 
-> To request a service, you don't enter the building, go to the mayor office and as for it.
+> To request a service, you don't enter the building, go to the mayor office and ask him.
 
 > Instead, you must follow the operations provided by the city hall: to request a service, you have to go to reception, and request a form. You fill in the form with your data and the city hall will respond later.
 
-> To respond, city hall requires a lot of people, uses resources but you don't know about that. You just get a response.
+> To respond, city hall delegates to its employees, uses internal resources but you don't know about that. You just get a response.
 
 ----
 
@@ -168,13 +162,12 @@ class CityHallServiceRequest () {
 class CityHall {
   requestService (request) {
     if(request instanceof CityHallServiceRequest) {
-      // process request and respond
+      // process request and return response
     } else {
       throw new Error("Request form required")
     }
   }
 }
-
 ```
 
 ----
@@ -183,9 +176,9 @@ class CityHall {
 
 > You can't know how city hall processes the request. Who does it? Is a phone used to do so?
 
-> City may delegate part the the work to another entity, like the government to request more info about you.
+> City may delegate part the the work to another entity, like the government, to request more info about you.
 
-> In that case, city will send an info request to the government with the ID you provided. What for government's answer, to some stuff and THEN  answer you back.
+> In that case, city will send an info request to the government with the ID you provided. Then it will wait for government's answer, to execute some processing and THEN answer you back.
 
 ----
 
@@ -223,7 +216,7 @@ CityHall.employees[0].salary // Uncaught TypeError: Cannot read property '0' of 
 
 > Unfortunately, there is no syntax for private object properties or methods in JavaScript.
 
-> We have to take care of it ourselves ...
+> We have to take care of it on our own ...
 
 ----
 
@@ -263,7 +256,7 @@ console.log(halloween.toString()) // "31/3/2000 0:00:00"
 
 > The most common way to make properties private in javascript  is to adhere to a simple convention:
 
-> If a property name is prefixed and/or suffixed with an underscore, then it should be treated as non-public.
+> If a property name is prefixed and/or suffixed with an underscore, then it should be treated **by consumer** as non-public.
 
 ----
 
@@ -306,7 +299,7 @@ class SimpleDate {
 
 ##### Problem
 
-> The data is technically still accessible to everyone
+> The data is still technically accessible to everyone
 
 ```js
 console.log(halloween.__month__ = 3)
@@ -423,13 +416,17 @@ class SimpleDate {
 ----
 
 
-##### Problem
+##### Problem 1
 
 > Private variables are not accessible to child classes if they are in separated files
 
 ```js
 class ComplexDate extends SimpleDate { }
 ```
+
+----
+
+##### Problem 2
 
 > Symbols are can be accessed with `Object.getOwnPropertySymbols`, but not explicitly
 
@@ -559,11 +556,11 @@ class ATM {
 
 ----
 
-> All ATM do basically the same thing, but  some differ.
+> All ATMs do basically the same thing, but  some differ.
 >
-> Some ATM will print you a ticket of the operation. Others will worry about the environment and ask you if you want a printed ticket of not.
+> Some ATMs will print a ticket of the operation. Others will worry about the environment and ask you if you want a printed ticket of not.
 >
-> The ATMs differ depending of the Bank's business rules.
+> The ATMs differ depending on Bank's business rules.
 >
 > Then, we should created a new ATM class that inherits ATM basic operation, and change only what's different.
 
@@ -587,6 +584,20 @@ class EcoATM  extends ATM {
 
 ----
 
+### Exercise: The School
+
+> We are given a School.
+>
+> In the school, there are classes of students. Each class has a set of teachers. Each teacher a set of disciplines.
+>
+> Students have a name and are assigned to a unique class. Classes have a unique text identifier. Teachers have name. Disciplines have name, number of lectures and number of exercises.
+>
+> Both teachers and students are people
+
+Identify the classes. Define the classes properties and methods with a hierarchy.
+
+----
+
 ### Exercise: The animals
 
 > Consider a hierarchy composed by Dog, Frog, Cat, Kitten, Tomcat.
@@ -595,8 +606,10 @@ class EcoATM  extends ATM {
 >
 > Kittens can be only female and tomcats are only male.
 > Each animal produces a sound.
->
-> Create static method in Animal that returns average age of an array of animals.
+
+Identify the classes. Define the classes properties and methods with a hierarchy.
+
+Create static method in Animal that returns average age of an array of animals.
 
 ---
 
@@ -650,9 +663,11 @@ class AnalogicCamera extends CameraAbstract {
 
 > Now any kind of camera can be used to take picture. They have the same interface that executes same operation, but differently.
 
-> That's polymorphism: `DigitalCamera` and `AnalogicCamera`, but can be used exactly the same way as they inherit from its parent.
+> That's polymorphism: `DigitalCamera` and `AnalogicCamera` can be used exactly the same way as they inherit the same interface from its parent.
 
-> Both camera can be passed to a photographer and he will make the same us of them.
+> Both camera types can be passed to a photographer and he will make the same us of them.
+
+----
 
 ```js
 
@@ -675,16 +690,16 @@ person.takePicture()
 
 ### Exercise: The Bank
 
-> A bank holds different types of accounts for its consumers: deposit account, loan accounts and mortgage accounts.
->
-> All accounts have customer, balance, and interest rate (monthly based).
-> * Deposit accounts are allowed to deposit and withdraw money
-> * Loan and mortgage accounts can only deposit money
->
-> All accounts can calculate their interest amount fir a given period (in months.)
-> * Load accounts have no interest for the first 3 months.
-> * Deposit accounts have no interest if their balance is positive and less than 1000
-> * Mortgage accounts 1/2 interest for the first 12 months for the companies and 6 for individuals.
+A bank holds different types of accounts for its consumers: deposit account, loan accounts and mortgage accounts.
+
+All accounts have customer, balance, and interest rate (monthly based).
+* Deposit accounts are allowed to deposit and withdraw money
+* Loan and mortgage accounts can only deposit money
+
+All accounts can calculate their interest amount fir a given period (in months.)
+* Load accounts have no interest for the first 3 months.
+* Deposit accounts have no interest if their balance is positive and less than 1000
+* Mortgage accounts 1/2 interest for the first 12 months for the companies and 6 for individuals.
 
 
 Identify classes, interfaces, abstract actions and implement calculation of the interest functionality.
