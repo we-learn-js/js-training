@@ -214,10 +214,10 @@ class Bird {
   walk(distance)
   fly(distance)
 }
-class Duck {
+class Duck extends Bird {
   speak() { console.log('Cuak!') }
 }
-class Penguin {
+class Penguin extends Bird {
   speak() { console.log('Creck!') }
   fly() { thown new Error('Can\'t fly') }
 }
@@ -512,7 +512,7 @@ class FormCtrl {
 
 ```js
 class IMessageService {
-  showMessage()
+  showMessage() { throw new Error('IMessageService.showMessage not implemented') }
 }
 class FormMessageService extends IMessageService {
   showMessage (msg) {

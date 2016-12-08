@@ -697,7 +697,7 @@ All accounts have customer, balance, and interest rate (monthly based).
 * Loan and mortgage accounts can only deposit money
 
 All accounts can calculate their interest amount fir a given period (in months.)
-* Load accounts have no interest for the first 3 months.
+* Loan accounts have no interest for the first 3 months.
 * Deposit accounts have no interest if their balance is positive and less than 1000
 * Mortgage accounts 1/2 interest for the first 12 months for the companies and 6 for individuals.
 

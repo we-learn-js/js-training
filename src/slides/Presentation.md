@@ -85,6 +85,7 @@ Here comes the light !
 ----
 
 * Operators and Expressions
+* Strings & Numbers
 * Functions
 * Scopes and Closures
 * Functional programming
@@ -96,8 +97,11 @@ Here comes the light !
 * Generators
 * OOP
 * Design Patterns
+* React
 * Testing
 * DDD
+* NPM
+* Webpack
 
 ----
 

@@ -523,8 +523,8 @@ Translate each sentence to an import statement
 | Sentence |
 | --------------- |
 | Import all methods as **math** |
-| Import squareFunc as **square** |
-| Import numberFunc as **number** |
+| Import square function as **square** |
+| Import number function as **number** |
 | Import all methods as **math** and numberFunc as **number** |
 
 
