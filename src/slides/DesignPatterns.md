@@ -335,7 +335,7 @@ class SuperMario {
     this.setState(INVINCIBLE)
   }
   collisionWithMushroom (mushroom) {
-    if(this.state === NORMAL) { this.grow() }
+    if(this.state === NORMAL) { this.setState(TALL) }
   }
   collisionWithEnemy(enemy) {
     if(this.state === NORMAL) {
@@ -380,7 +380,7 @@ class InvincibleMario extends MarioState {
 }
 class NormalMario extends MarioState {
   collisionWithEnemy(enemy) { this.mario.die() }
-  collisionWithMushroom(mushroom) { this.mario.grow() }
+  collisionWithMushroom(mushroom) { this.mario.setState(this.mario.getTallState()) }
 }
 class TallMario extends MarioState {
   collisionWithEnemy(enemy) { this.mario.setState(this.mario.getNormalState()) }
@@ -508,7 +508,6 @@ A global session object that publishes changes by events
 import pubSub from './pubsub.js'
 
 export class Session {
-
   static SESSION_CHANGE = 'session:change'
   static setUser(user) {
     this.user = user
@@ -667,7 +666,7 @@ class WeatherData extends Observable {
 #### Caution! Never forget to unobserve on tear down
 
 ```js
-class WheaterConsole {
+class WheatherConsole {
   constructor (weatherData) {
     this.weatherData = weatherData
     this.observer = this.log.bind(this)
@@ -703,7 +702,7 @@ class Observer {
 ----
 
 ```js
-class WheaterConsole extends Observer {
+class WheatherConsole extends Observer {
   update (data) {
     console.log('Current conditions: ' + data.temperature + 'F degrees and ' + data.humidity + '% humidity.');
   }
@@ -858,7 +857,6 @@ class Mocha extends CondimentDecorator {
 ----
 
 ```js
-
 import Espresso from './espresso'
 import Mocha from './mocha'
 import Milk from './milk'
@@ -1104,13 +1102,14 @@ export default {
   }
 }
 ```
-Note: `Cache` constructor remains private.
 
 ```js
 import Cache from './cache'
 var cache = Cache.getInstance()
 cache.set('myVar', 1)
 ```
+
+Note: `Cache` constructor remains private.
 
 ----
 
@@ -1550,7 +1549,7 @@ Note: What if user clicks "nextPage" button very fastly. We really need to load 
 ----
 
 ```js
-class UsersPaginator extends UsersPaginator {
+class UsersPaginatorProxy extends UsersPaginator {
   loadList () {
     _.debounce(this.loadList.bind(this), 300)
   }
