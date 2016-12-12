@@ -89,17 +89,17 @@ Here comes the light !
 * Functions
 * Scopes and Closures
 * Functional programming
+* Modules
 * Objects
 * Classes
-* OOP
-* Modules
 * AsyncProgramming
-* Generators
-* OOP
+* Iterators and Generators
+* Object-Oriented Programming
+* Object-Oriented Design Principles
 * Design Patterns
-* React
 * Testing
 * DDD
+* React
 * NPM
 * Webpack
 
