@@ -15,7 +15,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 ---
 
-## What is is all about ???
+## What is it all about ???
 
 > All started from a book of Eric Evans,
 
@@ -41,7 +41,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > Software development is most often applied to automating processes that exist in the real world, or providing solutions to real business problems.
 
-> The business processes being automated or real world problems that the software is the domain of the software.
+> The business processes being automated or real world problems is the domain of the software.
 
 ----
 
@@ -53,7 +53,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > Gives a structured vision of the domain.
 
-> Not an UML Diagram. Can be represented by it.
+> Not an UML Diagram. But can be represented by it.
 
 > **The code must be an expression  of the model.**
 
@@ -81,7 +81,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > It's the common language. Ubiquitous means "everywhere".
 
-> The process to define a common language is iterative. We have work on it and polish it with help of diagrams, descriptive texts, and specially verbal communication.
+> The process to define a common language is iterative. We have to work on it and polish it with help of diagrams, descriptive texts, and specially verbal communication.
 
 > We definitely need to speak the same language when we meet to talk about the model and to define it.
 
@@ -94,8 +94,6 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 > When we deal with a single model, the context is implicit. We do not need to define it. A model should be small enough to be assigned to one team.
 
 > Mixing all models together within the same Context can lead to ambiguity and confusion.
-
-> Sometimes, the domain and its model are so big that they require the work of several teams.
 
 > The main idea is to define the scope of a model, to draw up the boundaries of its context, then do the most possible to keep the model unified.
 
@@ -197,12 +195,24 @@ The Domain, with bounded contexts
 
 ----
 
+![Shared Kernel](https://image.slidesharecdn.com/domain-driven-design-2008-dec-1229438454167948-1/95/taming-complex-domains-with-domain-driven-design-67-728.jpg?cb=1231464807)
+
+----
+
 #### Customer-Supplier
 
 > The reporting team should play the customer role, while the e-shopping team should play the supplier role.
 
 > The customer team should present its requirements, while the supplier team should make the plans accordingly.
 
+
+----
+
+#### Conformist
+
+> This is much like the Shared Kernel, but there is an important difference.
+
+> The customer team cannot make changes to the kernel. They can only use it as part of their model, and they can build on the existing code provided.
 
 ----
 
@@ -227,6 +237,16 @@ The Domain, with bounded contexts
 > * **Better architecture** organization
 > * Iterative and continuous modeling in an Agile fashion
 
+
+----
+
+### Practice
+
+> Make groups by teams. Discuss your domain.
+
+> Discuss about your bounded contexts and its models.
+
+> Later you will have to present it to the rest of the groups.
 
 ---
 
@@ -291,7 +311,9 @@ The Domain, with bounded contexts
 
 #### Practice
 
-Think about the concept of an address (street, number, zip code, etc.). What is a possible context where an address could be modeled as an Entity and not as a Value Object? Discuss your findings with a peer.
+> Think about the concept of an address (street, number, zip code, etc.).
+
+> What is a possible context where an address could be modeled as an Entity and not as a Value Object? Discuss your findings with a peer.
 
 Note: Billing address?
 
@@ -315,7 +337,7 @@ Note: Billing address?
 
 > Since other objects can hold references only to the root, it means that they cannot directly change the other objects in the aggregate. All they can do is to change the root, or ask the root to perform some actions.
 
-> **Design Aggregates Based in Business True Invariants**
+> **Design aggregates based on business true invariants**
 
 ----
 
@@ -338,6 +360,12 @@ When the system archives or completely deletes information about a customer, it 
 ----
 
 ![Aggregates](https://www.lavinski.me/content/images/2014/Apr/Domain-Driven-Design-Concepts.png)
+
+----
+
+### Practice
+
+> Taking the domain defined on previous practice, discuss what would be the main entities/values/aggregates of your domain.
 
 ----
 
@@ -441,7 +469,7 @@ class SignUpUserService {
 
 > No Business Logic: even validation should be placed in the Domain layer.
 
-> Do not return Entity instances, return primitives or DTOs
+> Do not return Entity instances, return primitives or DTOs (Data Transfer Objects)
 
 > The return should not expose behavior like updating the entity.
 
@@ -501,7 +529,7 @@ class UserService {
 
 > Domain Events will have getters to access their attributes.
 
-> Include the identity of the Aggregate that performs the action.
+> Include the identity (not the instance) of the Aggregate that performs the action.
 
 > Include other Aggregate identities related to the first one.
 
@@ -546,7 +574,9 @@ class SignUpUserService {
 
 ### Example: Domain Events to communicate between Bounded Contexts
 
-In a ticket sales agency, a content manager decides to increase the price of a U2 show. Using her back office, she edits the show. A ShowPriceChanged Domain Event is published and persisted into the database with the new show price in the same transaction.
+In a ticket sales agency, a content manager decides to increase the price of a U2 show. Using her back office, she edits the show.
+
+A **ShowPriceChanged** Domain Event is published and persisted into the database with the new show price in the same transaction.
 
 A batch process takes the Domain Event and queues it into RabbitMQ. The Domain Event gets distributed in two queues: one for the same local Bounded Context, and another remote one for Business Intelligence purposes.
 
@@ -561,19 +591,6 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 ### The big picture
 
 ![Building Blocks](http://blog.synopse.info/public/mORMot/DDDBuildingBlocks.png)
-
-----
-
-### Practice
-
-> Split into groups (by project) and discuss about your domain.
-
-> Define domains, contexts, entities, aggregates,...
-
-> Do not define services. Just the model.
-
-> Then, you will do a presentation of your domain to the rest of the groups.
-
 
 ---
 
@@ -595,7 +612,7 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 > Responsible for presenting information to the user and interpreting user commands.
 
-> it's at the top and is responsible for processing interactions with a user (or another computer system)
+> It's at the top and is responsible for processing interactions with a user (or another computer system)
 
 > It depends on all layers below.
 
@@ -652,9 +669,8 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 ----
 
-![Onion Architecture](https://www.mirkosertic.de/wordpress/wp-content/uploads/2016/11/onionarchitecture.png)
+![Onion Architecture](https://sbrakl.files.wordpress.com/2014/11/111814_1006_onionarchit6.png?w=625)
 
-[Jeffrey Palermo - Onion Architecture](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/)
 
 
 ----
@@ -669,6 +685,11 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 ![Hexagonal Architecture](http://josecuellar.net/wp-content/uploads/hexagonalarchitecture.PNG)
 
 [Alistair Cockburn - Hexagonal Architecture](http://alistair.cockburn.us/Hexagonal+architecture)
+
+
+----
+
+![Hexagonal Architecture](https://www.blackpepper.co.uk/wp-content/uploads/2015/11/Hexagonal-Architecture.png)
 
 
 ----
@@ -814,9 +835,11 @@ class SignUpController extends Controller {
 
 > There are several types of cohesion. Two of the most used are **communicational cohesion and functional cohesion**.
 
-> * **Communicational cohesion:** is achieved when parts of the module operate on the same data. It makes sense to group them, because there is a strong relationship between them.
+----
 
-> * **Functional cohesion**: is achieved when all parts of the module work together to perform a well-defined task. This is considered the best type of cohesion.
+> **Communicational cohesion:** is achieved when parts of the module operate on the same data. It makes sense to group them, because there is a strong relationship between them.
+
+> **Functional cohesion**: is achieved when all parts of the module work together to perform a well-defined task. This is considered the best type of cohesion.
 
 ----
 
