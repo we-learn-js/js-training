@@ -256,6 +256,8 @@ function getUsersPhotos(callback, limit) {
 
 Note: We call that the "Pyramid of Doom"
 
+https://jsbin.com/tevulew/edit?js,console
+
 ----
 
 ### The problem with callbacks
@@ -1089,6 +1091,120 @@ Promise
 * [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 * [Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
 * [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API)
+
+---
+
+## async functions (ES7)
+
+> The **async function** declaration defines a async function.
+
+> When async function is called, it returns a promise.  
+
+> When the async function returns a value, the promise will be resolved with the returned value.
+
+[MDN - async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+
+----
+
+Simple value promise:
+
+```js
+function resolveAfter2Seconds(x) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      console.log('resolved: ' + x)
+      resolve(x);
+    }, 2000);
+  });
+}
+```
+
+----
+
+```js
+async function add1(x) {
+  var a = await resolveAfter2Seconds(20);
+  var b = await resolveAfter2Seconds(30);
+  return x + a + b;
+}
+
+add1(10).then(v => {
+  console.log(v);  // prints 60 after 4 seconds.
+});
+
+// "resolved: 20"
+// "resolved: 30"
+// 60
+```
+
+https://jsbin.com/wizojay/edit?js,console
+
+----
+
+### Caution!
+
+> `await` stops the execution, so watch out when you execute your promises
+
+```js
+async function add2(x) {
+  var a = resolveAfter2Seconds(20);
+  var b = resolveAfter2Seconds(30);
+  return x + await a + await b;
+}
+
+add2(10).then(v => {
+  console.log(v);  // prints 60 after 2 seconds.
+});
+
+```
+
+https://jsbin.com/coyovas/edit?js,console
+
+
+----
+
+### Rejected promises
+
+> If an **awaited promise** is rejected, the reason value is thrown.
+
+```js
+async function f3() {
+  try {
+    var z = await Promise.reject(30);
+  } catch (e) {
+    console.log(e); // 30
+  }
+}
+f3();
+```
+
+----
+
+### Using async functions instead of promise chains
+
+```js
+function getProcessedData(url) {
+  return downloadData(url) // returns a promise
+    .catch(e => {
+      return downloadFallbackData(url) // returns a promise
+    })
+    .then(v => {
+      return processDataInWorker(v); // returns a promise
+    });
+}
+```
+
+```js
+async function getProcessedData(url) {
+  let v;
+  try {
+    v = await downloadData(url);
+  } catch (e) {
+    v = await downloadFallbackData(url);
+  }
+  return processDataInWorker(v);
+}
+```
 
 ----
 
