@@ -274,6 +274,8 @@ Use chai expect assertion interface.
 
 https://jsbin.com/miniqe/edit?js,output
 
+https://jsbin.com/yahigim/2/edit?js,output
+
 ----
 
 ### Test context

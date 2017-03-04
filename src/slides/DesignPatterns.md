@@ -886,7 +886,9 @@ console.log(beverage.getDescription() + “ $” + beverage.cost())
 
 > Wrap a constructor to return instances of classes (objects).
 
-> Simplifies creation of complex objects or creation at once of large number of similar objects.
+> When a client object wants to create another object, it calls its constructor and possibly passes some parameters. But when the object construction is a laborious process, creating the object involves a lot of knowledge about the internal structure of the object, about the relationships between the objects contained, and the rules applied to them.
+
+> Factories simplify creation of complex objects or creation at once of large number of similar objects.
 
 > The knowledge os how objects are created is delegated to the factory, as a separated responsibility.
 
