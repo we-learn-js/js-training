@@ -84,21 +84,21 @@ Here comes the light !
 
 ----
 
-* Operators and Expressions
-* Strings & Numbers
-* Functions
-* Scopes and Closures
-* Functional programming
-* Modules
-* Objects
-* Classes
-* AsyncProgramming
-* Iterators and Generators
-* Object-Oriented Programming
-* Object-Oriented Design Principles
-* Design Patterns
-* Testing
-* DDD
+* [Operators and Expressions](OperatorsAndExpressions.md)
+* [Strings](Strings.md) & Numbers
+* [Functions](Functions.md)
+* [Scopes and Closures](ScopesAndClosures.md)
+* [Functional programming](FunctionalProgramming.md)
+* [Modules](Modules.md)
+* [Objects](Objects.md)
+* [Classes](Classes.md)
+* [AsyncProgramming](AsyncProgramming.md)
+* [Iterators and Generators](Generators.md)
+* [Object-Oriented Programming](ObjectOrientedProgramming.md)
+* [Object-Oriented Design Principles](ObjectOrientedDesignPrinciples.md)
+* [Design Patterns](DesignPatterns.md)
+* [Testing](Testing.md)
+* [DDD](DomainDrivenDesign.md)
 * React
 * NPM
 * Webpack
