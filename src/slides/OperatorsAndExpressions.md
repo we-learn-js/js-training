@@ -692,7 +692,7 @@ null === undefined // false (is true in abstract)
 
 ----
 
-##### Abstract inequality
+##### Strict inequality
 
 > left_operand `!=` right_operand
 
