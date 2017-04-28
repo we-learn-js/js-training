@@ -86,8 +86,8 @@ Here comes the light !
 
 * [Operators and Expressions](OperatorsAndExpressions.md)
 * [Strings](Strings.md) & Numbers
-* [Functions](Functions.md)
 * [Scopes and Closures](ScopesAndClosures.md)
+* [Functions](Functions.md)
 * [Functional programming](FunctionalProgramming.md)
 * [Modules](Modules.md)
 * [Objects](Objects.md)

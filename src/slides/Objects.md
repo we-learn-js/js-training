@@ -1344,7 +1344,7 @@ Object.defineProperties(obj, {
 
 #### Practice
 
-> Retrieving values from checkbozes is tricky. Let's make it easier
+> Retrieving values from checkboxes is tricky. Let's make it easier
 
 ```js
 var form = document.getElementById('my-form')

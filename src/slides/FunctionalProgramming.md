@@ -454,6 +454,42 @@ var doubles = numbers.map(function(num) {
 
 ----
 
+### Exercise: map implementation
+
+> Implement `map2` function to obtain same output as `map`
+
+* Do not use any for/while loops.
+
+```js
+Array.prototype.map2 = function(func) {
+  // SOLUTION GOES HERE
+};
+
+var result =
+console.log(
+  [1,2,3].map2(function(x) { return x + 1; }),
+  [1,2,3].map(function(x) { return x + 1; })
+) // OUTPUT: [2, 3, 4] [2, 3, 4]
+```
+
+https://jsbin.com/yaqite/edit?js,console
+
+----
+
+#### Solution
+
+```js
+Array.prototype.map2 = function(func) {
+  var results = [];
+  this.forEach(function(itemInArray) {
+    results.push(func(itemInArray));
+  });
+  return results;
+};
+```
+
+----
+
 #### reduce()
 
 > The `reduce()` method applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.
@@ -474,6 +510,39 @@ var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
 // flattened is [0, 1, 2, 3, 4, 5]
 ```
 
+----
+
+### Exercise: reduce
+
+> Write a function `countZeroes`, which takes an array of numbers as its argument and returns the amount of zeroes that occur in it. Use `Array#reduce`.
+
+```js
+function countZeroes(array) {
+  // SOLUTION GOES HERE
+}
+
+console.log(
+  countZeroes([1,2,0,0,4,1,0,2,0,1])
+)
+
+// OUTPUT: 4
+
+```
+
+https://jsbin.com/cubidal/edit?js,console
+
+----
+
+#### Solution
+
+```js
+function countZeroes(array) {
+  function counter(total, element) {
+    return total + (element === 0 ? 1 : 0);
+  }
+  return array.reduce(counter, 0);
+}
+```
 
 ---
 
@@ -722,41 +791,7 @@ names.forEach( (x) => console.log(x) )
 
 Note: Why not using map? Map is to created to return a new array. We don´t need any return here.
 
-----
 
-### Exercise: map implementation
-
-> Implement `map2` function to obtain same output as `map`
-
-* Do not use any for/while loops.
-
-```js
-Array.prototype.map2 = function(func) {
-  // SOLUTION GOES HERE
-};
-
-var result =
-console.log(
-  [1,2,3].map2(function(x) { return x + 1; }),
-  [1,2,3].map(function(x) { return x + 1; })
-) // OUTPUT: [2, 3, 4] [2, 3, 4]
-```
-
-https://jsbin.com/yaqite/edit?js,console
-
-----
-
-#### Solution
-
-```js
-Array.prototype.map2 = function(func) {
-  var results = [];
-  this.forEach(function(itemInArray) {
-    results.push(func(itemInArray));
-  });
-  return results;
-};
-```
 
 ----
 
@@ -871,39 +906,6 @@ function clone(data) {
 }
 ```
 
-----
-
-### Exercise: reduce
-
-> Write a function `countZeroes`, which takes an array of numbers as its argument and returns the amount of zeroes that occur in it. Use `Array#reduce`.
-
-```js
-function countZeroes(array) {
-  // SOLUTION GOES HERE
-}
-
-console.log(
-  countZeroes([1,2,0,0,4,1,0,2,0,1])
-)
-
-// OUTPUT: 4
-
-```
-
-https://jsbin.com/cubidal/edit?js,console
-
-----
-
-#### Solution
-
-```js
-function countZeroes(array) {
-  function counter(total, element) {
-    return total + (element === 0 ? 1 : 0);
-  }
-  return array.reduce(counter, 0);
-}
-```
 
 ----
 

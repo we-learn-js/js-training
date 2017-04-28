@@ -714,7 +714,7 @@ var promise = Promise.all([
   Promise.resolve({})
 ])
 
-promise.then( values => console.log(values) ) // [4,5,"6",{}]
+promise.then( values => console.log(values) ) // [4,5,"a",{}]
 ```
 
 ----

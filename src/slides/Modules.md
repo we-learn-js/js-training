@@ -525,7 +525,7 @@ Translate each sentence to an import statement
 | Import all methods as **math** |
 | Import square function as **square** |
 | Import number function as **number** |
-| Import all methods as **math** and numberFunc as **number** |
+| Import all methods as **math** and getNumber as **number** |
 
 
 ----
@@ -547,14 +547,14 @@ import {getSquare as square} from 'math'
 
 ----
 
-Import numberFunc as **number**
+Import getNumber as **number**
 ```js
-import getNumber from 'math'
+import number from 'math'
 ```
 
 ----
 
-Import all methods as **math** and numberFunc as **number**
+Import all methods as **math** and getNumber as **number**
 ```js
 import * as math, default as number from 'math'
 ```
