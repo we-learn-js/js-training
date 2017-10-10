@@ -4,6 +4,7 @@
   "description": "JS Training Slides",
   "main": "index.js",
   "scripts": {
+    "co": "sui-mono commit",
     "test": "echo \"Error: no test specified\" && exit 1",
     "slideshow": "reveal-md --theme js-training ./src/slides/",
     "slideshow-refresh": "reveal-md ./src/slides/ --theme js-training --disableAutoOpen"
@@ -19,5 +20,8 @@
   "homepage": "https://github.com/soyundev/js-training#readme",
   "devDependencies": {
     "reveal-md": "0.0.30"
+  },
+  "dependencies": {
+    "@s-ui/mono": "1"
   }
 }
