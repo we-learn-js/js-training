@@ -1,27 +1,34 @@
 {
-  "name": "js-training",
+  "name": "@davidbarna/js-training",
   "version": "0.0.0",
-  "description": "JS Training Slides",
+  "description": "JS Training",
   "main": "index.js",
   "scripts": {
+    "start": "reveal-md --theme js-training ./src/slides/",
+    "dev": "reveal-md ./src/slides/ --theme js-training --disableAutoOpen",
     "co": "sui-mono commit",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "slideshow": "reveal-md --theme js-training ./src/slides/",
-    "slideshow-refresh": "reveal-md ./src/slides/ --theme js-training --disableAutoOpen"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/soyundev/js-training.git"
-  },
-  "author": "David Almeida <davidbarna@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/soyundev/js-training/issues"
-  },
-  "homepage": "https://github.com/soyundev/js-training#readme",
-  "devDependencies": {
-    "reveal-md": "0.0.30"
+    "reset": "rm -Rf node_modules && npm i"
   },
   "dependencies": {
+    "reveal-md": "0.4"
+  },
+  "devDependencies": {
     "@s-ui/mono": "1"
-  }
+  },
+  "config": {
+    "sui-mono": {
+      "access": "public",
+      "packagesFolder": "./src"
+    }
+  },
+  "author": "David Almeida <davidbarna@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidbarna/js-training.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davidbarna/js-training/issues"
+  },
+  "homepage": "https://github.com/davidbarna/js-training#readme"
 }
