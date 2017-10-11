@@ -14,15 +14,15 @@
 
 ### Unary operators
 
-> operand `operator`
+x `operator`
 
 ```js
-x++;
-x--;
-delete x;
+x++
+x--
+delete x
 ```
 
-> `operator` operand
+`operator` x
 
 ```js
 ++x
@@ -35,7 +35,9 @@ delete x;
 
 ### Binary operators
 
-> left_operand `operator` right_operand
+x `operator` y
+
+<space><space>
 
 ```js
 x || y
@@ -47,7 +49,7 @@ x && y
 
 ### The ternary operator (conditional operator)
 
-> condition `?` expr1 `:` expr2
+condition `?` x `:` y
 
 ```js
 var status = (age >= 18) ? "adult" : "minor";
@@ -66,8 +68,8 @@ var status = (age >= 18) ? "adult" : "minor";
 
 ### Plus (+)
 
-> `+`x
->
+`+`x
+
 > The unary plus operator precedes its operand and evaluates to its operand but **attempts to convert it into a number**, if it isn't already.
 
 ```js
@@ -83,8 +85,8 @@ var status = (age >= 18) ? "adult" : "minor";
 
 ### Negation (-)
 
-> `-`x
->
+`-`x
+
 > The unary negation operator precedes its operand and negates it.
 
 ```js
@@ -99,8 +101,8 @@ y = -x; // y = -3, x = 3
 
 ### Addition (+)
 
-> x `+` y
->
+x `+` y
+
 > The addition operator produces the sum of numeric operands or string concatenation.
 
 ----
@@ -127,8 +129,8 @@ true + false + true + true // 3
 
 ### Subtraction (-)
 
-> x `-` y
->
+x `-` y
+
 > The subtraction operator subtracts the two operands, producing their difference.
 
 ```js
@@ -143,8 +145,8 @@ Note: `NaN` is a property of the global object. [MDN](https://developer.mozilla.
 
 ### Division (/)
 
-> x `/` y
->
+x `/` y
+
 > The division operator produces the quotient of its operands where the left operand is the dividend and the right operand is the divisor.
 
 ```js
@@ -159,8 +161,8 @@ Note: The global Infinity property is a numeric value representing infinity. [MD
 
 ### Multiplication (\*)
 
-> x `*` y
->
+x `*` y
+
 > The division operator produces the quotient of its operands where the left operand is the dividend and the right operand is the divisor.
 
 ```js
@@ -175,8 +177,8 @@ Infinity * Infinity // Infinity
 
 ### Remainder (%)
 
-> x `%` y
->
+x `%` y
+
 > Returns the remainder left over when one operand is divided by a second operand.
 
 ```js
@@ -189,21 +191,21 @@ Infinity * Infinity // Infinity
 
 ### Exponentiation (\*\*)
 
-> x `**` y
->
+x `**` y
+
 > The exponentiation operator returns the result of raising first operand to the power second operand.
 
 ```js
-2 ** 3 // 8
-3 ** 2 // 9
+2 ** 3 // 2*2*2 = 8
+3 ** 2 // 3*3 = 9
 ```
 
 ----
 
 ### Increment (++)
 
-> x`++` or `++`x
->
+x`++` or `++`x
+
 > The increment operator increments (adds one to) its operand and returns a value.
 
 ```js
@@ -220,8 +222,8 @@ b = ++a; // a = 3, b = 3
 
 ### Decrement (--)
 
-> x`--` or `--`x
->
+x`--` or `--`x
+
 > The decrement operator decrements (subtracts one from) its operand and returns a value.
 
 ```js
@@ -247,8 +249,8 @@ b = --a; // a = 1, b = 1
 
 ### Assignment
 
-> x `=` y
->
+x `=` y
+
 > Simple assignment operator which assigns a value to a variable.
 
 ```js
@@ -265,7 +267,7 @@ console.log(x = y = z) // 25
 
 ### Compound assignment
 
-| Name | Shorthand operator | Meaning |
+| Name | Operator | Meaning |
 | - | - | - |
 | Addition assignment | x `+=` y | x `=` x `+` y |
 | Subtraction assignment | x `-=` y | x `=` x `-` y |
@@ -287,20 +289,17 @@ console.log(x = y = z) // 25
 
 #### Array Destructuring
 
-Consider:
-```js
-var foo = ["one", "two", "three"];
-```
-
 Without destructuring:
 ```js
-var one   = foo[0];
-var two   = foo[1];
-var three = foo[2];
+const foo = ["one", "two", "three"];
+const one   = foo[0];
+const two   = foo[1];
+const three = foo[2];
 ```
 With destructuring:
 ```js
-var [one, two, three] = foo;
+const foo = ["one", "two", "three"];
+const [one, two, three] = foo;
 ```
 
 ----
@@ -315,6 +314,7 @@ console.log(z); // 2
 
 ----
 
+<!-- .slide: data-background="rgba(255,0,0,.3)" -->
 ##### Caution!
 
 What's the difference ?
