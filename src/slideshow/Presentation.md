@@ -6,12 +6,15 @@
 
 ----
 
-### David Almeida (Soyun)
-![me](https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/005/085/3c4/17517f0.jpg)
+### Me
 
-Me. I'm a guy who thinks he knows JS.
+![me](./images/avatar.jpg)
 
-[david.almeida@soyun.es](david.almeida@soyun.es)
+[davidbarna@github](https://github.com/davidbarna)
+
+I'm a guy who thinks he knows Javascript...
+
+...but doesn't (like you).
 
 ---
 
@@ -21,29 +24,25 @@ Me. I'm a guy who thinks he knows JS.
 
 There are many ways to code in javascript.
 
-----
+<br /><br />
 
-Many of them are WRONG!
-
-----
-
-Knowing how to cut tomatoes, turn on the oven, make a tortilla does not mean you are a good cook ...
-
-![cook](http://findicons.com/files/icons/2770/ios_7_icons/128/cook.png)
-
-You just know stuff.
+**Many of them are WRONG!**
 
 ----
 
-Knowing to loop, to use functions or to create objects does not mean you are a good JS developer...
+Knowing javascript syntax doesn't make you a JSDeveloper
 
-![js](https://cdn2.iconfinder.com/data/icons/file-types-8/32/js-javascript-filetype-document-file-128.png)
-
-You just know stuff.
+You just know the syntax.
 
 ----
 
-You don't know JS. But you don't know it yet.
+**You don't know JS.**
+
+<br />
+
+**But you don't know it yet.**
+
+
 
 ---
 
@@ -55,22 +54,27 @@ A few steps
 
 ----
 
-**1. Fail the exam** or leave the room
+### 1) Fail the exam
+
+(if you pass the test, you can go home)
 
 ----
 
-**2. Attend classes**: listen, ask, and ask again
+### 2) Attend classes
+
+listen, ask, and ask again
 
 ----
 
-**3. Do your homework** with the refactor project
+### 3) Do your refactor homework
 
-* Repo: https://github.com/soyundev/js-training-practice
-* Deadline: Send your pull request before wednesday
+A project to iterate on with your new knowledge.
 
 ----
 
-**4. Pass the exam** or blame you... and me.
+### 4) Pass the test
+
+or blame you... and me.
 
 ---
 
@@ -80,31 +84,12 @@ A few steps
 
 ----
 
-Here comes the light !
+## Here comes the light !
 
-----
+ · [Operators and Expressions](OperatorsAndExpressions.md) · [Strings](Strings.md) · [Scopes and Closures](ScopesAndClosures.md) · [Functions](Functions.md) · [Functional programming](FunctionalProgramming.md) · [Modules](Modules.md) · [Objects](Objects.md) · [Classes](Classes.md) · [AsyncProgramming](AsyncProgramming.md) · [Iterators and Generators](Generators.md) · [Object-Oriented Programming](ObjectOrientedProgramming.md) · [Object-Oriented Design Principles](ObjectOrientedDesignPrinciples.md) · [Design Patterns](DesignPatterns.md) · [Testing](Testing.md) · [DDD](DomainDrivenDesign.md) · React · NPM · Webpack
 
-* [Operators and Expressions](OperatorsAndExpressions.md)
-* [Strings](Strings.md) & Numbers
-* [Scopes and Closures](ScopesAndClosures.md)
-* [Functions](Functions.md)
-* [Functional programming](FunctionalProgramming.md)
-* [Modules](Modules.md)
-* [Objects](Objects.md)
-* [Classes](Classes.md)
-* [AsyncProgramming](AsyncProgramming.md)
-* [Iterators and Generators](Generators.md)
-* [Object-Oriented Programming](ObjectOrientedProgramming.md)
-* [Object-Oriented Design Principles](ObjectOrientedDesignPrinciples.md)
-* [Design Patterns](DesignPatterns.md)
-* [Testing](Testing.md)
-* [DDD](DomainDrivenDesign.md)
-* React
-* NPM
-* Webpack
+---
 
-----
-
-## Are you ready?
+## Questions?
 
 functional programming · scopes · repositories · value objects · closures · require ·  design patterns · webpack · react · objects · asserts · functions · this · ecmascript · npm install · state · debugging · events · promises · domain · modules · testing · oop
