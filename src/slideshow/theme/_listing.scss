@@ -1,0 +1,20 @@
+.js-training-listing {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  a {
+    display: block;
+    color: $linkColor;
+    font-family: $headingFont;
+    font-size: $heading1Size;
+    line-height: $headingLineHeight*2;
+    padding: 0 $blockMargin;
+    text-decoration: none;
+    text-shadow:$headingTextShadow;
+
+    &:hover {
+      background-color: $linkColor;
+      color: $backgroundColor;
+    }
+  }
+}
