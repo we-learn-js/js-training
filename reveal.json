@@ -1,0 +1,11 @@
+{
+  "controls": false,
+  "progress": true,
+  "slideNumber": true,
+  "hideAddressBar": true,
+  "transition": "fade",
+  "parallaxBackgroundImage": "/images/slideshow-background.png",
+  "parallaxBackgroundSize": "",
+  "parallaxBackgroundHorizontal": 100,
+  "parallaxBackgroundVertical": 100
+}
