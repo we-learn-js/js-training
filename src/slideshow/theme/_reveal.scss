@@ -1,0 +1,51 @@
+// https://github.com/hakimel/reveal.js/blob/master/css/theme/template/theme.scss
+
+.reveal {
+
+  section {
+    h1, h2, h3, h4, h5, h6 {
+      margin-bottom: .75em;
+    }
+  }
+
+
+  blockquote {
+    margin: $blockMargin auto;
+    padding: 0 $blockMargin;
+  }
+
+  p, td {
+    & > code {
+      background-color: rgba($selectionBackgroundColor,.3);
+      border-radius: .15em;
+      color: $selectionColor;
+      font: {
+        size: 85%;
+        style: normal;
+        family: inherit;
+      }
+      padding: 0em 0.3em .2em 0.3em;
+      margin: 0em 0.25em;
+    }
+  }
+
+  table {
+    min-width: 80%;
+    td, th {
+      padding: .5em .25em;
+      text-align: left;
+    }
+  }
+
+
+  pre {
+    margin: $blockMargin*2 auto;
+    width: 70%;
+  }
+}
+
+.jsTraining{
+  &-alertSlide {
+    @include radial-gradient( rgba(28,30,32,0), rgba(85,90,95,1) );
+  }
+}

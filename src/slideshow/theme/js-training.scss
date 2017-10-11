@@ -24,7 +24,7 @@
 
 // Primary/body text
 // $mainFont: 'Lato', sans-serif;
-// $mainFontSize: 40px;
+$mainFontSize: 30px;
 // $mainColor: #eee;
 
 // Vertical spacing between blocks of text
@@ -40,8 +40,8 @@
 $headingTextShadow: 0px 0px 6px rgba(0,0,0,0.2);
 // $headingFontWeight: normal;
 $heading1TextShadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 20px 20px rgba(0,0,0,.15);
-//
-// $heading1Size: 3.77em;
+
+$heading1Size: 3em;
 // $heading2Size: 2.11em;
 // $heading3Size: 1.55em;
 // $heading4Size: 1.00em;
@@ -64,3 +64,4 @@ $heading1TextShadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b
 // ---------------------------------------------
 
 @import "listing";
+@import "reveal";

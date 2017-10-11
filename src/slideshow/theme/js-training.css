@@ -20,7 +20,7 @@ body {
 
 .reveal {
   font-family: "Lato", sans-serif;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: normal;
   color: #eee; }
 
@@ -59,7 +59,7 @@ body {
   word-wrap: break-word; }
 
 .reveal h1 {
-  font-size: 3.77em; }
+  font-size: 3em; }
 
 .reveal h2 {
   font-size: 2.11em; }
@@ -303,7 +303,7 @@ body {
     display: block;
     color: #13DAEC;
     font-family: "League Gothic", Impact, sans-serif;
-    font-size: 3.77em;
+    font-size: 3em;
     line-height: 2.4;
     padding: 0 20px;
     text-decoration: none;
@@ -311,3 +311,39 @@ body {
     .js-training-listing a:hover {
       background-color: #13DAEC;
       color: #2b2b2b; }
+
+.reveal section h1, .reveal section h2, .reveal section h3, .reveal section h4, .reveal section h5, .reveal section h6 {
+  margin-bottom: .75em; }
+
+.reveal blockquote {
+  margin: 20px auto;
+  padding: 0 20px; }
+
+.reveal p > code, .reveal td > code {
+  background-color: rgba(255, 94, 153, 0.3);
+  border-radius: .15em;
+  color: #fff;
+  font-size: 85%;
+  font-style: normal;
+  font-family: inherit;
+  padding: 0em 0.3em .2em 0.3em;
+  margin: 0em 0.25em; }
+
+.reveal table {
+  min-width: 80%; }
+  .reveal table td, .reveal table th {
+    padding: .5em .25em;
+    text-align: left; }
+
+.reveal pre {
+  margin: 40px auto;
+  width: 70%; }
+
+.jsTraining-alertSlide {
+  background: rgba(28, 30, 32, 0);
+  background: -moz-radial-gradient(center, circle cover, #555a5f 0%, rgba(28, 30, 32, 0) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #555a5f), color-stop(100%, rgba(28, 30, 32, 0)));
+  background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, rgba(28, 30, 32, 0) 100%);
+  background: -o-radial-gradient(center, circle cover, #555a5f 0%, rgba(28, 30, 32, 0) 100%);
+  background: -ms-radial-gradient(center, circle cover, #555a5f 0%, rgba(28, 30, 32, 0) 100%);
+  background: radial-gradient(center, circle cover, #555a5f 0%, rgba(28, 30, 32, 0) 100%); }
