@@ -4,8 +4,8 @@
   "description": "JS Training",
   "main": "index.js",
   "scripts": {
-    "start": "reveal-md --theme js-training ./src/slides/",
-    "dev": "reveal-md ./src/slides/ --theme js-training --disableAutoOpen",
+    "start": "reveal-md src/slideshow",
+    "dev": "reveal-md src/slideshow --watch --disable-auto-open",
     "co": "sui-mono commit",
     "test": "echo \"Error: no test specified\" && exit 1",
     "reset": "rm -Rf node_modules && npm i"

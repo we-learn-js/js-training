@@ -1,0 +1,15 @@
+{
+  "host": "localhost",
+  "scripts": [],
+  "css": [],
+  "theme": "",
+  "highlightTheme": "github",
+  "preprocessor": false,
+  "port": 8080,
+  "revealOptions": {},
+  "revealTemplate": "src/slideshow/template/reveal.html",
+  "listingTemplate": "src/slideshow/template/listing.html",
+  "title": "JS Training",
+  "separator": "^(\r\n?|\n)---(\r\n?|\n)$",
+  "verticalSeparator": "^(\r\n?|\n)----(\r\n?|\n)$"
+}
