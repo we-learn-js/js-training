@@ -6,6 +6,7 @@
   "scripts": {
     "start": "reveal-md src/slideshow",
     "dev": "reveal-md src/slideshow --watch --disable-auto-open",
+    "sass": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js -o src/slideshow/theme src/slideshow/theme/js-training.scss",
     "co": "sui-mono commit",
     "test": "echo \"Error: no test specified\" && exit 1",
     "reset": "rm -Rf node_modules && npm i"
@@ -14,7 +15,9 @@
     "reveal-md": "0.4"
   },
   "devDependencies": {
-    "@s-ui/mono": "1"
+    "@s-ui/mono": "1",
+    "node-sass": "^4.5.3",
+    "node-sass-package-importer": "^5.0.0-alpha.14"
   },
   "config": {
     "sui-mono": {

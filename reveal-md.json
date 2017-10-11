@@ -2,7 +2,7 @@
   "host": "localhost",
   "scripts": [],
   "css": [],
-  "theme": "",
+  "theme": "http://localhost:8080/theme/js-training.css",
   "highlightTheme": "github",
   "preprocessor": false,
   "port": 8080,
