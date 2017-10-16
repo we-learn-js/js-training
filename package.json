@@ -6,7 +6,7 @@
   "scripts": {
     "start": "reveal-md src/slideshow",
     "dev": "reveal-md src/slideshow -w --disable-auto-open",
-    "sass": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js -o src/slideshow/theme src/slideshow/theme/js-training.scss",
+    "sass": "node-sass --source-map true --importer node_modules/node-sass-package-importer/dist/cli.js -o src/slideshow/theme src/slideshow/theme/js-training.scss",
     "co": "sui-mono commit",
     "test": "echo \"Error: no test specified\" && exit 1",
     "reset": "rm -Rf node_modules && npm i"

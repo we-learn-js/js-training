@@ -1,20 +1,45 @@
+
 .js-training-listing {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  a {
-    display: block;
-    color: $linkColor;
+  background-image: url('/images/slideshow-background.png');
+  display: flex;
+  font-size: $mainFontSize;
+  height: 100vh;
+  overflow:hidden;
+
+  &-title {
+    position: relative;
+    width: 50vw;
+    text-align: center;
+    margin: 50vh 0 0;
+    top: -$mainFontSize*3;
+    color: $headingColor;
     font-family: $headingFont;
     font-size: $heading1Size;
-    line-height: $headingLineHeight*2;
-    padding: 0 $blockMargin;
-    text-decoration: none;
-    text-shadow:$headingTextShadow;
+    text-shadow: $heading1TextShadow;
+  }
 
-    &:hover {
-      background-color: $linkColor;
-      color: $backgroundColor;
+  &-list {
+    margin: 0;
+    padding: 0;
+    width: 50vw;
+    list-style: none;
+    overflow-y: scroll;
+
+    a {
+      display: block;
+      color: $linkColor;
+      font-family: $headingFont;
+      font-size: $heading3Size;
+      line-height: $headingLineHeight;
+      padding: $blockMargin;
+      text-decoration: none;
+      text-shadow: $headingTextShadow;
+
+      &:hover {
+        background-color: rgba($linkColor, .5);
+        color: $headingColor;
+        text-shadow: $headingTextShadow;
+      }
     }
   }
 }
