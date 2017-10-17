@@ -1,12 +1,12 @@
-# Scope and Closures
+# Scopes and Closures
 
 ----
 
 ## What is a scope?
 
-> Scope, in general, refers to how the browser's javascript engine looks up identifier names at run time in order to set how they will be looked up during execution.
+> Scope, in general, refers to how the browser's javascript engine **looks up identifier names** at run time in order to set how they will be looked up during execution.
 
-> The scope of a variable refers to the "zone" where the variable was defined.
+> The scope of a variable refers to the **"zone"** where the variable was defined.
 
 Note: That definition implies that there is a lexing phase of the engine which is done prior to executing.
 
@@ -14,9 +14,13 @@ Note: That definition implies that there is a lexing phase of the engine which i
 
 ### Types of scope
 
-* **global scope**: accessible everywhere (window in case of browsers)
-* **function scope**: function{}
-* **block scope**: if{}, else{}, for{}, while{} (introduced by ES6)
+
+| Type | Context | Keyword |
+| - | - | - |
+| Global | (default) | `let` `const` `var` |
+| Function|`function` {} | `let` `const` `var` |
+| Block | `if`{ } `else`{ } `for`{ } `while`{ } | `let` `const` |
+
 
 <!--slide-->
 
@@ -42,7 +46,7 @@ Note:
 
 #### function scope
 
-> Accesible only from the inner function where is was declared
+> Accesible only from the inner function where it was declared
 
 ```js
 var a = 1
@@ -123,12 +127,11 @@ Note:
 
 > Scope lookup during the lexical phase also stops once it finds the first match. This means you can shadow a variable further up the scope chain.
 
-<!--slide-->
 
 ```js
 var a = 1
 function print() {
-  var a = 2 // shadows parent 'a' declaration
+  var a = 2 // shadows global 'a' declaration
   console.log(a)
 }
 print() // 2
@@ -144,7 +147,6 @@ In `print`, a is a function scoped variable. Any assignment will not affect `a` 
 
 > In Javascript, `var` and `function(){}` declarations are hoisted to the top of the current scope; and hence, those identifiers are available to any code in that scope.
 
-<!--slide-->
 
 ```js
 var a = 1
@@ -161,10 +163,23 @@ Note: Value of `a` is undefined on first `console.log` but we could assume that 
 
 <!--slide-->
 
+Raw code
 ```js
 var a = 1
 function print() {
-  var a // a is hoisted
+  console.log(a)
+  var a = 2 // shadows parent 'a' declaration
+  console.log(a)
+}
+print() // undefined, 2
+console.log(a) // 1
+```
+
+Compiled code
+```js
+var a = 1
+function print() {
+  var a // a was hoisted
   console.log(a)
   a = 2
   console.log(a)
@@ -175,12 +190,34 @@ Note: behind the scene, a is hoisted on the top of the function body.
 
 <!--slide-->
 
+<!-- .slide: class="jsTraining-alertSlide" -->
+
+#### Caution !
+
+> Only `var` declarations are hosted
+
+```js
+let a = 1
+
+function print() {
+  console.log(a) // ReferenceError: a is not defined
+
+  let a = 2 // shadows parent 'a' declaration
+  console.log(a)
+}
+
+print() // ReferenceError: a is not defined
+```
+
+<!--slide-->
+
 ### Default scope
 
 > Everything that is not declared in a local scope, is considered global and can provoke side effects:
 
 <!--slide-->
 
+Raw code
 ```js
 function increment (num) {
   result = num + 1
@@ -188,7 +225,19 @@ function increment (num) {
 }
 
 console.log(increment(3)) // 4
-console.log(result) // 4
+console.log(result)       // 4
+```
+
+Equivalent code
+```js
+var result
+function increment (num) {
+  result = num + 1
+  return result;
+}
+
+console.log(increment(3)) // 4
+console.log(result)       // 4
 ```
 
 Note: as not declared with `var`, `const` or `let`, the `result` variable is considered global and declared in the global scope. That´s a clear unexpected side effect.
@@ -218,9 +267,31 @@ Note: variable a is declared using the keyword var. What this means is that a is
 console.log(b); // 5
 ```
 
-fix:
+Equivalent code:
+```js
+var b;
+(function() {
+  var a;
+  a = b = 5;
+})();
+
+console.log(b); // 5
+```
+
+<!--slide-->
+
+**How to fix**
 
 ```js
+// WRONG
+(function() {
+   var a = b = 5;
+})();
+
+console.log(b); // 5
+
+
+// GOOD
 (function() {
   var a, b;
   a = b = 5;
@@ -232,9 +303,11 @@ console.log(b); // b is not defined
 
 ## Closures
 
-> Closure is all around you in JavaScript, you just have to recognize and embrace it.
+> Closures are all around you in JavaScript, you just have to acknowledge and embrace them.
 
-> Closures are functions that refer to independent (free) variables (variables that are used locally, but defined in an enclosing scope). In other words, these functions 'remember' the environment in which they were created.
+> Closures are functions that refer to independent (free) variables (variables that are used locally, but defined in an enclosing scope).
+
+> In other words, these **functions 'remember' the environment in which they were declared/created.**
 
 
 
@@ -247,11 +320,9 @@ function foo() {
   return function () { console.log( a ); }   
 }
 
-function bar(fn) {
-  fn();
-}
+var myFunc = foo()
 
-bar(foo()) // 2
+myFunc() // 2
 ```
 
 <!--slide-->
@@ -263,15 +334,14 @@ function foo(a) {
   return function () { console.log( a ); }   
 }
 
-function bar(fn) {
-  fn();
-}
+const myFunc5 = foo(5)
+const myFunc8 = foo(8)
 
-bar(foo(5)) // 5
-bar(foo(8)) // 8
+myFunc5() // 5
+myFunc8() // 8
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Practice
 
@@ -300,7 +370,7 @@ https://jsbin.com/tegewu/edit?js,console,output
 
 Note: "This is button 10" is the response. Why? The scope of `i` is `addButtons` function. Then, each time clicks on a button, the function takes the current value of `i`, which is 10 at the end of the loop.
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 #### Solution
 
