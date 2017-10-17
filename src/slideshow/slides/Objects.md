@@ -1,6 +1,6 @@
 # Objects in Javascript
 
-<!--section-->
+----
 
 ## Objects or not, that's the question
 
@@ -180,7 +180,7 @@ console.log(typeof str.valueOf() ) // "string"
 Note: [Object.prototype.valueOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf)
 
 
-<!--section-->
+----
 
 
 ## What is an object?
@@ -258,7 +258,7 @@ var door = {
 [Stackoverflow](http://stackoverflow.com/questions/14953047/example-of-properties-vs-methods-in-js)
 
 
-<!--section-->
+----
 
 ## Working with objects
 
@@ -477,7 +477,7 @@ emptyObj.hasOwnProperty('name') // false
 
 Note: Both `obj` and `emptyObj` are instances of `Object`
 
-<!--section-->
+----
 
 
 ## `Object`
@@ -732,7 +732,7 @@ odd.push(7)
 console.log(odd.toString()) // "1,3,5,7"
 ```
 
-<!--section-->
+----
 
 ## The Prototype Chain
 
@@ -865,7 +865,7 @@ user.printType()
 
 Note: `printType` is accessible on `user` even if the function was added to prototype **after** `user` was created.
 
-<!--section-->
+----
 
 ## this
 
@@ -972,7 +972,7 @@ Array.prototype.remove = function (func) {
 
 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/The_performance_hazards_of__%5B%5BPrototype%5D%5D_mutation)
 
-<!--section-->
+----
 
 ## Creating new constructors
 
@@ -1127,7 +1127,7 @@ Collection.prototype.findBy = function (prop, value) {
 ```
 
 
-<!--section-->
+----
 
 ## Mastering Objects
 

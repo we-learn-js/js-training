@@ -1,6 +1,6 @@
 # Strings
 
-<!--section-->
+----
 
 ## Primitive vs Objects
 
@@ -31,7 +31,7 @@ a == b  // false as a and b are type Object and reference different objects
 a == 'foo' // true as the Object (a) is converted to String 'foo' before comparison
 ```
 
-<!--section-->
+----
 
 ## Template strings (ES6)
 
@@ -93,7 +93,7 @@ var text2 = `Fifteen is ${a + b} and\nnot ${2 * a + b}.`;
 text1 === text2 // true
 ```
 
-<!--section-->
+----
 
 ## Must Read
 

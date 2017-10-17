@@ -1,6 +1,6 @@
 # Modules in Javascript
 
-<!--section-->
+----
 
 ## What is a module?
 
@@ -107,7 +107,7 @@ counterModule.resetCounter() // "counter value prior to reset: 2"
 ```
 
 
-<!--section-->
+----
 
 ## CommonJs Modules
 
@@ -296,7 +296,7 @@ var month = require(function(module, exports){
 })
 ```
 
-<!--section-->
+----
 
 ## ES6 modules
 
@@ -521,7 +521,7 @@ export {round as getRound, PI}
 Translate each sentence to an import statement
 
 | Sentence |
-| <!--slide--><!--slide--><!--slide--><!--section--> |
+| <!--slide--><!--slide--><!--slide-->---- |
 | Import all methods as **math** |
 | Import square function as **square** |
 | Import number function as **number** |
@@ -559,7 +559,7 @@ Import all methods as **math** and getNumber as **number**
 import * as math, default as number from 'math'
 ```
 
-<!--section-->
+----
 
 ## Must Read
 

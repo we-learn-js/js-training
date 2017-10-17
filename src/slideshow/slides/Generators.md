@@ -1,6 +1,6 @@
 # Iterators And Generators
 
-<!--section-->
+----
 
 ## Iterators
 
@@ -153,7 +153,7 @@ class TextLines {
 
 https://jsbin.com/kuneliv/edit?js,console,output
 
-<!--section-->
+----
 
 ## Generators
 
@@ -504,7 +504,7 @@ class TextLines {
 
 https://jsbin.com/totayeq/edit?js,output
 
-<!--section-->
+----
 
 ## async functions (ES7)
 
@@ -626,7 +626,7 @@ async function getProcessedData(url) {
 
 > It's just **syntactic sugar**
 
-<!--section-->
+----
 
 # Must Read
 

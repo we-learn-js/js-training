@@ -1,6 +1,6 @@
 # Async programming
 
-<!--section-->
+----
 
 ## Asynchrony
 
@@ -203,7 +203,7 @@ function traverseRecursion (current, depth) {
 
 https://jsbin.com/fupuveh/9/edit?js,console
 
-<!--section-->
+----
 
 ## Callbacks
 
@@ -278,7 +278,7 @@ http://callbackhell.com/
 
 > This control transfer leads us to a troubling list of [trust issues](https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch2.md#tale-of-five-callbacks), such as whether the callback is called more times than we expect.
 
-<!--section-->
+----
 
 ## Promises
 
@@ -391,7 +391,7 @@ oReq.then(reqListener)
 If `then` handler is attached **after** the response, the handler **will** be executed
 
 
-<!--section-->
+----
 
 ### Consume Promises
 
@@ -507,7 +507,7 @@ getUsers() // promise 1
 
 ```
 
-<!--section-->
+----
 
 ### Create Promises
 
@@ -641,7 +641,7 @@ var printUserFirstPhotos = function(){
 
 ```
 
-<!--section-->
+----
 
 ### `Promise` static methods
 
@@ -827,7 +827,7 @@ function getUsersPhotos(limit) {
 }
 ```
 
-<!--section-->
+----
 
 ### Catching Rejections
 
@@ -959,7 +959,7 @@ promise2.then(console.log) // 2
 promise3.then(console.log) // 3
 ```
 
-<!--section-->
+----
 
 ## Master Promises
 
@@ -1072,7 +1072,7 @@ Promise
 
 [Bluebird](http://bluebirdjs.com/docs/getting-started.html)
 
-<!--section-->
+----
 
 ## Further info on promises
 
@@ -1092,7 +1092,7 @@ Promise
 * [Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
 * [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API)
 
-<!--section-->
+----
 
 ## async functions (ES7)
 
@@ -1221,7 +1221,7 @@ async function getProcessedData(url) {
 * [You-Dont-Know-JS - async & performance](https://github.com/getify/You-Dont-Know-JS/tree/master/async%20&%20performance)
 
 
-<!--section-->
+----
 
 ## Practice
 
@@ -1352,7 +1352,7 @@ Promise.series = function(promiseConstructors) {
 ```
 
 
-<!--section-->
+----
 
 ## Homework
 

@@ -1,6 +1,6 @@
 # Functions in Javascript
 
-<!--section-->
+----
 
 
 > A function is a JavaScript encloses a set of statements that performs a task or calculates a value.
@@ -509,7 +509,7 @@ var Button = function(content) {
 
 ```
 
-<!--section-->
+----
 
 ### Arrow functions
 
@@ -626,7 +626,7 @@ var even = arr.filter( (v) => { return v % 2 == 0 } ) // [6, 0, 18]
 var even = arr.filter( function (v) { return v % 2 == 0 }) // [6, 0, 18]
 ```
 
-<!--section-->
+----
 
 ## IIFE (Immediately Invoked Function expression)
 

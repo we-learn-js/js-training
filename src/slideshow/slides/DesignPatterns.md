@@ -6,7 +6,7 @@
 
 > A language that team can use to discuss about design
 
-<!--section-->
+----
 
 ## Strategy Pattern
 
@@ -294,7 +294,7 @@ class HybridDuck extends SteamDuck {
 > * Protected Variations (GRASP)
 > * Favor composition over inheritance
 
-<!--section-->
+----
 
 ## State Pattern
 
@@ -421,7 +421,7 @@ https://github.com/tcorral/Design-Patterns-in-Javascript/blob/es6/State/
 > * Favor composition over inheritance
 
 
-<!--section-->
+----
 
 ## Multi Inheritance Pattern
 
@@ -460,7 +460,7 @@ class Duck extends Swimable(Flyable(null)) {
 > * Interface Segregation Principle (SOLID)
 > * Favor composition over inheritance
 
-<!--section-->
+----
 
 ## Publisher/Subscriber Pattern
 
@@ -561,7 +561,7 @@ Note: **Always** remember to unregister handlers when you don't need them anymor
 > * Low coupling
 > * Indirection (GRASP)
 
-<!--section-->
+----
 
 ## Observer Pattern
 
@@ -761,7 +761,7 @@ https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Observer
 > * Low coupling
 > * Favor composition over inheritance
 
-<!--section-->
+----
 
 ## Decorator Pattern
 
@@ -878,7 +878,7 @@ console.log(beverage.getDescription() + “ $” + beverage.cost())
 > * Favor composition over inheritance
 > * Low coupling
 
-<!--section-->
+----
 
 ## Factory Pattern
 
@@ -1072,7 +1072,7 @@ class HealthyCoffeeShop extends CoffeeShop {
 > * Pure Fabrication (GRASP)
 > * Open-Close Principle (SOLID)
 
-<!--section-->
+----
 
 ## Singleton Pattern
 
@@ -1147,7 +1147,7 @@ cache.set('myVar', 1)
 
 > If use of `Cache` is conditional, it will be instantiated anyways...
 
-<!--section-->
+----
 
 ## Command Pattern
 
@@ -1226,7 +1226,7 @@ alarms.forEach(function(alarm){
 })
 ```
 
-<!--section-->
+----
 
 ## Adapter Pattern
 
@@ -1286,7 +1286,7 @@ class LoggerFactory {
 }
 ```
 
-<!--section-->
+----
 
 ## Façade Pattern
 
@@ -1331,7 +1331,7 @@ function css(element, properties) {
 }
 ```
 
-<!--section-->
+----
 
 ## Template Method Pattern
 
@@ -1409,7 +1409,7 @@ console.log(new Person("Evan", "Graham") == 'Evan Graham') // true
 > * Open/Close Principle (SOLID)
 > * Protected variations (GRASP)
 
-<!--section-->
+----
 
 ## Composite Pattern
 
@@ -1463,7 +1463,7 @@ class Person {
 }
 ```
 
-<!--section-->
+----
 
 ## Proxy Pattern
 
@@ -1574,7 +1574,7 @@ jQuery.ajax = function() {
 ```
 
 
-<!--section-->
+----
 
 ## Model-View-Controller, the compound pattern
 
@@ -1752,7 +1752,7 @@ class PlayerView {
 }
 ```
 
-<!--section-->
+----
 
 ## Summing up
 
@@ -1793,7 +1793,7 @@ class PlayerView {
 > * Strategy
 > * Mediator
 
-<!--section-->
+----
 
 ## Must Read
 

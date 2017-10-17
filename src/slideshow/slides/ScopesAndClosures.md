@@ -1,6 +1,6 @@
 # Scope and Closures
 
-<!--section-->
+----
 
 ## What is a scope?
 
@@ -228,7 +228,7 @@ fix:
 console.log(b); // b is not defined
 ```
 
-<!--section-->
+----
 
 ## Closures
 
@@ -326,7 +326,7 @@ https://jsbin.com/laturas/edit?js,console,output
 
 Note: We need to create a new closure with local `i` for each click callback. Now, the callback is created in a new function scope when the local `i` exists with its evaluated value at that moment.
 
-<!--section-->
+----
 
 ### Practice
 

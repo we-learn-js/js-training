@@ -1,7 +1,7 @@
 
 # Testing In Javascript
 
-<!--section-->
+----
 
 ## Unit testing
 
@@ -363,7 +363,7 @@ afterEach(function() {
 
 https://jsbin.com/pifura/edit?js,console,output
 
-<!--section-->
+----
 
 ### Mocking with SinonJs
 
@@ -667,7 +667,7 @@ server.respond()
 
 https://jsbin.com/kucugaz/edit?js,output
 
-<!--section-->
+----
 
 ## Levels of testing
 
@@ -712,7 +712,7 @@ https://jsbin.com/kucugaz/edit?js,output
 > Assertions primarily test the user interface.
 
 
-<!--section-->
+----
 
 ## Dos and Donts
 
@@ -770,7 +770,7 @@ http://betterspecs.org/
 
 > Do not create methods of properties only used in testing context
 
-<!--section-->
+----
 
 ## Must read
 
