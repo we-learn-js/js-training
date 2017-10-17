@@ -1,6 +1,6 @@
 # Iterators And Generators
 
----
+<!--section-->
 
 ## Iterators
 
@@ -10,7 +10,7 @@
 
 > This method returns an object with two properties: `done` and `value`.
 
-----
+<!--slide-->
 
 ```js
 var array = ['yo', 'ya']
@@ -30,7 +30,7 @@ while(value = it.next().value) {
 ```
 
 
-----
+<!--slide-->
 
 ```js
 function makeIterator(obj) {
@@ -46,7 +46,7 @@ function makeIterator(obj) {
 }
 ```
 
-----
+<!--slide-->
 
 ## Iterables
 
@@ -56,7 +56,7 @@ function makeIterator(obj) {
 
 > Some built-in types, such as `Array` or `Map` or `String`, have a default iteration behavior, while other types (such as `Object`) do not.
 
-----
+<!--slide-->
 
 ```js
 var obj = { a: 'yo', b: 'ya' }
@@ -79,7 +79,7 @@ for(let value of obj) {
 
 Note: An iterable may or may not implement the `length` property.
 
-----
+<!--slide-->
 
 ### To sum up
 
@@ -89,7 +89,7 @@ Note: An iterable may or may not implement the `length` property.
 
 > An **Iterable** provides a `[Symbol.iterator]()` that returns an **Iterator**.
 
-----
+<!--slide-->
 
 ```js
 interface Iterable {
@@ -105,7 +105,7 @@ interface IteratorResult {
 }
 ```
 
-----
+<!--slide-->
 
 ### Practice
 
@@ -129,7 +129,7 @@ for( var line of lines ) {
 ```
 https://jsbin.com/regira/edit?js,console,output
 
-----
+<!--slide-->
 
 #### Possible solution
 
@@ -153,7 +153,7 @@ class TextLines {
 
 https://jsbin.com/kuneliv/edit?js,console,output
 
----
+<!--section-->
 
 ## Generators
 
@@ -165,7 +165,7 @@ https://jsbin.com/kuneliv/edit?js,console,output
 
 > A function becomes a generator if it uses the **function*** syntax and it contains one or more **yield** expressions.
 
-----
+<!--slide-->
 
 ```js
 function* gen() {
@@ -173,7 +173,7 @@ function* gen() {
 }
 ```
 
-----
+<!--slide-->
 
 ### yield
 
@@ -185,7 +185,7 @@ function* gen() {
 
 > When the end of the generator function is reached, an **IteratorResult** is returned to the caller in which the **value** is `undefined` and **done** is `true`.
 
-----
+<!--slide-->
 
 ```js
 function* gen() {
@@ -201,7 +201,7 @@ console.log(g.next().value) // 3
 console.log(g.next().value) // undefined
 ```
 
-----
+<!--slide-->
 
 ```js
 function* foo(){
@@ -219,7 +219,7 @@ console.log(iterator.next()); // { value: 2, done: false }
 console.log(iterator.next()); // { value: undefined, done: true }
 ```
 
-----
+<!--slide-->
 
 From `makeIterator` function to generator function:
 
@@ -237,7 +237,7 @@ function makeIterator(obj) {
 }
 ```
 
-----
+<!--slide-->
 
 ```js
 function* makeIterator(obj) {
@@ -255,7 +255,7 @@ console.log(it.next().done);  // true
 
 ```
 
-----
+<!--slide-->
 
 Another way:
 
@@ -278,7 +278,7 @@ function* makeIterator(obj) {
 }
 ```
 
-----
+<!--slide-->
 
 ### return
 
@@ -287,7 +287,7 @@ function* makeIterator(obj) {
 > Then, when `return` is used, an **IteratorResult** is returned to the caller in which the **value** is the returned value and **done** is `true`.
 
 
-----
+<!--slide-->
 
 ```js
 function* g() {
@@ -302,7 +302,7 @@ console.log( it.next() ); // { value:2, done:true }
 console.log( it.next() ); // { value:undefined, done:true }
 ```
 
-----
+<!--slide-->
 
 #### !Caution
 
@@ -326,7 +326,7 @@ for (var v of g()) {
 console.log( v ); // still `5`, not `6` :(
 ```
 
-----
+<!--slide-->
 
 ### yield*
 
@@ -339,7 +339,7 @@ console.log( v ); // still `5`, not `6` :(
 > The `yield*` expression iterates over the operand and yields each value returned by it.
 
 
-----
+<!--slide-->
 
 ```js
 function* g1() {
@@ -360,7 +360,7 @@ console.log(iterator.next()); // { value: 4, done: false }
 console.log(iterator.next()); // { value: undefined, done: true }
 ```
 
-----
+<!--slide-->
 
 Any iterable can be used:
 
@@ -380,7 +380,7 @@ console.log(iterator.next()); // { value: undefined, done: true }
 
 ```
 
-----
+<!--slide-->
 
 ```js
 function* g3() {
@@ -394,7 +394,7 @@ iterable[Symbol.iterator] = g3
 console.log([...iterable]) // [1, 2, "3", "4"]
 ```
 
-----
+<!--slide-->
 
 ### Infinite Generators
 
@@ -411,7 +411,7 @@ console.log(gen.next().value); // 1
 console.log(gen.next().value); // 2
 ```
 
-----
+<!--slide-->
 
 ### Practice
 
@@ -433,7 +433,7 @@ console.log(gen.next().value); // 2
 https://jsbin.com/kuneliv/edit?js,console,output
 
 
-----
+<!--slide-->
 
 #### Possible Solution
 
@@ -455,7 +455,7 @@ class TextLines {
 https://jsbin.com/xutadu/edit?js,console,output
 
 
-----
+<!--slide-->
 
 ### Practice
 
@@ -480,7 +480,7 @@ class TextLines {
 
 https://jsbin.com/fafowi/edit?js,output
 
-----
+<!--slide-->
 
 #### Possible solution
 
@@ -504,7 +504,7 @@ class TextLines {
 
 https://jsbin.com/totayeq/edit?js,output
 
----
+<!--section-->
 
 ## async functions (ES7)
 
@@ -516,7 +516,7 @@ https://jsbin.com/totayeq/edit?js,output
 
 [MDN - async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
 
-----
+<!--slide-->
 
 Simple value promise:
 
@@ -531,7 +531,7 @@ function resolveAfter2Seconds(x) {
 }
 ```
 
-----
+<!--slide-->
 
 ```js
 async function add1(x) {
@@ -551,7 +551,7 @@ add1(10).then(v => {
 
 https://jsbin.com/wizojay/edit?js,console
 
-----
+<!--slide-->
 
 ### Caution!
 
@@ -573,7 +573,7 @@ add2(10).then(v => {
 https://jsbin.com/coyovas/edit?js,console
 
 
-----
+<!--slide-->
 
 ### Rejected promises
 
@@ -590,7 +590,7 @@ async function f3() {
 f3();
 ```
 
-----
+<!--slide-->
 
 ### Using async functions instead of promise chains
 
@@ -618,7 +618,7 @@ async function getProcessedData(url) {
 }
 ```
 
-----
+<!--slide-->
 
 ### To sum up
 
@@ -626,7 +626,7 @@ async function getProcessedData(url) {
 
 > It's just **syntactic sugar**
 
----
+<!--section-->
 
 # Must Read
 

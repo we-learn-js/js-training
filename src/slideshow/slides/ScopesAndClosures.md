@@ -1,6 +1,6 @@
 # Scope and Closures
 
----
+<!--section-->
 
 ## What is a scope?
 
@@ -10,7 +10,7 @@
 
 Note: That definition implies that there is a lexing phase of the engine which is done prior to executing.
 
-----
+<!--slide-->
 
 ### Types of scope
 
@@ -18,7 +18,7 @@ Note: That definition implies that there is a lexing phase of the engine which i
 * **function scope**: function{}
 * **block scope**: if{}, else{}, for{}, while{} (introduced by ES6)
 
-----
+<!--slide-->
 
 #### global scope
 
@@ -38,7 +38,7 @@ console.log(a) // 2
 Note:
 `a` is declared on global scope. Then it can be accessed from everywhere and any new assignment from everywhere affects the value of a in the rest of the program.
 
-----
+<!--slide-->
 
 #### function scope
 
@@ -58,7 +58,7 @@ console.log(a, b) // "ReferenceError: b is not defined
 Note:
 `b` is declared in the `print` body `function () {}`. Then it can only be accessed from it's inner code.
 
-----
+<!--slide-->
 
 #### block scope
 
@@ -81,13 +81,13 @@ console.log(a, b) // "ReferenceError: b is not defined
 
 Note: `b` is declared in the `if` block `{}`. Then it can only be accessed from it's inner code, not by the `print` body `function () {}`. `let` is used to declare `b` as a block scoped varaibles. Declaring `b` with `var` would make it to belong to the function's scope.
 
-----
+<!--slide-->
 
 ### Nested scopes
 
 > In JavaScript, all functions have access to the scope "above" them. The "cascade" of scopes is called nested scopes.
 
-----
+<!--slide-->
 
 ```js
 var a = 1
@@ -117,13 +117,13 @@ Note:
 * `printMore`: function scope as access to `a`, `b`, `c`
 * `for`: block scope as access to `a`, `b`, `c`, `d`, `i`
 
-----
+<!--slide-->
 
 ### Shadowing
 
 > Scope lookup during the lexical phase also stops once it finds the first match. This means you can shadow a variable further up the scope chain.
 
-----
+<!--slide-->
 
 ```js
 var a = 1
@@ -138,13 +138,13 @@ console.log(a) // 1
 Note:
 In `print`, a is a function scoped variable. Any assignment will not affect `a` in global scope.
 
-----
+<!--slide-->
 
 ### Hoisting
 
 > In Javascript, `var` and `function(){}` declarations are hoisted to the top of the current scope; and hence, those identifiers are available to any code in that scope.
 
-----
+<!--slide-->
 
 ```js
 var a = 1
@@ -159,7 +159,7 @@ console.log(a) // 1
 
 Note: Value of `a` is undefined on first `console.log` but we could assume that if should have the value of `a` in global scope.
 
-----
+<!--slide-->
 
 ```js
 var a = 1
@@ -173,13 +173,13 @@ function print() {
 
 Note: behind the scene, a is hoisted on the top of the function body.
 
-----
+<!--slide-->
 
 ### Default scope
 
 > Everything that is not declared in a local scope, is considered global and can provoke side effects:
 
-----
+<!--slide-->
 
 ```js
 function increment (num) {
@@ -193,7 +193,7 @@ console.log(result) // 4
 
 Note: as not declared with `var`, `const` or `let`, the `result` variable is considered global and declared in the global scope. That´s a clear unexpected side effect.
 
-----
+<!--slide-->
 
 What would be the output of this code?
 
@@ -207,7 +207,7 @@ console.log(b);
 
 Note: variable a is declared using the keyword var. What this means is that a is a local variable of the function. On the contrary, b is assigned to the global scope.
 
-----
+<!--slide-->
 
 `var` declares `a` but `b` is declared as a global variable...
 ```js
@@ -228,7 +228,7 @@ fix:
 console.log(b); // b is not defined
 ```
 
----
+<!--section-->
 
 ## Closures
 
@@ -238,7 +238,7 @@ console.log(b); // b is not defined
 
 
 
-----
+<!--slide-->
 
 Here's an example:
 ```js
@@ -254,7 +254,7 @@ function bar(fn) {
 bar(foo()) // 2
 ```
 
-----
+<!--slide-->
 
 Here's a little more complicated one:
 
@@ -271,7 +271,7 @@ bar(foo(5)) // 5
 bar(foo(8)) // 8
 ```
 
-----
+<!--slide-->
 
 ### Practice
 
@@ -300,7 +300,7 @@ https://jsbin.com/tegewu/edit?js,console,output
 
 Note: "This is button 10" is the response. Why? The scope of `i` is `addButtons` function. Then, each time clicks on a button, the function takes the current value of `i`, which is 10 at the end of the loop.
 
-----
+<!--slide-->
 
 #### Solution
 
@@ -326,7 +326,7 @@ https://jsbin.com/laturas/edit?js,console,output
 
 Note: We need to create a new closure with local `i` for each click callback. Now, the callback is created in a new function scope when the local `i` exists with its evaluated value at that moment.
 
----
+<!--section-->
 
 ### Practice
 
@@ -345,7 +345,7 @@ function countdown (num) {
 
 https://jsbin.com/xaxerim/edit?js,console
 
-----
+<!--slide-->
 
 #### Solution
 

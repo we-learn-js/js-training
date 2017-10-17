@@ -1,6 +1,6 @@
 # Functions in Javascript
 
----
+<!--section-->
 
 
 > A function is a JavaScript encloses a set of statements that performs a task or calculates a value.
@@ -10,7 +10,7 @@
 [MDN - Functions ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
 
 
-----
+<!--slide-->
 
 ## Function Objects
 
@@ -24,7 +24,7 @@
 [MDN - Function.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/prototype)
 
 
-----
+<!--slide-->
 
 ### Function.prototype
 
@@ -40,7 +40,7 @@ Function.prototype = {
 }
 ```
 
-----
+<!--slide-->
 
 > Any function is an instance of `Function` constructor
 
@@ -55,14 +55,14 @@ console.log((function() {}).name) // ""
 console.log((function doSomething() {}).name) // "doSomething"
 ```
 
-----
+<!--slide-->
 
 ## Defining functions
 
 * Function declarations
 * Function expressions
 
-----
+<!--slide-->
 
 ### Function declarations
 
@@ -78,7 +78,7 @@ function square (number) {
 * `{}` encloses **body** of the function, compound by statements
 * `return` statement specifies the value returned by the function.
 
-----
+<!--slide-->
 
 ### Function expressions
 
@@ -99,7 +99,7 @@ window.addEventListener("load", function (event) {
 })
 ```
 
-----
+<!--slide-->
 
 > A name can be provided with a function expression and can be used inside the function to refer to itself, or in a debugger to identify the function in stack traces
 
@@ -120,7 +120,7 @@ window.addEventListener("load", function onLoad (event) {
 
 https://jsbin.com/vufamu/edit?js,console,output
 
-----
+<!--slide-->
 
 ### Hoisting
 
@@ -142,7 +142,7 @@ var square = function (number) {
 }
 ```
 
-----
+<!--slide-->
 
 > Function hoisting only works with function declaration and not with function expression.
 
@@ -156,7 +156,7 @@ var squareFunc = function square (number) {
 
 Note: Does not work because it is not a statement, but an expression that is evaluated.
 
-----
+<!--slide-->
 
 ### arguments
 
@@ -166,7 +166,7 @@ Note: Does not work because it is not a statement, but an expression that is eva
 >
 > Using the `arguments` object, you can call a function with more arguments than it is formally declared to accept.
 
-----
+<!--slide-->
 
 ```js
 function concat(separator) {
@@ -184,7 +184,7 @@ concat(", ", "red", "orange", "blue")
 concat(" ", "elephant", "giraffe", "lion", "cheetah")
 ```
 
-----
+<!--slide-->
 
 #### rest parameter for arguments
 
@@ -198,7 +198,7 @@ function concat(separator, ...args) {
 }
 ```
 
-----
+<!--slide-->
 
 ### Default parameters
 
@@ -215,7 +215,7 @@ function multiply(a, b = 1) {
 multiply(5) // 5
 ```
 
-----
+<!--slide-->
 
 ```js
 function multiply(a, b = 1) {
@@ -233,7 +233,7 @@ function multiply(a, b) {
 multiply(5) // 5
 ```
 
-----
+<!--slide-->
 
 ### this
 
@@ -245,7 +245,7 @@ multiply(5) // 5
 
 [MDN - this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
 
-----
+<!--slide-->
 
 #### Default value of this
 
@@ -260,7 +260,7 @@ In node:
 this === global // true
 ```
 
-----
+<!--slide-->
 
 #### The Function Invocation Pattern
 
@@ -273,7 +273,7 @@ function getThis(){
 console.log(getThis() === window) // true
 ```
 
-----
+<!--slide-->
 
 #### The Method Invocation Pattern
 
@@ -289,7 +289,7 @@ console.log(obj.getThis() === obj) // true
 
 ```
 
-----
+<!--slide-->
 
 #### The Constructor Invocation Pattern
 
@@ -305,14 +305,14 @@ var user = new User( "Evan")
 console.log(user.name) // "Evan"
 ```
 
-----
+<!--slide-->
 
 #### The Apply/Call Invocation Pattern
 
 > The value of `this` value can be bound to a particular object in the call using the `call` or `apply` methods as all functions inherit from Function.prototype.
 
 
-----
+<!--slide-->
 
 ##### Function.prototype.call()
 
@@ -335,7 +335,7 @@ Note: The `arguments` object is not an `Array`. It is similar to an `Array`, but
 
 [MDN - call()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
 
-----
+<!--slide-->
 
 ##### Function.prototype.apply()
 
@@ -356,7 +356,7 @@ var max = Math.max.call(null, ...arr)
 
 [MDN - apply()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 
-----
+<!--slide-->
 
 #### Practice
 
@@ -372,7 +372,7 @@ console.log(flatten(arr)); // [1, "2", 3, 4, 5, "6", "7"]
 
 https://jsbin.com/tigotu/edit?js,console,output
 
-----
+<!--slide-->
 
 ```js
 function flatten (arr) {
@@ -380,7 +380,7 @@ function flatten (arr) {
 }
 ```
 
-----
+<!--slide-->
 
 ### Function.prototype.bind()
 
@@ -392,7 +392,7 @@ function flatten (arr) {
 
 [MDN - bind()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
 
-----
+<!--slide-->
 
 ```js
 var object = {
@@ -407,7 +407,7 @@ object.disable = object.toggle.bind(object, false)
 object.enable()
 ```
 
-----
+<!--slide-->
 
 How it works
 ```js
@@ -420,7 +420,7 @@ Function.prototype.bind = function(bindThis, ...bindArgs) {
 
 ```
 
-----
+<!--slide-->
 
 ```js
 
@@ -437,7 +437,7 @@ threeTimes(console.log.bind(null,'world')) // "world" "world" "world"
 
 
 
-----
+<!--slide-->
 
 #### Practice
 
@@ -458,7 +458,7 @@ countdown(5);
 
 https://jsbin.com/mocijar/edit?js,console
 
-----
+<!--slide-->
 
 Solution:
 ```js
@@ -470,7 +470,7 @@ function countdown (num) {
 countdown(5);
 ```
 
-----
+<!--slide-->
 
 #### Practice
 
@@ -495,7 +495,7 @@ var button2 = new Button('Button 2')
 
 https://jsbin.com/fasizo/edit?js,console,output
 
-----
+<!--slide-->
 
 ```js
 var Button = function(content) {
@@ -509,11 +509,11 @@ var Button = function(content) {
 
 ```
 
----
+<!--section-->
 
 ### Arrow functions
 
-----
+<!--slide-->
 
 #### Arrow function expression
 
@@ -525,7 +525,7 @@ var Button = function(content) {
 
 [MDN - Arrow functions](http://www-db.deis.unibo.it/courses/TW/DOCS/JS/developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions.html)
 
-----
+<!--slide-->
 
 Consider:
 
@@ -541,7 +541,7 @@ function Person() {
 var p = new Person()
 ```
 
-----
+<!--slide-->
 
 What we would do without arrow functions:
 
@@ -558,7 +558,7 @@ function Person() {
 var p = new Person()
 ```
 
-----
+<!--slide-->
 
 What we would taking advantage of `bind()`:
 
@@ -573,7 +573,7 @@ function Person() {
 var p = new Person()
 ```
 
-----
+<!--slide-->
 
 What we can do with arrow functions:
 
@@ -588,7 +588,7 @@ function Person(){
 var p = new Person()
 ```
 
-----
+<!--slide-->
 
 ##### Shorter functions
 
@@ -606,7 +606,7 @@ var a3 = a.map( s => s.length )
 
 ```
 
-----
+<!--slide-->
 
 ```js
 var arr = [5, 6, 13, 0, 1, 18, 23]
@@ -615,7 +615,7 @@ var even = arr.filter(v => v % 2 == 0) // [6, 0, 18]
 var double = arr.map(v => v * 2)       // [10, 12, 26, 0, 2, 36, 46]
 ```
 
-----
+<!--slide-->
 
 Different ways to do the same thing:
 
@@ -626,7 +626,7 @@ var even = arr.filter( (v) => { return v % 2 == 0 } ) // [6, 0, 18]
 var even = arr.filter( function (v) { return v % 2 == 0 }) // [6, 0, 18]
 ```
 
----
+<!--section-->
 
 ## IIFE (Immediately Invoked Function expression)
 
@@ -642,7 +642,7 @@ var even = arr.filter( function (v) { return v % 2 == 0 }) // [6, 0, 18]
 
 Note: Parenthesis are necessary to enforce parsing as an `expression`, instead of a `statement`
 
-----
+<!--slide-->
 
 > Parenthesis are to enforce the parser to expect an expression, instead of a statement.
 >
@@ -659,7 +659,7 @@ Note: Parenthesis are necessary to enforce parsing as an `expression`, instead o
 
 
 
-----
+<!--slide-->
 
 > IIFE can receive arguments
 

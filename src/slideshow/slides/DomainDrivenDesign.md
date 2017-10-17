@@ -1,6 +1,6 @@
 # Domain Driven Design
 
----
+<!--section-->
 
 As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-bob/2011/09/30/Screaming-Architecture.html):
 
@@ -13,7 +13,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 > A good architecture emphasizes the use-cases and decouples them from peripheral concerns.
 
 
----
+<!--section-->
 
 ## What is it all about ???
 
@@ -23,7 +23,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > Published in 2003, which is "yesterday" in the programming world...
 
-----
+<!--slide-->
 
 ### What is DDD ?
 
@@ -35,7 +35,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > Speak an **ubiquious language** within a **bounded context**.
 
-----
+<!--slide-->
 
 ### What is the Domain
 
@@ -43,7 +43,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > The business processes being automated or real world problems is the domain of the software.
 
-----
+<!--slide-->
 
 ### What is a Model
 
@@ -57,11 +57,11 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > **The code must be an expression  of the model.**
 
-----
+<!--slide-->
 
 ![Domain Model example](http://www.agiledata.org/images/admInitialDomainModel.gif)
 
-----
+<!--slide-->
 
 ### The Ubiquitous Language
 
@@ -73,11 +73,11 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > There’s no us versus them it’s always us.
 
-----
+<!--slide-->
 
 ![Ubiquitous Language](https://www.infoq.com/resource/articles/ddd-contextmapping/en/resources/ddd-contextmapping-figure1.gif)
 
-----
+<!--slide-->
 
 > It's the common language. Ubiquitous means "everywhere".
 
@@ -87,7 +87,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > **Bounded context** is want makes the ubiquitous language meaningful.
 
-----
+<!--slide-->
 
 ### Bounded Context (sub domains)
 
@@ -99,7 +99,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > Each model has a context.
 
-----
+<!--slide-->
 
 #### Bounded Context and the Ubiquitous Language
 
@@ -108,7 +108,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 > There is a single Ubiquitous language for each **Bounded Context**.
 
 
-----
+<!--slide-->
 
 #### Example: E-commerce website
 
@@ -123,13 +123,13 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 [Source](https://www.codeproject.com/Articles/1094774/Domain-Driven-Design-A-hands-on-Example-Part-of)
 
-----
+<!--slide-->
 
 The Domain (non DDD)
 
 ![Undivided Domain](https://4.bp.blogspot.com/-XXkwE3Y_5Vs/Vr1DbB5MhjI/AAAAAAAABGQ/DPcPQ_h0WCg/s1600/picture1.jpg)
 
-----
+<!--slide-->
 
 > The Ubiquitous Language can be confusing.
 
@@ -139,25 +139,25 @@ The Domain (non DDD)
 
 > In the inventory system, however, we don’t really want to concern ourselves with these things. Here, a product has a different meaning, where we care about different properties like weight, location in the warehouse, or dimensions.
 
-----
+<!--slide-->
 
 The Domain, with bounded contexts
 
 ![Bounded Contexts](https://www.codeproject.com/KB/architecture/1094774/picture2.jpg)
 
-----
+<!--slide-->
 
 "Product" in the Catalog context
 
 ![Catalog Product](https://1.bp.blogspot.com/-ffzdNCk-Cq4/VtGuMqWQXSI/AAAAAAAABGs/pIK7PX0ZKq0/s1600/picture2.jpg)
 
-----
+<!--slide-->
 
 "Product" in the Orders context
 
 ![Catalog Product](https://4.bp.blogspot.com/-iGWNmUcCzfQ/VtH4trZH84I/AAAAAAAABHQ/5hnCpaHZ534/s1600/picture4.jpg)
 
-----
+<!--slide-->
 
 ### Context Map
 
@@ -167,11 +167,11 @@ The Domain, with bounded contexts
 
 > A Context Map can be a diagram or it can be any written document. The level of detail may vary. What it is important is that everyone working on the project shares and understands it.
 
-----
+<!--slide-->
 
 ![Bounded Context](https://martinfowler.com/bliki/images/boundedContext/sketch.png)
 
-----
+<!--slide-->
 
 ### Integrating Bounded Contexts
 
@@ -181,7 +181,7 @@ The Domain, with bounded contexts
 
 > Several patterns are possible to make the process easier, or not...
 
-----
+<!--slide-->
 
 #### Shared Kernel
 
@@ -193,11 +193,11 @@ The Domain, with bounded contexts
 
 > The purpose of the Shared Kernel is to reduce duplication, but still keep two separate contexts.
 
-----
+<!--slide-->
 
 ![Shared Kernel](https://image.slidesharecdn.com/domain-driven-design-2008-dec-1229438454167948-1/95/taming-complex-domains-with-domain-driven-design-67-728.jpg?cb=1231464807)
 
-----
+<!--slide-->
 
 #### Customer-Supplier
 
@@ -206,7 +206,7 @@ The Domain, with bounded contexts
 > The customer team should present its requirements, while the supplier team should make the plans accordingly.
 
 
-----
+<!--slide-->
 
 #### Conformist
 
@@ -214,7 +214,7 @@ The Domain, with bounded contexts
 
 > The customer team cannot make changes to the kernel. They can only use it as part of their model, and they can build on the existing code provided.
 
-----
+<!--slide-->
 
 ### What is DDD ? Getting it...
 
@@ -226,7 +226,7 @@ The Domain, with bounded contexts
 
 > Speak an **ubiquious language** within a **bounded context**.
 
-----
+<!--slide-->
 
 ### Business value of DDD
 
@@ -238,7 +238,7 @@ The Domain, with bounded contexts
 > * Iterative and continuous modeling in an Agile fashion
 
 
-----
+<!--slide-->
 
 ### Practice
 
@@ -248,11 +248,11 @@ The Domain, with bounded contexts
 
 > Later you will have to present it to the rest of the groups.
 
----
+<!--section-->
 
 ## Building blocks
 
-----
+<!--slide-->
 
 ### Value Objects
 
@@ -264,7 +264,7 @@ The Domain, with bounded contexts
 
 > It is highly recommended that value objects be **immutable**. They are created with a constructor, and never modified during their life time.
 
-----
+<!--slide-->
 
 #### Examples
 
@@ -274,7 +274,7 @@ The Domain, with bounded contexts
 
 > A business card: When people exchange business cards, they generally do not distinguish between each unique card they only are concerned about the information printed on the card. In this context, business cards are value objects.
 
-----
+<!--slide-->
 
 ### Entities
 
@@ -284,7 +284,7 @@ The Domain, with bounded contexts
 
 > An **Entity** always has a unique id. As long as there is a unique Id it's an entity.
 
-----
+<!--slide-->
 
 #### Examples
 
@@ -294,7 +294,7 @@ The Domain, with bounded contexts
 
 > These concepts have an Identity that endures over time. These concepts' state evolves over time. They are mutable.
 
-----
+<!--slide-->
 
 #### Entities Objects VS Value Objects
 
@@ -307,7 +307,7 @@ The Domain, with bounded contexts
 > Most airlines distinguish each seat uniquely on every flight. Each seat is an entity in this context. However, Southwest Airlines, EasyJet and Ryanair do not distinguish between every seat all seats are the same. In this context, a seat is actually a value object.
 
 
-----
+<!--slide-->
 
 #### Practice
 
@@ -317,7 +317,7 @@ The Domain, with bounded contexts
 
 Note: Billing address?
 
-----
+<!--slide-->
 
 ### Aggregates
 
@@ -331,7 +331,7 @@ Note: Billing address?
 
 
 
-----
+<!--slide-->
 
 > Prevents data inconsistency. They are consistency boundaries.
 
@@ -339,7 +339,7 @@ Note: Billing address?
 
 > **Design aggregates based on business true invariants**
 
-----
+<!--slide-->
 
 #### Example: Order aggregate
 
@@ -349,7 +349,7 @@ When a line-item is removed or added, order's amount must be updated.
 
 If line-item is removed outside of the aggregate, the order amount will not be updated and that would break data consitency.
 
-----
+<!--slide-->
 
 #### Example: Customer aggregate
 
@@ -357,17 +357,17 @@ A banking system holds and processes customer data. This data includes customer 
 
 When the system archives or completely deletes information about a customer, it has to make sure that all the references are removed. If many objects hold such references, it is difficult to ensure that they are all removed.
 
-----
+<!--slide-->
 
 ![Aggregates](https://www.lavinski.me/content/images/2014/Apr/Domain-Driven-Design-Concepts.png)
 
-----
+<!--slide-->
 
 ### Practice
 
 > Taking the domain defined on previous practice, discuss what would be the main entities/values/aggregates of your domain.
 
-----
+<!--slide-->
 
 ### Factories
 
@@ -375,14 +375,14 @@ When the system archives or completely deletes information about a customer, it 
 
 > Shift the responsibility for creating instances of complex objects and Aggregates to a separate object, which may itself have no responsibility in the domain model but is still part of the domain design.
 
-----
+<!--slide-->
 
 > It defines an interface for creating an object, but leaves the choice of its type to the subclasses, creation being deferred at run-time.
 
 > Adding a Factory Method in the Aggregate Root hides the internal implementation details of creating Aggregates from any external client.
 
 
-----
+<!--slide-->
 
 ### Repositories
 
@@ -392,14 +392,14 @@ When the system archives or completely deletes information about a customer, it 
 
 > If the client requested an object from the Repository, and the Repository does not have it, it may get it from the storage. Either way, the Repository acts as a storage place for globally accessible objects.
 
-----
+<!--slide-->
 
 > The overall effect is that the domain model is decoupled from the need of storing objects or their references, and accessing the underlying persistence infrastructure.
 
 > The Repository interface may contain methods used to perform some supplementary calculations like the number of objects of a certain type.
 
 
-----
+<!--slide-->
 
 #### Repositories and Factories
 
@@ -411,7 +411,7 @@ When the system archives or completely deletes information about a customer, it 
 
 > When a new object is to be added to the Repository, it should be created first using the Factory, and then it should be given to the Repository which will store it.
 
-----
+<!--slide-->
 
 #### Repositories and aggregates
 
@@ -419,7 +419,7 @@ When the system archives or completely deletes information about a customer, it 
 
 > If a **true business invariant** exists and two Entities belong to the same Aggregate, you’ll only have one Repository. This Repository will be the one for the root Entity.
 
-----
+<!--slide-->
 
 ### Services
 
@@ -427,13 +427,13 @@ When the system archives or completely deletes information about a customer, it 
 
 > Such an object does not have an internal state, and its purpose is to simply provide functionality for the domain.
 
-----
+<!--slide-->
 
 > Define the interface in terms of the language of the model and make sure the operation name is part of the **Ubiquitous Language**.
 
 > Make the **Service** **stateless**. It can be used without the the need previous operations of steps.
 
-----
+<!--slide-->
 
 #### Example: Single operation
 
@@ -461,7 +461,7 @@ class SignUpUserService {
 }
 ```
 
-----
+<!--slide-->
 
 #####  Request and Response objects
 
@@ -473,7 +473,7 @@ class SignUpUserService {
 
 > The return should not expose behavior like updating the entity.
 
-----
+<!--slide-->
 
 #### Example: Multiple COHESIVE operations
 
@@ -497,7 +497,7 @@ class UserService {
 }
 ```
 
-----
+<!--slide-->
 
 ### Domain Events
 
@@ -511,7 +511,7 @@ class UserService {
 
 > Domain Events are **immutable**.
 
-----
+<!--slide-->
 
 > In DDD, Domain Events are fundamental building blocks that help:
 >
@@ -521,7 +521,7 @@ class UserService {
 
 > All Events should be represented as verbs in the past tense, as they’re things that have been completed in the past — for example, CustomerRelocated, CargoShipped, or InventoryLossageRecorded.
 
-----
+<!--slide-->
 
 > Domain Events are usually designed as immutable.
 
@@ -535,7 +535,7 @@ class UserService {
 
 > Include parameters that caused the Event (if useful).
 
-----
+<!--slide-->
 
 ```js
 class DomainEventAbstract
@@ -557,7 +557,7 @@ class UserRegistered extends DomainEventAbstract {
 
 ```
 
-----
+<!--slide-->
 
 ```js
 class SignUpUserService {
@@ -570,7 +570,7 @@ class SignUpUserService {
 }
 ```
 
-----
+<!--slide-->
 
 ### Example: Domain Events to communicate between Bounded Contexts
 
@@ -580,33 +580,33 @@ A **ShowPriceChanged** Domain Event is published and persisted into the database
 
 A batch process takes the Domain Event and queues it into RabbitMQ. The Domain Event gets distributed in two queues: one for the same local Bounded Context, and another remote one for Business Intelligence purposes.
 
-----
+<!--slide-->
 
 In the first queue, a worker fetches the corresponding Show using the ID in the Event and pushes it into an Elasticsearch server so that the user can see the new price when searching. It could also update the new price in a different database table.
 
 In the second queue, a worker inserts the information into a Logs Server or a Data Lake, where reporting or Data Mining processes can be run.
 
-----
+<!--slide-->
 
 ### The big picture
 
 ![Building Blocks](http://blog.synopse.info/public/mORMot/DDDBuildingBlocks.png)
 
----
+<!--section-->
 
 ## Architecture
 
-----
+<!--slide-->
 
 ####  Layered architecture
 
 > It is the architecture proposed by Eric Evans in [his book](https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215).
 
-----
+<!--slide-->
 
 ![Layered architecture](http://www.papagrigoriou.com/images/2015/architectures/inverted-layers-arch.png)
 
-----
+<!--slide-->
 
 ##### User Interface (Presentation) layer
 
@@ -616,7 +616,7 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 > It depends on all layers below.
 
-----
+<!--slide-->
 
 ##### Application Layer
 
@@ -632,7 +632,7 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 > But it can hold the state of an application task progress.
 
-----
+<!--slide-->
 
 
 ##### Domain Layer
@@ -645,7 +645,7 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 > Persistence of the business objects and possibly their state is delegated to the **infrastructure layer** in an indirect way (DIP).
 
-----
+<!--slide-->
 
 ##### Infrastructure Layer
 
@@ -657,7 +657,7 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 > Generally dealing with anything that is considered a technical detail.
 
-----
+<!--slide-->
 
 #### Onion Architecture
 
@@ -667,46 +667,46 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 > There is also a “Domain Services” module which depends on the “Domain Model” and so on.
 
-----
+<!--slide-->
 
 ![Onion Architecture](https://sbrakl.files.wordpress.com/2014/11/111814_1006_onionarchit6.png?w=625)
 
 
 
-----
+<!--slide-->
 
 #### Hexagonal Architecture (Ports and Adapters)
 
 
 > Each side represents a Port with one or more Adapters.
 
-----
+<!--slide-->
 
 ![Hexagonal Architecture](http://josecuellar.net/wp-content/uploads/hexagonalarchitecture.PNG)
 
 [Alistair Cockburn - Hexagonal Architecture](http://alistair.cockburn.us/Hexagonal+architecture)
 
 
-----
+<!--slide-->
 
 ![Hexagonal Architecture](https://www.blackpepper.co.uk/wp-content/uploads/2015/11/Hexagonal-Architecture.png)
 
 
-----
+<!--slide-->
 
 #### Event-Driven Architecture (EDA)
 
 
 ![Event-Driven Architecture](http://josecuellar.net/wp-content/uploads/eda.PNG)
 
-----
+<!--slide-->
 
 ### The Big Picture
 
 ![Layers Diagram](http://blog.synopse.info/public/mORMot/DDDCleanUncoupledOnionArchitecture.png)
 
 
----
+<!--section-->
 
 ### Layered Services
 
@@ -718,7 +718,7 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 > If the operation is about domain objects, and is strictly related to the **domain**, serving a domain need, then it should belong to the **domain layer**.
 
-----
+<!--slide-->
 
 ### Domain Services
 
@@ -732,7 +732,7 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 > Domain Services are **stateless operations**.
 
-----
+<!--slide-->
 
 ```js
 class Cart {
@@ -746,7 +746,7 @@ class CreateOrderFromCart{
 }
 ```
 
-----
+<!--slide-->
 
 ```js
 class SignUpUserRequest {
@@ -772,7 +772,7 @@ class SignUpUserService {
 }
 ```
 
-----
+<!--slide-->
 
 ### Application services
 
@@ -784,7 +784,7 @@ class SignUpUserService {
 
 > Use cases of our app are application services that make use of business rules of the Domain layer.
 
-----
+<!--slide-->
 
 ```js
 class SignUpController extends Controller {
@@ -803,7 +803,7 @@ class SignUpController extends Controller {
 }
 ```
 
-----
+<!--slide-->
 
 ### Infrastructure services
 
@@ -816,7 +816,7 @@ class SignUpController extends Controller {
 
 > Its interface would be specified in our domain, for invertion of control.
 
----
+<!--section-->
 
 ### Modules
 
@@ -827,7 +827,7 @@ class SignUpController extends Controller {
 > It is widely accepted that software code should have a high level of cohesion and a low level of coupling. While cohesion starts at the class and method level, it can be applied at module level.
 
 
-----
+<!--slide-->
 
 #### Modules cohesion
 
@@ -835,13 +835,13 @@ class SignUpController extends Controller {
 
 > There are several types of cohesion. Two of the most used are **communicational cohesion and functional cohesion**.
 
-----
+<!--slide-->
 
 > **Communicational cohesion:** is achieved when parts of the module operate on the same data. It makes sense to group them, because there is a strong relationship between them.
 
 > **Functional cohesion**: is achieved when all parts of the module work together to perform a well-defined task. This is considered the best type of cohesion.
 
-----
+<!--slide-->
 
 ```
 ├── catalog
@@ -862,7 +862,7 @@ class SignUpController extends Controller {
     └── tests
 ```
 
-----
+<!--slide-->
 
 #### Communication between Modules
 
@@ -872,7 +872,7 @@ class SignUpController extends Controller {
 
 > The interface can be anything you want, like a REST API.
 
-----
+<!--slide-->
 
 #### Modules and Bounded Context
 
@@ -883,11 +883,11 @@ class SignUpController extends Controller {
 > **Modules** are used to organize the elements of a model, so Bounded Context encompasses the Module.
 
 
-----
+<!--slide-->
 
 #### Structuring code in modules
 
-----
+<!--slide-->
 
 ##### Code is separated by layer
 
@@ -900,7 +900,7 @@ Billing
   └── Infrastructure
 ```
 
-----
+<!--slide-->
 
 ##### Example: Domain layer, simple model
 
@@ -928,7 +928,7 @@ Billing
   └── Infrastructure
 ```
 
-----
+<!--slide-->
 
 ##### Example: Domain layer, complex model
 
@@ -957,7 +957,7 @@ Billing
            └── WaybillWasGenerated.js
 ```
 
-----
+<!--slide-->
 
 ##### Example: Infrastructure layer
 
@@ -974,7 +974,7 @@ Billing
       ├── MongoOrderRepository.js
 ```
 
-----
+<!--slide-->
 
 ##### Example: Infrastructure layer, complex model
 
@@ -993,7 +993,7 @@ Billing
             └── RedisBillRepository.js
 ```
 
-----
+<!--slide-->
 
 ##### Example: Application layer, complex model
 
@@ -1006,7 +1006,7 @@ Billing
        └── PlaceAnOrderResponse.js
 ```
 
----
+<!--section-->
 
 ### Must-Read
 
@@ -1018,7 +1018,7 @@ Billing
 
 [Last Wishes DD Project - Carlos Buenosvinos](https://github.com/dddinphp/last-wishes/tree/master/src/Lw)
 
-----
+<!--slide-->
 
 ### Must-Read (Spanish)
 
@@ -1031,7 +1031,7 @@ Billing
 [Services & Domain Events](http://josecuellar.net/domain-driven-design-episodio-v-services-domain-events/)
 [Modules & Aggregates](http://josecuellar.net/domain-driven-design-modules-aggregates/)
 
-----
+<!--slide-->
 
 ### Sources
 

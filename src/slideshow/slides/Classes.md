@@ -6,14 +6,14 @@
 [MDN - Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 
 
-----
+<!--slide-->
 
 ## Defining classes
 
 > Classes are in fact "special functions", and just as you can define function expressions and function declarations, the class syntax has two components: **class expressions** and **class declarations**.
 
 
-----
+<!--slide-->
 
 ### Class declarations
 
@@ -29,7 +29,7 @@ class User {
 var user = new User('Evan')
 ```
 
-----
+<!--slide-->
 
 this code:
 ```js
@@ -49,7 +49,7 @@ function User (name) {
 var user = new User('Evan')
 ```
 
-----
+<!--slide-->
 
 #### Hoisting
 
@@ -72,7 +72,7 @@ function User (name) {
 }
 ```
 
-----
+<!--slide-->
 
 ### Class expressions
 
@@ -98,7 +98,7 @@ var User = class GoogleUser {
 var user = new User('Evan')
 ```
 
-----
+<!--slide-->
 
 this code:
 ```js
@@ -118,11 +118,11 @@ var User = function GoogleUser (name) {
 var user = new User('Evan')
 ```
 
-----
+<!--slide-->
 
 ## Class body and method definitions
 
-----
+<!--slide-->
 
 ### Constructor
 
@@ -132,7 +132,7 @@ var user = new User('Evan')
 > ```
 > There can only be one special method with the name `constructor` in a class.
 
-----
+<!--slide-->
 
 ```js
 class User {
@@ -143,7 +143,7 @@ class User {
 var user = new User('Evan')
 ```
 
-----
+<!--slide-->
 
 #### Object.prototype.constructor
 
@@ -164,7 +164,7 @@ console.log(Object.prototype.constructor === Object) // true
 ```
 
 
-----
+<!--slide-->
 
 ### Prototype Methods
 
@@ -185,7 +185,7 @@ class User {
 
 ```
 
-----
+<!--slide-->
 
 In ES5:
 
@@ -201,7 +201,7 @@ User.prototype.orderItem = function(item) {
 }
 ```
 
-----
+<!--slide-->
 
 ### Getters
 
@@ -210,7 +210,7 @@ User.prototype.orderItem = function(item) {
 
 [MDN - getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)
 
-----
+<!--slide-->
 
 Consider:
 
@@ -236,7 +236,7 @@ console.log(logger.length) // 4
 
 Note: `length` property has to be maintained in view to be available as property.
 
-----
+<!--slide-->
 
 ```js
 class Logger {
@@ -260,7 +260,7 @@ console.log(logger.length)
 
 Note: Now `length` isn't maintained and returned only if needed
 
-----
+<!--slide-->
 
 #### Getters for calculated properties
 
@@ -276,7 +276,7 @@ get notifier() {
 Note: the getter is removed and replaced by the actual value
 
 
-----
+<!--slide-->
 
 ### Setters
 
@@ -284,7 +284,7 @@ Note: the getter is removed and replaced by the actual value
 
 [MDN - setter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set)
 
-----
+<!--slide-->
 
 Consider:
 ```js
@@ -309,7 +309,7 @@ user.setFullName('David Smith')
 console.log(user.getFullName()) // "David Smith"
 ```
 
-----
+<!--slide-->
 
 With a getter/setter:
 
@@ -336,7 +336,7 @@ console.log(user.fullName) // "David Smith"
 ```
 
 
-----
+<!--slide-->
 
 ### Static Methods
 
@@ -347,7 +347,7 @@ console.log(user.fullName) // "David Smith"
 > They are often used for utility methods related to the class
 
 
-----
+<!--slide-->
 
 ```js
 class Point {
@@ -368,7 +368,7 @@ const p2 = new Point(10, 10);
 console.log(Point.distance(p1, p2)); // 7.0710678118654755
 ```
 
-----
+<!--slide-->
 
 Same code in ES5:
 
@@ -388,7 +388,7 @@ const p2 = new Point(10, 10);
 console.log(Point.distance(p1, p2));  
 ```
 
-----
+<!--slide-->
 
 ### Extending classes
 
@@ -398,7 +398,7 @@ console.log(Point.distance(p1, p2));
 > class ChildClass `extends` ParentClass { ... }
 > ```
 
-----
+<!--slide-->
 
 ```js
 class Animal {
@@ -418,7 +418,7 @@ var d = new Dog('Mitzie');
 d.speak(); // "Mitzie barks."
 ```
 
-----
+<!--slide-->
 
 Consider:
 ```js
@@ -440,7 +440,7 @@ PremiumUser.prototype.orderItem = function(item) {
 }
 ```
 
-----
+<!--slide-->
 
 Written in ES6
 
@@ -463,13 +463,13 @@ class PremiumUser extends User {
 }
 ```
 
-----
+<!--slide-->
 
 ### Super class calls with super
 
 > The `super` keyword is used to call functions on an object's parent.
 
-----
+<!--slide-->
 
 ```js
 class PremiumUser extends User {
@@ -490,7 +490,7 @@ user.orderItem('TV')
 // "Delivery in 1 day as Premium User"
 ```
 
-----
+<!--slide-->
 
 ```js
 class Point {
@@ -506,7 +506,7 @@ var point = new Point(5, 10)
 console.log(point.toString()) // "(5, 10)"
 ```
 
-----
+<!--slide-->
 
 ```js
 class ColorPoint extends Point {
@@ -525,7 +525,7 @@ var colorPoint = new ColorPoint(5, 10, "Green")
 console.log(colorPoint.toString()) // "(5, 10) in Green"
 ```
 
-----
+<!--slide-->
 
 #### Super in static methods
 
@@ -550,7 +550,7 @@ console.log(Tripple.tripple(6));
 console.log(BiggerTripple.tripple(3));
 ```
 
----
+<!--section-->
 
 ### Practice
 
@@ -579,7 +579,7 @@ Collection.prototype.findBy = function (prop, value) {
 https://jsbin.com/jovoce/edit?js,console,output
 
 
-----
+<!--slide-->
 
 ```js
 class Collection extends Array {
@@ -598,7 +598,7 @@ class Collection extends Array {
 }
 ```
 
-----
+<!--slide-->
 
 ### Practice
 
@@ -635,7 +635,7 @@ class Manager {
 
 https://jsbin.com/focidi/edit?js,console,output
 
-----
+<!--slide-->
 
 Solution:
 
@@ -652,7 +652,7 @@ class Manager extends Employee {
 }
 ```
 
-----
+<!--slide-->
 
 Create getter for employee names:
 
@@ -668,7 +668,7 @@ console.log(manager.employeeNames) // ["Rachel Green", "David Smith"]
 
 https://jsbin.com/labubu/edit?js,console,output
 
-----
+<!--slide-->
 
 ```js
 class Manager extends Employee {

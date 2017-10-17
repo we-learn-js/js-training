@@ -1,14 +1,14 @@
 # Async programming
 
----
+<!--section-->
 
 ## Asynchrony
 
-----
+<!--slide-->
 
 > It’s easier to understand "asynchrony" if you first understand what “synchrony”, the opposite, means.
 
-----
+<!--slide-->
 
 ### Synchronous code
 
@@ -21,17 +21,17 @@ console.log('Third');
 // OUTPUT: "First" "Second" "Third"
 ```
 
-----
+<!--slide-->
 
 ### Asynchronous code
 
 > Asynchronous code takes statements outside of the main program flow, allowing the code after the asynchronous call to be executed immediately without waiting.
 
-----
+<!--slide-->
 
 ### Let's see it in action
 
-----
+<!--slide-->
 
 Consider:
 ```js
@@ -53,7 +53,7 @@ Output:
 * Logs are not made by order of code lines
 * The result of `getUsers` is not an array of users
 
-----
+<!--slide-->
 
 Code executed now:
 ```js
@@ -72,13 +72,13 @@ function(response){
 ```
 This is a callback that will be executed only when `jsonplaceholder.typicode.com` responds with data.
 
-----
+<!--slide-->
 
 > Asynchrony is essential for activities that are potentially blocking.
 
 > While browser is waiting for a response from the web service, code execution is not blocked and keeps executing the rest of the lines.
 
-----
+<!--slide-->
 
 ### Going further
 
@@ -96,7 +96,7 @@ function printing() {
 printing();
 ```
 
-----
+<!--slide-->
 
 Output:
 
@@ -109,11 +109,11 @@ Output:
 
 Why is `3` after `4` if the timeout has no time to wait?
 
-----
+<!--slide-->
 
 To get it, we need to get into runtime concepts.
 
-----
+<!--slide-->
 
 Javascript engine is composed of:
 
@@ -124,11 +124,11 @@ Javascript engine is composed of:
 * **Queue**: A JavaScript runtime contains a message queue, which is a list of messages to be processed. **A function is associated with each message.** When the stack is empty, a message is taken out of the queue and processed.
 
 
-----
+<!--slide-->
 
 ![runtime](http://www.appsdev.is.ed.ac.uk/blog/wp-content/uploads/2015/03/Event-loop.png)
 
-----
+<!--slide-->
 
 #### Event loop
 
@@ -144,7 +144,7 @@ while(queue.waitForMessage()){
 
 [Check the docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
 
-----
+<!--slide-->
 
 Let's how it works with our code
 
@@ -164,7 +164,7 @@ printing();
 [http://latentflip.com/loupe/](http://latentflip.com/loupe/?code=ZnVuY3Rpb24gbG9nIChjb250ZW50KSB7CiAgY29uc29sZS5sb2coY29udGVudCkKfQpmdW5jdGlvbiBwcmludGluZygpIHsKICAgbG9nKDEpOwogICBzZXRUaW1lb3V0KGZ1bmN0aW9uIGNhbGxiYWNrMSgpIHsgbG9nKDIpOyB9LCAwKTsKICAgc2V0VGltZW91dChmdW5jdGlvbiBjYWxsYmFjazIoKSB7IGxvZygzKTsgfSwgMTAwMCk7CiAgIGxvZyg0KTsKfQpwcmludGluZygpOwo%3D!!!)
 
 
-----
+<!--slide-->
 
 ### Making the synchronous, asynchronous
 
@@ -173,7 +173,7 @@ printing();
 
 But now that you understand asynchony in javascript, you can take advantage of it...
 
-----
+<!--slide-->
 
 Consider:
 ```js
@@ -185,7 +185,7 @@ function traverseRecursion (current, depth) {
 }
 ```
 
-----
+<!--slide-->
 
 Make it asynchronous, non blocking:
 ```js
@@ -203,7 +203,7 @@ function traverseRecursion (current, depth) {
 
 https://jsbin.com/fupuveh/9/edit?js,console
 
----
+<!--section-->
 
 ## Callbacks
 
@@ -211,7 +211,7 @@ https://jsbin.com/fupuveh/9/edit?js,console
 
 > Instead of immediately returning some result like most functions, functions that use callbacks take some time to produce a result.
 
-----
+<!--slide-->
 
 ### Practice
 
@@ -228,7 +228,7 @@ function getUsersPhotos(callback, limit) {
 ```
 https://jsbin.com/rojomaf/edit?js,console,output
 
-----
+<!--slide-->
 
 You've probably ended up with that kind of code
 
@@ -258,11 +258,11 @@ Note: We call that the "Pyramid of Doom"
 
 https://jsbin.com/tevulew/edit?js,console
 
-----
+<!--slide-->
 
 ### The problem with callbacks
 
-----
+<!--slide-->
 
 #### Callback hell | Pyramid of doom
 
@@ -270,7 +270,7 @@ https://jsbin.com/tevulew/edit?js,console
 
 http://callbackhell.com/
 
-----
+<!--slide-->
 
 #### Inversion of control
 
@@ -278,7 +278,7 @@ http://callbackhell.com/
 
 > This control transfer leads us to a troubling list of [trust issues](https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch2.md#tale-of-five-callbacks), such as whether the callback is called more times than we expect.
 
----
+<!--section-->
 
 ## Promises
 
@@ -288,7 +288,7 @@ http://callbackhell.com/
 
 [Check the docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-----
+<!--slide-->
 
 ### Basics
 
@@ -309,7 +309,7 @@ Note: `getUsers` returns a promise. Promise always provides functions `then` and
 `catch` handler will be called with the value if the promise is rejected explicitly or any error occurs during the execution
 
 
-----
+<!--slide-->
 
 ### States of a promise
 
@@ -318,7 +318,7 @@ Note: `getUsers` returns a promise. Promise always provides functions `then` and
 * **rejected** -  The action relating to the promise failed
 * **settled** -  Has resolved or rejected
 
-----
+<!--slide-->
 
 ```js
 var promise = getUsers() // Promise is pending
@@ -332,7 +332,7 @@ promise
 
 ```
 
-----
+<!--slide-->
 
 ### Immutability of settled promises
 
@@ -345,7 +345,7 @@ promise
 [Check full specs](https://promisesaplus.com/)
 
 
-----
+<!--slide-->
 
 ### Absence of race conditions
 
@@ -355,7 +355,7 @@ If the promise is settled when a corresponding handler is attached, the handler 
 
 Then, so there is no race condition between an asynchronous operation completing and its handlers being attached.
 
-----
+<!--slide-->
 
 **http get with callbacks**
 
@@ -373,7 +373,7 @@ oReq.send();
 
 If `load` handler is attached **after** the response, the handler **will not** be executed
 
-----
+<!--slide-->
 
 **http get with promises**
 
@@ -391,11 +391,11 @@ oReq.then(reqListener)
 If `then` handler is attached **after** the response, the handler **will** be executed
 
 
----
+<!--section-->
 
 ### Consume Promises
 
-----
+<!--slide-->
 
 #### `Promise.prototype.then( onresolved, onRejected )`
 
@@ -410,7 +410,7 @@ getUsers() // returns a promise
   })
 ```
 
-----
+<!--slide-->
 
 ##### Resolution handling
 
@@ -425,7 +425,7 @@ getUsers()
   })
 ```
 
-----
+<!--slide-->
 
 ##### Rejection handling
 
@@ -440,7 +440,7 @@ getUsers()
   })
 ```
 
-----
+<!--slide-->
 
 ##### Chaining
 
@@ -459,7 +459,7 @@ getUsers() // promise 1
 
 ```
 
-----
+<!--slide-->
 
 ##### Rejection cascade
 
@@ -467,7 +467,7 @@ getUsers() // promise 1
 
 > Also, the resolution handler will not be called on the next promise if first promise is rejected
 
-----
+<!--slide-->
 
 ```js
 
@@ -487,7 +487,7 @@ getUsers() // promise 1
 // Only `onResolved1` and `onRejection2` will be called
 ```
 
-----
+<!--slide-->
 
 ##### Casting
 
@@ -507,11 +507,11 @@ getUsers() // promise 1
 
 ```
 
----
+<!--section-->
 
 ### Create Promises
 
-----
+<!--slide-->
 
 #### new Promise( function( resolve, reject ){} )
 
@@ -529,7 +529,7 @@ var promise = new Promise(function(resolve, reject){
 })
 ```
 
-----
+<!--slide-->
 
 ##### Getting rid of callbacks with promises
 
@@ -547,7 +547,7 @@ getUsers(function (users)
 }, 5)
 ```
 
-----
+<!--slide-->
 
 Becomes:
 ```js
@@ -566,7 +566,7 @@ getUsers(5)
   })
 ```
 
-----
+<!--slide-->
 
 ### Practice
 
@@ -587,7 +587,7 @@ printUserFirstPhotos() // 50
 
 https://jsbin.com/xofebas/8/edit?js,console
 
-----
+<!--slide-->
 
 If you ended up with a code like that:
 
@@ -608,7 +608,7 @@ var printUserFirstPhotos = function(){
 
 You are still stuck with pyramides and not understanding promises...
 
-----
+<!--slide-->
 
 What about that ?
 
@@ -623,7 +623,7 @@ var printUserFirstPhotos = function(){
 
 ```
 
-----
+<!--slide-->
 
 Or that ?
 
@@ -641,7 +641,7 @@ var printUserFirstPhotos = function(){
 
 ```
 
----
+<!--section-->
 
 ### `Promise` static methods
 
@@ -650,7 +650,7 @@ var printUserFirstPhotos = function(){
 * Promise.reject()
 * Promise.resolve()
 
-----
+<!--slide-->
 
 #### Promise.resolve(value)
 
@@ -668,7 +668,7 @@ var promise = new Promise(function(resolve){
 })
 ```
 
-----
+<!--slide-->
 
 
 ```js
@@ -681,7 +681,7 @@ getSquare(4)
 
 ```
 
-----
+<!--slide-->
 
 #### Promise.reject(reason)
 
@@ -699,7 +699,7 @@ var promise = new Promise(function(resolve, reject){
 })
 ```
 
-----
+<!--slide-->
 
 #### Promise.all(iterable)
 
@@ -717,7 +717,7 @@ var promise = Promise.all([
 promise.then( values => console.log(values) ) // [4,5,"a",{}]
 ```
 
-----
+<!--slide-->
 
 `Promise.all` executes promises **in parallel**, not sequentially
 
@@ -735,13 +735,13 @@ Promise.all([
 ])
 ```
 
-----
+<!--slide-->
 
 #### Promise.race(iterable)
 
 > A static method that returns a promise that resolves or rejects as soon as **one of the promises** in the iterable resolves or rejects, with the value or reason from that promise.
 
-----
+<!--slide-->
 
 ```js
 var getTimeoutPromise = function(time) {
@@ -761,7 +761,7 @@ var promise = Promise.race([
 
 If `getUserPhotos()` lasts more than 3 seconds, `promise` will be rejected with reason "Timeout"
 
-----
+<!--slide-->
 
 #### Remember: promises are... asynchronous
 
@@ -788,7 +788,7 @@ https://jsbin.com/kecemib/edit?js,console,output
 Note: handlers are callbacks. Then, they get involved in the event loop.
 
 
-----
+<!--slide-->
 
 ### Practice
 
@@ -810,7 +810,7 @@ getUsersPhotos(6)
 
 https://jsbin.com/wemevaj/1/edit?js,console,output
 
-----
+<!--slide-->
 
 
 #### Possible solution
@@ -827,11 +827,11 @@ function getUsersPhotos(limit) {
 }
 ```
 
----
+<!--section-->
 
 ### Catching Rejections
 
-----
+<!--slide-->
 
 #### `Promise.prototype.catch`
 
@@ -845,7 +845,7 @@ getUsersPhotos(6)
 
 [Check the docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)
 
-----
+<!--slide-->
 
 > `catch()` always returns **a promise**, like `then`
 
@@ -853,7 +853,7 @@ Let's see it in action:
 
 https://jsbin.com/cibopuq/edit?js,console
 
-----
+<!--slide-->
 
 > Be responsible. Catch your own errors and control your output.
 
@@ -870,7 +870,7 @@ function getUsersPhotos(limit) {
 }
 ```
 
-----
+<!--slide-->
 
 #### A thing to remember
 
@@ -888,7 +888,7 @@ getUsersPhotos(limit)
   .then (null, onRejected })
 ```
 
-----
+<!--slide-->
 
 On the other hand. This snippet...
 ```js
@@ -902,7 +902,7 @@ getUsersPhotos(limit)
   .then(onresolved, onRejected)
 ```
 
-----
+<!--slide-->
 
 The snippet...
 ```js
@@ -920,7 +920,7 @@ getUsersPhotos(limit)
 
 Remember that the `onRejected` catches errors from **'previous'** promise that has not a **rejection handler**.
 
-----
+<!--slide-->
 
 ### Each `then`, each `catch` returns a **NEW** Promise
 
@@ -942,7 +942,7 @@ promise3.then(console.log)
 
 https://jsbin.com/sigefo/edit?js,console,output
 
-----
+<!--slide-->
 
 ```js
 var promise = Promise.resolve(1) // Promise 1: value(1)
@@ -959,17 +959,17 @@ promise2.then(console.log) // 2
 promise3.then(console.log) // 3
 ```
 
----
+<!--section-->
 
 ## Master Promises
 
-----
+<!--slide-->
 
 ### Old promises patterns you must avoid
 
 > Promises have a long and storied history, and it took the JavaScript community a long time to get them right.
 
-----
+<!--slide-->
 
 #### `finally` handler
 
@@ -983,7 +983,7 @@ getUsersPhotos(6)
   .finally( => hideLoadingSpinner() )
 ```
 
-----
+<!--slide-->
 
 #### `progress` handler
 
@@ -999,7 +999,7 @@ getJSON().then(function(){ // resolution handler
 })
 ```
 
-----
+<!--slide-->
 
 #### The deferred pattern (deferred objects)
 
@@ -1015,11 +1015,11 @@ FS.readFile("foo.txt", "utf-8", function (error, text) {
 return deferred.promise;
 ```
 
-----
+<!--slide-->
 
 ### More promise treats
 
-----
+<!--slide-->
 
 #### Convert callback functions to promises
 
@@ -1044,7 +1044,7 @@ Q.nfcall(FS.readFile, "foo.txt", "utf-8")
 
 [Q.js](https://github.com/kriskowal/q)
 
-----
+<!--slide-->
 
 #### Convert promises to callbacks based libs
 
@@ -1060,7 +1060,7 @@ getUsers(function(err, result){ /* ... */ }, 5)
 
 [Bluebird](http://bluebirdjs.com/docs/getting-started.html)
 
-----
+<!--slide-->
 
 #### Delay with promises
 
@@ -1072,11 +1072,11 @@ Promise
 
 [Bluebird](http://bluebirdjs.com/docs/getting-started.html)
 
----
+<!--section-->
 
 ## Further info on promises
 
-----
+<!--slide-->
 
 ### Promise libraries
 
@@ -1084,7 +1084,7 @@ Promise
 * [Q.js](https://github.com/kriskowal/q)
 * [Bluebird](http://bluebirdjs.com/docs/getting-started.html)
 
-----
+<!--slide-->
 
 ### Promise based new APIs
 
@@ -1092,7 +1092,7 @@ Promise
 * [Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
 * [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API)
 
----
+<!--section-->
 
 ## async functions (ES7)
 
@@ -1104,7 +1104,7 @@ Promise
 
 [MDN - async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
 
-----
+<!--slide-->
 
 Simple value promise:
 
@@ -1119,7 +1119,7 @@ function resolveAfter2Seconds(x) {
 }
 ```
 
-----
+<!--slide-->
 
 ```js
 async function add1(x) {
@@ -1139,7 +1139,7 @@ add1(10).then(v => {
 
 https://jsbin.com/wizojay/edit?js,console
 
-----
+<!--slide-->
 
 ### Caution!
 
@@ -1161,7 +1161,7 @@ add2(10).then(v => {
 https://jsbin.com/coyovas/edit?js,console
 
 
-----
+<!--slide-->
 
 ### Rejected promises
 
@@ -1178,7 +1178,7 @@ async function f3() {
 f3();
 ```
 
-----
+<!--slide-->
 
 ### Using async functions instead of promise chains
 
@@ -1206,7 +1206,7 @@ async function getProcessedData(url) {
 }
 ```
 
-----
+<!--slide-->
 
 ## Must Read/Watch
 
@@ -1221,11 +1221,11 @@ async function getProcessedData(url) {
 * [You-Dont-Know-JS - async & performance](https://github.com/getify/You-Dont-Know-JS/tree/master/async%20&%20performance)
 
 
----
+<!--section-->
 
 ## Practice
 
-----
+<!--slide-->
 
 Write `getFirstCharNumber` body code so it would return a promise resolved with the char number of the uppercase first letter of a given string.
 
@@ -1245,7 +1245,7 @@ function getFirstCharNumber(text) {
 
 https://jsbin.com/zidohun/edit?js,console,output
 
-----
+<!--slide-->
 
 #### Possible solutions
 
@@ -1265,7 +1265,7 @@ function getFirstCharNumber(text) {
 
 ```
 
-----
+<!--slide-->
 
 ### Implement `Promise.delay(ms)`
 
@@ -1290,7 +1290,7 @@ setTimeout(function(){
 
 https://jsbin.com/qidokig/edit?js,console,output
 
-----
+<!--slide-->
 
 ### Solution
 
@@ -1302,7 +1302,7 @@ Promise.delay = function(ms){
 }
 ```
 
-----
+<!--slide-->
 
 ### Implement `Promise.series(iterable)`
 
@@ -1327,7 +1327,7 @@ Promise.series([
 
 https://jsbin.com/mecalow/edit?js,console,output
 
-----
+<!--slide-->
 
 #### Solution
 
@@ -1352,7 +1352,7 @@ Promise.series = function(promiseConstructors) {
 ```
 
 
----
+<!--section-->
 
 ## Homework
 

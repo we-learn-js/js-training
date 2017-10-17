@@ -1,6 +1,6 @@
 # Object-Oriented programming
 
----
+<!--section-->
 
 ### What is it for?
 
@@ -12,13 +12,13 @@
 
 > Methods of the object are directly related to the object's state.
 
-----
+<!--slide-->
 
 ## Classes and Objects
 
 > The class is the idea of a thing, the object is the thing.
 
-----
+<!--slide-->
 
 ### What is a class?
 
@@ -29,7 +29,7 @@
 > Describes what **objects can do** with verbs (methods) that describe the behavior: walk, run, jump, speak, ...
 
 
-----
+<!--slide-->
 
 ### What does it describe ?
 
@@ -39,7 +39,7 @@
 > * Visual parts of the app: TextBox, Button, Window, ...
 > * Invisible things: Date, TimeZone, ...
 
-----
+<!--slide-->
 
 ### What is an object?
 
@@ -50,7 +50,7 @@
 
 > One class can create multiple objects, like you create multiple houses based on a unique blueprint.
 
----
+<!--section-->
 
 ## OOP Principles
 
@@ -62,7 +62,7 @@
 > * **Polymorphism**
 > Access a class through its parent interface.
 
-----
+<!--slide-->
 
 ### Abstraction
 
@@ -74,7 +74,7 @@
 >
 > Abstraction is used to think and communicate more effectively when we talk about our program.
 
-----
+<!--slide-->
 
 #### Real life abstraction: the city
 
@@ -84,7 +84,7 @@
 
 > For instance, we know that a person can drive or not. But a dog can't drive.
 
-----
+<!--slide-->
 
 > A hospital has rooms, doctors, nurses.
 
@@ -94,7 +94,7 @@
 
 > **Abstracting is extracting what concepts/entities have your program and which capabilities belong to each of them**
 
-----
+<!--slide-->
 
 > **Abstracting is hard** and usually you can abstract a program in many different ways.
 
@@ -102,7 +102,7 @@
 
 > But a teammate could see a hospital is a health service that have a building as location and a school another service.
 
----
+<!--section-->
 
 ### Encapsulation
 
@@ -112,13 +112,13 @@
 
 > Encapsulation solves the problem in the implementation level.
 
-----
+<!--slide-->
 
 > A class is a single logically organized unit where are enclosed operations (methods) to its related data (properties).
 
 > The idea of encapsulation is to keep classes separated and prevent them from being tightly coupled with each other.
 
-----
+<!--slide-->
 
 > Classes announces some operations (methods) available for consume.
 
@@ -128,7 +128,7 @@
 
 > All data members (properties) should be hidden and be accessed by accessors (getters and setters)
 
-----
+<!--slide-->
 
 #### Real life encapsulation: the city hall
 
@@ -140,7 +140,7 @@
 
 > To respond, city hall delegates to its employees, uses internal resources but you don't know about that. You just get a response.
 
-----
+<!--slide-->
 
 ##### City Hall has an interface
 
@@ -151,7 +151,7 @@
 > One of them is requesting a service, but you have to follow city hall's rules filling its form.
 
 
-----
+<!--slide-->
 
 ```js
 class CityHallServiceRequest () {
@@ -170,7 +170,7 @@ class CityHall {
 }
 ```
 
-----
+<!--slide-->
 
 ##### City Hall hides the implementation details
 
@@ -180,7 +180,7 @@ class CityHall {
 
 > In that case, city will send an info request to the government with the ID you provided. Then it will wait for government's answer, to execute some processing and THEN answer you back.
 
-----
+<!--slide-->
 
 ```js
 class CityHall {
@@ -196,7 +196,7 @@ class CityHall {
 }
 ```
 
-----
+<!--slide-->
 
 ##### City Hall hides its data members
 
@@ -210,7 +210,7 @@ class CityHall {
 CityHall.employees[0].salary // Uncaught TypeError: Cannot read property '0' of undefined
 ```
 
-----
+<!--slide-->
 
 ### Privacy techniques for encapsulation
 
@@ -218,7 +218,7 @@ CityHall.employees[0].salary // Uncaught TypeError: Cannot read property '0' of 
 
 > We have to take care of it on our own ...
 
-----
+<!--slide-->
 
 Consider:
 ```js
@@ -241,7 +241,7 @@ console.log(christmas.toString()) // "25/12/2000 0:00:00"
 ```
 
 
-----
+<!--slide-->
 
 We want to maintain our properties private, so that no consumer will mutate our object.
 
@@ -250,7 +250,7 @@ console.log(halloween.month = 3)
 console.log(halloween.toString()) // "31/3/2000 0:00:00"
 ```
 
-----
+<!--slide-->
 
 #### Privacy with Conventions
 
@@ -258,7 +258,7 @@ console.log(halloween.toString()) // "31/3/2000 0:00:00"
 
 > If a property name is prefixed and/or suffixed with an underscore, then it should be treated **by consumer** as non-public.
 
-----
+<!--slide-->
 
 Underscore prefix convention:
 
@@ -276,7 +276,7 @@ class SimpleDate {
 }
 ```
 
-----
+<!--slide-->
 
 Underscore prefix and suffix convention:
 
@@ -295,7 +295,7 @@ class SimpleDate {
 ```
 
 
-----
+<!--slide-->
 
 ##### Problem
 
@@ -306,7 +306,7 @@ console.log(halloween.__month__ = 3)
 console.log(halloween.toString()) // "31/3/2000 0:00:00"
 ```
 
-----
+<!--slide-->
 
 #### Privacy with Privileged Methods
 
@@ -327,7 +327,7 @@ class SimpleDate {
 }
 ```
 
-----
+<!--slide-->
 
 ##### Problem
 
@@ -347,11 +347,11 @@ console.log(christmas.getDay == halloween.getDay) // false
 
 Note: N instances of `Function` are created and saved in memory for **each** instance of `SimpleDate`.
 
-----
+<!--slide-->
 
 #### Privacy with Symbols
 
-----
+<!--slide-->
 
 ##### About Symbols (ES6)
 
@@ -365,7 +365,7 @@ Note: N instances of `Function` are created and saved in memory for **each** ins
 
 [MDN - Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
 
-----
+<!--slide-->
 
 ```js
 var sym1 = Symbol()
@@ -376,7 +376,7 @@ console.log(sym2) // Symbol(foo)
 console.log(typeof sym1) // "symbol"
 ```
 
-----
+<!--slide-->
 
 > Symbol("foo") does not coerce the string "foo" into a symbol.
 
@@ -392,7 +392,7 @@ obj[sym1] // 1
 obj[sym2] // 2
 ```
 
-----
+<!--slide-->
 
 ##### Privacy with Symbols
 
@@ -413,7 +413,7 @@ class SimpleDate {
 }
 ```
 
-----
+<!--slide-->
 
 
 ##### Problem 1
@@ -424,7 +424,7 @@ class SimpleDate {
 class ComplexDate extends SimpleDate { }
 ```
 
-----
+<!--slide-->
 
 ##### Problem 2
 
@@ -436,11 +436,11 @@ halloween[symbolKeys[0]] = 3
 console.log(halloween.toString()) // "31/3/2000 0:00:00"
 ```
 
-----
+<!--slide-->
 
 #### Privacy with Weak Maps
 
-----
+<!--slide-->
 
 ##### About Weak Maps
 
@@ -453,7 +453,7 @@ console.log(halloween.toString()) // "31/3/2000 0:00:00"
 [MDN - WeakMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)
 
 
-----
+<!--slide-->
 
 > Keys of WeakMaps are of the type Object only
 
@@ -466,7 +466,7 @@ wm3.delete(o1)
 wm2.has(o1) // false
 ```
 
-----
+<!--slide-->
 
 ##### Privacy with Weak Maps
 
@@ -488,7 +488,7 @@ class SimpleDate {
 ```
 
 
-----
+<!--slide-->
 
 ##### Problem
 
@@ -498,7 +498,7 @@ class SimpleDate {
 class ComplexDate extends SimpleDate {}
 ```
 
----
+<!--section-->
 
 ## Inheritance
 
@@ -506,7 +506,7 @@ class ComplexDate extends SimpleDate {}
 
 > Inheritance allows **child** classes inherits the characteristics of existing **parent** class: properties and methods.
 
-----
+<!--slide-->
 
 > **Child** class can extend the **parent** class and:
 > * Redefine properties (defining the new class)
@@ -520,7 +520,7 @@ class ComplexDate extends SimpleDate {}
 
 
 
-----
+<!--slide-->
 
 ### Real life inheritance: ATMs
 
@@ -530,7 +530,7 @@ class ComplexDate extends SimpleDate {}
 >
 > You have a class, ATM, and instances of ATM all over the city.
 
-----
+<!--slide-->
 
 ```js
 class CreditCard () {
@@ -554,7 +554,7 @@ class ATM {
 ```
 
 
-----
+<!--slide-->
 
 > All ATMs do basically the same thing, but  some differ.
 >
@@ -564,7 +564,7 @@ class ATM {
 >
 > Then, we should created a new ATM class that inherits ATM basic operation, and change only what's different.
 
-----
+<!--slide-->
 
 ```js
 class EcoATM  extends ATM {
@@ -582,7 +582,7 @@ class EcoATM  extends ATM {
 }
 ```
 
-----
+<!--slide-->
 
 ### Exercise: The School
 
@@ -596,7 +596,7 @@ class EcoATM  extends ATM {
 
 Identify the classes. Define the classes properties and methods with a hierarchy.
 
-----
+<!--slide-->
 
 ### Exercise: The animals
 
@@ -611,7 +611,7 @@ Identify the classes. Define the classes properties and methods with a hierarchy
 
 Create static method in Animal that returns average age of an array of animals.
 
----
+<!--section-->
 
 ## Polymorphism
 
@@ -622,7 +622,7 @@ Create static method in Animal that returns average age of an array of animals.
 > Abstract method is when it can be consumed in the same way but its implementation differs depending on class
 
 
-----
+<!--slide-->
 
 ### Real life polymorphism: Cameras
 
@@ -630,7 +630,7 @@ Create static method in Animal that returns average age of an array of animals.
 
 > You can capture a scene. All camera use a lens for it. But the way they save it is different.
 
-----
+<!--slide-->
 
 > We create a base camera class
 
@@ -646,7 +646,7 @@ class CameraAbstract {
 }
 ```
 
-----
+<!--slide-->
 
 > We create are types of cameras. They inherit their parent behaviour, and only the picture storage is implemented.
 
@@ -659,7 +659,7 @@ class AnalogicCamera extends CameraAbstract {
 }
 ```
 
-----
+<!--slide-->
 
 > Now any kind of camera can be used to take picture. They have the same interface that executes same operation, but differently.
 
@@ -667,7 +667,7 @@ class AnalogicCamera extends CameraAbstract {
 
 > Both camera types can be passed to a photographer and he will make the same us of them.
 
-----
+<!--slide-->
 
 ```js
 
@@ -686,7 +686,7 @@ person.takePicture()
 
 ```
 
-----
+<!--slide-->
 
 ### Exercise: The Bank
 
@@ -704,7 +704,7 @@ All accounts can calculate their interest amount fir a given period (in months.)
 
 Identify classes, interfaces, abstract actions and implement calculation of the interest functionality.
 
----
+<!--section-->
 
 
 ## Must read

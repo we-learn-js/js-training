@@ -1,6 +1,6 @@
 # Object-Oriented Design Principles
 
----
+<!--section-->
 
 ## S.O.L.I.D. Principles
 
@@ -12,7 +12,7 @@
 > * **I** – Interface segregation principle
 > * **D** – Dependency Inversion Principle
 
-----
+<!--slide-->
 
 ### Single Responsibility Principle (SRP)
 
@@ -22,13 +22,13 @@
 
 > Classes must be focused.
 
-----
+<!--slide-->
 
 ![Single Responsibility](https://lostechies.com/derickbailey/files/2011/03/SingleResponsibilityPrinciple2_71060858.jpg)
 
 Note: A pocket knife that was extended to the point that it can do anything, except fitting in your pocket.
 
-----
+<!--slide-->
 
 > Always strive for low coupling, but high Cohesion
 
@@ -38,7 +38,7 @@ Note: A pocket knife that was extended to the point that it can do anything, exc
 
 > Having multiple responsibilities within a class couples theses responsibilities.
 
-----
+<!--slide-->
 
 ### Open/Close Princple (OCP)
 
@@ -47,12 +47,12 @@ Note: A pocket knife that was extended to the point that it can do anything, exc
 > Create classes in a way you can extend their behavior without modifying their code.
 
 
-----
+<!--slide-->
 
 ![Open/Close Princple](https://lostechies.com/derickbailey/files/2011/03/OpenClosedPrinciple2_2C596E17.jpg)
 
 
-----
+<!--slide-->
 
 Consider:
 ```js
@@ -68,13 +68,13 @@ class EntityController {
 }
 ```
 
-----
+<!--slide-->
 
 > What would happen if we want to validate that the user is logged?
 
 > We would have to update `EntityController` for a reason which is not really the comment addition responsibility.
 
-----
+<!--slide-->
 
 ```js
 class EntityController {
@@ -94,13 +94,13 @@ class EntityController {
 }
 ```
 
-----
+<!--slide-->
 
 > What if now we need to the user to be of a specific type to comment ?
 
 > We need `EntityController` behavior to be extendable, without modifying the class every time.
 
-----
+<!--slide-->
 
 ```js
 class EntityController {
@@ -118,7 +118,7 @@ class EntityController {
 }
 ```
 
-----
+<!--slide-->
 
 
 ```js
@@ -144,7 +144,7 @@ ctrl.addComment('a comment')
 Now `EntityController` is extendable with more validations, without actually modifying the class.
 
 
-----
+<!--slide-->
 
 ### Liskov Substitution Principal (LSP)
 
@@ -152,7 +152,7 @@ Now `EntityController` is extendable with more validations, without actually mod
 
 > An object of a super class, should be replaced by any of its sub class objects, without altering the program.
 
-----
+<!--slide-->
 
 > The behavior of a subclass, should be as correct as the behavior of a super class.
 
@@ -163,11 +163,11 @@ Now `EntityController` is extendable with more validations, without actually mod
 > LSP violation breaks **polymorphism** principle.
 
 
-----
+<!--slide-->
 
 #### LSP Violation examples
 
-----
+<!--slide-->
 
 ##### The classic example: Rectangle/Square
 
@@ -197,11 +197,11 @@ square.getArea() === rectangle.getArea() // False
 
 Square violates rectangle laws of geometry.
 
-----
+<!--slide-->
 
 ![Liskov Substitution Principal](https://lostechies.com/derickbailey/files/2011/03/LiskovSubtitutionPrinciple_52BB5162.jpg)
 
-----
+<!--slide-->
 
 ##### Another example: The Penguin
 
@@ -223,7 +223,7 @@ class Penguin extends Bird {
 }
 ```
 
-----
+<!--slide-->
 
 > Duck will always behave as Bird.
 
@@ -241,7 +241,7 @@ function birdBehaviorSequence2 (bird) {
 }
 ```
 
-----
+<!--slide-->
 
 #### Interface segregation principle (ISP)
 
@@ -256,7 +256,7 @@ function birdBehaviorSequence2 (bird) {
 > Segregate, decompose your operations in small interfaces.
 
 
-----
+<!--slide-->
 
 #### About Interfaces
 
@@ -266,7 +266,7 @@ function birdBehaviorSequence2 (bird) {
 
 [source](https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612)
 
-----
+<!--slide-->
 
 > An interface is the description of the set of operations that an object could perform
 
@@ -274,7 +274,7 @@ function birdBehaviorSequence2 (bird) {
 
 > For a given "box", it declares the "inputs" and "outputs" of that box.
 
-----
+<!--slide-->
 
 ##### Real life interface: TV
 
@@ -288,7 +288,7 @@ function birdBehaviorSequence2 (bird) {
 
 
 
-----
+<!--slide-->
 
 Let's see a TV class:
 
@@ -307,7 +307,7 @@ class TV {
 > Some TVs may have more of buttons. But we all know what is the smallest set of buttons of a TV.
 
 
-----
+<!--slide-->
 
 > But, you have another device, the remote. You know how to use it as it has the same buttons (interface) as a TV.
 
@@ -318,7 +318,7 @@ class TV {
 > The object provided (device) is irrelevant, only the implemented buttons matter. Only the interface matters.
 
 
-----
+<!--slide-->
 
 ```js
 class TVInterface {
@@ -339,7 +339,7 @@ class TVRemove extends TVInterface {
 }
 ```
 
-----
+<!--slide-->
 
 > `TV` and `TVRemote` have the same interface.
 
@@ -347,7 +347,7 @@ class TVRemove extends TVInterface {
 
 > With an app, a cell phone can control the TV, as it implements the well know TV basic interface.
 
-----
+<!--slide-->
 
 > Our client `TVWatcher` only relies on an interface: the `TVInterface`.
 
@@ -366,7 +366,7 @@ class TVWatcher {
 
 ```
 
-----
+<!--slide-->
 
 #### To sum up
 
@@ -375,13 +375,13 @@ class TVWatcher {
 > * What are the operations
 > * What are the name of theses operations and its required inputs (parameters)
 
-----
+<!--slide-->
 
 #### Interface segregation principle (ISP)
 
 ![Interface segregation principle](https://lostechies.com/derickbailey/files/2011/03/InterfaceSegregationPrinciple_60216468.jpg)
 
-----
+<!--slide-->
 
 ##### Example of interface that needs to be segregated
 
@@ -400,7 +400,7 @@ class TVInterface {
 }
 ```
 
-----
+<!--slide-->
 
 > Now we have to created a minimalistic device `MiniRemote`.
 
@@ -409,7 +409,7 @@ class TVInterface {
 > But, as `TVInterface`as more methods, we should implement ALL its methods in `MiniRemote`
 
 
-----
+<!--slide-->
 
 If we had segregated our interface on design:
 
@@ -432,7 +432,7 @@ class VolumeControlInterface {
 TVWatcher would expect `ChannelsControlInterface` and `MiniRemote` would have to implement 2 methods, instead of 7.
 
 
-----
+<!--slide-->
 
 ### Dependency Inversion Principle (DIP)
 
@@ -444,11 +444,11 @@ TVWatcher would expect `ChannelsControlInterface` and `MiniRemote` would have to
 
 > DIP is all about how interfaces force input objects to have the methods we expect.
 
-----
+<!--slide-->
 
 ![Dependency Inversion Principle](https://lostechies.com/derickbailey/files/2011/03/DependencyInversionPrinciple_0278F9E2.jpg)
 
-----
+<!--slide-->
 
 > What are dependencies?
 > * Framework
@@ -460,7 +460,7 @@ TVWatcher would expect `ChannelsControlInterface` and `MiniRemote` would have to
 > * ...
 
 
-----
+<!--slide-->
 
 #### Real world example: City Hall
 
@@ -470,7 +470,7 @@ TVWatcher would expect `ChannelsControlInterface` and `MiniRemote` would have to
 
 > City Hall controls how to make request. You don't.
 
-----
+<!--slide-->
 
 #### Real world example: Car charging
 
@@ -482,7 +482,7 @@ TVWatcher would expect `ChannelsControlInterface` and `MiniRemote` would have to
 
 > The car controls the way a device should be charged with its interface.
 
-----
+<!--slide-->
 
 #### High level to low level Dependency
 
@@ -501,12 +501,12 @@ class FormCtrl {
 
 > If it changes, `FormCtrl` would have to be modified.
 
-----
+<!--slide-->
 
 ![DI](http://www.javabrahman.com/wp-content/uploads/Dependency-Inversion-Principle-Dependencies-Procedural-Systems.png)
 
 
-----
+<!--slide-->
 
 #### Inverting the control
 
@@ -531,17 +531,17 @@ class FormCtrl {
 }
 ```
 
-----
+<!--slide-->
 
 > `FormCtrl` depends on an abstraction, `IMessageService`.
 
 > Injected message dependency depends on a higher level abstraction, `IMessageService`.
 
-----
+<!--slide-->
 
 ![DI](http://www.javabrahman.com/wp-content/uploads/Dependency-Inversion-Principle-Dependencies-Object-Oriented-Systems.png)
 
-----
+<!--slide-->
 
 #### To sum up
 
@@ -549,7 +549,7 @@ class FormCtrl {
 
 > You decide what are the methods  and the input has to fullfill your requirements
 
----
+<!--section-->
 
 ####  General Responsibility Assignment Software Patterns (GRASP)
 
@@ -557,7 +557,7 @@ class FormCtrl {
 
 > They aid abstracting in a methodical, rational, explainable way.
 
-----
+<!--slide-->
 
 > Responsibility is defined as a contract or obligation of a  class and is related to behavior.
 
@@ -571,13 +571,13 @@ class FormCtrl {
 >   * Initiating action in other objects
 >   * Controlling and coordinating activities in other objects
 
-----
+<!--slide-->
 
 > GRASP patterns describe fundamental principles of assigning responsibilities to objects.
 
 > There are a number of principles for determining what counts as responsibility
 
-----
+<!--slide-->
 
 ##### Controller
 > Responsible of executing a use case or story.
@@ -589,7 +589,7 @@ overall activity.
 
 Example: a class in charge of managing a form.
 
-----
+<!--slide-->
 
 ##### Information Expert
 > Has all the data require for a particular process.
@@ -598,7 +598,7 @@ Example: a class in charge of managing a form.
 
 Example: A class in charge of filtering, processing a lot of instances of a class.
 
-----
+<!--slide-->
 
 ##### Creator
 
@@ -613,7 +613,7 @@ Example: A class in charge of filtering, processing a lot of instances of a clas
 
 Example: factories for simple instances, builders of complex objects
 
-----
+<!--slide-->
 
 ##### High Cohesion
 
@@ -627,7 +627,7 @@ Example: factories for simple instances, builders of complex objects
 
 Example: a class that saves to database and shows a message to user has low cohesion.
 
-----
+<!--slide-->
 
 ##### Indirection
 
@@ -639,7 +639,7 @@ Example: a class that saves to database and shows a message to user has low cohe
 
 Example: an events manager (publishers subscribers)
 
-----
+<!--slide-->
 
 ##### Pure Fabrication
 
@@ -649,7 +649,7 @@ Example: an events manager (publishers subscribers)
 
 Example: Object that only save information in a database
 
-----
+<!--slide-->
 
 ##### Low Coupling
 
@@ -664,7 +664,7 @@ Example: Object that only save information in a database
 
 ISP and DIP helps with the low coupling principle
 
-----
+<!--slide-->
 
 ##### Polymorphism
 
@@ -672,7 +672,7 @@ ISP and DIP helps with the low coupling principle
 
 > LSP helps with polymorphism.
 
-----
+<!--slide-->
 
 ##### Protected Variations
 
@@ -680,7 +680,7 @@ ISP and DIP helps with the low coupling principle
 
 > Open/Close Principle helps with protected variations.
 
-----
+<!--slide-->
 
 #### How to use GRASP ?
 
@@ -688,7 +688,7 @@ ISP and DIP helps with the low coupling principle
 
 > If your class relies on 8 other classes of different kind, your design is wrong.
 
----
+<!--section-->
 
 ## Practice
 
@@ -707,7 +707,7 @@ ISP and DIP helps with the low coupling principle
 http://jsbin.com/yozudi/edit?js,output
 
 
-----
+<!--slide-->
 
 > LoginForm has several responsibilities.
 > * Manage UI inputs
@@ -716,7 +716,7 @@ http://jsbin.com/yozudi/edit?js,output
 > * Change page
 
 
----
+<!--section-->
 
 ## Must Read
 

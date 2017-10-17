@@ -1,12 +1,12 @@
 # Design Patterns
 
-----
+<!--slide-->
 
 > A design pattern is a proven solution to common software development problems
 
 > A language that team can use to discuss about design
 
----
+<!--section-->
 
 ## Strategy Pattern
 
@@ -18,7 +18,7 @@
 
 > Separate what changes of may change from what stays the same
 
-----
+<!--slide-->
 
 ### Example: Entended inputs
 
@@ -44,7 +44,7 @@ class Input {
 }
 ```
 
-----
+<!--slide-->
 
 #### The problem
 
@@ -67,7 +67,7 @@ validate () {
 }
 ```
 
-----
+<!--slide-->
 
 > We need to encapsulate the validation implementation
 
@@ -86,7 +86,7 @@ var phoneValidator =  {
 }
 ```
 
-----
+<!--slide-->
 
 > Base class is created to hold the responsibility of abstract strategy implementation
 
@@ -101,7 +101,7 @@ class InputValidationStrategy {
 }
 ```
 
-----
+<!--slide-->
 
 > Strategy is implemented.
 
@@ -126,7 +126,7 @@ class InputPhone {
 }
 ```
 
-----
+<!--slide-->
 
 > The main strategy does not know anything about concrete strategies.
 
@@ -135,7 +135,7 @@ class InputPhone {
 > Code can be maintained with new strategies with less effort.
 
 
-----
+<!--slide-->
 
 ### Example: DuckLand
 
@@ -148,7 +148,7 @@ class InputPhone {
 [Source example](http://www.amazon.com/First-Design-Patterns-Elisabeth-Freeman/dp/0596007124/ref=sr_1_1?ie=UTF8&qid=1316512770&sr=8-1)
 
 
-----
+<!--slide-->
 
 #### OO Design
 
@@ -166,7 +166,7 @@ class RedheadDuck extends AbstractDuck {
 }
 ```
 
-----
+<!--slide-->
 
 #### New feature: ducks should fly
 
@@ -183,7 +183,7 @@ class AbstractDuck {
 }
 ```
 
-----
+<!--slide-->
 
 #### New feature: robot ducks are added to DuckLand
 
@@ -191,7 +191,7 @@ class AbstractDuck {
 > * PropellerDuck that swims with propeller jet and flies with propeller
 > * HybridDuck that swims with steam jet and flies with propeller
 
-----
+<!--slide-->
 
 ```js
 class SteamDuck extends AbstractDuck {
@@ -207,7 +207,7 @@ class HybridDuck extends SteamDuck {
 }
 ```
 
-----
+<!--slide-->
 
 ### Problem
 
@@ -215,7 +215,7 @@ class HybridDuck extends SteamDuck {
 
 > How do we do it without duplicating code, and preventing problem when new types of dick will be invented?
 
-----
+<!--slide-->
 
 > Inheritance is clearly not the response, as it does not allow our classes to change isolated behaviors, and lead to duplicated code...
 
@@ -223,7 +223,7 @@ class HybridDuck extends SteamDuck {
 
 > We must **encapsulate behaviors** that are different of may change
 
-----
+<!--slide-->
 
 > Let's implement abstract strategies in `AbstractDuck`
 
@@ -238,7 +238,7 @@ class AbstractDuck {
 }
 ```
 
-----
+<!--slide-->
 
 > Concrete strategies are implemented separately, in an encapsulate way...
 
@@ -257,7 +257,7 @@ class FlyWithSteamJet extends FlyBehavior {
 }
 ```
 
-----
+<!--slide-->
 
 > Our ducks are now close for modification, open for extension
 
@@ -287,14 +287,14 @@ class HybridDuck extends SteamDuck {
 }
 ```
 
-----
+<!--slide-->
 
 > Related OO Principles:
 > * Open-Close (SOLID)
 > * Protected Variations (GRASP)
 > * Favor composition over inheritance
 
----
+<!--section-->
 
 ## State Pattern
 
@@ -302,7 +302,7 @@ class HybridDuck extends SteamDuck {
 
 > It responds to the same problem, but is used for multiple behaviors that depend on the state of the object, not the type.
 
-----
+<!--slide-->
 
 ### Example: Super Mario Bros
 
@@ -310,7 +310,7 @@ class HybridDuck extends SteamDuck {
 
 > Depending of its state, Mario's behaviors change depending of his state...
 
-----
+<!--slide-->
 
 ```js
 const NORMAL = 'MARIO', TALL = 'TALL_MARIO', INVINCIBLE = 'SUPER_MARIO'
@@ -350,7 +350,7 @@ class SuperMario {
 ```
 
 
-----
+<!--slide-->
 
 > That's a log of code, and a lot of "if" statements.
 
@@ -360,7 +360,7 @@ class SuperMario {
 
 > We need to encapsulated behaviors that depend on MArios's state
 
-----
+<!--slide-->
 
 #### Implementing the State Pattern
 
@@ -387,7 +387,7 @@ class TallMario extends MarioState {
 }
 ```
 
-----
+<!--slide-->
 
 > `SuperMario` now uses its states to behave...
 
@@ -407,21 +407,21 @@ class SuperMario {
 }
 ```
 
-----
+<!--slide-->
 
 ### Example: Gumball Machine
 
 https://github.com/tcorral/Design-Patterns-in-Javascript/blob/es6/State/
 
 
-----
+<!--slide-->
 
 > Related OO Principles:
 > * High Cohesion (GRASP)
 > * Favor composition over inheritance
 
 
----
+<!--section-->
 
 ## Multi Inheritance Pattern
 
@@ -432,7 +432,7 @@ https://github.com/tcorral/Design-Patterns-in-Javascript/blob/es6/State/
 > In this case, interfaces are created on the fly.
 
 
-----
+<!--slide-->
 
 ```js
 const Flyable = Sup => class extends Sup {
@@ -454,13 +454,13 @@ class Duck extends Swimable(Flyable(null)) {
 
 [Source](https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Multi-Inheritance-ES6)
 
-----
+<!--slide-->
 
 > Related OO Principles:
 > * Interface Segregation Principle (SOLID)
 > * Favor composition over inheritance
 
----
+<!--section-->
 
 ## Publisher/Subscriber Pattern
 
@@ -471,7 +471,7 @@ class Duck extends Swimable(Flyable(null)) {
 > **Caution:** easy to overuse and make relationship between modules confusing.
 
 
-----
+<!--slide-->
 
 ```js
 // pubsub.js
@@ -500,7 +500,7 @@ export default {
 };
 ```
 
-----
+<!--slide-->
 
 A global session object that publishes changes by events
 
@@ -519,7 +519,7 @@ export class Session {
 }
 ```
 
-----
+<!--slide-->
 
 The header, which always displays currents user's name, listens to the event:
 
@@ -545,7 +545,7 @@ class AppHeader {
 
 Note: **Always** remember to unregister handlers when you don't need them anymore.
 
-----
+<!--slide-->
 
 > Communication takes place over a named channel.
 
@@ -555,13 +555,13 @@ Note: **Always** remember to unregister handlers when you don't need them anymor
 
 > Subscription can return a destroy method to unsubscribe events.
 
-----
+<!--slide-->
 
 > Related OO Principles:
 > * Low coupling
 > * Indirection (GRASP)
 
----
+<!--section-->
 
 ## Observer Pattern
 
@@ -576,7 +576,7 @@ Note: **Always** remember to unregister handlers when you don't need them anymor
 > Subject's interface should include observing, unobserving and notifying methods.
 
 
-----
+<!--slide-->
 
 ### Example: Implementation of  Weather console
 
@@ -584,7 +584,7 @@ Note: **Always** remember to unregister handlers when you don't need them anymor
 
 > Each time data is update, we want it to be logged to the console
 
-----
+<!--slide-->
 
 > Data object with observing, unobserving and notifying methods.
 
@@ -610,7 +610,7 @@ class WeatherData {
 }
 ```
 
-----
+<!--slide-->
 
 ```js
 class WeatherConsole {
@@ -625,13 +625,13 @@ class WeatherConsole {
 
 ```
 
-----
+<!--slide-->
 
 > We know that many other types of data could apply the observer pattern
 
 > Then, it's convenient to encapsulated the observer behavior as a separated responsibility.
 
-----
+<!--slide-->
 
 ```js
 class Observable {
@@ -661,7 +661,7 @@ class WeatherData extends Observable {
 }
 ```
 
-----
+<!--slide-->
 
 #### Caution! Never forget to unobserve on tear down
 
@@ -681,7 +681,7 @@ class WheatherConsole {
 }
 ```
 
-----
+<!--slide-->
 
 We can also extract the "observer" behavior, as we did with "observable"
 
@@ -699,7 +699,7 @@ class Observer {
 }
 ```
 
-----
+<!--slide-->
 
 ```js
 class WheatherConsole extends Observer {
@@ -718,7 +718,7 @@ class WheaterEmailer extends Observer {
 ```
 
 
-----
+<!--slide-->
 
 ### Example: EventEmitter-based implementation
 
@@ -748,20 +748,20 @@ class Observer {
 
 [EventEmitter](https://nodejs.org/api/events.html)
 
-----
+<!--slide-->
 
 ### Example: Interface-based implementation
 
 https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Observer
 
-----
+<!--slide-->
 
 > Related OO Principles:
 > * Indirection (GRASP)
 > * Low coupling
 > * Favor composition over inheritance
 
----
+<!--section-->
 
 ## Decorator Pattern
 
@@ -773,7 +773,7 @@ https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Observer
 
 > OCP tells us to open for extension. Decorator is a pattern to open for decoration.
 
-----
+<!--slide-->
 
 ### Example: CoffeeShop
 
@@ -781,7 +781,7 @@ https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Observer
 
 > Each coffee has a different cost
 
-----
+<!--slide-->
 
 ```js
 class Beverage {
@@ -805,13 +805,13 @@ class DarkRoast extends Beverage {
 }
 ```
 
-----
+<!--slide-->
 
 > In addition to your coffee, you can also ask for several condiments: milk, soy, and mocha (chocolate)
 
 > A coffee can have several condiments, that have their own cost.
 
-----
+<!--slide-->
 
 ### How do we solve the problem?
 
@@ -821,7 +821,7 @@ class DarkRoast extends Beverage {
 > With Strategy?
 > Strategy is useful for conditional behavior. In this case, we are talking about nested behaviors.
 
-----
+<!--slide-->
 
 > Let's try the Decorator Pattern
 
@@ -845,7 +845,7 @@ class Mocha extends CondimentDecorator {
 }
 ```
 
-----
+<!--slide-->
 
 > Decorators have the same supertype as the objects they decorate.
 
@@ -854,7 +854,7 @@ class Mocha extends CondimentDecorator {
 > The decorator adds its own behavior either before and/or after delegating to the object it decorates to do the rest of the job.
 
 
-----
+<!--slide-->
 
 ```js
 import Espresso from './espresso'
@@ -871,14 +871,14 @@ console.log(beverage.getDescription() + “ $” + beverage.cost())
 
 [Full implementation](https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Decorator)
 
-----
+<!--slide-->
 
 > Related OO Principles:
 > * Open/Close Principle (SOLID)
 > * Favor composition over inheritance
 > * Low coupling
 
----
+<!--section-->
 
 ## Factory Pattern
 
@@ -892,7 +892,7 @@ console.log(beverage.getDescription() + “ $” + beverage.cost())
 
 > The knowledge os how objects are created is delegated to the factory, as a separated responsibility.
 
-----
+<!--slide-->
 
 ```js
 import Espresso from './espresso'
@@ -922,7 +922,7 @@ class CoffeeShop {
 }
 ```
 
-----
+<!--slide-->
 
 > CoffeeShop has got dependencies: Espresso, Decaf, DarkRoast, ...
 
@@ -932,7 +932,7 @@ class CoffeeShop {
 
 > It's definitely an **implementation**, a responsibility.
 
-----
+<!--slide-->
 
 ```js
 class BeverageFactory {
@@ -960,13 +960,13 @@ class BeverageFactory {
 }
 ```
 
-----
+<!--slide-->
 
 > Now CoffeeShop doesn't have to know anything about how to create and condiment.
 
 > If the way to prepare a coffee changes, CoffeeShop won't have to change.
 
-----
+<!--slide-->
 
 ```js
 class CoffeeShop {
@@ -977,13 +977,13 @@ class CoffeeShop {
 }
 ```
 
-----
+<!--slide-->
 
 > Our `BeverageFactory` still depends on many classes.
 
 > What if we need a "HealthyCoffeeShop" that uses different condiments?
 
-----
+<!--slide-->
 
 ```js
 var const COFFEE = {
@@ -1001,7 +1001,7 @@ class CoffeeFactory {
 }
 ```
 
-----
+<!--slide-->
 
 ```js
 var const CONDIMENT = {
@@ -1019,7 +1019,7 @@ class CondimentFactory {
 }
 ```
 
-----
+<!--slide-->
 
 ```js
 class BeverageFactory {
@@ -1034,7 +1034,7 @@ class BeverageFactory {
 }
 ```
 
-----
+<!--slide-->
 
 ```js
 class CoffeeShop {
@@ -1048,7 +1048,7 @@ class CoffeeShop {
 }
 ```
 
-----
+<!--slide-->
 
 ```js
 class HealthyCondimentFactory extends BeverageFactory  {
@@ -1065,14 +1065,14 @@ class HealthyCoffeeShop extends CoffeeShop {
 }
 ```
 
-----
+<!--slide-->
 
 > Related OO Principles:
 > * Creator (GRASP)
 > * Pure Fabrication (GRASP)
 > * Open-Close Principle (SOLID)
 
----
+<!--section-->
 
 ## Singleton Pattern
 
@@ -1082,7 +1082,7 @@ class HealthyCoffeeShop extends CoffeeShop {
 
 > Point access creates its own instance and returns always the first one created.
 
-----
+<!--slide-->
 
 ### Example: Cache global object with instance getter
 
@@ -1113,13 +1113,13 @@ cache.set('myVar', 1)
 
 Note: `Cache` constructor remains private.
 
-----
+<!--slide-->
 
 > Instance getter is explicit.
 
 > Consumer is forced to always explicitly call the `getInstance` function.
 
-----
+<!--slide-->
 
 ### Example: Cache global object with unique instance return
 
@@ -1139,7 +1139,7 @@ import cache from './cache'
 cache.set('myVar', 1)
 ```
 
-----
+<!--slide-->
 
 > Simple import.
 
@@ -1147,7 +1147,7 @@ cache.set('myVar', 1)
 
 > If use of `Cache` is conditional, it will be instantiated anyways...
 
----
+<!--section-->
 
 ## Command Pattern
 
@@ -1159,7 +1159,7 @@ cache.set('myVar', 1)
 
 > Commands contains everything require for an operation and exposes an `execute` method.
 
-----
+<!--slide-->
 
 ### Example: Assign commands to remote
 
@@ -1177,7 +1177,7 @@ class TurnOnCommand extends ICommand { // Command receiver
 }
 ```
 
-----
+<!--slide-->
 
 ```js
 class RemoteControlButton { // Command invoker
@@ -1199,7 +1199,7 @@ class RemoteControl {
 }
 ```
 
-----
+<!--slide-->
 
 ### Example: Alarms UI
 
@@ -1226,7 +1226,7 @@ alarms.forEach(function(alarm){
 })
 ```
 
----
+<!--section-->
 
 ## Adapter Pattern
 
@@ -1235,7 +1235,7 @@ alarms.forEach(function(alarm){
 > Used to avoid extensive refactoring when a dependency changes
 
 
-----
+<!--slide-->
 
 ### Example: From console logging to remote logging
 
@@ -1251,7 +1251,7 @@ var logger = LoggerFactory.getLogger();
 logger.log("something happened");
 ```
 
-----
+<!--slide-->
 
 > Another logger, used in another app logs remotely through a web service
 
@@ -1267,7 +1267,7 @@ class AjaxLogger {
 }
 ```
 
-----
+<!--slide-->
 
 > We cant the AjaxLogger to be the main logger of our application
 
@@ -1286,7 +1286,7 @@ class LoggerFactory {
 }
 ```
 
----
+<!--section-->
 
 ## Façade Pattern
 
@@ -1296,7 +1296,7 @@ class LoggerFactory {
 
 > Protects from effects of change of a subsystem.
 
-----
+<!--slide-->
 
 ### Example: Jquery is THE Façade to forget about cross-browser's implementations
 
@@ -1317,7 +1317,7 @@ function click(element, func) {
 }
 ```
 
-----
+<!--slide-->
 
 ```js
 $(element).css({ top: '30px', left: '100px' })
@@ -1331,7 +1331,7 @@ function css(element, properties) {
 }
 ```
 
----
+<!--section-->
 
 ## Template Method Pattern
 
@@ -1343,7 +1343,7 @@ function css(element, properties) {
 
 > Can be used as hooks.
 
-----
+<!--slide-->
 
 ## Example: Decomposing algorithms
 
@@ -1365,7 +1365,7 @@ class CustomParser extends Parser {
 }
 ```
 
-----
+<!--slide-->
 
 ## Example: Hooks
 
@@ -1384,7 +1384,7 @@ class MyController extends BaseController {
 }
 ```
 
-----
+<!--slide-->
 
 ## Example: Implicit template methods
 
@@ -1403,13 +1403,13 @@ class Person {
 console.log(new Person("Evan", "Graham") == 'Evan Graham') // true
 ```
 
-----
+<!--slide-->
 
 > Related OO Principles:
 > * Open/Close Principle (SOLID)
 > * Protected variations (GRASP)
 
----
+<!--section-->
 
 ## Composite Pattern
 
@@ -1423,7 +1423,7 @@ console.log(new Person("Evan", "Graham") == 'Evan Graham') // true
 
 > Traversal of a tree is usually implicit.
 
-----
+<!--slide-->
 
 ### Example: Jquery interface
 
@@ -1437,7 +1437,7 @@ $(element).css({ opacity: .5 })
 
 ```
 
-----
+<!--slide-->
 
 ### Example: People Tree
 
@@ -1463,7 +1463,7 @@ class Person {
 }
 ```
 
----
+<!--section-->
 
 ## Proxy Pattern
 
@@ -1476,7 +1476,7 @@ class Person {
 > May throttle requests to the object of include cache for performance.
 
 
-----
+<!--slide-->
 
 ### Example: Cache Proxy
 
@@ -1491,7 +1491,7 @@ class Users {
 }
 ```
 
-----
+<!--slide-->
 
 #### Improving performance with cache
 
@@ -1520,7 +1520,7 @@ class UsersProxy {
 ```
 
 
-----
+<!--slide-->
 
 ### Example: Debounce Proxy
 
@@ -1548,7 +1548,7 @@ class UsersPaginator {
 
 Note: What if user clicks "nextPage" button very fastly. We really need to load the list when he stops clicking...
 
-----
+<!--slide-->
 
 ```js
 class UsersPaginatorProxy extends UsersPaginator {
@@ -1561,7 +1561,7 @@ class UsersPaginatorProxy extends UsersPaginator {
 [_.debounce](http://underscorejs.org/#debounce)
 [Debouncing - CSS tricks](https://css-tricks.com/the-difference-between-throttling-and-debouncing/)
 
-----
+<!--slide-->
 
 ### Example: Proxy method to extend behavior
 
@@ -1574,7 +1574,7 @@ jQuery.ajax = function() {
 ```
 
 
----
+<!--section-->
 
 ## Model-View-Controller, the compound pattern
 
@@ -1585,7 +1585,7 @@ jQuery.ajax = function() {
 > Model on a side, View on another, Controller in between.
 
 
-----
+<!--slide-->
 
 ### The Model
 
@@ -1593,7 +1593,7 @@ jQuery.ajax = function() {
 
 > Model can send notifications of state changes to observers.
 
-----
+<!--slide-->
 
 ### The View
 
@@ -1605,7 +1605,7 @@ jQuery.ajax = function() {
 
 > View gets the state and data it needs to display from the model.
 
-----
+<!--slide-->
 
 ### The Controller
 
@@ -1619,11 +1619,11 @@ jQuery.ajax = function() {
 
 > Controller separates the logic of control from the view so the view can be reused with other models.
 
-----
+<!--slide-->
 
 ### Patterns composition
 
-----
+<!--slide-->
 
 #### Controller is kind of a strategy
 
@@ -1631,20 +1631,20 @@ jQuery.ajax = function() {
 
 > Controller is a concrete strategy of the view
 
-----
+<!--slide-->
 
 #### View tend to implement the Composite pattern
 
 > It accesses the document component that contains other DOM components that contains other DOM components.
 
-----
+<!--slide-->
 
 #### Model implements Observer Pattern
 
 > It communicates state changes to the View of Controller through events.
 
 
-----
+<!--slide-->
 
 ### Example: Mp3 player
 
@@ -1654,7 +1654,7 @@ jQuery.ajax = function() {
 
 > It has 4 buttons (the view): stop, next song, previous song, shuffle.
 
-----
+<!--slide-->
 
 > Let's retrieve `Observable` we created for our WeatherData example.
 
@@ -1679,7 +1679,7 @@ class Observable {
 }
 ```
 
-----
+<!--slide-->
 
 #### Model
 
@@ -1697,7 +1697,7 @@ class PlayList extends Observable {
 }
 ```
 
-----
+<!--slide-->
 
 #### Controller
 
@@ -1724,7 +1724,7 @@ class PlayerCtrl {
 }
 ```
 
-----
+<!--slide-->
 
 #### View
 
@@ -1752,11 +1752,11 @@ class PlayerView {
 }
 ```
 
----
+<!--section-->
 
 ## Summing up
 
-----
+<!--slide-->
 
 ### Creational Patterns
 
@@ -1766,7 +1766,7 @@ class PlayerView {
 > * Factory
 > * Builder
 
-----
+<!--slide-->
 
 ### Structural Patterns
 
@@ -1779,7 +1779,7 @@ class PlayerView {
 > * Composite
 > * Bridge
 
-----
+<!--slide-->
 
 ### Behavioral Patterns
 
@@ -1793,7 +1793,7 @@ class PlayerView {
 > * Strategy
 > * Mediator
 
----
+<!--section-->
 
 ## Must Read
 

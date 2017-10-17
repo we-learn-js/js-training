@@ -10,6 +10,6 @@
   "revealTemplate": "src/slideshow/template/reveal.html",
   "listingTemplate": "src/slideshow/template/listing.html",
   "title": "JS Training",
-  "separator": "^(\r\n?|\n)---(\r\n?|\n)$",
-  "verticalSeparator": "^(\r\n?|\n)----(\r\n?|\n)$"
+  "separator": "<!--section-->",
+  "verticalSeparator": "<!--slide-->"
 }

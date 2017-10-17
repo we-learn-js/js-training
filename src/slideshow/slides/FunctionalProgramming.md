@@ -2,13 +2,13 @@
 
 Note: Estimated time: 1h
 
----
+<!--section-->
 
 ## What is functional programming?
 
 A programming paradigm.
 
-----
+<!--slide-->
 
 
 ### What is a programming paradigm?
@@ -17,7 +17,7 @@ A programming paradigm.
 
 > Programming paradigms are a way to classify programming languages according to the style of computer programming.
 
-----
+<!--slide-->
 
 **Other programming paradigms:**
 
@@ -26,7 +26,7 @@ A programming paradigm.
 * [and many more](https://en.wikipedia.org/wiki/Comparison_of_programming_paradigms#Main_paradigm_approaches)
 
 
-----
+<!--slide-->
 
 ### Main concepts
 
@@ -41,15 +41,15 @@ A programming paradigm.
 * **Recursion**
 | don't iterate (no loops)
 
----
+<!--section-->
 
 ## First-class functions
 
-----
+<!--slide-->
 
 > Functions to be treated like any other value. This means they can be created, passed to functions, returned from functions and stored inside data structures
 
-----
+<!--slide-->
 
 ### Functions are objects
 
@@ -65,7 +65,7 @@ console.log(typeof logToConsole);
 
 [Function at MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)
 
-----
+<!--slide-->
 
 ### Functions are objects
 
@@ -81,7 +81,7 @@ Is the same as:
 var logToConsole = new Function('text', 'console.log(text)');
 ```
 
-----
+<!--slide-->
 
 As objects, they can have properties, methods, etc.
 ```js
@@ -90,7 +90,7 @@ console.log(logToConsole.count);
 // 1
 ```
 
-----
+<!--slide-->
 
 ### Functions can be stored as variables
 
@@ -103,7 +103,7 @@ var log = logToConsole
 log('Hello World')
 ```
 
-----
+<!--slide-->
 
 ### Functions can be passed as parameter
 
@@ -114,7 +114,7 @@ var doubles = numbers.map(function(num) {
 });
 ```
 
-----
+<!--slide-->
 
 ### Functions can be returned
 
@@ -128,21 +128,21 @@ increment3(5)
 // 8
 ```
 
----
+<!--section-->
 
 ## Immutability
 
-----
+<!--slide-->
 
 > An immutable object is an object whose state cannot be modified after it is created.
 
 > A function is not supposed to mutate its input(s) but to return a newly created output
 
-----
+<!--slide-->
 
 ![input-output](https://perfectmaths.files.wordpress.com/2011/06/function_composite_fx.png?w=604)
 
-----
+<!--slide-->
 
 ### Data mutation in a function
 
@@ -163,7 +163,7 @@ console.log(incrementedNumbers) // [5, 6, 7]
 
 Note: in this function, `numbers` is mutated by `increment1`
 
-----
+<!--slide-->
 
 ### Without mutation
 
@@ -185,7 +185,7 @@ console.log(incrementedNumbers) // [5, 6, 7]
 
 Note: in this function, `numbers` is not mutated and an output array is created instead.
 
----
+<!--section-->
 
 ## Lambdas
 
@@ -198,7 +198,7 @@ Note: in this function, `numbers` is not mutated and an output array is created 
 
 Note: In JavaScript, not all lambdas are anonymous, and not all anonymous functions are lambdas, so the distinction has some practical meaning.
 
-----
+<!--slide-->
 
 > λx.x*x
 
@@ -215,7 +215,7 @@ var squares = [3,4,6].map( x => x*x )
 
 Note: Both `square` functions can be considered lambdas, but the first one would be the more pure as expressed as an expression
 
-----
+<!--slide-->
 
 > λx.λ.y.x+y
 
@@ -226,7 +226,7 @@ function plus(x,y) {
 plus(5,7);
 ```
 
-----
+<!--slide-->
 
 > λx.λ.y.x+y
 
@@ -249,7 +249,7 @@ becomes
 
 Note: `plus` is a lambda expression, even if it´s not anonymous.
 
-----
+<!--slide-->
 
 ### Closures
 
@@ -257,11 +257,11 @@ Note: `plus` is a lambda expression, even if it´s not anonymous.
 
 > A closure is a special kind of object that combines two things: a function, and the environment in which that function was created.
 
-----
+<!--slide-->
 
 ![closures](http://awcdev.com/wp-content/uploads/2015/05/closure.jpg)
 
-----
+<!--slide-->
 
 ```js
 function makeFunc() {
@@ -278,7 +278,7 @@ myFunc();
 
 Note: When `displayName` is created, `name` is added to its closure with its value 'Mozilla'
 
-----
+<!--slide-->
 
 ```js
 function makeAdder(x) {
@@ -298,7 +298,7 @@ https://jsbin.com/jegerel/edit?js,console
 Note: When `add` is created, `x` is added to its closure with its current value. First with `x=5` and then with `x=10`
 That´s why, `add5` and `add10` return different values as they have a different `x` in their closure.
 
----
+<!--section-->
 
 ## Absence of side effects
 
@@ -306,7 +306,7 @@ That´s why, `add5` and `add10` return different values as they have a different
 
 > It doesn’t change data that exists outside the current function.
 
-----
+<!--slide-->
 
 ### Statelessness
 
@@ -315,7 +315,7 @@ That´s why, `add5` and `add10` return different values as they have a different
 
 > An expression in a programming language can be “stateful” or “stateless”. A stateful expression is one that changes a program’s current environment.
 
-----
+<!--slide-->
 
 ### Don´t change state
 
@@ -337,7 +337,7 @@ var increment = function(n) {
 increment(number);
 ```
 
-----
+<!--slide-->
 
 ### Don´t depend on state
 
@@ -358,7 +358,7 @@ function isMillennial(birthday) {
 ```
 
 
----
+<!--section-->
 
 ## Recursion
 
@@ -367,13 +367,13 @@ function isMillennial(birthday) {
 > A recursive function is one that calls itself
 
 
-----
+<!--slide-->
 
 #### Don't iterate
 
 > Use recursion functions instead: map, reduce, filter, etc...
 
-----
+<!--slide-->
 
 Imperative style
 ```js
@@ -392,11 +392,11 @@ var squares = numbers.map( function (num) {
 } )
 ```
 
----
+<!--section-->
 
 ## More about functions
 
-----
+<!--slide-->
 
 ### Pure functions
 
@@ -404,7 +404,7 @@ var squares = numbers.map( function (num) {
 * Produces no side effect: user output, memory writing, logging...
 * Does not mutate input
 
-----
+<!--slide-->
 
 
 ### Impure functions
@@ -414,7 +414,7 @@ var squares = numbers.map( function (num) {
 * Side effects
 * Mutation
 
-----
+<!--slide-->
 
 
 ### Higher-order functions
@@ -436,7 +436,7 @@ var isNotNaN = negate(isNaN);
 show(isNotNaN(NaN));
 ```
 
-----
+<!--slide-->
 
 #### map()
 
@@ -452,7 +452,7 @@ var doubles = numbers.map(function(num) {
 
 ```
 
-----
+<!--slide-->
 
 ### Exercise: map implementation
 
@@ -474,7 +474,7 @@ console.log(
 
 https://jsbin.com/yaqite/edit?js,console
 
-----
+<!--slide-->
 
 #### Solution
 
@@ -488,7 +488,7 @@ Array.prototype.map2 = function(func) {
 };
 ```
 
-----
+<!--slide-->
 
 #### reduce()
 
@@ -510,7 +510,7 @@ var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
 // flattened is [0, 1, 2, 3, 4, 5]
 ```
 
-----
+<!--slide-->
 
 ### Exercise: reduce
 
@@ -531,7 +531,7 @@ console.log(
 
 https://jsbin.com/cubidal/edit?js,console
 
-----
+<!--slide-->
 
 #### Solution
 
@@ -544,11 +544,11 @@ function countZeroes(array) {
 }
 ```
 
----
+<!--section-->
 
 ## Is Javascript really functional?
 
-----
+<!--slide-->
 
 ### It is
 
@@ -558,7 +558,7 @@ function countZeroes(array) {
 * Higher order functions (pass functions to functions)
 
 
-----
+<!--slide-->
 
 #### But it can also be Imperative
 > Sequence of steps/instructions that happen in order and modifies the state
@@ -567,7 +567,7 @@ function countZeroes(array) {
 * for loops
 * ...
 
-----
+<!--slide-->
 
 #### And it's also Object-oriented
 
@@ -578,11 +578,11 @@ function countZeroes(array) {
 * Prototype inheritance
 * ES6 introduces "real" classes
 
-----
+<!--slide-->
 
 ### Javascript is a multi-paradigm programming language
 
-----
+<!--slide-->
 
 **Imperative style: `loops`**
 
@@ -598,7 +598,7 @@ function simpleJoin(stringArray) {
 
 Note: program state change is achieved by executing a series of statements, and does flow control primarily using conditional statements, loop statements and function calls.
 
-----
+<!--slide-->
 
 **Functional style: `recursion`**
 
@@ -616,7 +616,7 @@ https://jsbin.com/mocaya/edit?js,console,output
 
 Note: does not have any loop statements. Instead it uses recursion for iteration.
 
-----
+<!--slide-->
 
 And even more functional:
 
@@ -630,7 +630,7 @@ simpleJoin(['a', 'b', 'c'] , 0, '')
 
 Note: does not have any `if`. It uses an expression that evaluate to some value, instead of statements that don’t evaluate to anything.
 
-----
+<!--slide-->
 
 Taking advantage of ES6:
 
@@ -644,7 +644,7 @@ simpleJoin(['a', 'b', 'c'])
 
 ```
 
-----
+<!--slide-->
 
 **Object-oriented style: `as method`**
 
@@ -660,7 +660,7 @@ Array.prototype.simpleJoin = function() {
 
 Note: Object oriented languages tend to be imperative languages also. In this case the statements act on array object, not a given array.
 
-----
+<!--slide-->
 
 ### Functional libraries for javascript
 
@@ -670,18 +670,18 @@ Note: Object oriented languages tend to be imperative languages also. In this ca
 * [lazy-js](http://danieltao.com/lazy.js/)
 * etc
 
----
+<!--section-->
 
 ## Questions
 
-----
+<!--slide-->
 
 ### Recursion
 
 
 #### Should we choose recursion over loops?
 
-----
+<!--slide-->
 
 > "Recursion is not intrinsically better or worse than loops - each has advantages and disadvantages, and those even depend on the programming language (and implementation)."
 
@@ -689,7 +689,7 @@ Note: Object oriented languages tend to be imperative languages also. In this ca
 
 [Source (stackoferflow)](http://programmers.stackexchange.com/questions/182314/recursion-or-while-loops)
 
-----
+<!--slide-->
 
 > "The problem with recursion is that it (usually) uses more memory, a lot more. That's because each active call to a function is stored on what's called a [call stack](https://egghead.io/lessons/javascript-call-stack)."
 
@@ -699,13 +699,13 @@ Note: Object oriented languages tend to be imperative languages also. In this ca
 
 [Source (reddit)](https://www.reddit.com/r/javascript/comments/2byqst/recursion_vs_while_loops_js/)
 
-----
+<!--slide-->
 
 > "In my opinion, recursive algorithms are a natural fit when the data structure is also recursive."
 
 [Source (stackoverflow)](http://stackoverflow.com/questions/1011448/necessary-uses-of-recursion-in-imperative-languages)
 
-----
+<!--slide-->
 
 > "Practically speaking, if you're not using recursion for the following (even in imperative languages) you're a little mad:
 > * Tree traversal
@@ -715,7 +715,7 @@ Note: Object oriented languages tend to be imperative languages also. In this ca
 
 [Source (stackoverflow)](http://stackoverflow.com/questions/1011448/necessary-uses-of-recursion-in-imperative-languages)
 
-----
+<!--slide-->
 
 Traverse with recursion
 ```js
@@ -728,7 +728,7 @@ function traverse (current, depth) {
 }
 ```
 
-----
+<!--slide-->
 
 Traverse with iteration
 ```js
@@ -747,18 +747,18 @@ function traverse (current) {
 }
 ```
 
-----
+<!--slide-->
 
 Let's see if what we've read is true.
 
 https://jsbin.com/qajegal/edit?js,console
 
----
+<!--section-->
 
 ## Practice
 
 
-----
+<!--slide-->
 
 ### Exercise: print array
 
@@ -781,7 +781,7 @@ printArray(names, console) // OUTPUT: "Ben" "Jafar" "Matt"
 
 https://jsbin.com/kokoqe/edit?js,console
 
-----
+<!--slide-->
 
 #### Solution
 
@@ -793,7 +793,7 @@ Note: Why not using map? Map is to created to return a new array. We don´t need
 
 
 
-----
+<!--slide-->
 
 ### Exercise: chaining
 
@@ -814,7 +814,7 @@ console.log(getBestVideosIds(videos)) // OUTPUT [654356453, 675465]
 
 https://jsbin.com/junawu/edit?js,console
 
-----
+<!--slide-->
 
 #### Solution
 
@@ -829,7 +829,7 @@ function getBestVideosIds (videos) {
 }
 ```
 
-----
+<!--slide-->
 
 ### Exercise: recursion
 
@@ -847,7 +847,7 @@ repeat( () => console.log(1), 7 )
 
 https://jsbin.com/joneliv/edit?js,console
 
-----
+<!--slide-->
 
 #### Solution
 
@@ -859,7 +859,7 @@ function repeat(operation, num) {
 }
 ```
 
-----
+<!--slide-->
 
 ### Exercise: immutability
 
@@ -883,7 +883,7 @@ clonedData.users[0].games[0].name = 'Fake game name'
 
 https://jsbin.com/kulufo/edit?js,console,output
 
-----
+<!--slide-->
 
 #### Solution
 
@@ -907,7 +907,7 @@ function clone(data) {
 ```
 
 
-----
+<!--slide-->
 
 ### Exercise: abstraction
 
@@ -922,7 +922,7 @@ console.log(
 
 https://jsbin.com/sotepiq/edit?js,console
 
-----
+<!--slide-->
 
 #### Solution
 
@@ -945,7 +945,7 @@ function countZeroes(array) {
 
 Note: now the code is pure and much more functional and reusable; each function does a single thing.
 
----
+<!--section-->
 
 ## The end
 

@@ -1,11 +1,11 @@
 
 # Testing In Javascript
 
----
+<!--section-->
 
 ## Unit testing
 
-----
+<!--slide-->
 
 ### How does it look like?
 
@@ -26,7 +26,7 @@ it('Array.indexOf should return -1 when the value is not present', function () {
 
 https://jsbin.com/jovanep/edit?js,output
 
-----
+<!--slide-->
 
 ### Testing frameworks
 
@@ -39,7 +39,7 @@ https://jsbin.com/jovanep/edit?js,output
 > There are many testing frameworks: YUI test, Jasmine, **Mocka**, JSUnit, and many more...
 
 
-----
+<!--slide-->
 
 #### MochaJs
 
@@ -53,7 +53,7 @@ https://jsbin.com/jovanep/edit?js,output
 
 [Mocha](https://mochajs.org/)
 
-----
+<!--slide-->
 
 ```js
 describe('Array', function () {
@@ -70,7 +70,7 @@ describe('Array', function () {
 https://jsbin.com/yukori/edit?js,output
 
 
-----
+<!--slide-->
 
 #### Describing your tests
 
@@ -80,7 +80,7 @@ https://jsbin.com/yukori/edit?js,output
 
 > [Better Specs](http://betterspecs.org/) (based on ruby), is a good source to help your make better tests descriptions.
 
-----
+<!--slide-->
 
 ```js
 describe('Array', function () {
@@ -99,7 +99,7 @@ describe('Array', function () {
 })
 ```
 
-----
+<!--slide-->
 
 ```js
 describe('Array', function () {
@@ -125,7 +125,7 @@ describe('Array', function () {
 https://jsbin.com/buzava/edit?js,output
 
 
-----
+<!--slide-->
 
 
 ### Assertion libraries
@@ -138,7 +138,7 @@ https://jsbin.com/buzava/edit?js,output
 
 > Many libraries offer slightly different interfaces: Must, Jasmine, Should, **Chai**, ...
 
-----
+<!--slide-->
 
 
 #### Chai
@@ -149,7 +149,7 @@ https://jsbin.com/buzava/edit?js,output
 
 [Chai](http://chaijs.com/)
 
-----
+<!--slide-->
 
 #### Expect
 
@@ -162,7 +162,7 @@ expect(foo).to.have.lengthOf(3)
 expect(tea).to.have.property('flavors').with.lengthOf(3)
 ```
 
-----
+<!--slide-->
 
 #### Assert
 
@@ -176,7 +176,7 @@ assert.property(tea, 'flavors')
 assert.lengthOf(tea.flavors, 3)
 ```
 
-----
+<!--slide-->
 
 #### Should
 
@@ -189,7 +189,7 @@ foo.should.have.lengthOf(3)
 tea.should.have.property('flavors').with.lengthOf(3)
 ```
 
-----
+<!--slide-->
 
 #### Main Assertions
 
@@ -202,7 +202,7 @@ expect(object).to
   .contain(val) // assert the inclusion of an object in an array or a substring in a string
 ```
 
-----
+<!--slide-->
 
 #### to.be
 
@@ -221,7 +221,7 @@ expect(object).to.be
 
 ```
 
-----
+<!--slide-->
 
 #### Comparison
 
@@ -235,7 +235,7 @@ expect(object).to
   // Asserts that the target passes a given truth test.
 ```
 
-----
+<!--slide-->
 
 #### Output of a function
 
@@ -245,7 +245,7 @@ expect( function() { ... } ).to
   .throw(ReferenceError) // Asserts that the function target will throw a specific error
 ```
 
-----
+<!--slide-->
 
 #### to.not
 
@@ -263,7 +263,7 @@ expect(object).to.not
   .equal(expected) // target is NOT strictly equal (===) to value
 ```
 
-----
+<!--slide-->
 
 ### Practice: First Tests
 
@@ -276,7 +276,7 @@ https://jsbin.com/miniqe/edit?js,output
 
 https://jsbin.com/yahigim/2/edit?js,output
 
-----
+<!--slide-->
 
 ### Test context
 
@@ -290,7 +290,7 @@ https://jsbin.com/yahigim/2/edit?js,output
 
 > Test execution **MUST NOT** have side effects.
 
-----
+<!--slide-->
 
 ```js
 describe('hooks', function() {
@@ -314,7 +314,7 @@ describe('hooks', function() {
 
 https://jsbin.com/nezimuc/edit?js,console
 
-----
+<!--slide-->
 
 #### Practice : reseting side effects
 
@@ -336,7 +336,7 @@ beforeEach(function() {
 
 https://jsbin.com/cokuxaj/edit?js,console,output
 
-----
+<!--slide-->
 
 ##### Solution
 
@@ -363,7 +363,7 @@ afterEach(function() {
 
 https://jsbin.com/pifura/edit?js,console,output
 
----
+<!--section-->
 
 ### Mocking with SinonJs
 
@@ -371,7 +371,7 @@ https://jsbin.com/pifura/edit?js,console,output
 
 [SinonJs](http://sinonjs.org/docs/)
 
-----
+<!--slide-->
 
 #### spies
 
@@ -382,7 +382,7 @@ https://jsbin.com/pifura/edit?js,console,output
 > `sinon.spy()` wraps the original function
 
 
-----
+<!--slide-->
 
 ```js
 describe('getUsers', function(){
@@ -406,7 +406,7 @@ describe('getUsers', function(){
 
 https://jsbin.com/hirehir/edit?js,output
 
-----
+<!--slide-->
 
 ##### Caution !
 
@@ -418,7 +418,7 @@ https://jsbin.com/hirehir/edit?js,output
   })
 ```
 
-----
+<!--slide-->
 
 #### Main interface
 
@@ -442,7 +442,7 @@ spy.thisValues
 
 ```
 
-----
+<!--slide-->
 
 Method calls
 
@@ -472,7 +472,7 @@ spy.lastCall.args
 // The last call
 ```
 
-----
+<!--slide-->
 
 Inputs
 
@@ -485,7 +485,7 @@ spy.calledWithExactly(arg1, arg2, ...);
 ```
 
 
-----
+<!--slide-->
 
 Outputs
 
@@ -504,7 +504,7 @@ spy.returned(obj);
 
 ```
 
-----
+<!--slide-->
 
 #### stubs
 
@@ -512,7 +512,7 @@ spy.returned(obj);
 
 > They replace the behavior of an existing method by the one expected by your test case.
 
-----
+<!--slide-->
 
 ```js
 beforeEach(function(){
@@ -533,13 +533,13 @@ beforeEach(function(){
 
 https://jsbin.com/fiquqa/edit?js,output
 
-----
+<!--slide-->
 
 #### Main interface
 
 > Stubs inherit spies interface, with additional methods to determine the behavior on every call.
 
-----
+<!--slide-->
 
 Defining behavior
 
@@ -557,7 +557,7 @@ stub.throws("TypeError");
 // Causes the stub to throw an exception of the provided type.
 ```
 
-----
+<!--slide-->
 
 Filtering calls
 
@@ -578,7 +578,7 @@ var callback = sinon.stub();
 ```
 
 
-----
+<!--slide-->
 
 ### Testing async code
 
@@ -586,7 +586,7 @@ var callback = sinon.stub();
 
 > Require the `done` callback on your `it` callbacks and invoke the `done()` when your test is complete.
 
-----
+<!--slide-->
 
 ```js
 describe('getOneUser', function(){
@@ -603,7 +603,7 @@ describe('getOneUser', function(){
 
 https://jsbin.com/wuliyo/1/edit?js,output
 
-----
+<!--slide-->
 
 ### Working with time: Sinon Fake timers
 
@@ -613,7 +613,7 @@ https://jsbin.com/wuliyo/1/edit?js,output
 
 > Use it to make time pass without having to wait for real time to pass.
 
-----
+<!--slide-->
 
 ```js
 beforeEach(function(){
@@ -638,7 +638,7 @@ it( 'should log numbers step by step', function() {
 https://jsbin.com/sofubep/edit?js,output
 
 
-----
+<!--slide-->
 
 ### Working with AJAX: Sinon Fake XMLHttpRequest
 
@@ -646,7 +646,7 @@ https://jsbin.com/sofubep/edit?js,output
 
 > Also fakes the native XMLHttpRequest.
 
-----
+<!--slide-->
 
 ```js
 server = sinon.fakeServer.create()
@@ -667,15 +667,15 @@ server.respond()
 
 https://jsbin.com/kucugaz/edit?js,output
 
----
+<!--section-->
 
 ## Levels of testing
 
-----
+<!--slide-->
 
 ![Software testing](./images/software-testing.png)
 
-----
+<!--slide-->
 
 ### Unit Testing
 
@@ -685,7 +685,7 @@ https://jsbin.com/kucugaz/edit?js,output
 
 > Assertions test the component API.
 
-----
+<!--slide-->
 
 ### Integration testing
 
@@ -697,7 +697,7 @@ https://jsbin.com/kucugaz/edit?js,output
 
 > Assertions may test component API, UI, or side-effects (such as database I/O, logging, etc…)
 
-----
+<!--slide-->
 
 ### Functional testing
 
@@ -712,17 +712,17 @@ https://jsbin.com/kucugaz/edit?js,output
 > Assertions primarily test the user interface.
 
 
----
+<!--section-->
 
 ## Dos and Donts
 
-----
+<!--slide-->
 
 ### Consitent
 
 > Multiple runs of the same test should ALWAYS return same output.
 
-----
+<!--slide-->
 
 ### Atomic
 
@@ -730,7 +730,7 @@ https://jsbin.com/kucugaz/edit?js,output
 
 > Each test must be isolated: Test B should not depend on Test A previous execution.
 
-----
+<!--slide-->
 
 ### Single responsability
 
@@ -742,7 +742,7 @@ https://jsbin.com/kucugaz/edit?js,output
 
 > one behaviour, multiple methods -> One test
 
-----
+<!--slide-->
 
 ### Self-descriptive
 
@@ -750,7 +750,7 @@ https://jsbin.com/kucugaz/edit?js,output
 
 http://betterspecs.org/
 
-----
+<!--slide-->
 
 ### No conditional logic or loops
 
@@ -762,7 +762,7 @@ http://betterspecs.org/
 
 > If there is to conditional cases, split into too tests with each predefined condition
 
-----
+<!--slide-->
 
 ### No test logic in prod code
 
@@ -770,7 +770,7 @@ http://betterspecs.org/
 
 > Do not create methods of properties only used in testing context
 
----
+<!--section-->
 
 ## Must read
 
@@ -778,7 +778,7 @@ http://betterspecs.org/
 
 [Better Specs](http://betterspecs.org/)
 
-----
+<!--slide-->
 
 ## Cheatsheets
 

@@ -1,6 +1,6 @@
 # Modules in Javascript
 
----
+<!--section-->
 
 ## What is a module?
 
@@ -8,7 +8,7 @@
 >
 > Usually it is imported only once, and exposes an interface to be used.
 
-----
+<!--slide-->
 
 ## Module Pattern with IIFEs
 
@@ -16,7 +16,7 @@
 >
 > IIFEs takes advantage of function scope and closure to create relationships that are binding and private.
 
-----
+<!--slide-->
 
 ### Anonymous Closures
 
@@ -38,7 +38,7 @@ console.log(b) // ReferenceError: b is not defined
 logB() // ReferenceError: logB is not defined
 ```
 
-----
+<!--slide-->
 
 ### Importing global variables to closure
 
@@ -56,7 +56,7 @@ logB() // ReferenceError: logB is not defined
 }(window, document)
 ```
 
-----
+<!--slide-->
 
 ### Exporting an interface
 
@@ -81,7 +81,7 @@ console.log(weekDay.number('Monday')) // 1
 ```
 
 
-----
+<!--slide-->
 
 ### Maintaining private state of a module
 
@@ -107,7 +107,7 @@ counterModule.resetCounter() // "counter value prior to reset: 2"
 ```
 
 
----
+<!--section-->
 
 ## CommonJs Modules
 
@@ -117,7 +117,7 @@ counterModule.resetCounter() // "counter value prior to reset: 2"
 >
 > Any other module can "require" modules it depends on.
 
-----
+<!--slide-->
 
 ### Importing dependencies
 
@@ -131,7 +131,7 @@ counterModule.incrementCounter()
 counterModule.resetCounter() // "counter value prior to reset: 2"
 ```
 
-----
+<!--slide-->
 
 > Npm packages installed in the project can be required by package name
 
@@ -144,7 +144,7 @@ var angular = require('angular')
 var ngModule = angular.module('my-module', [])
 ```
 
-----
+<!--slide-->
 
 ```
 npm install react --save
@@ -159,7 +159,7 @@ class HelloMessage extends React.Component {
 }
 ```
 
-----
+<!--slide-->
 
 ### Exporting a module
 
@@ -180,7 +180,7 @@ function require(name) {
 
 [MDN - Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)
 
-----
+<!--slide-->
 
 Consider:
 ```js
@@ -196,7 +196,7 @@ var counterModule = (function () {
 })()
 ```
 
-----
+<!--slide-->
 
 In CommonJs:
 
@@ -222,7 +222,7 @@ exports.resetCounter = function () {
 }
 ```
 
-----
+<!--slide-->
 
 ### Modules as unique instances
 
@@ -246,7 +246,7 @@ function require(name) {
 require.cache = Object.create(null)
 ```
 
-----
+<!--slide-->
 
 ```js
 var counterModule = require('./modules/counter')
@@ -261,7 +261,7 @@ counterModule.incrementCounter()
 counterModule.resetCounter() // "counter value prior to reset: 3"
 ```
 
-----
+<!--slide-->
 
 ### Practice
 
@@ -278,7 +278,7 @@ console.log(month.number("November")) // 10
 
 https://jsbin.com/zapuqus/edit?js,console,output
 
-----
+<!--slide-->
 
 #### Solution
 
@@ -296,11 +296,11 @@ var month = require(function(module, exports){
 })
 ```
 
----
+<!--section-->
 
 ## ES6 modules
 
-----
+<!--slide-->
 
 ### Exporting modules
 
@@ -308,7 +308,7 @@ var month = require(function(module, exports){
 
 [MDN - export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
 
-----
+<!--slide-->
 
 #### Exporting declared variables
 
@@ -328,7 +328,7 @@ function getNumber (name) { return NAMES.indexOf(name) }
 export {NAMES, getName as name, getNumber as number}
 ```
 
-----
+<!--slide-->
 
 #### Exporting statements and expressions
 
@@ -349,7 +349,7 @@ export function name (number) { return NAMES[number] }
 export function number (name) { return NAMES.indexOf(name) }
 ```
 
-----
+<!--slide-->
 
 #### Default export
 
@@ -363,7 +363,7 @@ export function number (name) { return NAMES.indexOf(name) }
 > export { name1 as default, … };
 > ```
 
-----
+<!--slide-->
 
 ```js
 function getName (number) { return NAMES[number] }
@@ -377,7 +377,7 @@ export default {
 }
 ```
 
-----
+<!--slide-->
 
 ### Importing modules
 
@@ -385,7 +385,7 @@ export default {
 
 [MDN - import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
 
-----
+<!--slide-->
 
 #### Importing members of a module
 
@@ -396,7 +396,7 @@ import { member as alias } from "module-name";
 import * as name from "module-name";
 ```
 
-----
+<!--slide-->
 
 Consider:
 ```js
@@ -409,7 +409,7 @@ export function name (number) { return NAMES[number] }
 export function number (name) { return NAMES.indexOf(name) }
 ```
 
-----
+<!--slide-->
 
 Importing members separately
 ```js
@@ -425,7 +425,7 @@ import * as month from './modules/months'
 console.log(month.name(2)) // March
 ```
 
-----
+<!--slide-->
 
 #### Default import
 
@@ -436,7 +436,7 @@ import defaultMember, { member [ , [...] ] } from "module-name";
 import defaultMember, * as name from "module-name";
 ```
 
-----
+<!--slide-->
 
 Consider:
 
@@ -452,7 +452,7 @@ export default {
 }
 ```
 
-----
+<!--slide-->
 
 Importing default:
 
@@ -469,7 +469,7 @@ console.log(month.name(2)) // March
 console.log(monthNames) // ["January", "February", "March", "April", ...
 ```
 
-----
+<!--slide-->
 
 ### Import/export
 
@@ -481,7 +481,7 @@ export { import1 as name1, import2 as name2, …, nameN } from …;
 ```
 
 
-----
+<!--slide-->
 
 ```js
 // modules/months.js
@@ -501,11 +501,11 @@ export * from './modules/months'
 export {name as getMonthName} from './modules/months'
 ```
 
-----
+<!--slide-->
 
 ### Practice
 
-----
+<!--slide-->
 
 ```js
 // 'math.js'
@@ -521,14 +521,14 @@ export {round as getRound, PI}
 Translate each sentence to an import statement
 
 | Sentence |
-| --------------- |
+| <!--slide--><!--slide--><!--slide--><!--section--> |
 | Import all methods as **math** |
 | Import square function as **square** |
 | Import number function as **number** |
 | Import all methods as **math** and getNumber as **number** |
 
 
-----
+<!--slide-->
 
 ### Solution
 
@@ -538,28 +538,28 @@ Import all methods as **math**
 import * as math from 'math'
 ```
 
-----
+<!--slide-->
 
 Import squareFunc as **square**
 ```js
 import {getSquare as square} from 'math'
 ```
 
-----
+<!--slide-->
 
 Import getNumber as **number**
 ```js
 import number from 'math'
 ```
 
-----
+<!--slide-->
 
 Import all methods as **math** and getNumber as **number**
 ```js
 import * as math, default as number from 'math'
 ```
 
----
+<!--section-->
 
 ## Must Read
 

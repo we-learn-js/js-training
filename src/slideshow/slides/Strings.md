@@ -1,10 +1,10 @@
 # Strings
 
----
+<!--section-->
 
 ## Primitive vs Objects
 
-----
+<!--slide-->
 
 ### Types
 
@@ -17,7 +17,7 @@ typeof new String('5').valueOf() // "string"
 
 ```
 
-----
+<!--slide-->
 
 ### Comparison
 
@@ -31,7 +31,7 @@ a == b  // false as a and b are type Object and reference different objects
 a == 'foo' // true as the Object (a) is converted to String 'foo' before comparison
 ```
 
----
+<!--section-->
 
 ## Template strings (ES6)
 
@@ -53,7 +53,7 @@ a == 'foo' // true as the Object (a) is converted to String 'foo' before compari
 [MDN - Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
 
 
-----
+<!--slide-->
 
 > Template literals are a different syntax, not a different primitive of object.
 
@@ -61,7 +61,7 @@ a == 'foo' // true as the Object (a) is converted to String 'foo' before compari
 `\`` === "`" // true
 ```
 
-----
+<!--slide-->
 
 ### Multi-line strings
 
@@ -78,7 +78,7 @@ text1 === text2 // true
 
 ```
 
-----
+<!--slide-->
 
 ### Expression interpolation
 
@@ -93,7 +93,7 @@ var text2 = `Fifteen is ${a + b} and\nnot ${2 * a + b}.`;
 text1 === text2 // true
 ```
 
----
+<!--section-->
 
 ## Must Read
 

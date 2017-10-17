@@ -2,11 +2,11 @@
 
 > Operators are constructs which behave generally like functions, but which differ syntactically or semantically from usual functions.
 
----
+<!--section-->
 
 ## Types of operators
 
-----
+<!--slide-->
 
 ### Unary operators
 
@@ -27,7 +27,7 @@ delete x
 !x
 ```
 
-----
+<!--slide-->
 
 ### Binary operators
 
@@ -41,7 +41,7 @@ x && y
 12 % 5 // 2
 ```
 
-----
+<!--slide-->
 
 ### The ternary operator (conditional operator)
 
@@ -57,7 +57,7 @@ let status = (age >= 18)
   : "minor";
 ```
 
----
+<!--section-->
 
 ## Conditional Operator
 
@@ -67,7 +67,7 @@ condition `?` expression `:` expression
 
 [MDN // Conditional Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
 
-----
+<!--slide-->
 
 
 As an expression:
@@ -87,7 +87,7 @@ To create a property:
 }
 ```
 
-----
+<!--slide-->
 
 ### Multiple ternary evaluations
 
@@ -101,7 +101,7 @@ access = check1 ? "Denied" : check2 ? "Denied" : "Granted";
 console.log( access ); // "Access granted"
 ```
 
-----
+<!--slide-->
 
 ### Multiple operations
 
@@ -116,7 +116,7 @@ age > 18
       alert("Sorry, you are much too young!") );
 ```
 
----
+<!--section-->
 
 ## Arithmetic operators
 
@@ -124,7 +124,7 @@ age > 18
 
 [MDN // Arithmetic Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators)
 
-----
+<!--slide-->
 
 ### Plus `+`
 
@@ -144,7 +144,7 @@ age > 18
 
 Note: `NaN` is a property of the global object. [MDN // NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
 
-----
+<!--slide-->
 
 ### Negation `-`
 
@@ -160,7 +160,7 @@ y = -x; // y = -4, x = 4
 
 ```
 
-----
+<!--slide-->
 
 ### Addition `+`
 
@@ -168,7 +168,7 @@ x `+` y
 
 > The addition operator produces the sum of numeric operands or string concatenation.
 
-----
+<!--slide-->
 
 #### Addition
 
@@ -199,7 +199,7 @@ true + false + true + true // 1 + 0 + 1 + 1 =  3
 // "foo" + "bar" = "foobar"
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-alertSlide" -->
 
@@ -223,7 +223,7 @@ true + false + true + true // 1 + 0 + 1 + 1 =  3
 // ((5 + 5) + true) + "foo" = "11foo"
 ```
 
-----
+<!--slide-->
 
 ### Subtraction `-`
 
@@ -237,7 +237,7 @@ x `-` y
 "foo" - 3 // NaN
 ```
 
-----
+<!--slide-->
 
 ### Division `/`
 
@@ -255,7 +255,7 @@ x `/` y
 
 Note: The global Infinity property is a numeric value representing infinity. [MDN  | Infinity](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity)
 
-----
+<!--slide-->
 
 ### Multiplication `*`
 
@@ -276,7 +276,7 @@ Infinity * Infinity // Infinity
 
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-alertSlide" -->
 
@@ -298,7 +298,7 @@ Infinity * Infinity // Infinity
 // 3 + ("4" * 5) = 23
 ```
 
-----
+<!--slide-->
 
 ### Remainder `%`
 
@@ -314,7 +314,7 @@ x `%` y
 -1 % 2 // -1
 ```
 
-----
+<!--slide-->
 
 ### Exponentiation `**`
 
@@ -327,7 +327,7 @@ x `**` y
 3 ** 2 // 3 * 3 = 9
 ```
 
-----
+<!--slide-->
 
 ### Increment `++`
 
@@ -348,7 +348,7 @@ y = ++x;
 // x = 3, y = 3
 ```
 
-----
+<!--slide-->
 
 ### Decrement `--`
 
@@ -370,7 +370,7 @@ y = --x;
 ```
 
 
----
+<!--section-->
 
 ## Assignment operators
 
@@ -378,7 +378,7 @@ y = --x;
 
 [MDN // Assignment Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators)
 
-----
+<!--slide-->
 
 ### Simple Assignment
 
@@ -396,7 +396,7 @@ console.log(x = 3+2) // 5
 console.log(x = y = z) // 25
 ```
 
-----
+<!--slide-->
 
 ### Compound assignment
 
@@ -410,7 +410,7 @@ console.log(x = y = z) // 25
 | Exponentiation assignment | x `**=` y | x `=` x `**` y |
 
 
-----
+<!--slide-->
 
 ### Destructuring assignment
 
@@ -418,7 +418,7 @@ console.log(x = y = z) // 25
 
 [MDN // Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
-----
+<!--slide-->
 
 #### Array Destructuring
 
@@ -442,7 +442,7 @@ const [one, two, three] = foo;
 console.log(one, two, three) // "one", "two", "three"
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-alertSlide" -->
 
@@ -472,7 +472,7 @@ Note: as we are declaring new variables `y` and `z` and asigning a value,
 we need to use `var`, otherwise variables will be declared on global scope.
 
 
-----
+<!--slide-->
 
 ##### Direct assignment
 
@@ -491,7 +491,7 @@ let [x, y, z] = [1, 2, 3];
 ```
 
 
-----
+<!--slide-->
 
 ##### Default values
 
@@ -521,7 +521,7 @@ console.log(a, b, c, d, e) // 1, "b", 3, null, ""
 
 Note: Notice that default values only works with undefined values, not with `null` or falsey values.
 
-----
+<!--slide-->
 
 #### Swapping variables
 
@@ -535,7 +535,7 @@ let b = 3;
 console.log(a, b); // 3, 1
 ```
 
-----
+<!--slide-->
 
 #### Skipping values
 
@@ -560,7 +560,7 @@ console.log(a, b, c); // 1, 3, 6
 ```
 
 
-----
+<!--slide-->
 
 #### Nested array destructuring
 
@@ -577,7 +577,7 @@ console.log(a,b,c,d) // 1, 3, 4, 5
 ```
 
 
-----
+<!--slide-->
 
 ### Object Destructuring
 
@@ -601,7 +601,7 @@ let d = o.d
 console.log(a, d); // 42, 'Evan'
 ```
 
-----
+<!--slide-->
 
 #### Default values
 
@@ -621,7 +621,7 @@ let b = (_ref.b !== undefined) ? _ref.b : 5
 console.log(a, b); // 3, 5
 ```
 
-----
+<!--slide-->
 
 #### Renaming properties
 
@@ -645,7 +645,7 @@ let second = o.d
 console.log(first, second); // 42, 'Evan'
 ```
 
-----
+<!--slide-->
 
 #### Default values or renamed properties
 
@@ -672,7 +672,7 @@ let third   = o.e !== undefined ? o.e : 6
 console.log(first, second, third); // 42, 'Evan', 6
 ```
 
-----
+<!--slide-->
 
 without destructuring:
 ```js
@@ -690,7 +690,7 @@ with destructuring:
 let {size = 'big', cords = { x: 0, y: 0 }, radius = 25} = options
 ```
 
-----
+<!--slide-->
 
 #### Destructuring function parameters
 
@@ -719,7 +719,7 @@ function drawChart(options) {
 }
 ```
 
-----
+<!--slide-->
 
 ### Nested object and array destructuring
 
@@ -735,7 +735,7 @@ console.log(name1) // "Evan"
 console.log(name2) // "Joseph"
 ```
 
-----
+<!--slide-->
 
 ### Complex destructuring
 
@@ -761,7 +761,7 @@ console.log(localeTitle);  // "JavaScript-Umgebung"
 ```
 
 
----
+<!--section-->
 
 ## Comparison operators
 
@@ -772,7 +772,7 @@ x `OP` y
 [MDN // Comparison Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
 
 
-----
+<!--slide-->
 
 ### Abstract comparison
 
@@ -782,7 +782,7 @@ x `!=` y
 
 > Converts the operands to the same type before making the comparison.
 
-----
+<!--slide-->
 
 #### Abstract equality
 
@@ -800,7 +800,7 @@ null == undefined // true
 
 [ECMA Spec](http://www.ecma-international.org/ecma-262/5.1/#sec-11.9.3)
 
-----
+<!--slide-->
 
 #### Equality of objects
 
@@ -820,7 +820,7 @@ object1 == object3 // true
 Note: The two objects are difference objects, in different allocation.
 **They are not the same object**.
 
-----
+<!--slide-->
 
 #### Abstract inequality
 
@@ -834,11 +834,11 @@ x `!=` y
 0 !=  false  // false
 ```
 
-----
+<!--slide-->
 
 #### Type conversion rules
 
-----
+<!--slide-->
 
 ##### String `==` Number
 
@@ -849,7 +849,7 @@ x `!=` y
 // 1  ==  1     // true
 ```
 
-----
+<!--slide-->
 
 ##### Boolean `==` Number
 
@@ -866,7 +866,7 @@ x `!=` y
 // 1 == 0   // false
 ```
 
-----
+<!--slide-->
 
 ##### Object `==` Number || Object `==` String
 
@@ -883,7 +883,7 @@ a == 'foo'        // true, as the Object (a) is converted to String 'foo'
 // 'foo' = 'foo'  // true
 ```
 
-----
+<!--slide-->
 
 ### Working with objects
 
@@ -893,7 +893,7 @@ a == 'foo'        // true, as the Object (a) is converted to String 'foo'
 
 [MDN // Object.protrotype.valueOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf)
 
-----
+<!--slide-->
 
 ```js
 let a = new Number(5);
@@ -906,7 +906,7 @@ a > b // false
 a < b // false
 ```
 
-----
+<!--slide-->
 
 ### Strict comparison
 
@@ -916,7 +916,7 @@ x `!==` y
 
 > A strict comparison is only true if the operands are of the **same type** and the contents match.
 
-----
+<!--slide-->
 
 #### Strict equality
 
@@ -930,7 +930,7 @@ x `!==` y
 null === undefined // false (true in abstract comparison)
 ```
 
-----
+<!--slide-->
 
 #### Strict inequality
 
@@ -944,7 +944,7 @@ x `!=` y
 0 !==  false  // true (false in abstract comparison)
 ```
 
-----
+<!--slide-->
 
 ### Relational operators
 
@@ -956,7 +956,7 @@ x `<` y
 
 x `<=` y
 
-----
+<!--slide-->
 
 ```js
 4 > 3   // true
@@ -968,7 +968,7 @@ x `<=` y
 3 <= 3  // true
 ```
 
----
+<!--section-->
 
 ## Logical Operators
 
@@ -979,7 +979,7 @@ expression `||` expression
 `!`expression
 
 
-----
+<!--slide-->
 
 > Logical operators are typically used with `Boolean` (logical) values
 >
@@ -990,7 +990,7 @@ so if these operators are used with non-Boolean values, they may return a non-Bo
 [MDN // Logical Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators)
 
 
-----
+<!--slide-->
 
 ### Logical `AND`
 
@@ -1010,7 +1010,7 @@ false && "Cat";    // f && t returns false
 
 
 
-----
+<!--slide-->
 
 ### Logical `OR`
 
@@ -1028,7 +1028,7 @@ false || "Cat";    // f || t returns Cat
 "Cat" || false;    // t || f returns Cat
 ```
 
-----
+<!--slide-->
 
 #### Expression conversion
 
@@ -1047,7 +1047,7 @@ NaN  || "truthy" // "truthy"
 
 Note: The return is not `true` or `false`, it's the last evaluated expression.
 
-----
+<!--slide-->
 
 ### Logical `NOT`
 
@@ -1059,7 +1059,7 @@ Note: The return is not `true` or `false`, it's the last evaluated expression.
 !"Cat"; // !t returns false
 ```
 
-----
+<!--slide-->
 
 ### Short-Circuit Evaluation
 
@@ -1075,7 +1075,7 @@ Note: The return is not `true` or `false`, it's the last evaluated expression.
 // "" and "Cat" aren't evaluated as 3 was thruthy
 ```
 
-----
+<!--slide-->
 
 ### Using it for logic
 
@@ -1094,7 +1094,7 @@ doSomething() || doSomethingElse()
 
 ```
 
-----
+<!--slide-->
 
 ### Using it for logic
 
@@ -1112,7 +1112,7 @@ is the same as:
 doSomething() && doSomethingElse()
 ```
 
----
+<!--section-->
 
 ## Other unary operators
 
@@ -1122,7 +1122,7 @@ doSomething() && doSomethingElse()
 
 
 
-----
+<!--slide-->
 
 ### delete
 
@@ -1142,7 +1142,7 @@ delete arr[1];    // arr === [1,undefined, 3,4]
 delete arr;       // arr is not defined
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-alertSlide" -->
 
@@ -1158,7 +1158,7 @@ let arr = [1,2,3,4]
 delete arr; // arr is [1,2,3,4]
 ```
 
-----
+<!--slide-->
 
 ### typeof
 
@@ -1174,10 +1174,10 @@ typeof {}  // "object"
 typeof null  // "object"
 ```
 
-----
+<!--slide-->
 
 | Type | Result |
-| ---- | ------ |
+| <!--slide--> | <!--slide-->-- |
 | Undefined | "undefined" |
 | Boolean | "boolean" |
 | Number | "number" |
@@ -1186,7 +1186,7 @@ typeof null  // "object"
 | Function object | "function" |
 | Any other object | "object" |
 
-----
+<!--slide-->
 
 ### Spread operator
 
@@ -1196,7 +1196,7 @@ typeof null  // "object"
 
 [MDN // Spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator)
 
-----
+<!--slide-->
 
 `numbers` passed as a single argument to `console.log`:
 ```js
@@ -1220,11 +1220,11 @@ console.log(numbers[0], numbers[1], numbers[2])
 
 ```
 
-----
+<!--slide-->
 
 ### Spreading arrays
 
-----
+<!--slide-->
 
 #### Array concat
 
@@ -1236,7 +1236,7 @@ let letters = ['a', 'b', 'c']
 // [1, 2, 3, 'a', 'b', 'c']
 ```
 
-----
+<!--slide-->
 
 #### Array insertion
 
@@ -1248,7 +1248,7 @@ console.log(lyrics)
 // ["head", "shoulders", "knees", "and", "toes"]
 ```
 
-----
+<!--slide-->
 
 #### Array clone
 
@@ -1262,7 +1262,7 @@ arr2.push(4); // [1, 2, 3, 4]
 
 `arr2` becomes [1,2,3,4], `arr` stays the same
 
-----
+<!--slide-->
 
 ### Spreading objects
 
@@ -1277,7 +1277,7 @@ console.log(user)         // {name: "Evan", surname: "Graham"}
 console.log(userWithJob)  // {name: "James", surname: "Graham", job: "Barber"}
 ```
 
-----
+<!--slide-->
 
 #### Spread with overriding
 
@@ -1288,7 +1288,7 @@ let jamesUser = {...user, name: 'James'}
 console.log(jamesUser)  // {name: "James", surname: "Graham"}
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-alertSlide" -->
 
@@ -1302,7 +1302,7 @@ let args = [...obj];
 // TypeError: obj is not iterable
 ```
 
-----
+<!--slide-->
 
 ### Spread arguments
 
@@ -1322,7 +1322,7 @@ myFunction(-1, ...args, 2, ...[3]);
 // myFunction(-1, 0, 1, 3);
 ```
 
-----
+<!--slide-->
 
 ### Spread operator as rest parameter
 
@@ -1334,7 +1334,7 @@ function(a, b, ...theArgs) {
 }
 ```
 
-----
+<!--slide-->
 
 #### Getting all arguments of a func
 
@@ -1349,7 +1349,7 @@ func(5, 6, 7); // 3
 ```
 
 
-----
+<!--slide-->
 
 ### `arguments` VS `...args` ?
 
@@ -1374,7 +1374,7 @@ function sortArguments() {
 console.log(sortArguments(5,3,7,1));
 ```
 
-----
+<!--slide-->
 
 
 ### Selective rest parameter
@@ -1397,7 +1397,7 @@ console.log(filterByType('string', ...values)); // ["4", "8"]
 ```
 
 
-----
+<!--slide-->
 
 #### Rest paramater in array destructure
 
@@ -1409,7 +1409,7 @@ console.log(coldSeason);   // => "winter"
 console.log(otherSeasons); // => ["spring", "summer", "autumn"]  
 ```
 
----
+<!--section-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
 
@@ -1417,7 +1417,7 @@ console.log(otherSeasons); // => ["spring", "summer", "autumn"]
 
 Read the slides again, and we'll start a small quiz on operators.
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
 ### 01. What would be the output of each code?
@@ -1433,7 +1433,7 @@ Read the slides again, and we'll start a small quiz on operators.
 /* 8 */ (18 >= 18) ? "adult" : "minor"
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
 ### 01. Solution
@@ -1448,7 +1448,7 @@ Read the slides again, and we'll start a small quiz on operators.
 /* 8 */ (18 >= 18) ? "adult" : "minor" // "adult"
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
 ### 02. What would be the output of this code?
@@ -1459,7 +1459,7 @@ delete names[2];
 console.log(names)
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
 ### 02. Solution
@@ -1471,7 +1471,7 @@ console.log(names)
 // ["Evan", "Tim", undefined, "Monica"]
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
 ### 03. What would be the output of this code?
@@ -1482,7 +1482,7 @@ delete animals;
 console.log(animals)
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
 ### 03. Solution
@@ -1495,7 +1495,7 @@ console.log(animals)
 // ["Dog", "Cat", "Rabbit", "Mouse"]
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
 ### 04. What would be the output of this code?
@@ -1508,7 +1508,7 @@ arr1.push(...arr2);
 console.log(arr1)
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
 ### 04. Solution
@@ -1523,7 +1523,7 @@ console.log(arr1)
 // [0, 4, 2, 3, 1, 5]
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
 ### 05. What would be the output of this code?
@@ -1538,7 +1538,7 @@ arr3 = [a,...arr2, b, ...cd]
 console.log(arr3)
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
 ### 05. Solution
@@ -1555,7 +1555,7 @@ console.log(arr3)
 // [8, 3, 1, 5, 3, 7, 6, 14, 17]
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
 ### 06. What would be the output of this code?
@@ -1565,7 +1565,7 @@ let str = 'javascript'
 console.log([...str].join('|'))
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
 ### 06. Solution
@@ -1580,7 +1580,7 @@ console.log([...str].join('|'))
 String is iterable, so you can spread them.
 
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
 ### 07. What would be the output of this code?
@@ -1592,7 +1592,7 @@ let [a, b, , , c, ...d] = str
 console.log(a, b, c, d)
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
 ### 07. Solution
@@ -1608,7 +1608,7 @@ console.log(a, b, c, d)
 // ["c", "r", "i", "p", "t"]
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
 ### 08. What would be the output of this code?
@@ -1626,7 +1626,7 @@ let {
 console.log(a, b, c);
 ```
 
-----
+<!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
 ### 08. Solution
