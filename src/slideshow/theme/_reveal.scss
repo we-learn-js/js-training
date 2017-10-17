@@ -12,9 +12,13 @@
   blockquote {
     margin: $blockMargin auto;
     padding: 0 $blockMargin;
+    strong {
+      font-weight: normal;
+      color: lighten($selectionBackgroundColor, 10%);
+    }
   }
 
-  p, td, h1, h2, h3, h4, h5, h6 {
+  p, td, h1, h2, h3, h4, h5, h6, li {
     & > code {
       background-color: rgba($selectionBackgroundColor,.3);
       border-radius: .15em;
