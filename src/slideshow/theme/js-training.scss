@@ -32,13 +32,13 @@ $mainFontSize: 30px;
 
 // Headings
 // $headingMargin: 0 0 $blockMargin 0;
-// $headingFont: 'League Gothic', Impact, sans-serif;
+$headingFont: 'Exo 2', sans-serif;
 // $headingColor: #eee;
 // $headingLineHeight: 1.2;
-// $headingLetterSpacing: normal;
+$headingLetterSpacing: 3px;
 // $headingTextTransform: uppercase;
 $headingTextShadow: 0px 0px 6px rgba(0,0,0,0.2);
-// $headingFontWeight: normal;
+$headingFontWeight: normal;
 $heading1TextShadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 20px 20px rgba(0,0,0,.15);
 
 $heading1Size: 3em;
@@ -59,9 +59,11 @@ $heading1Size: 3em;
 	@include radial-gradient( rgba(28,30,32,1), rgba(85,90,95,1) );
 }
 
-// Theme template ------------------------------
-@import "~reveal.js/css/theme/template/theme";
-// ---------------------------------------------
+// SCSS Imports
+@import "~reveal.js/css/theme/template/theme"; //Theme template from reveal.js
+@import "_listing.scss";
+@import "_reveal.scss";
+@import "_js-training.scss";
 
-@import "listing";
-@import "reveal";
+// Font Imports
+@import url('https://fonts.googleapis.com/css?family=Exo+2:800')

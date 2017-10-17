@@ -8,6 +8,7 @@
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
+@import url("https://fonts.googleapis.com/css?family=Exo+2:800");
 body {
   background: #1c1e20;
   background: -moz-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
@@ -50,10 +51,10 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #eee;
-  font-family: "League Gothic", Impact, sans-serif;
+  font-family: "Exo 2", sans-serif;
   font-weight: normal;
   line-height: 1.2;
-  letter-spacing: normal;
+  letter-spacing: 3px;
   text-transform: uppercase;
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
   word-wrap: break-word; }
@@ -308,7 +309,7 @@ body {
     margin: 50vh 0 0;
     top: -90px;
     color: #eee;
-    font-family: "League Gothic", Impact, sans-serif;
+    font-family: "Exo 2", sans-serif;
     font-size: 3em;
     text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.15); }
   .js-training-listing-list {
@@ -320,7 +321,7 @@ body {
     .js-training-listing-list a {
       display: block;
       color: #13DAEC;
-      font-family: "League Gothic", Impact, sans-serif;
+      font-family: "Exo 2", sans-serif;
       font-size: 1.55em;
       line-height: 1.2;
       padding: 20px;
@@ -338,15 +339,15 @@ body {
   margin: 20px auto;
   padding: 0 20px; }
 
-.reveal p > code, .reveal td > code {
+.reveal p > code, .reveal td > code, .reveal h1 > code, .reveal h2 > code, .reveal h3 > code, .reveal h4 > code, .reveal h5 > code, .reveal h6 > code {
   background-color: rgba(255, 94, 153, 0.3);
   border-radius: .15em;
   color: #fff;
+  border: 1px solid rgba(255, 94, 153, 0.5);
   font-size: 85%;
   font-style: normal;
-  font-family: inherit;
-  padding: 0em 0.3em .2em 0.3em;
-  margin: 0em 0.25em; }
+  padding: 0.15em 0.3em;
+  margin: 0em 0.2em; }
 
 .reveal table {
   min-width: 80%; }
@@ -355,16 +356,50 @@ body {
     text-align: left; }
 
 .reveal pre {
+  display: inline-block;
   margin: 40px auto;
-  width: 70%; }
+  width: auto; }
+  .reveal pre code {
+    padding: 20px; }
 
-.jsTraining-alertSlide {
-  background: rgba(28, 30, 32, 0);
-  background: -moz-radial-gradient(center, circle cover, #555a5f 0%, rgba(28, 30, 32, 0) 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #555a5f), color-stop(100%, rgba(28, 30, 32, 0)));
-  background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, rgba(28, 30, 32, 0) 100%);
-  background: -o-radial-gradient(center, circle cover, #555a5f 0%, rgba(28, 30, 32, 0) 100%);
-  background: -ms-radial-gradient(center, circle cover, #555a5f 0%, rgba(28, 30, 32, 0) 100%);
-  background: radial-gradient(center, circle cover, #555a5f 0%, rgba(28, 30, 32, 0) 100%); }
+.reveal p + pre {
+  margin-top: 0; }
+
+.jsTraining-alertSlide.slide-background {
+  background: rgba(204, 0, 0, 0.5);
+  background: -moz-radial-gradient(center, circle cover, rgba(204, 0, 0, 0.2) 0%, rgba(204, 0, 0, 0.5) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(204, 0, 0, 0.2)), color-stop(100%, rgba(204, 0, 0, 0.5)));
+  background: -webkit-radial-gradient(center, circle cover, rgba(204, 0, 0, 0.2) 0%, rgba(204, 0, 0, 0.5) 100%);
+  background: -o-radial-gradient(center, circle cover, rgba(204, 0, 0, 0.2) 0%, rgba(204, 0, 0, 0.5) 100%);
+  background: -ms-radial-gradient(center, circle cover, rgba(204, 0, 0, 0.2) 0%, rgba(204, 0, 0, 0.5) 100%);
+  background: radial-gradient(center, circle cover, rgba(204, 0, 0, 0.2) 0%, rgba(204, 0, 0, 0.5) 100%);
+  box-shadow: inset 0 0 0 20px rgba(204, 0, 0, 0.3); }
+
+.jsTraining-questionSlide.slide-background {
+  background: rgba(19, 218, 236, 0.5);
+  background: -moz-radial-gradient(center, circle cover, rgba(19, 218, 236, 0.2) 0%, rgba(19, 218, 236, 0.5) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(19, 218, 236, 0.2)), color-stop(100%, rgba(19, 218, 236, 0.5)));
+  background: -webkit-radial-gradient(center, circle cover, rgba(19, 218, 236, 0.2) 0%, rgba(19, 218, 236, 0.5) 100%);
+  background: -o-radial-gradient(center, circle cover, rgba(19, 218, 236, 0.2) 0%, rgba(19, 218, 236, 0.5) 100%);
+  background: -ms-radial-gradient(center, circle cover, rgba(19, 218, 236, 0.2) 0%, rgba(19, 218, 236, 0.5) 100%);
+  background: radial-gradient(center, circle cover, rgba(19, 218, 236, 0.2) 0%, rgba(19, 218, 236, 0.5) 100%);
+  box-shadow: inset 0 0 0 20px rgba(19, 218, 236, 0.3); }
+  .jsTraining-questionSlide.slide-background:before {
+    content: '?';
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 100vh;
+    color: rgba(19, 218, 236, 0.2); }
+
+.jsTraining-responseSlide.slide-background {
+  background: rgba(0, 204, 0, 0.5);
+  background: -moz-radial-gradient(center, circle cover, rgba(0, 204, 0, 0.2) 0%, rgba(0, 204, 0, 0.5) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(0, 204, 0, 0.2)), color-stop(100%, rgba(0, 204, 0, 0.5)));
+  background: -webkit-radial-gradient(center, circle cover, rgba(0, 204, 0, 0.2) 0%, rgba(0, 204, 0, 0.5) 100%);
+  background: -o-radial-gradient(center, circle cover, rgba(0, 204, 0, 0.2) 0%, rgba(0, 204, 0, 0.5) 100%);
+  background: -ms-radial-gradient(center, circle cover, rgba(0, 204, 0, 0.2) 0%, rgba(0, 204, 0, 0.5) 100%);
+  background: radial-gradient(center, circle cover, rgba(0, 204, 0, 0.2) 0%, rgba(0, 204, 0, 0.5) 100%);
+  box-shadow: inset 0 0 0 20px rgba(0, 204, 0, 0.3); }
 
 /*# sourceMappingURL=js-training.css.map */

@@ -7,5 +7,6 @@
   "parallaxBackgroundImage": "/images/slideshow-background.png",
   "parallaxBackgroundSize": "",
   "parallaxBackgroundHorizontal": 100,
-  "parallaxBackgroundVertical": 100
+  "parallaxBackgroundVertical": 100,
+  "margin": 0.1
 }

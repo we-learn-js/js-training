@@ -3,7 +3,7 @@
   "scripts": [],
   "css": [],
   "theme": "http://localhost:8080/theme/js-training.css",
-  "highlightTheme": "hybrid",
+  "highlightTheme": "monokai",
   "preprocessor": false,
   "port": 8080,
   "revealOptions": {},
