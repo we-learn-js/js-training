@@ -86,7 +86,7 @@ or blame you... and me.
 
 ## Here comes the light !
 
- · [Operators and Expressions](OperatorsAndExpressions.md) · [Strings](Strings.md) · [Scopes and Closures](ScopesAndClosures.md) · [Functions](Functions.md) · [Functional programming](FunctionalProgramming.md) · [Modules](Modules.md) · [Objects](Objects.md) · [Classes](Classes.md) · [AsyncProgramming](AsyncProgramming.md) · [Iterators and Generators](Generators.md) · [Object-Oriented Programming](ObjectOrientedProgramming.md) · [Object-Oriented Design Principles](ObjectOrientedDesignPrinciples.md) · [Design Patterns](DesignPatterns.md) · [Testing](Testing.md) · [DDD](DomainDrivenDesign.md) · React · NPM · Webpack
+ · [Operators](slides/Operators.md) · [Strings](slides/Strings.md) · [Scopes and Closures](slides/ScopesAndClosures.md) · [Functions](slides/Functions.md) · [Functional programming](slides/FunctionalProgramming.md) · [Modules](slides/Modules.md) · [Objects](slides/Objects.md) · [Classes](slides/Classes.md) · [AsyncProgramming](slides/AsyncProgramming.md) · [Iterators and Generators](slides/Generators.md) · [Object-Oriented Programming](slides/ObjectOrientedProgramming.md) · [Object-Oriented Design Principles](slides/ObjectOrientedDesignPrinciples.md) · [Design Patterns](slides/DesignPatterns.md) · [Testing](slides/Testing.md) · [DDD](slides/DomainDrivenDesign.md) · React · NPM · Webpack
 
 ---
 
