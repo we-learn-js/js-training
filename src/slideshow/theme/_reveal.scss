@@ -39,10 +39,10 @@
 
   pre {
     display: inline-block;
-    margin: $blockMargin*2 auto;
+    margin: $blockMargin auto;
     width: auto;
     code {
-      padding: $blockMargin;
+      padding: $blockMargin/2;
     }
   }
   p + pre {
