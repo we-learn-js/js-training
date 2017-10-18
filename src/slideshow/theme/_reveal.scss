@@ -52,4 +52,9 @@
   p + pre {
     margin-top: 0;
   }
+  &.overview {
+    .slides section.present {
+      outline-color: #fff;
+    }
+  }
 }

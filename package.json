@@ -7,7 +7,7 @@
     "reset": "rm -Rf node_modules && npm i",
     "build": "npm run sass",
     "sass": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js -o ./src/slideshow/theme ./src/slideshow/theme/js-training.scss",
-    "dev": "npm run start -- --watch",
+    "dev": "npm run sass && npm run start -- --watch",
     "start": "cd ./src/slideshow && reveal-md . --disable-auto-open",
     "test": "echo \"Error: no test specified\" && exit 1",
     "co": "sui-mono commit",
