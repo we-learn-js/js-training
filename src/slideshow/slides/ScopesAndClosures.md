@@ -341,7 +341,9 @@ myFunc5() // 5
 myFunc8() // 8
 ```
 
-<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
+----
+
+<!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Practice
 
@@ -374,16 +376,19 @@ Note: "This is button 10" is the response. Why? The scope of `i` is `addButtons`
 
 #### Solution
 
+
 ```js
+function getCallBack(currentIndex) {
+  return function() {
+    console.log('This is button ' + currentIndex)
+  }
+}
+
 function addButtons (num) {
    for(var i = 0; i < num; i++ ) {
      var $button = $('<button>Button '+ i+'</button>')
 
-     $button.click( (function(i) {
-       return function() {
-         console.log('This is button ' + i)
-       }
-     })(i))
+     $button.click(getCallBack(i))
 
      $(document.body).append($button)
    }
@@ -394,13 +399,27 @@ addButtons(10)
 
 https://jsbin.com/laturas/edit?js,console,output
 
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
+
+or even:
+
+```js
+$button.click( (function(i) {
+  return function() {
+    console.log('This is button ' + i)
+  }
+})(i))
+```
+
+
+
 Note: We need to create a new closure with local `i` for each click callback. Now, the callback is created in a new function scope when the local `i` exists with its evaluated value at that moment.
 
-----
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Practice
 
-**Make the countdown to work**
+**Make the countdown work**
 
 ```js
 function countdown (num) {
@@ -411,11 +430,14 @@ function countdown (num) {
   }
 }
 
+countdown(5);
+
+// -1, -1, -1, -1, -1
 ```
 
 https://jsbin.com/xaxerim/edit?js,console
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-reponseSlide" -->
 
 #### Solution
 
@@ -431,3 +453,21 @@ function countdown (num) {
 }
 ```
 https://jsbin.com/mabono/edit?js,console
+
+<!--slide-->
+
+or even easier:
+
+change the scope from `var` (function) to `let` (block)
+```js
+function countdown (num) {
+  for (let i = 0; i <= num; i += 1) {
+    setTimeout(function () {
+      console.log(num - i);
+    }, i * 1000);
+  }
+}
+
+countdown(5);
+```
+https://jsbin.com/hiduro/edit?js,console
