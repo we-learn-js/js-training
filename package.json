@@ -4,20 +4,23 @@
   "description": "JS Training",
   "main": "index.js",
   "scripts": {
-    "start": "reveal-md src/slideshow",
-    "dev": "reveal-md src/slideshow -w --disable-auto-open",
-    "sass": "node-sass --source-map true --importer node_modules/node-sass-package-importer/dist/cli.js -o src/slideshow/theme src/slideshow/theme/js-training.scss",
-    "co": "sui-mono commit",
+    "reset": "rm -Rf node_modules && npm i",
+    "build": "npm run sass",
+    "sass": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js -o ./src/slideshow/theme ./src/slideshow/theme/js-training.scss",
+    "dev": "npm run start -- --watch",
+    "start": "cd ./src/slideshow && reveal-md . --disable-auto-open",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "reset": "rm -Rf node_modules && npm i"
+    "co": "sui-mono commit",
+    "deploy": "npm run deploy:clear && now --public --npm --name=js-training",
+    "deploy:clear": "now rm js-training --yes"
   },
   "dependencies": {
-    "reveal-md": "0.4"
+    "reveal-md": "0.4",
+    "node-sass": "4.5.3",
+    "node-sass-package-importer": "5.0.0-alpha.15"
   },
   "devDependencies": {
-    "@s-ui/mono": "1",
-    "node-sass": "^4.5.3",
-    "node-sass-package-importer": "^5.0.0-alpha.14"
+    "@s-ui/mono": "1"
   },
   "config": {
     "sui-mono": {
