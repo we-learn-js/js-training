@@ -11,26 +11,39 @@
     <base target="_blank">
   </head>
   <body class="js-training-listing">
-      <h1 class="js-training-listing-title">JS Training</h1>
-      <ul class="js-training-listing-list">
-        <li><a href="Presentation.md">Presentation</a></li>
-        <li><a href="slides/Operators.md">Operators</a></li>
-        <!-- <li><a href="slides/Numbers.md">Numbers</a></li> -->
-        <li><a href="slides/ScopesAndClosures.md">Scopes and Closures</a></li>
-        <li><a href="slides/Objects.md">Objects</a></li>
-        <li><a href="slides/Strings.md">Strings</a></li>
-        <li><a href="slides/Functions.md">Functions</a></li>
-        <li><a href="slides/FunctionalProgramming.md">Functional programming</a></li>
-        <li><a href="slides/Modules.md">Modules</a></li>
+    <h1 class="js-training-listing-title">JS Training</h1>
+    <ul class="js-training-listing-list">
+      <li><a href="Presentation.md">Presentation</a></li>
+      <li><a href="slides/Operators.md">Operators</a></li>
+      <!-- <li><a href="slides/Numbers.md">Numbers</a></li> -->
+      <li><a href="slides/ScopesAndClosures.md">Scopes and Closures</a></li>
+      <li><a href="slides/Objects.md">Objects</a></li>
+      <li><a href="slides/Strings.md">Strings</a></li>
+      <li><a href="slides/Functions.md">Functions</a></li>
+      <li><a href="slides/FunctionalProgramming.md">Functional programming</a></li>
+      <li><a href="slides/Modules.md">Modules</a></li>
 
-        <li><a href="slides/Classes.md">Classes</a></li>
-        <li><a href="slides/AsyncProgramming.md">AsyncProgramming</a></li>
-        <li><a href="slides/Generators.md">Iterators and Generators</a></li>
-        <li><a href="slides/ObjectOrientedProgramming.md">Object-Oriented Programming</a></li>
-        <li><a href="slides/ObjectOrientedDesignPrinciples.md">Object-Oriented Design Principles</a></li>
-        <li><a href="slides/DesignPatterns.md">Design Patterns</a></li>
-        <li><a href="slides/Testing.md">Testing</a></li>
-        <li><a href="slides/DomainDrivenDesign.md">Domain Driven Design</a></li>
-      </ul>
+      <li><a href="slides/Classes.md">Classes</a></li>
+      <li><a href="slides/AsyncProgramming.md">AsyncProgramming</a></li>
+      <li><a href="slides/Generators.md">Iterators and Generators</a></li>
+      <li><a href="slides/ObjectOrientedProgramming.md">Object-Oriented Programming</a></li>
+      <li><a href="slides/ObjectOrientedDesignPrinciples.md">Object-Oriented Design Principles</a></li>
+      <li><a href="slides/DesignPatterns.md">Design Patterns</a></li>
+      <li><a href="slides/Testing.md">Testing</a></li>
+      <li><a href="slides/DomainDrivenDesign.md">Domain Driven Design</a></li>
+    </ul>
+    <script>
+        /* Custom script for JS Training     */
+        /* --------------------------------- */
+        var isMaster = window.location.href.indexOf('?master') !== -1
+        if(isMaster) {
+          var links = document.getElementsByTagName('a')
+          for (var i = 0; i < links.length; i++) {
+            links[i].href += '?master'
+          }
+        }
+        /* --------------------------------- */
+        /* END Custom script for JS Training */
+    </script>
   </body>
 </html>

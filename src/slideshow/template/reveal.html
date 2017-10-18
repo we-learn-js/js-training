@@ -11,8 +11,9 @@
           <link rel="stylesheet" href="{{{base}}}/{{{.}}}">
         {{/cssPaths}}
 
-        {{#watch}}
         <base target="_blank">
+
+        {{#watch}}
 		<script>
 		  document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
 		  ':35729/livereload.js?snipver=1"></' + 'script>')
@@ -53,6 +54,7 @@
               { src: '{{{base}}}/plugin/math/math.js', async: true }
             ];
 
+
             // default options to init reveal.js
             var defaultOptions = {
               controls: true,
@@ -68,6 +70,15 @@
 
             var options = {{{revealOptionsStr}}};
             options = extend(defaultOptions, options, queryOptions);
+
+            /* Custom script for JS Training     */
+            /* --------------------------------- */
+            var isMaster = window.location.href.indexOf('?master') !== -1
+            var type = isMaster ? 'master' : 'client'
+            options.dependencies.push({ src: '//cdn.socket.io/socket.io-1.3.5.js', async: true })
+            options.dependencies.push({ src: '{{{base}}}/plugin/multiplex/' + type + '.js', async: true })
+            /* --------------------------------- */
+            /* END Custom script for JS Training */
         </script>
 
         {{#scriptPaths}}
