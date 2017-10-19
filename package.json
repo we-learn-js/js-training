@@ -13,7 +13,8 @@
     "co": "sui-mono commit",
     "deploy": "now --public --npm --name=js-training",
     "deploy:clear": "now rm js-training --yes",
-    "deploy:alias": "now alias set $(pbpaste) js-training"
+    "deploy:alias": "now alias set $(pbpaste) js-training",
+    "deploy:prod": "npm run deploy:clear && npm run deploy && npm run deploy:alias"
   },
   "dependencies": {
     "reveal-md": "0.4",
