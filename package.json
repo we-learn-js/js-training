@@ -11,8 +11,9 @@
     "start": "cd ./src/slideshow && reveal-md . --disable-auto-open",
     "test": "echo \"Error: no test specified\" && exit 1",
     "co": "sui-mono commit",
-    "deploy": "npm run deploy:clear && now --public --npm --name=js-training",
-    "deploy:clear": "now rm js-training --yes"
+    "deploy": "now --public --npm --name=js-training",
+    "deploy:clear": "now rm js-training --yes",
+    "deploy:alias": "now alias set $(pbpaste) js-training"
   },
   "dependencies": {
     "reveal-md": "0.4",
