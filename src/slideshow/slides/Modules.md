@@ -521,7 +521,7 @@ export {round as getRound, PI}
 Translate each sentence to an import statement
 
 | Sentence |
-| <!--slide--><!--slide--><!--slide-->---- |
+| -------- |
 | Import all methods as **math** |
 | Import square function as **square** |
 | Import number function as **number** |

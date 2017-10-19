@@ -1177,7 +1177,7 @@ typeof null  // "object"
 <!--slide-->
 
 | Type | Result |
-| <!--slide--> | <!--slide-->-- |
+| ---- | ------ |
 | Undefined | "undefined" |
 | Boolean | "boolean" |
 | Number | "number" |
