@@ -9,6 +9,6 @@
   "listingTemplate": "template/listing.html",
   "revealTemplate": "template/reveal.html",
   "title": "JS Training",
-  "separator": "----",
-  "verticalSeparator": "<!--slide-->"
+  "separator": "^(\r\n?|\n)----(\r\n?|\n)$",
+  "verticalSeparator": "^(\r\n?|\n)<!--slide-->$"
 }
