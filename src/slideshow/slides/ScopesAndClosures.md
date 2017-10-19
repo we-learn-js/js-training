@@ -180,21 +180,43 @@ Compiled code
 var a = 1
 function print() {
   var a // a was hoisted
-  console.log(a)
+  console.log(a) // undefined
   a = 2
-  console.log(a)
+  console.log(a) // 2
 }
 ```
 
 Note: behind the scene, a is hoisted on the top of the function body.
 
-<!--slide-->
-
-<!-- .slide: class="jsTraining-alertSlide" -->
+<!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
 
 #### Caution !
 
-> Only `var` declarations are hosted
+> Only `var` declarations are hoisted
+
+```js
+function doSomething() {
+  console.log(bar); // undefined
+  console.log(foo); // ReferenceError
+  var bar = 1;
+  let foo = 2;
+}
+doSomething()
+```
+
+<!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
+
+#### Caution ! Temporal Dead Zone
+
+```js
+function test(){
+   var foo = 33;
+   if (true) {
+      let foo = (foo + 55); // ReferenceError
+   }
+}
+test();
+```
 
 ```js
 let a = 1
@@ -208,6 +230,9 @@ function print() {
 
 print() // ReferenceError: a is not defined
 ```
+
+[MDN // Temporal Dead Zone and errors with let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_Dead_Zone_and_errors_with_let)
+
 
 <!--slide-->
 

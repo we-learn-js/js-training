@@ -1142,9 +1142,9 @@ delete arr[1];    // arr === [1,undefined, 3,4]
 delete arr;       // arr is not defined
 ```
 
-<!--slide-->
+[MDN // Operators > delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete)
 
-<!-- .slide: class="jsTraining-alertSlide" -->
+<!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
 
 ### Caution !
 
