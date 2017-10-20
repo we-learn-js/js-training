@@ -10,5 +10,5 @@
   "revealTemplate": "template/reveal.html",
   "title": "JS Training",
   "separator": "^(\r\n?|\n)----(\r\n?|\n)$",
-  "verticalSeparator": "^(\r\n?|\n)<!--slide-->$"
+  "verticalSeparator": "^(\r\n?|\n)<!--slide-->"
 }
