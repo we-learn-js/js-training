@@ -1,10 +1,13 @@
 # js-training
-JS Training Slides
 
-## Dev Notes
+> JS Training Slides
 
-### Install global dependencies
+![Logo](./src/slideshow/images/objects-playground-1.png)
 
-```
-$ npm install -g reveal-md@0.0.30
-```
+## CheatSheets
+
+* [es6](https://devhints.io/es6)
+* [js-array](https://devhints.io/js-array)
+* [js-promises](https://devhints.io/promise)
+* [react](https://devhints.io/react)
+* [bash](https://devhints.io/bash)

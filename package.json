@@ -1,5 +1,5 @@
 {
-  "name": "@davidbarna/js-training",
+  "name": "@we-learn-js/js-training",
   "version": "0.0.0",
   "description": "JS Training",
   "main": "index.js",
@@ -33,10 +33,10 @@
   "author": "David Almeida <davidbarna@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidbarna/js-training.git"
+    "url": "git+https://github.com/we-learn-js/js-training.git"
   },
   "bugs": {
-    "url": "https://github.com/davidbarna/js-training/issues"
+    "url": "https://github.com/we-learn-js/js-training/issues"
   },
-  "homepage": "https://github.com/davidbarna/js-training#readme"
+  "homepage": "https://github.com/we-learn-js/js-training#readme"
 }
