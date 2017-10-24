@@ -2,7 +2,7 @@
 
 > JS Training Slides
 
-![Logo](./src/slideshow/images/objects-playground-1.png)
+![Logo](./src/slideshow/images/logo.png)
 
 ## CheatSheets
 
