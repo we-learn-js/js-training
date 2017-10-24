@@ -24,7 +24,7 @@
     }
   }
 
-  p, td, h1, h2, h3, h4, h5, h6, li {
+  :not(pre){
     & > code {
       background-color: rgba($selectionBackgroundColor,.3);
       border-radius: .15em;
@@ -40,6 +40,30 @@
     }
   }
 
+  pre {
+    display: inline-block;
+    font-size: .7em;
+    margin: $blockMargin auto;
+    width: auto;
+    max-width: 100%;
+
+    code {
+      padding: $blockMargin/2;
+    }
+
+    .hljs {
+      border-radius: 5px;
+      background: rgba(#000, .65);
+      &-comment {
+        color: #aaa;
+      }
+    }
+  }
+
+  p + pre {
+    margin-top: 0;
+  }
+
   table {
     min-width: 80%;
     td, th {
@@ -48,18 +72,7 @@
     }
   }
 
-  pre {
-    display: inline-block;
-    margin: $blockMargin auto;
-    width: auto;
-    max-width: 100%;
-    code {
-      padding: $blockMargin/2;
-    }
-  }
-  p + pre {
-    margin-top: 0;
-  }
+
   &.overview {
     .slides section.present {
       outline-color: #fff;

@@ -1167,11 +1167,11 @@ delete arr; // arr is [1,2,3,4]
 > The `typeof` operator returns a string indicating the type of the unevaluated operand.
 
 ```js
-typeof x    // "undefined"
-typeof 5    // "number"
-typeof "5"  // "string"
-typeof {}  // "object"
-typeof null  // "object"
+typeof x      // "undefined"
+typeof 5      // "number"
+typeof "5"    // "string"
+typeof {}     // "object"
+typeof null   // "object"
 ```
 
 <!--slide-->
