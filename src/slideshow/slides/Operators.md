@@ -424,20 +424,20 @@ console.log(x = y = z) // 25
 
 > With arrays, destructuring is made by order
 
+With destructuring:
+```js
+const numbers = ["one", "two", "three"];
+const [one, two, three] = numbers;
+
+console.log(one, two, three) // "one", "two", "three"
+```
+
 Without destructuring:
 ```js
 const numbers = ["one", "two", "three"];
 const one   = numbers[0];
 const two   = numbers[1];
 const three = numbers[2];
-
-console.log(one, two, three) // "one", "two", "three"
-```
-
-With destructuring:
-```js
-const numbers = ["one", "two", "three"];
-const [one, two, three] = foo;
 
 console.log(one, two, three) // "one", "two", "three"
 ```
@@ -724,12 +724,12 @@ function drawChart(options) {
 ### Nested object and array destructuring
 
 ```js
-let user = [
+let users = [
   {name: 'Evan'},
   {name: 'Joseph'}
 ]
 
-let [{name: name1}, {name: name2 }] = user
+let [{name: name1}, {name: name2 }] = users
 
 console.log(name1) // "Evan"
 console.log(name2) // "Joseph"
@@ -904,6 +904,17 @@ a == 5 // true as the Object (a) is converted to primitive 5 before comparison
 
 a > b // false
 a < b // false
+```
+
+<!--slide-->
+
+Enforcing `valueOf()`:
+
+```js
+let o = {
+  valueOf: function () { return 'random' }
+}
+o == 'random' // true
 ```
 
 <!--slide-->
@@ -1617,12 +1628,15 @@ console.log(a, b, c, d)
 let {
   prop: a=5,
   prop2: {
-    prop2: {
-      nested: [ , , b]
-    }
+    prop2: { nested: [ , , b] }
   },
   prop3: c=10
-} = { prop: "Hello", prop2: { prop2: { nested: ["a", "b", "c"]}}};
+} = {
+  prop: "Hello",
+  prop2: {
+    prop2: { nested: ["a", "b", "c"] }
+  }
+};
 console.log(a, b, c);
 ```
 

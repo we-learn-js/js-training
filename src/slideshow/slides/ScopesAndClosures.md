@@ -345,7 +345,7 @@ function foo() {
   return function () { console.log( a ); }   
 }
 
-var myFunc = foo()
+var myFunc = foo() // function () { console.log( a ); }
 
 myFunc() // 2
 ```
@@ -356,14 +356,16 @@ Here's a little more complicated one:
 
 ```js
 function foo(a) {
-  return function () { console.log( a ); }   
+  return function () { console.log( ++a ); }   
 }
 
 const myFunc5 = foo(5)
 const myFunc8 = foo(8)
 
-myFunc5() // 5
-myFunc8() // 8
+myFunc5() // 6 ( 5 + 1 )
+myFunc8() // 9 ( 8 + 1 )
+myFunc5() // 7 ( 6 + 1 )
+myFunc8() // 10 ( 9 + 1 )
 ```
 
 ----
