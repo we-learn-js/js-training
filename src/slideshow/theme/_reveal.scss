@@ -1,5 +1,21 @@
 // https://github.com/hakimel/reveal.js/blob/master/css/theme/template/theme.scss
 
+@mixin slide-text-colors($color) {
+  p, blockquote, li {
+    strong {
+      font-weight: normal;
+      color: $color;
+    }
+  }
+
+  :not(pre){
+    & > code {
+      background-color: rgba($color,.3);
+      border:  1px solid rgba($color, .5);
+    }
+  }
+}
+
 .reveal {
 
   section {
@@ -17,19 +33,12 @@
     }
   }
 
-  p, blockquote {
-    strong {
-      font-weight: normal;
-      color: $selectionBackgroundColor;
-    }
-  }
+  @include slide-text-colors($selectionBackgroundColor);
 
   :not(pre){
     & > code {
-      background-color: rgba($selectionBackgroundColor,.3);
       border-radius: .15em;
       color: $selectionColor;
-      border:  1px solid rgba($selectionBackgroundColor, .5);
       font: {
         size: 85%;
         style: normal;

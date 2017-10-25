@@ -2,8 +2,11 @@
   &.slide-background {
     @include radial-gradient( rgba($color,.5), rgba($color,.0) );
     box-shadow: inset 0 0 0 $blockMargin rgba($color, .3);
+
     @content
   }
+
+  @include slide-text-colors(lighten($color, 20%))
 }
 
 .jsTraining{
