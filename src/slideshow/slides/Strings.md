@@ -11,9 +11,9 @@
 > `String` instances hold a primitive string accessible thanks to the `String.prototype.valueOf()` function.
 
 ```js
-typeof '5' // "string"
-typeof new String('5') // "object"
-typeof new String('5').valueOf() // "string"
+typeof '5'                        // "string"
+typeof new String('5')            // "object"
+typeof new String('5').valueOf()  // "string"
 
 ```
 
@@ -21,14 +21,14 @@ typeof new String('5').valueOf() // "string"
 
 ### Comparison
 
-> When an object, is compared to a string, `String.prototype.valueOf()` is called internally to make the comparison.
+> When an object is compared to a string, `String.prototype.valueOf()` is called internally to make the comparison.
 
 ```js
 var a = new String('foo');
 var b = new String('foo');
 
-a == b  // false as a and b are type Object and reference different objects
-a == 'foo' // true as the Object (a) is converted to String 'foo' before comparison
+a == b      // false as a and b are type Object and reference different objects
+a == 'foo'  // true as the Object (a) is converted to String 'foo' before comparison
 ```
 
 ----
@@ -39,19 +39,9 @@ a == 'foo' // true as the Object (a) is converted to String 'foo' before compari
 
 > You can use multi-line strings and string interpolation features with them.
 
-> Template literals are enclosed by the back-tick (\` \`) (grave accent)
+> Template literals are enclosed by the backtick ` ` `, not `'` or `"`
 
-> ```js
->`string text`
->
->`string text line 1
->string text line 2`
->
->`string text ${expression} string text`
-```
-
-[MDN - Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
-
+[MDN // Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
 
 <!--slide-->
 
@@ -59,6 +49,10 @@ a == 'foo' // true as the Object (a) is converted to String 'foo' before compari
 
 ```js
 `\`` === "`" // true
+`\`` === '`' // true
+
+`'` === '\'' // true
+`"` === "\"" // true
 ```
 
 <!--slide-->
@@ -66,6 +60,31 @@ a == 'foo' // true as the Object (a) is converted to String 'foo' before compari
 ### Multi-line strings
 
 > Any new line characters inserted in the source are part of the template literal.
+
+Regular string:
+
+```js
+'string text line 1\n' +
+'string text line 2\n' +
+'string text line 3'
+
+"string text line 1\n" +
+"string text line 2\n" +
+"string text line 3"
+```
+
+Template string:
+```js
+`string text line 1
+string text line 2
+string text line 3`
+```
+
+<!--slide-->
+
+### Multi-line strings
+
+> The result string is exactly the same.
 
 ```js
 var text1 = "string text line 1\n"+
@@ -75,8 +94,8 @@ var text2 = `string text line 1
 string text line 2`;
 
 text1 === text2 // true
-
 ```
+
 
 <!--slide-->
 
@@ -91,10 +110,13 @@ var text1 = "Fifteen is " + (a + b) + " and\nnot " + (2 * a + b) + ".";
 var text2 = `Fifteen is ${a + b} and\nnot ${2 * a + b}.`;
 
 text1 === text2 // true
+console.log(text1)
+// "Fifteen is 15 and
+// not 20."
 ```
 
 ----
 
-## Must Read
+## Further Info
 
-[exploringjs.com - Template literals](http://exploringjs.com/es6/ch_template-literals.html)
+[exploringjs.com // Template literals](http://exploringjs.com/es6/ch_template-literals.html)
