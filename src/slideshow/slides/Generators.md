@@ -514,7 +514,7 @@ https://jsbin.com/totayeq/edit?js,output
 
 > When the async function returns a value, the promise will be resolved with the returned value.
 
-[MDN - async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+[MDN // async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
 
 <!--slide-->
 

@@ -363,7 +363,7 @@ Note: N instances of `Function` are created and saved in memory for **each** ins
 > Symbol([description])
 > ```
 
-[MDN - Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+[MDN // Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
 
 <!--slide-->
 
@@ -450,7 +450,7 @@ console.log(halloween.toString()) // "31/3/2000 0:00:00"
 > new WeakMap([iterable])
 > ```
 
-[MDN - WeakMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)
+[MDN // WeakMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)
 
 
 <!--slide-->

@@ -178,7 +178,7 @@ function require(name) {
 }
 ```
 
-[MDN - Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)
+[MDN // Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)
 
 <!--slide-->
 
@@ -306,7 +306,7 @@ var month = require(function(module, exports){
 
 > The `export` statement is used to export functions, objects or primitives from a given file (or module).
 
-[MDN - export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
+[MDN // export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
 
 <!--slide-->
 
@@ -383,7 +383,7 @@ export default {
 
 > The `import` statement is used to import functions, objects or primitives that have been exported from an external module, another script, etc.
 
-[MDN - import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+[MDN // import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
 
 <!--slide-->
 

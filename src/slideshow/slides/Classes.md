@@ -3,7 +3,7 @@
 > JavaScript classes introduced in ES6 are **syntactical sugar** over JavaScript's existing **prototype-based inheritance**.
 
 
-[MDN - Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+[MDN // Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 
 
 <!--slide-->
@@ -208,7 +208,7 @@ User.prototype.orderItem = function(item) {
 > The `get` syntax binds an object property to a function that will be called when that property is looked up.
 
 
-[MDN - getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)
+[MDN // getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)
 
 <!--slide-->
 
@@ -282,7 +282,7 @@ Note: the getter is removed and replaced by the actual value
 
 > The `set` syntax binds an object property to a function to be called when there is an attempt to set that property.
 
-[MDN - setter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set)
+[MDN // setter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set)
 
 <!--slide-->
 

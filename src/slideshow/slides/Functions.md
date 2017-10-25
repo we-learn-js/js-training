@@ -3,11 +3,11 @@
 ----
 
 
-> A function is a JavaScript encloses a set of statements that performs a task or calculates a value.
+> A function encloses a set of statements that performs a task or calculates a value.
 >
 > To use a function, you must define it somewhere in the scope from which you wish to call it.
 
-[MDN - Functions ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
+[MDN // Functions ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
 
 
 <!--slide-->
@@ -21,7 +21,7 @@
 >
 > The thing that is special about functions is that they can be invoked.
 
-[MDN - Function.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/prototype)
+[MDN // Function.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/prototype)
 
 
 <!--slide-->
@@ -243,7 +243,7 @@ multiply(5) // 5
 >
 > `this` always refers to the "owner" of the function we're executing.
 
-[MDN - this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
+[MDN // this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
 
 <!--slide-->
 
@@ -333,7 +333,7 @@ sum(1, 2, 3, 4)  // 10
 
 Note: The `arguments` object is not an `Array`. It is similar to an `Array`, but does not have any Array properties except length.
 
-[MDN - call()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
+[MDN // call()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
 
 <!--slide-->
 
@@ -354,7 +354,7 @@ var arr = [1,2,100,-1,-42]
 var max = Math.max.call(null, ...arr)
 ```
 
-[MDN - apply()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
+[MDN // apply()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 
 <!--slide-->
 
@@ -390,7 +390,7 @@ function flatten (arr) {
 >
 > func.bind(thisArg[, arg1[, arg2[, ...]]])
 
-[MDN - bind()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
+[MDN // bind()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
 
 <!--slide-->
 
@@ -523,7 +523,7 @@ var Button = function(content) {
 
 > Arrow functions binds the this value depending on creation context, not execution context.
 
-[MDN - Arrow functions](http://www-db.deis.unibo.it/courses/TW/DOCS/JS/developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions.html)
+[MDN // Arrow functions](http://www-db.deis.unibo.it/courses/TW/DOCS/JS/developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions.html)
 
 <!--slide-->
 
