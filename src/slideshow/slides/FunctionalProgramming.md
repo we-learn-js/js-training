@@ -1,7 +1,5 @@
 # Functional Programming in javascript
 
-Note: Estimated time: 1h
-
 <!--section-->
 
 ## What is functional programming?
@@ -45,40 +43,42 @@ A programming paradigm.
 
 ## First-class functions
 
-<!--slide-->
 
-> Functions to be treated like any other value. This means they can be created, passed to functions, returned from functions and stored inside data structures
+> Functions to be treated like any other value.
+>
+> This means they can be created, passed to functions, returned from functions and stored inside data structures
 
 <!--slide-->
 
 ### Functions are objects
 
 ```js
-
 var logToConsole = function (text) {
   console.log(text)
 }
 
-console.log(typeof logToConsole);
+console.log(typeof logToConsole)
 // object
 ```
 
-[Function at MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)
+[MDN // Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)
 
 <!--slide-->
 
-### Functions are objects
+### All functions are instances of `Function`
 
 ```js
-var logToConsole = function (text) {
-  console.log(text)
+var logToConsole = function ( text ) {
+  console.log( text )
 }
 ```
 
 Is the same as:
 
 ```js
-var logToConsole = new Function('text', 'console.log(text)');
+var logToConsole = new Function( 'text',
+  'console.log( text )'
+)
 ```
 
 <!--slide-->
@@ -86,7 +86,7 @@ var logToConsole = new Function('text', 'console.log(text)');
 As objects, they can have properties, methods, etc.
 ```js
 logToConsole.count = 1
-console.log(logToConsole.count);
+console.log(logToConsole.count)
 // 1
 ```
 
@@ -108,10 +108,10 @@ log('Hello World')
 ### Functions can be passed as parameter
 
 ```js
-var numbers = [1, 4, 9];
+var numbers = [1, 4, 9]
 var doubles = numbers.map(function(num) {
-  return num * 2;
-});
+  return num * 2
+})
 ```
 
 <!--slide-->
@@ -120,25 +120,31 @@ var doubles = numbers.map(function(num) {
 
 ```js
 var createIncrementer = function(increment) {
-  return function( number ) { return number + increment }
+  return function ( number ) {
+    return number + increment
+  }
 }
 
 var increment3 = createIncrementer(3)
-increment3(5)
-// 8
+increment3(5) // 8
+increment3(10) // 13
 ```
 
 <!--section-->
 
 ## Immutability
 
-<!--slide-->
-
 > An immutable object is an object whose state cannot be modified after it is created.
 
-> A function is not supposed to mutate its input(s) but to return a newly created output
+> A function is not supposed to mutate its input(s) but to return a newly created output.
 
 <!--slide-->
+
+```js
+const f = function (x) { return x ** 2 }
+const g = function (x) { return x + 1 }
+g(f(3)) // 10
+```
 
 ![input-output](https://perfectmaths.files.wordpress.com/2011/06/function_composite_fx.png?w=604)
 
@@ -189,7 +195,7 @@ Note: in this function, `numbers` is not mutated and an output array is created 
 
 ## Lambdas
 
-> In computer science, the most important, defining characteristic of a lambda expression is that it is used as data.
+> In computer science, the most important defining characteristic of a lambda expression is that it is used as data.
 
 * Passed as an argument to another function to be invoked
 * Function returned as a value from a function
@@ -200,15 +206,21 @@ Note: In JavaScript, not all lambdas are anonymous, and not all anonymous functi
 
 <!--slide-->
 
-> λx.x*x
+`λx.x*x`
 
 ```js
+ x => x*x
+```
+
+Regular function:
+```js
 function square(x) {
-  return x * x;
+  return x * x
 }
 var squares = [3,4,6].map( square )
 ```
 
+Arrow function:
 ```js
 var squares = [3,4,6].map( x => x*x )
 ```
@@ -217,34 +229,38 @@ Note: Both `square` functions can be considered lambdas, but the first one would
 
 <!--slide-->
 
-> λx.λ.y.x+y
+Consider:
 
 ```js
 function plus(x,y) {
-  return x + y;
+  return x + y
 }
-plus(5,7);
+plus(5,7) // 12
 ```
 
 <!--slide-->
 
-> λx.λ.y.x+y
+`λx.λ.y.x+y`
 
-becomes
+```js
+x => y => x + y
+```
+
+Regular functions:
 
 ```js
 function plus(x) {
   return function plusx(y) {
-    return x + y;
+    return x + y
   }
 }
-plus(5)(7)
+plus(5)(7) // 12
 ```
 
-becomes
+Arrow functions:
 
 ```js
-(x => y => x + y)(5)(7)
+(x => y => x + y)(5)(7) // 12
 ```
 
 Note: `plus` is a lambda expression, even if it´s not anonymous.
@@ -259,22 +275,18 @@ Note: `plus` is a lambda expression, even if it´s not anonymous.
 
 <!--slide-->
 
-![closures](http://awcdev.com/wp-content/uploads/2015/05/closure.jpg)
-
-<!--slide-->
-
 ```js
 function makeFunc() {
-  var name = "Mozilla";
+  var name = "Mozilla"
   function displayName() {
-    alert(name);
+    console.log(name)
   }
-  return displayName;
+  return displayName
 }
 
-var myFunc = makeFunc();
-myFunc();
-````
+var myFunc = makeFunc()
+myFunc() // "Mozilla"
+```
 
 Note: When `displayName` is created, `name` is added to its closure with its value 'Mozilla'
 
@@ -283,15 +295,15 @@ Note: When `displayName` is created, `name` is added to its closure with its val
 ```js
 function makeAdder(x) {
   return function add(y) {
-    return x + y;
-  };
+    return x + y
+  }
 }
 
-var add5 = makeAdder(5);
-var add10 = makeAdder(10);
+var add5 = makeAdder(5)
+var add10 = makeAdder(10)
 
-console.log(add5(2));  // 7
-console.log(add10(2)); // 12
+console.log(add5(2))  // 7
+console.log(add10(2)) // 12
 ```
 https://jsbin.com/jegerel/edit?js,console
 
@@ -302,9 +314,9 @@ That´s why, `add5` and `add10` return different values as they have a different
 
 ## Absence of side effects
 
-> It doesn’t rely on data outside the current function
+> Don’t rely on data outside the current function.
 
-> It doesn’t change data that exists outside the current function.
+> Don’t change data that exists outside the current function.
 
 <!--slide-->
 
@@ -313,56 +325,77 @@ That´s why, `add5` and `add10` return different values as they have a different
 > The state is a snapshot of a program’s current environment: all the variables that have been declared, functions created and what is currently being executed.
 
 
-> An expression in a programming language can be “stateful” or “stateless”. A stateful expression is one that changes a program’s current environment.
+> An expression in a programming language can be **“stateful”** or **“stateless”**. A stateful expression is one that changes a program’s current environment.
 
 <!--slide-->
 
 ### Don´t change state
 
-This is not functional:
+Not functional:
 ```js
-var number = 1;
+var number = 1
 var increment = function() {
-    return number += 1;
-};
-increment();
+    return number += 1
+}
+increment()
 ```
 
-This is a functional:
+Functional:
 ```js
-var number = 1;
+var number = 1
 var increment = function(n) {
-    return n + 1;
-};
-increment(number);
+    return n + 1
+}
+increment(number)
 ```
 
 <!--slide-->
 
 ### Don´t depend on state
 
-This is not functional:
+Not functional:
 ```js
-var birthday = new Date("December 17, 1995 03:24:00")
-
-function isMillennial() {
-  return birthday.getFullYear() > 1995
+function isAdult(birthday) {
+  return 2017 - birthday.getFullYear() > 18
 }
+isAdult(new Date("December 17, 1995 03:24:00"))
 ```
 
-This is a functional:
+Not purely functional:
 ```js
-function isMillennial(birthday) {
-  return birthday.getFullYear() > 1995
+function isAdult(birthday) {
+  var now = new Date()
+  return now.getFullYear() - birthday.getFullYear() > 18
 }
+isAdult(new Date("December 17, 1995 03:24:00"))
 ```
 
+<!--slide-->
+
+Functional:
+```js
+const isAdult = currentYear => birthday => (
+  currentYear - birthday.getFullYear() > 18
+)
+isAdult(2017)(new Date("December 17, 1995 03:24:00")) // true
+isAdult(2017)(new Date("December 17, 2003 03:24:00")) // false
+```
+
+Event better:
+```js
+const isAdult = currentYear => birthday => (
+  currentYear - birthday.getFullYear() > 18
+)
+const isAdultIn2017 = isAdult(2017)
+isAdultIn2017(new Date("December 17, 1995 03:24:00")) // true
+isAdultIn2017(new Date("December 17, 2003 03:24:00")) // false
+```
 
 <!--section-->
 
 ## Recursion
 
-> As opposed to iteration, method where the solution to a problem depends on solutions to smaller instances of the same problem
+> **As opposed to iteration**, method where the solution to a problem depends on solutions to smaller instances of the same problem
 
 > A recursive function is one that calls itself
 
@@ -375,22 +408,102 @@ function isMillennial(birthday) {
 
 <!--slide-->
 
-Imperative style
+Imperative style:
 ```js
 var numbers = [1,3,5,6]
 var squares = []
-for( var i; i < numbers.length; i++) {
+for( let i; i < numbers.length; i++) {
   squares = numbers[i] * numbers[i]
 }
 ```
 
-Functional style
+Functional style:
 ```js
 var numbers = [1,3,5,6]
 var squares = numbers.map( function (num) {
   return num * num
 } )
+// [1, 9, 25, 36]
 ```
+
+<!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
+
+### The Recursion dilemma in JS
+
+
+> Should we choose recursion over loops?
+
+<!--slide-->
+
+> "Recursion is not intrinsically better or worse than loops - each has advantages and disadvantages, and those even depend on the programming language (and implementation)."
+
+> "Iterative loops require destructive state updates, which makes them incompatible with pure (side-effect free) language semantics"
+
+[Source (stackoferflow)](http://programmers.stackexchange.com/questions/182314/recursion-or-while-loops)
+
+<!--slide-->
+
+> "The problem with recursion is that it (usually) uses more memory, a lot more. That's because each active call to a function is stored on what's called a [call stack](https://egghead.io/lessons/javascript-call-stack)."
+
+[Watch animated explanation](https://youtu.be/FyHloXKnPWc?t=41s)
+
+> "Use recursion when it's the easier option (and N won't be that large)."
+
+[Source (reddit)](https://www.reddit.com/r/javascript/comments/2byqst/recursion_vs_while_loops_js/)
+
+<!--slide-->
+
+> "In my opinion, recursive algorithms are a natural fit when the data structure is also recursive."
+
+[Source (stackoverflow)](http://stackoverflow.com/questions/1011448/necessary-uses-of-recursion-in-imperative-languages)
+
+<!--slide-->
+
+> "Practically speaking, if you're not using recursion for the following (even in imperative languages) you're a little mad:
+> * Tree traversal
+> * Graphs
+> * Lexing/Parsing
+> * Sorting"
+
+[Source (stackoverflow)](http://stackoverflow.com/questions/1011448/necessary-uses-of-recursion-in-imperative-languages)
+
+<!--slide-->
+
+Traverse with recursion
+```js
+function traverse (current, depth) {
+  var children = current.childNodes
+  for (var i = 0, len = children.length; i < len; i++) {
+    // DO STUFF
+    traverse(children[i], depth + 1)
+  }
+}
+```
+
+<!--slide-->
+
+Traverse with iteration
+```js
+function traverse (current) {
+  var stack = [current]
+  var stackIdx = 0
+  var children, i, len
+
+  while (current = stack[stackIdx++]) {
+    children = current.childNodes
+    for (i = 0, len = children.length; i < len; i++) {
+      // DO STUFF
+      stack.push(children[i])
+    }
+  }
+}
+```
+
+<!--slide-->
+
+Let's see if what we've read is true.
+
+https://jsbin.com/qajegal/edit?js,console
 
 <!--section-->
 
@@ -429,11 +542,11 @@ var squares = numbers.map( function (num) {
 ```js
 function negate(func) {
   return function(x) {
-    return !func(x);
-  };
+    return !func(x)
+  }
 }
-var isNotNaN = negate(isNaN);
-show(isNotNaN(NaN));
+var isNotNaN = negate(isNaN)
+show(isNotNaN(NaN))
 ```
 
 <!--slide-->
@@ -444,17 +557,51 @@ show(isNotNaN(NaN));
 
 ```js
 
-var numbers = [1, 4, 9];
+var numbers = [1, 4, 9]
 var doubles = numbers.map(function(num) {
-  return num * 2;
-});
+  return num * 2
+})
 // doubles is now [2, 8, 18]. numbers is still [1, 4, 9]
 
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
-### Exercise: map implementation
+### Practice: print array
+
+> Print, with one line of code, the same output printed with `printArray`
+
+
+```js
+var names = ["Ben", "Jafar", "Matt"]
+
+var printArray = function(names, console) {
+  var counter
+
+  for(counter = 0; counter < names.length; counter++) {
+    console.log(names[counter])
+  }
+}
+
+printArray(names, console) // OUTPUT: "Ben" "Jafar" "Matt"
+```
+
+https://jsbin.com/kokoqe/edit?js,console
+
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
+
+#### Solution
+
+```js
+names.forEach( (x) => console.log(x) )
+```
+
+Note: Why not using map? Map is to created to return a new array. We don´t need any return here.
+
+
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
+
+### Practice: map implementation
 
 > Implement `map2` function to obtain same output as `map`
 
@@ -463,7 +610,7 @@ var doubles = numbers.map(function(num) {
 ```js
 Array.prototype.map2 = function(func) {
   // SOLUTION GOES HERE
-};
+}
 
 var result =
 console.log(
@@ -474,18 +621,18 @@ console.log(
 
 https://jsbin.com/yaqite/edit?js,console
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 #### Solution
 
 ```js
 Array.prototype.map2 = function(func) {
-  var results = [];
+  var results = []
   this.forEach(function(itemInArray) {
-    results.push(func(itemInArray));
-  });
-  return results;
-};
+    results.push(func(itemInArray))
+  })
+  return results
+}
 ```
 
 <!--slide-->
@@ -497,22 +644,22 @@ Array.prototype.map2 = function(func) {
 ```js
 
 var result = [0,1,2,3,4].reduce( (previousValue, currentValue, currentIndex, array) => {
-  return previousValue + currentValue;
-}, 10);
+  return previousValue + currentValue
+}, 10)
 // 20
 
 ```
 
 ```js
 var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
-  return a.concat(b);
-}, []);
+  return a.concat(b)
+}, [])
 // flattened is [0, 1, 2, 3, 4, 5]
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
-### Exercise: reduce
+### Practice: reduce
 
 > Write a function `countZeroes`, which takes an array of numbers as its argument and returns the amount of zeroes that occur in it. Use `Array#reduce`.
 
@@ -531,16 +678,16 @@ console.log(
 
 https://jsbin.com/cubidal/edit?js,console
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 #### Solution
 
 ```js
 function countZeroes(array) {
   function counter(total, element) {
-    return total + (element === 0 ? 1 : 0);
+    return total + (element === 0 ? 1 : 0)
   }
-  return array.reduce(counter, 0);
+  return array.reduce(counter, 0)
 }
 ```
 
@@ -561,7 +708,7 @@ function countZeroes(array) {
 <!--slide-->
 
 #### But it can also be Imperative
-> Sequence of steps/instructions that happen in order and modifies the state
+> Sequence of steps / instructions that happen in order and modifies the state
 
 * while statements
 * for loops
@@ -672,137 +819,18 @@ Note: Object oriented languages tend to be imperative languages also. In this ca
 
 <!--section-->
 
-## Questions
-
-<!--slide-->
-
-### Recursion
-
-
-#### Should we choose recursion over loops?
-
-<!--slide-->
-
-> "Recursion is not intrinsically better or worse than loops - each has advantages and disadvantages, and those even depend on the programming language (and implementation)."
-
-> "Iterative loops require destructive state updates, which makes them incompatible with pure (side-effect free) language semantics"
-
-[Source (stackoferflow)](http://programmers.stackexchange.com/questions/182314/recursion-or-while-loops)
-
-<!--slide-->
-
-> "The problem with recursion is that it (usually) uses more memory, a lot more. That's because each active call to a function is stored on what's called a [call stack](https://egghead.io/lessons/javascript-call-stack)."
-
-[Watch animated explanation](https://youtu.be/FyHloXKnPWc?t=41s)
-
-> "Use recursion when it's the easier option (and N won't be that large)."
-
-[Source (reddit)](https://www.reddit.com/r/javascript/comments/2byqst/recursion_vs_while_loops_js/)
-
-<!--slide-->
-
-> "In my opinion, recursive algorithms are a natural fit when the data structure is also recursive."
-
-[Source (stackoverflow)](http://stackoverflow.com/questions/1011448/necessary-uses-of-recursion-in-imperative-languages)
-
-<!--slide-->
-
-> "Practically speaking, if you're not using recursion for the following (even in imperative languages) you're a little mad:
-> * Tree traversal
-> * Graphs
-> * Lexing/Parsing
-> * Sorting"
-
-[Source (stackoverflow)](http://stackoverflow.com/questions/1011448/necessary-uses-of-recursion-in-imperative-languages)
-
-<!--slide-->
-
-Traverse with recursion
-```js
-function traverse (current, depth) {
-  var children = current.childNodes
-  for (var i = 0, len = children.length; i < len; i++) {
-    // DO STUFF
-    traverse(children[i], depth + 1)
-  }
-}
-```
-
-<!--slide-->
-
-Traverse with iteration
-```js
-function traverse (current) {
-  var stack = [current]
-  var stackIdx = 0
-  var children, i, len
-
-  while (current = stack[stackIdx++]) {
-    children = current.childNodes
-    for (i = 0, len = children.length; i < len; i++) {
-      // DO STUFF
-      stack.push(children[i])
-    }
-  }
-}
-```
-
-<!--slide-->
-
-Let's see if what we've read is true.
-
-https://jsbin.com/qajegal/edit?js,console
-
-<!--section-->
-
 ## Practice
 
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
-<!--slide-->
-
-### Exercise: print array
-
-> Print, with one line of code, the same output printed with `printArray`
-
-
-```js
-var names = ["Ben", "Jafar", "Matt"];
-
-var printArray = function(names, console) {
-  var counter;
-
-  for(counter = 0; counter < names.length; counter++) {
-    console.log(names[counter]);
-  }
-}
-
-printArray(names, console) // OUTPUT: "Ben" "Jafar" "Matt"
-```
-
-https://jsbin.com/kokoqe/edit?js,console
-
-<!--slide-->
-
-#### Solution
-
-```js
-names.forEach( (x) => console.log(x) )
-```
-
-Note: Why not using map? Map is to created to return a new array. We don´t need any return here.
-
-
-
-<!--slide-->
-
-### Exercise: chaining
+### Practice: chaining
 
 > Create array with ids of videos that have a rating of 5.0
 
 * Use only Array# higher-order methods
 
 ```js
-var videos = [{...},, ...];
+var videos = [{...},, ...]
 
 function getBestVideosIds (videos) {
   // SOLUTION GOES HERE
@@ -814,24 +842,24 @@ console.log(getBestVideosIds(videos)) // OUTPUT [654356453, 675465]
 
 https://jsbin.com/junawu/edit?js,console
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 #### Solution
 
 ```js
 function getBestVideosIds (videos) {
   return videos.filter(function(video) {
-    return video.rating === 5.0;
+    return video.rating === 5.0
   })
   .map(function(video) {
-    return video.id;
+    return video.id
   })
 }
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
-### Exercise: recursion
+### Practice: recursion
 
 > Implement a function that takes a function as its first argument, a number num as its second argument, then executes the passed in function num times.
 
@@ -847,7 +875,7 @@ repeat( () => console.log(1), 7 )
 
 https://jsbin.com/joneliv/edit?js,console
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 #### Solution
 
@@ -859,9 +887,9 @@ function repeat(operation, num) {
 }
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
-### Exercise: immutability
+### Practice: immutability
 
 > Replace `cloneDeep` to avoid data mutation
 
@@ -872,7 +900,7 @@ var data = { /* ... */ }
 
 function clone(data) {
   // YOUR CODE GOES HERE
-  return data;
+  return data
 }
 
 clonedData = clone(data)
@@ -883,33 +911,33 @@ clonedData.users[0].games[0].name = 'Fake game name'
 
 https://jsbin.com/kulufo/edit?js,console,output
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 #### Solution
 
 ```js
 function clone(data) {
-  var result;
+  var result
 
   if (isArray(data)) {
     result = data.map( child => clone( child ) )
   } else if (typeof data == "object") {
     result = {}
     Object.keys(data).forEach(function(i){
-      result[i] = clone( data[i] );
+      result[i] = clone( data[i] )
     })
   } else {
-    result = data;
+    result = data
   }
 
-  return result;
+  return result
 }
 ```
 
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
-### Exercise: abstraction
+### Practice: abstraction
 
 > Write the higher-order function `count`, which takes an array and a test function as arguments, and returns the amount of elements in the array for which the test function returned true. Re-implement `countZeroes` using this function.
 
@@ -922,33 +950,25 @@ console.log(
 
 https://jsbin.com/sotepiq/edit?js,console
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 #### Solution
 
 ```js
 function count(test, array) {
   return array.reduce(function(total, element) {
-    return total + (test(element) ? 1 : 0);
-  }, 0 );
+    return total + (test(element) ? 1 : 0)
+  }, 0 )
 }
 
 function equals(x) {
-  return function(element) {return x === element;};
+  return function(element) {return x === element}
 }
 
 function countZeroes(array) {
-  return count(equals(0), array);
+  return count(equals(0), array)
 }
 
 ```
 
 Note: now the code is pure and much more functional and reusable; each function does a single thing.
-
-<!--section-->
-
-## The end
-
-Apply your new knowledge to
-
-[/github/js-training-practice/functional-programming](https://github.com/soyundev/js-training-practice/tree/functional-programming)
