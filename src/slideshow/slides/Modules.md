@@ -4,15 +4,15 @@
 
 ## What is a module?
 
-> A module encapsulates related code into a single unit of code.
+> A module **encapsulates** related code into a single unit of code.
 >
-> Usually it is imported only once, and exposes an interface to be used.
+> Usually it is imported only once, and **exposes an interface** to be used.
 
 <!--slide-->
 
 ## Module Pattern with IIFEs
 
-> A module is a function or object that presents an interface but that hides its state and implementation.
+> A module is a function or object that presents an interface but that **hides its state** and implementation.
 >
 > IIFEs takes advantage of function scope and closure to create relationships that are binding and private.
 
@@ -48,12 +48,12 @@ logB() // ReferenceError: logB is not defined
 
 
 ```js
-+function (win, doc) {
+(function (win, doc) {
   const ELEMENT_ID = 'my-element'
   win.addEventListener('load', function(){
     doc.body.appendChild(doc.createElement('DIV'))
   })
-}(window, document)
+})(window, document)
 ```
 
 <!--slide-->
@@ -88,6 +88,8 @@ console.log(weekDay.number('Monday')) // 1
 > A module is a small app on its own.
 >
 > It can manage its state in privacy, not polluting the global scope.
+
+<!--slide-->
 
 ```js
 var counterModule = (function () {
@@ -135,9 +137,12 @@ counterModule.resetCounter() // "counter value prior to reset: 2"
 
 > Npm packages installed in the project can be required by package name
 
+Install a package:
 ```
 npm install angular --save
 ```
+
+Import a module from package:
 ```js
 // Import angular to create a module
 var angular = require('angular')
@@ -146,9 +151,12 @@ var ngModule = angular.module('my-module', [])
 
 <!--slide-->
 
+Install React:
 ```
 npm install react --save
 ```
+
+Import React module:
 ```js
 // Import React to create a component
 var React = require('react')
@@ -167,7 +175,10 @@ class HelloMessage extends React.Component {
 > * It injects the empty object `exports` ready to be augmented with new properties and methods.
 > * It injects a `module` object with the `exports` object as its property, so the full module can be replaced instead of augmenting the original
 
-A simplified implementation of `require`:
+
+<!--slide-->
+
+#### A simplified implementation of `require`
 
 ```js
 function require(name) {
@@ -261,7 +272,7 @@ counterModule.incrementCounter()
 counterModule.resetCounter() // "counter value prior to reset: 3"
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Practice
 
@@ -276,9 +287,9 @@ console.log(month.name(2)) // March
 console.log(month.number("November")) // 10
 ```
 
-https://jsbin.com/zapuqus/edit?js,console,output
+https://jsbin.com/zapuqus/edit?js,console
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 #### Solution
 
@@ -501,11 +512,9 @@ export * from './modules/months'
 export {name as getMonthName} from './modules/months'
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
-### Practice
-
-<!--slide-->
+### Practice: Translate each sentence to an import statement
 
 ```js
 // 'math.js'
@@ -518,43 +527,87 @@ export default getNumber
 export {round as getRound, PI}
 ```
 
-Translate each sentence to an import statement
-
-| Sentence |
-| -------- |
-| Import all methods as **math** |
-| Import square function as **square** |
-| Import number function as **number** |
-| Import all methods as **math** and getNumber as **number** |
+* Import all methods as **math**
+* Import square function as **square**
+* Import number function as **number**
+* Import all methods as **math** and getNumber as **number**
 
 
-<!--slide-->
 
-### Solution
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
+
+#### Solution: Import all methods as **math**
+
+```js
+// 'math.js'
+var {PI, round} = Math
+var square = function (x) { return x * x; }
+var getNumber = function (x) { return Number(x) }
+export square as getSquare
+export function getCube(x) { return x * x * x; }
+export default getNumber
+export {round as getRound, PI}
+```
 
 
-Import all methods as **math**
 ```js
 import * as math from 'math'
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
-Import squareFunc as **square**
+#### Solution: Import squareFunc as **square**
+
+```js
+// 'math.js'
+var {PI, round} = Math
+var square = function (x) { return x * x; }
+var getNumber = function (x) { return Number(x) }
+export square as getSquare
+export function getCube(x) { return x * x * x; }
+export default getNumber
+export {round as getRound, PI}
+```
+
 ```js
 import {getSquare as square} from 'math'
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
-Import getNumber as **number**
+#### Solution: Import getNumber as **number**
+
+```js
+// 'math.js'
+var {PI, round} = Math
+var square = function (x) { return x * x; }
+var getNumber = function (x) { return Number(x) }
+export square as getSquare
+export function getCube(x) { return x * x * x; }
+export default getNumber
+export {round as getRound, PI}
+```
+
+
 ```js
 import number from 'math'
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
-Import all methods as **math** and getNumber as **number**
+#### Solution: Import all methods as **math** and getNumber as **number**
+
+```js
+// 'math.js'
+var {PI, round} = Math
+var square = function (x) { return x * x; }
+var getNumber = function (x) { return Number(x) }
+export square as getSquare
+export function getCube(x) { return x * x * x; }
+export default getNumber
+export {round as getRound, PI}
+```
+
 ```js
 import * as math, default as number from 'math'
 ```
