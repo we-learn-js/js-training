@@ -1,6 +1,6 @@
 # Scopes and Closures
 
-----
+<!--section-->
 
 ## What is a scope?
 
@@ -324,7 +324,7 @@ console.log(b); // 5
 console.log(b); // b is not defined
 ```
 
-----
+<!--section-->
 
 ## Closures
 
@@ -368,7 +368,7 @@ myFunc5() // 7 ( 6 + 1 )
 myFunc8() // 10 ( 9 + 1 )
 ```
 
-----
+<!--section-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
 

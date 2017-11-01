@@ -1,6 +1,6 @@
 # Objects in Javascript
 
-----
+<!--section-->
 
 ### What is an object?
 
@@ -190,7 +190,7 @@ console.typeof str.valueOf()  // "string"
 [MDN // Object.prototype.valueOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf)
 
 
-----
+<!--section-->
 
 
 ## What is an object?
@@ -276,7 +276,7 @@ var door = {
 [Stackoverflow // properties vs methods](http://stackoverflow.com/questions/14953047/example-of-properties-vs-methods-in-js)
 
 
-----
+<!--section-->
 
 ## Working with objects
 
@@ -455,7 +455,7 @@ console.log(mouse.firstName) // "Jerry"
 Note: "new" is not used, so no new instance of `animal` is created, the function `animal` (which is also an object) is just assigned by reference.
 
 
-----
+<!--section-->
 
 
 ## `Object`
@@ -791,7 +791,7 @@ odd.toString === Array.prototype.toString // false
 odd.toString === Object.prototype.toString // false
 ```
 
-----
+<!--section-->
 
 ## The Prototype Chain
 
@@ -924,7 +924,7 @@ user.printType()
 
 Note: `printType` is accessible on `user` even if the function was added to prototype **after** `user` was created.
 
-----
+<!--section-->
 
 ## this
 
@@ -1036,7 +1036,7 @@ Array.prototype.remove = function (func) {
 
 [MDN // The performance hazards of Prototype mutation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/The_performance_hazards_of__%5B%5BPrototype%5D%5D_mutation)
 
-----
+<!--section-->
 
 ## Creating new constructors
 
@@ -1191,7 +1191,7 @@ Collection.prototype.findBy = function (prop, value) {
 ```
 
 
-----
+<!--section-->
 
 ## Mastering Objects
 

@@ -1,6 +1,6 @@
 # Domain Driven Design
 
-----
+<!--section-->
 
 As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-bob/2011/09/30/Screaming-Architecture.html):
 
@@ -13,7 +13,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 > A good architecture emphasizes the use-cases and decouples them from peripheral concerns.
 
 
-----
+<!--section-->
 
 ## What is it all about ???
 
@@ -248,7 +248,7 @@ The Domain, with bounded contexts
 
 > Later you will have to present it to the rest of the groups.
 
-----
+<!--section-->
 
 ## Building blocks
 
@@ -592,7 +592,7 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 ![Building Blocks](http://blog.synopse.info/public/mORMot/DDDBuildingBlocks.png)
 
-----
+<!--section-->
 
 ## Architecture
 
@@ -706,7 +706,7 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 ![Layers Diagram](http://blog.synopse.info/public/mORMot/DDDCleanUncoupledOnionArchitecture.png)
 
 
-----
+<!--section-->
 
 ### Layered Services
 
@@ -816,7 +816,7 @@ class SignUpController extends Controller {
 
 > Its interface would be specified in our domain, for invertion of control.
 
-----
+<!--section-->
 
 ### Modules
 
@@ -1006,7 +1006,7 @@ Billing
        └── PlaceAnOrderResponse.js
 ```
 
-----
+<!--section-->
 
 ### Must-Read
 

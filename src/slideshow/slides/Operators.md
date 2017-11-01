@@ -2,7 +2,7 @@
 
 > Operators are constructs which behave generally like functions, but which differ syntactically or semantically from usual functions.
 
-----
+<!--section-->
 
 ## Types of operators
 
@@ -57,7 +57,7 @@ let status = (age >= 18)
   : "minor";
 ```
 
-----
+<!--section-->
 
 ## Conditional Operator
 
@@ -116,7 +116,7 @@ age > 18
       alert("Sorry, you are much too young!") );
 ```
 
-----
+<!--section-->
 
 ## Arithmetic operators
 
@@ -370,7 +370,7 @@ y = --x;
 ```
 
 
-----
+<!--section-->
 
 ## Assignment operators
 
@@ -761,7 +761,7 @@ console.log(localeTitle);  // "JavaScript-Umgebung"
 ```
 
 
-----
+<!--section-->
 
 ## Comparison operators
 
@@ -979,7 +979,7 @@ x `<=` y
 3 <= 3  // true
 ```
 
-----
+<!--section-->
 
 ## Logical Operators
 
@@ -1123,7 +1123,7 @@ is the same as:
 doSomething() && doSomethingElse()
 ```
 
-----
+<!--section-->
 
 ## Other unary operators
 
@@ -1420,7 +1420,7 @@ console.log(coldSeason);   // => "winter"
 console.log(otherSeasons); // => ["spring", "summer", "autumn"]  
 ```
 
-----
+<!--section-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
 

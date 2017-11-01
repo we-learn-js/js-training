@@ -1,6 +1,6 @@
 # Object-Oriented programming
 
-----
+<!--section-->
 
 ### What is it for?
 
@@ -50,7 +50,7 @@
 
 > One class can create multiple objects, like you create multiple houses based on a unique blueprint.
 
-----
+<!--section-->
 
 ## OOP Principles
 
@@ -102,7 +102,7 @@
 
 > But a teammate could see a hospital is a health service that have a building as location and a school another service.
 
-----
+<!--section-->
 
 ### Encapsulation
 
@@ -498,7 +498,7 @@ class SimpleDate {
 class ComplexDate extends SimpleDate {}
 ```
 
-----
+<!--section-->
 
 ## Inheritance
 
@@ -611,7 +611,7 @@ Identify the classes. Define the classes properties and methods with a hierarchy
 
 Create static method in Animal that returns average age of an array of animals.
 
-----
+<!--section-->
 
 ## Polymorphism
 
@@ -704,7 +704,7 @@ All accounts can calculate their interest amount fir a given period (in months.)
 
 Identify classes, interfaces, abstract actions and implement calculation of the interest functionality.
 
-----
+<!--section-->
 
 
 ## Must read

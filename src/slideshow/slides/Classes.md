@@ -550,7 +550,7 @@ console.log(Tripple.tripple(6));
 console.log(BiggerTripple.tripple(3));
 ```
 
-----
+<!--section-->
 
 ### Practice
 

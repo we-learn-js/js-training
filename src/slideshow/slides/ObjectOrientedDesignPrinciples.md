@@ -1,6 +1,6 @@
 # Object-Oriented Design Principles
 
-----
+<!--section-->
 
 ## S.O.L.I.D. Principles
 
@@ -549,7 +549,7 @@ class FormCtrl {
 
 > You decide what are the methods  and the input has to fullfill your requirements
 
-----
+<!--section-->
 
 ####  General Responsibility Assignment Software Patterns (GRASP)
 
@@ -688,7 +688,7 @@ ISP and DIP helps with the low coupling principle
 
 > If your class relies on 8 other classes of different kind, your design is wrong.
 
-----
+<!--section-->
 
 ## Practice
 
@@ -716,7 +716,7 @@ http://jsbin.com/yozudi/edit?js,output
 > * Change page
 
 
-----
+<!--section-->
 
 ## Must Read
 

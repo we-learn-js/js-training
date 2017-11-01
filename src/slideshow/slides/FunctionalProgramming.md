@@ -2,7 +2,7 @@
 
 Note: Estimated time: 1h
 
-----
+<!--section-->
 
 ## What is functional programming?
 
@@ -41,7 +41,7 @@ A programming paradigm.
 * **Recursion**
 | don't iterate (no loops)
 
-----
+<!--section-->
 
 ## First-class functions
 
@@ -128,7 +128,7 @@ increment3(5)
 // 8
 ```
 
-----
+<!--section-->
 
 ## Immutability
 
@@ -185,7 +185,7 @@ console.log(incrementedNumbers) // [5, 6, 7]
 
 Note: in this function, `numbers` is not mutated and an output array is created instead.
 
-----
+<!--section-->
 
 ## Lambdas
 
@@ -298,7 +298,7 @@ https://jsbin.com/jegerel/edit?js,console
 Note: When `add` is created, `x` is added to its closure with its current value. First with `x=5` and then with `x=10`
 That´s why, `add5` and `add10` return different values as they have a different `x` in their closure.
 
-----
+<!--section-->
 
 ## Absence of side effects
 
@@ -358,7 +358,7 @@ function isMillennial(birthday) {
 ```
 
 
-----
+<!--section-->
 
 ## Recursion
 
@@ -392,7 +392,7 @@ var squares = numbers.map( function (num) {
 } )
 ```
 
-----
+<!--section-->
 
 ## More about functions
 
@@ -544,7 +544,7 @@ function countZeroes(array) {
 }
 ```
 
-----
+<!--section-->
 
 ## Is Javascript really functional?
 
@@ -670,7 +670,7 @@ Note: Object oriented languages tend to be imperative languages also. In this ca
 * [lazy-js](http://danieltao.com/lazy.js/)
 * etc
 
-----
+<!--section-->
 
 ## Questions
 
@@ -753,7 +753,7 @@ Let's see if what we've read is true.
 
 https://jsbin.com/qajegal/edit?js,console
 
-----
+<!--section-->
 
 ## Practice
 
@@ -945,7 +945,7 @@ function countZeroes(array) {
 
 Note: now the code is pure and much more functional and reusable; each function does a single thing.
 
-----
+<!--section-->
 
 ## The end
 
