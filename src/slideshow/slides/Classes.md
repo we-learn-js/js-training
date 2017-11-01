@@ -552,6 +552,8 @@ console.log(BiggerTripple.tripple(3));
 
 <!--section-->
 
+<!-- .slide: class="jsTraining-questionSlide" -->
+
 ### Practice
 
 Convert to class syntax
@@ -579,7 +581,7 @@ Collection.prototype.findBy = function (prop, value) {
 https://jsbin.com/jovoce/edit?js,console,output
 
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 ```js
 class Collection extends Array {
@@ -598,7 +600,7 @@ class Collection extends Array {
 }
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Practice
 
@@ -635,7 +637,7 @@ class Manager {
 
 https://jsbin.com/focidi/edit?js,console,output
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 Solution:
 
