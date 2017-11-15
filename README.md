@@ -11,3 +11,8 @@
 * [js-promises](https://devhints.io/promise)
 * [react](https://devhints.io/react)
 * [bash](https://devhints.io/bash)
+
+## Further practice
+
+* [ES6 katas](https://github.com/nothnk/es6katas)
+* [JS katas](https://github.com/pedrovgs/JavaScriptKatas)
