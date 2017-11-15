@@ -18,20 +18,18 @@
 console.log('First');
 console.log('Second');
 console.log('Third');
-// OUTPUT: "First" "Second" "Third"
+// "First" "Second" "Third"
 ```
 
 <!--slide-->
 
 ### Asynchronous code
 
-> Asynchronous code takes statements outside of the main program flow, allowing the code after the asynchronous call to be executed immediately without waiting.
+> Asynchronous code takes **statements outside of the main program flow**, allowing the code after the asynchronous call to be executed immediately without waiting.
 
 <!--slide-->
 
 ### Let's see it in action
-
-<!--slide-->
 
 Consider:
 ```js
@@ -39,9 +37,7 @@ var users = jQuery.get('//jsonplaceholder.typicode.com/users')
   .done(function(response){
     console.log('first log: ' + response.length)
   })
-
 console.log('second log: ' + users.length)
-
 ```
 
 Output:
@@ -58,9 +54,8 @@ Output:
 Code executed now:
 ```js
 var users = jQuery.get('//jsonplaceholder.typicode.com/users')
-  .done( ... )
+  .done(/* callback */)
 console.log('second log: ' + users.length)
-
 ```
 
 Code executed later:
@@ -74,7 +69,7 @@ This is a callback that will be executed only when `jsonplaceholder.typicode.com
 
 <!--slide-->
 
-> Asynchrony is essential for activities that are potentially blocking.
+> Asynchrony is essential for activities that are **potentially blocking**.
 
 > While browser is waiting for a response from the web service, code execution is not blocked and keeps executing the rest of the lines.
 
@@ -111,7 +106,7 @@ Why is `3` after `4` if the timeout has no time to wait?
 
 <!--slide-->
 
-To get it, we need to get into runtime concepts.
+To get it, we need to dive into runtime concepts.
 
 <!--slide-->
 
@@ -126,8 +121,8 @@ Javascript engine is composed of:
 
 <!--slide-->
 
-![runtime](http://www.appsdev.is.ed.ac.uk/blog/wp-content/uploads/2015/03/Event-loop.png)
-
+![runtime](../images/js-event-loop.png)
+ Note: source here: http://liberablogo.com/wp-content/uploads/2017/01/chrome.png
 <!--slide-->
 
 #### Event loop
@@ -168,10 +163,53 @@ printing();
 
 ### Making the synchronous, asynchronous
 
-> Sometimes, synchronous heavy tasks blocks runtime until the end.
-> It can really damage user's experience.
+Sometimes, synchronous heavy tasks blocks runtime until the end.
+
+It can really damage user's experience.
 
 But now that you understand asynchony in javascript, you can take advantage of it...
+
+
+
+<!--slide-->
+
+Consider:
+```js
+function times (count, func, callback) {
+  if(!count) {
+    callback()
+  } else {
+    func(count)
+    times(--count, func, callback)
+  }
+}
+```
+
+http://jsbin.com/xohecax/3/edit?js,output
+
+[http://latentflip.com/loupe/](http://latentflip.com/loupe/?code=ZnVuY3Rpb24gdGltZXMgKGNvdW50LCBmdW5jLCBjYWxsYmFjaykgewogIGlmKCFjb3VudCkgewogICAgY2FsbGJhY2soKQogIH0gZWxzZSB7CiAgICBmdW5jKGNvdW50KQogICAgdGltZXMoLS1jb3VudCwgZnVuYywgY2FsbGJhY2spCiAgfQp9CgoKZnVuY3Rpb24gdGFzayAobnVtKSB7CiAgY29uc29sZS50aW1lKCd0YXNrJykKICBNYXRoLnBvdyg1ICogMiwgMik7CiAgY29uc29sZS50aW1lRW5kKCd0YXNrJykKfQoKCmxldCBpbnRlcm5hbElkID0gc2V0SW50ZXJ2YWwoY29uc29sZS5sb2cuYmluZCh0aGlzLCAnY2xpY2shJyksIDEwKQoKc2V0VGltZW91dChmdW5jdGlvbigpIHsKICBjb25zb2xlLnRpbWUoJ3RpbWVzJykKICB0aW1lcygxMDAsIHRhc2ssIGZ1bmN0aW9uKCkgewogICAgY29uc29sZS50aW1lRW5kKCd0aW1lcycpCiAgICBjbGVhckludGVydmFsKGludGVybmFsSWQpCiAgfSkKfSwgNTApCg%3D%3D!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D)
+
+
+<!--slide-->
+
+Make it asynchronous, non blocking:
+```js
+function times (count, func, callback) {
+  if(!count) {
+    callback()
+  } else {
+    func(count)
+    setTimeout(function posponedTimes(){
+      times(--count, func, callback)
+    }, 0)
+  }
+}
+```
+
+http://jsbin.com/kazequs/edit?js,output
+
+[http://latentflip.com/loupe/](http://latentflip.com/loupe/?code=ZnVuY3Rpb24gdGltZXMgKGNvdW50LCBmdW5jLCBjYWxsYmFjaykgewogIGlmKCFjb3VudCkgewogICAgY2FsbGJhY2soKQogIH0gZWxzZSB7CiAgICBmdW5jKGNvdW50KQogICAgc2V0VGltZW91dChmdW5jdGlvbigpewogICAgICB0aW1lcygtLWNvdW50LCBmdW5jLCBjYWxsYmFjaykKICAgIH0sIDApCiAgICAKICB9Cn0KCgpmdW5jdGlvbiB0YXNrIChudW0pIHsKICBjb25zb2xlLnRpbWUoJ3Rhc2snKQogIE1hdGgucG93KDUgKiAyLCAyKTsKICBjb25zb2xlLnRpbWVFbmQoJ3Rhc2snKQp9CgoKbGV0IGludGVybmFsSWQgPSBzZXRJbnRlcnZhbChjb25zb2xlLmxvZy5iaW5kKHRoaXMsICdjbGljayEnKSwgMTApCgpzZXRUaW1lb3V0KGZ1bmN0aW9uKCkgewogIGNvbnNvbGUudGltZSgndGltZXMnKQogIHRpbWVzKDEwMCwgdGFzaywgZnVuY3Rpb24oKSB7CiAgICBjb25zb2xlLnRpbWVFbmQoJ3RpbWVzJykKICAgIGNsZWFySW50ZXJ2YWwoaW50ZXJuYWxJZCkKICB9KQp9LCA1MCkK!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D)
+
 
 <!--slide-->
 
@@ -184,6 +222,7 @@ function traverseRecursion (current, depth) {
   }
 }
 ```
+
 
 <!--slide-->
 
@@ -211,7 +250,7 @@ https://jsbin.com/fupuveh/9/edit?js,console
 
 > Instead of immediately returning some result like most functions, functions that use callbacks take some time to produce a result.
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Practice
 
@@ -228,7 +267,7 @@ function getUsersPhotos(callback, limit) {
 ```
 https://jsbin.com/rojomaf/edit?js,console,output
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 You've probably ended up with that kind of code
 
@@ -284,7 +323,7 @@ http://callbackhell.com/
 
 > Promises are now the official way to provide async return values in both JavaScript and the DOM.
 
-> The Promise object is used for asynchronous computations. A Promise represents a value which may be available now, or in the future, or never.
+> The `Promise` object is used for asynchronous computations. **A promise represents a value** which may be available now, or in the future, or never.
 
 [Check the docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
@@ -314,9 +353,9 @@ Note: `getUsers` returns a promise. Promise always provides functions `then` and
 ### States of a promise
 
 * **pending** -  Hasn't resolved or rejected yet
-* **resolved** -  The action relating to the promise succeeded
-* **rejected** -  The action relating to the promise failed
 * **settled** -  Has resolved or rejected
+  * **resolved** -  The action relating to the promise succeeded
+  * **rejected** -  The action relating to the promise failed
 
 <!--slide-->
 
@@ -393,13 +432,13 @@ If `then` handler is attached **after** the response, the handler **will** be ex
 
 <!--section-->
 
-### Consume Promises
+### Consuming Promises
 
 <!--slide-->
 
-#### `Promise.prototype.then( onresolved, onRejected )`
+#### `Promise.prototype.then( onResolve, onReject )`
 
-> `promise.then` accepts both resolution and rejection handlers
+> `romise.then()` accepts both **resolution** and **rejection** handlers
 
 ```js
 getUsers() // returns a promise
@@ -444,18 +483,21 @@ getUsers()
 
 ##### Chaining
 
-> `promise.then` always returns a new promise.
+`promise.then` always returns a new promise.
 
-> The returned value in the attached handler will resolved a newly created promise.
+The returned value in the attached handler will resolved a newly created promise.
 
 ```js
-getUsers() // promise 1
+getUsers()
+  // promise 1
   .then(function(users){
     return users.filter( user => !!user.active )
-  }) // promise 2
+  })      
+  // promise 2
   .then(function(activeUsers){
     console.log(activeUsers)
-  }) // promise 3
+  })      
+  // promise 3
 
 ```
 
@@ -463,29 +505,30 @@ getUsers() // promise 1
 
 ##### Rejection cascade
 
-> As each `then` returns a **new independant promise**, the rejection handler is only triggered if something happens is the 'previous' promise.
+> As each `then` returns a **new independant promise**, the rejection handler is only triggered if something happens is the "origin" promise.
 
 > Also, the resolution handler will not be called on the next promise if first promise is rejected
 
 <!--slide-->
 
 ```js
-
 getUsers() // promise 1
   .then(
-    function onResolved1(users){
+    function onResolve1(users){
       throw new Error( 'No users' )
       return users.filter( user => !!user.active )
     },
-    function onReject1(e) { console.error(e)} )
+    function onReject1(e) { console.error(e)}
+  ) // promise 2
   .then(
-    function onResolved2(activeUsers){
+    function onResolve2(activeUsers){
       console.log(activeUsers)
     },
-    function onReject2(e) { console.error(e) })
-
-// Only `onResolved1` and `onRejection2` will be called
+    function onReject2(e) { console.error(e) }
+  ) // promise 3
 ```
+
+Only `onResolve1` and `onRejection2` will be called
 
 <!--slide-->
 
@@ -494,37 +537,46 @@ getUsers() // promise 1
 > In a resolution handler, you can either return a plain value or **a new promise**
 
 ```js
-getUsers() // promise 1
+getUsers()
+  // promise 1, of getUsersPhotos
   .then(function(users){
     return users.filter( user => !!user.active )
-  }) // promise 2
+  })
+  // promise 2, of active users
   .then(function(activeUsers){
-    return getAlbums( activeUsers[0].id ) // promise 3
-  }) // promise 3
+    return getAlbums( activeUsers[0].id )
+    // promise 3, of first user's albums
+  })
+  // promise 3, of first user's albums
   .then(function(firstActiveUserAlbums){
     console.log(firstActiveUserAlbums)
   })
+  // promise 4, of undefined (nothing was returned)
 
 ```
 
 <!--section-->
 
-### Create Promises
+### Creating Promises
 
 <!--slide-->
 
-#### new Promise( function( resolve, reject ){} )
-
-> In ES6, `Promise` is a new Object can instantiate
-
-> A `resolve` and `reject` function are provided to either resolve or reject the promise.
+#### The `Promise` object
 
 ```js
-var promise = new Promise(function(resolve, reject){
-  if (true) {
+new Promise( function( resolve, reject ){  /* code */ } )
+```
+
+> In ES6, `Promise` is a new Object that can be instantiated
+
+> A `resolve` and `reject` functions are provided to either resolve or reject the promise.
+
+```js
+var promise = new Promise(function(resolve, reject) {
+  if (Math.random() >= 0.5) {
     resolve(true)
   } else {
-    reject('It\'s false ')
+    reject("It's < 0.5")
   }
 })
 ```
@@ -561,12 +613,12 @@ var getUsers = function (limit) {
 }
 
 getUsers(5)
-  .then( function(users){
+  .then(function(users){
     console.log(users)
   })
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Practice
 
@@ -587,7 +639,7 @@ printUserFirstPhotos() // 50
 
 https://jsbin.com/xofebas/8/edit?js,console
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 If you ended up with a code like that:
 
@@ -608,7 +660,7 @@ var printUserFirstPhotos = function(){
 
 You are still stuck with pyramides and not understanding promises...
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 What about that ?
 
@@ -623,7 +675,7 @@ var printUserFirstPhotos = function(){
 
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 Or that ?
 
@@ -652,7 +704,7 @@ var printUserFirstPhotos = function(){
 
 <!--slide-->
 
-#### Promise.resolve(value)
+#### `Promise.resolve(value)`
 
 > A static method to create a **promise resolved** with the given value (or another promise)
 
@@ -677,13 +729,13 @@ var getSquare = function(x) {
 }
 
 getSquare(4)
-  .then( num => console.log(num) )
+  .then( square => console.log(square) )
 
 ```
 
 <!--slide-->
 
-#### Promise.reject(reason)
+#### `Promise.reject(reason)`
 
 > A static method to create a **promise reject** with the given reason
 
@@ -701,7 +753,7 @@ var promise = new Promise(function(resolve, reject){
 
 <!--slide-->
 
-#### Promise.all(iterable)
+#### `Promise.all(iterable)`
 
 > A static method that returns a promise that will be resolved in an array of values of all given promises in the array.
 
@@ -735,9 +787,11 @@ Promise.all([
 ])
 ```
 
+Actually, it doesn't execute anything...
+
 <!--slide-->
 
-#### Promise.race(iterable)
+#### `Promise.race(iterable)`
 
 > A static method that returns a promise that resolves or rejects as soon as **one of the promises** in the iterable resolves or rejects, with the value or reason from that promise.
 
@@ -761,9 +815,9 @@ var promise = Promise.race([
 
 If `getUserPhotos()` lasts more than 3 seconds, `promise` will be rejected with reason "Timeout"
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
 
-#### Remember: promises are... asynchronous
+#### Remember: promises are... **always asynchronous**
 
 ```js
 console.log('###### case 1 #####')
@@ -776,19 +830,18 @@ Promise.resolve(1)
   .then( x => console.log('then 2.0') )
   .then( x => console.log('then 2.1') )
 
-// OUTPUT
 // "###### case 1 #####"
 // "###### case 2 #####"
 // "then 1.0"
 // "then 2.0"
 ```
 
-https://jsbin.com/kecemib/edit?js,console,output
+https://jsbin.com/kecemib/edit?js,console
 
 Note: handlers are callbacks. Then, they get involved in the event loop.
 
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Practice
 
@@ -808,9 +861,9 @@ getUsersPhotos(6)
 // OUTPUT : "Number of photos: 216"
 ```
 
-https://jsbin.com/wemevaj/1/edit?js,console,output
+https://jsbin.com/wemevaj/1/edit?js,console
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 
 #### Possible solution
@@ -833,9 +886,11 @@ function getUsersPhotos(limit) {
 
 <!--slide-->
 
-#### `Promise.prototype.catch`
+#### `Promise.prototype.catch()`
 
-> The `catch()` method returns a Promise and deals with rejected cases only. It behaves the same as calling `Promise.prototype.then(undefined, onRejected)`.
+The `catch()` method returns a Promise and deals with rejected cases only.
+
+It behaves the same as calling `Promise.prototype.then(undefined, onReject)`.
 
 ```js
 getUsersPhotos(6)
@@ -843,7 +898,7 @@ getUsersPhotos(6)
   .catch( e => console.log('getUsersPhotos call failed') )
 ```
 
-[Check the docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)
+[MDN // Promise.prototype.catch()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)
 
 <!--slide-->
 
@@ -853,7 +908,9 @@ Let's see it in action:
 
 https://jsbin.com/cibopuq/edit?js,console
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
+
+##### Caution !
 
 > Be responsible. Catch your own errors and control your output.
 
@@ -879,13 +936,13 @@ function getUsersPhotos(limit) {
 This snippet...
 ```js
 getUsersPhotos(limit)
-  .catch(onRejected)
+  .catch(onReject)
 ```
 
 ... is **exactly THE SAME** as
 ```js
 getUsersPhotos(limit)
-  .then (null, onRejected })
+  .then (null, onReject })
 ```
 
 <!--slide-->
@@ -893,13 +950,13 @@ getUsersPhotos(limit)
 On the other hand. This snippet...
 ```js
 getUsersPhotos(limit)
-  .then(onresolved)
-  .catch(onRejected)
+  .then(onResolve)
+  .catch(onReject)
 ```
 ... is **NOT** the same as:
 ```js
 getUsersPhotos(limit)
-  .then(onresolved, onRejected)
+  .then(onResolve, onReject)
 ```
 
 <!--slide-->
@@ -907,18 +964,18 @@ getUsersPhotos(limit)
 The snippet...
 ```js
 getUsersPhotos(limit)
-  .then(onresolved)
-  .catch(onRejected)
+  .then(onResolve)
+  .catch(onReject)
 ```
 
 It's **exactly THE SAME** as
 ```js
 getUsersPhotos(limit)
-  .then(onresolved)
-  .then(null, onRejected)
+  .then(onResolve)
+  .then(null, onReject)
 ```
 
-Remember that the `onRejected` catches errors from **'previous'** promise that has not a **rejection handler**.
+Remember that the `onReject` catches errors from **'previous'** promise that has not a **rejection handler**.
 
 <!--slide-->
 
@@ -961,7 +1018,7 @@ promise3.then(console.log) // 3
 
 <!--section-->
 
-## Master Promises
+## Mastering Promises
 
 <!--slide-->
 
@@ -1032,14 +1089,14 @@ FS.readFile("foo.txt", "utf-8", function (error, text) {
 ```js
 var readFile = Q.denodeify(FS.readFile);
 readFile("foo.txt", "utf-8")
-  .then(onresolved)
-  .catch(onRejected)
+  .then(onResolve)
+  .catch(onReject)
 ```
 
 ```js
 Q.nfcall(FS.readFile, "foo.txt", "utf-8")
-  .then(onresolved)
-  .catch(onRejected)
+  .then(onResolve)
+  .catch(onReject)
 ```
 
 [Q.js](https://github.com/kriskowal/q)
@@ -1139,11 +1196,11 @@ add1(10).then(v => {
 
 https://jsbin.com/wizojay/edit?js,console
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
 
 ### Caution!
 
-> `await` stops the execution, so watch out when you execute your promises
+> `await` pauses the execution, so watch out when you execute your promises
 
 ```js
 async function add2(x) {
@@ -1223,9 +1280,9 @@ async function getProcessedData(url) {
 
 <!--section-->
 
-## Practice
+## Practices
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 Write `getFirstCharNumber` body code so it would return a promise resolved with the char number of the uppercase first letter of a given string.
 
@@ -1243,9 +1300,9 @@ function getFirstCharNumber(text) {
 }
 ```
 
-https://jsbin.com/zidohun/edit?js,console,output
+https://jsbin.com/zidohun/edit?js,console
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 #### Possible solutions
 
@@ -1265,7 +1322,7 @@ function getFirstCharNumber(text) {
 
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Implement `Promise.delay(ms)`
 
@@ -1288,9 +1345,9 @@ setTimeout(function(){
 // OUTPUT "delayed 500ms" "delayed 1000ms"
 ```
 
-https://jsbin.com/qidokig/edit?js,console,output
+https://jsbin.com/qidokig/edit?js,console
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 ### Solution
 
@@ -1302,7 +1359,7 @@ Promise.delay = function(ms){
 }
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Implement `Promise.series(iterable)`
 
@@ -1327,11 +1384,11 @@ Promise.series([
 
 https://jsbin.com/mecalow/edit?js,console,output
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
 
-#### Solution
+#### Solution: NONE !!!!
 
-NONE. You can't make promises change their execution order.
+You can't make promises change their execution order.
 
 Once a promises is pending, it's in progress...
 
@@ -1350,12 +1407,3 @@ Promise.series = function(promiseConstructors) {
 }
 
 ```
-
-
-<!--section-->
-
-## Homework
-
-https://github.com/soyundev/js-training-practice/tree/async-programming
-
-* Convert all callback functions to promise based functions
