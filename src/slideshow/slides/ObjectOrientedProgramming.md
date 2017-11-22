@@ -349,51 +349,6 @@ Note: N instances of `Function` are created and saved in memory for **each** ins
 
 <!--slide-->
 
-#### Privacy with Symbols
-
-<!--slide-->
-
-##### About Symbols (ES6)
-
-> A symbol is a unique and immutable data type.
-
-> The Symbol object is an implicit object wrapper for the symbol primitive data type.
-
-> ```js
-> Symbol([description])
-> ```
-
-[MDN // Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
-
-<!--slide-->
-
-```js
-var sym1 = Symbol()
-var sym2 = Symbol("foo")
-
-console.log(sym1) // Symbol()
-console.log(sym2) // Symbol(foo)
-console.log(typeof sym1) // "symbol"
-```
-
-<!--slide-->
-
-> Symbol("foo") does not coerce the string "foo" into a symbol.
-
-> It creates a new symbol each time
-
-```js
-var sym1 = Symbol("foo")
-var sym2 = Symbol("foo")
-var obj = {[sym1]:1, [sym2]:2}
-
-sym1 === sym2 // false
-obj[sym1] // 1
-obj[sym2] // 2
-```
-
-<!--slide-->
-
 ##### Privacy with Symbols
 
 ```js
