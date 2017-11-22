@@ -394,9 +394,9 @@ console.log(Point.distance(p1, p2));
 
 > The `extends` keyword is used in class declarations or class expressions to create a class as a child of another class.
 
-> ```js
-> class ChildClass `extends` ParentClass { ... }
-> ```
+```js
+class ChildClass `extends` ParentClass { ... }
+```
 
 <!--slide-->
 
@@ -462,6 +462,38 @@ class PremiumUser extends User {
   }
 }
 ```
+
+<!--slide-->
+
+
+#### Extends includes static methods
+
+
+ES6:
+```js
+class Point {
+  static distance(a, b) { }
+}
+class ColorPoint extends Point {}
+
+Point.distance === ColorPoint.distance // true
+```
+
+ES5:
+
+```js
+function Point () {}
+Point.distance = function() {}
+
+function ColorPoint () {}
+ColorPoint.prototype = new Point()
+
+Point.distance === ColorPoint.distance // false
+```
+
+<!--slide-->
+
+
 
 <!--slide-->
 
@@ -654,7 +686,9 @@ class Manager extends Employee {
 }
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
+
+### Practice
 
 Create getter for employee names:
 
@@ -663,14 +697,16 @@ var manager = new Manager('Evan', 'Graham')
 var employee1 = new Employee('Rachel', 'Green')
 var employee2 = new Employee('David', 'Smith')
 
-manager.addEmployee(employee1, employee2 )
+manager.addEmployee(employee1, employee2)
 
 console.log(manager.employeeNames) // ["Rachel Green", "David Smith"]
 ```
 
-https://jsbin.com/labubu/edit?js,console,output
+https://jsbin.com/labubu/edit?js,console
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
+
+#### Solution
 
 ```js
 class Manager extends Employee {

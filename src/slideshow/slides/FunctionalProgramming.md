@@ -356,16 +356,16 @@ increment(number)
 Not functional:
 ```js
 function isAdult(birthday) {
-  return 2017 - birthday.getFullYear() > 18
+  var now = new Date()
+  return now.getFullYear() - birthday.getFullYear() > 18
 }
 isAdult(new Date("December 17, 1995 03:24:00"))
 ```
 
-Not purely functional:
+Functional but incorrect:
 ```js
 function isAdult(birthday) {
-  var now = new Date()
-  return now.getFullYear() - birthday.getFullYear() > 18
+  return 2017 - birthday.getFullYear() > 18
 }
 isAdult(new Date("December 17, 1995 03:24:00"))
 ```

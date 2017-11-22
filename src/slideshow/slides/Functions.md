@@ -335,8 +335,9 @@ console.log(user.name) // "Evan"
 
 > The `call()` method calls a function with a given this value and arguments provided **individually**.
 
+```js
 func.call(thisArg[, arg1[, arg2[, ...]]])
-
+```
 
 ```js
 function sum() {
