@@ -13,6 +13,7 @@ No data available.
 | 2017-10-19 | [Operators], [Scopes & Closures] |
 | 2017-10-26 | [Objects], [Strings] |
 | 2017-11-02 | [Classes], [Functions], [Functional Programming] |
+| 2017-11-16 | [Modules], [Async Programming] (/6/9) |
 
 ## Group #3 - 2017-10-20
 
@@ -21,7 +22,7 @@ No data available.
 | 2017-10-20 | [Operators], [Scopes & Closures] |
 | 2017-10-27 | [Objects], [Strings] |
 | 2017-11-03 | [Classes], [Functions], [Functional Programming] |
-
+| 2017-11-17 | [Modules], [Async Programming] (/6/9) |
 
 [Operators]:https://js-training.now.sh/slides/Operators.md
 [Scopes & Closures]:https://js-training.now.sh/slides/ScopesAndClosures.md
