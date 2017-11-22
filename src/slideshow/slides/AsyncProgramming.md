@@ -1016,6 +1016,22 @@ promise2.then(console.log) // 2
 promise3.then(console.log) // 3
 ```
 
+<!--slide-->
+
+### `Promise.prototype.finally`
+
+> Handler executed whatever the promise is resolved or rejected.
+
+```js
+showLoadingSpinner()
+getUsersPhotos(6)
+  .then( photos => console.log('Number of photos: ' + photos.length ) )
+  .catch( e => console.log('getUsersPhotos call failed') )
+  .finally( => hideLoadingSpinner() )
+```
+
+[MDN // Promise.prototype.finally](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally)
+
 <!--section-->
 
 ## Mastering Promises
@@ -1025,20 +1041,6 @@ promise3.then(console.log) // 3
 ### Old promises patterns you must avoid
 
 > Promises have a long and storied history, and it took the JavaScript community a long time to get them right.
-
-<!--slide-->
-
-#### `finally` handler
-
-> Handler exexuted whatever the promise is resolved or rejected.
-
-```js
-showLoadingSpinner()
-getUsersPhotos(6)
-  .then( photos => console.log('Number of photos: ' + photos.length ) )
-  .catch( e => console.log('getUsersPhotos call failed') )
-  .finally( => hideLoadingSpinner() )
-```
 
 <!--slide-->
 
