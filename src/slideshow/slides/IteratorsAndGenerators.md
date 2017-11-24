@@ -17,21 +17,35 @@ Iterator on array
 ```js
 var array = ['yo', 'ya']
 var it = generateIterator(array)
-console.log(it.next().value) // "yo"
-console.log(it.next().value) // "ya"
-console.log(it.next().done)  // true
+console.log(it.next())  // { value: "yo", done: false }
+console.log(it.next())  // { value: "ya", done: false }
+console.log(it.next())  // { value: undefined, done: true }
 ```
 
 Iterator on object
 ```js
 var obj = { a: 'yo', b: 'ya' }
-var it = generateIterator(obj)
-while(value = !it.next().done) {
-  console.log(value)
+var iterator = generateIterator(obj)
+var iteratorResult = iterator.next()
+while(!iteratorResult.done) {
+  console.log(iteratorResult.value)
+  iteratorResult = iterator.next()
 }
 // "yo" "ya"
 ```
 
+<!--slide-->
+
+```java
+interface Iterator {
+  next(): IteratorResult
+}
+
+interface IteratorResult {
+  value: any
+  done: boolean
+}
+```
 
 <!--slide-->
 
@@ -59,6 +73,22 @@ function generateIterator(obj) {
 
 > It means that the object (or one of the objects up its prototype chain) must have a property with a `Symbol.iterator` key.
 
+<!--slide-->
+
+```java
+interface Iterator {
+  next(): IteratorResult
+}
+
+interface IteratorResult {
+  value: any
+  done: boolean
+}
+
+interface Iterable {
+  [Symbol.iterator](): Iterator
+}
+```
 
 [JS Training // Symbols](./Symbols.md)
 
@@ -116,24 +146,6 @@ Array.prototype[Symbol.iterator].toString()
 3. An **IteratorResult** is an object with `value` and `done` properties.
 4. An **Iterable** provides a `[Symbol.iterator]()` method
 5. The `[Symbol.iterator]()` method returns an **Iterator**.
-
-<!--slide-->
-
-```js
-interface IteratorResult {
-  value : any
-  done : boolean
-}
-
-interface Iterator {
-  next() : IteratorResult
-  return?(value? : any) : IteratorResult
-}
-
-interface Iterable {
-  [Symbol.iterator]() : Iterator
-}
-```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 

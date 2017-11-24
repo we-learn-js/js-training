@@ -1151,6 +1151,49 @@ Promise
 * [Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
 * [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API)
 
+
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
+
+### Practice
+
+Write `getFirstCharNumber` body code so it would return a promise resolved with the char number of the uppercase first letter of a given string.
+
+```js
+function upper(text) { ... }
+
+function firstChar(text) { ... }
+
+function getChartCode(text) { ... }
+
+getFirstCharNumber('abcde').then( console.log )
+
+function getFirstCharNumber(text) {
+  // YOUR CODE GOES HERE
+}
+```
+
+https://jsbin.com/zidohun/edit?js,console
+
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
+
+#### Possible solutions
+
+```js
+function getFirstCharNumber(text) {
+  return firstChar(text)
+    .then( upper )
+    .then( text => getChartCode(text)() )
+}
+```
+
+```js
+function getFirstCharNumber(text) {
+  return Promise.resolve( upper(text) )
+    .then( text => getChartCode(text)() )
+}
+
+```
+
 <!--section-->
 
 ## async functions (ES7)
@@ -1283,46 +1326,6 @@ async function getProcessedData(url) {
 <!--section-->
 
 ## Practices
-
-<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
-
-Write `getFirstCharNumber` body code so it would return a promise resolved with the char number of the uppercase first letter of a given string.
-
-```js
-function upper(text) { ... }
-
-function firstChar(text) { ... }
-
-function getChartCode(text) { ... }
-
-getFirstCharNumber('abcde').then( console.log )
-
-function getFirstCharNumber(text) {
-  // YOUR CODE GOES HERE
-}
-```
-
-https://jsbin.com/zidohun/edit?js,console
-
-<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
-
-#### Possible solutions
-
-```js
-function getFirstCharNumber(text) {
-  return firstChar(text)
-    .then( upper )
-    .then( text => getChartCode(text)() )
-}
-```
-
-```js
-function getFirstCharNumber(text) {
-  return Promise.resolve( upper(text) )
-    .then( text => getChartCode(text)() )
-}
-
-```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
