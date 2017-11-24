@@ -14,6 +14,7 @@ No data available.
 | 2017-10-26 | [Objects], [Strings] |
 | 2017-11-02 | [Classes], [Functions], [Functional Programming] |
 | 2017-11-16 | [Modules], [Async Programming] (/6/9) |
+| 2017-11-23 | [Async Programming], [IteratorsAndGenerators], [Symbols] |
 
 ## Group #3 - 2017-10-20
 
@@ -28,12 +29,13 @@ No data available.
 [Scopes & Closures]:https://js-training.now.sh/slides/ScopesAndClosures.md
 [Objects]:https://js-training.now.sh/slides/Objects.md
 [Strings]:https://js-training.now.sh/slides/Strings.md
+[Symbols]:https://js-training.now.sh/slides/Symbols.md
 [Functions]:https://js-training.now.sh/slides/Functions.md
 [Functional Programming]:https://js-training.now.sh/slides/FunctionalProgramming.md
 [Modules]:https://js-training.now.sh/slides/Modules.md
 [Classes]:https://js-training.now.sh/slides/Classes.md
 [Async Programming]:https://js-training.now.sh/slides/AsyncProgramming.md
-[Generators]:https://js-training.now.sh/slides/Generators.md
+[IteratorsAndGenerators]:https://js-training.now.sh/slides/IteratorsAndGenerators.md
 [Object Oriented Programming]:https://js-training.now.sh/slides/ObjectOrientedProgramming.md
 [Object Oriented Design Principles]:https://js-training.now.sh/slides/ObjectOrientedDesignPrinciples.md
 [Design Patterns]:https://js-training.now.sh/slides/DesignPatterns.md
