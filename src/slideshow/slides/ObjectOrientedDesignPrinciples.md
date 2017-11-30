@@ -152,12 +152,14 @@ Now `EntityController` is extendable with more validations, without actually mod
 
 ```js
 class IValidator {
-  validate () { }
+  validate () {
+   throw new Error('Expected IValidator.validate() not implemented');
+  }
 }
-class SpamValidator extends AbstractValidator {
+class SpamValidator extends IValidator {
   validate () { /* Check if the IP-address is known as a spammer */ }
 }
-class UserLoggedValidator extends AbstractValidator {
+class UserLoggedValidator extends IValidator {
   validate () { /* Check if user has session */ }
 }
 var ctrl = new EntityController([
