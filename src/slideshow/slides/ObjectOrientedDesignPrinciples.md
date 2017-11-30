@@ -4,13 +4,15 @@
 
 ## S.O.L.I.D. Principles
 
-> SOLID stands for:
+<!--slide-->
 
-> * **S** – Single-responsiblity principle
-> * **O** – Open-closed principle
-> * **L** – Liskov substitution principle
-> * **I** – Interface segregation principle
-> * **D** – Dependency Inversion Principle
+SOLID stands for:
+
+* **S** – Single-responsiblity principle (SRP)
+* **O** – Open-closed principle (OCP)
+* **L** – Liskov substitution principle (LSP)
+* **I** – Interface segregation principle (ISP)
+* **D** – Dependency Inversion Principle (DIP)
 
 <!--slide-->
 
@@ -30,11 +32,15 @@ Note: A pocket knife that was extended to the point that it can do anything, exc
 
 <!--slide-->
 
-> Always strive for low coupling, but high Cohesion
+> Always strive for **low coupling**, but **high cohesion**
 
-> **Cohesion**: How strongly-related and focused are the various operations of a module.
+---
 
-> **Coupling**: the degree to which each program module relies on each of of the other module.
+> **Cohesion** is how strongly-related and focused are the various operations of a module.
+
+---
+
+> **Coupling** is the degree to which each program module relies on each of of the other module.
 
 > Having multiple responsibilities within a class couples theses responsibilities.
 
@@ -44,7 +50,7 @@ Note: A pocket knife that was extended to the point that it can do anything, exc
 
 > Software elements (classes, modules, functions, etc.) should be open for extension, but closed for modification.
 
-> Create classes in a way you can extend their behavior without modifying their code.
+> Create classes in a way you can **extend their behaviour without modifying their code**.
 
 
 <!--slide-->
@@ -98,9 +104,31 @@ class EntityController {
 
 > What if now we need to the user to be of a specific type to comment ?
 
-> We need `EntityController` behavior to be extendable, without modifying the class every time.
+> We need `EntityController` behaviour to be extendable, without modifying the class every time.
 
 <!--slide-->
+
+```js
+class EntityController {
+  constructor(validators) {
+    this.validators = validators
+  }
+  addComment(comment) {
+    const isValid = this.validators.reduce((isValid, validator) => {
+      return validator.validate(comment) || isValid
+    }, true)
+
+    if(!isValid) {
+      return false
+    }
+    // Save the comment to database
+  }
+}
+```
+
+<!--slide-->
+
+Could also be lazy (stop of first failure):
 
 ```js
 class EntityController {
@@ -120,41 +148,39 @@ class EntityController {
 
 <!--slide-->
 
+Now `EntityController` is extendable with more validations, without actually modifying the class.
 
 ```js
-
 class IValidator {
   validate () { }
 }
 class SpamValidator extends AbstractValidator {
-  validate () {
-    //Check if the IP-address is known as a spammer
-  }
+  validate () { /* Check if the IP-address is known as a spammer */ }
 }
 class UserLoggedValidator extends AbstractValidator {
-  validate () {
-    //Check if user has session
-  }
+  validate () { /* Check if user has session */ }
 }
-var ctrl = new EntityController([ new SpamValidator(), new SessionValidator() ])
+var ctrl = new EntityController([
+  new SpamValidator(),
+  new SessionValidator()
+])
 ctrl.addComment('a comment')
-
 ```
 
-Now `EntityController` is extendable with more validations, without actually modifying the class.
+
 
 
 <!--slide-->
 
 ### Liskov Substitution Principal (LSP)
 
-> LSP is a particular definition of a subtyping relation, called strong behavioral subtyping.
+> LSP is a particular definition of a subtyping relation, called **strong behavioural subtyping**.
 
-> An object of a super class, should be replaced by any of its sub class objects, without altering the program.
+> An object of a super class, should be replaced by **any** of its sub class objects, without altering the program.
 
 <!--slide-->
 
-> The behavior of a subclass, should be as correct as the behavior of a super class.
+> The behaviour of a subclass, should be as correct as the behaviour of a super class.
 
 > Child classes should never break the parent class' type definitions.
 
@@ -245,7 +271,7 @@ function birdBehaviorSequence2 (bird) {
 
 #### Interface segregation principle (ISP)
 
-> ISP is about business logic to clients communication
+> ISP is about business logic to clients communication.
 
 > A client should never be forced to depend on methods it does not use.
 
@@ -255,20 +281,19 @@ function birdBehaviorSequence2 (bird) {
 
 > Segregate, decompose your operations in small interfaces.
 
-
 <!--slide-->
 
 #### About Interfaces
 
 > "Every operation declared by an object specifies the operation’s name, the objects it takes as parameters, and the operation’s return value. This is known as the operation’s signature.
 
-> The set of all signatures defined by an object’s operations is called the interface to the object. An object’s interface characterizes the complete set of requests that can be sent to the object."
+> The set of all signatures defined by an object’s operations is called the interface to the object. An object’s interface characterises the complete set of requests that can be sent to the object."
 
 [source](https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612)
 
 <!--slide-->
 
-> An interface is the description of the set of operations that an object could perform
+> An interface is the description of the set of operations that an object could perform.
 
 > Interface is actually a concept of abstraction and encapsulation.
 
@@ -280,7 +305,7 @@ function birdBehaviorSequence2 (bird) {
 
 > In a TV, you have a few buttons to execute operations: turn on/off, volume up/down, next/previous channel, ...
 
-> Buttons are TV's interface. Buttons are like **methods** we can invoke to perform an operation. The name of the **operations** are represented by icons.
+> Buttons are TV's interface. Buttons are like **methods** we can invoke to perform an operation. The name of the **operations** are represented by icons or words.
 
 > The screen is TV's **output**.
 
@@ -450,14 +475,14 @@ TVWatcher would expect `ChannelsControlInterface` and `MiniRemote` would have to
 
 <!--slide-->
 
-> What are dependencies?
-> * Framework
-> * Third Party Libraries
-> * Database
-> * File system
-> * Email service
-> * Web service
-> * ...
+What are dependencies?
+* Framework
+* Third Party Libraries
+* Database
+* File system
+* Email service
+* Web service
+* ...
 
 
 <!--slide-->
@@ -520,9 +545,9 @@ class FormMessageService extends IMessageService {
   }
 }
 class FormCtrl {
-  setMessageService (service) {
+  constructor (messageService) {
     // Expects object the implements IMessageService
-    this.messages = service
+    this.messages = messageService
   }
   onSuccess () {
     this.messages.showMessage( 'Data saved in database!' )
@@ -551,7 +576,11 @@ class FormCtrl {
 
 <!--section-->
 
-####  General Responsibility Assignment Software Patterns (GRASP)
+## G.R.A.S.P
+
+### General Responsibility Assignment Software Patterns
+
+<!--slide-->
 
 > GRASP provide a way to identify the single responsibility for a class or module.
 
@@ -559,17 +588,18 @@ class FormCtrl {
 
 <!--slide-->
 
-> Responsibility is defined as a contract or obligation of a  class and is related to behavior.
+Responsibility is defined as a contract or obligation of a  class and is related to behaviour.
 
-> There are 2 types of responsibilities:
-> * **Knowing** - responsibilities of an object include
->   * Knowing about private encapsulated data-member data
->   * Knowing about related objects
->   * Knowing about things it can derive or calculate
-> * **Doing** - responsibility of an object include
->   * Doing something itself-assign, calculate, create
->   * Initiating action in other objects
->   * Controlling and coordinating activities in other objects
+There are 2 types of responsibilities:
+
+* **Knowing** - responsibilities of an object includes
+  * Knowing about private encapsulated data-member data
+  * Knowing about related objects
+  * Knowing about things it can derive or calculate
+* **Doing** - responsibility of an object includes
+  * Doing something itself-assign, calculate, create
+  * Initiating action in other objects
+  * Controlling and coordinating activities in other objects
 
 <!--slide-->
 
@@ -692,6 +722,8 @@ ISP and DIP helps with the low coupling principle
 
 ## Practice
 
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
+
 > Apply OO principles on the code.
 
 ```js
@@ -707,7 +739,7 @@ ISP and DIP helps with the low coupling principle
 http://jsbin.com/yozudi/edit?js,output
 
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 > LoginForm has several responsibilities.
 > * Manage UI inputs

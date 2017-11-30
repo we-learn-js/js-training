@@ -4,7 +4,7 @@
   "highlightTheme": "monokai",
   "port": 8080,
   "css": null,
-  "scripts": "./scripts/practice-bus.js",
+  "scripts": "",
   "preprocessor": false,
   "listingTemplate": "template/listing.html",
   "revealTemplate": "template/reveal.html",

@@ -6,11 +6,11 @@
 
 > Procedural or functional programming, functions are not related to any type of data. They receive data as input, execute a task and return an output.
 
-> OOP is another way to organize code. OOP is data oriented.
+> OOP is another way to organize code. **OOP is data oriented**.
 
-> Data and tasks are encapsulated in a single piece of code: an object.
+> Data and tasks are **encapsulated** in a single piece of code: **an object**.
 
-> Methods of the object are directly related to the object's state.
+> Methods of the object are directly related to the object's **state**.
 
 <!--slide-->
 
@@ -23,21 +23,20 @@
 ### What is a class?
 
 > Class is a blueprint: the definition, the description of an object.
->
-> Describes what **objects are** with attributes (properties) that describe the state : name, height, weight, gender, age, ...
->
-> Describes what **objects can do** with verbs (methods) that describe the behavior: walk, run, jump, speak, ...
 
+> **Describes what objects are** with attributes (properties) that describe the state : name, height, weight, gender, age, ...
+
+> **Describes what objects can do** with verbs (methods) that describe the behavior: walk, run, jump, speak, ...
 
 <!--slide-->
 
 ### What does it describe ?
 
 > A class can describe any concept that you can talk about when you try to describe your program:
->
+
 > * Real life concepts: Restaurant, Review, User, ...
-> * Visual parts of the app: TextBox, Button, Window, ...
 > * Invisible things: Date, TimeZone, ...
+> * Visual parts of the app: TextBox, Button, Window, ...
 
 <!--slide-->
 
@@ -46,15 +45,16 @@
 
 > It's a thing created based on the blueprint (the class).
 
-> An object is an instance of a class.
+> An object is an **instance of a class**.
 
-> One class can create multiple objects, like you create multiple houses based on a unique blueprint.
+> **One class can create multiple objects**, like you create multiple houses based on a unique blueprint.
 
 <!--section-->
 
 ## OOP Principles
 
-> * **Abstraction** Split program into smaller responsibilities and data types (classes).
+> * **Abstraction**
+Split program into smaller responsibilities and data types (classes).
 > * **Encapsulation**
 > Hide the internals of a class.
 > * **Inheritance**
@@ -70,7 +70,7 @@
 >
 > A program can include a lot of data types and operations. Abstracting is extracting the commons concepts that relate data types and actions between each other.
 >
-> Objects have properties and capabilities. Theses capabilities can be used by other objects tu achieve their own operations.
+> Objects have properties and capabilities. Theses capabilities can be used by other objects to achieve their own operations.
 >
 > Abstraction is used to think and communicate more effectively when we talk about our program.
 
@@ -92,9 +92,10 @@
 
 > But we know a hospital can't deliver an ID (card). For that, you can to request it to another entity: the City Hall.
 
-> **Abstracting is extracting what concepts/entities have your program and which capabilities belong to each of them**
 
 <!--slide-->
+
+> Abstracting is extracting what concepts/entities have your program and which capabilities **belong to each of them**
 
 > **Abstracting is hard** and usually you can abstract a program in many different ways.
 
@@ -108,13 +109,13 @@
 
 > Encapsulation is a strategy used as part of abstraction.
 
-> Abstraction solves the problem in the design level.
+> **Abstraction** solves the problem in **the design level**.
 
-> Encapsulation solves the problem in the implementation level.
+> **Encapsulation** solves the problem in the **implementation level**.
 
 <!--slide-->
 
-> A class is a single logically organized unit where are enclosed operations (methods) to its related data (properties).
+> A class is a single logically organised unit where are enclosed operations (methods) to its **related** data (properties).
 
 > The idea of encapsulation is to keep classes separated and prevent them from being tightly coupled with each other.
 
@@ -124,7 +125,7 @@
 
 > The set of declared operations with its names are called its **interface**.
 
-> Encapsulation hides the implementation details.
+> **Encapsulation hides the implementation details**.
 
 > All data members (properties) should be hidden and be accessed by accessors (getters and setters)
 
@@ -134,9 +135,9 @@
 
 > A city hall has a lot of services (operations). You don't know them all, just the ones you use.
 
-> To request a service, you don't enter the building, go to the mayor office and ask him.
+> To request a service, you don't enter the building, go to the mayor office and ask.
 
-> Instead, you must follow the operations provided by the city hall: to request a service, you have to go to reception, and request a form. You fill in the form with your data and the city hall will respond later.
+> Instead, you must **follow the operations provided by the city hall**: to request a service, you have to go to reception, and request a form. You fill in the form with your data and the city hall will respond later.
 
 > To respond, city hall delegates to its employees, uses internal resources but you don't know about that. You just get a response.
 
@@ -144,7 +145,7 @@
 
 ##### City Hall has an interface
 
-> The interface is the reception. The front desk.
+> The **interface** is the reception. The front desk.
 
 > You are informed of all the operations you can perform there.
 
@@ -207,14 +208,14 @@ class CityHall {
 > You can't access an employee's instance and check its salary even if you know exactly where is the archive room, as it's not exposed to you on purpose. That info is **private**
 
 ```js
-CityHall.employees[0].salary // Uncaught TypeError: Cannot read property '0' of undefined
+cityHall.employees[0].salary // Uncaught TypeError: Cannot read property '0' of undefined
 ```
 
 <!--slide-->
 
 ### Privacy techniques for encapsulation
 
-> Unfortunately, there is no syntax for private object properties or methods in JavaScript.
+> Unfortunately, there's no syntax for private object properties or methods in JavaScript.
 
 > We have to take care of it on our own ...
 
@@ -453,13 +454,65 @@ class SimpleDate {
 class ComplexDate extends SimpleDate {}
 ```
 
+
+<!--slide-->
+
+### A new deal
+
+#### Private methods and fields in Javascript
+
+> At the moment this text is written, private members and methods are stage 3 and can be used in production.
+
+[TC39 // Private methods](https://github.com/tc39/proposal-private-methods)
+[TC39 // Proposals](https://github.com/tc39/proposals)
+[TC39 // Process and stage](https://tc39.github.io/process-document/)
+
+<!--slide-->
+
+#### Private members
+
+```js
+class SimpleDate {
+  constructor(month, day) {
+    this.#month = month
+    this.#day = day
+  }
+  getDay() { return this.#day }
+  getMonth() { return this.#month }
+  toString() {
+    return new Date(2000,this.#month-1, this.#day).toLocaleString()
+  }
+}
+```
+
+<!--slide-->
+
+#### Private methods
+
+```js
+class SimpleDate {
+  constructor(month, day) {
+    this.#month = month
+    this.#day = day
+  }
+  getDay() { return this.#day }
+  getMonth() { return this.#month }
+  toString() {
+    this.#formatDate(new Date(2000,this.#month-1, this.#day))
+  }
+  #formatDate (date) {
+    return date.toLocaleString()
+  }
+}
+```
+
 <!--section-->
 
 ## Inheritance
 
-> Inheritance allows to define a hierarchy between entities (classes)
+> Inheritance allows to define a hierarchy between entities (classes).
 
-> Inheritance allows **child** classes inherits the characteristics of existing **parent** class: properties and methods.
+> Inheritance allows **child** classes inherit the characteristics of existing **parent** class: properties and methods.
 
 <!--slide-->
 
@@ -467,13 +520,13 @@ class ComplexDate extends SimpleDate {}
 > * Redefine properties (defining the new class)
 > * Redefine methods (modifying existing behaviour)
 > * Add new properties and methods
->
+
+---
+
 > Inheritance has benefits:
 > * Extensibility
 > * Reusability: eliminates redundant code
 > * Abstraction
-
-
 
 <!--slide-->
 
@@ -537,9 +590,11 @@ class EcoATM  extends ATM {
 }
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Exercise: The School
+
+Identify the classes. Define the classes properties and methods with a hierarchy.
 
 > We are given a School.
 >
@@ -549,11 +604,13 @@ class EcoATM  extends ATM {
 >
 > Both teachers and students are people
 
-Identify the classes. Define the classes properties and methods with a hierarchy.
-
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Exercise: The animals
+
+Identify the classes. Define the classes properties and methods with a hierarchy.
+
+Create static method in Animal that returns average age of an array of animals.
 
 > Consider a hierarchy composed by Dog, Frog, Cat, Kitten, Tomcat.
 >
@@ -562,15 +619,11 @@ Identify the classes. Define the classes properties and methods with a hierarchy
 > Kittens can be only female and tomcats are only male.
 > Each animal produces a sound.
 
-Identify the classes. Define the classes properties and methods with a hierarchy.
-
-Create static method in Animal that returns average age of an array of animals.
-
 <!--section-->
 
 ## Polymorphism
 
-> Polymorphism is the ability to take more than one form. Its means that a class can be used to its parent interface.
+> Polymorphism is the ability to **take more than one form**. Its means that a class can be used to its parent interface.
 
 > Polymorphism allows abstract operations to be defined in base class (parent), but implemented only in the child class.
 
@@ -641,7 +694,7 @@ person.takePicture()
 
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Exercise: The Bank
 
