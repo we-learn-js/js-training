@@ -15,6 +15,7 @@ No data available.
 | 2017-11-02 | [Classes], [Functions], [Functional Programming] |
 | 2017-11-16 | [Modules], [Async Programming] (/6/9) |
 | 2017-11-23 | [Async Programming], [IteratorsAndGenerators], [Symbols] |
+| 2017-11-30 | [PR-functions], [Object Oriented Programming], [Object Oriented Design Principles] |
 
 ## Group #3 - 2017-10-20
 
@@ -25,6 +26,7 @@ No data available.
 | 2017-11-03 | [Classes], [Functions], [Functional Programming] |
 | 2017-11-17 | [Modules], [Async Programming] (/6/9) |
 
+[PR-functions]:https://github.com/we-learn-js/js-training-practice/pull/85
 [Operators]:https://js-training.now.sh/slides/Operators.md
 [Scopes & Closures]:https://js-training.now.sh/slides/ScopesAndClosures.md
 [Objects]:https://js-training.now.sh/slides/Objects.md
