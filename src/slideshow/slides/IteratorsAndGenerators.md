@@ -195,6 +195,21 @@ class TextLines {
 
 https://jsbin.com/kuneliv/edit?js,console
 
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
+
+#### Possible solution
+
+```js
+class TextLines {
+  constructor (text) {
+    this._lines = text.split('\n')
+  }
+  [Symbol.iterator]() {
+    return this.lines[Symbol.iterator]()
+  }
+}
+```
+
 <!--section-->
 
 ## Generators
@@ -520,6 +535,22 @@ class TextLines {
 
 https://jsbin.com/xutadu/edit?js,console
 
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
+
+#### Possible Solution
+
+```js
+class TextLines {
+
+  constructor (text) {
+    this._lines = text.split('\n')
+  }
+
+  * [Symbol.iterator]() {
+    yield* this._lines
+  }
+}
+```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
@@ -556,17 +587,20 @@ class TextLines {
   }
 
   * [Symbol.iterator]() {
-    var offset = 0
-    while (offset<this._text.length) {
+    const length = this._text.length
+    let offset = 0
+
+    while (offset < length) {
       let nextOffset = this._text.indexOf('\n', offset)
-      yield this._text.slice(offset,nextOffset)
+      nextOffset = nextOffset !== -1 ? nextOffset : length
+      yield this._text.slice(offset, nextOffset)
       offset = nextOffset + 1
     }
   }
 }
 ```
 
-https://jsbin.com/totayeq/edit?js,console
+https://jsbin.com/totayeq/4/edit?js,console
 
 <!--section-->
 
