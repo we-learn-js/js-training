@@ -13,12 +13,12 @@
 ```js
 
 // PASS
-it('Array.indexOf should return -1 when the value is not present', function () {
+it('Array.indexOf should return -1 when the value is not present', () => {
   expect([1, 2, 3].indexOf(5)).to.equal(-1)
 })
 
 // FAIL
-it('Array.indexOf should return -1 when the value is not present', function () {
+it('Array.indexOf should return -1 when the value is not present', () => {
   expect([1, 2, 5, 3].indexOf(5)).to.equal(-1)
 })
 
@@ -36,7 +36,7 @@ https://jsbin.com/jovanep/edit?js,output
 
 > It handles both success and failed tests and provides info what failed.
 
-> There are many testing frameworks: YUI test, Jasmine, **Mocka**, JSUnit, and many more...
+There are many testing frameworks: YUI test, Jasmine, **Mocka**, JSUnit, and many more...
 
 
 <!--slide-->
@@ -45,30 +45,28 @@ https://jsbin.com/jovanep/edit?js,output
 
 > Mocha is one of the most popular testing frameworks.
 
-> **describe** function allows to declare a suite of tests.
+**describe()** allows to declare a suite of tests.
 
-> **it** function allows to describe a test.
+**it()** allows to describe a test.
 
-> These functions are used to make the output as explicit as possible.
+These functions are used to make the output as explicit as possible.
 
-[Mocha](https://mochajs.org/)
+[MochaJs](https://mochajs.org/)
 
 <!--slide-->
 
 ```js
-describe('Array', function () {
-
-  describe('#indexOf', function () {
-
-    it('should return -1 when the value is not present', function () {
+describe('Array', () => {
+  describe('#indexOf', () => {
+    it('should return -1 when the value is not present', () => {
       expect([1, 2, 3].indexOf(5)).to.equal(-1)
+      expect([1, 2, 3].indexOf(0)).to.equal(-1)
     })
   })
 })
 ```
 
-https://jsbin.com/yukori/edit?js,output
-
+https://jsbin.com/yukori/4/edit?js,output
 
 <!--slide-->
 
@@ -78,21 +76,21 @@ https://jsbin.com/yukori/edit?js,output
 
 > It's up to you to describe your tests in a better or worse manner.
 
-> [Better Specs](http://betterspecs.org/) (based on ruby), is a good source to help your make better tests descriptions.
+[Better Specs](http://betterspecs.org/) (based on ruby), is a good source to help your make better tests descriptions.
 
 <!--slide-->
 
 ```js
-describe('Array', function () {
+describe('Array', () => {
 
-  describe('#indexOf', function () {
+  describe('#indexOf', () => {
 
-    it('should return -1 when the value is not present', function () {
+    it('should return -1 when the value is not present', () => {
       expect([1, 2, 3].indexOf(5)).to.equal(-1)
       expect([1, 2, 3].indexOf(0)).to.equal(-1)
     })
 
-    it('should return 2 when the value is on third position', function () {
+    it('should return 2 when the value is on third position', () => {
       expect([1, 2, 3].indexOf(3)).to.equal(2)
     })
   })
@@ -102,19 +100,19 @@ describe('Array', function () {
 <!--slide-->
 
 ```js
-describe('Array', function () {
+describe('Array', () => {
 
-  describe('#indexOf', function () {
+  describe('#indexOf', () => {
 
-    describe('When the value is not present', function () {
-      it('should return -1 ', function () {
+    describe('When the value is not present', () => {
+      it('returns -1 ', () => {
         expect([1, 2, 3].indexOf(5)).to.equal(-1)
         expect([1, 2, 3].indexOf(0)).to.equal(-1)
       })
     })
 
-    describe('When the value is present', function () {
-      it('should return its position', function () {
+    describe('When the value is present', () => {
+      it('returns its position', () => {
         expect([1, 2, 3].indexOf(3)).to.equal(2)
       })
     })
@@ -134,9 +132,17 @@ https://jsbin.com/buzava/edit?js,output
 
 > Assertions are the "checks" that you perform to determine if test passes or fails.
 
-> Tend to be one assertion per test (it).
+Tend to be one assertion per test (it).
 
-> Many libraries offer slightly different interfaces: Must, Jasmine, Should, **Chai**, ...
+<!--slide-->
+
+Many libraries offer slightly different interfaces
+
+* [Must](https://github.com/moll/js-must)
+* [Jasmine](https://jasmine.github.io/edge/introduction.html)
+* [Should](https://shouldjs.github.io/#assertion-empty)
+* [Chai](http://chaijs.com/api/bdd/)
+* many more...
 
 <!--slide-->
 
@@ -151,29 +157,29 @@ https://jsbin.com/buzava/edit?js,output
 
 <!--slide-->
 
-#### Expect
-
-```js
-var expect = chai.expect;
-
-expect(foo).to.be.a('string')
-expect(foo).to.equal('bar')
-expect(foo).to.have.lengthOf(3)
-expect(tea).to.have.property('flavors').with.lengthOf(3)
-```
-
-<!--slide-->
-
 #### Assert
 
 ```js
-var assert = chai.assert;
+var assert = chai.assert
 
 assert.typeOf(foo, 'string')
 assert.equal(foo, 'bar')
 assert.lengthOf(foo, 3)
 assert.property(tea, 'flavors')
 assert.lengthOf(tea.flavors, 3)
+```
+
+<!--slide-->
+
+#### Expect
+
+```js
+var expect = chai.expect
+
+expect(foo).to.be.a('string')
+expect(foo).to.equal('bar')
+expect(foo).to.have.lengthOf(3)
+expect(tea).to.have.property('flavors').with.lengthOf(3)
 ```
 
 <!--slide-->
@@ -196,10 +202,10 @@ tea.should.have.property('flavors').with.lengthOf(3)
 
 ```js
 expect(object).to
-  .equal(expected) // target is strictly equal (===) to value
+  .equal(expected)      // target is strictly equal (===) to value
   .deep.equal(expected) // target is deeply equal to value.
-  .exist // Asserts that the target is neither null nor undefined.
-  .contain(val) // assert the inclusion of an object in an array or a substring in a string
+  .exist                // asserts that the target is neither null nor undefined.
+  .contain(val)         // assert the inclusion of an object in an array or a substring in a string
 ```
 
 <!--slide-->
@@ -208,17 +214,16 @@ expect(object).to
 
 ```js
 expect(object).to.be
-  .a('string') // assert a value’s type
-  .ok // Asserts that the target is truthy
-  .true // Asserts that the target is true
-  .false // Asserts that the target is false
-  .null // Asserts that the target is null
-  .undefined // Asserts that the target is undefined
-  .empty // Asserts that the target’s length is 0
-  .arguments // Asserts that the target is an arguments object.
-  .function // Asserts that the target is an function object.
-  .instanceOf(constructor) // Asserts that the target is an instance of constructor.
-
+  .a('string')  // asserts a value’s type
+  .ok           // asserts that the target is truthy
+  .true         // asserts that the target is true
+  .false        // asserts that the target is false
+  .null         // asserts that the target is null
+  .undefined    // asserts that the target is undefined
+  .empty        // asserts that the target’s length is 0
+  .arguments    // asserts that the target is an arguments object.
+  .function     // asserts that the target is an function object.
+  .instanceOf(constructor) // asserts that the target is an instance of constructor.
 ```
 
 <!--slide-->
@@ -231,8 +236,8 @@ expect(object).to
   .gte    // or .at.least
   .lt(5)  // or .below
 
-  .satisfy(function(num) { return num > 0; })
-  // Asserts that the target passes a given truth test.
+  .satisfy(function(num) { return num > 0 })
+  // asserts that the target passes a given truth test.
 ```
 
 <!--slide-->
@@ -240,9 +245,9 @@ expect(object).to
 #### Output of a function
 
 ```js
-expect( function() { ... } ).to
-  .throw // Asserts that the function target will throw an exception
-  .throw(ReferenceError) // Asserts that the function target will throw a specific error
+expect( () => { ... } ).to
+  .throw // asserts that the function target will throw an exception
+  .throw(ReferenceError) // asserts that the function target will throw a specific error
 ```
 
 <!--slide-->
@@ -255,56 +260,58 @@ expect( function() { ... } ).to
 ```js
 expect(object)
   to.not.be.a('string') // assert a value is NOT given type
-  to.not.be.ok // Asserts that the target is NOT truthy
-  to.not.be.true // Asserts that the target is NOT true
-  to.not.be.false // Asserts that the target is NOT false
+  to.not.be.ok          // asserts that the target is NOT truthy
+  to.not.be.true        // asserts that the target is NOT true
+  to.not.be.false       // asserts that the target is NOT false
 
 expect(object).to.not
-  .equal(expected) // target is NOT strictly equal (===) to value
+  .equal(expected)      // target is NOT strictly equal (===) to value
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
-### Practice: First Tests
+### Practice: First Assertions
 
 
-Test behavior of  [Array.push](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/push) function.
+Test behaviour of  [Array.push](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/push) function.
 
 Use chai expect assertion interface.
 
 https://jsbin.com/miniqe/edit?js,output
 
-https://jsbin.com/yahigim/2/edit?js,output
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
+
+### Solution
+
+https://jsbin.com/yahigim/3/edit?js,output
 
 <!--slide-->
 
 ### Test context
 
-> What we've seen is enough to test pure functions.
+Some tests need a context to be set in many cases.
 
-> But, some tests need a context to be set in many cases.
+Mocha provides **hooks** to prepare a context/state and reset it afterwards.
 
-> Mocha provides **hooks** to prepare a context/state and reset it afterwards.
+Also serves to undo side effects provoked by operations executed in test.
 
-> Also serves to undo side effects provoked by operations executed in test.
-
-> Test execution **MUST NOT** have side effects.
+Test execution **MUST NOT** have side effects.
 
 <!--slide-->
 
 ```js
-describe('hooks', function() {
+describe('hooks', () => {
 
-  before(function() {
+  before(() => {
     // runs before all tests in this block
   })
-  after(function() {
+  after(() => {
     // runs after all tests in this block
   })
-  beforeEach(function() {
+  beforeEach(() => {
     // runs before each test in this block
   })
-  afterEach(function() {
+  afterEach(() => {
     // runs after each test in this block
   })
 
@@ -314,19 +321,19 @@ describe('hooks', function() {
 
 https://jsbin.com/nezimuc/edit?js,console
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 #### Practice : reseting side effects
 
-> Use `after` and `beforeEach` to undo side effects of tests
+> Use `after` and `afterEach` to undo side effects of tests
 
 ```js
-before(function() {
+before(() => {
   fixturesElement = document.createElement('DIV')
   document.body.appendChild(fixturesElement)
 })
 /* ... */
-beforeEach(function() {
+beforeEach(() => {
   button = document.createElement('Button')
   button.innerHTML = 'TEST APPEND BUTTON'
   button.id = 'test-append-button'
@@ -336,38 +343,38 @@ beforeEach(function() {
 
 https://jsbin.com/cokuxaj/edit?js,console,output
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 ##### Solution
 
 ```js
-before(function() {
+before(() => {
   fixturesElement = document.createElement('DIV')
   document.body.appendChild(fixturesElement)
 })
-after(function() {
+after(() => {
   document.body.removeChild(fixturesElement)
 })
 ```
 ```js
-beforeEach(function() {
+beforeEach(() => {
   button = document.createElement('Button')
   button.innerHTML = 'TEST APPEND BUTTON'
   button.id = 'test-append-button'
   $(fixturesElement).append(button)
 })
-afterEach(function() {
+afterEach(() => {
   fixturesElement.removeChild(button)
 })
 ```
 
-https://jsbin.com/pifura/edit?js,console,output
+https://jsbin.com/pifura/2/edit?js,console,output
 
 <!--section-->
 
 ### Mocking with SinonJs
 
-> SinonJs is a library with tools to force behavior of the environment or the dependencies on which the testes obj relies on.
+> SinonJs is a library with tools to force behaviour of the environment or the dependencies on which the tested object relies.
 
 [SinonJs](http://sinonjs.org/docs/)
 
@@ -379,44 +386,45 @@ https://jsbin.com/pifura/edit?js,console,output
 
 > A test spy can be an anonymous function or it can wrap an existing function.
 
-> `sinon.spy()` wraps the original function
+`sinon.spy()` wraps the original function
 
 
 <!--slide-->
 
 ```js
-describe('getUsers', function(){
+describe('getUsers', () => {
 
-  beforeEach(function(){
+  beforeEach(() => {
     sinon.spy($, 'get')
-    getUsers(function(){}, 5)
+    getUsers(() => {}, 5)
   })
 
-  afterEach(function(){
+  afterEach(() => {
     $.get.restore()
   })
 
-  it( 'should make right ajax request to retrieve users', function() {
+  it( 'should make right ajax request to retrieve users', () => {
     expect($.get).to.have.been.calledOnce
     expect($.get.firstCall.args[0]).to.contain('/users')
   })
-
 })
 ```
 
-https://jsbin.com/hirehir/edit?js,output
+https://jsbin.com/hirehir/5/edit?js,output
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
 
 ##### Caution !
 
 > Spies must always be restored to reset the original behaviour of spied method
 
 ```js
-  afterEach(function(){
+  afterEach(() => {
     $.get.restore()
   })
 ```
+
+> **Avoid tests' side effects**
 
 <!--slide-->
 
@@ -477,10 +485,10 @@ spy.lastCall.args
 Inputs
 
 ```js
-spy.calledWith(arg1, arg2, ...);
+spy.calledWith(arg1, arg2, ...)
 // Returns true if spy was called at least once with the provided arguments. Can be used for partial matching, Sinon only checks the provided arguments against actual arguments, so a call that received the provided arguments (in the same spots) and possibly others as well will return true.
 
-spy.calledWithExactly(arg1, arg2, ...);
+spy.calledWithExactly(arg1, arg2, ...)
 // Returns true if spy was called at least once with the provided arguments and no others.
 ```
 
@@ -490,16 +498,16 @@ spy.calledWithExactly(arg1, arg2, ...);
 Outputs
 
 ```js
-spy.threw();
+spy.threw()
 // Returns true if spy threw an exception at least once.
 
-spy.threw("TypeError");
+spy.threw("TypeError")
 // Returns true if spy threw an exception of the provided type at least once.
 
-spy.threw(obj);
+spy.threw(obj)
 // Returns true if spy threw the provided exception object at least once.
 
-spy.returned(obj);
+spy.returned(obj)
 // Returns true if spy returned the provided value at least once. Uses deep comparison for objects and arrays. Use spy.returned(sinon.match.same(obj)) for strict comparison (see matchers).
 
 ```
@@ -508,15 +516,15 @@ spy.returned(obj);
 
 #### stubs
 
-> Test stubs are spies with pre-programmed behavior.
+> Test stubs are **spies** with pre-programmed behaviour.
 
-> They replace the behavior of an existing method by the one expected by your test case.
+> They replace the behaviour of an existing method by the one expected by your test case.
 
 <!--slide-->
 
 ```js
-beforeEach(function(){
-  sinon.stub($, 'get', function() {
+beforeEach(() => {
+  sinon.stub($, 'get', () => {
     return {
       done (callback) {
         callback([
@@ -537,23 +545,23 @@ https://jsbin.com/fiquqa/edit?js,output
 
 #### Main interface
 
-> Stubs inherit spies interface, with additional methods to determine the behavior on every call.
+> Stubs inherit spies interface, with additional methods to determine the behaviour on every call.
 
 <!--slide-->
 
-Defining behavior
+Defining behaviour
 
 ```js
-stub.returns(obj);
+stub.returns(obj)
 // Makes the stub return the provided value.
 
-stub.returnsThis();
+stub.returnsThis()
 // Causes the stub to return its this value. Useful for stubbing jQuery-style fluent APIs.
 
-stub.throws();
+stub.throws()
 // Causes the stub to throw an exception (Error).
 
-stub.throws("TypeError");
+stub.throws("TypeError")
 // Causes the stub to throw an exception of the provided type.
 ```
 
@@ -562,19 +570,22 @@ stub.throws("TypeError");
 Filtering calls
 
 ```js
-stub.onCall(n);
-// Defines the behavior of the stub on the nth call.
+stub.onFirstCall() // Alias for stub.onCall(0)
+
+stub.onSecondCall() // Alias for stub.onCall(1)
+
+stub.onThirdCall() // Alias for stub.onCall(2)
+
+stub.onCall(n)
+// Defines the behaviour of the stub on the nth call.
 // Useful for testing sequential interactions.
-stub.onFirstCall(); // Alias for stub.onCall(0);
-stub.onSecondCall(); // Alias for stub.onCall(1);
-stub.onThirdCall(); // Alias for stub.onCall(2);
 ```
 
 ```js
-var callback = sinon.stub();
-    callback.onFirstCall().returns(1);
-    callback.onCall(1).throws();
-    callback.onThirdCall().returnsThis();
+var callback = sinon.stub()
+    callback.onFirstCall().returns(1)
+    callback.onCall(1).throws()
+    callback.onThirdCall().returnsThis()
 ```
 
 
@@ -589,7 +600,7 @@ var callback = sinon.stub();
 <!--slide-->
 
 ```js
-describe('getOneUser', function(){
+describe('getOneUser', () => {
   it( 'should filter number of return results', function(done) {
     getOneUser(5)
       .then(function(result){
@@ -601,13 +612,13 @@ describe('getOneUser', function(){
 })
 ```
 
-https://jsbin.com/wuliyo/1/edit?js,output
+https://jsbin.com/wuliyo/edit?js,output
 
 <!--slide-->
 
-### Working with time: Sinon Fake timers
+### Managing time
 
-> Fake timers helps you for time depending time.
+> Sinon's fake timers helps you for time depending time.
 
 > Use it to set the current dates
 
@@ -616,18 +627,18 @@ https://jsbin.com/wuliyo/1/edit?js,output
 <!--slide-->
 
 ```js
-beforeEach(function(){
+beforeEach(() => {
   clock = sinon.useFakeTimers()
   sinon.spy(console, 'log')
   countdown(5)
 })
 
-afterEach(function(){
-  clock.restore();
+afterEach(() => {
+  clock.restore()
   console.log.restore()
 })
 
-it( 'should log numbers step by step', function() {
+it( 'should log numbers step by step', () => {
   clock.tick(500)
   expect(console.log).to.have.been.calledOnce
   clock.tick(1000)
@@ -640,11 +651,13 @@ https://jsbin.com/sofubep/edit?js,output
 
 <!--slide-->
 
-### Working with AJAX: Sinon Fake XMLHttpRequest
+### Managing Async Requests
 
 > Helps with testing requests made with XHR.
 
 > Also fakes the native XMLHttpRequest.
+
+> For `fetch` API, other [mocks](https://github.com/msn0/fake-fetch) can be used.
 
 <!--slide-->
 
@@ -673,7 +686,7 @@ https://jsbin.com/kucugaz/edit?js,output
 
 <!--slide-->
 
-![Software testing](./images/software-testing.png)
+![Software testing](../images/software-testing.png)
 
 <!--slide-->
 
@@ -695,7 +708,7 @@ https://jsbin.com/kucugaz/edit?js,output
 
 > Ensure that component collaborations work as expected.
 
-> Assertions may test component API, UI, or side-effects (such as database I/O, logging, etc…)
+> Assertions may test component API, UI, or side-effects (such as database I/O, logging, etc…).
 
 <!--slide-->
 
@@ -703,7 +716,7 @@ https://jsbin.com/kucugaz/edit?js,output
 
 > Testing is conducted to test a system as a whole.
 
-> The testing is carried out from the user’s point of view
+> The testing is carried out from the user’s point of view.
 
 > Ensure that the app works as expected from the user’s perspective.
 
@@ -726,7 +739,7 @@ https://jsbin.com/kucugaz/edit?js,output
 
 ### Atomic
 
-> Only too possible resultss: PASS or FAIL.
+> Only too possible results: PASS or FAIL.
 
 > Each test must be isolated: Test B should not depend on Test A previous execution.
 
@@ -736,11 +749,9 @@ https://jsbin.com/kucugaz/edit?js,output
 
 > One test should be responsible for one concern, one scenario only.
 
-> Test behaviors, no methods.
-
-> one method, multiple behaviours -> multiple tests
-
-> one behaviour, multiple methods -> One test
+> Test behaviours, no methods:
+> * one method, multiple behaviours -> multiple tests
+> * one behaviour, multiple methods -> One test
 
 <!--slide-->
 
@@ -756,7 +767,7 @@ http://betterspecs.org/
 
 > Test should have no uncertainty
 
-> Method behavior should be predictable
+> Method behaviour should be predictable
 
 > Expected output should be strictly defined
 
