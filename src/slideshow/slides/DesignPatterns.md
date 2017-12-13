@@ -145,8 +145,7 @@ class InputPhone {
 
 > For now, we have only two types of duck: mallard and redhead.
 
-[Source example](http://www.amazon.com/First-Design-Patterns-Elisabeth-Freeman/dp/0596007124/ref=sr_1_1?ie=UTF8&qid=1316512770&sr=8-1)
-
+[source](http://www.amazon.com/First-Design-Patterns-Elisabeth-Freeman/dp/0596007124/ref=sr_1_1?ie=UTF8&qid=1316512770&sr=8-1)
 
 <!--slide-->
 
@@ -289,10 +288,78 @@ class HybridDuck extends SteamDuck {
 
 <!--slide-->
 
-> Related OO Principles:
-> * Open-Close (SOLID)
-> * Protected Variations (GRASP)
-> * Favor composition over inheritance
+### Related OO Principles:
+* Open-Close (SOLID)
+* Protected Variations (GRASP)
+* Favor composition over inheritance
+
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
+
+### Practice: Transports
+
+> Modes of transportation to an airport is an example of a Strategy.
+
+> An person can use several modes of transportation: walk, car, bus, bycicle.
+
+> Any of these modes of transportation will get a person to an address, and they can be used interchangeably.
+
+* Convert transportation mode to a strategy so the bycile strategy can be added without modifying `Person.goToAddress()` method.
+
+http://jsbin.com/suvuduh/edit?js,console
+
+
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
+
+#### Solution
+
+```js
+class Person {
+
+  constructor(transportMode) {
+     switch(transportMode) {
+      case 'car':
+        this.transportStrategy = new PersonCarTransportation(this)
+        break;
+      case 'publicTransports':
+        this.transportStrategy = new PersonPublicTransportation(this)
+        break;
+      default:
+        this.transportStrategy = new PersonWalkTransportation(this)
+    }
+  }
+
+  goToAddress(address) {
+    this.transportStrategy.goToAddress(address)
+  }
+}
+```
+
+http://jsbin.com/lozaso/3/edit?js,console
+
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
+
+#### Solution
+
+```js
+class Person {
+
+  constructor(transportMode) {
+    this.transportStrategy = transportStrategy
+  }
+
+  goToAddress(address) {
+    this.transportStrategy.goToAddress(address)
+  }
+}
+
+const destination = 'Plaça Catalunya, Barcelona'
+
+new Person(new PersonCarTransportation()).goToAddress(destination)
+new Person(new PersonPublicTransportation()).goToAddress(destination)
+new Person(new PersonWalkTransportation()).goToAddress(destination)
+```
+
+http://jsbin.com/judiji/2/edit?js,console
 
 <!--section-->
 
@@ -352,13 +419,13 @@ class SuperMario {
 
 <!--slide-->
 
-> That's a log of code, and a lot of "if" statements.
+> That's a lot of code, and a lot of "if" statements.
 
 > More over, some have high cohesion, like what happens to normal mario if he hits a mushroom or hits an enemy.
 
 > As Mario gets more states (raccoon, etc) and collision to more types of objects, the code will grow and get converted into a nightmare.
 
-> We need to encapsulated behaviors that depend on MArios's state
+> We need to encapsulated behaviors that depend on Marios's state
 
 <!--slide-->
 
@@ -409,17 +476,50 @@ class SuperMario {
 
 <!--slide-->
 
-### Example: Gumball Machine
+### Related OO Principles:
+* High Cohesion (GRASP)
+* Favor composition over inheritance
 
-https://github.com/tcorral/Design-Patterns-in-Javascript/blob/es6/State/
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
+
+### Practice: Transports
+
+> Let's take back our transportation excercize.
+
+> Now transport mode depends on if our user has a car, a bike, etc.
+
+* Apply State pattern to `Person` class.
+
+http://jsbin.com/xijoyen/edit?js,console
 
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
-> Related OO Principles:
-> * High Cohesion (GRASP)
-> * Favor composition over inheritance
+### Response
 
+```js
+class PersonState {
+  constructor(person) {
+    this.person = person
+  }
+  goToAddress(address) {
+    console.log(`Go by foot, managing sidewalks, stop lights, etc`)
+  }
+}
+class PersonWithCarState extends PersonState {
+  goToAddress(address) {
+    console.log(`Go by car, managing traffic, stop lights, etc`)
+  }
+}
+class PersonWithTransportCreditState extends PersonState {
+  goToAddress(address) {
+    this.person.publicTransportCredit--
+    console.log(`Go by public Transportation, going to bus stop, paying, etc`)
+  }
+}
+```
+
+http://jsbin.com/tobosok/edit?js,console
 
 <!--section-->
 
@@ -456,9 +556,9 @@ class Duck extends Swimable(Flyable(null)) {
 
 <!--slide-->
 
-> Related OO Principles:
-> * Interface Segregation Principle (SOLID)
-> * Favor composition over inheritance
+### Related OO Principles:
+* Interface Segregation Principle (SOLID)
+* Favor composition over inheritance
 
 <!--section-->
 
@@ -547,19 +647,136 @@ Note: **Always** remember to unregister handlers when you don't need them anymor
 
 <!--slide-->
 
-> Communication takes place over a named channel.
+> Communication takes place over a **named channel**.
 
 > Based on callbacks which are triggered when events occur.
 
 > Can pass data to callbacks.
 
-> Subscription can return a destroy method to unsubscribe events.
+> Subscription can **return a destroy method** to unsubscribe events.
 
 <!--slide-->
 
-> Related OO Principles:
-> * Low coupling
-> * Indirection (GRASP)
+### Related OO Principles:
+* Low coupling
+* Indirection (GRASP)
+
+<!--section-->
+
+## Decorator Pattern
+
+> Attaches additional responsibilities to an object dynamically.
+
+> Decorators provide a flexible alternative to subclassing for extending functionality.
+
+> Behaviors are extended in an isolated way, on runtime.
+
+> OCP tells us to open for extension. Decorator is a pattern to open for decoration.
+
+<!--slide-->
+
+### Example: CoffeeShop
+
+> CoffeeShop offers different types of coffee: espresso, decaf, dark roast, etc.
+
+> Each coffee has a different cost
+
+<!--slide-->
+
+```js
+class Beverage {
+  constructor () {
+    this.description = "Unknown Beverage";
+  }
+  getDescription() { return this.description }
+  cost() // abstract method
+}
+class Espresso extends Beverage {
+  constructor () { this.description = "Espresso Coffee"; }
+  cost() { return 1.99 }
+}
+class Decaf extends Beverage {
+  constructor () { this.description = "Decaf Coffee"; }
+  cost() { return 2.09 }
+}
+class DarkRoast extends Beverage {
+  constructor () { this.description = "DarkRoast Coffee"; }
+  cost() { return 2.39 }
+}
+```
+
+<!--slide-->
+
+> In addition to your coffee, you can also ask for several condiments: milk, soy, and mocha (chocolate)
+
+> A coffee can have several condiments, that have their own cost.
+
+<!--slide-->
+
+### How do we solve the problem?
+
+> With Inheritance?
+> It would be a nightmare of classes: DecafWithMilk, DecafWithMilkAndChocolate, DecafWithSoyAndChocolate, etc...
+
+> With Strategy?
+> Strategy is useful for conditional behavior. In this case, we are talking about nested behaviors.
+
+<!--slide-->
+
+> Let's try the Decorator Pattern
+
+```js
+class CondimentDecorator extends Beverage {
+  constructor (beverage) { this.beverage = beverage; }
+  getDescription() // abstract method
+  cost() // abstract method
+}
+class Milk extends CondimentDecorator {
+  getDescription() { return this.beverage.getDescription() + ", Milk" }
+  cost() { return 0.20 + this.beverage.cost() }
+}
+class Soy extends CondimentDecorator {
+  getDescription() { return this.beverage.getDescription() + ", Soy" }
+  cost() { return 0.24 + this.beverage.cost() }
+}
+class Mocha extends CondimentDecorator {
+  getDescription() { return this.beverage.getDescription() + ", Mocha" }
+  cost() { return 0.59 + this.beverage.cost() }
+}
+```
+
+<!--slide-->
+
+> Decorators have the same supertype as the objects they decorate.
+
+> You can use one or more decorators to wrap an object.
+
+> The decorator adds its own behavior either before and/or after delegating to the object it decorates to do the rest of the job.
+
+
+<!--slide-->
+
+```js
+import Espresso from './espresso'
+import Mocha from './mocha'
+import Milk from './milk'
+
+var beverage = new Espresso()
+beverage = new Mocha(beverage)
+beverage = new Milk(beverage)
+
+console.log(beverage.getDescription() + “ $” + beverage.cost())
+// Espresso Coffee, Mocha, Milk $2.78
+```
+
+[Full implementation](https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Decorator)
+
+<!--slide-->
+
+### Related OO Principles:
+* Open/Close Principle (SOLID)
+* Favor composition over inheritance
+* Low coupling
 
 <!--section-->
 
@@ -567,11 +784,11 @@ Note: **Always** remember to unregister handlers when you don't need them anymor
 
 > Closely related to the Publisher/Subscriber pattern.
 
-> Observers subscribe directly to the object being observed (the subject).
+> Observers **subscribe directly to the object** being observed (the subject).
 
 > Useful for decoupling.
 
-> It's the responsibility of the subject to maintain the list of observers
+> It's the responsibility of the subject to **maintain the list of observers**.
 
 > Subject's interface should include observing, unobserving and notifying methods.
 
@@ -756,127 +973,10 @@ https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Observer
 
 <!--slide-->
 
-> Related OO Principles:
-> * Indirection (GRASP)
-> * Low coupling
-> * Favor composition over inheritance
-
-<!--section-->
-
-## Decorator Pattern
-
-> Attaches additional responsibilities to an object dynamically.
-
-> Decorators provide a flexible alternative to subclassing for extending functionality.
-
-> Behaviors are extended in an isolated way, on runtime.
-
-> OCP tells us to open for extension. Decorator is a pattern to open for decoration.
-
-<!--slide-->
-
-### Example: CoffeeShop
-
-> CoffeeShop offers different types of coffee: espresso, decaf, dark roast, etc.
-
-> Each coffee has a different cost
-
-<!--slide-->
-
-```js
-class Beverage {
-  constructor () {
-    this.description = "Unknown Beverage";
-  }
-  getDescription() { return this.description }
-  cost() // abstract method
-}
-class Espresso extends Beverage {
-  constructor () { this.description = "Espresso Coffee"; }
-  cost() { return 1.99 }
-}
-class Decaf extends Beverage {
-  constructor () { this.description = "Decaf Coffee"; }
-  cost() { return 2.09 }
-}
-class DarkRoast extends Beverage {
-  constructor () { this.description = "DarkRoast Coffee"; }
-  cost() { return 2.39 }
-}
-```
-
-<!--slide-->
-
-> In addition to your coffee, you can also ask for several condiments: milk, soy, and mocha (chocolate)
-
-> A coffee can have several condiments, that have their own cost.
-
-<!--slide-->
-
-### How do we solve the problem?
-
-> With Inheritance?
-> It would be a nightmare of classes: DecafWithMilk, DecafWithMilkAndChocolate, DecafWithSoyAndChocolate, etc...
-
-> With Strategy?
-> Strategy is useful for conditional behavior. In this case, we are talking about nested behaviors.
-
-<!--slide-->
-
-> Let's try the Decorator Pattern
-
-```js
-class CondimentDecorator extends Beverage {
-  constructor (beverage) { this.beverage = beverage; }
-  getDescription() // abstract method
-  cost() // abstract method
-}
-class Milk extends CondimentDecorator {
-  getDescription() { return this.beverage.getDescription() + ", Milk" }
-  cost() { return 0.20 + this.beverage.cost() }
-}
-class Soy extends CondimentDecorator {
-  getDescription() { return this.beverage.getDescription() + ", Soy" }
-  cost() { return 0.24 + this.beverage.cost() }
-}
-class Mocha extends CondimentDecorator {
-  getDescription() { return this.beverage.getDescription() + ", Mocha" }
-  cost() { return 0.59 + this.beverage.cost() }
-}
-```
-
-<!--slide-->
-
-> Decorators have the same supertype as the objects they decorate.
-
-> You can use one or more decorators to wrap an object.
-
-> The decorator adds its own behavior either before and/or after delegating to the object it decorates to do the rest of the job.
-
-
-<!--slide-->
-
-```js
-import Espresso from './espresso'
-import Mocha from './mocha'
-import Milk from './milk'
-
-var beverage = new Espresso()
-beverage = new Mocha(beverage)
-beverage = new Milk(beverage)
-
-console.log(beverage.getDescription() + “ $” + beverage.cost())
-// Espresso Coffee, Mocha, Milk $2.78
-```
-
-[Full implementation](https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Decorator)
-
-<!--slide-->
-
-> Related OO Principles:
-> * Open/Close Principle (SOLID)
-> * Favor composition over inheritance
-> * Low coupling
+### Related OO Principles:
+* Indirection (GRASP)
+* Low coupling
+* Favor composition over inheritance
 
 <!--section-->
 
@@ -885,8 +985,6 @@ console.log(beverage.getDescription() + “ $” + beverage.cost())
 > Creational Pattern.
 
 > Wrap a constructor to return instances of classes (objects).
-
-> When a client object wants to create another object, it calls its constructor and possibly passes some parameters. But when the object construction is a laborious process, creating the object involves a lot of knowledge about the internal structure of the object, about the relationships between the objects contained, and the rules applied to them.
 
 > Factories simplify creation of complex objects or creation at once of large number of similar objects.
 
@@ -1067,10 +1165,10 @@ class HealthyCoffeeShop extends CoffeeShop {
 
 <!--slide-->
 
-> Related OO Principles:
-> * Creator (GRASP)
-> * Pure Fabrication (GRASP)
-> * Open-Close Principle (SOLID)
+### Related OO Principles:
+* Creator (GRASP)
+* Pure Fabrication (GRASP)
+* Open-Close Principle (SOLID)
 
 <!--section-->
 
@@ -1084,7 +1182,15 @@ class HealthyCoffeeShop extends CoffeeShop {
 
 <!--slide-->
 
-### Example: Cache global object with instance getter
+### Example: Global cache object with instance getter
+
+```js
+import Cache from './cache'
+var cache = Cache.getInstance()
+cache.set('myVar', 1)
+```
+
+<!--slide-->
 
 ```js
 // cache.js
@@ -1105,11 +1211,6 @@ export default {
 }
 ```
 
-```js
-import Cache from './cache'
-var cache = Cache.getInstance()
-cache.set('myVar', 1)
-```
 
 Note: `Cache` constructor remains private.
 
@@ -1121,7 +1222,7 @@ Note: `Cache` constructor remains private.
 
 <!--slide-->
 
-### Example: Cache global object with unique instance return
+### Example: Global Cache object with unique instance return
 
 ```js
 // cache.js
@@ -1134,6 +1235,7 @@ class Cache {
 export default new Cache()
 ```
 
+Usage:
 ```js
 import cache from './cache'
 cache.set('myVar', 1)
@@ -1172,7 +1274,7 @@ class TurnOnCommand extends ICommand { // Command receiver
     this.device = device
   }
   execute () {
-    device.lightOn()
+    device.turnOn()
   }
 }
 ```
@@ -1239,7 +1341,7 @@ alarms.forEach(function(alarm){
 
 ### Example: From console logging to remote logging
 
-> We have a logger in charge of runtime messages
+> Consider a logger in charge of runtime messages
 
 ```js
 class LoggerFactory {
@@ -1269,14 +1371,18 @@ class AjaxLogger {
 
 <!--slide-->
 
-> We cant the AjaxLogger to be the main logger of our application
+> We can't make the AjaxLogger to be the main logger of our application
 
 > But our app already uses console interface, and we want to avoid refactoring all `logger.log` statements
+
+<!--slide-->
+
+> We can solve the problem implementing an `adapter`
 
 ```js
 class AjaxLoggerAdapter {
   static log (...args) {
-    AjaxLogger.sendLog(args)
+    AjaxLogger.sendLog(...args)
   }
 }
 class LoggerFactory {
@@ -1405,9 +1511,9 @@ console.log(new Person("Evan", "Graham") == 'Evan Graham') // true
 
 <!--slide-->
 
-> Related OO Principles:
-> * Open/Close Principle (SOLID)
-> * Protected variations (GRASP)
+### Related OO Principles
+* Open/Close Principle (SOLID)
+* Protected variations (GRASP)
 
 <!--section-->
 
@@ -1430,35 +1536,37 @@ console.log(new Person("Evan", "Graham") == 'Evan Graham') // true
 > In jQuery, single elements or collections of elements are treated in the same way.
 
 ```js
+// Collection of elements
 $('.container').css({ opacity: .5 })
 $('.container').find('div').css({ opacity: .5 })
 $('.container').children().css({ opacity: .5 })
+
+// Single element
 $(element).css({ opacity: .5 })
 
 ```
 
 <!--slide-->
 
-### Example: People Tree
+### Example: Directory Tree
 
 ```js
-class Person {
-  constructor (name) {
-    this.name = name
+class Directory {
+  constructor (files) {
+    this.files = files
     this.children = []
-    this.parent = null
   }
-  addChild (child) {
-    this.children.push(child)
+  add (directory) {
+    this.children.push(directory)
     child.parent = this
   }
-  traverseUp () {
-    if (this.parent) {
-      console.log(this.name + ' is the child of ' + this.parent.name)
-      this.parent.traverseUp()
-    } else {
-      console.log(this.name + ' is the root node')
-    }
+  getFiles () {
+    const childrenFiles = this.children
+      .reduce((files, directory) => {
+        return files.push(directory.getFiles())
+      }, [])
+
+    return [...this.files,...childrenFiles]
   }
 }
 ```
@@ -1572,6 +1680,12 @@ jQuery.ajax = function() {
     return proxied.apply(this, arguments);
 }
 ```
+
+
+<!--slide-->
+### Example: Proxy vs Decorator
+
+> Decorator Pattern focuses on dynamically **adding** functions to an object, while Proxy Pattern focuses on **controlling** access to an object.
 
 
 <!--section-->
@@ -1797,6 +1911,7 @@ class PlayerView {
 
 ## Must Read
 
+[More about patterns](https://sourcemaking.com/design_patterns)
 
 [More about Observer Pattern](https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations)
 
@@ -1804,4 +1919,4 @@ class PlayerView {
 
 [Chain of Responsibility](https://www.joezimjs.com/javascript/javascript-design-patterns-chain-of-responsibility/)
 
-[Main Source (Java)](https://www.amazon.com/First-Design-Patterns-Elisabeth-Freeman/dp/0596007124/ref=sr_1_1?ie=UTF8&qid=1316512770&sr=8-1)
+[Main Source for these slides (Java)](https://www.amazon.com/First-Design-Patterns-Elisabeth-Freeman/dp/0596007124/ref=sr_1_1?ie=UTF8&qid=1316512770&sr=8-1)
