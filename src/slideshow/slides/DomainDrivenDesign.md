@@ -8,9 +8,9 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > A good architecture makes it unnecessary to decide on Rails, or Spring, or Hibernate, or Tomcat or MySql, until much later in the project.
 
-> A good architecture makes it easy to change your mind about those decisions too.
+> A good architecture makes it **easy to change your mind** about those decisions too.
 
-> A good architecture emphasizes the use-cases and decouples them from peripheral concerns.
+> A good architecture **emphasises the use-cases** and **decouples them from peripheral concerns**.
 
 
 <!--section-->
@@ -27,7 +27,9 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 ### What is DDD ?
 
-> Focus on the core complexity and opportunity in the **domain**. Not focusing on a platform, an implementation, etc.
+> Focus on the core complexity and opportunity in the **domain**.
+
+> Not focusing on a platform, an implementation, etc.
 
 > Explore **models** in a collaboration of **domain experts** and **software experts**.
 
@@ -49,11 +51,11 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > Representation of terminology and concepts of the domain.
 
-> Identifies relationships between entities in the **context** of the **domain**.
+> Identifies relationships between entities in the context of the domain.
 
-> Gives a structured vision of the domain.
+> Gives a **structured vision of the domain**.
 
-> Not an UML Diagram. But can be represented by it.
+> It's not an UML Diagram. But can be represented by it.
 
 > **The code must be an expression  of the model.**
 
@@ -65,13 +67,13 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 ### The Ubiquitous Language
 
-> The developers have their minds full of classes, methods, algorithms, patterns, and tend to always make a match between a real life concept and a programming artifact.
+> The developers have their minds full of classes, methods, algorithms, patterns, and tend to always **make a match between a real life concept and a programming artifact**.
 
 > Domain experts talk about those things in their own jargon, which sometimes is not so straightforward to follow by an outsider.
 
-> Communication at designing level is the paramount of success of the project.
+> **Communication at designing level** is the paramount of success of the project.
 
-> There’s no us versus them it’s always us.
+> There’s no us versus them it’s always us. One team...
 
 <!--slide-->
 
@@ -79,7 +81,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 <!--slide-->
 
-> It's the common language. Ubiquitous means "everywhere".
+> It's the **common language**. Ubiquitous means "everywhere".
 
 > The process to define a common language is iterative. We have to work on it and polish it with help of diagrams, descriptive texts, and specially verbal communication.
 
@@ -91,11 +93,13 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 ### Bounded Context (sub domains)
 
-> When we deal with a single model, the context is implicit. We do not need to define it. A model should be small enough to be assigned to one team.
+> When we deal with a single model, the context is implicit. We do not need to define it.
+
+> **A model should be small enough to be assigned to one team.**
 
 > Mixing all models together within the same Context can lead to ambiguity and confusion.
 
-> The main idea is to define the scope of a model, to draw up the boundaries of its context, then do the most possible to keep the model unified.
+> The main idea is to define the **scope of a model**, to draw up the boundaries of its context, then do the most possible to keep the model unified.
 
 > Each model has a context.
 
@@ -103,9 +107,11 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 #### Bounded Context and the Ubiquitous Language
 
-> The **Ubiquitous Language** inside a boundary has a specific contextual meaning. Concepts outside of this context can have different meanings.
+> The **Ubiquitous Language** inside a boundary has a specific contextual meaning.
 
-> There is a single Ubiquitous language for each **Bounded Context**.
+> Concepts outside of this context can have different meanings.
+
+> There is a **single** Ubiquitous language for each **Bounded Context**.
 
 
 <!--slide-->
@@ -135,9 +141,9 @@ The Domain (non DDD)
 
 > Imagine we want to introduce the concept of a t-shirt.
 
-> Within the catalog Context, a t-shirt would be a product with properties like color, size, material, and maybe some fancy pictures.
+> Within the catalog Context, a t-shirt would be a **product** with properties like color, size, material, and maybe some fancy pictures.
 
-> In the inventory system, however, we don’t really want to concern ourselves with these things. Here, a product has a different meaning, where we care about different properties like weight, location in the warehouse, or dimensions.
+> In the inventory system, however, we don’t really want to concern ourselves with these things. Here, a **product** has a different meaning, where we care about different properties like weight, location in the warehouse, or dimensions.
 
 <!--slide-->
 
@@ -149,13 +155,13 @@ The Domain, with bounded contexts
 
 "Product" in the Catalog context
 
-![Catalog Product](https://1.bp.blogspot.com/-ffzdNCk-Cq4/VtGuMqWQXSI/AAAAAAAABGs/pIK7PX0ZKq0/s1600/picture2.jpg)
+![Catalog Product](../images/ddd-product-in-catalog.png)
 
 <!--slide-->
 
 "Product" in the Orders context
 
-![Catalog Product](https://4.bp.blogspot.com/-iGWNmUcCzfQ/VtH4trZH84I/AAAAAAAABHQ/5hnCpaHZ534/s1600/picture4.jpg)
+![Orders Product](../images/ddd-product-in-orders.png)
 
 <!--slide-->
 
@@ -165,7 +171,9 @@ The Domain, with bounded contexts
 
 > A Context Map is a document which outlines the different **Bounded Contexts** and the relationships between them.
 
-> A Context Map can be a diagram or it can be any written document. The level of detail may vary. What it is important is that everyone working on the project shares and understands it.
+> **A Context Map can be a diagram or it can be any written document**.
+
+> The level of detail may vary. What it is important is that everyone working on the project shares and understands it.
 
 <!--slide-->
 
@@ -185,13 +193,13 @@ The Domain, with bounded contexts
 
 #### Shared Kernel
 
-> Designate some subset of the domain model that the two teams agree to share.
+> Designate some **subset of the domain model** that the two teams agree to share.
 
 > Of course this includes, along with this subset of the model, the subset of code or of the database design associated with that part of the model.
 
 > This explicitly shared stuff has special status, and shouldn’t be changed without consultation with the other team.
 
-> The purpose of the Shared Kernel is to reduce duplication, but still keep two separate contexts.
+> The purpose of the Shared Kernel is to **reduce duplication**, but still keep two separate contexts.
 
 <!--slide-->
 
@@ -201,7 +209,7 @@ The Domain, with bounded contexts
 
 #### Customer-Supplier
 
-> The reporting team should play the customer role, while the e-shopping team should play the supplier role.
+> The reporting team should play the **customer role**, while the e-shopping team should play the **supplier role**.
 
 > The customer team should present its requirements, while the supplier team should make the plans accordingly.
 
@@ -212,7 +220,7 @@ The Domain, with bounded contexts
 
 > This is much like the Shared Kernel, but there is an important difference.
 
-> The customer team cannot make changes to the kernel. They can only use it as part of their model, and they can build on the existing code provided.
+> The customer team **cannot make changes** to the kernel. They can only use it as part of their model, and they can build on the existing code provided.
 
 <!--slide-->
 
@@ -220,7 +228,7 @@ The Domain, with bounded contexts
 
 > Focus on the core complexity and opportunity in the **domain**. Not focusing on a platform, an implementation, etc.
 
-> Explore models in a collaboration of domain experts and software experts.
+> Explore models in a collaboration of **domain experts and software experts**.
 
 > Write software that expresses those **models** explicitly.
 
@@ -254,15 +262,19 @@ The Domain, with bounded contexts
 
 <!--slide-->
 
+> Building blocks are used by Software Experts to transform the **model into software**.
+
+<!--slide-->
+
 ### Value Objects
 
 > An object that contains attributes but has no conceptual identity.
 
-> Value Objects can be seen as small, simple objects — such as money or a date range — whose equality is not based on identity, but instead on the content held.
+> Value Objects can be seen as **small, simple objects** — such as money or a date range — whose equality is not based on identity, but instead on the content held.
 
 > Their identity is based on their state rather than on their object identity.
 
-> It is highly recommended that value objects be **immutable**. They are created with a constructor, and never modified during their life time.
+> It is highly recommended that value objects be **immutable**. They are created with a constructor, and **never modified during their life time**.
 
 <!--slide-->
 
@@ -270,42 +282,41 @@ The Domain, with bounded contexts
 
 > String, Number, ...
 
-> Color (red, green, blue), Money (number, device), Date (day, month, year), ...
+> Color (red, green, blue), Price (number, device), Date (day, month, year), ...
 
-> A business card: When people exchange business cards, they generally do not distinguish between each unique card they only are concerned about the information printed on the card. In this context, business cards are value objects.
+> A BusinessCard: When people exchange business cards, they generally do not distinguish between each unique card they only are concerned about the information printed on the card. In this context, business cards are value objects.
 
 <!--slide-->
 
 ### Entities
 
-> An object that is not defined by its attributes, but rather by a thread of continuity and its identity.
+> An object that is not defined by its attributes, but rather by a **thread of continuity** and its identity.
 
 > It is important for two objects with different identities to be to be easily distinguished by the system, and two objects with the same identity to be considered the same by the system.
 
-> An **Entity** always has a unique id. As long as there is a unique Id it's an entity.
+> An **Entity** always has a unique id. As long as there is a **unique id** it's an entity.
 
 <!--slide-->
 
 #### Examples
 
-> A person. A person always has an Identity and it’s always the same in terms of their name or identification card.
+> A **Person**. A person always has an **identity** and it’s always the same in terms of their name or identification card.
 
-> An order in an e-commerce system. In such a context, every new order created has its own Identity and it’s the same over time.
+> An **Order** in an e-commerce system. In such a context, every new order created has its own **identity** and it’s the same over time, even it the order changes over time.
 
-> These concepts have an Identity that endures over time. These concepts' state evolves over time. They are mutable.
+> These concepts have an **identity** that endures over time. These concepts' state evolves over time. They are mutable.
 
 <!--slide-->
 
 #### Entities Objects VS Value Objects
 
-> Entity is "who or which", a Value Object is "what".
+> **Entity is "who or which", a Value Object is "what".**
 
-> Entity only when it has a continuity and a life cycle.
+> Entity only when it has a **continuity and a life cycle**.
 
 > Depending on the Domain, a same concept can be an entity of value object.
 
-> Most airlines distinguish each seat uniquely on every flight. Each seat is an entity in this context. However, Southwest Airlines, EasyJet and Ryanair do not distinguish between every seat all seats are the same. In this context, a seat is actually a value object.
-
+> Most airlines distinguish each seat uniquely on every flight. Each seat is an Entity in this context. However, Southwest Airlines, EasyJet and Ryanair do not distinguish between every seat all seats are the same. In this context, a seat is actually a Value Object.
 
 <!--slide-->
 
@@ -313,7 +324,9 @@ The Domain, with bounded contexts
 
 > Think about the concept of an address (street, number, zip code, etc.).
 
-> What is a possible context where an address could be modeled as an Entity and not as a Value Object? Discuss your findings with a peer.
+> What is a possible context where an address could be modeled as an Entity and not as a Value Object?
+
+> Discuss your findings with a peer.
 
 Note: Billing address?
 
@@ -321,9 +334,9 @@ Note: Billing address?
 
 ### Aggregates
 
-> It's a group of associated objects which are considered as one unit with regard to data changes.
+> It's a group of associated objects which are considered as **one unit with regard to data changes**.
 
-> Each Aggregate has one root. The root is an Entity, and it is the only object accessible from outside.
+> Each Aggregate has **one root**. The root is an Entity, and it is the only object accessible from outside.
 
 > The root can hold references to any of the aggregate objects, and the other objects can hold references to each other, but an outside object can hold references **ONLY** to the root object.
 
