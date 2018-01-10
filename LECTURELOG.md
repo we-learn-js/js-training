@@ -25,7 +25,7 @@ No data available.
 | 2017-10-27 | [Objects], [Strings] |
 | 2017-11-03 | [Classes], [Functions], [Functional Programming] |
 | 2017-11-17 | [Modules], [Async Programming] (/6/9) |
-| 2017-12-01 | [Async Programming], [IteratorsAndGenerators], [Symbols], [PR-functions], [Object Oriented Programming], [Object Oriented Design Principles] |
+| 2017-12-01 | [Async Programming], [IteratorsAndGenerators], [Symbols], [PR-functions], [Object Oriented Programming] |
 
 [PR-functions]:https://github.com/we-learn-js/js-training-practice/pull/85
 [Operators]:https://js-training.now.sh/slides/Operators.md
