@@ -77,7 +77,9 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 <!--slide-->
 
-![Ubiquitous Language](https://www.infoq.com/resource/articles/ddd-contextmapping/en/resources/ddd-contextmapping-figure1.gif)
+![Ubiquitous Language](http://image.xlgps.com/upload/3/98/398cbdae083d51ece5c36788ab05614a.gif)
+
+[source](http://www.xlgps.com/article/161174.html)
 
 <!--slide-->
 
@@ -87,7 +89,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > We definitely need to speak the same language when we meet to talk about the model and to define it.
 
-> **Bounded context** is want makes the ubiquitous language meaningful.
+> **Bounded context** is what makes the ubiquitous language meaningful.
 
 <!--slide-->
 

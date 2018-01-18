@@ -498,3 +498,10 @@ function countdown (num) {
 countdown(5);
 ```
 https://jsbin.com/hiduro/edit?js,console
+
+
+<!--section-->
+
+## Must Read
+
+* [Everything you wanted to know about JavaScript scope](https://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/)

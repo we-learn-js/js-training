@@ -10,11 +10,11 @@
 
 ## Strategy Pattern
 
-> Allow a behavior to be selected at run time.
+> Allow a behaviour to be selected at run time.
 
-> The different behaviors are the different strategies.
+> The different behaviours are the different strategies.
 
-> Useful when we have lot of behaviors slightly different and we don't know which one will be used.
+> Useful when we have lot of behaviours slightly different and we don't know which one will be used.
 
 > Separate what changes of may change from what stays the same
 
@@ -25,13 +25,12 @@
 > Our `Input` object is a wrapper of `HTMLInputElement` that handles different types pf validation.
 
 ```js
-
 class Input {
   setElement(inputElement) {
     this.element = inputElement
   }
-  getValue () {}
-  setValue () {}
+  getValue () { }
+  setValue () { }
   validate () {
     var type = this.element.getAttribute('type')
     if (type === 'phone') {
@@ -171,7 +170,7 @@ class RedheadDuck extends AbstractDuck {
 
 > Fly method is added
 
-> All ducks will inherit that behavior
+> All ducks will inherit that behaviour
 
 ```js
 class AbstractDuck {
@@ -186,9 +185,9 @@ class AbstractDuck {
 
 #### New feature: robot ducks are added to DuckLand
 
-> * SteamDuck that swims with steam jet and flies with steam jet
-> * PropellerDuck that swims with propeller jet and flies with propeller
-> * HybridDuck that swims with steam jet and flies with propeller
+* `SteamDuck` swims with steam jet and flies with steam jet
+* `PropellerDuck` swims with propeller jet and flies with propeller
+* `HybridDuck` swims with steam jet and flies with propeller
 
 <!--slide-->
 
@@ -216,11 +215,11 @@ class HybridDuck extends SteamDuck {
 
 <!--slide-->
 
-> Inheritance is clearly not the response, as it does not allow our classes to change isolated behaviors, and lead to duplicated code...
+> Inheritance is clearly not the response, as it does not allow our classes to change isolated behaviours, and lead to duplicated code...
 
 > New features of DuckLand make require a RobotMallardDuck that looks like a mallard but flies like a PropellerDuck ...
 
-> We must **encapsulate behaviors** that are different of may change
+> We must **encapsulate behaviours** that are different or may change
 
 <!--slide-->
 
@@ -303,7 +302,7 @@ class HybridDuck extends SteamDuck {
 
 > Any of these modes of transportation will get a person to an address, and they can be used interchangeably.
 
-* Convert transportation mode to a strategy so the bycile strategy can be added without modifying `Person.goToAddress()` method.
+Convert transportation mode to a strategy so the bycicle strategy can be added without modifying `Person.goToAddress()` method.
 
 http://jsbin.com/suvuduh/edit?js,console
 
@@ -344,7 +343,7 @@ http://jsbin.com/lozaso/3/edit?js,console
 class Person {
 
   constructor(transportMode) {
-    this.transportStrategy = transportStrategy
+    this.transportStrategy = transportMode
   }
 
   goToAddress(address) {
@@ -367,7 +366,7 @@ http://jsbin.com/judiji/2/edit?js,console
 
 > State is the brother of Strategy pattern
 
-> It responds to the same problem, but is used for multiple behaviors that depend on the state of the object, not the type.
+> It responds to the same problem, but is used for multiple behaviours that depend on the state of the object, not the type.
 
 <!--slide-->
 
@@ -375,7 +374,7 @@ http://jsbin.com/judiji/2/edit?js,console
 
 > Mario can be regular (small), tall and gets super powerfull when is takes a magical star.
 
-> Depending of its state, Mario's behaviors change depending of his state...
+> Mario's behaviours change depending of his state...
 
 <!--slide-->
 
@@ -423,15 +422,15 @@ class SuperMario {
 
 > More over, some have high cohesion, like what happens to normal mario if he hits a mushroom or hits an enemy.
 
-> As Mario gets more states (raccoon, etc) and collision to more types of objects, the code will grow and get converted into a nightmare.
+> As Mario gets more states (raccoon, etc) and collisions to more types of objects, the code will grow and get converted into a nightmare.
 
-> We need to encapsulated behaviors that depend on Marios's state
+> We need to encapsulated behaviours that depend on Marios's state
 
 <!--slide-->
 
 #### Implementing the State Pattern
 
-> State depend behaviors are implemented separately
+> State dependant behaviours are implemented separately
 
 ```js
 class MarioState {
@@ -495,7 +494,7 @@ http://jsbin.com/xijoyen/edit?js,console
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
-### Response
+### Possible Solution
 
 ```js
 class PersonState {
@@ -573,32 +572,10 @@ class Duck extends Swimable(Flyable(null)) {
 
 <!--slide-->
 
-```js
-// pubsub.js
-var subscribers = {};
-export default {
-    publish (topic, data) {
-      if (!subscribers[topic]) {
-          return;
-      }
-      subscribers[topic].forEach(function (subscriber) {
-          subscriber(data);
-      });
-    },
-    subscribe (topic, callback) {
-      var index;
-      if (!subscribers[topic]) {
-          subscribers[topic] = [];
-      }
-      index = subscribers[topic].push(callback) - 1;
-      return {
-          dispose: function () {
-              subscribers[topic].splice(index, 1);
-          }
-      }
-    }
-};
-```
+![pubsub](http://10rem.net/pub/blog/UsingPubSubandtheObserverPatterninSilver_12CC4/image.png)
+
+[source](http://10rem.net/blog/2008/06/26/using-pub-sub-and-the-observer-pattern-in-silverlight-2-part-1-of-2---async-service-call-chaining)
+
 
 <!--slide-->
 
@@ -644,6 +621,38 @@ class AppHeader {
 ```
 
 Note: **Always** remember to unregister handlers when you don't need them anymore.
+
+
+<!--slide-->
+
+Event bus implmentation
+
+```js
+// pubsub.js
+var subscribers = {};
+export default {
+    publish (topic, data) {
+      if (!subscribers[topic]) {
+          return;
+      }
+      subscribers[topic].forEach(function (subscriber) {
+          subscriber(data);
+      });
+    },
+    subscribe (topic, callback) {
+      var index;
+      if (!subscribers[topic]) {
+          subscribers[topic] = [];
+      }
+      index = subscribers[topic].push(callback) - 1;
+      return {
+          dispose: function () {
+              subscribers[topic].splice(index, 1);
+          }
+      }
+    }
+};
+```
 
 <!--slide-->
 
@@ -719,7 +728,7 @@ class DarkRoast extends Beverage {
 > It would be a nightmare of classes: DecafWithMilk, DecafWithMilkAndChocolate, DecafWithSoyAndChocolate, etc...
 
 > With Strategy?
-> Strategy is useful for conditional behavior. In this case, we are talking about nested behaviors.
+> Strategy is useful for conditional behaviour. In this case, we are talking about nested behaviours.
 
 <!--slide-->
 
@@ -751,7 +760,7 @@ class Mocha extends CondimentDecorator {
 
 > You can use one or more decorators to wrap an object.
 
-> The decorator adds its own behavior either before and/or after delegating to the object it decorates to do the rest of the job.
+> The decorator adds its own behaviour either before and/or after delegating to the object it decorates to do the rest of the job.
 
 
 <!--slide-->
@@ -846,7 +855,7 @@ class WeatherConsole {
 
 > We know that many other types of data could apply the observer pattern
 
-> Then, it's convenient to encapsulated the observer behavior as a separated responsibility.
+> Then, it's convenient to encapsulated the observer behaviour as a separated responsibility.
 
 <!--slide-->
 
@@ -900,7 +909,7 @@ class WheatherConsole {
 
 <!--slide-->
 
-We can also extract the "observer" behavior, as we did with "observable"
+We can also extract the "observer" behaviour, as we did with "observable"
 
 ```js
 class Observer {
@@ -1671,7 +1680,7 @@ class UsersPaginatorProxy extends UsersPaginator {
 
 <!--slide-->
 
-### Example: Proxy method to extend behavior
+### Example: Proxy method to extend behaviour
 
 ```js
 var proxied = jQuery.ajax; // Preserving original function

@@ -11,7 +11,6 @@
 
 
 ```js
-
 // PASS
 it('Array.indexOf should return -1 when the value is not present', () => {
   expect([1, 2, 3].indexOf(5)).to.equal(-1)
@@ -21,7 +20,6 @@ it('Array.indexOf should return -1 when the value is not present', () => {
 it('Array.indexOf should return -1 when the value is not present', () => {
   expect([1, 2, 5, 3].indexOf(5)).to.equal(-1)
 })
-
 ```
 
 https://jsbin.com/jovanep/edit?js,output
@@ -291,9 +289,9 @@ https://jsbin.com/yahigim/3/edit?js,output
 
 Some tests need a context to be set in many cases.
 
-Mocha provides **hooks** to prepare a context/state and reset it afterwards.
+Mocha provides **hooks** to set up a context/state and tear down it afterwards.
 
-Also serves to undo side effects provoked by operations executed in test.
+Also serves to **undo side effects** provoked by operations executed in test.
 
 Test execution **MUST NOT** have side effects.
 
