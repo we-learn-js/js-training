@@ -230,7 +230,7 @@ class AbstractDuck {
   setFlyBehavior(flyBehavior) { this.flyBehavior = flyBehavior }
   setSwimBehavior(swimBehavior) { this.swimBehavior = swimBehavior }
   fly() { this.flyBehavior.fly(); }
-  swim() { this.quackBehavior.swim(); }
+  swim() { this.swimBehavior.swim(); }
   quack()
   display() // Abstract method as all docks look different
 }
@@ -887,7 +887,7 @@ class WeatherData extends Observable {
 }
 ```
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
 
 #### Caution! Never forget to unobserve on tear down
 
@@ -1838,11 +1838,12 @@ class PlayerCtrl {
     this.changeSong(songIndex)
   }
   changeSong(index) {
-    this.playlist.play(index)
-    this.view.toggleNext(this.playlist.current < this.playlist.length)
-    this.view.togglePrevious(this.playlist.current > 0)
-    this.view.toggleStop(this.playlist.current !== null)
-    this.view.togglePlay(this.playlist.current === null)
+    const { playlist, view } = this
+    playlist.play(index)
+    view.toggleNext(playlist.current < playlist.length)
+    view.togglePrevious(playlist.current > 0)
+    view.toggleStop(playlist.current !== null)
+    view.togglePlay(playlist.current === null)
   }
 }
 ```
@@ -1853,10 +1854,8 @@ class PlayerCtrl {
 
 ```js
 class PlayerView {
-  constructor(controller, model) {
+  constructor(controller) {
     this.controller = controller
-    this.model = model
-    this.model.registerObserver(this.onItemChange.bind(this))
     this.setEvents()
   }
   setEvents () {
