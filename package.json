@@ -14,7 +14,7 @@
     "deploy": "now --public --npm --name=js-training",
     "deploy:clear": "now rm js-training --yes",
     "deploy:alias": "now alias set $(pbpaste) js-training",
-    "build-publish": "npm run build && npm run deploy:clear && npm run deploy && npm run deploy:alias"
+    "build-deploy": "npm run build && npm run deploy:clear && npm run deploy && npm run deploy:alias"
   },
   "dependencies": {
     "reveal-md": "0.4",
@@ -22,7 +22,8 @@
     "node-sass-package-importer": "5.0.0-alpha.15"
   },
   "devDependencies": {
-    "@s-ui/mono": "1"
+    "@s-ui/mono": "1",
+    "now": "9.2"
   },
   "config": {
     "sui-mono": {
