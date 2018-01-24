@@ -34,7 +34,7 @@ https://jsbin.com/jovanep/edit?js,output
 
 > It handles both success and failed tests and provides info what failed.
 
-There are many testing frameworks: YUI test, Jasmine, **Mocka**, JSUnit, and many more...
+There are many testing frameworks: YUI test, Jasmine, **Mocha**, JSUnit, and many more...
 
 
 <!--slide-->
@@ -257,10 +257,10 @@ expect( () => { ... } ).to
 
 ```js
 expect(object)
-  to.not.be.a('string') // assert a value is NOT given type
-  to.not.be.ok          // asserts that the target is NOT truthy
-  to.not.be.true        // asserts that the target is NOT true
-  to.not.be.false       // asserts that the target is NOT false
+  .to.not.be.a('string') // assert a value is NOT given type
+  .to.not.be.ok          // asserts that the target is NOT truthy
+  .to.not.be.true        // asserts that the target is NOT true
+  .to.not.be.false       // asserts that the target is NOT false
 
 expect(object).to.not
   .equal(expected)      // target is NOT strictly equal (===) to value
@@ -729,7 +729,7 @@ https://jsbin.com/kucugaz/edit?js,output
 
 <!--slide-->
 
-### Consitent
+### Consistent
 
 > Multiple runs of the same test should ALWAYS return same output.
 
