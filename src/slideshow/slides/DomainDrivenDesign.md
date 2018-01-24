@@ -15,7 +15,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 <!--section-->
 
-## What is it all about ???
+## What's it all about !?
 
 > All started from a book of Eric Evans,
 
@@ -248,7 +248,7 @@ The Domain, with bounded contexts
 > * Iterative and continuous modeling in an Agile fashion
 
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Practice
 
@@ -320,7 +320,7 @@ The Domain, with bounded contexts
 
 > Most airlines distinguish each seat uniquely on every flight. Each seat is an Entity in this context. However, Southwest Airlines, EasyJet and Ryanair do not distinguish between every seat all seats are the same. In this context, a seat is actually a Value Object.
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 #### Practice
 
@@ -330,7 +330,8 @@ The Domain, with bounded contexts
 
 > Discuss your findings with a peer.
 
-Note: Billing address?
+Note: Billing address would be a value object. An address as a place where to assign a building could be an entity object.
+Note: If your domain is geographic or political, then a country might be an entity, but in the average case, a country is just a value associated with things like addresses.
 
 <!--slide-->
 
@@ -376,7 +377,7 @@ When the system archives or completely deletes information about a customer, it 
 
 ![Aggregates](https://www.lavinski.me/content/images/2014/Apr/Domain-Driven-Design-Concepts.png)
 
-<!--slide-->
+<!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Practice
 
@@ -619,7 +620,8 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 <!--slide-->
 
-![Layered architecture](http://www.papagrigoriou.com/images/2015/architectures/inverted-layers-arch.png)
+![Layered architecture](http://tidyjava.com/wp-content/uploads/2017/02/dependencies.png)
+[source](https://dzone.com/articles/onion-architecture-is-interesting)
 
 <!--slide-->
 
@@ -704,8 +706,13 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 <!--slide-->
 
-![Hexagonal Architecture](https://www.blackpepper.co.uk/wp-content/uploads/2015/11/Hexagonal-Architecture.png)
+![Hexagonal Architecture](https://s3-eu-west-1.amazonaws.com/blackpepper-website-assets/blogImages/Hexagonal-Architecture.png?mtime=20170308101401)
 
+[source](https://www.blackpepper.co.uk/what-we-think/blog/managing-complexity-with-a-hexagonal-architecture)
+
+<!--slide-->
+
+![Catalog Product](../images/ddd-hexa-arch.png)
 
 <!--slide-->
 
