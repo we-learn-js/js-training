@@ -35,7 +35,5 @@
 ## Content Proposals
 
 *  Objects > [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy): Handlers, Reflect, ...
-  *
-  *
 * Errors handling: Catch errors, throw custom errors
 * Last Session: Group review of current legacy code
