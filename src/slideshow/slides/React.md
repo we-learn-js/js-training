@@ -135,7 +135,7 @@ JSX
 ```js
 import React from 'react'
 
-const reactElement = <div>Welcome to JS Training - React</div>
+const reactElement = <div align='center'>Welcome to JS Training - React</div>
 ```
 
 <!--slide-->
