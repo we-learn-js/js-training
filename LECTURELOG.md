@@ -16,6 +16,8 @@ No data available.
 | 2017-11-16 | [Modules], [Async Programming] (/6/9) |
 | 2017-11-23 | [Async Programming], [IteratorsAndGenerators], [Symbols] |
 | 2017-11-30 | [PR-functions], [Object Oriented Programming], [Object Oriented Design Principles] |
+| 2018-01-18 | [Design Patterns], [Testing] |
+| 2018-01-25 | [Domain Driven Design], [React] (#/2)  |
 
 ## Group #3 - 2017-10-20
 
@@ -24,8 +26,10 @@ No data available.
 | 2017-10-20 | [Operators], [Scopes & Closures] |
 | 2017-10-27 | [Objects], [Strings] |
 | 2017-11-03 | [Classes], [Functions], [Functional Programming] |
-| 2017-11-17 | [Modules], [Async Programming] (/6/9) |
+| 2017-11-17 | [Modules], [Async Programming] (#/6/9) |
 | 2017-12-01 | [Async Programming], [IteratorsAndGenerators], [Symbols], [PR-functions], [Object Oriented Programming] |
+| 2018-01-19 | [Object Oriented Design Principles], [Design Patterns] (#/6) |
+
 
 [PR-functions]:https://github.com/we-learn-js/js-training-practice/pull/85
 [Operators]:https://js-training.now.sh/slides/Operators.md
@@ -44,3 +48,4 @@ No data available.
 [Design Patterns]:https://js-training.now.sh/slides/DesignPatterns.md
 [Testing]:https://js-training.now.sh/slides/Testing.md
 [Domain Driven Design]:https://js-training.now.sh/slides/DomainDrivenDesign.md
+[React]:https://js-training.now.sh/slides/React.md
