@@ -1,6 +1,6 @@
 # JS Training
 
-----
+<!--section-->
 
 ## Who?
 
@@ -16,7 +16,7 @@ I'm a guy who thinks he knows Javascript...
 
 ...but doesn't (like you).
 
-----
+<!--section-->
 
 ## Why?
 
@@ -44,7 +44,7 @@ You just know the syntax.
 
 
 
-----
+<!--section-->
 
 ## How ?
 
@@ -76,7 +76,7 @@ A project to iterate on with your new knowledge.
 
 or blame you... and me.
 
-----
+<!--section-->
 
 > “Those who are not aware they are walking in darkness will never seek the light.”
 
@@ -88,7 +88,7 @@ or blame you... and me.
 
  [Operators](slides/Operators.md) · [Strings](slides/Strings.md) · [Scopes and Closures](slides/ScopesAndClosures.md) · [Functions](slides/Functions.md) · [Functional programming](slides/FunctionalProgramming.md) · [Symbols](slides/Symbols.md) · [Modules](slides/Modules.md) · [Objects](slides/Objects.md) · [Classes](slides/Classes.md) · [AsyncProgramming](slides/AsyncProgramming.md) · [Iterators and Generators](slides/IteratorsAndGenerators.md) · [Object-Oriented Programming](slides/ObjectOrientedProgramming.md) · [Object-Oriented Design Principles](slides/ObjectOrientedDesignPrinciples.md) · [Design Patterns](slides/DesignPatterns.md) · [Testing](slides/Testing.md) · [DDD](slides/DomainDrivenDesign.md) · [React](slides/React.md) · NPM · Webpack
 
-----
+<!--section-->
 
 ## Questions?
 
