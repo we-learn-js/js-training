@@ -330,8 +330,10 @@ The Domain, with bounded contexts
 
 > Discuss your findings with a peer.
 
+
 Note: Billing address would be a value object. An address as a place where to assign a building could be an entity object.
-Note: If your domain is geographic or political, then a country might be an entity, but in the average case, a country is just a value associated with things like addresses.
+
+If your domain is geographic or political, then a country might be an entity, but in the average case, a country is just a value associated with things like addresses.
 
 <!--slide-->
 
