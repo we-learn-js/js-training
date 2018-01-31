@@ -17,7 +17,7 @@ No data available.
 | 2017-11-23 | [Async Programming], [IteratorsAndGenerators], [Symbols] |
 | 2017-11-30 | [PR-functions], [Object Oriented Programming], [Object Oriented Design Principles] |
 | 2018-01-18 | [Design Patterns], [Testing] |
-| 2018-01-25 | [Domain Driven Design], [React] (#/2)  |
+| 2018-01-25 | [Domain Driven Design], [React] (#/2) |
 
 ## Group #3 - 2017-10-20
 
@@ -29,6 +29,7 @@ No data available.
 | 2017-11-17 | [Modules], [Async Programming] (#/6/9) |
 | 2017-12-01 | [Async Programming], [IteratorsAndGenerators], [Symbols], [PR-functions], [Object Oriented Programming] |
 | 2018-01-19 | [Object Oriented Design Principles], [Design Patterns] (#/6) |
+| 2018-01-25 | [Design Patterns], [Testing], [Domain Driven Design] (#/3/13) |
 
 
 [PR-functions]:https://github.com/we-learn-js/js-training-practice/pull/85
