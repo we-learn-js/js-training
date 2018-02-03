@@ -34,6 +34,8 @@
 
 ## Content Proposals
 
+* Async Programming > [Async Iterators](http://2ality.com/2016/10/asynchronous-iteration.html#for-await-of), 
+* DOM API (as introduction to React/JSX)
 *  Objects > [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy): Handlers, Reflect, ...
 * Errors handling: Catch errors, throw custom errors
 * Last Session: Group review of current legacy code
