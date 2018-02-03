@@ -103,7 +103,7 @@ const reactElement = React.createElement(
   { align: 'center' },
   'Welcome to JS Training - React',
   React.createElement('br', null),
-  React.createElement('button', null, 'Login')
+  React.createElement('button', null, 'Start !')
 )
 ```
 
@@ -151,7 +151,7 @@ const reactElement = React.createElement(
   { align: 'center' },
   'Welcome to JS Training - React',
   React.createElement('br', null),
-  React.createElement('button', null, 'Login')
+  React.createElement('button', null, 'Start !')
 )
 ```
 
@@ -781,7 +781,7 @@ class Clock extends React.Component {
 ```html
 <ul class="todo-list">
   <li class="completed">
-    <input type="checkbox" class="toggle" value="on">
+    <input type="checkbox" class="toggle" />
     <label>Description</label>
     <button class="destroy"></button>
   </li>
