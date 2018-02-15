@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@s-ui/mono": "1",
-    "now": "9.2"
+    "now": "^9.3.2"
   },
   "config": {
     "sui-mono": {
