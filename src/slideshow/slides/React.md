@@ -973,7 +973,7 @@ https://codesandbox.io/s/6wv9rxlmk3?module=%2FTodoApp.js
 
 Make use of installed dep `pretty-ms`
 
-https://codesandbox.io/s/6wv9rxlmk3?module=%2Fcomponents%2FTodoItem.js
+https://codesandbox.io/s/4xkjw44yow?module=%2Fcomponents%2FTodoItem.js
 
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
@@ -1179,7 +1179,6 @@ shouldComponentUpdate(nextProps, nextState)
 
 ```js
 shouldComponentUpdate(nextProps, nextState) {
-  const mode = nextProps.age < 18 ? 'child' : 'adult';
   return this.state.mode !== nextState.mode
 }
 ```
@@ -1399,25 +1398,22 @@ https://codesandbox.io/s/v034l8yvw7?module=%2Fcomponents%2FWelcome.js
 import PropTypes from 'prop-types';
 
 MyComponent.propTypes = {
-  // A value of any data type
-  requiredAny: PropTypes.any.isRequired,
-
   // You can declare that a prop is a specific JS type. By default, these
   // are all optional.
-  requiredArray: PropTypes.array.isRequired,
-  requiredBool: PropTypes.bool.isRequired,
-  requiredFunc: PropTypes.func.isRequired,
-  requiredNumber: PropTypes.number.isRequired,
-  requiredObject: PropTypes.object.isRequired,
-  requiredString: PropTypes.string.isRequired,
-  requiredSymbol: PropTypes.symbol.isRequired,
+  optionalArray: PropTypes.array,
+  optionalBool: PropTypes.bool,
+  optionalFunc: PropTypes.func,
+  optionalNumber: PropTypes.number,
+  optionalObject: PropTypes.object,
+  optionalString: PropTypes.string,
+  optionalSymbol: PropTypes.symbol,
 
   // Anything that can be rendered: numbers, strings, elements or an array
   // (or fragment) containing these types.
-  requiredNode: PropTypes.node.isRequired,
+  optionalNode: PropTypes.node,
 
   // A React element.
-  requiredElement: PropTypes.element.isRequired
+  optionalElement: PropTypes.element
 }
 ```
 
@@ -1471,6 +1467,9 @@ MyComponent.propTypes = {
 
 ```js
 MyComponent.propTypes = {
+  // A value of any data type
+  requiredAny: PropTypes.any.isRequired,
+
   requiredArray: PropTypes.array.isRequired,
   requiredBool: PropTypes.bool.isRequired,
   requiredFunc: PropTypes.func.isRequired,
@@ -1510,7 +1509,7 @@ MyComponent.propTypes = {
 #### Adding prop types
 
 Add `propTypes` properties to the following components:
-* `<TodoItem>`, alp props required but `date`.
+* `<TodoItem>`, all props required but `date`.
   *  `item.date` and `onClickDelete` are optional. Make sure to apply conditional rendering, not showing the date or delete button.
 * `<TimeAgo>`, making sure that `date` is parsable by [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 
