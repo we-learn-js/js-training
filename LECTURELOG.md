@@ -18,7 +18,8 @@ No data available.
 | 2017-11-30 | [PR-functions], [Object Oriented Programming], [Object Oriented Design Principles] |
 | 2018-01-18 | [Design Patterns], [Testing] |
 | 2018-01-25 | [Domain Driven Design], [React] (#3/24) |
-| 2018-02-01 | [React] (#/2) |
+| 2018-02-01 | [React] (#/3/24) |
+| 2018-02-15 | [React] |
 
 ## Group #3 - 2017-10-20
 
