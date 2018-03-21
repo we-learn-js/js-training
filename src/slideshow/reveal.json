@@ -2,9 +2,9 @@
   "controls": false,
   "progress": true,
   "slideNumber": true,
-  "multiplex":{
-    "secret":"15082678359209497874",
-    "id":"9646eff52aeec7df",
+  "multiplex": {
+    "secret": "15082678359209497874",
+    "id": "9646eff52aeec7df",
     "url": "https://reveal-js-multiplex-ccjbegmaii.now.sh"
   },
   "hideAddressBar": true,

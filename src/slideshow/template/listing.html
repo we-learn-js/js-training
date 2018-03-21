@@ -1,58 +1,106 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>JS Training</title>
-    <link rel="stylesheet" href="{{{themeUrl}}}" id="theme">
-    <script>
-      document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
-      ':35729/livereload.js?snipver=1"></' + 'script>')
-    </script>
-    <base target="_blank">
-  </head>
-  <body class="js-training-listing">
-    <div class="js-training-listing-info">
-      <h1 class="js-training-listing-title">JS Training</h1>
-      <ul class="js-training-listing-links">
-        <li><a href="https://js-training.now.sh/">https://js-training.now.sh/</a><li>
-        <li><a href="https://github.com/we-learn-js/js-training">github//js-training</a><li>
-        <li><a href="https://github.com/we-learn-js/js-training-practice">github//js-training-practice</a><li>
-      </ul>
-    </div>
 
-    <ol class="js-training-listing-list">
-      <li><a href="Presentation.md">Presentation</a></li>
-      <li><a href="slides/Operators.md">Operators</a></li>
-      <!-- <li><a href="slides/Numbers.md">Numbers</a></li> -->
-      <li><a href="slides/ScopesAndClosures.md">Scopes and Closures</a></li>
-      <li><a href="slides/Objects.md">Objects</a></li>
-      <li><a href="slides/Strings.md">Strings</a></li>
-      <li><a href="slides/Symbols.md">Symbols</a></li>
-      <li><a href="slides/Classes.md">Classes</a></li>
-      <li><a href="slides/Functions.md">Functions</a></li>
-      <li><a href="slides/FunctionalProgramming.md">Functional programming</a></li>
-      <li><a href="slides/Modules.md">Modules</a></li>
-      <li><a href="slides/AsyncProgramming.md">AsyncProgramming</a></li>
-      <li><a href="slides/IteratorsAndGenerators.md">Iterators and Generators</a></li>
-      <li><a href="slides/ObjectOrientedProgramming.md">Object-Oriented Programming</a></li>
-      <li><a href="slides/ObjectOrientedDesignPrinciples.md">Object-Oriented Design Principles</a></li>
-      <li><a href="slides/DesignPatterns.md">Design Patterns</a></li>
-      <li><a href="slides/Testing.md">Testing</a></li>
-      <li><a href="slides/DomainDrivenDesign.md">Domain Driven Design</a></li>
-      <li><a href="slides/React.md">React</a></li>
-    </ol>
-    <script>
-        /* Custom script for JS Training     */
-        /* --------------------------------- */
-        var isMaster = window.location.href.indexOf('?master') !== -1
-        if(isMaster) {
-          var links = document.getElementsByClassName('js-training-listing-list')[0].getElementsByTagName('a')
-          for (var i = 0; i < links.length; i++) {
-            links[i].href += '?master'
-          }
-        }
+<head>
+  <meta charset="utf-8">
+  <title>JS Training</title>
+  <link rel="stylesheet" href="{{{themeUrl}}}" id="theme">
+  <script>
+    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+      ':35729/livereload.js?snipver=1"></' + 'script>')
+  </script>
+  <base target="_blank">
+</head>
+
+<body class="js-training-listing">
+  <div class="js-training-listing-info">
+    <h1 class="js-training-listing-title">JS Training</h1>
+    <ul class="js-training-listing-links">
+      <li>
+        <a href="https://js-training.now.sh/">https://js-training.now.sh/</a>
+        <li>
+          <li>
+            <a href="https://github.com/we-learn-js/js-training">github//js-training</a>
+            <li>
+              <li>
+                <a href="https://github.com/we-learn-js/js-training-practice">github//js-training-practice</a>
+                <li>
+    </ul>
+  </div>
+
+  <ol class="js-training-listing-list">
+    <li>
+      <a href="Presentation.md">Presentation</a>
+    </li>
+    <li>
+      <a href="slides/Operators.md">Operators</a>
+    </li>
+    <!-- <li><a href="slides/Numbers.md">Numbers</a></li> -->
+    <li>
+      <a href="slides/ScopesAndClosures.md">Scopes and Closures</a>
+    </li>
+    <li>
+      <a href="slides/Objects.md">Objects</a>
+    </li>
+    <li>
+      <a href="slides/Strings.md">Strings</a>
+    </li>
+    <li>
+      <a href="slides/Symbols.md">Symbols</a>
+    </li>
+    <li>
+      <a href="slides/Classes.md">Classes</a>
+    </li>
+    <li>
+      <a href="slides/Functions.md">Functions</a>
+    </li>
+    <li>
+      <a href="slides/FunctionalProgramming.md">Functional programming</a>
+    </li>
+    <li>
+      <a href="slides/Modules.md">Modules</a>
+    </li>
+    <li>
+      <a href="slides/AsyncProgramming.md">AsyncProgramming</a>
+    </li>
+    <li>
+      <a href="slides/IteratorsAndGenerators.md">Iterators and Generators</a>
+    </li>
+    <li>
+      <a href="slides/ObjectOrientedProgramming.md">Object-Oriented Programming</a>
+    </li>
+    <li>
+      <a href="slides/ObjectOrientedDesignPrinciples.md">Object-Oriented Design Principles</a>
+    </li>
+    <li>
+      <a href="slides/DesignPatterns.md">Design Patterns</a>
+    </li>
+    <li>
+      <a href="slides/Testing.md">Testing</a>
+    </li>
+    <li>
+      <a href="slides/DomainDrivenDesign.md">Domain Driven Design</a>
+    </li>
+    <li>
+      <a href="slides/React.md">React</a>
+    </li>
+    <li>
+      <a href="slides/WebAnimationsAPI.md">Web Animations API</a>
+    </li>
+  </ol>
+  <script>
+    /* Custom script for JS Training     */
+    /* --------------------------------- */
+    var isMaster = window.location.href.indexOf('?master') !== -1
+    if (isMaster) {
+      var links = document.getElementsByClassName('js-training-listing-list')[0].getElementsByTagName('a')
+      for (var i = 0; i < links.length; i++) {
+        links[i].href += '?master'
+      }
+    }
         /* --------------------------------- */
         /* END Custom script for JS Training */
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>
