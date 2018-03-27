@@ -1044,7 +1044,7 @@ Array.prototype.remove = function (func) {
 >
 > If the constructor is called with **new**, an instance of the constructor is created.
 >
-> A constructor has a prototype with defines accessible methods and properties for its instances.
+> A constructor has a prototype which defines accessible methods and properties for its instances.
 
 <!--slide-->
 
