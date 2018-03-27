@@ -787,7 +787,7 @@ odd.toString() // "1,3,5,7"
 
 // Methods inheritance
 odd.hasOwnProperty === Object.prototype.hasOwnProperty // true
-odd.toString === Array.prototype.toString // false
+odd.toString === Array.prototype.toString // true
 odd.toString === Object.prototype.toString // false
 ```
 
