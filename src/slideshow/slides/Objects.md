@@ -1147,7 +1147,7 @@ console.log(Animal instanceof Object) // true
 
 ### Practice: Mutating Array prototype
 
-> Implement `Collection`, as an array of objects, , so the following output matches
+> Implement `Collection`, as an array of objects, so the following output matches
 
 ```js
 var collection = new Collection()
