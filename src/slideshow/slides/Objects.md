@@ -1075,7 +1075,7 @@ We can **extend** `User` constructor to create a `PremiumUser` constructor.
 
 <!--slide-->
 
-> Instance of `User` is assign to `PremiumUser.prototype`, so any instance of `PremiumUser` will be linked to `User.prototype` as part of its prototype chain
+> Instance of `User` is assigned to `PremiumUser.prototype`, so any instance of `PremiumUser` will be linked to `User.prototype` as part of its prototype chain
 >
 > `orderItem()` is assigned to `PremiumUser.prototype`, so it will override `User.prototype.orderItem` in the chain.
 
