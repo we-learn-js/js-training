@@ -718,7 +718,7 @@ Note: As `Array` inherits from `Object`, it only has access to `Object`'s protot
 
 > It's the property used to link instances to their `prototype`
 
-> Then, `prototype` is a property belonging only to functions. It is used to build __proto__ when the function happens to be used as a constructor with the `new` keyword.
+> Then, `prototype` is a property belonging only to functions. It is used to build `__proto__` when the function happens to be used as a constructor with the `new` keyword.
 
 <!--slide-->
 
