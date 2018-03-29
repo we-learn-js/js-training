@@ -193,7 +193,7 @@ concat(" ", "elephant", "giraffe", "lion", "cheetah")
 
 > `arguments` is not in instance of `Array`. Rest parameter builds an array of arguments.
 >
-> The rest parameter is more flexible, as they can encloses only part of the arguments.
+> The rest parameter is more flexible, as it encloses only part of the arguments.
 
 ```js
 function concat(separator, ...args) {
