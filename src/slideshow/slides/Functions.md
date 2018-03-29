@@ -180,10 +180,10 @@ function concat(separator) {
    return result
 }
 
-// returns "red, orange, blue, "
 concat(", ", "red", "orange", "blue")
-// returns "elephant giraffe lion cheetah "
+// returns "red, orange, blue, "
 concat(" ", "elephant", "giraffe", "lion", "cheetah")
+// returns "elephant giraffe lion cheetah "
 ```
 
 
