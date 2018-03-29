@@ -326,7 +326,7 @@ console.log(user.name) // "Evan"
 
 #### The Apply/Call Invocation Pattern
 
-> The value of `this` value can be bound to a particular object in the call using the `call` or `apply` methods as all functions inherit from `Function.prototype`.
+> The value of `this` can be bound to a particular object in the call using the `call` or `apply` methods as all functions inherit from `Function.prototype`.
 
 
 <!--slide-->
