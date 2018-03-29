@@ -33,7 +33,7 @@ Function.prototype = {
   length: Number, // Specifies the number of arguments expected.
   name: String, // The name of the function.
   /* ... */
-  apply: Function, // alls a function and sets its this to the provided value
+  apply: Function, // Calls a function and sets its this to the provided value
   call: Function, // Calls (executes) a function and sets its this to the provided value
   bind: Function, // Creates a new function which, when called, has its this set to the provided value.
   /* ... */
