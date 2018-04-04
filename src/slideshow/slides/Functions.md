@@ -33,7 +33,7 @@ Function.prototype = {
   length: Number, // Specifies the number of arguments expected.
   name: String, // The name of the function.
   /* ... */
-  apply: Function, // alls a function and sets its this to the provided value
+  apply: Function, // Calls a function and sets its this to the provided value
   call: Function, // Calls (executes) a function and sets its this to the provided value
   bind: Function, // Creates a new function which, when called, has its this set to the provided value.
   /* ... */
@@ -180,10 +180,10 @@ function concat(separator) {
    return result
 }
 
-// returns "red, orange, blue, "
 concat(", ", "red", "orange", "blue")
-// returns "elephant giraffe lion cheetah "
+// returns "red, orange, blue, "
 concat(" ", "elephant", "giraffe", "lion", "cheetah")
+// returns "elephant giraffe lion cheetah "
 ```
 
 
@@ -193,7 +193,7 @@ concat(" ", "elephant", "giraffe", "lion", "cheetah")
 
 > `arguments` is not in instance of `Array`. Rest parameter builds an array of arguments.
 >
-> The rest parameter is more flexible, as they can encloses only part of the arguments.
+> The rest parameter is more flexible, as it can enclose only part of the arguments.
 
 ```js
 function concat(separator, ...args) {
@@ -326,7 +326,7 @@ console.log(user.name) // "Evan"
 
 #### The Apply/Call Invocation Pattern
 
-> The value of `this` value can be bound to a particular object in the call using the `call` or `apply` methods as all functions inherit from `Function.prototype`.
+> The value of `this` can be bound to a particular object in the call using the `call` or `apply` methods as all functions inherit from `Function.prototype`.
 
 
 <!--slide-->
