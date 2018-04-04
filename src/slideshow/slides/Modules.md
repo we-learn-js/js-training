@@ -364,7 +364,7 @@ export function number (name) { return NAMES.indexOf(name) }
 
 #### Default export
 
-> As `module.exports` in CommonJs, the full module can me exported as default.
+> As `module.exports` in CommonJs, the full module can be exported as default.
 >
 > But unlike CommonJs, the default export doesn't overwrite other exports.
 > ```js
