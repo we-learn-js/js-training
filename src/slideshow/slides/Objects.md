@@ -718,7 +718,7 @@ Note: As `Array` inherits from `Object`, it only has access to `Object`'s protot
 
 > It's the property used to link instances to their `prototype`
 
-> Then, `prototype` is a property belonging only to functions. It is used to build __proto__ when the function happens to be used as a constructor with the `new` keyword.
+> Then, `prototype` is a property belonging only to functions. It is used to build `__proto__` when the function happens to be used as a constructor with the `new` keyword.
 
 <!--slide-->
 
@@ -787,7 +787,7 @@ odd.toString() // "1,3,5,7"
 
 // Methods inheritance
 odd.hasOwnProperty === Object.prototype.hasOwnProperty // true
-odd.toString === Array.prototype.toString // false
+odd.toString === Array.prototype.toString // true
 odd.toString === Object.prototype.toString // false
 ```
 
@@ -1044,7 +1044,7 @@ Array.prototype.remove = function (func) {
 >
 > If the constructor is called with **new**, an instance of the constructor is created.
 >
-> A constructor has a prototype with defines accessible methods and properties for its instances.
+> A constructor has a prototype which defines accessible methods and properties for its instances.
 
 <!--slide-->
 
@@ -1075,7 +1075,7 @@ We can **extend** `User` constructor to create a `PremiumUser` constructor.
 
 <!--slide-->
 
-> Instance of `User` is assign to `PremiumUser.prototype`, so any instance of `PremiumUser` will be linked to `User.prototype` as part of its prototype chain
+> Instance of `User` is assigned to `PremiumUser.prototype`, so any instance of `PremiumUser` will be linked to `User.prototype` as part of its prototype chain
 >
 > `orderItem()` is assigned to `PremiumUser.prototype`, so it will override `User.prototype.orderItem` in the chain.
 
@@ -1147,7 +1147,7 @@ console.log(Animal instanceof Object) // true
 
 ### Practice: Mutating Array prototype
 
-> Implement `Collection`, as an array of objects, , so the following output matches
+> Implement `Collection`, as an array of objects, so the following output matches
 
 ```js
 var collection = new Collection()
