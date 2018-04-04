@@ -395,7 +395,7 @@ console.log(Point.distance(p1, p2));
 > The `extends` keyword is used in class declarations or class expressions to create a class as a child of another class.
 
 ```js
-class ChildClass `extends` ParentClass { ... }
+class ChildClass extends ParentClass { ... }
 ```
 
 <!--slide-->
