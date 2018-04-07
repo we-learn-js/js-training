@@ -42,7 +42,6 @@
 
 ### What is an object?
 
-
 > It's a thing created based on the blueprint (the class).
 
 > An object is an **instance of a class**.
@@ -54,13 +53,13 @@
 ## OOP Principles
 
 > * **Abstraction**
-Split program into smaller responsibilities and data types (classes).
+>   Split program into smaller responsibilities and data types (classes).
 > * **Encapsulation**
-> Hide the internals of a class.
+>   Hide the internals of a class.
 > * **Inheritance**
-> Inherit members from parent class.
+>   Inherit members from parent class.
 > * **Polymorphism**
-> Access a class through its parent interface.
+>   Access a class through its parent interface.
 
 <!--slide-->
 
@@ -91,7 +90,6 @@ Split program into smaller responsibilities and data types (classes).
 > It has a set of capabilities related to its nature: emergency, blood analysis, intensive care, ...
 
 > But we know a hospital can't deliver an ID (card). For that, you can to request it to another entity: the City Hall.
-
 
 <!--slide-->
 
@@ -151,7 +149,6 @@ Split program into smaller responsibilities and data types (classes).
 
 > One of them is requesting a service, but you have to follow city hall's rules filling its form.
 
-
 <!--slide-->
 
 ```js
@@ -203,7 +200,7 @@ class CityHall {
 
 > City Hall has employees you don't have access to.
 
-> City Hall even does internal operations that are not exposed to you. For instance, paying  the employees, using the banks, that have its own interface.
+> City Hall even does internal operations that are not exposed to you. For instance, paying the employees, using the banks, that have its own interface.
 
 > You can't access an employee's instance and check its salary even if you know exactly where is the archive room, as it's not exposed to you on purpose. That info is **private**
 
@@ -222,16 +219,21 @@ cityHall.employees[0].salary // Uncaught TypeError: Cannot read property '0' of 
 <!--slide-->
 
 Consider:
+
 ```js
 class SimpleDate {
   constructor(month, day) {
     this.month = month
     this.day = day
   }
-  getDay() { return this.day }
-  getMonth() { return this.month }
+  getDay() {
+    return this.day
+  }
+  getMonth() {
+    return this.month
+  }
   toString() {
-    return new Date(2000,this.month-1, this.day).toLocaleString()
+    return new Date(2000, this.month - 1, this.day).toLocaleString()
   }
 }
 var halloween = new SimpleDate(10, 31)
@@ -241,13 +243,12 @@ console.log(halloween.toString()) // "31/10/2000 0:00:00"
 console.log(christmas.toString()) // "25/12/2000 0:00:00"
 ```
 
-
 <!--slide-->
 
 We want to maintain our properties private, so that no consumer will mutate our object.
 
 ```js
-console.log(halloween.month = 3)
+console.log((halloween.month = 3))
 console.log(halloween.toString()) // "31/3/2000 0:00:00"
 ```
 
@@ -255,7 +256,7 @@ console.log(halloween.toString()) // "31/3/2000 0:00:00"
 
 #### Privacy with Conventions
 
-> The most common way to make properties private in javascript  is to adhere to a simple convention:
+> The most common way to make properties private in javascript is to adhere to a simple convention:
 
 > If a property name is prefixed and/or suffixed with an underscore, then it should be treated **by consumer** as non-public.
 
@@ -269,10 +270,14 @@ class SimpleDate {
     this._month = month
     this._day = day
   }
-  getDay() { return this._day }
-  getMonth() { return this._month }
+  getDay() {
+    return this._day
+  }
+  getMonth() {
+    return this._month
+  }
   toString() {
-    return new Date(2000,this._month-1, this._day).toLocaleString()
+    return new Date(2000, this._month - 1, this._day).toLocaleString()
   }
 }
 ```
@@ -287,14 +292,17 @@ class SimpleDate {
     this.__month__ = month
     this.__day__ = day
   }
-  getDay() { return this.__day__ }
-  getMonth() { return this.__month__ }
+  getDay() {
+    return this.__day__
+  }
+  getMonth() {
+    return this.__month__
+  }
   toString() {
-    return new Date(2000,this.__month__-1, this.__day__).toLocaleString()
+    return new Date(2000, this.__month__ - 1, this.__day__).toLocaleString()
   }
 }
 ```
-
 
 <!--slide-->
 
@@ -303,7 +311,7 @@ class SimpleDate {
 > The data is still technically accessible to everyone
 
 ```js
-console.log(halloween.__month__ = 3)
+console.log((halloween.__month__ = 3))
 console.log(halloween.toString()) // "31/3/2000 0:00:00"
 ```
 
@@ -315,14 +323,17 @@ console.log(halloween.toString()) // "31/3/2000 0:00:00"
 >
 > Create methods inside the constructor so they have access to constructor's closure
 
-
 ```js
 class SimpleDate {
   constructor(month, day) {
-    this.getDay = function() { return day }
-    this.getMonth = function() { return month }
+    this.getDay = function() {
+      return day
+    }
+    this.getMonth = function() {
+      return month
+    }
     this.toString = function() {
-      return new Date(2000,this._month-1, this._day).toLocaleString()
+      return new Date(2000, this._month - 1, this._day).toLocaleString()
     }
   }
 }
@@ -361,23 +372,26 @@ class SimpleDate {
     this[monthKey] = month
     this[dayKey] = day
   }
-  getDay() { return this[dayKey] }
-  getMonth() { return this[monthKey] }
+  getDay() {
+    return this[dayKey]
+  }
+  getMonth() {
+    return this[monthKey]
+  }
   toString() {
-    return new Date(2000,this[monthKey]-1, this[dayKey]).toLocaleString()
+    return new Date(2000, this[monthKey] - 1, this[dayKey]).toLocaleString()
   }
 }
 ```
 
 <!--slide-->
 
-
 ##### Problem 1
 
 > Private variables are not accessible to child classes if they are in separated files
 
 ```js
-class ComplexDate extends SimpleDate { }
+class ComplexDate extends SimpleDate {}
 ```
 
 <!--slide-->
@@ -400,14 +414,13 @@ console.log(halloween.toString()) // "31/3/2000 0:00:00"
 
 ##### About Weak Maps
 
-> The `WeakMap` object is a collection of key/value pairs in which the keys are weakly referenced.  The keys must be objects and the values can be arbitrary values.
+> The `WeakMap` object is a collection of key/value pairs in which the keys are weakly referenced. The keys must be objects and the values can be arbitrary values.
 >
 > ```js
 > new WeakMap([iterable])
 > ```
 
 [MDN // WeakMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)
-
 
 <!--slide-->
 
@@ -435,14 +448,21 @@ class SimpleDate {
   constructor(month, day) {
     priv.set(this, { day, month })
   }
-  getDay() { return priv.get(this).day }
-  getMonth() { return priv.get(this).month }
+  getDay() {
+    return priv.get(this).day
+  }
+  getMonth() {
+    return priv.get(this).month
+  }
   toString() {
-    return new Date(2000,priv.get(this).month-1, priv.get(this).day).toLocaleString()
+    return new Date(
+      2000,
+      priv.get(this).month - 1,
+      priv.get(this).day
+    ).toLocaleString()
   }
 }
 ```
-
 
 <!--slide-->
 
@@ -453,7 +473,6 @@ class SimpleDate {
 ```js
 class ComplexDate extends SimpleDate {}
 ```
-
 
 <!--slide-->
 
@@ -477,10 +496,14 @@ class SimpleDate {
     this.#month = month
     this.#day = day
   }
-  getDay() { return this.#day }
-  getMonth() { return this.#month }
+  getDay() {
+    return this.#day
+  }
+  getMonth() {
+    return this.#month
+  }
   toString() {
-    return new Date(2000,this.#month-1, this.#day).toLocaleString()
+    return new Date(2000, this.#month - 1, this.#day).toLocaleString()
   }
 }
 ```
@@ -517,6 +540,7 @@ class SimpleDate {
 <!--slide-->
 
 > **Child** class can extend the **parent** class and:
+>
 > * Redefine properties (defining the new class)
 > * Redefine methods (modifying existing behaviour)
 > * Add new properties and methods
@@ -524,6 +548,7 @@ class SimpleDate {
 ---
 
 > Inheritance has benefits:
+>
 > * Extensibility
 > * Reusability: eliminates redundant code
 > * Abstraction
@@ -561,10 +586,9 @@ class ATM {
 }
 ```
 
-
 <!--slide-->
 
-> All ATMs do basically the same thing, but  some differ.
+> All ATMs do basically the same thing, but some differ.
 >
 > Some ATMs will print a ticket of the operation. Others will worry about the environment and ask you if you want a printed ticket of not.
 >
@@ -629,7 +653,6 @@ Create static method in Animal that returns average age of an array of animals.
 
 > Abstract method is when it can be consumed in the same way but its implementation differs depending on class
 
-
 <!--slide-->
 
 ### Real life polymorphism: Cameras
@@ -646,11 +669,11 @@ Create static method in Animal that returns average age of an array of animals.
 
 ```js
 class CameraAbstract {
-  captureScene () {} // returns an image
-  takePicture () {
+  captureScene() {} // returns an image
+  takePicture() {
     this.saveImage(this.captureScene())
   }
-  savePicture () { } // abstract method
+  savePicture() {} // abstract method
 }
 ```
 
@@ -660,10 +683,10 @@ class CameraAbstract {
 
 ```js
 class DigitalCamera extends CameraAbstract {
-  savePicture () { } // Saves on hardisk
+  savePicture() {} // Saves on hardisk
 }
 class AnalogicCamera extends CameraAbstract {
-  savePicture () { } // Saves on reel
+  savePicture() {} // Saves on reel
 }
 ```
 
@@ -678,12 +701,11 @@ class AnalogicCamera extends CameraAbstract {
 <!--slide-->
 
 ```js
-
 class Photographer {
-  setCamera (camera) {
+  setCamera(camera) {
     this.camera = camera
   }
-  takePicture () {
+  takePicture() {
     this.camera.takePicture(this.position)
   }
 }
@@ -691,7 +713,6 @@ class Photographer {
 var person = new Photographer('Evan')
 person.setCamera(digitalCamera)
 person.takePicture()
-
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -701,19 +722,19 @@ person.takePicture()
 A bank holds different types of accounts for its consumers: deposit account, loan accounts and mortgage accounts.
 
 All accounts have customer, balance, and interest rate (monthly based).
+
 * Deposit accounts are allowed to deposit and withdraw money
 * Loan and mortgage accounts can only deposit money
 
 All accounts can calculate their interest amount fir a given period (in months.)
+
 * Loan accounts have no interest for the first 3 months.
 * Deposit accounts have no interest if their balance is positive and less than 1000
 * Mortgage accounts 1/2 interest for the first 12 months for the companies and 6 for individuals.
 
-
 Identify classes, interfaces, abstract actions and implement calculation of the interest functionality.
 
 <!--section-->
-
 
 ## Must read
 

@@ -6,7 +6,6 @@
 
 > An object is an iterator when it knows how to access items from a collection one at a time.
 
-
 In JavaScript an iterator is an object that provides a `next()` method which returns the next item in the sequence.
 
 This method returns an object with two properties: `done` and `value`.
@@ -14,20 +13,22 @@ This method returns an object with two properties: `done` and `value`.
 <!--slide-->
 
 Iterator on array
+
 ```js
 var array = ['yo', 'ya']
 var it = generateIterator(array)
-console.log(it.next())  // { value: "yo", done: false }
-console.log(it.next())  // { value: "ya", done: false }
-console.log(it.next())  // { value: undefined, done: true }
+console.log(it.next()) // { value: "yo", done: false }
+console.log(it.next()) // { value: "ya", done: false }
+console.log(it.next()) // { value: undefined, done: true }
 ```
 
 Iterator on object
+
 ```js
 var obj = { a: 'yo', b: 'ya' }
 var iterator = generateIterator(obj)
 var iteratorResult = iterator.next()
-while(!iteratorResult.done) {
+while (!iteratorResult.done) {
   console.log(iteratorResult.value)
   iteratorResult = iterator.next()
 }
@@ -54,10 +55,10 @@ function generateIterator(obj) {
   var nextIndex = 0
   var keys = Object.keys(obj)
   return {
-    next: function(){
+    next: function() {
       return nextIndex < keys.length
-      ? {value: obj[keys[nextIndex++]], done: false}
-      : {done: true}
+        ? { value: obj[keys[nextIndex++]], done: false }
+        : { done: true }
     }
   }
 }
@@ -92,12 +93,11 @@ interface Iterable {
 
 [JS Training // Symbols](./Symbols.md)
 
-
 <!--slide-->
 
 ```js
 var obj = { a: 'yo', b: 'ya' }
-for(let value of obj) {
+for (let value of obj) {
   console.log(value)
 }
 // TypeError: obj[Symbol.iterator] is not a function
@@ -106,12 +106,12 @@ for(let value of obj) {
 ```js
 var obj = { a: 'yo', b: 'ya' }
 obj[Symbol.iterator] = generateIterator.bind(null, obj)
-for(let value of obj) {
+for (let value of obj) {
   console.log(value)
 }
 // "yo" "ya"
 
-[...obj] // ["yo", "ya"]
+;[...obj] // ["yo", "ya"]
 ```
 
 ** An iterable may or may not implement the `length` property **
@@ -119,7 +119,6 @@ for(let value of obj) {
 <!--slide-->
 
 > Some built-in types, such as `Array` or `Map` or `String`, have a default iteration behavior, while other types (such as `Object`) do not.
-
 
 ```js
 Array.prototype = {
@@ -141,11 +140,11 @@ Array.prototype[Symbol.iterator].toString()
 
 ### To sum up
 
-1. An **Iterator** provides a `next()` method.
-2. `next()` returns an **IteratorResult**
-3. An **IteratorResult** is an object with `value` and `done` properties.
-4. An **Iterable** provides a `[Symbol.iterator]()` method
-5. The `[Symbol.iterator]()` method returns an **Iterator**.
+1.  An **Iterator** provides a `next()` method.
+2.  `next()` returns an **IteratorResult**
+3.  An **IteratorResult** is an object with `value` and `done` properties.
+4.  An **Iterable** provides a `[Symbol.iterator]()` method
+5.  The `[Symbol.iterator]()` method returns an **Iterator**.
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
@@ -160,7 +159,7 @@ class TextLines {
 
 var lines = new TextLines(getText())
 
-for( var line of lines ) {
+for (var line of lines) {
   console.log(line)
 }
 
@@ -177,7 +176,7 @@ https://jsbin.com/regira/edit?js,console
 
 ```js
 class TextLines {
-  constructor (text) {
+  constructor(text) {
     this._lines = text.split('\n')
   }
   [Symbol.iterator]() {
@@ -185,8 +184,8 @@ class TextLines {
     return {
       next: () => {
         return nextIndex < this._lines.length
-        ? {value: this._lines[nextIndex++], done: false}
-        : {done: true}
+          ? { value: this._lines[nextIndex++], done: false }
+          : { done: true }
       }
     }
   }
@@ -201,7 +200,7 @@ https://jsbin.com/kuneliv/edit?js,console
 
 ```js
 class TextLines {
-  constructor (text) {
+  constructor(text) {
     this._lines = text.split('\n')
   }
   [Symbol.iterator]() {
@@ -243,7 +242,6 @@ iterator.next() // {value: undefined, done: true}
 
 > The `yield` keyword is used to pause and resume a generator function.
 
-
 <!--slide-->
 
 > It can be thought of as a generator-based version of the `return` keyword.
@@ -263,20 +261,19 @@ function* gen() {
 
 var iterator = gen() // {next: Function , constructor: GeneratorFunction}
 var iterator2 = gen()
-iterator.next()   // {value: 1, done: false}
-iterator.next()   // {value: 2, done: false}
-iterator2.next()  // {value: 1, done: false}
-iterator.next()   // {value: 3, done: false}
-iterator.next()   // {value: undefined, done: true}
+iterator.next() // {value: 1, done: false}
+iterator.next() // {value: 2, done: false}
+iterator2.next() // {value: 1, done: false}
+iterator.next() // {value: 3, done: false}
+iterator.next() // {value: undefined, done: true}
 ```
 
 <!--slide-->
 
 ```js
-function* foo(){
+function* foo() {
   var index = 0
-  while (index <= 2)
-    yield index++
+  while (index <= 2) yield index++
 }
 
 var iterator = foo()
@@ -295,10 +292,10 @@ function generateIterator(obj) {
   var nextIndex = 0
   var keys = Object.keys(obj)
   return {
-    next: function(){
+    next: function() {
       return nextIndex < keys.length
-      ? {value: obj[keys[nextIndex++]], done: false}
-      : {done: true}
+        ? { value: obj[keys[nextIndex++]], done: false }
+        : { done: true }
     }
   }
 }
@@ -310,16 +307,14 @@ function generateIterator(obj) {
 function* generateIterator(obj) {
   var nextIndex = 0
   var keys = Object.keys(obj)
-  while(nextIndex<keys.length)
-    yield obj[keys[nextIndex++]]
+  while (nextIndex < keys.length) yield obj[keys[nextIndex++]]
 }
 
 var obj = { a: 'yo', b: 'ya' }
 var it = generateIterator(obj)
-it.next().value   // { value: "yo", done: false }
-it.next().value   // { value: "ya", done: false }
-it.next().done    // { value: undefined, done: true }
-
+it.next().value // { value: "yo", done: false }
+it.next().value // { value: "ya", done: false }
+it.next().done // { value: undefined, done: true }
 ```
 
 <!--slide-->
@@ -327,16 +322,17 @@ it.next().done    // { value: undefined, done: true }
 Another way:
 
 From:
+
 ```js
 function* generateIterator(obj) {
   var nextIndex = 0
   var keys = Object.keys(obj)
-  while(nextIndex<keys.length)
-    yield obj[keys[nextIndex++]]
+  while (nextIndex < keys.length) yield obj[keys[nextIndex++]]
 }
 ```
 
 To:
+
 ```js
 function* generateIterator(obj) {
   for (let prop of Object.keys(obj)) {
@@ -353,14 +349,13 @@ function* generateIterator(obj) {
 
 > Then, when `return` is used, an **IteratorResult** is returned to the caller in which the **value** is the returned value and **done** is `true`.
 
-
 <!--slide-->
 
 ```js
 function* gen() {
-    yield 1
-    return 999999
-    yield 2
+  yield 1
+  return 999999
+  yield 2
 }
 
 var iterator = gen()
@@ -376,35 +371,34 @@ iterator.next() // { value:undefined, done:true }
 > In loops, the value with `done:true` is NOT taken into account.
 
 ```js
-function *g() {
-    yield 1
-    yield 2
-    yield 3
-    yield 4
-    yield 5
-    return 6
+function* g() {
+  yield 1
+  yield 2
+  yield 3
+  yield 4
+  yield 5
+  return 6
 }
 
 for (var v of g()) {
-    console.log( v )
+  console.log(v)
 }
 // 1 2 3 4 5
 
-console.log( v ) // still `5`, not `6` :(
+console.log(v) // still `5`, not `6` :(
 ```
 
 <!--slide-->
 
-### yield*
+### yield\*
 
 > The `yield*` keyword is used to delegate to another **generator** or **iterable** object.
 
 ```js
-  yield* [[expression]]
+yield * [[expression]]
 ```
 
 The `yield*` expression iterates over the operand and yields each value returned by it.
-
 
 <!--slide-->
 
@@ -434,7 +428,7 @@ Any iterable can be used as well:
 ```js
 function* gen() {
   yield* [1, 2]
-  yield* "34"
+  yield* '34'
 }
 
 var iterator = gen()
@@ -444,18 +438,17 @@ iterator.next() // { value: 2, done: false }
 iterator.next() // { value: "3", done: false }
 iterator.next() // { value: "4", done: false }
 iterator.next() // { value: undefined, done: true }
-
 ```
 
 <!--slide-->
 
 ### Remember iterators?
 
-1. An **Iterator** provides a `next()` method.
-2. `next()` returns an **IteratorResult**
-3. An **IteratorResult** is an object with `value` and `done` properties.
-4. An **Iterable** provides a `[Symbol.iterator]()` method
-5. The `[Symbol.iterator]()` method returns an **Iterator**
+1.  An **Iterator** provides a `next()` method.
+2.  `next()` returns an **IteratorResult**
+3.  An **IteratorResult** is an object with `value` and `done` properties.
+4.  An **Iterable** provides a `[Symbol.iterator]()` method
+5.  The `[Symbol.iterator]()` method returns an **Iterator**
 
 <!--slide-->
 
@@ -466,7 +459,7 @@ Then it's a **generator**.
 ```js
 function* gen() {
   yield* [1, 2]
-  yield* "34"
+  yield* '34'
 }
 
 var iterable = {}
@@ -480,10 +473,9 @@ console.log([...iterable]) // [1, 2, "3", "4"]
 ### Infinite Generators
 
 ```js
-function* idMaker(){
+function* idMaker() {
   var index = 0
-  while(true)
-    yield index++
+  while (true) yield index++
 }
 
 var gen = idMaker()
@@ -513,19 +505,17 @@ console.log(gen.next().value) // 2
 
 https://jsbin.com/kuneliv/edit?js,console
 
-
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 #### Possible Solution
 
 ```js
 class TextLines {
-
-  constructor (text) {
+  constructor(text) {
     this._lines = text.split('\n')
   }
 
-  * [Symbol.iterator]() {
+  *[Symbol.iterator]() {
     for (let line of this._lines) {
       yield line
     }
@@ -541,12 +531,11 @@ https://jsbin.com/xutadu/edit?js,console
 
 ```js
 class TextLines {
-
-  constructor (text) {
+  constructor(text) {
     this._lines = text.split('\n')
   }
 
-  * [Symbol.iterator]() {
+  *[Symbol.iterator]() {
     yield* this._lines
   }
 }
@@ -562,12 +551,11 @@ class TextLines {
 
 ```js
 class TextLines {
-
-  constructor (text) {
+  constructor(text) {
     this._text = text
   }
 
-  * [Symbol.iterator]() {
+  *[Symbol.iterator]() {
     // YOUR CODE GOES HERE
   }
 }
@@ -581,12 +569,11 @@ https://jsbin.com/fafowi/edit?js,console
 
 ```js
 class TextLines {
-
-  constructor (text) {
+  constructor(text) {
     this._text = text
   }
 
-  * [Symbol.iterator]() {
+  *[Symbol.iterator]() {
     const length = this._text.length
     let offset = 0
 

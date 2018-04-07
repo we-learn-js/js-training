@@ -18,13 +18,12 @@ A symbol is not an object, but a primitive type.
 
 ```js
 var sym1 = Symbol()
-var sym2 = Symbol("foo")
+var sym2 = Symbol('foo')
 
 console.log(sym1) // Symbol()
 console.log(sym2) // Symbol(foo)
 console.log(typeof sym1) // "symbol"
 ```
-
 
 <!--slide-->
 
@@ -35,9 +34,9 @@ It creates a new symbol each time
 Symbols are **always unique**.
 
 ```js
-var sym1 = Symbol("foo")
-var sym2 = Symbol("foo")
-var obj = {[sym1]:1, [sym2]:2}
+var sym1 = Symbol('foo')
+var sym2 = Symbol('foo')
+var obj = { [sym1]: 1, [sym2]: 2 }
 
 sym1 == sym2 // false
 sym1 === sym2 // false

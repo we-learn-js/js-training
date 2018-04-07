@@ -42,8 +42,6 @@ You just know the syntax.
 
 **But you don't know it yet.**
 
-
-
 <!--section-->
 
 ## How ?
@@ -86,10 +84,10 @@ or blame you... and me.
 
 ## Here comes the light !
 
- [Operators](slides/Operators.md) · [Strings](slides/Strings.md) · [Scopes and Closures](slides/ScopesAndClosures.md) · [Functions](slides/Functions.md) · [Functional programming](slides/FunctionalProgramming.md) · [Symbols](slides/Symbols.md) · [Modules](slides/Modules.md) · [Objects](slides/Objects.md) · [Classes](slides/Classes.md) · [AsyncProgramming](slides/AsyncProgramming.md) · [Iterators and Generators](slides/IteratorsAndGenerators.md) · [Object-Oriented Programming](slides/ObjectOrientedProgramming.md) · [Object-Oriented Design Principles](slides/ObjectOrientedDesignPrinciples.md) · [Design Patterns](slides/DesignPatterns.md) · [Testing](slides/Testing.md) · [DDD](slides/DomainDrivenDesign.md) · [React](slides/React.md) · NPM · Webpack
+[Operators](slides/Operators.md) · [Strings](slides/Strings.md) · [Scopes and Closures](slides/ScopesAndClosures.md) · [Functions](slides/Functions.md) · [Functional programming](slides/FunctionalProgramming.md) · [Symbols](slides/Symbols.md) · [Modules](slides/Modules.md) · [Objects](slides/Objects.md) · [Classes](slides/Classes.md) · [AsyncProgramming](slides/AsyncProgramming.md) · [Iterators and Generators](slides/IteratorsAndGenerators.md) · [Object-Oriented Programming](slides/ObjectOrientedProgramming.md) · [Object-Oriented Design Principles](slides/ObjectOrientedDesignPrinciples.md) · [Design Patterns](slides/DesignPatterns.md) · [Testing](slides/Testing.md) · [DDD](slides/DomainDrivenDesign.md) · [React](slides/React.md) · NPM · Webpack
 
 <!--section-->
 
 ## Questions?
 
-functional programming · scopes · repositories · value objects · closures · require ·  design patterns · webpack · react · objects · asserts · functions · this · ecmascript · npm install · state · debugging · events · promises · domain · modules · testing · oop
+functional programming · scopes · repositories · value objects · closures · require · design patterns · webpack · react · objects · asserts · functions · this · ecmascript · npm install · state · debugging · events · promises · domain · modules · testing · oop

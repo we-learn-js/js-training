@@ -2,13 +2,11 @@
 
 <!--section-->
 
-
 > A function encloses a set of statements that performs a task or calculates a value.
 >
 > To use a function, you must **declare** it somewhere in the scope from which you wish to call it.
 
 [MDN // Functions ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
-
 
 <!--slide-->
 
@@ -17,12 +15,11 @@
 > Functions in JS are objects (instances of `Object`).
 >
 > Function objects are linked to `Function.prototype`
-(which is itself linked to `Object.prototype`)
+> (which is itself linked to `Object.prototype`)
 >
 > Main difference: functions can be **invoked**.
 
 [MDN // Function.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/prototype)
-
 
 <!--slide-->
 
@@ -46,14 +43,14 @@ Function.prototype = {
 > Any function is an instance of `Function` constructor
 
 ```js
-console.log((function () {}).length)          // 0
-console.log((function (a) {}).length)         // 1
-console.log((function (a, b) {}).length)      // 2
-console.log((function (a, b=1) {}).length)    // 1
-console.log((function (...args) {}).length)   // 0
+console.log(function() {}.length) // 0
+console.log(function(a) {}.length) // 1
+console.log(function(a, b) {}.length) // 2
+console.log(function(a, b = 1) {}.length) // 1
+console.log(function(...args) {}.length) // 0
 
-console.log((function() {}).name) // ""
-console.log((function doSomething() {}).name) // "doSomething"
+console.log(function() {}.name) // ""
+console.log(function doSomething() {}.name) // "doSomething"
 ```
 
 <!--slide-->
@@ -67,7 +64,7 @@ console.log((function doSomething() {}).name) // "doSomething"
 ### Function declarations
 
 ```js
-function square (number) {
+function square(number) {
   return number * number
 }
 ```
@@ -86,15 +83,14 @@ function square (number) {
 >
 > Function expressions are convenient when passing a function as an argument to another function, or assigning them as value.
 
-
 ```js
-var square = function (number) {
+var square = function(number) {
   return number * number
 }
 ```
 
 ```js
-window.addEventListener("load", function (event) {
+window.addEventListener('load', function(event) {
   console.log('Page loaded')
 })
 ```
@@ -103,16 +99,15 @@ window.addEventListener("load", function (event) {
 
 > A name can be provided with a function expression and can be used inside the function to refer to itself, or on debugging to identify the function in stack traces.
 
-
 ```js
-window.addEventListener("load", function (event) {
+window.addEventListener('load', function(event) {
   throw new Error('Anonymous Error')
 })
 // Error: Anonymous Error at vufamu.js:4:9
 ```
 
 ```js
-window.addEventListener("load", function onLoad (event) {
+window.addEventListener('load', function onLoad(event) {
   throw new Error('Error with name')
 })
 // Error: Error with name at onLoad (vufamu.js:8:9)
@@ -129,16 +124,15 @@ https://jsbin.com/vufamu/edit?js,console
 ```js
 console.log(square(2)) // 4
 
-function square (number) {
+function square(number) {
   return number * number
 }
 ```
 
-
 ```js
 console.log(square(2)) // TypeError: square is not a function
 
-var square = function (number) {
+var square = function(number) {
   return number * number
 }
 ```
@@ -150,7 +144,7 @@ var square = function (number) {
 ```js
 console.log(square(2)) // ReferenceError: square is not defined
 
-var squareFunc = function square (number) {
+var squareFunc = function square(number) {
   return number * number
 }
 ```
@@ -186,7 +180,6 @@ concat(" ", "elephant", "giraffe", "lion", "cheetah")
 // returns "elephant giraffe lion cheetah "
 ```
 
-
 <!--slide-->
 
 #### rest parameter for arguments
@@ -197,7 +190,7 @@ concat(" ", "elephant", "giraffe", "lion", "cheetah")
 
 ```js
 function concat(separator, ...args) {
-   return args.join(separator)
+  return args.join(separator)
 }
 ```
 
@@ -211,7 +204,6 @@ function concat(separator, ...args) {
 
 > Use the **rest parameter**
 
-
 <!--slide-->
 
 ### Default parameters
@@ -220,11 +212,9 @@ function concat(separator, ...args) {
 >
 > With ES6, you can use `=` to defined default values.
 
-
-
 ```js
 function multiply(a, b = 1) {
-  return a*b
+  return a * b
 }
 multiply(5) // 5
 ```
@@ -233,16 +223,17 @@ multiply(5) // 5
 
 ```js
 function multiply(a, b = 1) {
-  return a*b
+  return a * b
 }
 multiply(5) // 5
 ```
 
 is the same as:
+
 ```js
 function multiply(a, b) {
-  b = typeof b !== 'undefined' ?  b : 1
-  return a*b
+  b = typeof b !== 'undefined' ? b : 1
+  return a * b
 }
 multiply(5) // 5
 ```
@@ -266,10 +257,13 @@ multiply(5) // 5
 > In the **global scope**, this refers to the global object.
 
 In a browser:
+
 ```js
 this === window // true
 ```
+
 In node:
+
 ```js
 this === global // true
 ```
@@ -281,7 +275,7 @@ this === global // true
 > When a function is executed as is, `this` is bound to the global object.
 
 ```js
-function getThis(){
+function getThis() {
   return this
 }
 console.log(getThis() === window) // true
@@ -294,16 +288,15 @@ console.log(getThis() === window) // true
 > When a function is executed as an object's method, `this` is bound to the object itself.
 
 ```js
-function getThis () {
+function getThis() {
   return this
 }
 
 var obj = { getThis: getThis }
 
-getThis() === window      // true
-obj.getThis() === window  // false
-obj.getThis() === obj     // true
-
+getThis() === window // true
+obj.getThis() === window // false
+obj.getThis() === obj // true
 ```
 
 <!--slide-->
@@ -313,11 +306,11 @@ obj.getThis() === obj     // true
 > When a function is executed with the `new` keyword, `this` is bound to the new instance that is being constructed.
 
 ```js
-function User (name) {
+function User(name) {
   this.name = name
 }
 
-var user = new User( "Evan")
+var user = new User('Evan')
 
 console.log(user.name) // "Evan"
 ```
@@ -327,7 +320,6 @@ console.log(user.name) // "Evan"
 #### The Apply/Call Invocation Pattern
 
 > The value of `this` can be bound to a particular object in the call using the `call` or `apply` methods as all functions inherit from `Function.prototype`.
-
 
 <!--slide-->
 
@@ -345,15 +337,13 @@ function sum() {
     return x + y
   })
 }
-sum(1)  // 1
-sum(1, 2, 3, 4)  // 10
+sum(1) // 1
+sum(1, 2, 3, 4) // 10
 ```
 
 [MDN // Function.prototype.call()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
 
 Note: The `arguments` object is not an `Array`. It is similar to an `Array`, but does not have any Array properties except length.
-
-
 
 <!--slide-->
 
@@ -364,14 +354,15 @@ Note: The `arguments` object is not an `Array`. It is similar to an `Array`, but
 func.apply(thisArg, [argsArray])
 
 ```js
-var arr = [1,2,100,-1,-42]
+var arr = [1, 2, 100, -1, -42]
 Math.max.apply(null, arr) // 100
 ```
 
 Which is the same as
+
 ```js
-var arr = [1,2,100,-1,-42]
-Math.max.call(null, ...arr)  // 100
+var arr = [1, 2, 100, -1, -42]
+Math.max.call(null, ...arr) // 100
 ```
 
 [MDN // Function.prototype.apply()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
@@ -383,10 +374,8 @@ Math.max.call(null, ...arr)  // 100
 Make it work:
 
 ```js
-function flatten (arr) {
-
-}
-var arr = [[1], ["2", 3], [4], [5, "6", "7"]]
+function flatten(arr) {}
+var arr = [[1], ['2', 3], [4], [5, '6', '7']]
 console.log(flatten(arr)) // [1, "2", 3, 4, 5, "6", "7"]
 ```
 
@@ -395,7 +384,7 @@ https://jsbin.com/tigotu/edit?js,console
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 ```js
-function flatten (arr) {
+function flatten(arr) {
   return [].concat.apply([], arr)
 }
 ```
@@ -426,7 +415,7 @@ var object = {
 }
 var toggleObject = object.toggle.bind(object)
 
-toggleObject(true)  // object.toggle(true)
+toggleObject(true) // object.toggle(true)
 toggleObject(false) // object.toggle(false)
 ```
 
@@ -444,19 +433,20 @@ var object = {
 object.enable = object.toggle.bind(object, true)
 object.disable = object.toggle.bind(object, false)
 
-object.enable()   // object.toggle(true)
-object.disable()  // object.toggle(false)
+object.enable() // object.toggle(true)
+object.disable() // object.toggle(false)
 ```
 
 <!--slide-->
 
 How it works:
+
 ```js
 // Function.prototype.bind
-function bind (bindThis, ...bindArgs) {
+function bind(bindThis, ...bindArgs) {
   var func = this
   return function(...args) {
-    func.call(bindThis, ...bindArgs, ...args )
+    func.call(bindThis, ...bindArgs, ...args)
   }
 }
 ```
@@ -466,7 +456,7 @@ function bind (bindThis, ...bindArgs) {
 Binding part the arguments:
 
 ```js
-function times (count, func) {
+function times(count, func) {
   for (var index = 0; index < count; ++index) {
     func()
   }
@@ -474,8 +464,10 @@ function times (count, func) {
 
 var threeTimes = times.bind(null, 3)
 
-threeTimes(function(){ console.log('hello') }) // "hello" "hello" "hello"
-threeTimes(console.log.bind(null,'world')) // "world" "world" "world"
+threeTimes(function() {
+  console.log('hello')
+}) // "hello" "hello" "hello"
+threeTimes(console.log.bind(null, 'world')) // "world" "world" "world"
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -485,10 +477,10 @@ threeTimes(console.log.bind(null,'world')) // "world" "world" "world"
 Reduce this code, using `bind()`.
 
 ```js
-function countdown (num) {
+function countdown(num) {
   for (var i = 0; i <= num; i += 1) {
-    (function(i) {
-      setTimeout(function () {
+    ;(function(i) {
+      setTimeout(function() {
         console.log(num - i)
       }, i * 1000)
     })(i)
@@ -502,13 +494,11 @@ https://jsbin.com/mocijar/edit?js,console
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 Solution:
+
 ```js
-function countdown (num) {
+function countdown(num) {
   for (var i = 0; i <= num; i += 1) {
-     setTimeout(
-       console.log.bind(null,num - i),
-       i * 1000
-     )
+    setTimeout(console.log.bind(null, num - i), i * 1000)
   }
 }
 countdown(5)
@@ -522,16 +512,16 @@ Make instances of `Button` execute `Button.prototype.click` when user clicks on 
 
 ```js
 var Button = function(content) {
-  this.content = content;
+  this.content = content
   this.element = document.createElement('BUTTON')
   this.element.innerHTML = content
 
   this.element.addEventListener('click', this.click)
   document.body.appendChild(this.element)
-};
+}
 
 Button.prototype.click = function() {
-  console.log(this.content + ' clicked');
+  console.log(this.content + ' clicked')
 }
 
 var button1 = new Button('Button 1')
@@ -544,14 +534,13 @@ https://jsbin.com/fasizo/edit?js,console,output
 
 ```js
 var Button = function(content) {
-  this.content = content;
+  this.content = content
   this.element = document.createElement('BUTTON')
   this.element.innerHTML = content
 
-  this.element.addEventListener("click", this.click.bind(this))
+  this.element.addEventListener('click', this.click.bind(this))
   document.body.appendChild(this.element)
-};
-
+}
 ```
 
 <!--section-->
@@ -611,9 +600,12 @@ What we would do using `bind()`:
 function Person() {
   this.age = 0
 
-  setInterval((function growUp() {
-    this.age++
-  }).bind(this), 1000)
+  setInterval(
+    function growUp() {
+      this.age++
+    }.bind(this),
+    1000
+  )
 }
 var p = new Person()
 ```
@@ -623,7 +615,7 @@ var p = new Person()
 What we can do with arrow functions:
 
 ```js
-function Person(){
+function Person() {
   this.age = 0
 
   setInterval(() => {
@@ -644,11 +636,13 @@ var p = new Person()
 > Shorter syntax can be used **only with single statements**.
 
 ```js
-var a = [ "Hydrogen", "Helium", "Lithium", "Beryl­lium" ]
-var a2 = a.map(function(s){ return s.length })
+var a = ['Hydrogen', 'Helium', 'Lithium', 'Beryl­lium']
+var a2 = a.map(function(s) {
+  return s.length
+})
 
 // Exactly the same as:
-var a3 = a.map( s => s.length )
+var a3 = a.map(s => s.length)
 ```
 
 <!--slide-->
@@ -658,9 +652,9 @@ Usefull with functional methods:
 ```js
 var arr = [5, 6, 13, 0, 1, 18, 23]
 
-var sum = arr.reduce( (a, b) => a + b )  // 66
-var even = arr.filter( v => v % 2 == 0 ) // [6, 0, 18]
-var double = arr.map( v => v * 2 )       // [10, 12, 26, 0, 2, 36, 46]
+var sum = arr.reduce((a, b) => a + b) // 66
+var even = arr.filter(v => v % 2 == 0) // [6, 0, 18]
+var double = arr.map(v => v * 2) // [10, 12, 26, 0, 2, 36, 46]
 ```
 
 <!--slide-->
@@ -670,9 +664,13 @@ Different ways to do the same thing:
 ```js
 var arr = [5, 6, 13, 0, 1, 18, 23]
 
-var even = arr.filter( function (v) { return v % 2 == 0 }) // [6, 0, 18]
-var even = arr.filter( (v) => { return v % 2 == 0 } ) // [6, 0, 18]
-var even = arr.filter( v => v % 2 == 0 ) // [6, 0, 18]
+var even = arr.filter(function(v) {
+  return v % 2 == 0
+}) // [6, 0, 18]
+var even = arr.filter(v => {
+  return v % 2 == 0
+}) // [6, 0, 18]
+var even = arr.filter(v => v % 2 == 0) // [6, 0, 18]
 ```
 
 <!--section-->
@@ -686,11 +684,27 @@ var even = arr.filter( v => v % 2 == 0 ) // [6, 0, 18]
 > It is usefull to obtain data privacy (avoiding polluting global object)
 
 ```js
-( function (n) { return n*2 } )( 6 )  // 12
-( function (n) { return n*2 }( 6 ) )  // 12
-( (n) => { return n*2 } )( 6 )        // 12
-( n => { return n*2 } )( 6 )          // 12
-( n => n*2 )( 6 )                     // 12
+;(function(n) {
+  return n * 2
+})(6)(
+  // 12
+  (function(n) {
+    return n * 2
+  })(6)
+)(
+  // 12
+  n => {
+    return n * 2
+  }
+)(6)(
+  // 12
+  n => {
+    return n * 2
+  }
+)(6)(
+  // 12
+  n => n * 2
+)(6) // 12
 ```
 
 [Wikipedia - IIFE](https://en.wikipedia.org/wiki/Immediately-invoked_function_expression)
@@ -712,8 +726,6 @@ Note: Parenthesis are necessary to enforce parsing as an `expression`, instead o
 +function () { … }()
 ```
 
-
-
 <!--slide-->
 
 > IIFE can receive arguments
@@ -721,20 +733,21 @@ Note: Parenthesis are necessary to enforce parsing as an `expression`, instead o
 It's the most common way to create closures to encapsulate a module.
 
 ```js
-+function ($) {
-  function addButtons (num) {
+;+(function($) {
+  function addButtons(num) {
     for (var i = 0; i < num; i++) {
-
       var $button = $('<button>Button ' + i + '</button>')
-      $button.click((function (i) {
-        return function () {
-          console.log('This is button ' + i)
-        }
-      }(i)))
+      $button.click(
+        (function(i) {
+          return function() {
+            console.log('This is button ' + i)
+          }
+        })(i)
+      )
 
       $(document.body).append($button)
     }
   }
   addButtons(10)
-}(jQuery)
+})(jQuery)
 ```

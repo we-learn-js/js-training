@@ -12,7 +12,6 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > A good architecture **emphasises the use-cases** and **decouples them from peripheral concerns**.
 
-
 <!--section-->
 
 ## What's it all about !?
@@ -57,7 +56,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > It's not an UML Diagram. But can be represented by it.
 
-> **The code must be an expression  of the model.**
+> **The code must be an expression of the model.**
 
 <!--slide-->
 
@@ -115,7 +114,6 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > There is a **single** Ubiquitous language for each **Bounded Context**.
 
-
 <!--slide-->
 
 #### Example: E-commerce website
@@ -124,10 +122,9 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > * **Catalog**: Users on your website must be able to search and see information about products
 > * **Orders, Payment**: Your customers should be able to place orders, pay for it and receive their goodies
-> Delivery: your employees should have a tool to manage deliveries on new orders and update delivery info for users.
+>   Delivery: your employees should have a tool to manage deliveries on new orders and update delivery info for users.
 > * **Inventory**: Your solution must provide inventory control for each product that is available to sell
 > * **Customer** management: Your solution must be able to manage customer registries
-
 
 [Source](https://www.codeproject.com/Articles/1094774/Domain-Driven-Design-A-hands-on-Example-Part-of)
 
@@ -215,7 +212,6 @@ The Domain, with bounded contexts
 
 > The customer team should present its requirements, while the supplier team should make the plans accordingly.
 
-
 <!--slide-->
 
 #### Conformist
@@ -246,7 +242,6 @@ The Domain, with bounded contexts
 > * Clear boundaries
 > * **Better architecture** organization
 > * Iterative and continuous modeling in an Agile fashion
-
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
@@ -330,7 +325,6 @@ The Domain, with bounded contexts
 
 > Discuss your findings with a peer.
 
-
 Note: Billing address would be a value object. An address as a place where to assign a building could be an entity object.
 
 If your domain is geographic or political, then a country might be an entity, but in the average case, a country is just a value associated with things like addresses.
@@ -346,8 +340,6 @@ If your domain is geographic or political, then a country might be an entity, bu
 > The root can hold references to any of the aggregate objects, and the other objects can hold references to each other, but an outside object can hold references **ONLY** to the root object.
 
 > Aggregates are Entities that hold other Entities and Value Objects that help keep data consistent.
-
-
 
 <!--slide-->
 
@@ -399,7 +391,6 @@ When the system archives or completely deletes information about a customer, it 
 
 > Adding a Factory Method in the Aggregate Root hides the internal implementation details of creating Aggregates from any external client.
 
-
 <!--slide-->
 
 ### Repositories
@@ -415,7 +406,6 @@ When the system archives or completely deletes information about a customer, it 
 > The overall effect is that the domain model is decoupled from the need of storing objects or their references, and accessing the underlying persistence infrastructure.
 
 > The Repository interface may contain methods used to perform some supplementary calculations like the number of objects of a certain type.
-
 
 <!--slide-->
 
@@ -457,19 +447,19 @@ When the system archives or completely deletes information about a customer, it 
 
 ```js
 class SignUpUserRequest {
-  constructor (email, password) {
+  constructor(email, password) {
     this.email = email
     this.password = password
   }
 }
 class SignUpUserResponse {
-  constructor (user) {
+  constructor(user) {
     this.id = user.getId()
     this.email = user.getEmail()
   }
 }
 class SignUpUserService {
-  constructor (userRepository) {
+  constructor(userRepository) {
     this.userRepository = userRepository
   }
   execute(signUpUserRequest) {
@@ -481,7 +471,7 @@ class SignUpUserService {
 
 <!--slide-->
 
-#####  Request and Response objects
+##### Request and Response objects
 
 > Use primitives, easily serializable for communication between systems/implementations (for messaging system for instance.)
 
@@ -556,23 +546,26 @@ class UserService {
 <!--slide-->
 
 ```js
-class DomainEventAbstract
-{
-  constructor() { this._occurredOn = new Date() }
+class DomainEventAbstract {
+  constructor() {
+    this._occurredOn = new Date()
+  }
   /**
-  * @returns Date
-  */
-  occurredOn(){ return this._occuredOn }
+   * @returns Date
+   */
+  occurredOn() {
+    return this._occuredOn
+  }
 }
 class UserRegistered extends DomainEventAbstract {
   constructor(userId) {
     super()
     this._userId = userId
   }
-  userId(){ return this._userId }
+  userId() {
+    return this._userId
+  }
 }
-
-
 ```
 
 <!--slide-->
@@ -616,7 +609,7 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 <!--slide-->
 
-####  Layered architecture
+#### Layered architecture
 
 > It is the architecture proposed by Eric Evans in [his book](https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215).
 
@@ -652,7 +645,6 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 > But it can hold the state of an application task progress.
 
 <!--slide-->
-
 
 ##### Domain Layer
 
@@ -690,12 +682,9 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 ![Onion Architecture](https://sbrakl.files.wordpress.com/2014/11/111814_1006_onionarchit6.png?w=625)
 
-
-
 <!--slide-->
 
 #### Hexagonal Architecture (Ports and Adapters)
-
 
 > Each side represents a Port with one or more Adapters.
 
@@ -704,7 +693,6 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 ![Hexagonal Architecture](http://josecuellar.net/wp-content/uploads/hexagonalarchitecture.PNG)
 
 [Alistair Cockburn - Hexagonal Architecture](http://alistair.cockburn.us/Hexagonal+architecture)
-
 
 <!--slide-->
 
@@ -720,7 +708,6 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 #### Event-Driven Architecture (EDA)
 
-
 ![Event-Driven Architecture](http://josecuellar.net/wp-content/uploads/eda.PNG)
 
 <!--slide-->
@@ -728,7 +715,6 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 ### The Big Picture
 
 ![Layers Diagram](http://blog.synopse.info/public/mORMot/DDDCleanUncoupledOnionArchitecture.png)
-
 
 <!--section-->
 
@@ -760,13 +746,13 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 ```js
 class Cart {
-  createOrder() { }
+  createOrder() {}
 }
-class CreateOrderFromCart{
+class CreateOrderFromCart {
   /**
    * @param  {Cart} cart
    */
-  execute(cart){}
+  execute(cart) {}
 }
 ```
 
@@ -774,19 +760,19 @@ class CreateOrderFromCart{
 
 ```js
 class SignUpUserRequest {
-  constructor (email, password) {
+  constructor(email, password) {
     this.email = email
     this.password = password
   }
 }
 class SignUpUserResponse {
-  constructor (user) {
+  constructor(user) {
     this.id = user.getId()
     this.email = user.getEmail()
   }
 }
 class SignUpUserService {
-  constructor (userRepository) {
+  constructor(userRepository) {
     this.userRepository = userRepository
   }
   execute(signUpUserRequest) {
@@ -832,6 +818,7 @@ class SignUpController extends Controller {
 ### Infrastructure services
 
 > They are operations that fulfill infrastructure concerns, such as
+>
 > * sending emails
 > * storing data in database
 > * logging meaningful data
@@ -849,7 +836,6 @@ class SignUpController extends Controller {
 > Modules are used as a method of organizing related concepts and tasks in order to reduce complexity.
 
 > It is widely accepted that software code should have a high level of cohesion and a low level of coupling. While cohesion starts at the class and method level, it can be applied at module level.
-
 
 <!--slide-->
 
@@ -905,7 +891,6 @@ class SignUpController extends Controller {
 > A **Bounded Context** provides the logical frame inside of which the model evolves.
 
 > **Modules** are used to organize the elements of a model, so Bounded Context encompasses the Module.
-
 
 <!--slide-->
 

@@ -14,13 +14,11 @@ Note: That definition implies that there is a lexing phase of the engine which i
 
 ### Types of scope
 
-
-| Type | Context | Keyword |
-| - | - | - |
-| Global | (default) | `let` `const` `var` |
-| Function|`function` {} | `let` `const` `var` |
-| Block | `if`{ } `else`{ } `for`{ } `while`{ } | `let` `const` |
-
+| Type     | Context                               | Keyword             |
+| -------- | ------------------------------------- | ------------------- |
+| Global   | (default)                             | `let` `const` `var` |
+| Function | `function` {}                         | `let` `const` `var` |
+| Block    | `if`{ } `else`{ } `for`{ } `while`{ } | `let` `const`       |
 
 <!--slide-->
 
@@ -80,7 +78,6 @@ function print() {
 
 print() // "ReferenceError: b is not defined
 console.log(a, b) // "ReferenceError: b is not defined
-
 ```
 
 Note: `b` is declared in the `if` block `{}`. Then it can only be accessed from it's inner code, not by the `print` body `function () {}`. `let` is used to declare `b` as a block scoped varaibles. Declaring `b` with `var` would make it to belong to the function's scope.
@@ -99,7 +96,7 @@ var a = 1
 function print() {
   if (true) {
     let b = 2
-    var printMore = function () {
+    var printMore = function() {
       var c = 3
       for (let i = 0; i < 1; i++) {
         let d = 4
@@ -111,10 +108,10 @@ function print() {
 }
 
 print() // 1, 2, 3, 4, 0
-
 ```
 
 Note:
+
 * global scope has access to `a`
 * `print`: function scope has access to `a`
 * `if`: block scope has access to `a`, `b`
@@ -126,7 +123,6 @@ Note:
 ### Shadowing
 
 > Scope lookup during the lexical phase also stops once it finds the first match. This means you can shadow a variable further up the scope chain.
-
 
 ```js
 var a = 1
@@ -147,7 +143,6 @@ In `print`, a is a function scoped variable. Any assignment will not affect `a` 
 
 > In Javascript, `var` and `function(){}` declarations are hoisted to the top of the current scope; and hence, those identifiers are available to any code in that scope.
 
-
 ```js
 var a = 1
 function print() {
@@ -164,6 +159,7 @@ Note: Value of `a` is undefined on first `console.log` but we could assume that 
 <!--slide-->
 
 Raw code
+
 ```js
 var a = 1
 function print() {
@@ -176,6 +172,7 @@ console.log(a) // 1
 ```
 
 Compiled code
+
 ```js
 var a = 1
 function print() {
@@ -196,10 +193,10 @@ Note: behind the scene, a is hoisted on the top of the function body.
 
 ```js
 function doSomething() {
-  console.log(bar); // undefined
-  console.log(foo); // ReferenceError
-  var bar = 1;
-  let foo = 2;
+  console.log(bar) // undefined
+  console.log(foo) // ReferenceError
+  var bar = 1
+  let foo = 2
 }
 doSomething()
 ```
@@ -209,13 +206,13 @@ doSomething()
 #### Caution ! Temporal Dead Zone
 
 ```js
-function test(){
-   var foo = 33;
-   if (true) {
-      let foo = (foo + 55); // ReferenceError
-   }
+function test() {
+  var foo = 33
+  if (true) {
+    let foo = foo + 55 // ReferenceError
+  }
 }
-test();
+test()
 ```
 
 ```js
@@ -233,7 +230,6 @@ print() // ReferenceError: a is not defined
 
 [MDN // Temporal Dead Zone and errors with let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_Dead_Zone_and_errors_with_let)
 
-
 <!--slide-->
 
 ### Default scope
@@ -243,26 +239,28 @@ print() // ReferenceError: a is not defined
 <!--slide-->
 
 Raw code
+
 ```js
-function increment (num) {
+function increment(num) {
   result = num + 1
-  return result;
+  return result
 }
 
 console.log(increment(3)) // 4
-console.log(result)       // 4
+console.log(result) // 4
 ```
 
 Equivalent code
+
 ```js
 var result
-function increment (num) {
+function increment(num) {
   result = num + 1
-  return result;
+  return result
 }
 
 console.log(increment(3)) // 4
-console.log(result)       // 4
+console.log(result) // 4
 ```
 
 Note: as not declared with `var`, `const` or `let`, the `result` variable is considered global and declared in the global scope. That´s a clear unexpected side effect.
@@ -272,11 +270,11 @@ Note: as not declared with `var`, `const` or `let`, the `result` variable is con
 What would be the output of this code?
 
 ```js
-(function() {
-   var a = b = 5;
-})();
+;(function() {
+  var a = (b = 5)
+})()
 
-console.log(b);
+console.log(b)
 ```
 
 Note: variable a is declared using the keyword var. What this means is that a is a local variable of the function. On the contrary, b is assigned to the global scope.
@@ -284,23 +282,25 @@ Note: variable a is declared using the keyword var. What this means is that a is
 <!--slide-->
 
 `var` declares `a` but `b` is declared as a global variable...
-```js
-(function() {
-   var a = b = 5;
-})();
 
-console.log(b); // 5
+```js
+;(function() {
+  var a = (b = 5)
+})()
+
+console.log(b) // 5
 ```
 
 Equivalent code:
-```js
-var b;
-(function() {
-  var a;
-  a = b = 5;
-})();
 
-console.log(b); // 5
+```js
+var b
+;(function() {
+  var a
+  a = b = 5
+})()
+
+console.log(b) // 5
 ```
 
 <!--slide-->
@@ -309,19 +309,18 @@ console.log(b); // 5
 
 ```js
 // WRONG
-(function() {
-   var a = b = 5;
-})();
+;(function() {
+  var a = (b = 5)
+})()
 
-console.log(b); // 5
-
+console.log(b) // 5
 
 // GOOD
-(function() {
-  var a, b;
-  a = b = 5;
-})();
-console.log(b); // b is not defined
+;(function() {
+  var a, b
+  a = b = 5
+})()
+console.log(b) // b is not defined
 ```
 
 <!--section-->
@@ -334,15 +333,16 @@ console.log(b); // b is not defined
 
 > In other words, these **functions 'remember' the environment in which they were declared/created.**
 
-
-
 <!--slide-->
 
 Here's an example:
+
 ```js
 function foo() {
-  var a = 2;
-  return function () { console.log( a ); }   
+  var a = 2
+  return function() {
+    console.log(a)
+  }
 }
 
 var myFunc = foo() // function () { console.log( a ); }
@@ -356,7 +356,9 @@ Here's a little more complicated one:
 
 ```js
 function foo(a) {
-  return function () { console.log( ++a ); }   
+  return function() {
+    console.log(++a)
+  }
 }
 
 const myFunc5 = foo(5)
@@ -376,23 +378,20 @@ myFunc8() // 10 ( 9 + 1 )
 
 **What would be the output if user clicks on "Button 6"?**
 
-
 ```js
+function addButtons(num) {
+  for (var i = 0; i < num; i++) {
+    var $button = jQuery('<button>Button ' + i + '</button>')
 
-function addButtons (num) {
-   for(var i = 0; i < num; i++ ) {
-     var $button = jQuery('<button>Button '+ i+'</button>')
+    $button.click(function() {
+      console.log('This is button' + i)
+    })
 
-     $button.click( function() {
-       console.log('This is button' + i)
-     })
-
-     $(document.body).append($button)
-   }
+    $(document.body).append($button)
+  }
 }
 
 addButtons(10)
-
 ```
 
 https://jsbin.com/tegewu/edit?js,console,output
@@ -403,7 +402,6 @@ Note: "This is button 10" is the response. Why? The scope of `i` is `addButtons`
 
 #### Solution
 
-
 ```js
 function getCallBack(currentIndex) {
   return function() {
@@ -411,14 +409,14 @@ function getCallBack(currentIndex) {
   }
 }
 
-function addButtons (num) {
-   for(var i = 0; i < num; i++ ) {
-     var $button = $('<button>Button '+ i+'</button>')
+function addButtons(num) {
+  for (var i = 0; i < num; i++) {
+    var $button = $('<button>Button ' + i + '</button>')
 
-     $button.click(getCallBack(i))
+    $button.click(getCallBack(i))
 
-     $(document.body).append($button)
-   }
+    $(document.body).append($button)
+  }
 }
 
 addButtons(10)
@@ -431,14 +429,14 @@ https://jsbin.com/laturas/edit?js,console,output
 or even:
 
 ```js
-$button.click( (function(i) {
-  return function() {
-    console.log('This is button ' + i)
-  }
-})(i))
+$button.click(
+  (function(i) {
+    return function() {
+      console.log('This is button ' + i)
+    }
+  })(i)
+)
 ```
-
-
 
 Note: We need to create a new closure with local `i` for each click callback. Now, the callback is created in a new function scope when the local `i` exists with its evaluated value at that moment.
 
@@ -449,15 +447,15 @@ Note: We need to create a new closure with local `i` for each click callback. No
 **Make the countdown work**
 
 ```js
-function countdown (num) {
+function countdown(num) {
   for (var i = 0; i <= num; i += 1) {
-    setTimeout(function () {
-      console.log(num - i);
-    }, i * 1000);
+    setTimeout(function() {
+      console.log(num - i)
+    }, i * 1000)
   }
 }
 
-countdown(5);
+countdown(5)
 
 // -1, -1, -1, -1, -1
 ```
@@ -469,16 +467,17 @@ https://jsbin.com/xaxerim/edit?js,console
 #### Solution
 
 ```js
-function countdown (num) {
+function countdown(num) {
   for (var i = 0; i <= num; i += 1) {
-    (function(i) {
-      setTimeout(function () {
-        console.log(num - i);
-      }, i * 1000);
-    })(i);
+    ;(function(i) {
+      setTimeout(function() {
+        console.log(num - i)
+      }, i * 1000)
+    })(i)
   }
 }
 ```
+
 https://jsbin.com/mabono/edit?js,console
 
 <!--slide-->
@@ -486,19 +485,20 @@ https://jsbin.com/mabono/edit?js,console
 or even easier:
 
 change the scope from `var` (function) to `let` (block)
+
 ```js
-function countdown (num) {
+function countdown(num) {
   for (let i = 0; i <= num; i += 1) {
-    setTimeout(function () {
-      console.log(num - i);
-    }, i * 1000);
+    setTimeout(function() {
+      console.log(num - i)
+    }, i * 1000)
   }
 }
 
-countdown(5);
+countdown(5)
 ```
-https://jsbin.com/hiduro/edit?js,console
 
+https://jsbin.com/hiduro/edit?js,console
 
 <!--section-->
 

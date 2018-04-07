@@ -2,9 +2,7 @@
 
 > JavaScript classes introduced in ES6 are **syntactical sugar** over JavaScript's existing **prototype-based inheritance**.
 
-
 [MDN // Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
-
 
 <!--slide-->
 
@@ -12,17 +10,15 @@
 
 > Classes are in fact "special functions", and just as you can define function expressions and function declarations, the class syntax has two components: **class expressions** and **class declarations**.
 
-
 <!--slide-->
 
 ### Class declarations
 
->  To declare a class, you use the `class` keyword with the name of the class  
-
+> To declare a class, you use the `class` keyword with the name of the class
 
 ```js
 class User {
-  constructor (name) {
+  constructor(name) {
     this.name = name
   }
 }
@@ -32,9 +28,10 @@ var user = new User('Evan')
 <!--slide-->
 
 this code:
+
 ```js
 class User {
-  constructor (name) {
+  constructor(name) {
     this.name = name
   }
 }
@@ -42,8 +39,9 @@ var user = new User('Evan')
 ```
 
 is the same as:
+
 ```js
-function User (name) {
+function User(name) {
   this.name = name
 }
 var user = new User('Evan')
@@ -55,11 +53,10 @@ var user = new User('Evan')
 
 Unlike **function declarations**, **class declarations** are not hoisted.
 
-
 ```js
 var user = new User('Evan') // ReferenceError
 class User {
-  constructor (name) {
+  constructor(name) {
     this.name = name
   }
 }
@@ -67,7 +64,7 @@ class User {
 
 ```js
 var user = new User('Evan') // { name: 'Evan' }
-function User (name) {
+function User(name) {
   this.name = name
 }
 ```
@@ -82,7 +79,7 @@ function User (name) {
 
 ```js
 var User = class {
-  constructor (name) {
+  constructor(name) {
     this.name = name
   }
 }
@@ -91,7 +88,7 @@ var user = new User('Evan')
 
 ```js
 var User = class GoogleUser {
-  constructor (name) {
+  constructor(name) {
     this.name = name
   }
 }
@@ -101,9 +98,10 @@ var user = new User('Evan')
 <!--slide-->
 
 this code:
+
 ```js
 var User = class GoogleUser {
-  constructor (name) {
+  constructor(name) {
     this.name = name
   }
 }
@@ -111,8 +109,9 @@ var user = new User('Evan')
 ```
 
 is the same as:
+
 ```js
-var User = function GoogleUser (name) {
+var User = function GoogleUser(name) {
   this.name = name
 }
 var user = new User('Evan')
@@ -127,16 +126,18 @@ var user = new User('Evan')
 ### Constructor
 
 > The constructor method is a special method for creating and initializing an object created with a class.
+>
 > ```js
 > constructor([arguments]) { ... }
 > ```
+>
 > There can only be one special method with the name `constructor` in a class.
 
 <!--slide-->
 
 ```js
 class User {
-  constructor (name) {
+  constructor(name) {
     this.name = name
   }
 }
@@ -153,7 +154,7 @@ var user = new User('Evan')
 
 ```js
 class User {
-  constructor (name) {
+  constructor(name) {
     this.name = name
   }
 }
@@ -163,7 +164,6 @@ console.log({}.__proto__.constructor === Object) // true
 console.log(Object.prototype.constructor === Object) // true
 ```
 
-
 <!--slide-->
 
 ### Prototype Methods
@@ -172,17 +172,16 @@ console.log(Object.prototype.constructor === Object) // true
 
 ```js
 class User {
-  constructor (name) {
+  constructor(name) {
     this.name = name
   }
-  sayName () {
-    console.log('My name is ' + this.name )
+  sayName() {
+    console.log('My name is ' + this.name)
   }
-  orderItem (item) {
-    console.log(item + ' purchased: delivery in 3 days' )
+  orderItem(item) {
+    console.log(item + ' purchased: delivery in 3 days')
   }
 }
-
 ```
 
 <!--slide-->
@@ -194,10 +193,10 @@ var User = function(name) {
   this.name = name
 }
 User.prototype.sayName = function() {
-  console.log('My name is ' + this.name )
+  console.log('My name is ' + this.name)
 }
 User.prototype.orderItem = function(item) {
-  console.log(item + ' purchased: delivery in 3 days' )
+  console.log(item + ' purchased: delivery in 3 days')
 }
 ```
 
@@ -206,7 +205,6 @@ User.prototype.orderItem = function(item) {
 ### Getters
 
 > The `get` syntax binds an object property to a function that will be called when that property is looked up.
-
 
 [MDN // getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)
 
@@ -275,7 +273,6 @@ get notifier() {
 
 Note: the getter is removed and replaced by the actual value
 
-
 <!--slide-->
 
 ### Setters
@@ -287,19 +284,20 @@ Note: the getter is removed and replaced by the actual value
 <!--slide-->
 
 Consider:
+
 ```js
 class User {
-  constructor (firstName, lastName) {
+  constructor(firstName, lastName) {
     this.firstName = firstName
     this.lastName = lastName
   }
   getFullName() {
-    return this.firstName + ' ' + this.lastName;
+    return this.firstName + ' ' + this.lastName
   }
-  setFullName (name) {
-    var words = name.toString().split(' ');
-    this.firstName = words[0] || '';
-    this.lastName = words[1] || '';
+  setFullName(name) {
+    var words = name.toString().split(' ')
+    this.firstName = words[0] || ''
+    this.lastName = words[1] || ''
   }
 }
 
@@ -315,17 +313,17 @@ With a getter/setter:
 
 ```js
 class User {
-  constructor (firstName, lastName) {
+  constructor(firstName, lastName) {
     this.firstName = firstName
     this.lastName = lastName
   }
   get fullName() {
-    return this.firstName + ' ' + this.lastName;
+    return this.firstName + ' ' + this.lastName
   }
-  set fullName (name) {
-    var words = name.toString().split(' ');
-    this.firstName = words[0] || '';
-    this.lastName = words[1] || '';
+  set fullName(name) {
+    var words = name.toString().split(' ')
+    this.firstName = words[0] || ''
+    this.lastName = words[1] || ''
   }
 }
 
@@ -334,7 +332,6 @@ console.log(user.fullName) // "Evan Graham"
 user.fullName = 'David Smith'
 console.log(user.fullName) // "David Smith"
 ```
-
 
 <!--slide-->
 
@@ -346,26 +343,25 @@ console.log(user.fullName) // "David Smith"
 >
 > They are often used for utility methods related to the class
 
-
 <!--slide-->
 
 ```js
 class Point {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-    }
+  constructor(x, y) {
+    this.x = x
+    this.y = y
+  }
 
-    static distance(a, b) {
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
+  static distance(a, b) {
+    const dx = a.x - b.x
+    const dy = a.y - b.y
 
-        return Math.sqrt(dx*dx + dy*dy);
-    }
+    return Math.sqrt(dx * dx + dy * dy)
+  }
 }
-const p1 = new Point(5, 5);
-const p2 = new Point(10, 10);
-console.log(Point.distance(p1, p2)); // 7.0710678118654755
+const p1 = new Point(5, 5)
+const p2 = new Point(10, 10)
+console.log(Point.distance(p1, p2)) // 7.0710678118654755
 ```
 
 <!--slide-->
@@ -373,19 +369,19 @@ console.log(Point.distance(p1, p2)); // 7.0710678118654755
 Same code in ES5:
 
 ```js
-var Point = function (x, y) {
-  this.x = x;
-  this.y = y;
+var Point = function(x, y) {
+  this.x = x
+  this.y = y
 }
 Point.distance = function(a, b) {
-  const dx = a.x - b.x;
-  const dy = a.y - b.y;
+  const dx = a.x - b.x
+  const dy = a.y - b.y
 
-  return Math.sqrt(dx*dx + dy*dy);
+  return Math.sqrt(dx * dx + dy * dy)
 }
-const p1 = new Point(5, 5);
-const p2 = new Point(10, 10);
-console.log(Point.distance(p1, p2));  
+const p1 = new Point(5, 5)
+const p2 = new Point(10, 10)
+console.log(Point.distance(p1, p2))
 ```
 
 <!--slide-->
@@ -403,40 +399,41 @@ class ChildClass extends ParentClass { ... }
 ```js
 class Animal {
   constructor(name) {
-    this.name = name;
+    this.name = name
   }
   speak() {
-    console.log(this.name + ' makes a noise.');
+    console.log(this.name + ' makes a noise.')
   }
 }
 class Dog extends Animal {
   speak() {
-    console.log(this.name + ' barks.');
+    console.log(this.name + ' barks.')
   }
 }
-var d = new Dog('Mitzie');
-d.speak(); // "Mitzie barks."
+var d = new Dog('Mitzie')
+d.speak() // "Mitzie barks."
 ```
 
 <!--slide-->
 
 Consider:
+
 ```js
 var User = function(name) {
   this.name = name
 }
 User.prototype.sayName = function() {
-  console.log('My name is ' + this.name )
+  console.log('My name is ' + this.name)
 }
 User.prototype.orderItem = function(item) {
-  console.log(item + ' purchased: delivery in 3 days' )
+  console.log(item + ' purchased: delivery in 3 days')
 }
 var PremiumUser = function(name) {
   this.name = name
 }
 PremiumUser.prototype = new User()
 PremiumUser.prototype.orderItem = function(item) {
-  console.log(item + ' purchased: delivery in 1 day' )
+  console.log(item + ' purchased: delivery in 1 day')
 }
 ```
 
@@ -446,33 +443,32 @@ Written in ES6
 
 ```js
 class User {
-  constructor (name) {
+  constructor(name) {
     this.name = name
   }
-  sayName () {
-    console.log('My name is ' + this.name )
+  sayName() {
+    console.log('My name is ' + this.name)
   }
-  orderItem (item) {
-    console.log(item + ' purchased: delivery in 3 days' )
+  orderItem(item) {
+    console.log(item + ' purchased: delivery in 3 days')
   }
 }
 class PremiumUser extends User {
-  orderItem (item) {
-    console.log(item + ' purchased: delivery in 1 day' )
+  orderItem(item) {
+    console.log(item + ' purchased: delivery in 1 day')
   }
 }
 ```
 
 <!--slide-->
 
-
 #### Extends includes static methods
 
-
 ES6:
+
 ```js
 class Point {
-  static distance(a, b) { }
+  static distance(a, b) {}
 }
 class ColorPoint extends Point {}
 
@@ -482,18 +478,16 @@ Point.distance === ColorPoint.distance // true
 ES5:
 
 ```js
-function Point () {}
+function Point() {}
 Point.distance = function() {}
 
-function ColorPoint () {}
+function ColorPoint() {}
 ColorPoint.prototype = new Point()
 
 Point.distance === ColorPoint.distance // false
 ```
 
 <!--slide-->
-
-
 
 <!--slide-->
 
@@ -505,13 +499,12 @@ Point.distance === ColorPoint.distance // false
 
 ```js
 class PremiumUser extends User {
-
   constructor(name) {
     super(name + ' (Premium User)')
   }
-  orderItem (item) {
+  orderItem(item) {
     super.orderItem(item)
-    console.log( 'Delivery in 1 day as Premium User' )
+    console.log('Delivery in 1 day as Premium User')
   }
 }
 
@@ -527,11 +520,11 @@ user.orderItem('TV')
 ```js
 class Point {
   constructor(x, y) {
-    this.x = x;
-    this.y = y;
+    this.x = x
+    this.y = y
   }
   toString() {
-    return '(' + this.x + ', ' + this.y + ')';
+    return '(' + this.x + ', ' + this.y + ')'
   }
 }
 var point = new Point(5, 10)
@@ -543,17 +536,17 @@ console.log(point.toString()) // "(5, 10)"
 ```js
 class ColorPoint extends Point {
   constructor(x, y, color) {
-    super(x, y); // (A)
-    this.color = color;
+    super(x, y) // (A)
+    this.color = color
   }
   toString() {
-    return super.toString() + ' in ' + this.color;
+    return super.toString() + ' in ' + this.color
   }
 }
 
 var point = new Point(5, 10)
 console.log(point.toString()) // "(5, 10)"
-var colorPoint = new ColorPoint(5, 10, "Green")
+var colorPoint = new ColorPoint(5, 10, 'Green')
 console.log(colorPoint.toString()) // "(5, 10) in Green"
 ```
 
@@ -566,20 +559,20 @@ console.log(colorPoint.toString()) // "(5, 10) in Green"
 ```js
 class Tripple {
   static tripple(n) {
-    n = n | 1;
-    return n * 3;
+    n = n | 1
+    return n * 3
   }
 }
 
 class BiggerTripple extends Tripple {
   static tripple(n) {
-    return super.tripple(n) * super.tripple(n);
+    return super.tripple(n) * super.tripple(n)
   }
 }
 
-console.log(Tripple.tripple());
-console.log(Tripple.tripple(6));
-console.log(BiggerTripple.tripple(3));
+console.log(Tripple.tripple())
+console.log(Tripple.tripple(6))
+console.log(BiggerTripple.tripple(3))
 ```
 
 <!--section-->
@@ -591,19 +584,18 @@ console.log(BiggerTripple.tripple(3));
 Convert to class syntax
 
 ```js
-var Collection = function() {
-}
+var Collection = function() {}
 
 Collection.prototype = new Array()
 
-Collection.prototype.sortBy = function (property) {
-  return this.sort(function(obj1, obj2){
+Collection.prototype.sortBy = function(property) {
+  return this.sort(function(obj1, obj2) {
     return obj1[property] > obj2[property]
   })
 }
-Collection.prototype.findBy = function (prop, value) {
+Collection.prototype.findBy = function(prop, value) {
   var result
-  this.forEach(function(obj){
+  this.forEach(function(obj) {
     result = result || (obj[prop] === value ? obj : undefined)
   })
   return result
@@ -612,19 +604,18 @@ Collection.prototype.findBy = function (prop, value) {
 
 https://jsbin.com/jovoce/edit?js,console,output
 
-
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 ```js
 class Collection extends Array {
-  sortBy (property) {
-    return this.sort(function(obj1, obj2){
+  sortBy(property) {
+    return this.sort(function(obj1, obj2) {
       return obj1[property] > obj2[property]
     })
   }
-  findBy (prop, value) {
+  findBy(prop, value) {
     var result
-    this.forEach(function(obj){
+    this.forEach(function(obj) {
       result = result || (obj[prop] === value ? obj : undefined)
     })
     return result
@@ -641,28 +632,28 @@ Make `Manager` extend from `Employee` to reduce code
 ```js
 class Employee {
   constructor(firstName, familyName) {
-    this._firstName = firstName;
-    this._familyName = familyName;
+    this._firstName = firstName
+    this._familyName = familyName
   }
 
   getFullName() {
-    return this._firstName + ' ' + this._familyName;
+    return this._firstName + ' ' + this._familyName
   }
 }
 
 class Manager {
   constructor(firstName, familyName) {
-    this._firstName = firstName;
-    this._familyName = familyName;
-    this._managedEmployees = [];
+    this._firstName = firstName
+    this._familyName = familyName
+    this._managedEmployees = []
   }
 
   getFullName() {
-    return this._firstName + ' ' + this._familyName;
+    return this._firstName + ' ' + this._familyName
   }
 
   addEmployee(...args) {
-    this._managedEmployees.push(...args);
+    this._managedEmployees.push(...args)
   }
 }
 ```
@@ -676,12 +667,12 @@ Solution:
 ```js
 class Manager extends Employee {
   constructor(...args) {
-    super(...args);
-    this._managedEmployees = [];
+    super(...args)
+    this._managedEmployees = []
   }
 
   addEmployee(...args) {
-    this._managedEmployees.push(...args);
+    this._managedEmployees.push(...args)
   }
 }
 ```
@@ -711,14 +702,14 @@ https://jsbin.com/labubu/edit?js,console
 ```js
 class Manager extends Employee {
   constructor(...args) {
-    super(...args);
-    this._managedEmployees = [];
+    super(...args)
+    this._managedEmployees = []
   }
   addEmployee(...args) {
-    this._managedEmployees.push(...args);
+    this._managedEmployees.push(...args)
   }
-  get employeeNames () {
-    return this._managedEmployees.map( employee => employee.getFullName() )
+  get employeeNames() {
+    return this._managedEmployees.map(employee => employee.getFullName())
   }
 }
 ```
