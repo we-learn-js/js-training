@@ -7,7 +7,7 @@
     "reset": "rm -Rf node_modules && npm i",
     "build": "npm run sass",
     "sass":
-      "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js -o ./src/theme ./src/theme/js-training.scss",
+      "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --output-style compressed --source-map true -o ./src/css ./src/scss/js-training.scss ",
     "dev": "npm run sass && npm run start -- -w",
     "start": "cd ./src && reveal-md . --disable-auto-open",
     "test": "echo \"Error: no test specified\" && exit 1",
