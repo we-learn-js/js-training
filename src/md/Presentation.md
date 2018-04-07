@@ -84,7 +84,7 @@ or blame you... and me.
 
 ## Here comes the light !
 
-[Operators](slides/Operators.md) · [Strings](slides/Strings.md) · [Scopes and Closures](slides/ScopesAndClosures.md) · [Functions](slides/Functions.md) · [Functional programming](slides/FunctionalProgramming.md) · [Symbols](slides/Symbols.md) · [Modules](slides/Modules.md) · [Objects](slides/Objects.md) · [Classes](slides/Classes.md) · [AsyncProgramming](slides/AsyncProgramming.md) · [Iterators and Generators](slides/IteratorsAndGenerators.md) · [Object-Oriented Programming](slides/ObjectOrientedProgramming.md) · [Object-Oriented Design Principles](slides/ObjectOrientedDesignPrinciples.md) · [Design Patterns](slides/DesignPatterns.md) · [Testing](slides/Testing.md) · [DDD](slides/DomainDrivenDesign.md) · [React](slides/React.md) · NPM · Webpack
+[Operators](md/Operators.md) · [Strings](md/Strings.md) · [Scopes and Closures](md/ScopesAndClosures.md) · [Functions](md/Functions.md) · [Functional programming](md/FunctionalProgramming.md) · [Symbols](md/Symbols.md) · [Modules](md/Modules.md) · [Objects](md/Objects.md) · [Classes](md/Classes.md) · [AsyncProgramming](md/AsyncProgramming.md) · [Iterators and Generators](md/IteratorsAndGenerators.md) · [Object-Oriented Programming](md/ObjectOrientedProgramming.md) · [Object-Oriented Design Principles](md/ObjectOrientedDesignPrinciples.md) · [Design Patterns](md/DesignPatterns.md) · [Testing](md/Testing.md) · [DDD](md/DomainDrivenDesign.md) · [React](md/React.md) · NPM · Webpack
 
 <!--section-->
 

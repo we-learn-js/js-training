@@ -1,13 +1,13 @@
 {
   "host": "localhost",
-  "theme": "theme/js-training.css",
+  "theme": "css/js-training.css",
   "highlightTheme": "monokai",
   "port": 8080,
   "css": null,
   "scripts": "",
   "preprocessor": false,
-  "listingTemplate": "../src/template/listing.html",
-  "revealTemplate": "../src/template/template/reveal.html",
+  "listingTemplate": "../src/html/listing.html",
+  "revealTemplate": "../src/html/template/reveal.html",
   "title": "JS Training",
   "separator": "^(\r\n?|\n)<!--section-->(\r\n?|\n)$",
   "verticalSeparator": "^(\r\n?|\n)<!--slide-->"
