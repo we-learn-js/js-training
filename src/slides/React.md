@@ -6,7 +6,7 @@
 
 > React is **not a framework**.
 
-> It's an UI library. 
+> It's an UI library.
 
 > It's the "V" in MVC.
 
@@ -73,17 +73,15 @@ React.createElement(
 <!--slide-->
 
 React code
+
 ```js
 import React from 'react'
 
-React.createElement(
-  'div',
-  { align: 'center' },
-  'Welcome to JS Training'
-)
+React.createElement('div', { align: 'center' }, 'Welcome to JS Training')
 ```
 
 DOM result
+
 ```html
 <div align='center'>
     Welcome to JS Training - React
@@ -120,10 +118,10 @@ https://codesandbox.io/s/9yrxv8y28o
 
 ### JSX
 
-
 > JSX is a syntax extension to JavaScript. It's helpful as a visual aid when working with UI inside the JavaScript code.
 
 JavaScript
+
 ```js
 import React from 'react'
 const reactElement = React.createElement(
@@ -134,15 +132,17 @@ const reactElement = React.createElement(
 ```
 
 JSX
+
 ```js
 import React from 'react'
 
-const reactElement = <div align='center'>Welcome to JS Training - React</div>
+const reactElement = <div align="center">Welcome to JS Training - React</div>
 ```
 
 <!--slide-->
 
 JavaScript (using children)
+
 ```js
 import React from 'react'
 
@@ -156,9 +156,10 @@ const reactElement = React.createElement(
 ```
 
 JSX (using children)
+
 ```js
 const reactElement = (
-  <div align='center'>
+  <div align="center">
     Welcome to JS Training - React <br />
     <button>Start !</button>
   </div>
@@ -184,7 +185,7 @@ https://codesandbox.io/s/n57xo06j44
 ```js
 const userName = 'Evan Graham'
 const reactElement = (
-  <div align='center'>
+  <div align="center">
     Welcome to JS Training, {userName.toUpperCase()} !
     <br />
     <button>Start !</button>
@@ -202,8 +203,6 @@ const reactElement = (
 
 https://codesandbox.io/s/3vkr326njq
 
-
-
 <!--slide-->
 
 ##### Conditional Rendering
@@ -213,14 +212,9 @@ https://codesandbox.io/s/3vkr326njq
 ```js
 const reactElement = (
   <div align="center">
-    Welcome to JS Training{
-      userName && `, ${userName.toUpperCase()}`
-    }
+    Welcome to JS Training{userName && `, ${userName.toUpperCase()}`}
     <br />
-    {userName
-      ? <button>Start !</button>
-      : <button>Login</button>
-    }
+    {userName ? <button>Start !</button> : <button>Login</button>}
   </div>
 )
 ```
@@ -232,16 +226,14 @@ const reactElement = (
 > Array of elements are accepted as children, so you can easily map them from any data array.
 
 JSX
+
 ```js
 const items = ['Topic 1', 'Topic 2', 'Topic 3']
-const reactElement = (
-  <ul>
-  {items.map(item => <li>{item}</li>)}
-  </ul>
-)
+const reactElement = <ul>{items.map(item => <li>{item}</li>)}</ul>
 ```
 
 HTML
+
 ```html
 <ul align='center'>
   <li>Topic 1</li>
@@ -249,8 +241,6 @@ HTML
   <li>Topic 3</li>
 </ul>
 ```
-
-
 
 <!--slide-->
 
@@ -266,13 +256,14 @@ HTML
 
 > Built-in elements will accept as props any of their HTML-related attributes.
 
-> Although, React provides a **JavaScript-centric API** to the DOM. 
+> Although, React provides a **JavaScript-centric API** to the DOM.
 
 > Since React components often take both custom and DOM-related props, React uses the `camelCase` convention just like the DOM APIs:
 
 <!--slide-->
 
 HTML
+
 ```html
 <div tabindex="-1"/>
 <div class="Button" />
@@ -283,6 +274,7 @@ HTML
 ```
 
 JSX (DOM properties)
+
 ```html
 <div tabIndex="-1" />      // Just like node.tabIndex DOM API
 <div className="Button" /> // Just like node.className DOM API
@@ -302,9 +294,10 @@ JSX (DOM properties)
 function update() {
   const userName = 'Evan Graham'
   const reactElement = (
-    <div align='center'>
+    <div align="center">
       Welcome to JS Training,
-      <strong> {userName.toUpperCase()}</strong><br />
+      <strong> {userName.toUpperCase()}</strong>
+      <br />
       Time {new Date().toLocaleTimeString()}.
     </div>
   )
@@ -317,28 +310,27 @@ setInterval(update, 1000)
 Inspect DOM changes with DevTools
 https://codesandbox.io/s/3rlm92jnw5
 
-
 <!--section-->
 
 ## React Components
 
 > Components let you split the UI into independent, reusable pieces, and think about each piece in isolation.
 
-
 <!--slide-->
 
 ### Functional Components
 
-> Functional components are functions that only receive props. 
+> Functional components are functions that only receive props.
 
 > As pure functions, they are **stateless**.
 
 <!--slide-->
 
 ./App.js
+
 ```js
 export default props => (
-  <div align='center'>
+  <div align="center">
     Welcome to JS Training,
     <strong> {props.userName.toUpperCase()}</strong>
     <br />
@@ -348,6 +340,7 @@ export default props => (
 ```
 
 ./index.js
+
 ```js
 import App from './App'
 <App
@@ -355,7 +348,6 @@ import App from './App'
   time={new Date().toLocaleTimeString()}
 />
 ```
-
 
 https://codesandbox.io/s/9j7joyo79r
 
@@ -367,7 +359,6 @@ https://codesandbox.io/s/9j7joyo79r
 
 > In classes, `props` are a member of `this` and React calls `render` method on every reflow.
 
-
 <!--slide-->
 
 ```js
@@ -375,7 +366,7 @@ class AppComponent extends React.Component {
   render() {
     const { userName, time } = this.props
     return (
-      <div align='center'>
+      <div align="center">
         Welcome to JS Training,
         <strong>{userName.toUpperCase()}</strong>
         <br />
@@ -446,13 +437,12 @@ https://codesandbox.io/s/q3vz183wm4?&module=%2FApp.js
 
 > A button, a form, a dialog, a screen: in React apps, all those are commonly expressed as components.
 
-
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 Let's split our code into components to end up with something like:
 
 ```js
-<div align='center'>
+<div align="center">
   <Welcome userName={userName} />
   <br />
   Time <Clock />.
@@ -460,7 +450,6 @@ Let's split our code into components to end up with something like:
 ```
 
 https://codesandbox.io/s/q3vz183wm4?&module=%2FApp.js
-
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -500,10 +489,15 @@ https://codesandbox.io/s/30jkqqzmkp?module=%2Fcomponents%2FClock.js
 
 ```js
 const Panel = props => (
-  <div align="center" style={{
-    border: '1px solid grey',
-    padding: '20px'
-  }}>{props.children}</div>
+  <div
+    align="center"
+    style={{
+      border: '1px solid grey',
+      padding: '20px'
+    }}
+  >
+    {props.children}
+  </div>
 )
 ```
 
@@ -512,7 +506,6 @@ const Panel = props => (
 Let's try to abrast the layout of our app into a wrapping component.
 
 https://codesandbox.io/s/30jkqqzmkp?module=%2Fcomponents%2FApp.js
-
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -523,7 +516,8 @@ const Panel = props => (
     style={{
       border: '1px solid grey',
       padding: '20px'
-    }}>
+    }}
+  >
     {props.children}
   </div>
 )
@@ -531,14 +525,11 @@ const Panel = props => (
 
 https://codesandbox.io/s/kk5j8zlqvo?module=%2Fcomponents%2FApp.js
 
-
 <!--section-->
 
 ### Workshop !
 
 <!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
-
-
 
 The following exercises will make you implement - step by step - a React version of [Todo App](http://todomvc.com/examples/vanilla-es6/).
 
@@ -553,9 +544,11 @@ Create a `<Title>` component and use it in `<TodoApp>`.
 `<Title>` accepts "text" prop, so the implementation should fit this snippets:
 
 ```js
-<Title text="todos"></Title>
+<Title text="todos" />
 ```
+
 output
+
 ```html
 <h1>todos</h1>
 ```
@@ -573,7 +566,6 @@ import React from 'react'
 export default ({ text }) => <h1>{text}</h1>
 ```
 
-
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Using special prop `children`
@@ -583,7 +575,9 @@ Refactor `<Title>` so it displays the content given by the client.
 ```js
 <Title>todos</Title>
 ```
+
 output
+
 ```html
 <h1>todos</h1>
 ```
@@ -598,7 +592,6 @@ import React from 'react'
 export default ({ children }) => <h1>{children}</h1>
 ```
 
-
 <!--slide-->
 
 ### Handling Events
@@ -606,6 +599,7 @@ export default ({ children }) => <h1>{children}</h1>
 > Handling events with React elements is very similar to handling events on DOM elements.
 
 HTML
+
 ```html
 <button onclick="activateLasers()">
   Activate Lasers
@@ -615,22 +609,16 @@ HTML
 JSX
 
 ```js
-<button onClick={activateLasers}>
-  Activate Lasers
-</button>
+<button onClick={activateLasers}>Activate Lasers</button>
 ```
-
 
 <!--slide-->
 
 As JSX handles javascript expression, any expression can be assigned as a prop.
 
 ```js
-<button onClick={() => activateLasers()}>
-  Activate Lasers
-</button>
+<button onClick={() => activateLasers()}>Activate Lasers</button>
 ```
-
 
 <!--slide-->
 
@@ -655,14 +643,14 @@ In the following code, the `<button>` built-in component uses `onClick` callback
 Consider:
 
 ```js
-const LabeledInput = (props) => (
-  <label className='custom-input'>
-   {props.label}
-    <input type='text'/>
+const LabeledInput = props => (
+  <label className="custom-input">
+    {props.label}
+    <input type="text" />
   </label>
 )
 
-const CustomForm = (props) => (
+const CustomForm = props => (
   <form>
     <LabeledInput label="name" />
     <LabeledInput label="surname" />
@@ -672,33 +660,35 @@ const CustomForm = (props) => (
 
 What if `CustomForm` needs to know whenever an input is edited to make live validation?
 
-
 <!--slide-->
 
 Make it accept a callback prop that will notify changes.
 
 ```js
-const LabeledInput = (props) => (
-  <label className='custom-input'>
-   {props.label}
-    <input type='text' onChange={props.onChange} />
+const LabeledInput = props => (
+  <label className="custom-input">
+    {props.label}
+    <input type="text" onChange={props.onChange} />
   </label>
 )
 
-const CustomForm = (props) => (
+const CustomForm = props => (
   <form>
     <LabeledInput label="name" onChange={() => console.log('Name changed!')} />
-    <LabeledInput label="surname" onChange={() => console.log('Surname changed!')} />
+    <LabeledInput
+      label="surname"
+      onChange={() => console.log('Surname changed!')}
+    />
   </form>
 )
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
-
 #### TodoForm
 
 > Create a new `<TodoForm>` that displays an input form and accepts theses props:
+
 * placeholder: to be displayed in the input
 * onNew: a callback executed everytime the users submits a new todo description
 
@@ -725,11 +715,7 @@ const onSubmit = props => e => {
 
 export default props => (
   <form className="todo-form" onSubmit={onSubmit(props)}>
-    <input
-      className="new-todo"
-      name="todo"
-      placeholder={props.placeholder}
-    />
+    <input className="new-todo" name="todo" placeholder={props.placeholder} />
   </form>
 )
 ```
@@ -738,12 +724,11 @@ https://codesandbox.io/s/l2j1nrp27l?module=%2Fcomponents%2FTodoForm.js
 
 <!--slide-->
 
-#### Parent to Children  (Owner to Ownee)
+#### Parent to Children (Owner to Ownee)
 
-> We do it all the time in react. 
+> We do it all the time in react.
 
 > When you pass `props` to a child components, you
-
 
 <!--slide-->
 
@@ -759,7 +744,7 @@ class Clock extends React.Component {
     super()
     setInterval(() => {
       this.setState({ time: new Date().toLocaleTimeString() })
-    } , 1000)
+    }, 1000)
   }
 
   render() {
@@ -778,6 +763,7 @@ class Clock extends React.Component {
 ```html
 <TodoList items={todos} />
 ```
+
 ```html
 <ul class="todo-list">
   <li class="completed">
@@ -791,7 +777,6 @@ class Clock extends React.Component {
 
 https://codesandbox.io/s/l2j1nrp27l?module=%2FTodoApp.js
 
-
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 ##### Possible Solution
@@ -803,11 +788,7 @@ export default props => (
   <ul class="todo-list">
     {props.items.map(item => (
       <li className={item.done ? 'completed' : ''}>
-        <input
-          className="toggle"
-          type="checkbox"
-          checked={item.done}
-        />
+        <input className="toggle" type="checkbox" checked={item.done} />
         <label>{item.desc}</label>
         <button className="destroy" />
       </li>
@@ -825,6 +806,7 @@ https://codesandbox.io/s/611p3687ww?module=%2Fcomponents%2FTodoList.js
 Consider:
 
 Current State:
+
 ```html
 <ul>
   <li>Evan</li>
@@ -833,6 +815,7 @@ Current State:
 ```
 
 Next State
+
 ```html
 <ul>
   <li>Robin</li>
@@ -849,10 +832,10 @@ Next State
 
 > In order to solve this issue, React supports a `key` attribute. React uses the key to match children in the original tree with children in the subsequent tree.
 
-
 <!--slide-->
 
 Current State:
+
 ```html
 <ul>
   <li key={1059}>Evan</li>
@@ -861,6 +844,7 @@ Current State:
 ```
 
 Next State
+
 ```html
 <ul>
   <li key={1031}>Robin</li>
@@ -877,7 +861,6 @@ Let's fix it in our previous exercise:
 
 https://codesandbox.io/s/611p3687ww?module=%2Fcomponents%2FTodoList.js
 
-
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 #### TodoList events
@@ -886,15 +869,11 @@ https://codesandbox.io/s/611p3687ww?module=%2Fcomponents%2FTodoList.js
 
 > When a todo's delete button is clicked, `store.remove(item)` should be called to update storage.
 
-
 > `<TodoList>` should reflect the changes on realtime.
-
 
 Use events (callbacks) and `<TodoApp>`'s state to make the magic happen.
 
-
 https://codesandbox.io/s/611p3687ww?module=%2FTodoApp.js
-
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -916,7 +895,6 @@ https://codesandbox.io/s/611p3687ww?module=%2FTodoApp.js
 
 https://codesandbox.io/s/nv9pw39y4?module=%2FTodoApp.js
 
-
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 #### More events
@@ -927,9 +905,7 @@ https://codesandbox.io/s/nv9pw39y4?module=%2FTodoApp.js
 
 > `<TodoList>` should reflect the changes on realtime.
 
-
 https://codesandbox.io/s/nv9pw39y4?module=%2FTodoApp.js
-
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -952,7 +928,6 @@ https://codesandbox.io/s/nv9pw39y4?module=%2FTodoApp.js
 
 https://codesandbox.io/s/6wv9rxlmk3?module=%2FTodoApp.js
 
-
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 #### Add Time
@@ -974,7 +949,6 @@ https://codesandbox.io/s/6wv9rxlmk3?module=%2FTodoApp.js
 Make use of installed dep `pretty-ms`
 
 https://codesandbox.io/s/4xkjw44yow?module=%2Fcomponents%2FTodoItem.js
-
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -1002,21 +976,19 @@ export default class TimeAgo extends React.Component {
 
 https://codesandbox.io/s/6wv9rxlmk3?module=%2Fcomponents%2FTimeAgo.js
 
-
 <!--section-->
 
 ## Component life cycle
 
 <!--slide-->
 
-> Functional components are pure functions executed on any props change, without any state. 
+> Functional components are pure functions executed on any props change, without any state.
 
 > Class component have a state, and may be rendered for state changes instead of props change only.
 
 > Also, in applications with many components, it’s very important to free up resources taken by the components when they are destroyed.
 
 > React provides hooks to handle all cases depending on the phase.
-
 
 <!--slide-->
 
@@ -1062,7 +1034,6 @@ https://codesandbox.io/s/movoy4xr8p?module=%2FLifeCycle.js
   * render()
   * componentDidUpdate(prevProps, prevState)
 
-
 <!--slide-->
 
 #### Error Handling
@@ -1081,7 +1052,7 @@ constructor(props)
 
 > Invoked **before** component is actually mounted.
 
-> The component's state is not defined yet. `this.props` and `this.state` are set yet. 
+> The component's state is not defined yet. `this.props` and `this.state` are set yet.
 
 > It's a good place to set our default state.
 
@@ -1104,7 +1075,7 @@ componentWillMount()
 
 > Invoked immediately before mounting occurs (before first render, adding component to the DOM).
 
-> The `componentWillMount()` is a chance for us to handle configuration, update our state, and in general prepare for the first render. 
+> The `componentWillMount()` is a chance for us to handle configuration, update our state, and in general prepare for the first render.
 
 > We can start performing calculations or processes based on the prop values.
 
@@ -1116,8 +1087,6 @@ componentWillMount() {
 ```
 
 **This is the only lifecycle hook called on server rendering.**
-
-
 
 <!--slide-->
 
@@ -1172,10 +1141,9 @@ componentWillReceiveProps(nextProps) {
 shouldComponentUpdate(nextProps, nextState)
 ```
 
-> Invoked before rendering when new props or state are being received.  Defaults to `true`.
+> Invoked before rendering when new props or state are being received. Defaults to `true`.
 
 > Used for optimization, to let React know if a component’s output is not affected by the current change in state or props.
-
 
 ```js
 shouldComponentUpdate(nextProps, nextState) {
@@ -1219,7 +1187,6 @@ componentDidUpdate(nextProps, nextState)
 
 > Use this as an opportunity to operate on the DOM when DOM of the component has been updated.
 
-
 ```js
 componentWillUpdate(nextProps, nextState) {
   // only update chart if the data has changed
@@ -1230,7 +1197,6 @@ componentWillUpdate(nextProps, nextState) {
   }
 }
 ```
-
 
 <!--slide-->
 
@@ -1268,7 +1234,7 @@ componentDidCatch(error, info)
 > A class component becomes an error boundary if it defines `componentDidCatch` method.
 
 ```js
-componentDidCatch(error, info) {     
+componentDidCatch(error, info) {
   this.setState({ error, info });
 }
 /*
@@ -1276,8 +1242,8 @@ render() {
   if (this.state.error) {
     return <h1>Error: {this.state.error.toString()}</h1>;
   }
-  return this.props.children;   
-} 
+  return this.props.children;
+}
 */
 ```
 
@@ -1286,13 +1252,13 @@ render() {
 #### Improving performance
 
 > There are several performance problems in `<TimeAgo>`
+>
 > * It's re-rendered every time `<TodoList>` is updated.
 > * It might cause memory leaks and errors, not clearing the `setInterval`
 
 Refactor `<TimeAgo>` using life cycle functions, fixing these issues.
 
 https://codesandbox.io/s/6wv9rxlmk3?module=%2Fcomponents%2FTimeAgo.js
-
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -1314,7 +1280,6 @@ shouldComponentUpdate(nextProps, nextState) {
 }
 ```
 
-
 https://codesandbox.io/s/2399w1289y?module=%2Fcomponents%2FTimeAgo.js
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -1322,15 +1287,16 @@ https://codesandbox.io/s/2399w1289y?module=%2Fcomponents%2FTimeAgo.js
 #### Reducing calculations
 
 > `<TimeAgo>` calculates `timestamp` on every render.
+
 ```js
 const timestamp = new Date(date).getTime()
 ```
+
 But, as it comes from a prop (date), it's the same value in each render.
 
 Refactor `<TimeAgo>` to make sure `timestamp` is calculated only when needed.
 
 https://codesandbox.io/s/2399w1289y?module=%2Fcomponents%2FTimeAgo.js
-
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -1367,7 +1333,6 @@ https://codesandbox.io/s/zrnyxx683p?module=%2Fcomponents%2FTimeAgo.js
 
 > To run typechecking on the props for a component, you can assign the special propTypes property.
 
-
 <!--slide-->
 
 ```js
@@ -1395,7 +1360,7 @@ https://codesandbox.io/s/v034l8yvw7?module=%2Fcomponents%2FWelcome.js
 > `PropTypes` exports a range of validators that can be used to make sure the data you receive is valid.
 
 ```js
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 MyComponent.propTypes = {
   // You can declare that a prop is a specific JS type. By default, these
@@ -1439,10 +1404,8 @@ MyComponent.propTypes = {
 
   // An object with property values of a certain type
   optionalObjectOf: PropTypes.objectOf(PropTypes.number)
-};
-
+}
 ```
-
 
 <!--slide-->
 
@@ -1463,7 +1426,6 @@ MyComponent.propTypes = {
 #### Required props
 
 > You can chain any of the above with `isRequired` to make sure a warning is shown if the prop isn't provided.
-
 
 ```js
 MyComponent.propTypes = {
@@ -1496,12 +1458,16 @@ MyComponent.propTypes = {
   customProp: function(props, propName, componentName) {
     if (!/matchme/.test(props[propName])) {
       return new Error(
-        'Invalid prop `' + propName + '` supplied to' +
-        ' `' + componentName + '`. Validation failed.'
-      );
+        'Invalid prop `' +
+          propName +
+          '` supplied to' +
+          ' `' +
+          componentName +
+          '`. Validation failed.'
+      )
     }
   }
-};
+}
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -1509,13 +1475,12 @@ MyComponent.propTypes = {
 #### Adding prop types
 
 Add `propTypes` properties to the following components:
+
 * `<TodoItem>`, all props required but `date`.
-  *  `item.date` and `onClickDelete` are optional. Make sure to apply conditional rendering, not showing the date or delete button.
+  * `item.date` and `onClickDelete` are optional. Make sure to apply conditional rendering, not showing the date or delete button.
 * `<TimeAgo>`, making sure that `date` is parsable by [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 
-
 https://codesandbox.io/s/zrnyxx683p?module=%2Fcomponents%2FTodoItem.js
-
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -1535,15 +1500,13 @@ TimeAgo.propTypes = {
 
 https://codesandbox.io/s/mm9pj5350j?module=%2Fcomponents%2FTimeAgo.js
 
-
 <!--slide-->
 
 ### Default Props
 
-> `defaultProps` can be defined as a property on the component class itself, to set the default props for the class. 
+> `defaultProps` can be defined as a property on the component class itself, to set the default props for the class.
 
 > This is used for undefined props, but not for null props.
-
 
 ```js
 class CustomButton extends React.Component {
@@ -1552,7 +1515,7 @@ class CustomButton extends React.Component {
 
 CustomButton.defaultProps = {
   color: 'blue'
-};
+}
 ```
 
 If `props.color` is not provided, it will be set by default to `'blue'`
@@ -1564,34 +1527,33 @@ If `props.color` is not provided, it will be set by default to `'blue'`
 > In the typical React dataflow, props are the only way that parent components interact with their children.
 
 > Sometimes a component may need to directily access its children's DOM elements:
+
 * Managing focus, text selection, or media playback.
 * Triggering imperative animations.
 * Integrating with third-party DOM libraries.
-
 
 <!--slide-->
 
 ```js
 function CustomTextInput(props) {
   // textInput must be declared here so the ref callback can refer to it
-  let textInput = null;
+  let textInput = null
 
   function handleClick() {
-    textInput.focus();
+    textInput.focus()
   }
 
   return (
     <div>
       <input
         type="text"
-        ref={(input) => { textInput = input; }} />
-      <input
-        type="button"
-        value="Focus the text input"
-        onClick={handleClick}
+        ref={input => {
+          textInput = input
+        }}
       />
+      <input type="button" value="Focus the text input" onClick={handleClick} />
     </div>
-  );  
+  )
 }
 ```
 
@@ -1599,10 +1561,9 @@ function CustomTextInput(props) {
 
 ### Caution!
 
-> Refs are only available after first render. 
+> Refs are only available after first render.
 
 > It means that in class components, they're available starting on `componentDidMount()`
-
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
@@ -1613,7 +1574,6 @@ Improve `<TodoForm>` to have a reference of the input, instead of dansgerously a
 You might have top convert it into a class component.
 
 https://codesandbox.io/s/mm9pj5350j?module=%2Fcomponents%2FTodoForm.js
-
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -1630,9 +1590,7 @@ class TodoForm extends React.Component {
   render() {
     const { placeholder } = this.props
     return (
-      <form
-        className="todo-form"
-        onSubmit={this.onSubmit.bind(this)}>
+      <form className="todo-form" onSubmit={this.onSubmit.bind(this)}>
         <input
           ref={input => (this.textInput = input)}
           className="new-todo"

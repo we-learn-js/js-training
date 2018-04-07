@@ -24,14 +24,15 @@
 >
 > Caution: implicit variable declaration will bind to global scope
 
-
 ```js
-(function () {
+;(function() {
   a = 1
   var b = 2
-  function logB () { console.log(b) }
+  function logB() {
+    console.log(b)
+  }
   logB() // 2
-}())
+})()
 
 console.log(a) // 1
 console.log(b) // ReferenceError: b is not defined
@@ -43,14 +44,14 @@ logB() // ReferenceError: logB is not defined
 ### Importing global variables to closure
 
 > Even if any closure as access to global scope, it's good practice to import dependencies of global scope:
+>
 > * Isolates even more the modules (easier to maintain and test)
 > * Provides an easy way to rename global variables
 
-
 ```js
-(function (win, doc) {
+;(function(win, doc) {
   const ELEMENT_ID = 'my-element'
-  win.addEventListener('load', function(){
+  win.addEventListener('load', function() {
     doc.body.appendChild(doc.createElement('DIV'))
   })
 })(window, document)
@@ -65,21 +66,31 @@ logB() // ReferenceError: logB is not defined
 > Expose only what it used, keep the rest private.
 
 ```js
-var weekDay = function() {
-  var names = ["Sunday", "Monday", "Tuesday", "Wednesday",
-               "Thursday", "Friday", "Saturday"]
-  function getName (number) { return names[number] }
-  function getNumber (name) { return names.indexOf(name) }
+var weekDay = (function() {
+  var names = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ]
+  function getName(number) {
+    return names[number]
+  }
+  function getNumber(name) {
+    return names.indexOf(name)
+  }
   return {
     name: getName,
     number: getNumber
   }
-}()
+})()
 
 console.log(weekDay.name(0)) // "Sunday"
 console.log(weekDay.number('Monday')) // 1
 ```
-
 
 <!--slide-->
 
@@ -92,12 +103,14 @@ console.log(weekDay.number('Monday')) // 1
 <!--slide-->
 
 ```js
-var counterModule = (function () {
+var counterModule = (function() {
   var counter = 0
   return {
-    incrementCounter: function () { return counter++ },
-    resetCounter: function () {
-      console.log( "counter value prior to reset: " + counter )
+    incrementCounter: function() {
+      return counter++
+    },
+    resetCounter: function() {
+      console.log('counter value prior to reset: ' + counter)
       counter = 0
     }
   }
@@ -107,7 +120,6 @@ counterModule.incrementCounter()
 counterModule.incrementCounter()
 counterModule.resetCounter() // "counter value prior to reset: 2"
 ```
-
 
 <!--section-->
 
@@ -125,7 +137,6 @@ counterModule.resetCounter() // "counter value prior to reset: 2"
 
 > All modules are obtained by its **path**, thanks to the `require` function that is always available in Node.js environments
 
-
 ```js
 var counterModule = require('./modules/counter')
 counterModule.incrementCounter()
@@ -138,11 +149,13 @@ counterModule.resetCounter() // "counter value prior to reset: 2"
 > Npm packages installed in the project can be required by package name
 
 Install a package:
+
 ```
 npm install angular --save
 ```
 
 Import a module from package:
+
 ```js
 // Import angular to create a module
 var angular = require('angular')
@@ -152,17 +165,19 @@ var ngModule = angular.module('my-module', [])
 <!--slide-->
 
 Install React:
+
 ```
 npm install react --save
 ```
 
 Import React module:
+
 ```js
 // Import React to create a component
 var React = require('react')
 class HelloMessage extends React.Component {
   render() {
-    return <div>Hello {this.props.name}</div>;
+    return <div>Hello {this.props.name}</div>
   }
 }
 ```
@@ -172,9 +187,9 @@ class HelloMessage extends React.Component {
 ### Exporting a module
 
 > `require` loads js files and executes doing the following:
+>
 > * It injects the empty object `exports` ready to be augmented with new properties and methods.
 > * It injects a `module` object with the `exports` object as its property, so the full module can be replaced instead of augmenting the original
-
 
 <!--slide-->
 
@@ -182,8 +197,9 @@ class HelloMessage extends React.Component {
 
 ```js
 function require(name) {
-  var code = new Function("exports", "module", readFile(name))
-  var exports = {}, module = {exports: exports}
+  var code = new Function('exports', 'module', readFile(name))
+  var exports = {},
+    module = { exports: exports }
   code(exports, module)
   return module.exports
 }
@@ -194,13 +210,16 @@ function require(name) {
 <!--slide-->
 
 Consider:
+
 ```js
-var counterModule = (function () {
+var counterModule = (function() {
   var counter = 0
   return {
-    incrementCounter: function () { return counter++ },
-    resetCounter: function () {
-      console.log( "counter value prior to reset: " + counter )
+    incrementCounter: function() {
+      return counter++
+    },
+    resetCounter: function() {
+      console.log('counter value prior to reset: ' + counter)
       counter = 0
     }
   }
@@ -215,9 +234,11 @@ In CommonJs:
 // modules/counter.js
 var counter = 0
 module.exports = {
-  incrementCounter: function () { return counter++ },
-  resetCounter: function () {
-    console.log( "counter value prior to reset: " + counter )
+  incrementCounter: function() {
+    return counter++
+  },
+  resetCounter: function() {
+    console.log('counter value prior to reset: ' + counter)
     counter = 0
   }
 }
@@ -226,9 +247,11 @@ module.exports = {
 ```js
 // modules/counter.js
 var counter = 0
-exports.incrementCounter = function () { return counter++ }
-exports.resetCounter = function () {
-  console.log( "counter value prior to reset: " + counter )
+exports.incrementCounter = function() {
+  return counter++
+}
+exports.resetCounter = function() {
+  console.log('counter value prior to reset: ' + counter)
   counter = 0
 }
 ```
@@ -241,14 +264,13 @@ exports.resetCounter = function () {
 >
 > The second time a module is required, the instance obtain at first call is returned.
 
-
 ```js
 function require(name) {
-  if (name in require.cache)
-    return require.cache[name]
+  if (name in require.cache) return require.cache[name]
 
-  var code = new Function("exports, module", readFile(name))
-  var exports = {}, module = {exports: exports}
+  var code = new Function('exports, module', readFile(name))
+  var exports = {},
+    module = { exports: exports }
   code(exports, module)
 
   require.cache[name] = module.exports
@@ -279,12 +301,12 @@ counterModule.resetCounter() // "counter value prior to reset: 3"
 > Write a simple module similar to the weekDay module that can convert month numbers (zero-based, as in the Date type) to names and can convert names back to numbers.
 
 ```js
-var month = require(function(module, exports){
+var month = require(function(module, exports) {
   // YOUR CODE GOES HERE
 })
 
 console.log(month.name(2)) // March
-console.log(month.number("November")) // 10
+console.log(month.number('November')) // 10
 ```
 
 https://jsbin.com/zapuqus/edit?js,console
@@ -294,12 +316,27 @@ https://jsbin.com/zapuqus/edit?js,console
 #### Solution
 
 ```js
-var month = require(function(module, exports){
-  const NAMES = ["January", "February", "March", "April",
-               "May", "June", "July", "August", "September",
-               "October", "November", "December"]
-  function getName (number) { return NAMES[number] }
-  function getNumber (name) { return NAMES.indexOf(name) }
+var month = require(function(module, exports) {
+  const NAMES = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
+  function getName(number) {
+    return NAMES[number]
+  }
+  function getNumber(name) {
+    return NAMES.indexOf(name)
+  }
   module.exports = {
     name: getName,
     number: getNumber
@@ -324,19 +361,35 @@ var month = require(function(module, exports){
 #### Exporting declared variables
 
 > Local variables can be exported and renamed.
+>
 > ```js
 > export { name1, name2, …, nameN };
 > export { variable1 as name1, variable2 as name2, …, nameN };
 > ```
 
 ```js
-const NAMES = ["January", "February", "March", "April",
-             "May", "June", "July", "August", "September",
-             "October", "November", "December"]
-function getName (number) { return NAMES[number] }
-function getNumber (name) { return NAMES.indexOf(name) }
+const NAMES = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
+function getName(number) {
+  return NAMES[number]
+}
+function getNumber(name) {
+  return NAMES.indexOf(name)
+}
 
-export {NAMES, getName as name, getNumber as number}
+export { NAMES, getName as name, getNumber as number }
 ```
 
 <!--slide-->
@@ -352,12 +405,27 @@ export {NAMES, getName as name, getNumber as number}
 > ```
 
 ```js
-export const NAMES = ["January", "February", "March", "April",
-             "May", "June", "July", "August", "September",
-             "October", "November", "December"]
+export const NAMES = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
 
-export function name (number) { return NAMES[number] }
-export function number (name) { return NAMES.indexOf(name) }
+export function name(number) {
+  return NAMES[number]
+}
+export function number(name) {
+  return NAMES.indexOf(name)
+}
 ```
 
 <!--slide-->
@@ -367,6 +435,7 @@ export function number (name) { return NAMES.indexOf(name) }
 > As `module.exports` in CommonJs, the full module can be exported as default.
 >
 > But unlike CommonJs, the default export doesn't overwrite other exports.
+>
 > ```js
 > export default expression;
 > export default function (…) { … } // also class, function*
@@ -377,11 +446,26 @@ export function number (name) { return NAMES.indexOf(name) }
 <!--slide-->
 
 ```js
-function getName (number) { return NAMES[number] }
-function getNumber (name) { return NAMES.indexOf(name) }
-export const NAMES = ["January", "February", "March", "April",
-             "May", "June", "July", "August", "September",
-             "October", "November", "December"]
+function getName(number) {
+  return NAMES[number]
+}
+function getNumber(name) {
+  return NAMES.indexOf(name)
+}
+export const NAMES = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
 export default {
   name: getName,
   number: getNumber
@@ -401,12 +485,14 @@ export default {
 #### Importing members of a module
 
 > Any member exported can be imported as is or renamed.
+>
 > ```js
-import { member } from "module-name";
-import { member as alias } from "module-name";
-import * as name from "module-name";
-```
+> import { member } from 'module-name'
+> import { member as alias } from 'module-name'
+> import * as name from 'module-name'
+> ```
 
+````
 <!--slide-->
 
 Consider:
@@ -418,18 +504,20 @@ export const NAMES = ["January", "February", "March", "April",
 
 export function name (number) { return NAMES[number] }
 export function number (name) { return NAMES.indexOf(name) }
-```
+````
 
 <!--slide-->
 
 Importing members separately
+
 ```js
 // main.js
-import { NAMES, name as getMonthName, number} from './modules/months'
+import { NAMES, name as getMonthName, number } from './modules/months'
 console.log(getMonthName(2)) // March
 ```
 
 Importing all members
+
 ```js
 // main.js
 import * as month from './modules/months'
@@ -441,12 +529,14 @@ console.log(month.name(2)) // March
 #### Default import
 
 > Default member can be imported
+>
 > ```js
-import defaultMember from "module-name";
-import defaultMember, { member [ , [...] ] } from "module-name";
-import defaultMember, * as name from "module-name";
-```
+> import defaultMember from "module-name";
+> import defaultMember, { member [ , [...] ] } from "module-name";
+> import defaultMember, * as name from "module-name";
+> ```
 
+````
 <!--slide-->
 
 Consider:
@@ -461,7 +551,7 @@ export default {
   name: getName,
   number: getNumber
 }
-```
+````
 
 <!--slide-->
 
@@ -475,7 +565,7 @@ console.log(month.name(2)) // March
 Importing default and members
 
 ```js
-import month, {NAMES as monthNames} from './modules/months'
+import month, { NAMES as monthNames } from './modules/months'
 console.log(month.name(2)) // March
 console.log(monthNames) // ["January", "February", "March", "April", ...
 ```
@@ -485,13 +575,14 @@ console.log(monthNames) // ["January", "February", "March", "April", ...
 ### Import/export
 
 > member can be exported from other modules
+>
 > ```js
-export * from …;
-export { name1, name2, …, nameN } from …;
-export { import1 as name1, import2 as name2, …, nameN } from …;
-```
+> export * from …;
+> export { name1, name2, …, nameN } from …;
+> export { import1 as name1, import2 as name2, …, nameN } from …;
+> ```
 
-
+````
 <!--slide-->
 
 ```js
@@ -502,14 +593,14 @@ export const NAMES = ["January", "February", "March", "April",
 
 export function name (number) { return NAMES[number] }
 export function number (name) { return NAMES.indexOf(name) }
-```
+````
 
 ```js
 export * from './modules/months'
 ```
 
 ```js
-export {name as getMonthName} from './modules/months'
+export { name as getMonthName } from './modules/months'
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -532,8 +623,6 @@ export {round as getRound, PI}
 * Import number function as **number**
 * Import all methods as **math** and getNumber as **number**
 
-
-
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 #### Solution: Import all methods as **math**
@@ -548,7 +637,6 @@ export function getCube(x) { return x * x * x; }
 export default getNumber
 export {round as getRound, PI}
 ```
-
 
 ```js
 import * as math from 'math'
@@ -570,7 +658,7 @@ export {round as getRound, PI}
 ```
 
 ```js
-import {getSquare as square} from 'math'
+import { getSquare as square } from 'math'
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
@@ -587,7 +675,6 @@ export function getCube(x) { return x * x * x; }
 export default getNumber
 export {round as getRound, PI}
 ```
-
 
 ```js
 import number from 'math'

@@ -1,4 +1,3 @@
-
 # Testing In Javascript
 
 <!--section-->
@@ -8,7 +7,6 @@
 <!--slide-->
 
 ### How does it look like?
-
 
 ```js
 // PASS
@@ -35,7 +33,6 @@ https://jsbin.com/jovanep/edit?js,output
 > It handles both success and failed tests and provides info what failed.
 
 There are many testing frameworks: YUI test, Jasmine, **Mocha**, JSUnit, and many more...
-
 
 <!--slide-->
 
@@ -80,9 +77,7 @@ https://jsbin.com/yukori/4/edit?js,output
 
 ```js
 describe('Array', () => {
-
   describe('#indexOf', () => {
-
     it('should return -1 when the value is not present', () => {
       expect([1, 2, 3].indexOf(5)).to.equal(-1)
       expect([1, 2, 3].indexOf(0)).to.equal(-1)
@@ -99,9 +94,7 @@ describe('Array', () => {
 
 ```js
 describe('Array', () => {
-
   describe('#indexOf', () => {
-
     describe('When the value is not present', () => {
       it('returns -1 ', () => {
         expect([1, 2, 3].indexOf(5)).to.equal(-1)
@@ -120,9 +113,7 @@ describe('Array', () => {
 
 https://jsbin.com/buzava/edit?js,output
 
-
 <!--slide-->
-
 
 ### Assertion libraries
 
@@ -143,7 +134,6 @@ Many libraries offer slightly different interfaces
 * many more...
 
 <!--slide-->
-
 
 #### Chai
 
@@ -177,7 +167,9 @@ var expect = chai.expect
 expect(foo).to.be.a('string')
 expect(foo).to.equal('bar')
 expect(foo).to.have.lengthOf(3)
-expect(tea).to.have.property('flavors').with.lengthOf(3)
+expect(tea)
+  .to.have.property('flavors')
+  .with.lengthOf(3)
 ```
 
 <!--slide-->
@@ -197,13 +189,12 @@ tea.should.have.property('flavors').with.lengthOf(3)
 
 #### Main Assertions
 
-
 ```js
-expect(object).to
-  .equal(expected)      // target is strictly equal (===) to value
+expect(object)
+  .to.equal(expected) // target is strictly equal (===) to value
   .deep.equal(expected) // target is deeply equal to value.
-  .exist                // asserts that the target is neither null nor undefined.
-  .contain(val)         // assert the inclusion of an object in an array or a substring in a string
+  .exist // asserts that the target is neither null nor undefined.
+  .contain(val) // assert the inclusion of an object in an array or a substring in a string
 ```
 
 <!--slide-->
@@ -211,16 +202,16 @@ expect(object).to
 #### to.be
 
 ```js
-expect(object).to.be
-  .a('string')  // asserts a value’s type
-  .ok           // asserts that the target is truthy
-  .true         // asserts that the target is true
-  .false        // asserts that the target is false
-  .null         // asserts that the target is null
-  .undefined    // asserts that the target is undefined
-  .empty        // asserts that the target’s length is 0
-  .arguments    // asserts that the target is an arguments object.
-  .function     // asserts that the target is an function object.
+expect(object)
+  .to.be.a('string') // asserts a value’s type
+  .ok // asserts that the target is truthy
+  .true // asserts that the target is true
+  .false // asserts that the target is false
+  .null // asserts that the target is null
+  .undefined // asserts that the target is undefined
+  .empty // asserts that the target’s length is 0
+  .arguments // asserts that the target is an arguments object.
+  .function // asserts that the target is an function object.
   .instanceOf(constructor) // asserts that the target is an instance of constructor.
 ```
 
@@ -229,13 +220,15 @@ expect(object).to.be
 #### Comparison
 
 ```js
-expect(object).to
-  .gt(5)  // or .above .greaterThan
-  .gte    // or .at.least
-  .lt(5)  // or .below
+expect(object)
+  .to.gt(5) // or .above .greaterThan
+  .gte // or .at.least
+  .lt(5) // or .below
 
-  .satisfy(function(num) { return num > 0 })
-  // asserts that the target passes a given truth test.
+  .satisfy(function(num) {
+    return num > 0
+  })
+// asserts that the target passes a given truth test.
 ```
 
 <!--slide-->
@@ -254,24 +247,17 @@ expect( () => { ... } ).to
 
 > Negates any of assertions following in the chain.
 
-
 ```js
-expect(object)
-  .to.not.be.a('string') // assert a value is NOT given type
-  .to.not.be.ok          // asserts that the target is NOT truthy
-  .to.not.be.true        // asserts that the target is NOT true
-  .to.not.be.false       // asserts that the target is NOT false
+expect(object).to.not.be.a('string').to.not.be.ok.to.not.be.true.to.not.be.false // assert a value is NOT given type // asserts that the target is NOT truthy // asserts that the target is NOT true // asserts that the target is NOT false
 
-expect(object).to.not
-  .equal(expected)      // target is NOT strictly equal (===) to value
+expect(object).to.not.equal(expected) // target is NOT strictly equal (===) to value
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 ### Practice: First Assertions
 
-
-Test behaviour of  [Array.push](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/push) function.
+Test behaviour of [Array.push](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/push) function.
 
 Use chai expect assertion interface.
 
@@ -299,7 +285,6 @@ Test execution **MUST NOT** have side effects.
 
 ```js
 describe('hooks', () => {
-
   before(() => {
     // runs before all tests in this block
   })
@@ -354,6 +339,7 @@ after(() => {
   document.body.removeChild(fixturesElement)
 })
 ```
+
 ```js
 beforeEach(() => {
   button = document.createElement('Button')
@@ -386,12 +372,10 @@ https://jsbin.com/pifura/2/edit?js,console,output
 
 `sinon.spy()` wraps the original function
 
-
 <!--slide-->
 
 ```js
 describe('getUsers', () => {
-
   beforeEach(() => {
     sinon.spy($, 'get')
     getUsers(() => {}, 5)
@@ -401,7 +385,7 @@ describe('getUsers', () => {
     $.get.restore()
   })
 
-  it( 'should make right ajax request to retrieve users', () => {
+  it('should make right ajax request to retrieve users', () => {
     expect($.get).to.have.been.calledOnce
     expect($.get.firstCall.args[0]).to.contain('/users')
   })
@@ -417,9 +401,9 @@ https://jsbin.com/hirehir/5/edit?js,output
 > Spies must always be restored to reset the original behaviour of spied method
 
 ```js
-  afterEach(() => {
-    $.get.restore()
-  })
+afterEach(() => {
+  $.get.restore()
+})
 ```
 
 > **Avoid tests' side effects**
@@ -445,7 +429,6 @@ spy.returnValues
 
 spy.thisValues
 // Array of this objects, spy.thisValues[0] is the this object for the first call.
-
 ```
 
 <!--slide-->
@@ -490,7 +473,6 @@ spy.calledWithExactly(arg1, arg2, ...)
 // Returns true if spy was called at least once with the provided arguments and no others.
 ```
 
-
 <!--slide-->
 
 Outputs
@@ -499,7 +481,7 @@ Outputs
 spy.threw()
 // Returns true if spy threw an exception at least once.
 
-spy.threw("TypeError")
+spy.threw('TypeError')
 // Returns true if spy threw an exception of the provided type at least once.
 
 spy.threw(obj)
@@ -507,7 +489,6 @@ spy.threw(obj)
 
 spy.returned(obj)
 // Returns true if spy returned the provided value at least once. Uses deep comparison for objects and arrays. Use spy.returned(sinon.match.same(obj)) for strict comparison (see matchers).
-
 ```
 
 <!--slide-->
@@ -524,12 +505,20 @@ spy.returned(obj)
 beforeEach(() => {
   sinon.stub($, 'get', () => {
     return {
-      done (callback) {
+      done(callback) {
         callback([
-          {name: 'user1'}, {name: 'user2'}, {name: 'user3'},
-          {name: 'user4'}, {name: 'user5'}, {name: 'user6'},
-          {name: 'user7'}, {name: 'user8'}, {name: 'user9'},
-          {name: 'user10'}, {name: 'user11'}, {name: 'user12'}
+          { name: 'user1' },
+          { name: 'user2' },
+          { name: 'user3' },
+          { name: 'user4' },
+          { name: 'user5' },
+          { name: 'user6' },
+          { name: 'user7' },
+          { name: 'user8' },
+          { name: 'user9' },
+          { name: 'user10' },
+          { name: 'user11' },
+          { name: 'user12' }
         ])
       }
     }
@@ -559,7 +548,7 @@ stub.returnsThis()
 stub.throws()
 // Causes the stub to throw an exception (Error).
 
-stub.throws("TypeError")
+stub.throws('TypeError')
 // Causes the stub to throw an exception of the provided type.
 ```
 
@@ -581,11 +570,10 @@ stub.onCall(n)
 
 ```js
 var callback = sinon.stub()
-    callback.onFirstCall().returns(1)
-    callback.onCall(1).throws()
-    callback.onThirdCall().returnsThis()
+callback.onFirstCall().returns(1)
+callback.onCall(1).throws()
+callback.onThirdCall().returnsThis()
 ```
-
 
 <!--slide-->
 
@@ -599,13 +587,12 @@ var callback = sinon.stub()
 
 ```js
 describe('getOneUser', () => {
-  it( 'should filter number of return results', function(done) {
-    getOneUser(5)
-      .then(function(result){
-        expect(result).to.be.an('object')
-        expect(result.id).to.equal(1)
-        done()
-      })
+  it('should filter number of return results', function(done) {
+    getOneUser(5).then(function(result) {
+      expect(result).to.be.an('object')
+      expect(result.id).to.equal(1)
+      done()
+    })
   })
 })
 ```
@@ -636,7 +623,7 @@ afterEach(() => {
   console.log.restore()
 })
 
-it( 'should log numbers step by step', () => {
+it('should log numbers step by step', () => {
   clock.tick(500)
   expect(console.log).to.have.been.calledOnce
   clock.tick(1000)
@@ -645,7 +632,6 @@ it( 'should log numbers step by step', () => {
 ```
 
 https://jsbin.com/sofubep/edit?js,output
-
 
 <!--slide-->
 
@@ -662,16 +648,24 @@ https://jsbin.com/sofubep/edit?js,output
 ```js
 server = sinon.fakeServer.create()
 
-server.respondWith(
-  [200,
-  {'Content-Type': 'application/json' },
+server.respondWith([
+  200,
+  { 'Content-Type': 'application/json' },
   JSON.stringify([
-    {name: 'user1'}, {name: 'user2'}, {name: 'user3'},
-    {name: 'user4'}, {name: 'user5'}, {name: 'user6'},
-    {name: 'user7'}, {name: 'user8'}, {name: 'user9'},
-    {name: 'user10'}, {name: 'user11'}, {name: 'user12'}
-  ])]
-)
+    { name: 'user1' },
+    { name: 'user2' },
+    { name: 'user3' },
+    { name: 'user4' },
+    { name: 'user5' },
+    { name: 'user6' },
+    { name: 'user7' },
+    { name: 'user8' },
+    { name: 'user9' },
+    { name: 'user10' },
+    { name: 'user11' },
+    { name: 'user12' }
+  ])
+])
 
 server.respond()
 ```
@@ -722,7 +716,6 @@ https://jsbin.com/kucugaz/edit?js,output
 
 > Assertions primarily test the user interface.
 
-
 <!--section-->
 
 ## Dos and Donts
@@ -748,6 +741,7 @@ https://jsbin.com/kucugaz/edit?js,output
 > One test should be responsible for one concern, one scenario only.
 
 > Test behaviours, no methods:
+>
 > * one method, multiple behaviours -> multiple tests
 > * one behaviour, multiple methods -> One test
 
@@ -783,7 +777,7 @@ http://betterspecs.org/
 
 ## Must read
 
-[Unit vs Functional vs Integration Tests]( https://www.sitepoint.com/javascript-testing-unit-functional-integration/)
+[Unit vs Functional vs Integration Tests](https://www.sitepoint.com/javascript-testing-unit-functional-integration/)
 
 [Better Specs](http://betterspecs.org/)
 

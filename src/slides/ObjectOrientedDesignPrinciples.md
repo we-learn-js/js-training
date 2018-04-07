@@ -52,23 +52,22 @@ Note: A pocket knife that was extended to the point that it can do anything, exc
 
 > Create classes in a way you can **extend their behaviour without modifying their code**.
 
-
 <!--slide-->
 
 ![Open/Close Princple](https://lostechies.com/derickbailey/files/2011/03/OpenClosedPrinciple2_2C596E17.jpg)
 
-
 <!--slide-->
 
 Consider:
+
 ```js
 class EntityController {
   addComment(comment) {
-    if(this.validateNotSpam(comment)) {
+    if (this.validateNotSpam(comment)) {
       // Save the comment to database
     }
   }
-  validateNotSpam () {
+  validateNotSpam() {
     //Check if the IP-address is known as a spammer
   }
 }
@@ -85,16 +84,16 @@ class EntityController {
 ```js
 class EntityController {
   addComment(comment) {
-    if(this.validateNotSpam() && this.validateLoggedUser()) {
+    if (this.validateNotSpam() && this.validateLoggedUser()) {
       // Save the comment to database
-    } else {
+    } else {
       return false
     }
   }
-  validateNotSpam () {
+  validateNotSpam() {
     //Check if the IP-address is known as a spammer
   }
-  validateLoggedUser () {
+  validateLoggedUser() {
     //Check if the user has session
   }
 }
@@ -118,7 +117,7 @@ class EntityController {
       return validator.validate(comment) || isValid
     }, true)
 
-    if(!isValid) {
+    if (!isValid) {
       return false
     }
     // Save the comment to database
@@ -136,8 +135,8 @@ class EntityController {
     this.validators = validators
   }
   addComment(comment) {
-    for(var i = 0; this.validators.length; i++) {
-      if(!this.validators[i].validate(comment)) {
+    for (var i = 0; this.validators.length; i++) {
+      if (!this.validators[i].validate(comment)) {
         return false
       }
     }
@@ -152,25 +151,23 @@ Now `EntityController` is extendable with more validations, without actually mod
 
 ```js
 class IValidator {
-  validate () {
-   throw new Error('Expected IValidator.validate() not implemented');
+  validate() {
+    throw new Error('Expected IValidator.validate() not implemented')
   }
 }
 class SpamValidator extends IValidator {
-  validate () { /* Check if the IP-address is known as a spammer */ }
+  validate() {
+    /* Check if the IP-address is known as a spammer */
+  }
 }
 class UserLoggedValidator extends IValidator {
-  validate () { /* Check if user has session */ }
+  validate() {
+    /* Check if user has session */
+  }
 }
-var ctrl = new EntityController([
-  new SpamValidator(),
-  new SessionValidator()
-])
+var ctrl = new EntityController([new SpamValidator(), new SessionValidator()])
 ctrl.addComment('a comment')
 ```
-
-
-
 
 <!--slide-->
 
@@ -190,7 +187,6 @@ ctrl.addComment('a comment')
 
 > LSP violation breaks **polymorphism** principle.
 
-
 <!--slide-->
 
 #### LSP Violation examples
@@ -199,19 +195,18 @@ ctrl.addComment('a comment')
 
 ##### The classic example: Rectangle/Square
 
-
 ```js
 class Rectangle {
-  constructor (width, height) {
+  constructor(width, height) {
     this.width = width
     this.height = height
   }
-  getArea () {
+  getArea() {
     return this.width * this.height
   }
 }
-class Square extends Rectangle  {
-  constructor (width, height) {
+class Square extends Rectangle {
+  constructor(width, height) {
     this.width = width
     this.height = width
   }
@@ -234,6 +229,7 @@ Square violates rectangle laws of geometry.
 ##### Another example: The Penguin
 
 Consider:
+
 ```js
 class Bird {
   contructor (height, weight)
@@ -258,11 +254,11 @@ class Penguin extends Bird {
 > Penguin will work sometimes, but sometimes it won't behave as expected with Bird.
 
 ```js
-function birdBehaviorSequence1 (bird) {
+function birdBehaviorSequence1(bird) {
   bird.eat('corn')
   bird.walk(30)
 }
-function birdBehaviorSequence2 (bird) {
+function birdBehaviorSequence2(bird) {
   bird.eat('corn')
   bird.speak()
   bird.fly(30)
@@ -313,8 +309,6 @@ function birdBehaviorSequence2 (bird) {
 
 > Besides buttons, we have plugs for HDMI, VGA, etc. The plugs expect an input: a cable that provides a stream of video and sound. Plugs are part of the interface, but they require an input, like the **arguments** we provide on a **method invocation**.
 
-
-
 <!--slide-->
 
 Let's see a TV class:
@@ -322,7 +316,7 @@ Let's see a TV class:
 ```js
 class TV {
   turnOn()
-  turnOff()  
+  turnOff()
   nextChannel()
   previousChannel()
   volumeUp()
@@ -332,7 +326,6 @@ class TV {
 ```
 
 > Some TVs may have more of buttons. But we all know what is the smallest set of buttons of a TV.
-
 
 <!--slide-->
 
@@ -344,13 +337,12 @@ class TV {
 
 > The object provided (device) is irrelevant, only the implemented buttons matter. Only the interface matters.
 
-
 <!--slide-->
 
 ```js
 class TVInterface {
   turnOn()
-  turnOff()  
+  turnOff()
   nextChannel()
   previousChannel()
   volumeUp()
@@ -381,16 +373,13 @@ class TVRemove extends TVInterface {
 > The object (device) provided does not matter. Then, `TVWatcher` can expect a list of operations instead of a specific class instance.
 
 ```js
-
 class TVWatcher {
-
   watchChannel(device, channel) {
-    while(device.currentChannel !== channel) {
+    while (device.currentChannel !== channel) {
       device.nextChannel()
     }
   }
 }
-
 ```
 
 <!--slide-->
@@ -399,6 +388,7 @@ class TVWatcher {
 
 > The interface does not have to do with what a class is, or what properties it has,
 > It has to do with:
+>
 > * What are the operations
 > * What are the name of theses operations and its required inputs (parameters)
 
@@ -417,7 +407,7 @@ Let's see our interface:
 ```js
 class TVInterface {
   turnOn()
-  turnOff()  
+  turnOff()
   nextChannel()
   previousChannel()
   volumeUp()
@@ -435,7 +425,6 @@ class TVInterface {
 
 > But, as `TVInterface`as more methods, we should implement ALL its methods in `MiniRemote`
 
-
 <!--slide-->
 
 If we had segregated our interface on design:
@@ -443,7 +432,7 @@ If we had segregated our interface on design:
 ```js
 class DeviceInterface {
   turnOn()
-  turnOff()  
+  turnOff()
 }
 class ChannelsControlInterface {
   nextChannel()
@@ -457,7 +446,6 @@ class VolumeControlInterface {
 ```
 
 TVWatcher would expect `ChannelsControlInterface` and `MiniRemote` would have to implement 2 methods, instead of 7.
-
 
 <!--slide-->
 
@@ -478,6 +466,7 @@ TVWatcher would expect `ChannelsControlInterface` and `MiniRemote` would have to
 <!--slide-->
 
 What are dependencies?
+
 * Framework
 * Third Party Libraries
 * Database
@@ -485,7 +474,6 @@ What are dependencies?
 * Email service
 * Web service
 * ...
-
 
 <!--slide-->
 
@@ -515,11 +503,11 @@ What are dependencies?
 
 ```js
 class FormCtrl {
-  onSuccess () {
-    AlertLibrary.message( 'Data saved in database!' )
+  onSuccess() {
+    AlertLibrary.message('Data saved in database!')
   }
-  onError () {
-    AlertLibrary.message( 'Error!' )
+  onError() {
+    AlertLibrary.message('Error!')
   }
 }
 ```
@@ -532,27 +520,28 @@ class FormCtrl {
 
 ![DI](http://www.javabrahman.com/wp-content/uploads/Dependency-Inversion-Principle-Dependencies-Procedural-Systems.png)
 
-
 <!--slide-->
 
 #### Inverting the control
 
 ```js
 class IMessageService {
-  showMessage() { throw new Error('IMessageService.showMessage not implemented') }
+  showMessage() {
+    throw new Error('IMessageService.showMessage not implemented')
+  }
 }
 class FormMessageService extends IMessageService {
-  showMessage (msg) {
-    AlertLibrary.message( msg )
+  showMessage(msg) {
+    AlertLibrary.message(msg)
   }
 }
 class FormCtrl {
-  constructor (messageService) {
+  constructor(messageService) {
     // Expects object the implements IMessageService
     this.messages = messageService
   }
-  onSuccess () {
-    this.messages.showMessage( 'Data saved in database!' )
+  onSuccess() {
+    this.messages.showMessage('Data saved in database!')
   }
   /**/
 }
@@ -574,7 +563,7 @@ class FormCtrl {
 
 > When you force your input to implemented an interface YOU define, you are inverting the control.
 
-> You decide what are the methods  and the input has to fullfill your requirements
+> You decide what are the methods and the input has to fullfill your requirements
 
 <!--section-->
 
@@ -590,7 +579,7 @@ class FormCtrl {
 
 <!--slide-->
 
-Responsibility is defined as a contract or obligation of a  class and is related to behaviour.
+Responsibility is defined as a contract or obligation of a class and is related to behaviour.
 
 There are 2 types of responsibilities:
 
@@ -612,18 +601,20 @@ There are 2 types of responsibilities:
 <!--slide-->
 
 ##### Controller
+
 > Responsible of executing a use case or story.
 
 > Receives request from UI layer object and then controls/coordinates with other object of the domain layer to fulfill the request.
 
 > It delegates the work to other class and coordinates the
-overall activity.
+> overall activity.
 
 Example: a class in charge of managing a form.
 
 <!--slide-->
 
 ##### Information Expert
+
 > Has all the data require for a particular process.
 
 > It's focused on data, more than processing.
@@ -688,6 +679,7 @@ Example: Object that only save information in a database
 > Reduce coupling between classes
 
 > A class with high coupling relies on many other classes. It makes the code:
+
 * Not reusable
 * Hard to understand in isolation
 * Easily brojken with other class changes
@@ -729,26 +721,24 @@ ISP and DIP helps with the low coupling principle
 > Apply OO principles on the code.
 
 ```js
-  class LoginForm {
-    constructor(form) {}
-    submit(event) {}
-    showMessage(text) {}
-    /* */
-  }
+class LoginForm {
+  constructor(form) {}
+  submit(event) {}
+  showMessage(text) {}
+  /* */
+}
 ```
 
-
 http://jsbin.com/yozudi/edit?js,output
-
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
 > LoginForm has several responsibilities.
+>
 > * Manage UI inputs
 > * Send http requests
 > * Show interface messages
 > * Change page
-
 
 <!--section-->
 

@@ -19,9 +19,9 @@
 ```js
 typeof [] // "object"
 typeof {} // "object"
-typeof document.createElement('DIV')  // "object"
-typeof new String('5')  // "object"
-typeof new Number(5)  // "object"
+typeof document.createElement('DIV') // "object"
+typeof new String('5') // "object"
+typeof new Number(5) // "object"
 ```
 
 It's "almost" true
@@ -32,7 +32,7 @@ It's "almost" true
 
 > The simple types of JavaScript are
 
->  `numbers`, `strings`, `booleans`, `null`, `undefined`
+> `numbers`, `strings`, `booleans`, `null`, `undefined`
 
 All other values are objects.
 
@@ -52,6 +52,7 @@ typeof undefined // "undefined"
 <!--slide-->
 
 How weird is that?
+
 ```js
 typeof null // "object"
 ```
@@ -68,9 +69,7 @@ However, it's still widely considered as an "official mistake" of the language.
 
 [ECMA Spec // The typeof Operator](http://www.ecma-international.org/ecma-262/5.1/#sec-11.4.3)
 
-
 Note: as in javascript everything is an object assigned by reference , a defined but "empty" value is considered as a reference to an object. In case of `null`, it's an empty reference.
-
 
 <!--slide-->
 
@@ -79,11 +78,13 @@ So let's check everything else
 ```js
 typeof [] // "object"
 typeof {} // "object"
-typeof document.createElement('DIV')  // "object"
+typeof document.createElement('DIV') // "object"
 typeof /javascript/i // "object"
-typeof new RegExp("javascript", "i") // "object"
-typeof function (x) { return x*x }  // "function"
-typeof new Function("x", "return x*x")  // "function"
+typeof new RegExp('javascript', 'i') // "object"
+typeof function(x) {
+  return x * x
+} // "function"
+typeof new Function('x', 'return x*x') // "function"
 ```
 
 https://jsbin.com/zojele/edit?js,console
@@ -93,8 +94,10 @@ https://jsbin.com/zojele/edit?js,console
 Again weird...
 
 ```js
-typeof function (x) { return x*x }  // "function"
-typeof new Function("x", "return x*x")  // "function"
+typeof function(x) {
+  return x * x
+} // "function"
+typeof new Function('x', 'return x*x') // "function"
 ```
 
 <!--slide-->
@@ -108,8 +111,9 @@ typeof new Function("x", "return x*x")  // "function"
 <!--slide-->
 
 A functions is still an object (inherits from `Object`)
+
 ```js
-var func =  function () {}
+var func = function() {}
 func.name = 'Sarah'
 func.hasOwnProperty('name') // true
 ```
@@ -121,14 +125,12 @@ func.hasOwnProperty('name') // true
 An object is not a function, though...
 
 ```js
-var obj =  {}
+var obj = {}
 obj.name = 'Sarah'
 obj.hasOwnProperty('name') // true
 
 obj() // TypeError: obj is not a function
 ```
-
-
 
 Note: [Object.prototype.hasOwnProperty()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty)
 
@@ -145,14 +147,16 @@ Last but not least...
 <!--slide-->
 
 Types
+
 ```js
-typeof new String('5')  // "object"
-typeof '5'  // "string"
-typeof new Number(5)  // "object"
-typeof 5  // "number"
+typeof new String('5') // "object"
+typeof '5' // "string"
+typeof new Number(5) // "object"
+typeof 5 // "number"
 ```
 
 Object convertion
+
 ```js
 var prim = 'foo'
 var obj = new String('foo')
@@ -161,8 +165,6 @@ console.log(prim.split('')) // ["f", "o", "o"]
 console.log(obj.split('')) // ["f", "o", "o"]
 console.log('foo'.split('')) // ["f", "o", "o"]
 ```
-
-
 
 <!--slide-->
 
@@ -174,7 +176,7 @@ var obj = new Number(3.1415)
 
 console.log(prim.toFixed(2)) // "3.14"
 console.log(obj.toFixed(2)) // "3.14"
-console.log(3.1415.toFixed(2)) // "3.14"
+console.log((3.1415).toFixed(2)) // "3.14"
 ```
 
 <!--slide-->
@@ -189,9 +191,7 @@ console.typeof str.valueOf()  // "string"
 
 [MDN // Object.prototype.valueOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf)
 
-
 <!--section-->
-
 
 ## What is an object?
 
@@ -221,12 +221,12 @@ var user = {
 
 ```js
 var obj = {}
-obj[''] = 1             // obj[""]
-obj[2] = 2              // obj["2"]
-obj[null] = 3           // obj["null"]
-obj.property4 = 4       // obj["property4"]
-obj['property: 5'] = 5  // obj["property: 5"]
-obj[true] = 6           // obj["true"]
+obj[''] = 1 // obj[""]
+obj[2] = 2 // obj["2"]
+obj[null] = 3 // obj["null"]
+obj.property4 = 4 // obj["property4"]
+obj['property: 5'] = 5 // obj["property: 5"]
+obj[true] = 6 // obj["true"]
 
 Object.keys(obj) // ["2", "", "null", "property4", "property: 5", "true"]
 ```
@@ -236,6 +236,7 @@ Object.keys(obj) // ["2", "", "null", "property4", "property: 5", "true"]
 > Properties can also be assign by variable name (shorthand)
 
 this code
+
 ```js
 var name = 'Evan'
 var surname = 'Graham'
@@ -251,7 +252,6 @@ var user = { name: name, surname: surname }
 ```
 
 <!--slide-->
-
 
 ### Methods
 
@@ -274,7 +274,6 @@ var door = {
 ```
 
 [Stackoverflow // properties vs methods](http://stackoverflow.com/questions/14953047/example-of-properties-vs-methods-in-js)
-
 
 <!--section-->
 
@@ -320,7 +319,6 @@ console.log(user)
 
 > Objects are passed around **by reference**. They are **never copied**.
 
-
 ```js
 var user = { name: 'Evan', lastName: 'Graham' }
 var user2 = user
@@ -351,6 +349,7 @@ console.log(user.measures.weight) // 95
 ### Creating objects
 
 > There are two ways to create an object:
+>
 > * Using literals
 > * Using `Object` constructor function
 
@@ -364,12 +363,11 @@ console.log(user.measures.weight) // 95
 var emptyObj = {}
 var user = {
   name: 'Rachel',
-  'lastName': 'Green'
+  lastName: 'Green'
 }
 ```
 
 Note: quotes around a property’s name in an object literal are optional
-
 
 <!--slide-->
 
@@ -378,7 +376,6 @@ Note: quotes around a property’s name in an object literal are optional
 > `Object` is a `function` , which is an `object`.
 >
 > If a function is invoked with the `new` prefix, then a new object will be created. It's called the **constructor invocation pattern**.
-
 
 ```js
 var emptyObj = new Object()
@@ -390,15 +387,17 @@ user.lastName = 'Green'
 <!--slide-->
 
 this code...
+
 ```js
 var emptyObj = {}
 var user = {
   name: 'Rachel',
-  'lastName': 'Green'
+  lastName: 'Green'
 }
 ```
 
 is the same as...
+
 ```js
 var emptyObj = new Object()
 var user = new Object()
@@ -421,13 +420,13 @@ user.lastName = 'Green'
 <!--slide-->
 
 ```js
-function Animal () {}
+function Animal() {}
 
 var cat = new Animal() // New object is constructed
 var mouse = new Animal() // New object is constructed
 
-cat.firstName = "Tom"
-mouse.firstName = "Jerry"
+cat.firstName = 'Tom'
+mouse.firstName = 'Jerry'
 
 console.log(cat.firstName) // "Tom"
 console.log(mouse.firstName) // "Jerry"
@@ -440,13 +439,13 @@ console.log(mouse.firstName) // "Jerry"
 Same code without the **constructor invocation pattern**:
 
 ```js
-function Animal () {}
+function Animal() {}
 
 var cat = Animal
 var mouse = Animal
 
-cat.firstName = "Tom"
-mouse.firstName = "Jerry"
+cat.firstName = 'Tom'
+mouse.firstName = 'Jerry'
 
 console.log(cat.firstName) // "Jerry"
 console.log(mouse.firstName) // "Jerry"
@@ -454,9 +453,7 @@ console.log(mouse.firstName) // "Jerry"
 
 Note: "new" is not used, so no new instance of `animal` is created, the function `animal` (which is also an object) is just assigned by reference.
 
-
 <!--section-->
-
 
 ## `Object`
 
@@ -501,21 +498,21 @@ Note: this is a simplified representation.
 
 ```js
 var user = { name: 'Evan', lastName: 'Graham' }
-Object.keys(user)  // ["name", "lastName"]
+Object.keys(user) // ["name", "lastName"]
 ```
 
 <!--slide-->
 
 ### `Object` as a constructor
 
-> As a function, `Object` is a **constructor** and can be invoked with **new** keyword to create  instances.
+> As a function, `Object` is a **constructor** and can be invoked with **new** keyword to create instances.
 
 ```js
 var user1 = new Object()
 var user2 = new Object()
 
-user1.name = "Evan"
-user2.name = "Rachel"
+user1.name = 'Evan'
+user2.name = 'Rachel'
 
 console.log(user1.name) // "Evan"
 console.log(user2.name) // "Rachel"
@@ -578,18 +575,16 @@ Note: Both `obj` and `emptyObj` are instances of `Object`
 var user1 = new Object()
 var user2 = new Object()
 
-user1.name = "Evan"
-user2.name = "Rachel"
+user1.name = 'Evan'
+user2.name = 'Rachel'
 
-console.log(user1.hasOwnProperty("name")) // true
-console.log(user1.hasOwnProperty("lastName")) // false
+console.log(user1.hasOwnProperty('name')) // true
+console.log(user1.hasOwnProperty('lastName')) // false
 ```
 
 Note: `hasOwnProperty` is a method of `Object.prototype`, available in any instance of `Object`.
 
-
 <!--slide-->
-
 
 ## `Array`
 
@@ -622,7 +617,6 @@ var Array = {
 
 [MDN // Array.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
-
 <!--slide-->
 
 ### `Array` as an object
@@ -630,15 +624,15 @@ var Array = {
 > `Array` is an object, thus it contains properties and methods.
 
 ```js
-var numbers = Array.of(0,1,2,3,4)
-console.log(numbers)  // [0, 1, 2, 3, 4]
+var numbers = Array.of(0, 1, 2, 3, 4)
+console.log(numbers) // [0, 1, 2, 3, 4]
 ```
 
 <!--slide-->
 
 ### `Array` as a constructor
 
-> As a function, `Array` is a **constructor** and can be invoked with **new** to create  instances.
+> As a function, `Array` is a **constructor** and can be invoked with **new** to create instances.
 
 ```js
 var odd = new Array(1, 3, 5)
@@ -684,7 +678,6 @@ Note: `push` is a method of `Array.prototype`, available in any instance of `Arr
 `Array` inherits from `Object`
 
 ```js
-
 Object.prototype = { // Prototype of `Object`
   hasOwnProperty: function(){...}, // Returns a boolean indicating whether an object contains the specified property
   toString: function(){...}, // Returns a string representation of the object.
@@ -712,8 +705,6 @@ Note: As `Array` inherits from `Object`, it only has access to `Object`'s protot
 
 <!--slide-->
 
-
-
 #### The `__proto__` property
 
 > It's the property used to link instances to their `prototype`
@@ -732,8 +723,8 @@ Note: As `Array` inherits from `Object`, it only has access to `Object`'s protot
 
 <!--slide-->
 
-
 Any `Array` instance implements `Object.prototype`'s methods
+
 ```js
 var odd = new Array(1, 3, 5)
 
@@ -744,6 +735,7 @@ odd.hasOwnProperty(3) // false
 ```
 
 The prototype chain of `Array`
+
 ```js
 var odd = new Array(1, 3, 5)
 
@@ -777,13 +769,11 @@ Array.keys(odd) // TypeError: Array.keys is not a function
 
 <!--slide-->
 
-
 ```js
 var odd = new Array(1, 3, 5)
 
 odd.push(7) // from Array.prototype.push
 odd.toString() // "1,3,5,7"
-
 
 // Methods inheritance
 odd.hasOwnProperty === Object.prototype.hasOwnProperty // true
@@ -798,7 +788,6 @@ odd.toString === Object.prototype.toString // false
 > Inheritance is possible thanks to the prototype chain.
 >
 > When trying to access a property of an object, the property will not only be sought on the object but on the prototype of the object, the prototype of the prototype, and so on until either a property with a matching name is found or the end of the prototype chain is reached.
-
 
 <!--slide-->
 
@@ -815,22 +804,24 @@ odd.toString === Object.prototype.toString // false
 <!--slide-->
 
 ```js
-var user = { name: "Evan", lastName: "Graham" }
+var user = { name: 'Evan', lastName: 'Graham' }
 console.log(user.__proto__ === Object.prototype) // true
 ```
+
 Note: `user.__proto__` and `Object.prototype` 2 references to the same object.
 
-[__proto__](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/proto)
+[**proto**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/proto)
 
 <!--slide-->
 
 ### The logic
 
 > When trying to access a property of an object:
+>
 > * if the object (instance of `Object`) has the property, it's returned
 > * else if the prototype has the property, it's returned
 > * else if the prototype has a prototype which has the property, it's returned
-> and so on, accessing prototypes of prototypes
+>   and so on, accessing prototypes of prototypes
 
 <!--slide-->
 
@@ -843,7 +834,7 @@ function getObjectProperty(obj, propName) {
   } else {
     let prototype = obj.__proto__
 
-    while(prototype){
+    while (prototype) {
       if (prototype.hasOwnProperty(propName)) {
         return prototype[propName]
       } else {
@@ -862,7 +853,7 @@ Note: This is a programatic representation of the prototype chain
 <!--slide-->
 
 ```js
-var arr = [0,1,2,3,5]
+var arr = [0, 1, 2, 3, 5]
 
 Object.prototype.myVar = 1
 getObjectProperty(arr, 'myVar') // 1
@@ -875,13 +866,11 @@ getObjectProperty(arr, 'myVar') // 2
 arr.myVar = 3
 getObjectProperty(arr, 'myVar') // 3
 // Chain: arr.myVar
-
 ```
 
 <!--slide-->
 
 ```js
-
 console.log(getObjectProperty([], 'toString'))
 // Chain: [].__proto__.toString
 
@@ -890,7 +879,6 @@ console.log(getObjectProperty([], 'hasOwnProperty'))
 
 console.log(getObjectProperty('', 'hasOwnProperty'))
 // Chain: "".__proto__.__proto__.hasOwnProperty
-
 ```
 
 <!--slide-->
@@ -906,14 +894,14 @@ console.log(getObjectProperty('', 'hasOwnProperty'))
 <!--slide-->
 
 ```js
-var user = { name: "Evan", lastName: "Graham"  }
+var user = { name: 'Evan', lastName: 'Graham' }
 user.printType()
 
 // TypeError: user.printType is not a function
 ```
 
 ```js
-var user = { name: "Evan", lastName: "Graham"  }
+var user = { name: 'Evan', lastName: 'Graham' }
 Object.prototype.printType = function() {
   console.log("It's a person!")
 }
@@ -941,21 +929,24 @@ Note: `printType` is accessible on `user` even if the function was added to prot
 ### Using `this` in prototype methods
 
 ```js
-var user = { name: "Evan", lastName: "Graham"  }
+var user = { name: 'Evan', lastName: 'Graham' }
 
-Object.prototype.forEach = function(func){
-  Object.keys(this).forEach( key => func(this[key], key))
+Object.prototype.forEach = function(func) {
+  Object.keys(this).forEach(key => func(this[key], key))
 }
 
-user.forEach(function(value, key){
-  console.log(key + '=' + value)
-})
-// "name=Evan"
-// "lastName=Graham"
+user
+  .forEach(function(value, key) {
+    console.log(key + '=' + value)
+  })(
+    // "name=Evan"
+    // "lastName=Graham"
 
-({ hello: 'world' }).forEach(function(value, key){
-  console.log(key + '=' + value)
-})
+    { hello: 'world' }
+  )
+  .forEach(function(value, key) {
+    console.log(key + '=' + value)
+  })
 // "hello=world"
 ```
 
@@ -968,19 +959,18 @@ Note: `forEach` is accessible on `user` even if the function was added to protot
 > In constructors, `this` refers to the current instance being created.
 
 ```js
-function User (name, lastName) {
+function User(name, lastName) {
   this.name = name
   this.lastName = lastName
   this.fullName = name + ' ' + lastName
 }
 
-var user1 = new User( "Evan", "Graham")
-var user2 = new User( "Rachel", "Green")
+var user1 = new User('Evan', 'Graham')
+var user2 = new User('Rachel', 'Green')
 
 console.log(user1.name) // "Evan"
 console.log(user2.name) // "Rachel"
 console.log(user2.fullName) // "Rachel Green"
-
 ```
 
 Note: as `this` refers to the instance being created, we are defining properties of the instance.
@@ -992,13 +982,13 @@ Note: as `this` refers to the instance being created, we are defining properties
 > Implement new method on arrays, so the following output matches
 
 ```js
-var arr = [ 1, "", 8, null, "Evan", true, false]
+var arr = [1, '', 8, null, 'Evan', true, false]
 
 console.log(arr.compact()) // [1, 8, "Evan", true]
 console.log(arr.first()) // 1
 console.log(arr.last()) // false
 
-arr.remove( x => typeof x === 'string' )
+arr.remove(x => typeof x === 'string')
 console.log(arr) // [1, 8, null, true, false]
 ```
 
@@ -1007,18 +997,18 @@ https://jsbin.com/fovasetuse/1/edit?js,console
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 ```js
-Array.prototype.compact = function () {
-  return this.filter( x => !!x )
+Array.prototype.compact = function() {
+  return this.filter(x => !!x)
 }
-Array.prototype.first = function () {
+Array.prototype.first = function() {
   return this[0]
 }
-Array.prototype.last = function () {
-  return this[this.length-1]
+Array.prototype.last = function() {
+  return this[this.length - 1]
 }
-Array.prototype.remove = function (func) {
+Array.prototype.remove = function(func) {
   this.forEach((item, i, array) => {
-    if(func(item, i, array)){
+    if (func(item, i, array)) {
       this.splice(i, 1)
     }
   })
@@ -1055,16 +1045,15 @@ var User = function(name) {
   this.name = name
 }
 User.prototype.sayName = function() {
-  console.log('My name is ' + this.name )
+  console.log('My name is ' + this.name)
 }
 User.prototype.orderItem = function(item) {
-  console.log(item + ' purchased: delivery in 3 days' )
+  console.log(item + ' purchased: delivery in 3 days')
 }
 
 var user1 = new User('Evan')
 user1.sayName() // "My name is Evan"
 user1.orderItem('TV') // "TV purchased: delivery in 3 days"
-
 ```
 
 <!--slide-->
@@ -1085,10 +1074,9 @@ var PremiumUser = function(name) {
 }
 PremiumUser.prototype = new User()
 PremiumUser.prototype.orderItem = function(item) {
-  console.log(item + ' purchased: delivery in 1 day' )
+  console.log(item + ' purchased: delivery in 1 day')
 }
 ```
-
 
 <!--slide-->
 
@@ -1098,7 +1086,7 @@ Structure of `PremiumUser`
 var PremiumUser = {
   prototype: {
     orderItem: function(item) {
-      console.log(item + ' purchased: delivery in 1 day' )
+      console.log(item + ' purchased: delivery in 1 day')
     },
     __proto__: User.prototype
   }
@@ -1110,7 +1098,6 @@ var PremiumUser = {
 > `user1` is an instance of `User`
 >
 > `user2` is an instance of `PremiumUser`, which inherits from `User`, like `Array` inherits from `Object`
-
 
 ```js
 var user1 = new User('Evan')
@@ -1130,7 +1117,7 @@ https://jsbin.com/bajura/edit?js,console
 > The `instanceof` operator tests whether an object has in its prototype chain the prototype property of a constructor.
 
 ```js
-function Animal () {}
+function Animal() {}
 
 var cat = new Animal() // New object is constructed
 
@@ -1138,7 +1125,6 @@ console.log(cat instanceof Animal) // true
 console.log(cat instanceof Object) // true
 console.log(cat instanceof Array) // false
 console.log(Animal instanceof Object) // true
-
 ```
 
 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof)
@@ -1172,24 +1158,22 @@ https://jsbin.com/naqogu/edit?js,console
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 ```js
-
 function Collection() {}
 Collection.prototype = new Array()
 
-Collection.prototype.sortBy = function (property) {
-  return this.sort(function(obj1, obj2){
+Collection.prototype.sortBy = function(property) {
+  return this.sort(function(obj1, obj2) {
     return obj1[property] > obj2[property]
   })
 }
-Collection.prototype.findBy = function (prop, value) {
+Collection.prototype.findBy = function(prop, value) {
   var result
-  this.forEach(function(obj){
+  this.forEach(function(obj) {
     result = result || (obj[prop] === value ? obj : undefined)
   })
   return result
 }
 ```
-
 
 <!--section-->
 
@@ -1197,19 +1181,18 @@ Collection.prototype.findBy = function (prop, value) {
 
 <!--slide-->
 
-###  `Object.getPrototypeOf()`
+### `Object.getPrototypeOf()`
 
 > The `Object.getPrototypeOf()` method returns the prototype of the specified instance.
+>
 > ```js
 > Object.getPrototypeOf(obj)
 > ```
 
 ```js
-
-Object.getPrototypeOf(new String("foo")) // String.prototype
+Object.getPrototypeOf(new String('foo')) // String.prototype
 Object.getPrototypeOf([]) // Array.prototype
 Object.getPrototypeOf({}) // Object.prototype
-
 ```
 
 <!--slide-->
@@ -1224,7 +1207,6 @@ Object.getPrototypeOf({}) // Object.prototype
 > Object.assign(target, ...sources)
 > ```
 
-
 [MDN // Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 
 <!--slide-->
@@ -1238,9 +1220,9 @@ var o3 = { c: 3 }
 
 var obj = Object.assign(o1, o2, o3)
 console.log(obj) // { a: 1, b: 2, c: 3 }
-console.log(o1)  // { a: 1, b: 2, c: 3 }
-console.log(o2)  // { b: 2 }
-console.log(o3)  // { c: 3 }
+console.log(o1) // { a: 1, b: 2, c: 3 }
+console.log(o2) // { b: 2 }
+console.log(o3) // { c: 3 }
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
@@ -1248,7 +1230,7 @@ console.log(o3)  // { c: 3 }
 #### Caution! Not suitable for deep objects
 
 ```js
-var o1 = { a: 1  }
+var o1 = { a: 1 }
 var o2 = { b: { c: 2 } }
 
 var obj = Object.assign(o1, o2)
@@ -1264,6 +1246,7 @@ console.log(o1) // // { a: 1, b: { c: 3 } }
 ### `Object.defineProperty()`
 
 > The `Object.defineProperty()` method defines a new property directly on an object, or modifies an existing property on an object, and returns the object.
+>
 > ```js
 > Object.defineProperty(obj, prop, descriptor)
 > ```
@@ -1271,7 +1254,6 @@ console.log(o1) // // { a: 1, b: { c: 3 } }
 > * **obj**: The object on which to define the property.
 > * **prop**: The name of the property to be defined or modified.
 > * **descriptor**: The descriptor for the property being defined or modified.
-
 
 [MDN // Object.defineProperty() ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
 
@@ -1284,17 +1266,15 @@ console.log(o1) // // { a: 1, b: { c: 3 } }
 > Defaults to `false`.
 
 ```js
-var obj = { name: 'Evan', surname: 'Graham'}
+var obj = { name: 'Evan', surname: 'Graham' }
 Object.defineProperty(obj, 'name', { enumerable: false })
 Object.defineProperty(obj, 'surname', { enumerable: true })
-
 
 console.log(Object.keys(obj)) // ["surname"]
 for (var key in obj) {
   console.log(key)
 }
 // "surname"
-
 ```
 
 <!--slide-->
@@ -1306,8 +1286,8 @@ for (var key in obj) {
 > Defaults to `undefined`.
 
 ```js
-var obj = { name: 'Evan', surname: 'Graham'}
-Object.defineProperty(obj, 'name', { value: "Rachel" })
+var obj = { name: 'Evan', surname: 'Graham' }
+Object.defineProperty(obj, 'name', { value: 'Rachel' })
 
 console.log(obj) // { name: "Rachel", surname: "Graham" }
 ```
@@ -1321,7 +1301,7 @@ console.log(obj) // { name: "Rachel", surname: "Graham" }
 > Defaults to `false`.
 
 ```js
-var obj = { name: 'Evan', surname: 'Graham'}
+var obj = { name: 'Evan', surname: 'Graham' }
 Object.defineProperty(obj, 'name', { writable: false })
 
 obj.name = 'Rachel'
@@ -1336,8 +1316,12 @@ console.log(obj) // {  name: "Evan", surname: "Green" }
 > A function which serves as a getter for the property
 
 ```js
-var obj = { name: 'Evan', surname: 'Graham'}
-Object.defineProperty(obj, 'fullName', { get: function(){ return this.name + ' ' + this.surname} })
+var obj = { name: 'Evan', surname: 'Graham' }
+Object.defineProperty(obj, 'fullName', {
+  get: function() {
+    return this.name + ' ' + this.surname
+  }
+})
 
 console.log(obj.fullName) // "Evan Graham"
 ```
@@ -1349,26 +1333,29 @@ console.log(obj.fullName) // "Evan Graham"
 > A function which serves as a setter for the property
 
 ```js
-var obj = { name: 'Evan', surname: 'Graham'}
-Object.defineProperty(obj, 'fullName', { set: function(name){
-  var words = name.toString().split(' ')
-  this.name = words[0] || ''
-  this.surname = words[1] || ''
-} })
+var obj = { name: 'Evan', surname: 'Graham' }
+Object.defineProperty(obj, 'fullName', {
+  set: function(name) {
+    var words = name.toString().split(' ')
+    this.name = words[0] || ''
+    this.surname = words[1] || ''
+  }
+})
 
 obj.fullName = 'Rachel Green'
 console.log(obj.name, obj.surname) // "Rachel" "Green"
 ```
 
-
 <!--slide-->
 
 This code...
+
 ```js
 obj.name = 'Evan'
 ```
 
 Is the same as...
+
 ```js
 Object.defineProperty(obj, 'name', {
   enumerable: true,
@@ -1381,7 +1368,7 @@ Object.defineProperty(obj, 'name', {
 
 ### `Object.defineProperties()`
 
-> The `Object.defineProperties()`  method defines new or modifies existing properties directly on an object, returning the object.
+> The `Object.defineProperties()` method defines new or modifies existing properties directly on an object, returning the object.
 >
 > ```js
 > Object.defineProperties(obj, props)
@@ -1392,7 +1379,7 @@ Object.defineProperty(obj, 'name', {
 <!--slide-->
 
 ```js
-var obj = {};
+var obj = {}
 Object.defineProperties(obj, {
   name: {
     value: 'Evan',
@@ -1416,9 +1403,8 @@ var form = document.getElementById('my-form')
 
 console.log(form.color.value) // ["Green", "Blue", "Black"]
 
-form.color.value = ["Red", "White"]
+form.color.value = ['Red', 'White']
 console.log(form.color.value) // ["Red", "White"]
-
 ```
 
 https://jsbin.com/nerila/edit?js,output
@@ -1427,16 +1413,16 @@ https://jsbin.com/nerila/edit?js,output
 
 ```js
 Object.defineProperty(RadioNodeList.prototype, 'value', {
-  get () {
+  get() {
     var result = []
-    this.forEach(function(input){
+    this.forEach(function(input) {
       input.checked && result.push(input.value)
     })
     return result
   },
-  set (values = []) {
-    this.forEach(function(input){
-      input.checked  = values.indexOf(input.value) !== -1
+  set(values = []) {
+    this.forEach(function(input) {
+      input.checked = values.indexOf(input.value) !== -1
     })
   }
 })

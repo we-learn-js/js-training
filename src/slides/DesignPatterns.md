@@ -29,12 +29,12 @@ class Input {
   setElement(inputElement) {
     this.element = inputElement
   }
-  getValue () { }
-  setValue () { }
-  validate () {
+  getValue() {}
+  setValue() {}
+  validate() {
     var type = this.element.getAttribute('type')
     if (type === 'phone') {
-      return (/^[0-9]{11}$/g).test(this.getValue());
+      return /^[0-9]{11}$/g.test(this.getValue())
     } else if (type === 'email') {
       return this.getValue().indexOf('@') !== -1
     }
@@ -74,13 +74,13 @@ validate () {
 
 ```js
 var emailValidator = {
-  validate (value) {
-    return value.indexOf('@') !== -1;
+  validate(value) {
+    return value.indexOf('@') !== -1
   }
 }
-var phoneValidator =  {
-  validate (value) {
-    return (/^[0-9]{11}$/g).test(value);
+var phoneValidator = {
+  validate(value) {
+    return /^[0-9]{11}$/g.test(value)
   }
 }
 ```
@@ -91,11 +91,11 @@ var phoneValidator =  {
 
 ```js
 class InputValidationStrategy {
-  selectValidator (validator) {
-    this._validator = validator;
+  selectValidator(validator) {
+    this._validator = validator
   }
   validate() {
-    this._validator.validate(this.getValue());
+    this._validator.validate(this.getValue())
   }
 }
 ```
@@ -107,18 +107,18 @@ class InputValidationStrategy {
 ```js
 class Input extends InputValidationStrategy {
   setElement(DOMElement) {}
-  getValue () {}
-  setValue () {}
+  getValue() {}
+  setValue() {}
   /* ... */
 }
 class InputEmail {
-  constructor () {
+  constructor() {
     super()
     this.selectValidator(emailValidator)
   }
 }
 class InputPhone {
-  constructor () {
+  constructor() {
     super()
     this.selectValidator(phoneValidator)
   }
@@ -132,7 +132,6 @@ class InputPhone {
 > Concrete strategies don't know anything about each other.
 
 > Code can be maintained with new strategies with less effort.
-
 
 <!--slide-->
 
@@ -242,16 +241,24 @@ class AbstractDuck {
 
 ```js
 class FlyBehavior {
-  fly() { throw new Error("This method must be overwritten"); }
+  fly() {
+    throw new Error('This method must be overwritten')
+  }
 }
 class FlyWithWings extends FlyBehavior {
-  fly() { console.log('Flap!Flap!'); }
+  fly() {
+    console.log('Flap!Flap!')
+  }
 }
 class FlyWithPropeller extends FlyBehavior {
-  fly() { console.log('Fluflufluflu!'); }
+  fly() {
+    console.log('Fluflufluflu!')
+  }
 }
 class FlyWithSteamJet extends FlyBehavior {
-  fly() { console.log('Psht!Psht!Psht!'); }
+  fly() {
+    console.log('Psht!Psht!Psht!')
+  }
 }
 ```
 
@@ -263,21 +270,21 @@ class FlyWithSteamJet extends FlyBehavior {
 
 ```js
 class SteamDuck extends AbstractDuck {
-  constructor () {
+  constructor() {
     super()
     this.setFlyBehavior(new FlyWithSteamJet())
     this.setSwimBehavior(new SwimWithSteamJet())
   }
 }
 class PropellerDuck extends AbstractDuck {
-  constructor () {
+  constructor() {
     super()
     this.setFlyBehavior(new FlyWithPropeller())
     this.setSwimBehavior(new SwimWithPropeller())
   }
 }
 class HybridDuck extends SteamDuck {
-  constructor () {
+  constructor() {
     super()
     this.setSwimBehavior(new SwimWithSteamJet())
     this.setFlyBehavior(new SwimWithPropeller())
@@ -288,6 +295,7 @@ class HybridDuck extends SteamDuck {
 <!--slide-->
 
 ### Related OO Principles:
+
 * Open-Close (SOLID)
 * Protected Variations (GRASP)
 * Favor composition over inheritance
@@ -306,22 +314,20 @@ Convert transportation mode to a strategy so the bycicle strategy can be added w
 
 http://jsbin.com/suvuduh/edit?js,console
 
-
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 #### Solution
 
 ```js
 class Person {
-
   constructor(transportMode) {
-     switch(transportMode) {
+    switch (transportMode) {
       case 'car':
         this.transportStrategy = new PersonCarTransportation(this)
-        break;
+        break
       case 'publicTransports':
         this.transportStrategy = new PersonPublicTransportation(this)
-        break;
+        break
       default:
         this.transportStrategy = new PersonWalkTransportation(this)
     }
@@ -341,7 +347,6 @@ http://jsbin.com/lozaso/3/edit?js,console
 
 ```js
 class Person {
-
   constructor(transportMode) {
     this.transportStrategy = transportMode
   }
@@ -415,7 +420,6 @@ class SuperMario {
 }
 ```
 
-
 <!--slide-->
 
 > That's a lot of code, and a lot of "if" statements.
@@ -459,23 +463,39 @@ class TallMario extends MarioState {
 
 ```js
 class SuperMario {
-  constructor () { this.setState(this.getNormalState()) }
-  setState (state) { this.state = state }
+  constructor() {
+    this.setState(this.getNormalState())
+  }
+  setState(state) {
+    this.state = state
+  }
 
-  collisionWithStar (star) { this.state.collisionWithStar(star) }
-  collisionWithMushroom (mushroom) { this.state.collisionWithMushroom(mushroom) }
-  collisionWithEnemy (enemy) { this.state.collisionWithEnemy(enemy) }
+  collisionWithStar(star) {
+    this.state.collisionWithStar(star)
+  }
+  collisionWithMushroom(mushroom) {
+    this.state.collisionWithMushroom(mushroom)
+  }
+  collisionWithEnemy(enemy) {
+    this.state.collisionWithEnemy(enemy)
+  }
 
-  getInvincibleState() { return new InvincibleMario(this) }
-  getNormalState () { return new NormalMario(this) }
-  getTallState() { return new TallMario(this) }
-
+  getInvincibleState() {
+    return new InvincibleMario(this)
+  }
+  getNormalState() {
+    return new NormalMario(this)
+  }
+  getTallState() {
+    return new TallMario(this)
+  }
 }
 ```
 
 <!--slide-->
 
 ### Related OO Principles:
+
 * High Cohesion (GRASP)
 * Favor composition over inheritance
 
@@ -490,7 +510,6 @@ class SuperMario {
 * Apply State pattern to `Person` class.
 
 http://jsbin.com/xijoyen/edit?js,console
-
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -530,23 +549,24 @@ http://jsbin.com/tobosok/edit?js,console
 
 > In this case, interfaces are created on the fly.
 
-
 <!--slide-->
 
 ```js
-const Flyable = Sup => class extends Sup {
-  fly() {
-    console.log('Flap, Flap!');
+const Flyable = Sup =>
+  class extends Sup {
+    fly() {
+      console.log('Flap, Flap!')
+    }
   }
-}
-const Swimable = Sup => class extends Sup {
-  quack() {
-    console.log('Quack!');
+const Swimable = Sup =>
+  class extends Sup {
+    quack() {
+      console.log('Quack!')
+    }
   }
-}
 class Duck extends Swimable(Flyable(null)) {
   swim() {
-    console.log('Chop!');
+    console.log('Chop!')
   }
 }
 ```
@@ -556,6 +576,7 @@ class Duck extends Swimable(Flyable(null)) {
 <!--slide-->
 
 ### Related OO Principles:
+
 * Interface Segregation Principle (SOLID)
 * Favor composition over inheritance
 
@@ -569,13 +590,11 @@ class Duck extends Swimable(Flyable(null)) {
 
 > **Caution:** easy to overuse and make relationship between modules confusing.
 
-
 <!--slide-->
 
 ![pubsub](http://10rem.net/pub/blog/UsingPubSubandtheObserverPatterninSilver_12CC4/image.png)
 
 [source](http://10rem.net/blog/2008/06/26/using-pub-sub-and-the-observer-pattern-in-silverlight-2-part-1-of-2---async-service-call-chaining)
-
 
 <!--slide-->
 
@@ -588,7 +607,7 @@ export class Session {
   static SESSION_CHANGE = 'session:change'
   static setUser(user) {
     this.user = user
-    pubSub.publish(Session.SESSION_CHANGE, this.user);
+    pubSub.publish(Session.SESSION_CHANGE, this.user)
   }
   static getUser() {
     return this.user
@@ -605,13 +624,14 @@ import pubSub from './pubsub.js'
 import Session from './session.js'
 
 class AppHeader {
-  constructor (domElement) {
+  constructor(domElement) {
     this.title = domElement.getElementsByClassName('title')[0]
     this._sessionHandler = pubSub.subscribe(
-      Session.SESSION_CHANGE, this.setUser.bind(this)
+      Session.SESSION_CHANGE,
+      this.setUser.bind(this)
     )
   }
-  setUser (user) {
+  setUser(user) {
     this.title.innerHTML = 'User: ' + user.name
   }
   destroy() {
@@ -622,36 +642,35 @@ class AppHeader {
 
 Note: **Always** remember to unregister handlers when you don't need them anymore.
 
-
 <!--slide-->
 
 Event bus implmentation
 
 ```js
 // pubsub.js
-var subscribers = {};
+var subscribers = {}
 export default {
-    publish (topic, data) {
-      if (!subscribers[topic]) {
-          return;
-      }
-      subscribers[topic].forEach(function (subscriber) {
-          subscriber(data);
-      });
-    },
-    subscribe (topic, callback) {
-      var index;
-      if (!subscribers[topic]) {
-          subscribers[topic] = [];
-      }
-      index = subscribers[topic].push(callback) - 1;
-      return {
-          dispose: function () {
-              subscribers[topic].splice(index, 1);
-          }
+  publish(topic, data) {
+    if (!subscribers[topic]) {
+      return
+    }
+    subscribers[topic].forEach(function(subscriber) {
+      subscriber(data)
+    })
+  },
+  subscribe(topic, callback) {
+    var index
+    if (!subscribers[topic]) {
+      subscribers[topic] = []
+    }
+    index = subscribers[topic].push(callback) - 1
+    return {
+      dispose: function() {
+        subscribers[topic].splice(index, 1)
       }
     }
-};
+  }
+}
 ```
 
 <!--slide-->
@@ -667,6 +686,7 @@ export default {
 <!--slide-->
 
 ### Related OO Principles:
+
 * Low coupling
 * Indirection (GRASP)
 
@@ -762,7 +782,6 @@ class Mocha extends CondimentDecorator {
 
 > The decorator adds its own behaviour either before and/or after delegating to the object it decorates to do the rest of the job.
 
-
 <!--slide-->
 
 ```js
@@ -783,6 +802,7 @@ console.log(beverage.getDescription() + “ $” + beverage.cost())
 <!--slide-->
 
 ### Related OO Principles:
+
 * Open/Close Principle (SOLID)
 * Favor composition over inheritance
 * Low coupling
@@ -801,10 +821,9 @@ console.log(beverage.getDescription() + “ $” + beverage.cost())
 
 > Subject's interface should include observing, unobserving and notifying methods.
 
-
 <!--slide-->
 
-### Example: Implementation of  Weather console
+### Example: Implementation of Weather console
 
 > `WeatherData` data holds state of weather
 
@@ -816,22 +835,26 @@ console.log(beverage.getDescription() + “ $” + beverage.cost())
 
 ```js
 class WeatherData {
-  constructor () {
-    this.observers = [];
+  constructor() {
+    this.observers = []
   }
-  setMeasurements (temperature, humidity) {
-    this.temperature = temperature;
-    this.humidity = humidity;
-    this.notifyObservers({temperature, humidity})
+  setMeasurements(temperature, humidity) {
+    this.temperature = temperature
+    this.humidity = humidity
+    this.notifyObservers({ temperature, humidity })
   }
   registerObserver(observer) {
-    this.observers.push(observer);
+    this.observers.push(observer)
   }
   removeObserver(observer) {
-    this.observers = this.observers.filter( observer => observer !== observerToRemove )
+    this.observers = this.observers.filter(
+      observer => observer !== observerToRemove
+    )
   }
   notifyObservers(data) {
-    this.observers.forEach(function (observer) { observer(data); });
+    this.observers.forEach(function(observer) {
+      observer(data)
+    })
   }
 }
 ```
@@ -840,15 +863,20 @@ class WeatherData {
 
 ```js
 class WeatherConsole {
-  constructor (weatherData) {
+  constructor(weatherData) {
     this.weatherData = weatherData
     this.weatherData.registerObserver(this.log.bind(this))
   }
-  log (data) {
-    console.log("Current conditions: " + data.temperature + "F degrees and " + data.humidity + "% humidity.");
+  log(data) {
+    console.log(
+      'Current conditions: ' +
+        data.temperature +
+        'F degrees and ' +
+        data.humidity +
+        '% humidity.'
+    )
   }
 }
-
 ```
 
 <!--slide-->
@@ -861,28 +889,28 @@ class WeatherConsole {
 
 ```js
 class Observable {
-  constructor () {
-    this.observers = [];
+  constructor() {
+    this.observers = []
   }
-  registerObserver (observer) {
-    this.observers.push(observer);
+  registerObserver(observer) {
+    this.observers.push(observer)
   }
-  removeObserver (observer) {
-    this.observers = this.observers.filter(function (observer) {
-      return observer !== observerToRemove;
-    });
+  removeObserver(observer) {
+    this.observers = this.observers.filter(function(observer) {
+      return observer !== observerToRemove
+    })
   }
-  notifyObservers (data) {
-    this.observers.forEach(function (observer) {
-      observer(data);
-    });
+  notifyObservers(data) {
+    this.observers.forEach(function(observer) {
+      observer(data)
+    })
   }
 }
 class WeatherData extends Observable {
-  setMeasurements (temperature, humidity) {
-    this.temperature = temperature;
-    this.humidity = humidity;
-    this.notifyObservers({temperature, humidity})
+  setMeasurements(temperature, humidity) {
+    this.temperature = temperature
+    this.humidity = humidity
+    this.notifyObservers({ temperature, humidity })
   }
 }
 ```
@@ -893,15 +921,21 @@ class WeatherData extends Observable {
 
 ```js
 class WheatherConsole {
-  constructor (weatherData) {
+  constructor(weatherData) {
     this.weatherData = weatherData
     this.observer = this.log.bind(this)
     this.weatherData.registerObserver(this._observer)
   }
-  log (data) {
-    console.log('Current conditions: ' + data.temperature + 'F degrees and ' + data.humidity + '% humidity.');
+  log(data) {
+    console.log(
+      'Current conditions: ' +
+        data.temperature +
+        'F degrees and ' +
+        data.humidity +
+        '% humidity.'
+    )
   }
-  destroy () {
+  destroy() {
     this.weatherData.removeObserver(this._observer)
   }
 }
@@ -943,7 +977,6 @@ class WheaterEmailer extends Observer {
 }
 ```
 
-
 <!--slide-->
 
 ### Example: EventEmitter-based implementation
@@ -969,7 +1002,6 @@ class Observer {
     this.observable.removeObserver(this.observer)
   }
 }
-
 ```
 
 [EventEmitter](https://nodejs.org/api/events.html)
@@ -983,6 +1015,7 @@ https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Observer
 <!--slide-->
 
 ### Related OO Principles:
+
 * Indirection (GRASP)
 * Low coupling
 * Favor composition over inheritance
@@ -1007,19 +1040,19 @@ import Decaf from './decaf'
 import DarkRoast from './dark-roast'
 
 class CoffeeShop {
-  orderCoffee (type, condiments) {
+  orderCoffee(type, condiments) {
     var beverage
-    if(type == 'espresso') {
+    if (type == 'espresso') {
       beverage = new Espresso()
-    } else if ( type = "decaf" ) {
+    } else if ((type = 'decaf')) {
       beverage = new Decaf()
-    } else if (type="darkroast") {
+    } else if ((type = 'darkroast')) {
       beverage = new DarkRoast()
     }
-    if(condiments.indexOf('mocha') !== -1) {
+    if (condiments.indexOf('mocha') !== -1) {
       beverage = new Mocha(beverage)
     }
-    if(condiments.indexOf('milk') !== -1) {
+    if (condiments.indexOf('milk') !== -1) {
       beverage = new Milk(beverage)
     }
 
@@ -1044,20 +1077,20 @@ class CoffeeShop {
 ```js
 class BeverageFactory {
   static createCondimentedCoffee(beverage, condiments) {
-    if(condiments.indexOf('mocha') !== -1) {
+    if (condiments.indexOf('mocha') !== -1) {
       beverage = new Mocha(beverage)
     }
-    if(condiments.indexOf('milk') !== -1) {
+    if (condiments.indexOf('milk') !== -1) {
       beverage = new Milk(beverage)
     }
   }
-  static createCoffee (type, condiments) {
+  static createCoffee(type, condiments) {
     var beverage
-    if(type == 'espresso') {
+    if (type == 'espresso') {
       beverage = new Espresso()
-    } else if ( type = "decaf" ) {
+    } else if ((type = 'decaf')) {
       beverage = new Decaf()
-    } else if (type="darkroast") {
+    } else if ((type = 'darkroast')) {
       beverage = new DarkRoast()
     }
     var beverage = this.createCondimentedCoffee(beverage, condiments)
@@ -1077,7 +1110,7 @@ class BeverageFactory {
 
 ```js
 class CoffeeShop {
-  prepareCoffee (type, condiments) {
+  prepareCoffee(type, condiments) {
     var beverage = BeverageFactory.createCondimentedCoffee(type, condiments)
     return beverage
   }
@@ -1132,7 +1165,7 @@ class CondimentFactory {
 class BeverageFactory {
   static coffeeFactory = CoffeeFactory
   static condimentFactory = CondimentFactory
-  createCoffee (type, condiments) {
+  createCoffee(type, condiments) {
     var beverage = this.coffeeFactory.createCoffee(type)
     beverage = this.condimentFactory.createCondiment(beverage, condiments)
     beverage.prepare()
@@ -1145,10 +1178,10 @@ class BeverageFactory {
 
 ```js
 class CoffeeShop {
-  constructor () {
+  constructor() {
     this.factory = BeverageFactory
   }
-  prepareCoffee (type, condiments) {
+  prepareCoffee(type, condiments) {
     var beverage = this.factory.createCoffee(type, condiments)
     return beverage
   }
@@ -1158,14 +1191,16 @@ class CoffeeShop {
 <!--slide-->
 
 ```js
-class HealthyCondimentFactory extends BeverageFactory  {
-  static createMilk(beverage) { return new LowFatMilk(beverage) }
+class HealthyCondimentFactory extends BeverageFactory {
+  static createMilk(beverage) {
+    return new LowFatMilk(beverage)
+  }
 }
 class HealthyBeverageFactory extends BeverageFactory {
   static condimentFactory = HealthyCondimentFactory
 }
 class HealthyCoffeeShop extends CoffeeShop {
-  constructor () {
+  constructor() {
     super()
     this.factory = HealthyBeverageFactory
   }
@@ -1175,6 +1210,7 @@ class HealthyCoffeeShop extends CoffeeShop {
 <!--slide-->
 
 ### Related OO Principles:
+
 * Creator (GRASP)
 * Pure Fabrication (GRASP)
 * Open-Close Principle (SOLID)
@@ -1220,7 +1256,6 @@ export default {
 }
 ```
 
-
 Note: `Cache` constructor remains private.
 
 <!--slide-->
@@ -1245,6 +1280,7 @@ export default new Cache()
 ```
 
 Usage:
+
 ```js
 import cache from './cache'
 cache.set('myVar', 1)
@@ -1276,13 +1312,16 @@ cache.set('myVar', 1)
 
 ```js
 class ICommand {
-  execute () { throw new Error('ICommand.execute not implemented') }
+  execute() {
+    throw new Error('ICommand.execute not implemented')
+  }
 }
-class TurnOnCommand extends ICommand { // Command receiver
-  constructor (device) {
+class TurnOnCommand extends ICommand {
+  // Command receiver
+  constructor(device) {
     this.device = device
   }
-  execute () {
+  execute() {
     device.turnOn()
   }
 }
@@ -1291,12 +1330,17 @@ class TurnOnCommand extends ICommand { // Command receiver
 <!--slide-->
 
 ```js
-class RemoteControlButton { // Command invoker
-  setCommand(command) { this.command = command }
-  onPress () { this.command.execute() }
+class RemoteControlButton {
+  // Command invoker
+  setCommand(command) {
+    this.command = command
+  }
+  onPress() {
+    this.command.execute()
+  }
 }
 class RemoteControl {
-  constructor () {
+  constructor() {
     this.buttons = [
       new RemoteControlButton(),
       new RemoteControlButton(),
@@ -1316,13 +1360,19 @@ class RemoteControl {
 
 ```js
 class AlarmCommand {
-  constructor (device) { this.alarm = alarm }
+  constructor(device) {
+    this.alarm = alarm
+  }
 }
 class EnableAlarm extends AlarmCommand {
-  execute () { this.alarm.enable() }
+  execute() {
+    this.alarm.enable()
+  }
 }
 class DisableAlarm extends AlarmCommand {
-  execute () { this.alarm.disable() }
+  execute() {
+    this.alarm.disable()
+  }
 }
 ```
 
@@ -1345,7 +1395,6 @@ alarms.forEach(function(alarm){
 
 > Used to avoid extensive refactoring when a dependency changes
 
-
 <!--slide-->
 
 ### Example: From console logging to remote logging
@@ -1354,12 +1403,12 @@ alarms.forEach(function(alarm){
 
 ```js
 class LoggerFactory {
-  static getLogger () {
-    return window.console;
+  static getLogger() {
+    return window.console
   }
 }
-var logger = LoggerFactory.getLogger();
-logger.log("something happened");
+var logger = LoggerFactory.getLogger()
+logger.log('something happened')
 ```
 
 <!--slide-->
@@ -1390,12 +1439,12 @@ class AjaxLogger {
 
 ```js
 class AjaxLoggerAdapter {
-  static log (...args) {
+  static log(...args) {
     AjaxLogger.sendLog(...args)
   }
 }
 class LoggerFactory {
-  static getLogger () {
+  static getLogger() {
     return AjaxLoggerAdapter
   }
 }
@@ -1418,16 +1467,15 @@ class LoggerFactory {
 ```js
 $(element).click(onClick)
 ```
+
 ```js
 function click(element, func) {
   if (window.addEventListener) {
-    element.addEventListener('click', func, false);
-  }
-  else if (window.attachEvent) {
-    element.attachEvent('onclick', func);
-  }
-  else {
-    element['onclick'] = func;
+    element.addEventListener('click', func, false)
+  } else if (window.attachEvent) {
+    element.attachEvent('onclick', func)
+  } else {
+    element['onclick'] = func
   }
 }
 ```
@@ -1440,7 +1488,7 @@ $(element).css({ top: '30px', left: '100px' })
 
 ```js
 function css(element, properties) {
-  Object.keys(properties).forEach(function(key){
+  Object.keys(properties).forEach(function(key) {
     element.style[key] = properties[key]
   })
 }
@@ -1464,19 +1512,27 @@ function css(element, properties) {
 
 ```js
 class Parser {
-  parse (data) {
+  parse(data) {
     var labels = this._parseLabels(data)
     var names = this._parseNames(data)
     var metas = this._parseMetas(data)
     return { labels, names, metas }
   }
-  _parseLabels(data) { /* parsing algorithm */ } // Template method
-  _parseNames(data) { /* parsing algorithm */ } // Template method
-  _parseMetas(data) { /* parsing algorithm */ } // Template method
+  _parseLabels(data) {
+    /* parsing algorithm */
+  } // Template method
+  _parseNames(data) {
+    /* parsing algorithm */
+  } // Template method
+  _parseMetas(data) {
+    /* parsing algorithm */
+  } // Template method
 }
 
 class CustomParser extends Parser {
-  _parseLabels(data) { /* different parsing algorithm */ }
+  _parseLabels(data) {
+    /* different parsing algorithm */
+  }
 }
 ```
 
@@ -1507,7 +1563,7 @@ class MyController extends BaseController {
 
 ```js
 class Person {
-  constructor (firstName, lastName) {
+  constructor(firstName, lastName) {
     this.firstName = firstName
     this.lastName = lastName
   }
@@ -1515,12 +1571,13 @@ class Person {
     return this.firstName + ' ' + this.lastName
   }
 }
-console.log(new Person("Evan", "Graham") == 'Evan Graham') // true
+console.log(new Person('Evan', 'Graham') == 'Evan Graham') // true
 ```
 
 <!--slide-->
 
 ### Related OO Principles
+
 * Open/Close Principle (SOLID)
 * Protected variations (GRASP)
 
@@ -1546,13 +1603,16 @@ console.log(new Person("Evan", "Graham") == 'Evan Graham') // true
 
 ```js
 // Collection of elements
-$('.container').css({ opacity: .5 })
-$('.container').find('div').css({ opacity: .5 })
-$('.container').children().css({ opacity: .5 })
+$('.container').css({ opacity: 0.5 })
+$('.container')
+  .find('div')
+  .css({ opacity: 0.5 })
+$('.container')
+  .children()
+  .css({ opacity: 0.5 })
 
 // Single element
-$(element).css({ opacity: .5 })
-
+$(element).css({ opacity: 0.5 })
 ```
 
 <!--slide-->
@@ -1561,21 +1621,20 @@ $(element).css({ opacity: .5 })
 
 ```js
 class Directory {
-  constructor (files) {
+  constructor(files) {
     this.files = files
     this.children = []
   }
-  add (directory) {
+  add(directory) {
     this.children.push(directory)
     child.parent = this
   }
-  getFiles () {
-    const childrenFiles = this.children
-      .reduce((files, directory) => {
-        return files.push(directory.getFiles())
-      }, [])
+  getFiles() {
+    const childrenFiles = this.children.reduce((files, directory) => {
+      return files.push(directory.getFiles())
+    }, [])
 
-    return [...this.files,...childrenFiles]
+    return [...this.files, ...childrenFiles]
   }
 }
 ```
@@ -1591,7 +1650,6 @@ class Directory {
 > Clients may or may not know if they are using the proxy.
 
 > May throttle requests to the object of include cache for performance.
-
 
 <!--slide-->
 
@@ -1619,23 +1677,22 @@ class UsersProxy {
   constructor(users) {
     this.users = users
   }
-  getOne (id) {
-    if(cache[id]) {
+  getOne(id) {
+    if (cache[id]) {
       return cache[id]
     } else {
-      return cache[id] = this.users.getOne(id)
+      return (cache[id] = this.users.getOne(id))
     }
   }
-  getCount () {
-    if(count !== null) {
+  getCount() {
+    if (count !== null) {
       return count
     } else {
-      return count = this.users.getCount()
+      return (count = this.users.getCount())
     }
   }
 }
 ```
-
 
 <!--slide-->
 
@@ -1643,7 +1700,7 @@ class UsersProxy {
 
 ```js
 class UsersPaginator {
-  constructor () {
+  constructor() {
     this.page = 0
     this.usersPerPage = 10
     this.loadList()
@@ -1656,9 +1713,11 @@ class UsersPaginator {
     this.page--
     this.loadList()
   }
-  loadList () {
-    let offset = this.usersPerPage*this.page
-    return executeSql('SELECT * FROM Users LIMIT ' + offset + ',' + offset+this.usersPerPage)
+  loadList() {
+    let offset = this.usersPerPage * this.page
+    return executeSql(
+      'SELECT * FROM Users LIMIT ' + offset + ',' + offset + this.usersPerPage
+    )
   }
 }
 ```
@@ -1669,13 +1728,13 @@ Note: What if user clicks "nextPage" button very fastly. We really need to load 
 
 ```js
 class UsersPaginatorProxy extends UsersPaginator {
-  loadList () {
+  loadList() {
     _.debounce(this.loadList.bind(this), 300)
   }
 }
 ```
 
-[_.debounce](http://underscorejs.org/#debounce)
+[\_.debounce](http://underscorejs.org/#debounce)
 [Debouncing - CSS tricks](https://css-tricks.com/the-difference-between-throttling-and-debouncing/)
 
 <!--slide-->
@@ -1683,19 +1742,18 @@ class UsersPaginatorProxy extends UsersPaginator {
 ### Example: Proxy method to extend behaviour
 
 ```js
-var proxied = jQuery.ajax; // Preserving original function
+var proxied = jQuery.ajax // Preserving original function
 jQuery.ajax = function() {
-    jQuery("#loading").dialog({modal: true});
-    return proxied.apply(this, arguments);
+  jQuery('#loading').dialog({ modal: true })
+  return proxied.apply(this, arguments)
 }
 ```
 
-
 <!--slide-->
+
 ### Example: Proxy vs Decorator
 
 > Decorator Pattern focuses on dynamically **adding** functions to an object, while Proxy Pattern focuses on **controlling** access to an object.
-
 
 <!--section-->
 
@@ -1706,7 +1764,6 @@ jQuery.ajax = function() {
 > Model-View-Controller splits the responsibilites of most common programs
 
 > Model on a side, View on another, Controller in between.
-
 
 <!--slide-->
 
@@ -1766,7 +1823,6 @@ jQuery.ajax = function() {
 
 > It communicates state changes to the View of Controller through events.
 
-
 <!--slide-->
 
 ### Example: Mp3 player
@@ -1783,21 +1839,21 @@ jQuery.ajax = function() {
 
 ```js
 class Observable {
-  constructor () {
-    this.observers = [];
+  constructor() {
+    this.observers = []
   }
   registerObserver(observer) {
-    this.observers.push(observer);
+    this.observers.push(observer)
   }
   removeObserver(observer) {
-    this.observers = this.observers.filter(function (observer) {
-      return observer !== observerToRemove;
-    });
+    this.observers = this.observers.filter(function(observer) {
+      return observer !== observerToRemove
+    })
   }
   notifyObservers(data) {
-    this.observers.forEach(function (observer) {
-      observer(data);
-    });
+    this.observers.forEach(function(observer) {
+      observer(data)
+    })
   }
 }
 ```
@@ -1811,9 +1867,13 @@ class PlayList extends Observable {
   constructor(songs) {
     this.songs = songs
   }
-  get length() { this.songs.length }
-  get current() { this.current }
-  play (songIndex) {
+  get length() {
+    this.songs.length
+  }
+  get current() {
+    this.current
+  }
+  play(songIndex) {
     this.current = songIndex
     // execute song play
   }
@@ -1830,11 +1890,17 @@ class PlayerCtrl {
     this.playlist = playlist
     this.view = new PlayerView(this, playlist)
   }
-  next () { this.changeSong(this.playlist.current + 1) }
-  previous () { this.changeSong(this.playlist.current - 1) }
-  stop () { this.changeSong(null) }
+  next() {
+    this.changeSong(this.playlist.current + 1)
+  }
+  previous() {
+    this.changeSong(this.playlist.current - 1)
+  }
+  stop() {
+    this.changeSong(null)
+  }
   shuffle() {
-    var index = Math.round(Math.random()*this.playlist.length)
+    var index = Math.round(Math.random() * this.playlist.length)
     this.changeSong(songIndex)
   }
   changeSong(index) {
@@ -1858,19 +1924,31 @@ class PlayerView {
     this.controller = controller
     this.setEvents()
   }
-  setEvents () {
+  setEvents() {
     $('.next').click(this.controller.next.bind(this.controller))
     $('.prev').click(this.controller.prev.bind(this.controller))
     $('.stop').click(this.controller.stop.bind(this.controller))
     $('.play').click(this.controller.play.bind(this.controller))
     $('.shuffle').click(this.controller.shuffle.bind(this.controller))
   }
-  onItemChange (item) { this.setTitle(item.title + ' - ' + item.author) }
-  setTitle(title) { /* change title in the view */ }
-  toggleNext(enable) { /* enable/disable next button */ }
-  togglePrevious(enable) { /* enable/disable previous button */ }
-  toggleStop(enable) { /* enable/disable stop button */ }
-  togglePlay(enable) { /* enable/disable play button */ }
+  onItemChange(item) {
+    this.setTitle(item.title + ' - ' + item.author)
+  }
+  setTitle(title) {
+    /* change title in the view */
+  }
+  toggleNext(enable) {
+    /* enable/disable next button */
+  }
+  togglePrevious(enable) {
+    /* enable/disable previous button */
+  }
+  toggleStop(enable) {
+    /* enable/disable stop button */
+  }
+  togglePlay(enable) {
+    /* enable/disable play button */
+  }
 }
 ```
 

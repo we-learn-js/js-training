@@ -21,9 +21,7 @@ delete x
 `OP` x
 
 ```js
-++x
--x
-+"3" // 3 (number)
+++x - x + '3' // 3 (number)
 !x
 ```
 
@@ -48,13 +46,11 @@ x && y
 condition `?` x `:` y
 
 ```js
-let status = (age >= 18) ? "adult" : "minor";
+let status = age >= 18 ? 'adult' : 'minor'
 ```
 
 ```js
-let status = (age >= 18)
-  ? "adult"
-  : "minor";
+let status = age >= 18 ? 'adult' : 'minor'
 ```
 
 <!--section-->
@@ -69,21 +65,23 @@ condition `?` expression `:` expression
 
 <!--slide-->
 
-
 As an expression:
+
 ```js
-"The fee is " + (isMember ? "$2.00" : "$10.00")
+'The fee is ' + (isMember ? '$2.00' : '$10.00')
 ```
 
 To declare a variable:
+
 ```js
-let fee = isMember ? "$2.00" : "$10.00"
+let fee = isMember ? '$2.00' : '$10.00'
 ```
 
 To create a property:
+
 ```js
 {
-  fee: isMember ? "$2.00" : "$10.00"
+  fee: isMember ? '$2.00' : '$10.00'
 }
 ```
 
@@ -93,12 +91,12 @@ To create a property:
 
 ```js
 let check1 = false,
-    check2 = false,
-    access;
+  check2 = false,
+  access
 
-access = check1 ? "Denied" : check2 ? "Denied" : "Granted";
+access = check1 ? 'Denied' : check2 ? 'Denied' : 'Granted'
 
-console.log( access ); // "Access granted"
+console.log(access) // "Access granted"
 ```
 
 <!--slide-->
@@ -107,13 +105,11 @@ console.log( access ); // "Access granted"
 
 ```js
 let stop = false,
-    age = 23;
+  age = 23
 
 age > 18
-  ? ( alert("OK, you can go."),
-      location.assign("continue.html") )
-  : ( stop = true,
-      alert("Sorry, you are much too young!") );
+  ? (alert('OK, you can go.'), location.assign('continue.html'))
+  : ((stop = true), alert('Sorry, you are much too young!'))
 ```
 
 <!--section-->
@@ -133,13 +129,12 @@ age > 18
 > The unary plus operator precedes its operand and evaluates to its operand but **attempts to convert it into a number**, if it isn't already.
 
 ```js
-+3      // 3
-+"3"    // 3
-+"a"    // NaN
-+true   // 1
-+false  // 0
-+null   // 0
-
+;+3 + // 3
+'3' + // 3
+'a' + // NaN
+true + // 1
+false + // 0
+  null // 0
 ```
 
 Note: `NaN` is a property of the global object. [MDN // NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)
@@ -153,11 +148,9 @@ Note: `NaN` is a property of the global object. [MDN // NaN](https://developer.m
 > The unary negation operator precedes its operand and negates it.
 
 ```js
--"4" // -4
--"a" // NaN
-x = 4;
-y = -x; // y = -4, x = 4
-
+;-'4' - 'a' // -4 // NaN
+x = 4
+y = -x // y = -4, x = 4
 ```
 
 <!--slide-->
@@ -187,15 +180,15 @@ true + false + true + true // 1 + 0 + 1 + 1 =  3
 
 ```js
 // Number + String
-    5 + "foo"
+5 + 'foo'
 // "5" + "foo" = "5foo"
 
 // String + Boolean
-   "foo" + false
+'foo' + false
 // "foo" + "false" = "foofalse"
 
 // String + String
-   "foo" + "bar"
+'foo' + 'bar'
 // "foo" + "bar" = "foobar"
 ```
 
@@ -209,17 +202,15 @@ true + false + true + true // 1 + 0 + 1 + 1 =  3
 
 ```js
 // Number + String + Number
-    5 + "foo" + 5
+5 + 'foo' + 5
 // ("5" + "foo") + 5 = "5foo5"
 
-
 // Number + Number + String
-   5 + 5 + "foo"
+5 + 5 + 'foo'
 // (5 + 5) + "foo" = "10foo"
 
-
 // Number + Number + Boolean + String
-   5 + 5 + true + "foo"
+5 + 5 + true + 'foo'
 // ((5 + 5) + true) + "foo" = "11foo"
 ```
 
@@ -232,9 +223,9 @@ x `-` y
 > The subtraction operator subtracts the two operands, producing their difference.
 
 ```js
-5 - 3     // 2
-3 - 5     // -2
-"foo" - 3 // NaN
+5 - 3 // 2
+3 - 5 // -2
+'foo' - 3 // NaN
 ```
 
 <!--slide-->
@@ -246,14 +237,14 @@ x `/` y
 > The division operator produces the quotient of its operands where the left operand is the dividend and the right operand is the divisor.
 
 ```js
-1 / 2       // 0.5
+1 / 2 // 0.5
 
-1.0 / 2.0   // 0.5
+1.0 / 2.0 // 0.5
 
-2.0 / 0     // Infinity
+2.0 / 0 // Infinity
 ```
 
-Note: The global Infinity property is a numeric value representing infinity. [MDN  | Infinity](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity)
+Note: The global Infinity property is a numeric value representing infinity. [MDN | Infinity](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity)
 
 <!--slide-->
 
@@ -264,16 +255,14 @@ x `*` y
 > The multiplication operator produces the product of the operands.
 
 ```js
-2 * 2       // 4
-"2" * 2     // 4
+2 * 2 // 4
+'2' * 2 - // 4
+  2 * 2 // -4
+'-2' * 2 // -4
+'foo' * 2 // NaN
 
--2 * 2      // -4
-"-2" * 2    // -4
-"foo" * 2   // NaN
-
-Infinity * 0  // NaN
+Infinity * 0 // NaN
 Infinity * Infinity // Infinity
-
 ```
 
 <!--slide-->
@@ -286,15 +275,15 @@ Infinity * Infinity // Infinity
 
 ```js
 // Number + Number + Number
-   3 + 4 + 5
+3 + 4 + 5
 // (3 + 4) + 5 = 12
 
 // Number + Number * Number
-   3 + 4 * 5
+3 + 4 * 5
 // 3 + (4 * 5) = 23
 
 // Number + Number * Number
-   3 + "4" * 5
+3 + '4' * 5
 // 3 + ("4" * 5) = 23
 ```
 
@@ -309,9 +298,8 @@ x `%` y
 ```js
 12 % 5 // 2
 
-2 % 3 // 2
-
--1 % 2 // -1
+2 % 3 - // 2
+  1 % 2 // -1
 ```
 
 <!--slide-->
@@ -337,14 +325,15 @@ x`++` or `++`x
 
 ```js
 // Postfix
-let x = 3;
-y = x++;
+let x = 3
+y = x++
 // x = 4, y = 3
 ```
+
 ```js
 // Prefix
-let x = 2;
-y = ++x;
+let x = 2
+y = ++x
 // x = 3, y = 3
 ```
 
@@ -358,17 +347,17 @@ x`--` or `--`x
 
 ```js
 // Postfix
-let x = 3;
-y = x--;
+let x = 3
+y = x--
 // x = 2, y = 3
 ```
+
 ```js
 // Prefix
-let x = 2;
-y = --x;
+let x = 2
+y = --x
 // x = 1, y = 1
 ```
-
 
 <!--section-->
 
@@ -387,28 +376,29 @@ x `=` y
 > Simple assignment operator which assigns a value to a variable.
 
 ```js
-let x = 5, y = 10, z = 25
+let x = 5,
+  y = 10,
+  z = 25
 
-x = y     // x is 10
+x = y // x is 10
 x = y = z // x, y and z are all 25
 
-console.log(x = 3+2) // 5
-console.log(x = y = z) // 25
+console.log((x = 3 + 2)) // 5
+console.log((x = y = z)) // 25
 ```
 
 <!--slide-->
 
 ### Compound assignment
 
-| Name | Operator | Meaning |
-| - | - | - |
-| Addition assignment | x `+=` y | x `=` x `+` y |
-| Subtraction assignment | x `-=` y | x `=` x `-` y |
-| Multiplication assignment | x `*=` y | x `=` x `*` y |
-| Division assignment | x `/=` y | x `=` x `/` y |
-| Remainder assignment | x `%=` y | x `=` x `%` y |
+| Name                      | Operator  | Meaning        |
+| ------------------------- | --------- | -------------- |
+| Addition assignment       | x `+=` y  | x `=` x `+` y  |
+| Subtraction assignment    | x `-=` y  | x `=` x `-` y  |
+| Multiplication assignment | x `*=` y  | x `=` x `*` y  |
+| Division assignment       | x `/=` y  | x `=` x `/` y  |
+| Remainder assignment      | x `%=` y  | x `=` x `%` y  |
 | Exponentiation assignment | x `**=` y | x `=` x `**` y |
-
 
 <!--slide-->
 
@@ -425,19 +415,21 @@ console.log(x = y = z) // 25
 > With arrays, destructuring is made by order
 
 With destructuring:
+
 ```js
-const numbers = ["one", "two", "three"];
-const [one, two, three] = numbers;
+const numbers = ['one', 'two', 'three']
+const [one, two, three] = numbers
 
 console.log(one, two, three) // "one", "two", "three"
 ```
 
 Without destructuring:
+
 ```js
-const numbers = ["one", "two", "three"];
-const one   = numbers[0];
-const two   = numbers[1];
-const three = numbers[2];
+const numbers = ['one', 'two', 'three']
+const one = numbers[0]
+const two = numbers[1]
+const three = numbers[2]
 
 console.log(one, two, three) // "one", "two", "three"
 ```
@@ -451,26 +443,23 @@ console.log(one, two, three) // "one", "two", "three"
 > Destructuring declares new variables, and follows the same rules as any variable declaration.
 
 ```js
-let x = [1, 2, 3, 4, 5];
+let x = [1, 2, 3, 4, 5]
 ```
 
 ```js
-let [y, z] = x;
+let [y, z] = x
 // let y = x[0]
 // let z = x[1]
 ```
 
 ```js
-const [y, z] = x;
+const [y, z] = x
 // const y = x[0]
 // const z = x[1]
 ```
 
-
-
 Note: as we are declaring new variables `y` and `z` and asigning a value,
 we need to use `var`, otherwise variables will be declared on global scope.
-
 
 <!--slide-->
 
@@ -479,17 +468,18 @@ we need to use `var`, otherwise variables will be declared on global scope.
 > A variable can be assigned its value via destructuring separate from the variable's declaration.
 
 without destructuring:
+
 ```js
-let x = 1;
-let y = 2;
-let z = 3;
+let x = 1
+let y = 2
+let z = 3
 ```
 
 with destructuring:
-```js
-let [x, y, z] = [1, 2, 3];
-```
 
+```js
+let [x, y, z] = [1, 2, 3]
+```
 
 <!--slide-->
 
@@ -498,23 +488,25 @@ let [x, y, z] = [1, 2, 3];
 A variable can be assigned a default, in the case that the value pulled from the array is undefined.
 
 ```js
-let arr = [1, undefined, 3, null, '' ]
+let arr = [1, undefined, 3, null, '']
 ```
 
 without destructuring:
+
 ```js
-let a = (chars[0] !== undefined) ? chars[0] : 'a';
-let b = (chars[1] !== undefined) ? chars[1] : 'b';
-let c = (chars[2] !== undefined) ? chars[2] : 'c';
-let d = (chars[3] !== undefined) ? chars[3] : 'd';
-let e = (chars[4] !== undefined) ? chars[4] : 'e';
+let a = chars[0] !== undefined ? chars[0] : 'a'
+let b = chars[1] !== undefined ? chars[1] : 'b'
+let c = chars[2] !== undefined ? chars[2] : 'c'
+let d = chars[3] !== undefined ? chars[3] : 'd'
+let e = chars[4] !== undefined ? chars[4] : 'e'
 
 console.log(a, b, c, d, e) // 1, "b", 3, null, ""
 ```
 
 with destructuring:
+
 ```js
-let [ a='a', b='b', c='c', d='d', e='e' ] = arr
+let [a = 'a', b = 'b', c = 'c', d = 'd', e = 'e'] = arr
 
 console.log(a, b, c, d, e) // 1, "b", 3, null, ""
 ```
@@ -528,11 +520,11 @@ Note: Notice that default values only works with undefined values, not with `nul
 Two variables values can be swapped in one destructuring expression.
 
 ```js
-let a = 1;
-let b = 3;
+let a = 1
+let b = 3
 
-[a, b] = [b, a];
-console.log(a, b); // 3, 1
+;[a, b] = [b, a]
+console.log(a, b) // 3, 1
 ```
 
 <!--slide-->
@@ -542,40 +534,36 @@ console.log(a, b); // 3, 1
 > You can ignore return values that you're not interested in
 
 ```js
-let numbers = [1, 2, 3, 4, 5, 6];
+let numbers = [1, 2, 3, 4, 5, 6]
 ```
 
 without destructuring:
+
 ```js
 let a = numbers[0]
 let b = numbers[2]
 let c = numbers[5]
-console.log(a, b, c); // 1, 3, 6
+console.log(a, b, c) // 1, 3, 6
 ```
 
 with destructuring:
-```js
-let [a, , b, , , c] = numbers;
-console.log(a, b, c); // 1, 3, 6
-```
 
+```js
+let [a, , b, , , c] = numbers
+console.log(a, b, c) // 1, 3, 6
+```
 
 <!--slide-->
 
 #### Nested array destructuring
 
-
 ```js
-let arrays = [
-  [1,2,3],
-  [4,5,6]
-]
+let arrays = [[1, 2, 3], [4, 5, 6]]
 
-let [[a, ,b], [c,d]] = arrays
+let [[a, , b], [c, d]] = arrays
 
-console.log(a,b,c,d) // 1, 3, 4, 5
+console.log(a, b, c, d) // 1, 3, 4, 5
 ```
-
 
 <!--slide-->
 
@@ -584,21 +572,23 @@ console.log(a,b,c,d) // 1, 3, 4, 5
 > With objects, destructuring is made by property name, not by order
 
 ```js
-let o = {a: 42, b: true, c: 36, d: 'Evan'};
+let o = { a: 42, b: true, c: 36, d: 'Evan' }
 ```
 
 with destructuring:
+
 ```js
-let {a, d} = o;
-console.log(a, d); // 42, 'Evan'
+let { a, d } = o
+console.log(a, d) // 42, 'Evan'
 ```
 
 without destructuring:
+
 ```js
 let a = o.a
 let d = o.d
 
-console.log(a, d); // 42, 'Evan'
+console.log(a, d) // 42, 'Evan'
 ```
 
 <!--slide-->
@@ -606,43 +596,46 @@ console.log(a, d); // 42, 'Evan'
 #### Default values
 
 with destructuring:
-```js
-let { a=10, b=5 } = {a: 3};
 
-console.log(a, b); // 3, 5
+```js
+let { a = 10, b = 5 } = { a: 3 }
+
+console.log(a, b) // 3, 5
 ```
 
 without destructuring:
-```js
-let _ref = {a: 3}
-let a = (_ref.a !== undefined) ? _ref.a : 10
-let b = (_ref.b !== undefined) ? _ref.b : 5
 
-console.log(a, b); // 3, 5
+```js
+let _ref = { a: 3 }
+let a = _ref.a !== undefined ? _ref.a : 10
+let b = _ref.b !== undefined ? _ref.b : 5
+
+console.log(a, b) // 3, 5
 ```
 
 <!--slide-->
 
 #### Renaming properties
 
-
 ```js
-let o = {a: 42, b: true, c: 36, d: 'Evan'};
+let o = { a: 42, b: true, c: 36, d: 'Evan' }
 ```
 
 with destructuring:
-```js
-let { a: first, d: second } = o;
 
-console.log(first, second); // 42, 'Evan'
+```js
+let { a: first, d: second } = o
+
+console.log(first, second) // 42, 'Evan'
 ```
 
 without destructuring:
+
 ```js
 let first = o.a
 let second = o.d
 
-console.log(first, second); // 42, 'Evan'
+console.log(first, second) // 42, 'Evan'
 ```
 
 <!--slide-->
@@ -650,44 +643,45 @@ console.log(first, second); // 42, 'Evan'
 #### Default values or renamed properties
 
 ```js
-let o = {a: 42, b: true, c: 36, d: 'Evan'};
+let o = { a: 42, b: true, c: 36, d: 'Evan' }
 ```
 
 with destructuring:
-```js
-let { a: first, c=10, d: second, e: third=6 } = o;
 
-console.log(first, second, third); // 42, 'Evan', 6
+```js
+let { a: first, c = 10, d: second, e: third = 6 } = o
+
+console.log(first, second, third) // 42, 'Evan', 6
 ```
 
-
 without destructuring:
+
 ```js
-let first   = o.a
-let c       = o.c !== undefined ? o.c : 10
-let second  = o.d
-let third   = o.e !== undefined ? o.e : 6
+let first = o.a
+let c = o.c !== undefined ? o.c : 10
+let second = o.d
+let third = o.e !== undefined ? o.e : 6
 
-
-console.log(first, second, third); // 42, 'Evan', 6
+console.log(first, second, third) // 42, 'Evan', 6
 ```
 
 <!--slide-->
 
 without destructuring:
+
 ```js
 // `options` is an object
-let size = options.size === undefined ? 'big' : options.size;
-let cords = options.cords === undefined ? { x: 0, y: 0 } : options.cords;
-let radius = options.radius === undefined ? 25 : options.radius;
-console.log(size, cords, radius);
-
+let size = options.size === undefined ? 'big' : options.size
+let cords = options.cords === undefined ? { x: 0, y: 0 } : options.cords
+let radius = options.radius === undefined ? 25 : options.radius
+console.log(size, cords, radius)
 ```
 
 with destructuring:
+
 ```js
 // `options`is an object
-let {size = 'big', cords = { x: 0, y: 0 }, radius = 25} = options
+let { size = 'big', cords = { x: 0, y: 0 }, radius = 25 } = options
 ```
 
 <!--slide-->
@@ -695,27 +689,27 @@ let {size = 'big', cords = { x: 0, y: 0 }, radius = 25} = options
 #### Destructuring function parameters
 
 ```js
-drawChart({radius: 45})
+drawChart({ radius: 45 })
 ```
 
 with destructuring:
+
 ```js
-function drawChart(
-  {size = 'big', cords = { x: 0, y: 0 }, radius = 25} = {}
-) {
-  console.log(size, cords, radius);
+function drawChart({ size = 'big', cords = { x: 0, y: 0 }, radius = 25 } = {}) {
+  console.log(size, cords, radius)
 }
 ```
 
 without destructuring:
+
 ```js
 function drawChart(options) {
-  options = options === undefined ? {} : options;
-  let size = options.size === undefined ? 'big' : options.size;
-  let cords = options.cords === undefined ? { x: 0, y: 0 } : options.cords;
-  let radius = options.radius === undefined ? 25 : options.radius;
+  options = options === undefined ? {} : options
+  let size = options.size === undefined ? 'big' : options.size
+  let cords = options.cords === undefined ? { x: 0, y: 0 } : options.cords
+  let radius = options.radius === undefined ? 25 : options.radius
 
-  console.log(size, cords, radius);
+  console.log(size, cords, radius)
 }
 ```
 
@@ -724,12 +718,9 @@ function drawChart(options) {
 ### Nested object and array destructuring
 
 ```js
-let users = [
-  {name: 'Evan'},
-  {name: 'Joseph'}
-]
+let users = [{ name: 'Evan' }, { name: 'Joseph' }]
 
-let [{name: name1}, {name: name2 }] = users
+let [{ name: name1 }, { name: name2 }] = users
 
 console.log(name1) // "Evan"
 console.log(name2) // "Joseph"
@@ -741,25 +732,21 @@ console.log(name2) // "Joseph"
 
 ```js
 const metadata = {
-    title: "Scratchpad",
-    translations: [
-       {
-        url: "/de/docs/Tools/Scratchpad",
-        title: "JavaScript-Umgebung"
-       }
-    ],
-    url: "/en-US/docs/Tools/Scratchpad"
-};
+  title: 'Scratchpad',
+  translations: [
+    {
+      url: '/de/docs/Tools/Scratchpad',
+      title: 'JavaScript-Umgebung'
+    }
+  ],
+  url: '/en-US/docs/Tools/Scratchpad'
+}
 
-let {
-  title: englishTitle,
-  translations: [{ title: localeTitle }]
-} = metadata;
+let { title: englishTitle, translations: [{ title: localeTitle }] } = metadata
 
-console.log(englishTitle); // "Scratchpad"
-console.log(localeTitle);  // "JavaScript-Umgebung"
+console.log(englishTitle) // "Scratchpad"
+console.log(localeTitle) // "JavaScript-Umgebung"
 ```
-
 
 <!--section-->
 
@@ -770,7 +757,6 @@ x `OP` y
 > JavaScript has both strict and type–converting comparisons.
 
 [MDN // Comparison Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
-
 
 <!--slide-->
 
@@ -789,12 +775,12 @@ x `!=` y
 x `==` y
 
 ```js
-1    ==  1        // true
-"1"  ==  1        // true
-1    == '1'       // true
-0    == false     // true
-0    == null      // false
-0    == undefined // false
+1 == 1 // true
+'1' == 1 // true
+1 == '1' // true
+0 == false // true
+0 == null // false
+0 == undefined // false
 null == undefined // true
 ```
 
@@ -809,8 +795,8 @@ null == undefined // true
 > An expression comparing objects is only true if the operands reference the same object.
 
 ```js
-const object1 = {"value":"key"};
-const object2 = {"value":"key"};
+const object1 = { value: 'key' }
+const object2 = { value: 'key' }
 object1 == object2 // false
 
 const object3 = object1
@@ -827,11 +813,11 @@ Note: The two objects are difference objects, in different allocation.
 x `!=` y
 
 ```js
-1 !=   2     // true
-1 !=  "1"    // false
-1 !=  '1'    // false
-1 !=  true   // false
-0 !=  false  // false
+1 != 2 // true
+1 != '1' // false
+1 != '1' // false
+1 != true // false
+0 != false // false
 ```
 
 <!--slide-->
@@ -842,10 +828,10 @@ x `!=` y
 
 ##### String `==` Number
 
->  The string is converted to a number value.
+> The string is converted to a number value.
 
 ```js
-  "1"  ==  1    // true
+'1' == 1 // true
 // 1  ==  1     // true
 ```
 
@@ -856,13 +842,13 @@ x `!=` y
 > The Boolean operand is converted to 1 if it is true and 0 if it is false.
 
 ```js
-0 == false  // true
+0 == false // true
 // 0 == 1   // true
 
-1 == true   // true
+1 == true // true
 // 1 == 1   // true
 
-1 == false  // false
+1 == false // false
 // 1 == 0   // false
 ```
 
@@ -873,13 +859,13 @@ x `!=` y
 > JavaScript attempts to return the default value for the object.
 
 ```js
-let a = new String('foo');
-let b = new String('foo');
+let a = new String('foo')
+let b = new String('foo')
 
-a == b            // false, as a and b are both objects and reference different objects
+a == b // false, as a and b are both objects and reference different objects
 // a = b          // false
 
-a == 'foo'        // true, as the Object (a) is converted to String 'foo'
+a == 'foo' // true, as the Object (a) is converted to String 'foo'
 // 'foo' = 'foo'  // true
 ```
 
@@ -896,10 +882,10 @@ a == 'foo'        // true, as the Object (a) is converted to String 'foo'
 <!--slide-->
 
 ```js
-let a = new Number(5);
-let b = new Number(5);
+let a = new Number(5)
+let b = new Number(5)
 
-a == b  // false as a and b are type Object and reference different objects
+a == b // false as a and b are type Object and reference different objects
 a == 5 // true as the Object (a) is converted to primitive 5 before comparison
 
 a > b // false
@@ -912,7 +898,9 @@ Enforcing `valueOf()`:
 
 ```js
 let o = {
-  valueOf: function () { return 'random' }
+  valueOf: function() {
+    return 'random'
+  }
 }
 o == 'random' // true
 ```
@@ -932,12 +920,12 @@ x `!==` y
 #### Strict equality
 
 ```js
-1    ===  1        // true  (true  in abstract comparison)
-"1"  ===  1        // false (true in abstract comparison)
-1    === '1'       // false (true in abstract comparison)
-0    === false     // false (true in abstract comparison)
-0    === null      // false (false in abstract comparison)
-0    === undefined // false (false in abstract comparison)
+1 === 1 // true  (true  in abstract comparison)
+'1' === 1 // false (true in abstract comparison)
+1 === '1' // false (true in abstract comparison)
+0 === false // false (true in abstract comparison)
+0 === null // false (false in abstract comparison)
+0 === undefined // false (false in abstract comparison)
 null === undefined // false (true in abstract comparison)
 ```
 
@@ -948,11 +936,11 @@ null === undefined // false (true in abstract comparison)
 x `!=` y
 
 ```js
-1 !==   2     // true
-1 !==  "1"    // true (false in abstract comparison)
-1 !==  '1'    // true (false in abstract comparison)
-1 !==  true   // true (false in abstract comparison)
-0 !==  false  // true (false in abstract comparison)
+1 !== 2 // true
+1 !== '1' // true (false in abstract comparison)
+1 !== '1' // true (false in abstract comparison)
+1 !== true // true (false in abstract comparison)
+0 !== false // true (false in abstract comparison)
 ```
 
 <!--slide-->
@@ -970,13 +958,13 @@ x `<=` y
 <!--slide-->
 
 ```js
-4 > 3   // true
-4 >= 3  // true
-3 >= 3  // true
+4 > 3 // true
+4 >= 3 // true
+3 >= 3 // true
 
-3 < 4   // true
-3 <= 4  // true
-3 <= 3  // true
+3 < 4 // true
+3 <= 4 // true
+3 <= 3 // true
 ```
 
 <!--section-->
@@ -989,17 +977,14 @@ expression `||` expression
 
 `!`expression
 
-
 <!--slide-->
 
 > Logical operators are typically used with `Boolean` (logical) values
 >
 > However, the `&&` and `||` operators actually return the value of one of the specified operands,
-so if these operators are used with non-Boolean values, they may return a non-Boolean value.
-
+> so if these operators are used with non-Boolean values, they may return a non-Boolean value.
 
 [MDN // Logical Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators)
-
 
 <!--slide-->
 
@@ -1010,16 +995,14 @@ expression `&&` expression
 > The return is not `true` or `false`, it's the last evaluated expression
 
 ```js
-true  && true;     // t && t returns true
-true  && false;    // t && f returns false
-false && true;     // f && t returns false
-false && (3 == 4); // f && f returns false
-"Cat" && "Dog";    // t && t returns Dog
-false && "Cat";    // f && t returns false
-"Cat" && false;    // t && f returns false
+true && true // t && t returns true
+true && false // t && f returns false
+false && true // f && t returns false
+false && 3 == 4 // f && f returns false
+'Cat' && 'Dog' // t && t returns Dog
+false && 'Cat' // f && t returns false
+'Cat' && false // t && f returns false
 ```
-
-
 
 <!--slide-->
 
@@ -1030,13 +1013,13 @@ expression `||` expression
 > The return is not `true` or `false`, it's the last evaluated expression
 
 ```js
-true  || true;     // t || t returns true
-false || true;     // f || t returns true
-true  || false;    // t || f returns true
-false || (3 == 4); // f || f returns false
-"Cat" || "Dog";    // t || t returns Cat
-false || "Cat";    // f || t returns Cat
-"Cat" || false;    // t || f returns Cat
+true || true // t || t returns true
+false || true // f || t returns true
+true || false // t || f returns true
+false || 3 == 4 // f || f returns false
+'Cat' || 'Dog' // t || t returns Cat
+false || 'Cat' // f || t returns Cat
+'Cat' || false // t || f returns Cat
 ```
 
 <!--slide-->
@@ -1048,12 +1031,12 @@ false || "Cat";    // f || t returns Cat
 > `undefined`, `null`, `NaN`, `0`, `""`
 
 ```js
-let a;
-a    || "truthy" // "truthy"
-null || "truthy" // "truthy"
-NaN  || "truthy" // "truthy"
-0    || "truthy" // "truthy"
-""   || "truthy" // "truthy"
+let a
+a || 'truthy' // "truthy"
+null || 'truthy' // "truthy"
+NaN || 'truthy' // "truthy"
+0 || 'truthy' // "truthy"
+'' || 'truthy' // "truthy"
 ```
 
 Note: The return is not `true` or `false`, it's the last evaluated expression.
@@ -1065,9 +1048,9 @@ Note: The return is not `true` or `false`, it's the last evaluated expression.
 `!`expression
 
 ```js
-!true;  // !t returns false
-!false; // !f returns true
-!"Cat"; // !t returns false
+!true // !t returns false
+!false // !f returns true
+!'Cat' // !t returns false
 ```
 
 <!--slide-->
@@ -1077,12 +1060,12 @@ Note: The return is not `true` or `false`, it's the last evaluated expression.
 > As logical expressions are evaluated left to right, they are tested for possible "short-circuit" evaluation.
 
 ```js
-3 && "" && "Cat" // false | 3 and "" are evaluated
+3 && '' && 'Cat' // false | 3 and "" are evaluated
 // "Cat" isn't evaluated as  "" was falsey
 ```
 
 ```js
-3 || "" || "Cat" // true | 3 is evaluated
+3 || '' || 'Cat' // true | 3 is evaluated
 // "" and "Cat" aren't evaluated as 3 was thruthy
 ```
 
@@ -1091,10 +1074,11 @@ Note: The return is not `true` or `false`, it's the last evaluated expression.
 ### Using it for logic
 
 This code:
+
 ```js
-let flag = doSomething();
+let flag = doSomething()
 if (!flag) {
-  doSomethingElse();
+  doSomethingElse()
 }
 ```
 
@@ -1102,7 +1086,6 @@ is the same as:
 
 ```js
 doSomething() || doSomethingElse()
-
 ```
 
 <!--slide-->
@@ -1110,10 +1093,11 @@ doSomething() || doSomethingElse()
 ### Using it for logic
 
 This code:
+
 ```js
-let flag = doSomething();
+let flag = doSomething()
 if (flag) {
-  doSomethingElse();
+  doSomethingElse()
 }
 ```
 
@@ -1131,8 +1115,6 @@ doSomething() && doSomethingElse()
 
 > An unary operation is an operation with only one operand.
 
-
-
 <!--slide-->
 
 ### delete
@@ -1141,16 +1123,14 @@ doSomething() && doSomethingElse()
 
 > The `delete` operator deletes an object, an object's property, or an element at a specified index in an array.
 
-
-
 ```js
 obj = { name: 'Joseph', surname: 'Smith' }
-delete obj.name;  // obj === { surname: 'Smith' }
-delete obj;       // obj is not defined
+delete obj.name // obj === { surname: 'Smith' }
+delete obj // obj is not defined
 
-arr = [1,2,3,4]
-delete arr[1];    // arr === [1,undefined, 3,4]
-delete arr;       // arr is not defined
+arr = [1, 2, 3, 4]
+delete arr[1] // arr === [1,undefined, 3,4]
+delete arr // arr is not defined
 ```
 
 [MDN // Operators > delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete)
@@ -1163,10 +1143,10 @@ Objects (and arrays) can be deleted only if they are declared implicitly
 
 ```js
 let obj = { name: 'Joseph', surname: 'Smith' }
-delete obj; // obj is { name: 'Joseph', surname: 'Smith' }
+delete obj // obj is { name: 'Joseph', surname: 'Smith' }
 
-let arr = [1,2,3,4]
-delete arr; // arr is [1,2,3,4]
+let arr = [1, 2, 3, 4]
+delete arr // arr is [1,2,3,4]
 ```
 
 <!--slide-->
@@ -1178,24 +1158,24 @@ delete arr; // arr is [1,2,3,4]
 > The `typeof` operator returns a string indicating the type of the unevaluated operand.
 
 ```js
-typeof x      // "undefined"
-typeof 5      // "number"
-typeof "5"    // "string"
-typeof {}     // "object"
-typeof null   // "object"
+typeof x // "undefined"
+typeof 5 // "number"
+typeof '5' // "string"
+typeof {} // "object"
+typeof null // "object"
 ```
 
 <!--slide-->
 
-| Type | Result |
-| ---- | ------ |
-| Undefined | "undefined" |
-| Boolean | "boolean" |
-| Number | "number" |
-| String | "string" |
-| Symbol (ES6) | "symbol" |
-| Function object | "function" |
-| Any other object | "object" |
+| Type             | Result      |
+| ---------------- | ----------- |
+| Undefined        | "undefined" |
+| Boolean          | "boolean"   |
+| Number           | "number"    |
+| String           | "string"    |
+| Symbol (ES6)     | "symbol"    |
+| Function object  | "function"  |
+| Any other object | "object"    |
 
 <!--slide-->
 
@@ -1210,6 +1190,7 @@ typeof null   // "object"
 <!--slide-->
 
 `numbers` passed as a single argument to `console.log`:
+
 ```js
 let numbers = [1, 2, 3]
 console.log(numbers)
@@ -1217,6 +1198,7 @@ console.log(numbers)
 ```
 
 `numbers` spread, as separated arguments:
+
 ```js
 let numbers = [1, 2, 3]
 console.log(...numbers)
@@ -1228,7 +1210,6 @@ which is the same as:
 ```js
 // console.log(...numbers)
 console.log(numbers[0], numbers[1], numbers[2])
-
 ```
 
 <!--slide-->
@@ -1252,8 +1233,8 @@ let letters = ['a', 'b', 'c']
 #### Array insertion
 
 ```js
-let parts = ['shoulders', 'knees'];
-let lyrics = ['head', ...parts, 'and', 'toes'];
+let parts = ['shoulders', 'knees']
+let lyrics = ['head', ...parts, 'and', 'toes']
 
 console.log(lyrics)
 // ["head", "shoulders", "knees", "and", "toes"]
@@ -1264,11 +1245,10 @@ console.log(lyrics)
 #### Array clone
 
 ```js
-let arr = [1,2,3];
-let arr2 = [...arr]; // [arr[0],arr[1],arr[2]]
+let arr = [1, 2, 3]
+let arr2 = [...arr] // [arr[0],arr[1],arr[2]]
 
-arr2.push(4); // [1, 2, 3, 4]
-
+arr2.push(4) // [1, 2, 3, 4]
 ```
 
 `arr2` becomes [1,2,3,4], `arr` stays the same
@@ -1279,24 +1259,23 @@ arr2.push(4); // [1, 2, 3, 4]
 
 ```js
 let user = { name: 'Evan', surname: 'Graham' }
-let userWithJob = {...user, job: 'Barber'}
-console.log(user)         // {name: "Evan", surname: "Graham"}
-console.log(userWithJob)  // {name: "Evan", surname: "Graham", job: "Barber"}
+let userWithJob = { ...user, job: 'Barber' }
+console.log(user) // {name: "Evan", surname: "Graham"}
+console.log(userWithJob) // {name: "Evan", surname: "Graham", job: "Barber"}
 
 userWithJob.name = 'James'
-console.log(user)         // {name: "Evan", surname: "Graham"}
-console.log(userWithJob)  // {name: "James", surname: "Graham", job: "Barber"}
+console.log(user) // {name: "Evan", surname: "Graham"}
+console.log(userWithJob) // {name: "James", surname: "Graham", job: "Barber"}
 ```
 
 <!--slide-->
 
 #### Spread with overriding
 
-
 ```js
 let user = { name: 'Evan', surname: 'Graham' }
-let jamesUser = {...user, name: 'James'}
-console.log(jamesUser)  // {name: "James", surname: "Graham"}
+let jamesUser = { ...user, name: 'James' }
+console.log(jamesUser) // {name: "James", surname: "Graham"}
 ```
 
 <!--slide-->
@@ -1308,8 +1287,8 @@ console.log(jamesUser)  // {name: "James", surname: "Graham"}
 #### Can't spread an object into an array
 
 ```js
-let obj = { "key1": "value1" };
-let args = [...obj];
+let obj = { key1: 'value1' }
+let args = [...obj]
 // TypeError: obj is not iterable
 ```
 
@@ -1318,17 +1297,17 @@ let args = [...obj];
 ### Spread arguments
 
 ```js
-function myFunction(x, y, z) { }
-let args = [0, 1, 2];
-myFunction(...args);
+function myFunction(x, y, z) {}
+let args = [0, 1, 2]
+myFunction(...args)
 // myFunction(args[0], args[1], args[2]);
 // myFunction(1, 2, 3);
 ```
 
 ```js
-function myFunction(v, w, x, y, z) { }
-let args = [0, 1];
-myFunction(-1, ...args, 2, ...[3]);
+function myFunction(v, w, x, y, z) {}
+let args = [0, 1]
+myFunction(-1, ...args, 2, ...[3])
 // myFunction(-1, args[0], args[1], [3][0]);
 // myFunction(-1, 0, 1, 3);
 ```
@@ -1351,14 +1330,13 @@ function(a, b, ...theArgs) {
 
 ```js
 function func(...args) {
-  console.log(args.length);
+  console.log(args.length)
 }
 
-func();  // 0
-func(5); // 1
-func(5, 6, 7); // 3
+func() // 0
+func(5) // 1
+func(5, 6, 7) // 3
 ```
-
 
 <!--slide-->
 
@@ -1367,57 +1345,57 @@ func(5, 6, 7); // 3
 > `arguments` is an iterable (array-like), but not an `Array`
 
 Array of arguments
+
 ```js
 function sortRestArgs(...theArgs) {
-  let sortedArgs = theArgs.sort();
-  return sortedArgs;
+  let sortedArgs = theArgs.sort()
+  return sortedArgs
 }
-console.log(sortRestArgs(5,3,7,1)); // shows 1,3,5,7
+console.log(sortRestArgs(5, 3, 7, 1)) // shows 1,3,5,7
 ```
 
 arguments built-in variable
+
 ```js
 function sortArguments() {
-  let sortedArgs = arguments.sort();
-  return sortedArgs; // this will never happen
+  let sortedArgs = arguments.sort()
+  return sortedArgs // this will never happen
 }
 // throws a TypeError: arguments.sort is not a function
-console.log(sortArguments(5,3,7,1));
+console.log(sortArguments(5, 3, 7, 1))
 ```
 
 <!--slide-->
-
 
 ### Selective rest parameter
 
 > `...` is usefull to get "the rest of the arguments"
 
-
 ```js
-function filterByType(type, ...items) {  
-  return items.filterByType(item => typeof item === type);
+function filterByType(type, ...items) {
+  return items.filterByType(item => typeof item === type)
 }
-filterByType('boolean', true, 0, false);        // => [true, false]  
-filterByType('number', false, 4, 'Welcome', 7); // => [4, 7]  
+filterByType('boolean', true, 0, false) // => [true, false]
+filterByType('number', false, 4, 'Welcome', 7) // => [4, 7]
 ```
 
 Spreading arguments
+
 ```js
 let values = [1, 3, '4', true, '8']
-console.log(filterByType('string', ...values)); // ["4", "8"]
+console.log(filterByType('string', ...values)) // ["4", "8"]
 ```
-
 
 <!--slide-->
 
 #### Rest paramater in array destructure
 
 ```js
-let seasons = ['winter', 'spring', 'summer', 'autumn'];  
-let [coldSeason, ...otherSeasons] = seasons;
+let seasons = ['winter', 'spring', 'summer', 'autumn']
+let [coldSeason, ...otherSeasons] = seasons
 
-console.log(coldSeason);   // => "winter"  
-console.log(otherSeasons); // => ["spring", "summer", "autumn"]  
+console.log(coldSeason) // => "winter"
+console.log(otherSeasons) // => ["spring", "summer", "autumn"]
 ```
 
 <!--section-->
@@ -1431,23 +1409,24 @@ Read the slides again, and we'll start a small quiz on operators.
 <!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
+
 ### 01. What would be the output of each code?
 
 ```js
-/* 1 */ true && (3 == '3')
-/* 2 */ false || (3 == '3')
-/* 3 */ (3 != '3') || (3 === 3)
-/* 4 */ "Cat" || "Dog"
-/* 5 */ "Cat" && "Dog"
-/* 6 */ "" || "Dog"
-/* 7 */ !!"" && !!"Cat"
-/* 8 */ (18 >= 18) ? "adult" : "minor"
+/* 1 */ true && 3 == '3'
+/* 2 */ false || (3 == '3')(/* 3 */ 3 != '3') || 3 === 3
+/* 4 */ 'Cat' || 'Dog'
+/* 5 */ 'Cat' && 'Dog'
+/* 6 */ '' || 'Dog'
+/* 7 */ !!'' && !!'Cat'(/* 8 */ 18 >= 18) ? 'adult' : 'minor'
 ```
 
 <!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
+
 ### 01. Solution
+
 ```js
 /* 1 */ true && (3 == '3')        // true
 /* 2 */ false || (3 == '3')       // true
@@ -1462,22 +1441,24 @@ Read the slides again, and we'll start a small quiz on operators.
 <!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
+
 ### 02. What would be the output of this code?
 
 ```js
-let names = ["Evan", "Tim", "Roger", "Monica"];
-delete names[2];
+let names = ['Evan', 'Tim', 'Roger', 'Monica']
+delete names[2]
 console.log(names)
 ```
 
 <!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
+
 ### 02. Solution
 
 ```js
-let names = ["Evan", "Tim", "Roger", "Monica"];
-delete names[2];
+let names = ['Evan', 'Tim', 'Roger', 'Monica']
+delete names[2]
 console.log(names)
 // ["Evan", "Tim", undefined, "Monica"]
 ```
@@ -1485,23 +1466,24 @@ console.log(names)
 <!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
+
 ### 03. What would be the output of this code?
 
 ```js
-let animals = ["Dog", "Cat", "Rabbit", "Mouse"];
-delete animals;
+let animals = ['Dog', 'Cat', 'Rabbit', 'Mouse']
+delete animals
 console.log(animals)
 ```
 
 <!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
+
 ### 03. Solution
 
-
 ```js
-let animals = ["Dog", "Cat", "Rabbit", "Mouse"];
-delete animals;
+let animals = ['Dog', 'Cat', 'Rabbit', 'Mouse']
+delete animals
 console.log(animals)
 // ["Dog", "Cat", "Rabbit", "Mouse"]
 ```
@@ -1509,12 +1491,13 @@ console.log(animals)
 <!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
+
 ### 04. What would be the output of this code?
 
 ```js
-let arr1 = [0, 4, 2];
-let arr2 = [3, 1, 5];
-arr1.push(...arr2);
+let arr1 = [0, 4, 2]
+let arr2 = [3, 1, 5]
+arr1.push(...arr2)
 
 console.log(arr1)
 ```
@@ -1522,12 +1505,13 @@ console.log(arr1)
 <!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
+
 ### 04. Solution
 
 ```js
-let arr1 = [0, 4, 2];
-let arr2 = [3, 1, 5];
-arr1.push(...arr2);
+let arr1 = [0, 4, 2]
+let arr2 = [3, 1, 5]
+arr1.push(...arr2)
 
 console.log(arr1)
 
@@ -1537,14 +1521,15 @@ console.log(arr1)
 <!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
+
 ### 05. What would be the output of this code?
 
 ```js
-let arr1 = [8, 7, 6, 14, 17];
-let arr2 = [3, 1, 5, 3];
+let arr1 = [8, 7, 6, 14, 17]
+let arr2 = [3, 1, 5, 3]
 
-[a, b, ...cd]=arr1
-arr3 = [a,...arr2, b, ...cd]
+;[a, b, ...cd] = arr1
+arr3 = [a, ...arr2, b, ...cd]
 
 console.log(arr3)
 ```
@@ -1552,14 +1537,15 @@ console.log(arr3)
 <!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
+
 ### 05. Solution
 
 ```js
-let arr1 = [8, 7, 6, 14, 17];
-let arr2 = [3, 1, 5, 3];
+let arr1 = [8, 7, 6, 14, 17]
+let arr2 = [3, 1, 5, 3]
 
-[a, b, ...cd]=arr1
-arr3 = [a,...arr2, b, ...cd]
+;[a, b, ...cd] = arr1
+arr3 = [a, ...arr2, b, ...cd]
 
 console.log(arr3)
 
@@ -1569,6 +1555,7 @@ console.log(arr3)
 <!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
+
 ### 06. What would be the output of this code?
 
 ```js
@@ -1579,6 +1566,7 @@ console.log([...str].join('|'))
 <!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
+
 ### 06. Solution
 
 ```js
@@ -1590,10 +1578,10 @@ console.log([...str].join('|'))
 
 String is iterable, so you can spread them.
 
-
 <!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
+
 ### 07. What would be the output of this code?
 
 ```js
@@ -1606,6 +1594,7 @@ console.log(a, b, c, d)
 <!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
+
 ### 07. Solution
 
 ```js
@@ -1622,40 +1611,31 @@ console.log(a, b, c, d)
 <!--slide-->
 
 <!-- .slide: class="jsTraining-questionSlide" -->
+
 ### 08. What would be the output of this code?
 
 ```js
-let {
-  prop: a=5,
+let { prop: a = 5, prop2: { prop2: { nested: [, , b] } }, prop3: c = 10 } = {
+  prop: 'Hello',
   prop2: {
-    prop2: { nested: [ , , b] }
-  },
-  prop3: c=10
-} = {
-  prop: "Hello",
-  prop2: {
-    prop2: { nested: ["a", "b", "c"] }
+    prop2: { nested: ['a', 'b', 'c'] }
   }
-};
-console.log(a, b, c);
+}
+console.log(a, b, c)
 ```
 
 <!--slide-->
 
 <!-- .slide: class="jsTraining-responseSlide" -->
+
 ### 08. Solution
 
 ```js
-let {
-  prop: a=5,
-  prop2: {
-    prop2: {
-      nested: [ , , b]
-    }
-  },
-  prop3: c=10
-} = { prop: "Hello", prop2: { prop2: { nested: ["a", "b", "c"]}}};
-console.log(a, b, c);
+let { prop: a = 5, prop2: { prop2: { nested: [, , b] } }, prop3: c = 10 } = {
+  prop: 'Hello',
+  prop2: { prop2: { nested: ['a', 'b', 'c'] } }
+}
+console.log(a, b, c)
 
 // "Hello"
 // "c"
