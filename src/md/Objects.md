@@ -87,7 +87,7 @@ typeof function(x) {
 typeof new Function('x', 'return x*x') // "function"
 ```
 
-https://jsbin.com/zojele/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/zojele?embed=1&&view=editor
 
 <!--slide-->
 
@@ -846,7 +846,7 @@ function getObjectProperty(obj, propName) {
 }
 ```
 
-https://jsbin.com/nazefo/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/nazefo?embed=1&&view=editor
 
 Note: This is a programatic representation of the prototype chain
 
@@ -992,7 +992,7 @@ arr.remove(x => typeof x === 'string')
 console.log(arr) // [1, 8, null, true, false]
 ```
 
-https://jsbin.com/fovasetuse/1/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/fovasetuse-1?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -1108,7 +1108,7 @@ user2.sayName() // "My name is Evan"
 user2.orderItem('TV') // "TV purchased: delivery in 1 day"
 ```
 
-https://jsbin.com/bajura/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/bajura?embed=1&&view=editor
 
 <!--slide-->
 
@@ -1153,7 +1153,7 @@ console.log(collection.sortBy('name'))
 // ...
 ```
 
-https://jsbin.com/naqogu/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/naqogu?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -1407,7 +1407,7 @@ form.color.value = ['Red', 'White']
 console.log(form.color.value) // ["Red", "White"]
 ```
 
-https://jsbin.com/nerila/edit?js,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/nerila?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 

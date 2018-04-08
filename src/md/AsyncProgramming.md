@@ -198,7 +198,7 @@ function times(count, func, callback) {
 }
 ```
 
-http://jsbin.com/xohecax/3/edit?js,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/xohecax-3?embed=1&&view=editor
 
 [http://latentflip.com/loupe/](http://latentflip.com/loupe/?code=ZnVuY3Rpb24gdGltZXMgKGNvdW50LCBmdW5jLCBjYWxsYmFjaykgewogIGlmKCFjb3VudCkgewogICAgY2FsbGJhY2soKQogIH0gZWxzZSB7CiAgICBmdW5jKGNvdW50KQogICAgdGltZXMoLS1jb3VudCwgZnVuYywgY2FsbGJhY2spCiAgfQp9CgoKZnVuY3Rpb24gdGFzayAobnVtKSB7CiAgY29uc29sZS50aW1lKCd0YXNrJykKICBNYXRoLnBvdyg1ICogMiwgMik7CiAgY29uc29sZS50aW1lRW5kKCd0YXNrJykKfQoKCmxldCBpbnRlcm5hbElkID0gc2V0SW50ZXJ2YWwoY29uc29sZS5sb2cuYmluZCh0aGlzLCAnY2xpY2shJyksIDEwKQoKc2V0VGltZW91dChmdW5jdGlvbigpIHsKICBjb25zb2xlLnRpbWUoJ3RpbWVzJykKICB0aW1lcygxMDAsIHRhc2ssIGZ1bmN0aW9uKCkgewogICAgY29uc29sZS50aW1lRW5kKCd0aW1lcycpCiAgICBjbGVhckludGVydmFsKGludGVybmFsSWQpCiAgfSkKfSwgNTApCg%3D%3D!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D)
 
@@ -219,7 +219,7 @@ function times(count, func, callback) {
 }
 ```
 
-http://jsbin.com/kazequs/edit?js,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/kazequs?embed=1&&view=editor
 
 [http://latentflip.com/loupe/](http://latentflip.com/loupe/?code=ZnVuY3Rpb24gdGltZXMgKGNvdW50LCBmdW5jLCBjYWxsYmFjaykgewogIGlmKCFjb3VudCkgewogICAgY2FsbGJhY2soKQogIH0gZWxzZSB7CiAgICBmdW5jKGNvdW50KQogICAgc2V0VGltZW91dChmdW5jdGlvbigpewogICAgICB0aW1lcygtLWNvdW50LCBmdW5jLCBjYWxsYmFjaykKICAgIH0sIDApCiAgICAKICB9Cn0KCgpmdW5jdGlvbiB0YXNrIChudW0pIHsKICBjb25zb2xlLnRpbWUoJ3Rhc2snKQogIE1hdGgucG93KDUgKiAyLCAyKTsKICBjb25zb2xlLnRpbWVFbmQoJ3Rhc2snKQp9CgoKbGV0IGludGVybmFsSWQgPSBzZXRJbnRlcnZhbChjb25zb2xlLmxvZy5iaW5kKHRoaXMsICdjbGljayEnKSwgMTApCgpzZXRUaW1lb3V0KGZ1bmN0aW9uKCkgewogIGNvbnNvbGUudGltZSgndGltZXMnKQogIHRpbWVzKDEwMCwgdGFzaywgZnVuY3Rpb24oKSB7CiAgICBjb25zb2xlLnRpbWVFbmQoJ3RpbWVzJykKICAgIGNsZWFySW50ZXJ2YWwoaW50ZXJuYWxJZCkKICB9KQp9LCA1MCkK!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D)
 
@@ -254,7 +254,7 @@ function traverseRecursion(current, depth) {
 }
 ```
 
-https://jsbin.com/fupuveh/9/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/fupuveh-9?embed=1&&view=editor
 
 <!--section-->
 
@@ -280,7 +280,7 @@ function getUsersPhotos(callback, limit) {
 }
 ```
 
-https://jsbin.com/rojomaf/edit?js,console,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/rojomaf?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -318,7 +318,7 @@ function getUsersPhotos(callback, limit) {
 
 Note: We call that the "Pyramid of Doom"
 
-https://jsbin.com/tevulew/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/tevulew?embed=1&&view=editor
 
 <!--slide-->
 
@@ -669,7 +669,7 @@ var printUserFirstPhotos = function(){
 printUserFirstPhotos() // 50
 ```
 
-https://jsbin.com/xofebas/8/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/xofebas-8?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -859,7 +859,7 @@ Promise.resolve(1)
 // "then 2.0"
 ```
 
-https://jsbin.com/kecemib/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/kecemib?embed=1&&view=editor
 
 Note: handlers are callbacks. Then, they get involved in the event loop.
 
@@ -890,7 +890,7 @@ getUsersPhotos(6).then(photos =>
 // OUTPUT : "Number of photos: 216"
 ```
 
-https://jsbin.com/wemevaj/1/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/wemevaj-1?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -934,7 +934,7 @@ getUsersPhotos(6)
 
 Let's see it in action:
 
-https://jsbin.com/cibopuq/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/cibopuq?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
 
@@ -1043,7 +1043,7 @@ promise2.then(console.log)
 promise3.then(console.log)
 ```
 
-https://jsbin.com/sigefo/edit?js,console,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/sigefo?embed=1&&view=editor
 
 <!--slide-->
 
@@ -1236,7 +1236,7 @@ function getFirstCharNumber(text) {
 }
 ```
 
-https://jsbin.com/zidohun/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/zidohun?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -1301,7 +1301,7 @@ add1(10).then(v => {
 // 60
 ```
 
-https://jsbin.com/wizojay/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/wizojay?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
 
@@ -1321,7 +1321,7 @@ add2(10).then(v => {
 })
 ```
 
-https://jsbin.com/coyovas/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/coyovas?embed=1&&view=editor
 
 <!--slide-->
 
@@ -1408,7 +1408,7 @@ setTimeout(function() {
 // OUTPUT "delayed 500ms" "delayed 1000ms"
 ```
 
-https://jsbin.com/qidokig/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/qidokig?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -1444,7 +1444,7 @@ Promise.series([
 // OUTPUT: "promise 1" "promise 2" "promise 3"
 ```
 
-https://jsbin.com/mecalow/edit?js,console,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/mecalow?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
 

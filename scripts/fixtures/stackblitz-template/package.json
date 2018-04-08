@@ -1,0 +1,18 @@
+{
+  "name": "@we-learn-js/js-training-",
+  "description": "This is a description",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "react-scripts start"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.10"
+  },
+  "keywords": ["javascript", "training", "practice", "example"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/we-learn-js/js-training-code.git"
+  },
+  "author": "David Almeida <davidbarna@gmail.com>",
+  "homepage": "https://github.com/we-learn-js/js-training-code"
+}

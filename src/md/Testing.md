@@ -20,7 +20,7 @@ it('Array.indexOf should return -1 when the value is not present', () => {
 })
 ```
 
-https://jsbin.com/jovanep/edit?js,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/jovanep?embed=1&&view=editor
 
 <!--slide-->
 
@@ -61,7 +61,7 @@ describe('Array', () => {
 })
 ```
 
-https://jsbin.com/yukori/4/edit?js,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/yukori-4?embed=1&&view=editor
 
 <!--slide-->
 
@@ -111,7 +111,7 @@ describe('Array', () => {
 })
 ```
 
-https://jsbin.com/buzava/edit?js,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/buzava?embed=1&&view=editor
 
 <!--slide-->
 
@@ -261,13 +261,13 @@ Test behaviour of [Array.push](https://developer.mozilla.org/es/docs/Web/JavaScr
 
 Use chai expect assertion interface.
 
-https://jsbin.com/miniqe/edit?js,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/miniqe?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
 ### Solution
 
-https://jsbin.com/yahigim/3/edit?js,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/yahigim-3?embed=1&&view=editor
 
 <!--slide-->
 
@@ -302,7 +302,7 @@ describe('hooks', () => {
 })
 ```
 
-https://jsbin.com/nezimuc/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/nezimuc?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
@@ -324,7 +324,7 @@ beforeEach(() => {
 })
 ```
 
-https://jsbin.com/cokuxaj/edit?js,console,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/cokuxaj?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -352,7 +352,7 @@ afterEach(() => {
 })
 ```
 
-https://jsbin.com/pifura/2/edit?js,console,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/pifura-2?embed=1&&view=editor
 
 <!--section-->
 
@@ -392,7 +392,7 @@ describe('getUsers', () => {
 })
 ```
 
-https://jsbin.com/hirehir/5/edit?js,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/hirehir-5?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
 
@@ -526,7 +526,7 @@ beforeEach(() => {
 })
 ```
 
-https://jsbin.com/fiquqa/edit?js,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/fiquqa?embed=1&&view=editor
 
 <!--slide-->
 
@@ -597,7 +597,7 @@ describe('getOneUser', () => {
 })
 ```
 
-https://jsbin.com/wuliyo/edit?js,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/wuliyo?embed=1&&view=editor
 
 <!--slide-->
 
@@ -631,7 +631,7 @@ it('should log numbers step by step', () => {
 })
 ```
 
-https://jsbin.com/sofubep/edit?js,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/sofubep?embed=1&&view=editor
 
 <!--slide-->
 
@@ -670,7 +670,7 @@ server.respondWith([
 server.respond()
 ```
 
-https://jsbin.com/kucugaz/edit?js,output
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/kucugaz?embed=1&&view=editor
 
 <!--section-->
 
