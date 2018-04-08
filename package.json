@@ -16,7 +16,7 @@
     "deploy:clear": "now rm js-training --yes",
     "deploy:alias": "now alias set $(pbpaste) js-training",
     "build-deploy":
-      "npm run build && npm run deploy:clear && npm run deploy && npm run deploy:alias",
+      "npm run build && npm run wiki:push && npm run deploy:clear && npm run deploy && npm run deploy:alias",
     "wiki:add":
       "git subtree add --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash",
     "wiki:pull":
