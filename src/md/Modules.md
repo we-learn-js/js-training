@@ -309,7 +309,7 @@ console.log(month.name(2)) // March
 console.log(month.number('November')) // 10
 ```
 
-https://jsbin.com/zapuqus/edit?js,console
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Modules/zapuqus?embed=1&&view=editor
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
