@@ -6,64 +6,26 @@
  * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
 
-
 // Default mixins and settings -----------------
-@import "~reveal.js/css/theme/template/mixins";
-@import "~reveal.js/css/theme/template/settings";
+@import '~reveal.js/css/theme/template/mixins.scss';
+@import '~reveal.js/css/theme/template/settings.scss';
 // ---------------------------------------------
 
-
-
-// Override theme settings
-
-// Base settings for all themes that can optionally be
-// overridden by the super-theme
-
-// Background of the presentation
-// $backgroundColor: #2b2b2b;
-
-// Primary/body text
-// $mainFont: 'Lato', sans-serif;
-$mainFontSize: 30px;
-// $mainColor: #eee;
-
-// Vertical spacing between blocks of text
-// $blockMargin: 20px;
-
-// Headings
-// $headingMargin: 0 0 $blockMargin 0;
-$headingFont: 'Exo 2', sans-serif;
-// $headingColor: #eee;
-// $headingLineHeight: 1.2;
-$headingLetterSpacing: 3px;
-// $headingTextTransform: uppercase;
-$headingTextShadow: 0px 0px 6px rgba(0,0,0,0.2);
-$headingFontWeight: normal;
-$heading1TextShadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 20px 20px rgba(0,0,0,.15);
-
-$heading1Size: 3em;
-// $heading2Size: 2.11em;
-// $heading3Size: 1.55em;
-// $heading4Size: 1.00em;
-
-// Links and actions
-// $linkColor: #13DAEC;
-// $linkColorHover: lighten( $linkColor, 20% );
-
-// Text selection
-// $selectionBackgroundColor: #FF5E99;
-// $selectionColor: #fff;
+@import '_variables.scss';
 
 // Background generator
 @mixin bodyBackground() {
-	@include radial-gradient( rgba(28,30,32,1), rgba(85,90,95,1) );
+  @include radial-gradient(rgba(28, 30, 32, 1), rgba(85, 90, 95, 1));
 }
 
 // SCSS Imports
-@import "~reveal.js/css/theme/template/theme"; //Theme template from reveal.js
-@import "_listing.scss";
-@import "_reveal.scss";
-@import "_js-training.scss";
+@import '~reveal.js/css/reveal.scss';
+@import '~reveal.js/css/theme/template/theme.scss'; //Theme template from reveal.js
 
-// Font Imports
-@import url('https://fonts.googleapis.com/css?family=Exo+2:800')
+// Local overrides
+@import '_listing.scss';
+@import '_reveal.scss';
+@import '_highlight.scss';
+@import '_font.scss';
+
+@import '_js-training.scss';

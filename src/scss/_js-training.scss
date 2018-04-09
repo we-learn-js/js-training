@@ -1,29 +1,28 @@
-@mixin coloredSlide ($color) {
+@mixin coloredSlide($color) {
   &.slide-background {
-    @include radial-gradient( rgba($color,.5), rgba($color,.0) );
+    @include radial-gradient(rgba($color, 0.5), rgba($color, 0));
     box-shadow: inset 0 0 0 3px rgba($color, 1);
 
-    @content
+    @content;
   }
 
-  @include slide-text-colors(lighten($color, 20%))
+  @include slide-text-colors(lighten($color, 20%));
 }
 
-.jsTraining{
-
+.jsTraining {
   &-alertSlide {
-    @include coloredSlide(#C00);
+    @include coloredSlide(#c00);
   }
 
   &-questionSlide {
-    @include coloredSlide($linkColor){
-      &:before{
+    @include coloredSlide($linkColor) {
+      &:before {
         content: '?';
         position: absolute;
         text-align: center;
         width: 100%;
         font-size: 100vh;
-        color: rgba(#000, .2);
+        color: rgba(#000, 0.2);
       }
     }
 
@@ -46,7 +45,7 @@
     }
 
     &-client {
-      opacity: .6;
+      opacity: 0.6;
       background: #000;
       display: inline-block;
       height: 10px;
@@ -63,6 +62,6 @@
   }
 
   &-responseSlide {
-    @include coloredSlide(#5C5);
+    @include coloredSlide(#5c5);
   }
 }

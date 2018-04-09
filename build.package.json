@@ -1,0 +1,9 @@
+{
+  "name": "js-training",
+  "scripts": {
+    "start": "serve --single ."
+  },
+  "dependencies": {
+    "serve": "latest"
+  }
+}

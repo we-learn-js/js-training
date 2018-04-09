@@ -1,26 +1,32 @@
 // https://github.com/hakimel/reveal.js/blob/master/css/theme/template/theme.scss
 
 @mixin slide-text-colors($color) {
-  p, blockquote, li {
+  p,
+  blockquote,
+  li {
     strong {
       font-weight: normal;
       color: $color;
     }
   }
 
-  :not(pre){
+  :not(pre) {
     & > code {
-      background-color: rgba($color,.3);
-      border:  1px solid rgba($color, .5);
+      background-color: rgba($color, 0.3);
+      border: 1px solid rgba($color, 0.5);
     }
   }
 }
 
 .reveal {
-
   section {
-    h1, h2, h3, h4, h5, h6 {
-      margin-bottom: .75em;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: 0.75em;
     }
   }
 
@@ -35,9 +41,9 @@
 
   @include slide-text-colors($selectionBackgroundColor);
 
-  :not(pre){
+  :not(pre) {
     & > code {
-      border-radius: .15em;
+      border-radius: 0.15em;
       color: $selectionColor;
       font: {
         size: 85%;
@@ -51,7 +57,7 @@
 
   pre {
     display: inline-block;
-    font-size: .7em;
+    font-size: 0.7em;
     margin: $blockMargin auto;
     width: auto;
     max-width: 100%;
@@ -62,7 +68,7 @@
 
     .hljs {
       border-radius: 5px;
-      background: rgba(#000, .65);
+      background: rgba(#000, 0.65);
       &-comment {
         color: #aaa;
       }
@@ -75,12 +81,12 @@
 
   table {
     min-width: 80%;
-    td, th {
-      padding: .5em .25em;
+    td,
+    th {
+      padding: 0.5em 0.25em;
       text-align: left;
     }
   }
-
 
   &.overview {
     .slides section.present {

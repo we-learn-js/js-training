@@ -1,5 +1,10 @@
 .js-training-listing {
-  background-image: url('/images/slideshow-background.png');
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url('../images/slideshow-background.png');
   display: flex;
   flex-direction: column;
   font-size: $mainFontSize;
@@ -21,9 +26,11 @@
   &-links {
     list-style: none;
     padding: 0;
+    font-size: 0.5em;
     a {
+      float: left;
       display: inline-block;
-      padding: .2em 0;
+      padding: 0.2em 0.5em;
       color: $headingColor;
       text-decoration: none;
 
@@ -41,16 +48,17 @@
 
   &-list {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column;
     margin: 0;
     overflow-y: scroll;
 
-
-    li, a {
+    li,
+    a {
       color: $linkColor;
       font-family: $headingFont;
       font-size: $mainFontSize;
       text-decoration: none;
+      text-transform: capitalize;
       text-shadow: $headingTextShadow;
     }
     a {
@@ -59,7 +67,7 @@
       padding: $blockMargin/2 $blockMargin;
 
       &:hover {
-        background-color: rgba($linkColor, .5);
+        background-color: rgba($linkColor, 0.5);
         color: $headingColor;
         text-shadow: $headingTextShadow;
       }
