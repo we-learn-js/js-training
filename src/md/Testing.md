@@ -678,7 +678,7 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testi
 
 <!--slide-->
 
-![Software testing](../images/software-testing.png)
+![Software testing](./images/software-testing.png)
 
 <!--slide-->
 

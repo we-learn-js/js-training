@@ -154,13 +154,13 @@ The Domain, with bounded contexts
 
 "Product" in the Catalog context
 
-![Catalog Product](../images/ddd-product-in-catalog.png)
+![Catalog Product](./images/ddd-product-in-catalog.png)
 
 <!--slide-->
 
 "Product" in the Orders context
 
-![Orders Product](../images/ddd-product-in-orders.png)
+![Orders Product](./images/ddd-product-in-orders.png)
 
 <!--slide-->
 
@@ -702,7 +702,7 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 <!--slide-->
 
-![Catalog Product](../images/ddd-hexa-arch.png)
+![Catalog Product](./images/ddd-hexa-arch.png)
 
 <!--slide-->
 

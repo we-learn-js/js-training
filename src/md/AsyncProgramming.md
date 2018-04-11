@@ -131,7 +131,7 @@ Javascript engine is composed of:
 
 <!--slide-->
 
-![runtime](../images/js-event-loop.png)
+![runtime](./images/js-event-loop.png)
 Note: source here: http://liberablogo.com/wp-content/uploads/2017/01/chrome.png
 
 <!--slide-->

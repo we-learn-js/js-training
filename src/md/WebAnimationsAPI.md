@@ -289,7 +289,7 @@ div {
 
 <!--slide-->
 
-![Animation Object](../images/waapi-animation-object.png)
+![Animation Object](./images/waapi-animation-object.png)
 
 <!--slide-->
 
@@ -587,7 +587,7 @@ So, let's dig into animations performance in the browser to become better web an
 
 ### Rendering phases
 
-![](../images/render-phases-all.jpg)
+![](./images/render-phases-all.jpg)
 
 <!--slide-->
 
@@ -599,7 +599,7 @@ So, let's dig into animations performance in the browser to become better web an
   * Adding classes
   * Modifying `element.style` properties.
 
-![](../images/render-phases-all.jpg)
+![](./images/render-phases-all.jpg)
 
 <!--slide-->
 
@@ -608,7 +608,7 @@ So, let's dig into animations performance in the browser to become better web an
 * Match selectors (like `.head p`) to DOM elements
 * Calculate final styles for each element
 
-![](../images/render-phases-all.jpg)
+![](./images/render-phases-all.jpg)
 
 <!--slide-->
 
@@ -616,7 +616,7 @@ So, let's dig into animations performance in the browser to become better web an
 
 Calculate positions of each DOM element according to its properties and outer elements' position (float, inline, flex, grid).
 
-![](../images/render-phases-all.jpg)
+![](./images/render-phases-all.jpg)
 
 <!--slide-->
 
@@ -626,7 +626,7 @@ Fill in pixels, drawing out text, colors, images, borders, and shadows, essentia
 
 Paint is done on multiple "layers".
 
-![](../images/render-phases-all.jpg)
+![](./images/render-phases-all.jpg)
 
 <!--slide-->
 
@@ -634,7 +634,7 @@ Paint is done on multiple "layers".
 
 Draw the painted layers into the screen in the right order (elements order in page, z-index, etc).
 
-![](../images/render-phases-all.jpg)
+![](./images/render-phases-all.jpg)
 
 <!--slide-->
 
@@ -658,7 +658,7 @@ What you change matters:
 
 > Properties that modify size/position of the element box and might alter inner/outer elements' position.
 
-![](../images/render-phases-all.jpg)
+![](./images/render-phases-all.jpg)
 
 width, height, padding, margin, display, border-width, border, top, position, font-size, float, text-align, overflow-y, font-weight, overflow, left, font-family, line-height, vertical-align, right, clear, white-space, bottom, min-height
 
@@ -668,7 +668,7 @@ width, height, padding, margin, display, border-width, border, top, position, fo
 
 > Properties that only modifiy the inner aspect of the element and don't affect size/position.
 
-![](../images/render-phases-no-layout.jpg)
+![](./images/render-phases-no-layout.jpg)
 
 color, border-style, visibility, background, text-decoration, background-image, background-position, background-repeat, outline-color, outline, outline-style, border-radius, outline-width, box-shadow, background-size
 
@@ -678,7 +678,7 @@ color, border-style, visibility, background, text-decoration, background-image, 
 
 > Properties that only affects the way the painted layer if drawn into the screen.
 
-![](../images/render-phases-no-layout-paint.jpg)
+![](./images/render-phases-no-layout-paint.jpg)
 
 opacity, transform (translate, scale, rotate, skew, matrix)
 
