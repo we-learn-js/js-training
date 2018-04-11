@@ -5,22 +5,30 @@
   "main": "index.js",
   "scripts": {
     "reset": "rm -Rf node_modules && npm i",
-    "build": "parcel build --no-cache --no-source-maps -d build src/index.html && cp ./build.package.json ./build/package.json",
-    "start": "parcel serve -p 3000 src/index.html",
+    "images": "node scripts/list-images.js",
+    "build":
+      "npm run images && parcel build --no-cache --no-source-maps -d build src/index.html && cp ./build.package.json ./build/package.json",
+    "start": "npm run images && parcel serve -p 3000 src/index.html",
     "dev": "npm run start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "co": "sui-mono commit",
     "deploy": "now --public --name=js-training-v2 ./build",
     "deploy:clear": "now rm js-training-v2 --yes",
     "deploy:alias": "now alias set $(pbpaste) js-training-v2",
-    "build-deploy": "npm run build && npm run wiki:push && npm run deploy:clear && npm run deploy && npm run deploy:alias",
-    "wiki:add": "git subtree add --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash",
-    "wiki:pull": "git subtree pull --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash -m \"Merge changes from origin repository.\"",
-    "wiki:push": "git subtree push --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master"
+    "build-deploy":
+      "npm run build && npm run wiki:push && npm run deploy:clear && npm run deploy && npm run deploy:alias",
+    "wiki:add":
+      "git subtree add --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash",
+    "wiki:pull":
+      "git subtree pull --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash -m \"Merge changes from origin repository.\"",
+    "wiki:push":
+      "git subtree push --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master"
   },
   "dependencies": {
-    "react": "16.3.1",
-    "react-dom": "16.3.1",
+    "@material-ui/icons": "^1.0.0-beta.42",
+    "material-ui": "^1.0.0-beta.41",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
     "react-router": "4.2.0",
     "react-router-dom": "4.2.2",
     "reveal.js": "3.6.0",
