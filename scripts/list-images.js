@@ -42,7 +42,9 @@ const execute = async () => {
   const files = await getMarkdownFiles()
   const images = await extractLocalImages(files)
   const imageImports = images.reduce((obj, { image, url }) => {
-    obj[url] = `  '${url}': require('../md/images/${image}'),`
+    obj[url] = `  '${url}': {
+    url: require('../md/images/${image}')
+  },`
     return obj
   }, {})
 

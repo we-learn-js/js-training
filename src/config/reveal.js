@@ -17,12 +17,6 @@ export default {
   history: true,
   dependencies: [
     {
-      src: 'https://unpkg.com/reveal.js@3.6.0/lib/js/classList.js',
-      condition: function() {
-        return !document.body.classList
-      }
-    },
-    {
       src: 'https://unpkg.com/reveal.js@3.6.0/plugin/markdown/marked.js',
       condition: function() {
         return !!document.querySelector('[data-markdown]')
@@ -35,22 +29,7 @@ export default {
       }
     },
     {
-      src: 'https://unpkg.com/reveal.js@3.6.0/plugin/highlight/highlight.js',
-      async: true,
-      callback: function() {
-        hljs.initHighlightingOnLoad()
-      }
-    },
-    {
-      src: 'https://unpkg.com/reveal.js@3.6.0/plugin/zoom-js/zoom.js',
-      async: true
-    },
-    {
       src: 'https://unpkg.com/reveal.js@3.6.0/plugin/notes/notes.js',
-      async: true
-    },
-    {
-      src: 'https://unpkg.com/reveal.js@3.6.0/plugin/math/math.js',
       async: true
     }
   ]
