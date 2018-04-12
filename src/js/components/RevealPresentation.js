@@ -7,6 +7,8 @@ import 'reveal.js/lib/js/head.min.js'
 import '../../scss/js-training.scss'
 import revealConfig from '../../config/reveal'
 import markdownImages from '../../config/md-images'
+import Prism from 'prismjs'
+import 'prismjs/themes/prism-okaidia.css'
 
 const relocateImages = () => {
   Array.from(document.querySelectorAll('img')).forEach(img => {
@@ -16,13 +18,28 @@ const relocateImages = () => {
     }
   })
 }
+
+const highlightCode = () => {
+  Array.from(document.querySelectorAll('pre code')).map(el => {
+    const elem = document.createElement('PRE')
+    el.innerHTML = Prism.highlight(
+      el.firstChild.nodeValue,
+      Prism.languages.javascript,
+      'javascript'
+    )
+  })
+}
+
 class RevealPresentation extends React.Component {
   componentDidMount() {
     if (window.revealReactPresentationAlreadyLoaded) {
       document.location.reload()
     } else {
       Reveal.initialize(revealConfig)
-      Reveal.addEventListener('ready', relocateImages)
+      Reveal.addEventListener('ready', () => {
+        relocateImages()
+        highlightCode()
+      })
       window.revealReactPresentationAlreadyLoaded = true
     }
   }
