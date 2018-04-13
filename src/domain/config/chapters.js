@@ -1,0 +1,21 @@
+export default {
+  AsyncProgramming: require('../../md/AsyncProgramming.md'),
+  Operators: require('../../md/Operators.md'),
+  Testing: require('../../md/Testing.md'),
+  Classes: require('../../md/Classes.md'),
+  IteratorsAndGenerators: require('../../md/IteratorsAndGenerators.md'),
+  Presentation: require('../../md/Presentation.md'),
+  WebAnimationsAPI: require('../../md/WebAnimationsAPI.md'),
+  DesignPatterns: require('../../md/DesignPatterns.md'),
+  Modules: require('../../md/Modules.md'),
+  React: require('../../md/React.md'),
+  DomainDrivenDesign: require('../../md/DomainDrivenDesign.md'),
+  ObjectOrientedDesignPrinciples: require('../../md/ObjectOrientedDesignPrinciples.md'),
+  ScopesAndClosures: require('../../md/ScopesAndClosures.md'),
+  FunctionalProgramming: require('../../md/FunctionalProgramming.md'),
+  ObjectOrientedProgramming: require('../../md/ObjectOrientedProgramming.md'),
+  Strings: require('../../md/Strings.md'),
+  Functions: require('../../md/Functions.md'),
+  Objects: require('../../md/Objects.md'),
+  Symbols: require('../../md/Symbols.md')
+}

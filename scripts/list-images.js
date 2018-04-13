@@ -4,7 +4,7 @@ const { basename, join } = require('path')
 
 const MD_PATTERN = 'src/**/*.md'
 const LOCAL_IMAGES_REGEXP = /\.\/images\/([\w\-\.]+)/g
-const OUTPUT_FILE = './src/config/md-images.js'
+const OUTPUT_FILE = './src/domain/config/md-images.js'
 
 const getMarkdownFiles = () => {
   return new Promise(resolve => {
@@ -43,7 +43,7 @@ const execute = async () => {
   const images = await extractLocalImages(files)
   const imageImports = images.reduce((obj, { image, url }) => {
     obj[url] = `  '${url}': {
-    url: require('../md/images/${image}')
+    url: require('../../md/images/${image}')
   },`
     return obj
   }, {})
