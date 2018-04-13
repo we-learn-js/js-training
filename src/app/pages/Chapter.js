@@ -1,19 +1,25 @@
 import React, { Fragment, Component } from 'react'
 import Reveal from '../../components/Slideshow/RevealMarkdown'
 import chapters from '../../js-training/config/chapters'
+import { withDomainService } from '../../components/Hoc/Domain'
 
-export default class ChapterPage extends Component {
-  static getDerivedStateFromProps(nextProps) {
-    return { chapter: nextProps.match.params.chapter }
-  }
+export default withDomainService('ChapterViewService')(
+  class ChapterPage extends Component {
+    constructor(props) {
+      super(props)
+      this.state = { markdownUrl: null }
+    }
 
-  constructor(props) {
-    super(props)
-    this.state = { markdownUrl: null }
-  }
+    async componentDidMount() {
+      const { markdownUrl } = await this.props.ChapterViewService.execute({
+        url: this.props.location.pathname
+      })
+      this.setState({ markdownUrl })
+    }
 
-  render() {
-    const { chapter } = this.state
-    return <Reveal markdownUrl={chapters[chapter]} />
+    render() {
+      const { markdownUrl } = this.state
+      return markdownUrl ? <Reveal markdownUrl={markdownUrl} /> : null
+    }
   }
-}
+)

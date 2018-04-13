@@ -25,23 +25,22 @@
       "git subtree push --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master"
   },
   "dependencies": {
-    "@material-ui/icons": "^1.0.0-beta.42",
-    "material-ui": "^1.0.0-beta.41",
+    "@material-ui/icons": "1.0.0-beta.42",
+    "material-ui": "1.0.0-beta.41",
+    "param-case": "2.1.1",
     "prismjs": "1.14.0",
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1",
+    "react": "16.3.1",
+    "react-dom": "16.3.1",
     "react-router": "4.2.0",
     "react-router-dom": "4.2.2",
     "reveal.js": "3.6.0",
-    "three": "0.70.0",
-    "to-space-case": "1.0.0"
+    "three": "0.70.0"
   },
   "devDependencies": {
     "@s-ui/mono": "1",
-    "babel-plugin-transform-class-properties": "6.24.1",
-    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-preset-sui": "1.5.0",
     "fs-extra": "5.0.0",
-    "node-sass": "^4.8.3",
+    "node-sass": "4.8.3",
     "node-sass-package-importer": "5.1.1",
     "now": "11",
     "parcel-bundler": "1.7.0"
