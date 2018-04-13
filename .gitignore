@@ -15,7 +15,7 @@ node_modules
 # OSX
 .DS_Store
 
-src/**/*.css*
-tmp
-.cache
-build
+/tmp
+/dist
+/.cache
+/build
