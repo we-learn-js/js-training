@@ -1,7 +1,7 @@
 import React from 'react'
 import space from 'to-space-case'
 import { Link } from 'react-router-dom'
-import chapters from "../../domain/config/chapters"
+import chapters from "../../js-training/config/chapters"
 
 export default () => (
   <div className="js-training-listing">

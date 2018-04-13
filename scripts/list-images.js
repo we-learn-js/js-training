@@ -4,7 +4,7 @@ const { basename, join } = require('path')
 
 const MD_PATTERN = 'src/**/*.md'
 const LOCAL_IMAGES_REGEXP = /\.\/images\/([\w\-\.]+)/g
-const OUTPUT_FILE = './src/domain/config/md-images.js'
+const OUTPUT_FILE = './src/js-training/config/md-images.js'
 
 const getMarkdownFiles = () => {
   return new Promise(resolve => {

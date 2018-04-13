@@ -4,9 +4,9 @@ import Reveal from 'reveal.js/js/reveal.js'
 window.Reveal = Reveal
 
 import 'reveal.js/lib/js/head.min.js'
-import './scss/js-training.scss'
-import revealConfig from '../domain/config/reveal'
-import markdownImages from '../domain/config/md-images'
+import './index.scss'
+import revealConfig from '../../../js-training/config/reveal'
+import markdownImages from '../../../js-training/config/md-images'
 import Prism from 'prismjs'
 import 'prismjs/themes/prism-okaidia.css'
 
@@ -30,7 +30,7 @@ const highlightCode = () => {
   })
 }
 
-class RevealPresentation extends React.Component {
+class RevealSlideshow extends React.Component {
   componentDidMount() {
     if (window.revealReactPresentationAlreadyLoaded) {
       document.location.reload()
@@ -59,4 +59,4 @@ class RevealPresentation extends React.Component {
   }
 }
 
-export default RevealPresentation
+export default RevealSlideshow

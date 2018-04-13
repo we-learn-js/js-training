@@ -1,17 +1,9 @@
-/**
- * League theme for reveal.js.
- *
- * This was the default theme pre-3.0.0.
- *
- * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
- */
-
 // Default mixins and settings -----------------
 @import '~reveal.js/css/theme/template/mixins.scss';
 @import '~reveal.js/css/theme/template/settings.scss';
 // ---------------------------------------------
 
-@import '_variables.scss';
+@import './scss/variables';
 
 // Background generator
 @mixin bodyBackground() {
@@ -23,9 +15,8 @@
 @import '~reveal.js/css/theme/template/theme.scss'; //Theme template from reveal.js
 
 // Local overrides
-@import '_listing.scss';
-@import '_reveal.scss';
-@import '_highlight.scss';
-@import '_font.scss';
-
-@import '_js-training.scss';
+@import './scss/listing';
+@import './scss/reveal';
+@import './scss/highlight';
+@import './scss/font.scss';
+@import './scss/js-training';

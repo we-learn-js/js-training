@@ -1,6 +1,6 @@
 import React from 'react'
 import THREE from 'three'
-import ImageUnderConstruction from '../packages/three-background/image-construction'
+import ImageUnderConstruction from '../../../packages/three-background/image-construction'
 import imageUrl from './images/logo-small.png'
 
 const styles = {
@@ -11,7 +11,7 @@ const styles = {
   right: 0,
   zIndex: -1
 }
-class Background extends React.Component {
+class ImageConstruction3dScene extends React.Component {
   componentDidMount() {
     this.scene = new ImageUnderConstruction(imageUrl)
     this.scene.appendTo(this.element)
@@ -33,4 +33,4 @@ class Background extends React.Component {
   }
 }
 
-export default Background
+export default ImageConstruction3dScene

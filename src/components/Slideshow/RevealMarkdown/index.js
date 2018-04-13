@@ -1,5 +1,5 @@
 import React from 'react'
-import RevealPresentation from '../components/RevealPresentation'
+import RevealPresentation from '../Reveal'
 
 class RevealMarkownSlides extends React.Component {
   shouldComponentUpdate() {
