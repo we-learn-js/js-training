@@ -6,21 +6,27 @@
   "scripts": {
     "reset": "rm -Rf node_modules && npm i",
     "images": "node scripts/list-images.js",
-    "build": "npm run images && parcel build --no-cache --no-source-maps -d build src/app/index.html && cp ./scripts/fixtures/build/package.json ./build/package.json",
+    "build":
+      "npm run images && parcel build --no-cache --no-source-maps -d build src/app/index.html && cp ./scripts/fixtures/build/package.json ./build/package.json",
     "start": "npm run images && parcel serve -p 3000 src/app/index.html",
-    "dev": "npm run start",
+    "dev": "npm run start -- --no-cache",
     "test": "echo \"Error: no test specified\" && exit 1",
     "co": "sui-mono commit",
     "deploy": "now --public --name=js-training-v2 ./build",
     "deploy:clear": "now rm js-training-v2 --yes",
     "deploy:alias": "now alias set $(pbpaste) js-training-v2",
-    "build-deploy": "npm run build && npm run wiki:push && npm run deploy:clear && npm run deploy && npm run deploy:alias",
-    "wiki:add": "git subtree add --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash",
-    "wiki:pull": "git subtree pull --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash -m \"Merge changes from origin repository.\"",
-    "wiki:push": "git subtree push --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master"
+    "build-deploy":
+      "npm run build && npm run wiki:push && npm run deploy:clear && npm run deploy && npm run deploy:alias",
+    "wiki:add":
+      "git subtree add --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash",
+    "wiki:pull":
+      "git subtree pull --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash -m \"Merge changes from origin repository.\"",
+    "wiki:push":
+      "git subtree push --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master"
   },
   "dependencies": {
     "@material-ui/icons": "1.0.0-beta.42",
+    "firebase": "4.12.1",
     "material-ui": "1.0.0-beta.41",
     "param-case": "2.1.1",
     "prismjs": "1.14.0",
@@ -35,6 +41,7 @@
     "@s-ui/mono": "1",
     "babel-preset-sui": "1.5.0",
     "fs-extra": "5.0.0",
+    "node-sass": "4.8.3",
     "node-sass-package-importer": "5.1.1",
     "now": "11",
     "parcel-bundler": "1.7.0"
