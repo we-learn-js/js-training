@@ -38,7 +38,9 @@ const withServiceResponse = (serviceName, params) => WrappedComponent =>
         const { response } = this.state
         const newProps = { ...props, [serviceName]: response }
 
-        return response ? <WrappedComponent {...newProps} /> : null
+        return typeof response !== 'undefined' ? (
+          <WrappedComponent {...newProps} />
+        ) : null
       }
     }
   )

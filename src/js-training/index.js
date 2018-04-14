@@ -10,7 +10,8 @@ const factories = {
   ChapterViewService: () => import('./ChapterViewService'),
   ChapterListService: () => import('./ChapterListService'),
   AuthWithGithubService: () => import('./AuthWithGithubService'),
-  AuthWithGoogleService: () => import('./AuthWithGoogleService')
+  AuthWithGoogleService: () => import('./AuthWithGoogleService'),
+  SignedInUserService: () => import('./SignedInUserService')
 }
 
 export default class JsTraining {

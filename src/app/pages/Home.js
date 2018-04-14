@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 
