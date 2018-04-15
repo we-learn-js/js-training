@@ -30,7 +30,7 @@ const theme = createMuiTheme({
 })
 
 const ChapterPage = withMatch(requiresAuth(Chapter))
-const ChapterListPage = withMatch(requiresAuth(ChaptersList))
+const ChapterListPage = withMatch(ChaptersList)
 
 export default () => (
   <React.Fragment>
