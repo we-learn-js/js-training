@@ -1,11 +1,9 @@
-.jst-Home_Title {
-  text-shadow: 0 1px 0 #333, 0 2px 0 #333, 0 3px 0 #888, 0 4px 0 #333,
-    0 5px 0 #333, 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3),
-    0 20px 20px rgba(0, 0, 0, 0.15);
-}
-
 .jst-Home_SubHeader {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
   text-align: center;
-  transform: translateY(-100%);
-  padding-bottom: 40px;
+  z-index: 1;
+  padding: 2vh 20vw;
 }

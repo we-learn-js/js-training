@@ -5,11 +5,6 @@
 
 @import './scss/variables';
 
-// Background generator
-@mixin bodyBackground() {
-  @include radial-gradient(rgba(28, 30, 32, 1), rgba(85, 90, 95, 1));
-}
-
 // SCSS Imports
 @import '~reveal.js/css/reveal.scss';
 @import '~reveal.js/css/theme/template/theme.scss'; //Theme template from reveal.js

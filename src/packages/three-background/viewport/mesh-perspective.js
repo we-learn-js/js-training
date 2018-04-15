@@ -1,5 +1,5 @@
 import THREE from 'three'
-import ViewportAbstract from "./abstract"
+import ViewportAbstract from './abstract'
 
 export default class MeshPerspectiveViewport extends ViewportAbstract {
   constructor(fov, distance) {

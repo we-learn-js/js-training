@@ -11,7 +11,7 @@ export default masterMode => ({
   },
   hideAddressBar: true,
   transition: 'fade',
-  // parallaxBackgroundImage: require('../images/slideshow-background.png'),
+  parallaxBackgroundImage: require('../../components/Slideshow/Reveal/images/slideshow-background.png'),
   parallaxBackgroundSize: '',
   parallaxBackgroundHorizontal: 100,
   parallaxBackgroundVertical: 100,

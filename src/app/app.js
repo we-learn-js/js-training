@@ -7,7 +7,7 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import CssBaseline from 'material-ui/CssBaseline'
 import { requiresAuth } from '../components/HoC/Auth'
 import { withMatch } from '../components/HoC/Router'
-import HeaderBar from '../components/Header/Bar'
+import HeaderBar from '../components/Layout/Header'
 
 const theme = createMuiTheme({
   palette: {
@@ -29,14 +29,19 @@ const theme = createMuiTheme({
   }
 })
 
+const Layout = ({ children }) => (
+  <React.Fragment>
+    <HeaderBar />
+    {children}
+  </React.Fragment>
+)
 const ChapterPage = withMatch(requiresAuth(Chapter))
 const ChapterListPage = withMatch(ChaptersList)
 
 export default () => (
-  <React.Fragment>
+  <MuiThemeProvider theme={theme}>
     <CssBaseline />
-    <MuiThemeProvider theme={theme}>
-      <HeaderBar />
+    <Layout>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route
@@ -50,6 +55,6 @@ export default () => (
           children={props => <ChapterPage match={props.match} />}
         />
       </Switch>
-    </MuiThemeProvider>
-  </React.Fragment>
+    </Layout>
+  </MuiThemeProvider>
 )

@@ -19,6 +19,12 @@
 }
 
 .reveal {
+  background-image: radial-gradient(
+    ellipse farthest-corner,
+    #555a5f 0%,
+    #1c1e20 100%
+  );
+
   section {
     h1,
     h2,
@@ -93,9 +99,5 @@
     .slides section.present {
       outline-color: #fff;
     }
-  }
-
-  .slide-background {
-    background-color: rgba(#000, 0.5);
   }
 }

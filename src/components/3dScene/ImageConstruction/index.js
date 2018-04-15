@@ -4,11 +4,11 @@ import ImageUnderConstruction from '../../../packages/three-background/image-con
 import imageUrl from './images/logo-small.png'
 
 const styles = {
-  width: '100vw',
-  height: '70vh',
-  minHeight: '300px',
-  maxHeight: '600px',
-  zIndex: -1
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0
 }
 
 class ImageConstruction3dScene extends React.Component {

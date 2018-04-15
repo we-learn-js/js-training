@@ -7,7 +7,6 @@ import List, { ListItem, ListItemText } from 'material-ui/List'
 const styles = theme => ({
   root: {
     width: '100%',
-    backgroundColor: theme.palette.background.paper,
     position: 'relative',
     overflow: 'auto'
   },
@@ -23,16 +22,16 @@ const styles = theme => ({
 const ChapterList = ({ chapters, classes }) => (
   <List className={classes.root} subheader={<li />}>
     {chapters.map(({ title, chapters }) => (
-      <li key={title} className={classes.listSection}>
-        <ul className={classes.ul}>
+      <ListItem key={title} className={classes.listSection}>
+        <List className={classes.root}>
           <ListSubheader>{title}</ListSubheader>
           {chapters.map(({ title, url }) => (
-            <ListItem key={url} component={Link} to={url}>
+            <ListItem key={url} button component={Link} to={url}>
               <ListItemText primary={title} />
             </ListItem>
           ))}
-        </ul>
-      </li>
+        </List>
+      </ListItem>
     ))}
   </List>
 )

@@ -1,0 +1,21 @@
+.jst-LayoutContent {
+  width: 100%;
+  max-width: 970px;
+  margin: auto;
+  background: transparent;
+  padding: 40px;
+
+  &.hasHeader {
+    padding-top: 100px;
+  }
+  &.hasHeader::before {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 64px;
+    background: #333;
+    content: ' ';
+    z-index: 9998;
+  }
+}
