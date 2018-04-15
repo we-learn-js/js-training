@@ -10,15 +10,20 @@ export default withDomainService('ChapterViewService')(
     }
 
     async componentDidMount() {
-      const { markdownUrl } = await this.props.ChapterViewService.execute({
+      const {
+        markdownUrl,
+        masterMode
+      } = await this.props.ChapterViewService.execute({
         url: this.props.match.url
       })
-      this.setState({ markdownUrl })
+      this.setState({ markdownUrl, masterMode })
     }
 
     render() {
-      const { markdownUrl } = this.state
-      return markdownUrl ? <Reveal markdownUrl={markdownUrl} /> : null
+      const { markdownUrl, masterMode } = this.state
+      return markdownUrl ? (
+        <Reveal markdownUrl={markdownUrl} masterMode={masterMode} />
+      ) : null
     }
   }
 )

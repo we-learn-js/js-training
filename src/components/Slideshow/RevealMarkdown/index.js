@@ -7,9 +7,9 @@ class RevealMarkownSlides extends React.Component {
   }
 
   render() {
-    const { markdownUrl } = this.props
+    const { markdownUrl, masterMode } = this.props
     return (
-      <RevealPresentation>
+      <RevealPresentation masterMode={masterMode}>
         <section
           data-markdown={markdownUrl}
           data-separator="^(\r\n?|\n)<!--section-->(\r\n?|\n)$"

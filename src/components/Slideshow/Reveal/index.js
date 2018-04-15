@@ -1,11 +1,8 @@
 import React from 'react'
 import Reveal from 'reveal.js/js/reveal.js'
-
-window.Reveal = Reveal
-
 import 'reveal.js/lib/js/head.min.js'
 import './index.scss'
-import revealConfig from '../../../js-training/config/reveal'
+import getRevealConfig from '../../../js-training/config/reveal'
 import markdownImages from '../../../js-training/config/md-images'
 import Prism from 'prismjs'
 import 'prismjs/themes/prism-okaidia.css'
@@ -30,8 +27,12 @@ const highlightCode = () => {
   })
 }
 
+window.Reveal = Reveal
+
 class RevealSlideshow extends React.Component {
   componentDidMount() {
+    const { masterMode } = this.props
+    const revealConfig = getRevealConfig(masterMode)
     if (window.revealReactPresentationAlreadyLoaded) {
       document.location.reload()
     } else {

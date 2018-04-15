@@ -1,4 +1,6 @@
-export default {
+const REVEAL_CDN = '//unpkg.com/reveal.js@3.6.0/'
+
+export default masterMode => ({
   controls: false,
   progress: true,
   slideNumber: true,
@@ -17,20 +19,27 @@ export default {
   history: true,
   dependencies: [
     {
-      src: 'https://unpkg.com/reveal.js@3.6.0/plugin/markdown/marked.js',
+      src: `${REVEAL_CDN}/plugin/markdown/marked.js`,
       condition: function() {
         return !!document.querySelector('[data-markdown]')
       }
     },
     {
-      src: 'https://unpkg.com/reveal.js@3.6.0/plugin/markdown/markdown.js',
+      src: `${REVEAL_CDN}/plugin/markdown/markdown.js`,
       condition: function() {
         return !!document.querySelector('[data-markdown]')
       }
     },
     {
-      src: 'https://unpkg.com/reveal.js@3.6.0/plugin/notes/notes.js',
+      src: `${REVEAL_CDN}/plugin/notes/notes.js`,
+      async: true
+    },
+    { src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
+    {
+      src: `${REVEAL_CDN}/plugin/multiplex/${
+        masterMode ? 'master' : 'client'
+      }.js`,
       async: true
     }
   ]
-}
+})

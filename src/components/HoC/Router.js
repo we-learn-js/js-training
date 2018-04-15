@@ -7,7 +7,6 @@ const withMatch = Component =>
       return !deepEqual(this.props.match, nextProps.match)
     }
     render() {
-      console.log('render', this.props.match)
       return <Component match={this.props.match} />
     }
   }
