@@ -1,20 +1,55 @@
 import React from 'react'
-import { Switch, Route, Prompt } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import Home from './pages/Home'
-import Background from '../components/3dScene/ImageConstruction'
 import ChaptersList from './pages/ChaptersList'
 import Chapter from './pages/Chapter'
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import CssBaseline from 'material-ui/CssBaseline'
 import { requiresAuth } from '../components/HoC/Auth'
+import { withMatch } from '../components/HoC/Router'
+import HeaderBar from '../components/Header/Bar'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#FFFF00',
+      main: '#FFD700',
+      dark: '#FFA500',
+      contrastText: '#333'
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000'
+    }
+  },
+  status: {
+    danger: 'orange'
+  }
+})
+
+const ChapterPage = withMatch(requiresAuth(Chapter))
+const ChapterListPage = withMatch(requiresAuth(ChaptersList))
 
 export default () => (
   <React.Fragment>
     <CssBaseline />
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/chapters" component={requiresAuth(ChaptersList)} />
-      <Route path="/:chapter" component={requiresAuth(Chapter)} />
-    </Switch>
-    <Background />
+    <MuiThemeProvider theme={theme}>
+      <HeaderBar />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route
+          exact
+          path="/chapters"
+          children={props => <ChapterListPage match={props.match} />}
+        />
+        <Route
+          exact
+          path="/:chapter"
+          children={props => <ChapterPage match={props.match} />}
+        />
+      </Switch>
+    </MuiThemeProvider>
   </React.Fragment>
 )
