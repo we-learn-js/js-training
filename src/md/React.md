@@ -980,6 +980,9 @@ https://codesandbox.io/s/6wv9rxlmk3?module=%2Fcomponents%2FTimeAgo.js
 
 ## Component life cycle
 
+http://ciclo-de-vida-componentes.aprendiendoreact.com/
+https://github.com/wojtekmaj/react-lifecycle-methods-diagram
+
 <!--slide-->
 
 > Functional components are pure functions executed on any props change, without any state.
