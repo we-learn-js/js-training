@@ -2,7 +2,6 @@ import ChapterListService from './ChapterListService'
 
 export default class ChapterViewService {
   async execute({ url }) {
-    console.log(url)
     const service = new ChapterListService()
     const sections = await service.execute()
 

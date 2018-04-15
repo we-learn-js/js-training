@@ -16,18 +16,20 @@ import { withDomainService } from '../../../components/Hoc/Domain'
 class AuthButtonsDialog extends React.Component {
   state = { error: null }
   signInWithGithub = async () => {
+    const { onAuth } = this.props
     try {
       const user = await this.props.AuthWithGithubService.execute()
-      this.props.onAuth(user)
+      onAuth && onAuth(user)
     } catch (error) {
       this.setState({ error })
     }
   }
 
   signInWithGoogle = async () => {
+    const { onAuth } = this.props
     try {
       const user = await this.props.AuthWithGoogleService.execute()
-      this.props.onAuth(user)
+      onAuth && onAuth(user)
     } catch (error) {
       this.setState({ error })
     }
@@ -44,7 +46,7 @@ class AuthButtonsDialog extends React.Component {
       <React.Fragment>
         <Dialog open={true} {...props}>
           <DialogTitle id="simple-dialog-title">
-            Please Authenticate
+            Sign in to continue
           </DialogTitle>
           <List>
             <AuthButton Icon={GoogleIcon} onClick={this.signInWithGoogle}>

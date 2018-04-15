@@ -9,8 +9,7 @@ const styles = theme => ({
     width: '100%',
     backgroundColor: theme.palette.background.paper,
     position: 'relative',
-    overflow: 'auto',
-    maxHeight: '70vh'
+    overflow: 'auto'
   },
   listSection: {
     backgroundColor: 'inherit'

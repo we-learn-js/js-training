@@ -1,7 +1,7 @@
 import React from 'react'
-import AuthButtonsDialog from '../../Auth/ButtonsDialog'
+import AuthButtonsDialog from '../Auth/ButtonsDialog'
 import { LinearProgress } from 'material-ui/Progress'
-import { withDomainService } from '../../HoC/Domain'
+import { withDomainService } from '../HoC/Domain'
 
 const requiresAuth = Component =>
   withDomainService('SignedInUserService')(

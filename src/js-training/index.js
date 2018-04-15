@@ -1,4 +1,5 @@
 import firebaseConfig from './config/firebase'
+import ChapterListService from './ChapterListService'
 
 const loadFirebase = async () => {
   const firebase = await import('firebase')
@@ -8,7 +9,8 @@ const loadFirebase = async () => {
 
 const factories = {
   ChapterViewService: () => import('./ChapterViewService'),
-  ChapterListService: () => import('./ChapterListService'),
+  // Hack for parcel. with aync import markdowns were not loaded.
+  ChapterListService: async () => ({ default: ChapterListService }),
   AuthWithGithubService: () => import('./AuthWithGithubService'),
   AuthWithGoogleService: () => import('./AuthWithGoogleService'),
   SignedInUserService: () => import('./SignedInUserService')

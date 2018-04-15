@@ -11,7 +11,10 @@ export default [
   {
     section: 'Syntax',
     chapters: [
-      { title: 'Operators', markdownUrl: require('../../md/Operators.md') },
+      {
+        title: 'Operators',
+        markdownUrl: require('../../md/Operators.md')
+      },
       { title: 'Objects', markdownUrl: require('../../md/Objects.md') },
       { title: 'Strings', markdownUrl: require('../../md/Strings.md') },
       { title: 'Classes', markdownUrl: require('../../md/Classes.md') },
@@ -30,7 +33,10 @@ export default [
         title: 'Scopes And Closures',
         markdownUrl: require('../../md/ScopesAndClosures.md')
       },
-      { title: 'Functions', markdownUrl: require('../../md/Functions.md') },
+      {
+        title: 'Functions',
+        markdownUrl: require('../../md/Functions.md')
+      },
       {
         title: 'Async Programming',
         markdownUrl: require('../../md/AsyncProgramming.md')

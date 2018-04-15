@@ -1,5 +1,5 @@
 import React from 'react'
-import Domain from '../../../js-training/'
+import Domain from '../../js-training/'
 
 const domain = new Domain()
 

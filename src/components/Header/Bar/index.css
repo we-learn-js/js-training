@@ -1,0 +1,14 @@
+.jst-Header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 970px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+
+  & .jst-Header-Button {
+    position: absolute;
+    right: 10px;
+  }
+}

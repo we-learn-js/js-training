@@ -1,7 +1,7 @@
-// Default mixins and settings -----------------
+// // Default mixins and settings -----------------
 @import '~reveal.js/css/theme/template/mixins.scss';
 @import '~reveal.js/css/theme/template/settings.scss';
-// ---------------------------------------------
+// // ---------------------------------------------
 
 @import './scss/variables';
 
@@ -15,8 +15,8 @@
 @import '~reveal.js/css/theme/template/theme.scss'; //Theme template from reveal.js
 
 // Local overrides
-@import './scss/listing';
+// @import './scss/listing';
 @import './scss/reveal';
-@import './scss/highlight';
+// @import './scss/highlight';
 @import './scss/font.scss';
-@import './scss/js-training';
+//@import './scss/js-training';
