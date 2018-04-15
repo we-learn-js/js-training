@@ -1,7 +1,7 @@
 import THREE from 'three'
-import ImageConstructionScene from "../scene/image-construction"
-import MeshObserverViewport from "../viewport/mesh-observer"
-import ImageUnderConstructionLighting from "./lighting"
+import ImageConstructionScene from '../scene/image-construction'
+import MeshObserverViewport from '../viewport/mesh-observer'
+import ImageUnderConstructionLighting from './lighting'
 // import MeshPerspectiveViewPort from '../viewport/mesh-perspective'
 // import CubeObserverViewPort from '../viewport/cube-observer'
 
@@ -12,15 +12,14 @@ export default class ImageUnderConstruction {
     this.imgUrl = imgUrl
     this.viewports = []
     this.scene = new ImageConstructionScene(this.imgUrl)
-    this.renderer = new THREE.WebGLRenderer({ antialias: true })
-    this.renderer.setClearColor(this.scene.fog.color, 1, 1)
+    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
 
-    if (this.renderer.shadowMap) {
-      this.renderer.shadowMap.enabled = true
-    } else {
-      this.renderer.shadowMapEnabled = true
-    }
-
+    // if (this.renderer.shadowMap) {
+    //   this.renderer.shadowMap.enabled = true
+    // } else {
+    //   this.renderer.shadowMapEnabled = true
+    // }
+    this.renderer.setClearColor(this.scene.fog.color, 1)
     this.viewports.push(new MeshObserverViewport())
     // this.viewports.push(new MeshPerspectiveViewPort())
     // this.viewports.push(new CubeObserverViewPort())
@@ -33,7 +32,7 @@ export default class ImageUnderConstruction {
 
       const cubeAnimation = () => {
         this.runningAnimations.push(this.scene.getCubeAnimator())
-        this.timeoutId = setTimeout(cubeAnimation, 100)
+        this.timeoutId = setTimeout(cubeAnimation, 300)
       }
 
       // this.viewports[1].lookAt(anim.xTarget, anim.yTarget, anim.zTarget)
@@ -74,11 +73,6 @@ export default class ImageUnderConstruction {
       v.updateCamera()
       this.renderer.setViewport(v.left, v.bottom, v.width, v.height)
       this.renderer.setScissor(v.left, v.bottom, v.width, v.height)
-      if (this.renderer.enableScissorTest) {
-        this.renderer.enableScissorTest(true)
-      } else {
-        this.renderer.setScissorTest(true)
-      }
       this.renderer.render(this.scene.scene, v.camera)
     }
 

@@ -1,4 +1,4 @@
-import PixelCubes from "./cubes-from-pixels"
+import PixelCubes from './cubes-from-pixels'
 
 export default class ImageCubesMesh extends PixelCubes {
   constructor() {
@@ -18,6 +18,7 @@ export default class ImageCubesMesh extends PixelCubes {
     }
 
     this.centerGeometry()
+    this.mesh.castShadow = true
     return this
   }
 }

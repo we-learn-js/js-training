@@ -1,5 +1,5 @@
 import THREE from 'three'
-import PixelCube from "./cube-from-pixel"
+import PixelCube from './cube-from-pixel'
 
 export default class PixelCubesMesh {
   constructor(xSize, ySize, zSize) {

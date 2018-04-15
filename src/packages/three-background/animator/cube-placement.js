@@ -1,16 +1,8 @@
-export default class CubePlacement {
-  constructor(mesh, xRange, yRange, zRange) {
+export default class CubePlacementAnimator {
+  constructor(mesh, xRange = 0, yRange = 0, zRange = 0) {
     this.animate = this.animate.bind(this)
     this.mesh = mesh
-    if (xRange == null) {
-      xRange = 0
-    }
-    if (yRange == null) {
-      yRange = 0
-    }
-    if (zRange == null) {
-      zRange = 0
-    }
+
     const x = -xRange / 2 + Math.floor(Math.random() * xRange)
     const y = -yRange / 2 + Math.floor(Math.random() * yRange)
     const z = zRange / 2 + Math.floor(Math.random() * zRange)
@@ -24,7 +16,7 @@ export default class CubePlacement {
 
     this.xVelocity = 0.01 + Math.random() * 0.04
     this.yVelocity = 0.01 + Math.random() * 0.04
-    this.zVelocity = 0.01 + Math.random() * 0.04
+    this.zVelocity = 0.01 + Math.random() * 0.0001
   }
 
   animate() {

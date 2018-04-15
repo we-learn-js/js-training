@@ -1,16 +1,7 @@
-import PixelCubes from "./cubes-from-pixels"
+import PixelCubes from './cubes-from-pixels'
 
 export default class RandomCubesMesh extends PixelCubes {
-  addRandomPixels(materials, number, xRange, yRange, zRange) {
-    if (xRange == null) {
-      xRange = 0
-    }
-    if (yRange == null) {
-      yRange = 0
-    }
-    if (zRange == null) {
-      zRange = 0
-    }
+  addRandomPixels(materials, number, xRange = 0, yRange = 0, zRange = 0) {
     while (number > 0) {
       const materialIdx = Math.floor(materials.length * Math.random())
       const material = materials[materialIdx]
