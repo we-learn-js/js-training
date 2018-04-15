@@ -9,6 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import LoginIcon from '@material-ui/icons/AccountCircle'
 import GitHubIcon from '../../Icon/GitHub'
 import Tooltip from 'material-ui/Tooltip'
+import { Link } from 'react-router-dom'
 
 import './index.css'
 
@@ -19,13 +20,17 @@ const AppBarButton = ({ title, ...props }) => (
 )
 
 const ButtonAppBar = props => {
-  const Link = props => <a {...props} />
   return (
     <header className="jst-Header">
       <Toolbar>
-        <IconButton color="primary">
+        <AppBarButton
+          title="List of Chapters"
+          color="primary"
+          to="/chapters"
+          component={Link}
+        >
           <MenuIcon />
-        </IconButton>
+        </AppBarButton>
         <nav className="jst-Header-Button">
           <AppBarButton title="Sign In">
             <LoginIcon />
