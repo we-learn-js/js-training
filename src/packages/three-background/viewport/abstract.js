@@ -1,13 +1,7 @@
-import MousePosition from "../mouse/position"
+import MousePosition from '../mouse/position'
 
 export default class AbstractViewport {
-  constructor(fov, distance) {
-    if (fov == null) {
-      fov = 30
-    }
-    if (distance == null) {
-      distance = 400
-    }
+  constructor(fov = 30, distance = 400) {
     this.mouse = new MousePosition()
   }
 

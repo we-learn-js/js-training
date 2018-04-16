@@ -1,13 +1,12 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import ChaptersList from './pages/ChaptersList'
-import Chapter from './pages/Chapter'
+import Loadable from 'react-loadable'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import CssBaseline from 'material-ui/CssBaseline'
 import { requiresAuth } from '../components/HoC/Auth'
 import { withMatch } from '../components/HoC/Router'
 import HeaderBar from '../components/Layout/Header'
+import { LinearProgress } from 'material-ui/Progress'
 
 const theme = createMuiTheme({
   palette: {
@@ -35,15 +34,34 @@ const Layout = ({ children }) => (
     {children}
   </React.Fragment>
 )
-const ChapterPage = withMatch(requiresAuth(Chapter))
-const ChapterListPage = withMatch(ChaptersList)
+
+const HomePage = Loadable({
+  loader: () => import('./pages/Home'),
+  loading: () => <LinearProgress />
+})
+
+const ChapterListPage = Loadable({
+  loader: () =>
+    import('./pages/ChaptersList').then(ChaptersList =>
+      withMatch(ChaptersList.default)
+    ),
+  loading: () => <LinearProgress />
+})
+
+const ChapterPage = Loadable({
+  loader: () =>
+    import('./pages/Chapter').then(Chapter =>
+      withMatch(requiresAuth(Chapter.default))
+    ),
+  loading: () => <LinearProgress />
+})
 
 export default () => (
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
     <Layout>
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={HomePage} />
         <Route
           exact
           path="/chapters"
