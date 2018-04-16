@@ -7,17 +7,18 @@
     "reset": "rm -Rf node_modules && npm i",
     "images": "node scripts/list-images.js",
     "build":
-      "npm run images && parcel build --no-cache --no-source-maps -d build src/app/index.html && cp ./scripts/fixtures/build/package.json ./build/package.json",
+      "npm run clear && npm run images && parcel build --no-cache -d build src/index.html && cp ./scripts/fixtures/build/package.json ./build/package.json",
+    "clear": "rm -Rf .cache dist",
     "start":
-      "npm run images && parcel serve --no-source-maps -p 3000 src/app/index.html",
-    "dev": "npm run start -- --no-cache",
+      "npm run images && parcel serve --no-source-maps -p 3000 src/index.html",
+    "dev": "npm run clear && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "co": "sui-mono commit",
     "deploy": "now --public --name=js-training-v2 ./build",
     "deploy:clear": "now rm js-training-v2 --yes",
     "deploy:alias": "now alias set $(pbpaste) js-training-v2",
     "build-deploy":
-      "npm run build && npm run wiki:push && npm run deploy:clear && npm run deploy && npm run deploy:alias",
+      "npm run wiki:push && npm run build && npm run deploy:clear && npm run deploy && npm run deploy:alias",
     "wiki:add":
       "git subtree add --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash",
     "wiki:pull":
@@ -43,14 +44,14 @@
   "devDependencies": {
     "@s-ui/mono": "1",
     "babel-preset-sui": "1.5.0",
-    "caniuse-lite": "^1.0.30000830",
+    "caniuse-lite": "1.0",
     "fs-extra": "5.0.0",
     "node-sass": "4.8.3",
     "node-sass-package-importer": "5.1.1",
     "now": "11",
-    "parcel-bundler": "1.7.0",
+    "parcel-bundler": "1.7.1",
     "postcss-cssnext": "3.1.0",
-    "postcss-modules": "^1.1.0"
+    "postcss-modules": "1.1.0"
   },
   "config": {
     "sui-mono": {

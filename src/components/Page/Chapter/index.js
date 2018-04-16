@@ -1,6 +1,6 @@
 import React, { Fragment, PureComponent } from 'react'
-import Reveal from '../../../components/Slideshow/RevealMarkdown'
-import { withDomainService } from '../../../components/Hoc/Domain'
+import Reveal from "../../Slideshow/RevealMarkdown"
+import { withDomainService } from "../../Hoc/Domain"
 
 export default withDomainService('ChapterViewService')(
   class ChapterPage extends PureComponent {

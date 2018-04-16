@@ -1,8 +1,8 @@
 import React from 'react'
-import ChapterList from '../../../components/Chapter/List'
-import Content from '../../../components/Layout/Content'
+import ChapterList from "../../Chapter/List"
+import Content from "../../Layout/Content"
 import Typography from 'material-ui/Typography'
-import { withServiceResponse } from '../../../components/Hoc/Domain'
+import { withServiceResponse } from "../../Hoc/Domain"
 
 export default withServiceResponse('ChapterListService')(
   ({ ChapterListService, ...props }) =>
