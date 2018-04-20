@@ -49,6 +49,9 @@ class RevealSlideshow extends React.Component {
     return false
   }
 
+  componentWillUnmount() {
+    Reveal.removeEventListeners()
+  }
   render() {
     return (
       <div className="reveal">
