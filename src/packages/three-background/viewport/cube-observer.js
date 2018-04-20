@@ -1,30 +1,11 @@
 import THREE from 'three'
-import ViewportAbstract from "./abstract"
+import ViewportAbstract from './abstract'
 
 export default class CubeObserverViewport extends ViewportAbstract {
-  constructor(fov, distance) {
-    {
-      // Hack: trick Babel/TypeScript into allowing this before super.
-      if (false) {
-        super()
-      }
-      let thisFn = (() => {
-        this
-      }).toString()
-      let thisName = thisFn
-        .slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';'))
-        .trim()
-      eval(`${thisName} = this;`)
-    }
-    if (fov == null) {
-      fov = 60
-    }
+  constructor(fov = 30, distance = 1000) {
+    super(fov, distance)
     this.fov = fov
-    if (distance == null) {
-      distance = 400
-    }
     this.distance = distance
-    super(this.fov, this.distance)
     this._width = 0.5
     this._height = 0.5
     this._bottom = 0

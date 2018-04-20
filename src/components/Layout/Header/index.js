@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
-import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import IconButton from 'material-ui/IconButton'
@@ -22,21 +21,19 @@ const AppBarButton = ({ title, ...props }) => (
 const ButtonAppBar = props => {
   return (
     <header className="jst-Header">
-      <Toolbar>
-        <AppBarButton
-          title="List of Chapters"
-          color="primary"
-          to="/chapters"
-          component={Link}
-        >
-          <MenuIcon />
+      <AppBarButton
+        title="List of Chapters"
+        color="primary"
+        to="/chapters"
+        component={Link}
+      >
+        <MenuIcon />
+      </AppBarButton>
+      <nav className="jst-Header-Button">
+        <AppBarButton title="Sign In">
+          <LoginIcon />
         </AppBarButton>
-        <nav className="jst-Header-Button">
-          <AppBarButton title="Sign In">
-            <LoginIcon />
-          </AppBarButton>
-        </nav>
-      </Toolbar>
+      </nav>
     </header>
   )
 }

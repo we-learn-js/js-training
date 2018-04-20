@@ -3,29 +3,10 @@ import ViewportAbstract from './abstract'
 import MousePosition from '../mouse/position'
 
 export default class MeshObserverViewport extends ViewportAbstract {
-  constructor(fov, distance) {
-    {
-      // Hack: trick Babel/TypeScript into allowing this before super.
-      if (false) {
-        super()
-      }
-      let thisFn = (() => {
-        this
-      }).toString()
-      let thisName = thisFn
-        .slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';'))
-        .trim()
-      eval(`${thisName} = this;`)
-    }
-    if (fov == null) {
-      fov = 30
-    }
+  constructor(fov = 30, distance = 1000) {
+    super(fov, distance)
     this.fov = fov
-    if (distance == null) {
-      distance = 1000
-    }
     this.distance = distance
-    super(this.fov, this.distance)
     this._width = 1
     this._height = 1
     this._bottom = 0

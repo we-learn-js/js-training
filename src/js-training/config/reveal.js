@@ -1,4 +1,4 @@
-const REVEAL_CDN = '//unpkg.com/reveal.js@3.6.0/'
+const REVEAL_CDN = '//unpkg.com/reveal.js@3.6.0'
 
 export default masterMode => ({
   controls: false,

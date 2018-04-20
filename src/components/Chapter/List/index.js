@@ -1,39 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { withStyles } from 'material-ui/styles'
-import ListSubheader from 'material-ui/List/ListSubheader'
-import List, { ListItem, ListItemText } from 'material-ui/List'
+import './index.scss'
 
-const styles = theme => ({
-  root: {
-    width: '100%',
-    position: 'relative',
-    overflow: 'auto'
-  },
-  listSection: {
-    backgroundColor: 'inherit'
-  },
-  ul: {
-    backgroundColor: 'inherit',
-    padding: 0
-  }
-})
-
-const ChapterList = ({ chapters, classes }) => (
-  <List className={classes.root} subheader={<li />}>
+const ChapterList = ({ chapters }) => (
+  <ul className="jst-ChapterList">
     {chapters.map(({ title, chapters }) => (
-      <ListItem key={title} className={classes.listSection}>
-        <List className={classes.root}>
-          <ListSubheader>{title}</ListSubheader>
+      <li key={title} className="jst-ChapterList-Section">
+        <span className="jst-ChapterList-Title">{title}</span>
+        <ul>
           {chapters.map(({ title, url }) => (
-            <ListItem key={url} button component={Link} to={url}>
-              <ListItemText primary={title} />
-            </ListItem>
+            <li key={url} className="jst-ChapterList-Chapter">
+              <Link className="jst-ChapterList-Link" to={url}>
+                {title}
+              </Link>
+            </li>
           ))}
-        </List>
-      </ListItem>
+        </ul>
+      </li>
     ))}
-  </List>
+  </ul>
 )
 
-export default withStyles(styles)(ChapterList)
+export default ChapterList

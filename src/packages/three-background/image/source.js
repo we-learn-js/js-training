@@ -5,9 +5,7 @@ export default class ImageSource {
     image.src = url
 
     return new Promise(function(resolve, reject) {
-      image.onload = function() {
-        return resolve(this)
-      }
+      image.addEventListener('load', event => resolve(event.target))
       return (image.onerror = evt => reject())
     })
   }

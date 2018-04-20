@@ -3,7 +3,7 @@
   max-width: 970px;
   margin: auto;
   background: transparent;
-  padding: 40px;
+  padding: 40px 20px;
 
   &.hasHeader {
     padding-top: 100px;
