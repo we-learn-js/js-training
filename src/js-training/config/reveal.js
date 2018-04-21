@@ -19,18 +19,6 @@ export default masterMode => ({
   history: true,
   dependencies: [
     {
-      src: `${REVEAL_CDN}/plugin/markdown/marked.js`,
-      condition: function() {
-        return !!document.querySelector('[data-markdown]')
-      }
-    },
-    {
-      src: `${REVEAL_CDN}/plugin/markdown/markdown.js`,
-      condition: function() {
-        return !!document.querySelector('[data-markdown]')
-      }
-    },
-    {
       src: `${REVEAL_CDN}/plugin/notes/notes.js`,
       async: true
     },

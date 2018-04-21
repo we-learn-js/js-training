@@ -1,12 +1,12 @@
 const getGithubUrl = file =>
-  `https://raw.githubusercontent.com/we-learn-js/js-training/js-training-v2/src${file}`
+  `https://raw.githubusercontent.com/we-learn-js/js-training/js-training-v2${file}`
 export default [
   {
     section: 'Intro',
     chapters: [
       {
         title: 'Presentation',
-        markdownUrl: getGithubUrl('/md/Presentation.md')
+        markdownUrl: getGithubUrl('/src/md/Presentation.md')
       }
     ]
   },
@@ -15,16 +15,16 @@ export default [
     chapters: [
       {
         title: 'Operators',
-        markdownUrl: getGithubUrl('/md/Operators.md')
+        markdownUrl: getGithubUrl('/src/md/Operators.md')
       },
-      { title: 'Objects', markdownUrl: getGithubUrl('/md/Objects.md') },
-      { title: 'Strings', markdownUrl: getGithubUrl('/md/Strings.md') },
-      { title: 'Classes', markdownUrl: getGithubUrl('/md/Classes.md') },
-      { title: 'Symbols', markdownUrl: getGithubUrl('/md/Symbols.md') },
-      { title: 'Modules', markdownUrl: getGithubUrl('/md/Modules.md') },
+      { title: 'Objects', markdownUrl: getGithubUrl('/src/md/Objects.md') },
+      { title: 'Strings', markdownUrl: getGithubUrl('/src/md/Strings.md') },
+      { title: 'Classes', markdownUrl: getGithubUrl('/src/md/Classes.md') },
+      { title: 'Symbols', markdownUrl: getGithubUrl('/src/md/Symbols.md') },
+      { title: 'Modules', markdownUrl: getGithubUrl('/src/md/Modules.md') },
       {
         title: 'Iterators And Generators',
-        markdownUrl: getGithubUrl('/md/IteratorsAndGenerators.md')
+        markdownUrl: getGithubUrl('/src/md/IteratorsAndGenerators.md')
       }
     ]
   },
@@ -33,26 +33,26 @@ export default [
     chapters: [
       {
         title: 'Scopes And Closures',
-        markdownUrl: getGithubUrl('/md/ScopesAndClosures.md')
+        markdownUrl: getGithubUrl('/src/md/ScopesAndClosures.md')
       },
       {
         title: 'Functions',
-        markdownUrl: getGithubUrl('/md/Functions.md')
+        markdownUrl: getGithubUrl('/src/md/Functions.md')
       },
       {
         title: 'Async Programming',
-        markdownUrl: getGithubUrl('/md/AsyncProgramming.md')
+        markdownUrl: getGithubUrl('/src/md/AsyncProgramming.md')
       }
     ]
   },
   {
     section: 'APIs',
     chapters: [
-      { title: 'React', markdownUrl: getGithubUrl('/md/React.md') },
-      { title: 'Testing', markdownUrl: getGithubUrl('/md/Testing.md') },
+      { title: 'React', markdownUrl: getGithubUrl('/src/md/React.md') },
+      { title: 'Testing', markdownUrl: getGithubUrl('/src/md/Testing.md') },
       {
         title: 'Web Animations API',
-        markdownUrl: getGithubUrl('/md/WebAnimationsAPI.md')
+        markdownUrl: getGithubUrl('/src/md/WebAnimationsAPI.md')
       }
     ]
   },
@@ -61,23 +61,23 @@ export default [
     chapters: [
       {
         title: 'Functional Programming',
-        markdownUrl: getGithubUrl('/md/FunctionalProgramming.md')
+        markdownUrl: getGithubUrl('/src/md/FunctionalProgramming.md')
       },
       {
         title: 'Object-Oriented Programming',
-        markdownUrl: getGithubUrl('/md/ObjectOrientedProgramming.md')
+        markdownUrl: getGithubUrl('/src/md/ObjectOrientedProgramming.md')
       },
       {
         title: 'Object-Oriented Design Principles',
-        markdownUrl: getGithubUrl('/md/ObjectOrientedDesignPrinciples.md')
+        markdownUrl: getGithubUrl('/src/md/ObjectOrientedDesignPrinciples.md')
       },
       {
         title: 'Design Patterns',
-        markdownUrl: getGithubUrl('/md/DesignPatterns.md')
+        markdownUrl: getGithubUrl('/src/md/DesignPatterns.md')
       },
       {
         title: 'Domain Driven Design',
-        markdownUrl: getGithubUrl('/md/DomainDrivenDesign.md')
+        markdownUrl: getGithubUrl('/src/md/DomainDrivenDesign.md')
       }
     ]
   }

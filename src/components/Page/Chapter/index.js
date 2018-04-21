@@ -1,28 +1,28 @@
 import React, { Fragment, PureComponent } from 'react'
-import Reveal from "../../Slideshow/RevealMarkdown"
-import { withDomainService } from "../../Hoc/Domain"
+import RevealMarkdown from '../../Slideshow/RevealMarkdown'
+import { withDomainService } from '../../Hoc/Domain'
 
 export default withDomainService('ChapterViewService')(
   class ChapterPage extends PureComponent {
     constructor(props) {
       super(props)
-      this.state = { markdownUrl: null }
+      this.state = { slides: null }
     }
 
     async componentDidMount() {
       const {
-        markdownUrl,
+        slides,
         masterMode
       } = await this.props.ChapterViewService.execute({
         url: this.props.match.url
       })
-      this.setState({ markdownUrl, masterMode })
+      this.setState({ slides, masterMode })
     }
 
     render() {
-      const { markdownUrl, masterMode } = this.state
-      return markdownUrl ? (
-        <Reveal markdownUrl={markdownUrl} masterMode={masterMode} />
+      const { slides, masterMode } = this.state
+      return slides ? (
+        <RevealMarkdown slides={slides} masterMode={masterMode} />
       ) : null
     }
   }
