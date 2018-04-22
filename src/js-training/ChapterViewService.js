@@ -35,9 +35,11 @@ export default class ChapterViewService {
       this.chapterListService.execute(),
       this.signedInUserService.execute()
     ])
+
     const chapter = sections
-      .reduce((res, { chapters }) => [...res, ...chapters])
+      .reduce((res, { chapters }) => [...res, ...chapters], [])
       .filter(({ url: chapterUrl }) => chapterUrl.includes(url))[0]
+
     chapter.slides = await fetch(chapter.markdownUrl)
       .then(res => res.text())
       .then(markdown =>
