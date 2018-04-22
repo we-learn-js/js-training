@@ -5,7 +5,6 @@ import ReactMarkdown from 'react-markdown'
 class RevealMarkownSlides extends React.Component {
   render() {
     const { slides, masterMode } = this.props
-    console.log(slides)
     return (
       <RevealPresentation masterMode={masterMode}>
         {slides.map((slides, i) => {
