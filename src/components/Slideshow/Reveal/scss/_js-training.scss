@@ -25,40 +25,6 @@
         color: rgba(#000, 0.2);
       }
     }
-
-    &-status {
-      position: absolute;
-      right: 8px;
-      top: 8px;
-      width: auto;
-    }
-
-    &-button {
-      background: transparent;
-      border-radius: 0;
-      border: 2px #fff solid;
-      color: #fff;
-      text-transform: uppercase;
-      font-weight: bold;
-      font-size: $heading4Size;
-      padding: 8px;
-    }
-
-    &-client {
-      opacity: 0.6;
-      background: #000;
-      display: inline-block;
-      height: 10px;
-      width: 10px;
-
-      &--active {
-        background: $linkColor;
-      }
-
-      & + & {
-        margin-left: 5px;
-      }
-    }
   }
 
   &-responseSlide {

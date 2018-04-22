@@ -62,13 +62,15 @@
   }
 
   pre {
-    display: inline-block;
+    display: block;
     font-size: 0.7em;
-    margin: $blockMargin auto;
-    width: auto;
-    max-width: 100%;
+    margin: 10px auto;
+    max-width: 80%;
+    clear: both;
 
     code {
+      background: rgba(#000, 0.7);
+
       padding: $blockMargin/2;
     }
 
