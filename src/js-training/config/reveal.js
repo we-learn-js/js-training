@@ -18,10 +18,10 @@ export default masterMode => ({
   margin: 0.1,
   history: true,
   dependencies: [
-    {
-      src: `${REVEAL_CDN}/plugin/notes/notes.js`,
-      async: true
-    },
+    // {
+    //   src: `${REVEAL_CDN}/plugin/notes/notes.js`,
+    //   async: true
+    // },
     { src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
     {
       src: `${REVEAL_CDN}/plugin/multiplex/${
