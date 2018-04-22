@@ -5,7 +5,7 @@ import markdownImages from './config/md-images'
 const MASTER_EMAIL = 'davidbarna@gmail.com'
 const VERTICAL_SEP = /<!--slide-->/gm
 const HORIZONTAL_SEP = /<!--section-->/gm
-const NOTE_REGEX = /Note:\s?([\w\s\`\.\[\]\/\(\(\:\-\\*\,)|]+)\n/gm
+const NOTE_REGEX = /Note:\s?([\w\s\`\.\[\]\/\(\(\:\-\\*\,)|'\(\)\{\}"?’]+)\n/gm
 const IMAGE_REGEX = /\.\/[\w-]+\/([\w\/-]+\.[a-z]{2,4})/g
 const ATTRIBUTES_REGEX = /<!-- \.slide\:\s([\s\w='"-]+)\s-->/
 const ATTRIBUTE_REGEX = /([\w-]+)=[\"|\']{1}([\w-]+)/

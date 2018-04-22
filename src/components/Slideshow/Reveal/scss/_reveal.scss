@@ -39,10 +39,15 @@
   blockquote {
     margin: $blockMargin auto;
     padding: 0 $blockMargin;
-    font-size: 85%;
+
     ul {
       margin-bottom: $blockMargin;
     }
+  }
+
+  p,
+  blokquote {
+    font-size: 85%;
   }
 
   @include slide-text-colors($selectionBackgroundColor);
@@ -56,22 +61,23 @@
         style: normal;
       }
       text-transform: none;
-      padding: 0.15em 0.3em;
+      padding: 0.05em 0.3em;
       margin: 0em 0.2em;
     }
   }
 
   pre {
-    display: block;
+    display: inline-block;
     font-size: 0.7em;
     margin: 10px auto;
-    max-width: 80%;
+    width: auto;
+    max-width: 100%;
     clear: both;
 
     code {
       background: rgba(#000, 0.7);
-
       padding: $blockMargin/2;
+      line-height: 125%;
     }
 
     .hljs,
@@ -92,6 +98,8 @@
     min-width: 80%;
     td,
     th {
+      color: #fff;
+      font-size: 80%;
       padding: 0.5em 0.25em;
       text-align: left;
     }
