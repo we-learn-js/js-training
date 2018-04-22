@@ -5,15 +5,15 @@ import ReactMarkdown from 'react-markdown'
 class RevealMarkownSlides extends React.Component {
   render() {
     const { slides, masterMode } = this.props
-
+    console.log(slides)
     return (
       <RevealPresentation masterMode={masterMode}>
         {slides.map((slides, i) => {
           return (
             <section key={i}>
-              {slides.map((slide, j) => (
-                <section key={`${i}/${j}`}>
-                  <ReactMarkdown source={slide} />
+              {slides.map(({ content, attributes }, j) => (
+                <section key={`${i}/${j}`} {...attributes}>
+                  <ReactMarkdown source={content} escapeHtml={false} />
                 </section>
               ))}
             </section>
