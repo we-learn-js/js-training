@@ -3,7 +3,8 @@ import ChapterListService from './ChapterListService'
 import bus from './bus'
 
 const loadFirebase = async () => {
-  const firebase = await import('firebase')
+  await import('@firebase/auth')
+  const { firebase } = await import('@firebase/app')
   !firebase.apps.length && firebase.initializeApp(firebaseConfig)
   return firebase
 }
