@@ -1,3 +1,5 @@
+import bus from './bus'
+
 export default class SignedInUserService {
   constructor({ firebase }) {
     this.firebase = firebase
@@ -8,8 +10,10 @@ export default class SignedInUserService {
         this.firebase.auth().onAuthStateChanged(user => {
           if (user) {
             const { displayName, email, uid, photoURL } = user
+            bus.emit('UserSignedIn', { displayName, email, uid, photoURL })
             resolve({ displayName, email, uid, photoURL })
           } else {
+            bus.emit('UserSignedIn')
             resolve(null)
           }
         })

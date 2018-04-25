@@ -1,34 +1,38 @@
 import React from 'react'
 import AuthButtonsDialog from '../Auth/ButtonsDialog'
 import { LinearProgress } from 'material-ui/Progress'
-import { withDomainService } from '../HoC/Domain'
+import { withDomainEvent, withDomainService } from '../HoC/Domain'
 
 const requiresAuth = Component =>
-  withDomainService('SignedInUserService')(
-    class RequiredAuth extends React.Component {
-      state = { executing: true, user: null }
+  withDomainEvent('UserSignedIn')(
+    withDomainService('SignedInUserService')(
+      class RequiredAuth extends React.Component {
+        state = { executing: true, user: null }
 
-      onAuth = user => {
-        this.setState({ user, executing: false })
-      }
+        async componentDidMount() {
+          await this.props.SignedInUserService.execute(2000)
+          this.setState({ executing: false })
+        }
 
-      async componentDidMount() {
-        const { SignedInUserService } = this.props
-        const user = await SignedInUserService.execute(2000)
-        this.setState({ user, executing: false })
-      }
+        componentWillReceiveProps(nextProps) {
+          this.setState({ user: nextProps.UserSignedIn })
+        }
 
-      render() {
-        const { SignedInUserService, ...props } = this.props
-        const { user, executing } = this.state
-        if (executing) return <LinearProgress variant="query" />
-        return user ? (
-          <Component {...props} />
-        ) : (
-          <AuthButtonsDialog onAuth={this.onAuth} />
-        )
+        shouldComponentUpdate(nextProps, nextState) {
+          return (
+            nextState.user !== this.state.user ||
+            nextState.executing !== this.state.executing
+          )
+        }
+
+        render() {
+          const { SignedInUserService, UserSignedIn, ...props } = this.props
+          const { executing } = this.state
+          if (executing) return <LinearProgress variant="query" />
+          return UserSignedIn ? <Component {...props} /> : <AuthButtonsDialog />
+        }
       }
-    }
+    )
   )
 
 export { requiresAuth }
