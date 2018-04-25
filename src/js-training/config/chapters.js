@@ -1,5 +1,5 @@
 const getGithubUrl = file =>
-  `https://raw.githubusercontent.com/we-learn-js/js-training/js-training-v2${file}`
+  `https://raw.githubusercontent.com/we-learn-js/js-training/v2${file}`
 export default [
   {
     section: 'Intro',
