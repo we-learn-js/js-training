@@ -25,6 +25,29 @@ const withDomainService = serviceName => WrappedComponent =>
     }
   )
 
+const withDomainEvent = eventName => WrappedComponent =>
+  withDomain(
+    class WithDomainEvent extends React.Component {
+      listener = data => {
+        this.setState({ [eventName]: data })
+      }
+      async componentDidMount() {
+        const { domain } = this.props
+        domain.on(eventName, this.listener)
+      }
+
+      async componentWillUnmount() {
+        const { domain } = this.props
+        domain.off(eventName, this.listener)
+      }
+
+      render() {
+        const { domain, ...props } = this.props
+        return <WrappedComponent {...props} {...this.state} />
+      }
+    }
+  )
+
 const withServiceResponse = (serviceName, params) => WrappedComponent =>
   withDomainService(serviceName)(
     class WithServiceResponse extends React.Component {
@@ -45,4 +68,4 @@ const withServiceResponse = (serviceName, params) => WrappedComponent =>
     }
   )
 
-export { withDomain, withDomainService, withServiceResponse }
+export { withDomain, withDomainService, withServiceResponse, withDomainEvent }

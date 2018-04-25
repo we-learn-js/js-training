@@ -1,5 +1,6 @@
 import firebaseConfig from './config/firebase'
 import ChapterListService from './ChapterListService'
+import bus from './bus'
 
 const loadFirebase = async () => {
   const firebase = await import('firebase')
@@ -13,6 +14,7 @@ const factories = {
   ChapterListService: async () => ({ default: ChapterListService }),
   AuthWithGithubService: () => import('./AuthWithGithubService'),
   AuthWithGoogleService: () => import('./AuthWithGoogleService'),
+  SignOutUserService: () => import('./SignOutUserService'),
   SignedInUserService: () => import('./SignedInUserService')
 }
 
@@ -21,5 +23,13 @@ export default class JsTraining {
     const firebase = await loadFirebase()
     const Service = await factories[key]()
     return new Service.default({ firebase })
+  }
+
+  async on(event, callback) {
+    bus.addListener(event, callback)
+  }
+
+  async off(event, callback) {
+    bus.addListener(event, callback)
   }
 }
