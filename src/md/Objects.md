@@ -87,7 +87,7 @@ typeof function(x) {
 typeof new Function('x', 'return x*x') // "function"
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/zojele?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/zojele?embed
 
 <!--slide-->
 
@@ -846,7 +846,7 @@ function getObjectProperty(obj, propName) {
 }
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/nazefo?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/nazefo?embed
 
 Note: This is a programatic representation of the prototype chain
 
@@ -992,7 +992,7 @@ arr.remove(x => typeof x === 'string')
 console.log(arr) // [1, 8, null, true, false]
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/fovasetuse-1?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/fovasetuse-1?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -1108,7 +1108,7 @@ user2.sayName() // "My name is Evan"
 user2.orderItem('TV') // "TV purchased: delivery in 1 day"
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/bajura?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/bajura?embed
 
 <!--slide-->
 
@@ -1153,7 +1153,7 @@ console.log(collection.sortBy('name'))
 // ...
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/naqogu?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/naqogu?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -1407,7 +1407,7 @@ form.color.value = ['Red', 'White']
 console.log(form.color.value) // ["Red", "White"]
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/nerila?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objects/nerila?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 

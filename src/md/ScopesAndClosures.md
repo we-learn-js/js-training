@@ -394,7 +394,7 @@ function addButtons(num) {
 addButtons(10)
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/ScopesAndClosures/tegewu?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/ScopesAndClosures/tegewu?embed
 
 Note: "This is button 10" is the response. Why? The scope of `i` is `addButtons` function. Then, each time clicks on a button, the function takes the current value of `i`, which is 10 at the end of the loop.
 
@@ -422,7 +422,7 @@ function addButtons(num) {
 addButtons(10)
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/ScopesAndClosures/laturas?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/ScopesAndClosures/laturas?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -460,7 +460,7 @@ countdown(5)
 // -1, -1, -1, -1, -1
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/ScopesAndClosures/xaxerim?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/ScopesAndClosures/xaxerim?embed
 
 <!--slide--><!-- .slide: class="jsTraining-reponseSlide" -->
 
@@ -478,7 +478,7 @@ function countdown(num) {
 }
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/ScopesAndClosures/mabono?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/ScopesAndClosures/mabono?embed
 
 <!--slide-->
 
@@ -498,7 +498,7 @@ function countdown(num) {
 countdown(5)
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/ScopesAndClosures/hiduro?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/ScopesAndClosures/hiduro?embed
 
 <!--section-->
 

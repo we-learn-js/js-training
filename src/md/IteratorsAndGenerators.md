@@ -168,7 +168,7 @@ for (var line of lines) {
 // "Rien ne sert de courir  il faut partir à point."
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/IteratorsAndGenerators/regira?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/IteratorsAndGenerators/regira?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -192,7 +192,7 @@ class TextLines {
 }
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/IteratorsAndGenerators/kuneliv?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/IteratorsAndGenerators/kuneliv?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -503,7 +503,7 @@ console.log(gen.next().value) // 2
 }
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/IteratorsAndGenerators/kuneliv?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/IteratorsAndGenerators/kuneliv?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -523,7 +523,7 @@ class TextLines {
 }
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/IteratorsAndGenerators/xutadu?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/IteratorsAndGenerators/xutadu?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -561,7 +561,7 @@ class TextLines {
 }
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/IteratorsAndGenerators/fafowi?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/IteratorsAndGenerators/fafowi?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -587,7 +587,7 @@ class TextLines {
 }
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/IteratorsAndGenerators/totayeq-4?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/IteratorsAndGenerators/totayeq-4?embed
 
 <!--section-->
 

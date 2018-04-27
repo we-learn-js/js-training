@@ -10,13 +10,14 @@ export default masterMode => ({
     url: 'https://reveal-js-multiplex-ccjbegmaii.now.sh'
   },
   hideAddressBar: true,
-  transition: 'fade',
+  transition: 'slide',
   parallaxBackgroundImage: require('../../components/Slideshow/Reveal/images/slideshow-background.png'),
   parallaxBackgroundSize: '',
   parallaxBackgroundHorizontal: 100,
   parallaxBackgroundVertical: 100,
   margin: 0.1,
   history: true,
+  previewLinks: false,
   dependencies: [
     // {
     //   src: `${REVEAL_CDN}/plugin/notes/notes.js`,

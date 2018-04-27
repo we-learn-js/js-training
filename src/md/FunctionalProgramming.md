@@ -305,7 +305,7 @@ console.log(add5(2)) // 7
 console.log(add10(2)) // 12
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/jegerel?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/jegerel?embed
 
 Note: When `add` is created, `x` is added to its closure with its current value. First with `x=5` and then with `x=10`
 That´s why, `add5` and `add10` return different values as they have a different `x` in their closure.
@@ -509,7 +509,7 @@ function traverse(current) {
 
 Let's see if what we've read is true.
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/qajegal?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/qajegal?embed
 
 <!--section-->
 
@@ -587,7 +587,7 @@ var printArray = function(names, console) {
 printArray(names, console) // OUTPUT: "Ben" "Jafar" "Matt"
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/kokoqe?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/kokoqe?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -622,7 +622,7 @@ var result = console.log(
 ) // OUTPUT: [2, 3, 4] [2, 3, 4]
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/yaqite?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/yaqite?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -677,7 +677,7 @@ console.log(countZeroes([1, 2, 0, 0, 4, 1, 0, 2, 0, 1]))
 // OUTPUT: 4
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/cubidal?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/cubidal?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -760,7 +760,7 @@ function simpleJoin(stringArray, i, accumulator) {
 }
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/mocaya?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/mocaya?embed
 
 Note: does not have any loop statements. Instead it uses recursion for iteration.
 
@@ -841,7 +841,7 @@ function getBestVideosIds (videos) {
 console.log(getBestVideosIds(videos)) // OUTPUT [654356453, 675465]
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/junawu?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/junawu?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -874,7 +874,7 @@ repeat(() => console.log(1), 7)
 // OUTPUT: 1 1 1 1 1 1 1
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/joneliv?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/joneliv?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -911,7 +911,7 @@ clonedData.users[2].name = 'Fake user name'
 clonedData.users[0].games[0].name = 'Fake game name'
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/kulufo?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/kulufo?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -947,7 +947,7 @@ console.log(countZeroes([1, 2, 0, 0, 4, 1, 0, 2, 0, 1]))
 // OUTPUT: 4
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/sotepiq?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/FunctionalProgramming/sotepiq?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 

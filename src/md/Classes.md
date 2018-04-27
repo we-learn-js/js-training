@@ -602,7 +602,7 @@ Collection.prototype.findBy = function(prop, value) {
 }
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Classes/jovoce?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Classes/jovoce?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -658,7 +658,7 @@ class Manager {
 }
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Classes/focidi?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Classes/focidi?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -693,7 +693,7 @@ manager.addEmployee(employee1, employee2)
 console.log(manager.employeeNames) // ["Rachel Green", "David Smith"]
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Classes/labubu?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Classes/labubu?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 

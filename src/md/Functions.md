@@ -113,7 +113,7 @@ window.addEventListener('load', function onLoad(event) {
 // Error: Error with name at onLoad (vufamu.js:8:9)
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Functions/vufamu?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Functions/vufamu?embed
 
 <!--slide-->
 
@@ -379,7 +379,7 @@ var arr = [[1], ['2', 3], [4], [5, '6', '7']]
 console.log(flatten(arr)) // [1, "2", 3, 4, 5, "6", "7"]
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Functions/tigotu?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Functions/tigotu?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -489,7 +489,7 @@ function countdown(num) {
 countdown(5)
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Functions/mocijar?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Functions/mocijar?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -528,7 +528,7 @@ var button1 = new Button('Button 1')
 var button2 = new Button('Button 2')
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Functions/fasizo?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Functions/fasizo?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 

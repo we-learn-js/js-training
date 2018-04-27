@@ -729,7 +729,7 @@ class LoginForm {
 }
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/ObjectOrientedDesignPrinciples/yozudi?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/ObjectOrientedDesignPrinciples/yozudi?embed
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 

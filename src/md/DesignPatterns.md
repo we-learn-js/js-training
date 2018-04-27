@@ -312,7 +312,7 @@ class HybridDuck extends SteamDuck {
 
 Convert transportation mode to a strategy so the bycicle strategy can be added without modifying `Person.goToAddress()` method.
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/DesignPatterns/suvuduh?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/DesignPatterns/suvuduh?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -339,7 +339,7 @@ class Person {
 }
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/DesignPatterns/lozaso-3?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/DesignPatterns/lozaso-3?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -363,7 +363,7 @@ new Person(new PersonPublicTransportation()).goToAddress(destination)
 new Person(new PersonWalkTransportation()).goToAddress(destination)
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/DesignPatterns/judiji-2?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/DesignPatterns/judiji-2?embed
 
 <!--section-->
 
@@ -509,7 +509,7 @@ class SuperMario {
 
 * Apply State pattern to `Person` class.
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/DesignPatterns/xijoyen?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/DesignPatterns/xijoyen?embed
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -537,7 +537,7 @@ class PersonWithTransportCreditState extends PersonState {
 }
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/DesignPatterns/tobosok?embed=1&&view=editor
+https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/DesignPatterns/tobosok?embed
 
 <!--section-->
 
