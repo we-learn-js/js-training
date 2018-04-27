@@ -23,8 +23,8 @@ typeof new String('5').valueOf() // "string"
 > When an object is compared to a string, `String.prototype.valueOf()` is called internally to make the comparison.
 
 ```js
-var a = new String('foo')
-var b = new String('foo')
+const a = new String('foo')
+const b = new String('foo')
 
 a == b // false as a and b are type Object and reference different objects
 a == 'foo' // true as the Object (a) is converted to String 'foo' before comparison
@@ -47,11 +47,10 @@ a == 'foo' // true as the Object (a) is converted to String 'foo' before compari
 > Template literals are a different syntax, not a different primitive of object.
 
 ```js
-;(((`\`` ===
-  '`'`\``) === // true
-  '`'`'`) === // true
-  "'"`"`) === // true
-  '"' // true
+;`\`` === '`' // true
+;`\`` === '`' // true
+;`'` === "'" // true
+;`"` === '"' // true
 ```
 
 <!--slide-->
@@ -63,15 +62,20 @@ a == 'foo' // true as the Object (a) is converted to String 'foo' before compari
 Regular string:
 
 ```js
-'string text line 1\n' + 'string text line 2\n' + 'string text line 3'
-
-'string text line 1\n' + 'string text line 2\n' + 'string text line 3'
+//prettier-ignore
+const str = 'string text line 1\n' +
+'string text line 2\n' +
+'string text line 3'
+//prettier-ignore
+const str = "string text line 1\n" +
+"string text line 2\n" +
+"string text line 3"
 ```
 
 Template string:
 
 ```js
-;`string text line 1
+const str = `string text line 1
 string text line 2
 string text line 3`
 ```
@@ -83,9 +87,9 @@ string text line 3`
 > The result string is exactly the same.
 
 ```js
-var text1 = 'string text line 1\n' + 'string text line 2'
+const text1 = 'string text line 1\n' + 'string text line 2'
 
-var text2 = `string text line 1
+const text2 = `string text line 1
 string text line 2`
 
 text1 === text2 // true
@@ -98,10 +102,10 @@ text1 === text2 // true
 > In order to embed expressions within normal strings, you must enclosed them inside a `${}`
 
 ```js
-var a = 5
-var b = 10
-var text1 = 'Fifteen is ' + (a + b) + ' and\nnot ' + (2 * a + b) + '.'
-var text2 = `Fifteen is ${a + b} and\nnot ${2 * a + b}.`
+const a = 5
+const b = 10
+const text1 = 'Fifteen is ' + (a + b) + ' and\nnot ' + (2 * a + b) + '.'
+const text2 = `Fifteen is ${a + b} and\nnot ${2 * a + b}.`
 
 text1 === text2 // true
 console.log(text1)

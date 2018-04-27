@@ -489,8 +489,6 @@ Point.distance === ColorPoint.distance // false
 
 <!--slide-->
 
-<!--slide-->
-
 ### Super class calls with super
 
 > The `super` keyword is used to call functions on an object's parent.

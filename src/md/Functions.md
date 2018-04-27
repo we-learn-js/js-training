@@ -113,7 +113,7 @@ window.addEventListener('load', function onLoad(event) {
 // Error: Error with name at onLoad (vufamu.js:8:9)
 ```
 
-https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Functions/vufamu?embed
+https://jsbin.com/vufamu/edit?html,js,output
 
 <!--slide-->
 

@@ -1,5 +1,7 @@
+const cacheHash = String(Math.random())
 const getGithubUrl = file =>
-  `https://raw.githubusercontent.com/we-learn-js/js-training/v2${file}`
+  `https://raw.githubusercontent.com/we-learn-js/js-training/v2${file}?${cacheHash}`
+
 export default [
   {
     section: 'Intro',

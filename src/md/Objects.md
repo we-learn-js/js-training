@@ -977,7 +977,7 @@ Note: as `this` refers to the instance being created, we are defining properties
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
-### Practice: Mutating Array prototype
+### Practice: Mutating Array
 
 > Implement new method on arrays, so the following output matches
 
