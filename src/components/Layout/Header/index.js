@@ -11,10 +11,8 @@ import GitHubIcon from '../../Icon/GitHub'
 import AuthButtonsDialog from '../../Auth/ButtonsDialog'
 import Tooltip from 'material-ui/Tooltip'
 import { Link } from 'react-router-dom'
-import {
-  withDomainEvent,
-  withDomainService
-} from '../../../components/Hoc/Domain'
+import { withDomainService } from '../../../components/Hoc/Domain'
+import { withUser } from '../../../components/Hoc/Auth'
 import './index.css'
 
 const styles = {
@@ -32,27 +30,21 @@ const AppBarButton = ({ title, ...props }) => (
 
 const UserButton = withStyles(styles)(
   withDomainService('SignOutUserService')(
-    withDomainEvent('UserSignedIn')(
-      ({ UserSignedIn = {}, classes, SignOutUserService }) => {
-        const { displayName, photoURL } = UserSignedIn
-        return displayName ? (
-          <AppBarButton
-            title="Sign out"
-            onClick={() => SignOutUserService.execute()}
-          >
-            <Avatar
-              alt={displayName}
-              src={photoURL}
-              className={classes.avatar}
-            />
-          </AppBarButton>
-        ) : (
-          <AppBarButton title="Not signed in">
-            <LoginIcon />
-          </AppBarButton>
-        )
-      }
-    )
+    withUser(({ user, classes, SignOutUserService }) => {
+      const { displayName, photoURL } = user || {}
+      return displayName ? (
+        <AppBarButton
+          title="Sign out"
+          onClick={() => SignOutUserService.execute()}
+        >
+          <Avatar alt={displayName} src={photoURL} className={classes.avatar} />
+        </AppBarButton>
+      ) : (
+        <AppBarButton title="Not signed in">
+          <LoginIcon />
+        </AppBarButton>
+      )
+    })
   )
 )
 

@@ -10,7 +10,7 @@ export default class SignOutService {
         .signOut()
         .then(() => {
           resolve()
-          bus.emit('UserSignedIn')
+          bus.emit('UserHasChanged', { user: null })
         }, reject)
     })
   }

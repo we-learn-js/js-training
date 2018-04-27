@@ -10,10 +10,12 @@ export default class SignedInUserService {
         this.firebase.auth().onAuthStateChanged(user => {
           if (user) {
             const { displayName, email, uid, photoURL } = user
-            bus.emit('UserSignedIn', { displayName, email, uid, photoURL })
+            bus.emit('UserHasChanged', {
+              user: { displayName, email, uid, photoURL }
+            })
             resolve({ displayName, email, uid, photoURL })
           } else {
-            bus.emit('UserSignedIn')
+            bus.emit('UserHasChanged', { user: null })
             resolve(null)
           }
         })
