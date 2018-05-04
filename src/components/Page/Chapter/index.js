@@ -1,5 +1,6 @@
 import React, { Fragment, PureComponent } from 'react'
-import RevealMarkdown from '../../Slideshow/RevealMarkdown'
+import RevealPresentation from '../../Slideshow/Reveal'
+import RevealMarkdown from '../../Slideshow/RevealMarkownSlides'
 import { withDomainService } from '../../Hoc/Domain'
 
 export default withDomainService('ChapterViewService')(
@@ -22,7 +23,9 @@ export default withDomainService('ChapterViewService')(
     render() {
       const { slides, masterMode } = this.state
       return slides ? (
-        <RevealMarkdown slides={slides} masterMode={masterMode} />
+        <RevealPresentation masterMode={masterMode}>
+          <RevealMarkdown slides={slides} />
+        </RevealPresentation>
       ) : null
     }
   }
