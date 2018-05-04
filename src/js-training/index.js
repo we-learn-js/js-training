@@ -1,7 +1,6 @@
 import firebaseConfig from './config/firebase'
-import ChapterListService from './ChapterListService'
 import bus from './bus'
-
+import ChapterViewService from './lectures/Services/ChapterViewService'
 const loadFirebase = async () => {
   await import('@firebase/auth')
   const { firebase } = await import('@firebase/app')
@@ -10,13 +9,12 @@ const loadFirebase = async () => {
 }
 
 const factories = {
-  ChapterViewService: () => import('./ChapterViewService'),
-  // Hack for parcel. with aync import markdowns were not loaded.
-  ChapterListService: async () => ({ default: ChapterListService }),
-  AuthWithGithubService: () => import('./AuthWithGithubService'),
-  AuthWithGoogleService: () => import('./AuthWithGoogleService'),
-  SignOutUserService: () => import('./SignOutUserService'),
-  SignedInUserService: () => import('./SignedInUserService')
+  ChapterListService: () => import('./lectures/Services/ChapterListService'),
+  ChapterViewService: () => ({ default: ChapterViewService }),
+  AuthWithGithubService: () => import('./user/Services/AuthWithGithubService'),
+  AuthWithGoogleService: () => import('./user/Services/AuthWithGoogleService'),
+  SignOutUserService: () => import('./user/Services/SignOutUserService'),
+  SignedInUserService: () => import('./user/Services/SignedInUserService')
 }
 
 export default class JsTraining {

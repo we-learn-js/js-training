@@ -1,6 +1,6 @@
-import ChapterListService from './ChapterListService'
-import SignedInUserService from './SignedInUserService'
-import markdownImages from './config/md-images'
+import ChapterListService from "./ChapterListService"
+import SignedInUserService from "../../user/Services/SignedInUserService"
+import markdownImages from "../../config/md-images"
 
 const VERTICAL_SEP = /<!--slide-->/gm
 const HORIZONTAL_SEP = /<!--section-->/gm

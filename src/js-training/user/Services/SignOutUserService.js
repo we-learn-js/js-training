@@ -1,4 +1,5 @@
-import bus from './bus'
+import bus from '../../bus'
+
 export default class SignOutService {
   constructor({ firebase }) {
     this.firebase = firebase

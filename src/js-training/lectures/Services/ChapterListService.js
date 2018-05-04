@@ -1,5 +1,5 @@
 import paramCase from 'param-case'
-import chapters from './config/chapters'
+import chapters from "../../config/chapters"
 
 export default class ChapterListService {
   async execute() {
