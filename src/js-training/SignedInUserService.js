@@ -1,5 +1,7 @@
 import bus from './bus'
 
+const MASTER_EMAIL = 'davidbarna@gmail.com'
+
 export default class SignedInUserService {
   constructor({ firebase }) {
     this.firebase = firebase
@@ -10,10 +12,17 @@ export default class SignedInUserService {
         this.firebase.auth().onAuthStateChanged(user => {
           if (user) {
             const { displayName, email, uid, photoURL } = user
+            const userVO = {
+              displayName,
+              email,
+              uid,
+              photoURL,
+              isTeacher: MASTER_EMAIL === email
+            }
             bus.emit('UserHasChanged', {
-              user: { displayName, email, uid, photoURL }
+              user: userVO
             })
-            resolve({ displayName, email, uid, photoURL })
+            resolve(userVO)
           } else {
             bus.emit('UserHasChanged', { user: null })
             resolve(null)

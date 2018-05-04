@@ -2,7 +2,6 @@ import ChapterListService from './ChapterListService'
 import SignedInUserService from './SignedInUserService'
 import markdownImages from './config/md-images'
 
-const MASTER_EMAIL = 'davidbarna@gmail.com'
 const VERTICAL_SEP = /<!--slide-->/gm
 const HORIZONTAL_SEP = /<!--section-->/gm
 const NOTE_REGEX = /Note:\s?([\w\s\`\.\[\]\/\(\(\:\-\\*\,)|'\(\)\{\}"?’]+)\n/gm
@@ -31,7 +30,7 @@ export default class ChapterViewService {
     this.signedInUserService = new SignedInUserService({ firebase })
   }
   async execute({ url }) {
-    const [sections, { email }] = await Promise.all([
+    const [sections, { isTeacher }] = await Promise.all([
       this.chapterListService.execute(),
       this.signedInUserService.execute()
     ])
@@ -53,6 +52,6 @@ export default class ChapterViewService {
             }))
           )
       )
-    return { ...chapter, masterMode: MASTER_EMAIL === email }
+    return { ...chapter, masterMode: isTeacher }
   }
 }
