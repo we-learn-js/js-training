@@ -1,7 +1,8 @@
 import ChapterListService from './ChapterListService'
 import SignedInUserService from '../../user/Services/SignedInUserService'
-import markdownImages from '../../config/md-images'
 
+const RAW_GITHUB =
+  'https://raw.githubusercontent.com/we-learn-js/js-training/v2/src/md/images/'
 const VERTICAL_SEP = /<!--slide-->/gm
 const HORIZONTAL_SEP = /<!--section-->/gm
 const NOTE_REGEX = /Note:\s?([\w\s\`\.\[\]\/\(\(\:\-\\*\,)|'\(\)\{\}"?’]+)\n/gm
@@ -12,7 +13,7 @@ const ATTRIBUTE_REGEX = /([\w-]+)=[\"|\']{1}([\w-]+)/
 const parseMarkdown = markdown =>
   markdown
     .replace(NOTE_REGEX, '<aside class="notes">$1</aside>')
-    .replace(IMAGE_REGEX, (str, p1) => markdownImages[p1].url)
+    .replace(IMAGE_REGEX, (str, p1) => `${RAW_GITHUB}${p1}`)
 
 const extractAttributes = markdown => {
   const attrsMatch = markdown.match(ATTRIBUTES_REGEX)

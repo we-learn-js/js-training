@@ -5,12 +5,10 @@
   "main": "index.js",
   "scripts": {
     "reset": "rm -Rf node_modules && npm i",
-    "images": "node scripts/list-images.js",
     "build":
-      "npm run images && parcel build --no-source-maps -d ./build src/index.html && cp ./scripts/fixtures/build/package.json ./build/package.json",
+      "parcel build --no-source-maps -d ./build src/index.html && cp ./scripts/fixtures/build/package.json ./build/package.json",
     "clear": "rm -Rf .cache dist build",
-    "start":
-      "npm run images && parcel serve --no-source-maps -p 3000 src/index.html",
+    "start": "parcel serve --no-source-maps -p 3000 src/index.html",
     "dev": "npm run start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "co": "sui-mono commit",
