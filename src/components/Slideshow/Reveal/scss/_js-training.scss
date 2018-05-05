@@ -14,11 +14,11 @@
 }
 
 .jsTraining {
-  &-alertSlide {
+  &-importantSlide {
     @include coloredSlide(#c00);
   }
 
-  &-questionSlide {
+  &-exerciseSlide {
     @include coloredSlide($linkColor) {
       &:before {
         content: '?';
@@ -31,7 +31,7 @@
     }
   }
 
-  &-responseSlide {
+  &-solutionSlide {
     @include coloredSlide(#5c5);
   }
 }

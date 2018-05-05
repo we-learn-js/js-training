@@ -1,6 +1,6 @@
-import ChapterListService from "./ChapterListService"
-import SignedInUserService from "../../user/Services/SignedInUserService"
-import markdownImages from "../../config/md-images"
+import ChapterListService from './ChapterListService'
+import SignedInUserService from '../../user/Services/SignedInUserService'
+import markdownImages from '../../config/md-images'
 
 const VERTICAL_SEP = /<!--slide-->/gm
 const HORIZONTAL_SEP = /<!--section-->/gm
@@ -38,18 +38,23 @@ export default class ChapterViewService {
     const chapter = sections
       .reduce((res, { chapters }) => [...res, ...chapters], [])
       .filter(({ url: chapterUrl }) => chapterUrl.includes(url))[0]
-
     chapter.slides = await fetch(chapter.markdownUrl)
       .then(res => res.text())
       .then(markdown =>
         markdown
           .split(HORIZONTAL_SEP)
           .map(parseMarkdown)
-          .map(sectionMd =>
-            sectionMd.split(VERTICAL_SEP).map(content => ({
-              attributes: extractAttributes(content),
-              content
-            }))
+          .map((sectionMd, i) =>
+            sectionMd.split(VERTICAL_SEP).map((content, j) => {
+              const { class: className = '' } = extractAttributes(content)
+              return {
+                id: `${url}/${i}/${j}`,
+                content,
+                isExercise: className.includes('questionSlide'),
+                isSolution: className.includes('responseSlide'),
+                isImportant: className.includes('alertSlide')
+              }
+            })
           )
       )
     return { ...chapter, masterMode: isTeacher }
