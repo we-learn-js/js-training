@@ -1,8 +1,8 @@
+import { CDN_URL } from '../../config/constants'
 import ChapterListService from './ChapterListService'
 import SignedInUserService from '../../user/Services/SignedInUserService'
 
-const RAW_GITHUB =
-  'https://raw.githubusercontent.com/we-learn-js/js-training/v2/src/md/images/'
+const RAW_GITHUB = CDN_URL + '/src/md/images/'
 const VERTICAL_SEP = /<!--slide-->/gm
 const HORIZONTAL_SEP = /<!--section-->/gm
 const NOTE_REGEX = /Note:\s?([\w\s\`\.\[\]\/\(\(\:\-\\*\,)|'\(\)\{\}"?’]+)\n/gm

@@ -1,6 +1,7 @@
+import { CDN_URL } from './constants'
+
 const cacheHash = String(Math.random())
-const getGithubUrl = file =>
-  `https://raw.githubusercontent.com/we-learn-js/js-training/v2${file}?${cacheHash}`
+const getGithubUrl = file => `${CDN_URL}${file}?${cacheHash}`
 
 export default [
   {
