@@ -1,6 +1,6 @@
 import firebaseConfig from './config/firebase'
 import bus from './bus'
-import ChapterViewService from './lectures/Services/ChapterViewService'
+import ChapterSlidesService from './lectures/Services/ChapterSlidesService'
 const loadFirebase = async () => {
   await import('@firebase/auth')
   const { firebase } = await import('@firebase/app')
@@ -10,7 +10,7 @@ const loadFirebase = async () => {
 
 const factories = {
   ChapterListService: () => import('./lectures/Services/ChapterListService'),
-  ChapterViewService: () => ({ default: ChapterViewService }),
+  ChapterSlidesService: () => ({ default: ChapterSlidesService }),
   AuthWithGithubService: () => import('./user/Services/AuthWithGithubService'),
   AuthWithGoogleService: () => import('./user/Services/AuthWithGoogleService'),
   SignOutUserService: () => import('./user/Services/SignOutUserService'),

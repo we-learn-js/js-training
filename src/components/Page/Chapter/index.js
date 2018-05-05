@@ -3,7 +3,7 @@ import RevealPresentation from '../../Slideshow/Reveal'
 import RevealMarkdown from '../../Slideshow/RevealMarkownSlides'
 import { withDomainService } from '../../Hoc/Domain'
 
-export default withDomainService('ChapterViewService')(
+export default withDomainService('ChapterSlidesService')(
   class ChapterPage extends PureComponent {
     constructor(props) {
       super(props)
@@ -14,7 +14,7 @@ export default withDomainService('ChapterViewService')(
       const {
         slides,
         masterMode
-      } = await this.props.ChapterViewService.execute({
+      } = await this.props.ChapterSlidesService.execute({
         url: this.props.match.url
       })
       this.setState({ slides, masterMode })

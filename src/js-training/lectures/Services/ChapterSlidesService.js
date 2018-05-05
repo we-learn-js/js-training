@@ -24,7 +24,7 @@ const extractAttributes = markdown => {
     return {}
   }
 }
-export default class ChapterViewService {
+export default class ChapterSlidesService {
   constructor({ firebase }) {
     this.chapterListService = new ChapterListService({ firebase })
     this.signedInUserService = new SignedInUserService({ firebase })
