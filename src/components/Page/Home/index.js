@@ -91,25 +91,5 @@ export default () => (
         </Grid>
       </Grid>
     </Content>
-    {/* <ul>
-      <li>
-        <a href="https://js-training.now.sh/" target="_blank">
-          https://js-training.now.sh/
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/we-learn-js/js-training" target="_blank">
-          github//js-training
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/we-learn-js/js-training-practice"
-          target="_blank"
-        >
-          github//js-training-practice
-        </a>
-      </li>
-    </ul> */}
   </React.Fragment>
 )
