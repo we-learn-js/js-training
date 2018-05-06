@@ -2,34 +2,34 @@
 
 ## Intro
 
-* [Presentation](./Presentation.md)
+* [Presentation](./Presentation)
 
 ## ECMAScript Syntax
 
-* [Operators](./Operators.md)
-* [Objects](./Objects.md)
-* [Strings](./Strings.md)
-* [Classes](./Classes.md)
-* [Symbols](./Symbols.md)
-* [Modules](./Modules.md)
-* [Iterators And Generators](./IteratorsAndGenerators.md)
+* [Operators](./Operators)
+* [Objects](./Objects)
+* [Strings](./Strings)
+* [Classes](./Classes)
+* [Symbols](./Symbols)
+* [Modules](./Modules)
+* [Iterators And Generators](./IteratorsAndGenerators)
 
 ## Core Concepts
 
-* [Scopes And Closures](./ScopesAndClosures.md)
-* [Functions](./Functions.md)
-* [Async Programming](./AsyncProgramming.md)
+* [Scopes And Closures](./ScopesAndClosures)
+* [Functions](./Functions)
+* [Async Programming](./AsyncProgramming)
 
 ## APIs & Libraries
 
-* [React](./React.md)
-* [Testing](./Testing.md)
-* [Web Animations API](./WebAnimationsAPI.md)
+* [React](./React)
+* [Testing](./Testing)
+* [Web Animations API](./WebAnimationsAPI)
 
 ## Programming Paradigms
 
-* [Functional Programming](./FunctionalProgramming.md)
-* [Object-Oriented Programming](./ObjectOrientedProgramming.md)
+* [Functional Programming](./FunctionalProgramming)
+* [Object-Oriented Programming](./ObjectOrientedProgramming)
 * [Object-Oriented Design Principles](./ObjectOrientedDesignPrinciples.m)
-* [Design Patterns](./DesignPatterns.md)
-* [Domain Driven Design](./DomainDrivenDesign.md)
+* [Design Patterns](./DesignPatterns)
+* [Domain Driven Design](./DomainDrivenDesign)
