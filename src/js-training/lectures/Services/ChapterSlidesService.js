@@ -1,5 +1,6 @@
 import { CDN_URL } from '../../config/constants'
-import ChapterListService from './ChapterListService'
+import ChaptersRepository from '../Repositories/ChaptersRepository'
+
 import SignedInUserService from '../../user/Services/SignedInUserService'
 
 const RAW_GITHUB = CDN_URL + '/src/md/images/'
@@ -27,18 +28,12 @@ const extractAttributes = markdown => {
 }
 export default class ChapterSlidesService {
   constructor({ firebase }) {
-    this.chapterListService = new ChapterListService({ firebase })
     this.signedInUserService = new SignedInUserService({ firebase })
+    this.repository = new ChaptersRepository()
   }
   async execute({ url }) {
-    const [sections, { isTeacher }] = await Promise.all([
-      this.chapterListService.execute(),
-      this.signedInUserService.execute()
-    ])
-
-    const chapter = sections
-      .reduce((res, { chapters }) => [...res, ...chapters], [])
-      .filter(({ url: { route: chapterUrl } }) => chapterUrl.includes(url))[0]
+    const { isTeacher } = await this.signedInUserService.execute()
+    const chapter = await this.repository.findByUrl(url)
     chapter.slides = await fetch(chapter.url.rawMarkdown)
       .then(res => res.text())
       .then(markdown =>

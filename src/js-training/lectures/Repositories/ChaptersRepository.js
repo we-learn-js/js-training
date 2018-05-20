@@ -8,18 +8,21 @@ import {
 } from '../../config/chapters'
 import paramCase from 'param-case'
 
+const getUrlFromTitle = title => `/${paramCase(title)}`
+const configToChapter = ({ id, title, markdownName }) => ({
+  id,
+  title,
+  url: {
+    route: getUrlFromTitle(title),
+    wiki: WIKI_PATH + markdownName.replace('.md', ''),
+    markdown: CODE_PATH + MD_FOLDER + markdownName,
+    rawMarkdown: RAW_PATH + MD_FOLDER + markdownName
+  }
+})
+
 class ChaptersRepository {
   async get() {
-    return CHAPTERS.map(({ id, title, markdownName }) => ({
-      id,
-      title,
-      url: {
-        route: `/${paramCase(title)}`,
-        wiki: WIKI_PATH + markdownName.replace('.md', ''),
-        markdown: CODE_PATH + MD_FOLDER + markdownName,
-        rawMarkdown: RAW_PATH + MD_FOLDER + markdownName
-      }
-    }))
+    return CHAPTERS.map(configToChapter)
   }
 
   async getBySections() {
@@ -30,6 +33,12 @@ class ChaptersRepository {
         chapters.find(chapter => chapter.id === chapterId)
       )
     }))
+  }
+
+  async findByUrl(url) {
+    return configToChapter(
+      CHAPTERS.find(({ title }) => url === getUrlFromTitle(title))
+    )
   }
 }
 

@@ -3,8 +3,10 @@ import chapters from '../../config/chapters'
 import ChaptersRepository from '../Repositories/ChaptersRepository'
 
 export default class ChapterListService {
+  constructor() {
+    this.repository = new ChaptersRepository()
+  }
   async execute() {
-    const repository = new ChaptersRepository()
-    return repository.getBySections()
+    return this.repository.getBySections()
   }
 }
