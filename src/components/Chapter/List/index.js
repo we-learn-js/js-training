@@ -9,8 +9,8 @@ const ChapterList = ({ chapters }) => (
         <span className="jst-ChapterList-Title">{title}</span>
         <ul>
           {chapters.map(({ title, url }) => (
-            <li key={url} className="jst-ChapterList-Chapter">
-              <Link className="jst-ChapterList-Link" to={url}>
+            <li key={url.route} className="jst-ChapterList-Chapter">
+              <Link className="jst-ChapterList-Link" to={url.route}>
                 {title}
               </Link>
             </li>

@@ -38,8 +38,8 @@ export default class ChapterSlidesService {
 
     const chapter = sections
       .reduce((res, { chapters }) => [...res, ...chapters], [])
-      .filter(({ url: chapterUrl }) => chapterUrl.includes(url))[0]
-    chapter.slides = await fetch(chapter.markdownUrl)
+      .filter(({ url: { route: chapterUrl } }) => chapterUrl.includes(url))[0]
+    chapter.slides = await fetch(chapter.url.rawMarkdown)
       .then(res => res.text())
       .then(markdown =>
         markdown
