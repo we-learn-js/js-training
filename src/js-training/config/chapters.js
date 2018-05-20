@@ -1,98 +1,10 @@
-import { CDN_URL } from './constants'
-
-const cacheHash = String(Math.random())
-const getUrl = file => `${CDN_URL}/src/md/${file}.md?${cacheHash}`
-
-export default [
-  {
-    section: 'Intro',
-    chapters: [
-      {
-        title: 'Presentation',
-        markdownUrl: getUrl('Presentation')
-      }
-    ]
-  },
-  {
-    section: 'Syntax',
-    chapters: [
-      {
-        title: 'Operators',
-        markdownUrl: getUrl('Operators')
-      },
-      { title: 'Objects', markdownUrl: getUrl('Objects') },
-      { title: 'Strings', markdownUrl: getUrl('Strings') },
-      { title: 'Classes', markdownUrl: getUrl('Classes') },
-      { title: 'Symbols', markdownUrl: getUrl('Symbols') },
-      { title: 'Modules', markdownUrl: getUrl('Modules') },
-      {
-        title: 'Iterators And Generators',
-        markdownUrl: getUrl('IteratorsAndGenerators')
-      }
-    ]
-  },
-  {
-    section: 'Core Concepts',
-    chapters: [
-      {
-        title: 'Scopes And Closures',
-        markdownUrl: getUrl('ScopesAndClosures')
-      },
-      {
-        title: 'Functions',
-        markdownUrl: getUrl('Functions')
-      },
-      {
-        title: 'Async Programming',
-        markdownUrl: getUrl('AsyncProgramming')
-      }
-    ]
-  },
-  {
-    section: 'APIs',
-    chapters: [
-      { title: 'React', markdownUrl: getUrl('React') },
-      { title: 'Testing', markdownUrl: getUrl('Testing') },
-      {
-        title: 'Web Animations API',
-        markdownUrl: getUrl('WebAnimationsAPI')
-      }
-    ]
-  },
-  {
-    section: 'Programming',
-    chapters: [
-      {
-        title: 'Functional Programming',
-        markdownUrl: getUrl('FunctionalProgramming')
-      },
-      {
-        title: 'Object-Oriented Programming',
-        markdownUrl: getUrl('ObjectOrientedProgramming')
-      },
-      {
-        title: 'Object-Oriented Design Principles',
-        markdownUrl: getUrl('ObjectOrientedDesignPrinciples')
-      },
-      {
-        title: 'Design Patterns',
-        markdownUrl: getUrl('DesignPatterns')
-      },
-      {
-        title: 'Domain Driven Design',
-        markdownUrl: getUrl('DomainDrivenDesign')
-      }
-    ]
-  }
-]
-
-const MD_FOLDER = 'src/md/'
-const REPO_NAME = 'we-learn-js/js-training/'
-const BRANCH_NAME = 'v2'
-const RAW_PATH = `https://raw.githubusercontent.com/${REPO_NAME}${BRANCH_NAME}/`
-const CODE_PATH = `https://github.com/${REPO_NAME}blob/${BRANCH_NAME}/`
-const WIKI_PATH = `https://github.com/${REPO_NAME}wiki/`
-const CHAPTERS = [
+export const MD_FOLDER = 'src/md/'
+export const REPO_NAME = 'we-learn-js/js-training/'
+export const BRANCH_NAME = 'v2'
+export const RAW_PATH = `https://raw.githubusercontent.com/${REPO_NAME}${BRANCH_NAME}/`
+export const CODE_PATH = `https://github.com/${REPO_NAME}blob/${BRANCH_NAME}/`
+export const WIKI_PATH = `https://github.com/${REPO_NAME}wiki/`
+export const CHAPTERS = [
   {
     id: 0,
     title: 'Presentation',
@@ -161,12 +73,10 @@ const CHAPTERS = [
     markdownName: 'DomainDrivenDesign.md'
   }
 ]
-const SECTIONS = [
+export const SECTIONS = [
   { title: 'Intro', chapters: [0] },
   { title: 'Syntax', chapters: [1, 2, 3, 4, 5, 6, 7] },
   { title: 'Core Concepts', chapters: [8, 9, 10] },
   { title: 'APIs', chapters: [11, 12, 13] },
   { title: 'Programming', chapters: [14, 15, 16, 17, 18] }
 ]
-
-export { RAW_PATH, CODE_PATH, WIKI_PATH, MD_FOLDER, CHAPTERS, SECTIONS }

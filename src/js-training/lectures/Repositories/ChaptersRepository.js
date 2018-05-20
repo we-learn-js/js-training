@@ -40,6 +40,10 @@ class ChaptersRepository {
       CHAPTERS.find(({ title }) => url === getUrlFromTitle(title))
     )
   }
+
+  async findById(chapterId) {
+    return configToChapter(CHAPTERS.find(({ id }) => id === chapterId))
+  }
 }
 
 export default ChaptersRepository
