@@ -12,6 +12,7 @@ class RevealMarkownSlides extends React.Component {
           return (
             <section
               key={id}
+              data-slide-id={id}
               className={cx({
                 'jsTraining-exerciseSlide': isExercise,
                 'jsTraining-solutionSlide': isSolution,

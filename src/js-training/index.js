@@ -14,7 +14,8 @@ const factories = {
   AuthWithGithubService: () => import('./user/Services/AuthWithGithubService'),
   AuthWithGoogleService: () => import('./user/Services/AuthWithGoogleService'),
   SignOutUserService: () => import('./user/Services/SignOutUserService'),
-  SignedInUserService: () => import('./user/Services/SignedInUserService')
+  SignedInUserService: () => import('./user/Services/SignedInUserService'),
+  SlideViewService: () => import('./lectures/Services/SlideViewService')
 }
 
 export default class JsTraining {

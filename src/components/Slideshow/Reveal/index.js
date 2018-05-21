@@ -37,6 +37,13 @@ class RevealSlideshow extends React.Component {
   componentWillMount() {
     !revealDOM && createRevealDom()
   }
+
+  onSlideChange = ({ previousSlide, currentSlide, indexh, indexv }) => {
+    this.props.onSlideChange({
+      slideId: currentSlide.getAttribute('data-slide-id')
+    })
+  }
+
   componentDidMount() {
     const { masterMode } = this.props
     const revealConfig = getRevealConfig(masterMode)
@@ -50,10 +57,14 @@ class RevealSlideshow extends React.Component {
       Reveal.addEventListener('ready', highlightCode)
       window.revealReactPresentationAlreadyLoaded = true
     }
+
+    this.props.onSlideChange &&
+      Reveal.addEventListener('slidechanged', this.onSlideChange)
   }
 
   componentWillUnmount() {
     document.body.removeChild(revealDOM)
+    Reveal.removeEventListener('slidechanged', this.onSlideChange)
     Reveal.removeEventListeners()
   }
 

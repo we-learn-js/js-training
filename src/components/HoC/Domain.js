@@ -7,20 +7,27 @@ const withDomain = WrappedComponent => props => (
   <WrappedComponent {...props} domain={domain} />
 )
 
-const withDomainService = serviceName => WrappedComponent =>
+const withDomainService = (...serviceNames) => WrappedComponent =>
   withDomain(
     class WithDomainService extends React.Component {
-      state = { service: null }
+      state = { services: null }
       async componentDidMount() {
-        const service = await this.props.domain.get(serviceName)
-        this.setState({ service })
+        const services = await Promise.all(
+          serviceNames.map(serviceName => this.props.domain.get(serviceName))
+        )
+        this.setState({ services })
       }
       render() {
+        const { services } = this.state
+        const servicesProps =
+          services &&
+          services.reduce((obj, service, i) => {
+            return { ...obj, [serviceNames[i]]: service }
+          }, {})
         const { domain, ...props } = this.props
-        const { service } = this.state
-        const newProps = { ...props, [serviceName]: service }
+        const newProps = { ...props, ...servicesProps }
 
-        return service ? <WrappedComponent {...newProps} /> : null
+        return services ? <WrappedComponent {...newProps} /> : null
       }
     }
   )

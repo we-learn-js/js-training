@@ -8,6 +8,7 @@ const NOTE_REGEX = /Note:\s?([\w\s\`\.\[\]\/\(\(\:\-\\*\,)|'\(\)\{\}"?’]+)\n/g
 const IMAGE_REGEX = /\.\/[\w-]+\/([\w\/-]+\.[a-z]{2,4})/g
 const ATTRIBUTES_REGEX = /<!-- \.slide\:\s([\s\w='"-]+)\s-->/
 const ATTRIBUTE_REGEX = /([\w-]+)=[\"|\']{1}([\w-]+)/
+const SEP = '-'
 
 const parseMarkdown = markdown =>
   markdown
@@ -23,6 +24,14 @@ const extractAttributes = markdown => {
   } else {
     return {}
   }
+}
+
+const getSlideId = (chapter, sectionNum, slideNum) =>
+  `${chapter.url.route}${SEP}${chapter.id}${SEP}${sectionNum}${SEP}${slideNum}`
+
+const parseSlideId = slideId => {
+  const [, chapterId, sectionNum, slideNum] = slideId.split(SEP).map(Number)
+  return { chapterId, sectionNum, slideNum }
 }
 
 class SlidesRepository {
@@ -41,7 +50,7 @@ class SlidesRepository {
             sectionMd.split(VERTICAL_SEP).map((content, j) => {
               const { class: className = '' } = extractAttributes(content)
               return {
-                id: `${chapter.url.route}/${i}/${j}`,
+                id: getSlideId(chapter, i, j),
                 content,
                 isExercise: className.includes('questionSlide'),
                 isSolution: className.includes('responseSlide'),
@@ -51,6 +60,12 @@ class SlidesRepository {
           )
       )
     return slides
+  }
+
+  async getSlide({ slideId }) {
+    const { chapterId } = parseSlideId(slideId)
+    const slides = await this.get({ chapterId })
+    return [].concat(...slides).find(slide => slideId === slide.id)
   }
 }
 
