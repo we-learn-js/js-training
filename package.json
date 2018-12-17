@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "reset": "rm -Rf node_modules && npm i",
-    "build":
-      "parcel build --no-source-maps -d ./build src/index.html && cp ./scripts/fixtures/build/package.json ./build/package.json",
+    "build": "parcel build --no-source-maps -d ./build src/index.html && cp ./scripts/fixtures/build/package.json ./build/package.json",
     "clear": "rm -Rf .cache dist build",
     "start": "parcel serve --no-source-maps -p 3000 src/index.html",
     "dev": "npm run start",
@@ -15,14 +14,10 @@
     "deploy": "now --public --name=js-training-v2 ./build",
     "deploy:clear": "now rm js-training-v2 --yes",
     "deploy:alias": "now alias set $(pbpaste) js-training-v2",
-    "build-deploy":
-      "npm run wiki:push && npm run build && npm run deploy:clear && npm run deploy && npm run deploy:alias",
-    "wiki:add":
-      "git subtree add --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash",
-    "wiki:pull":
-      "git subtree pull --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash -m \"Merge changes from origin repository.\"",
-    "wiki:push":
-      "git subtree push --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master"
+    "build-deploy": "npm run wiki:push && npm run build && npm run deploy:clear && npm run deploy && npm run deploy:alias",
+    "wiki:add": "git subtree add --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash",
+    "wiki:pull": "git subtree pull --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash -m \"Merge changes from origin repository.\"",
+    "wiki:push": "git subtree push --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master"
   },
   "dependencies": {
     "@firebase/app": "0.2.0",
