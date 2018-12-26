@@ -1,7 +1,7 @@
 import React from 'react'
-import THREE from 'three'
 import ImageUnderConstruction from '../../../packages/three-background/image-construction'
 import imageUrl from './images/logo-small.png'
+import {withLowPriority} from '../../HoC/Priority'
 
 const styles = {
   position: 'absolute',
@@ -33,4 +33,4 @@ class ImageConstruction3dScene extends React.Component {
   }
 }
 
-export default ImageConstruction3dScene
+export default withLowPriority(ImageConstruction3dScene)
