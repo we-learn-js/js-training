@@ -39,14 +39,17 @@
     "three": "0.70.0"
   },
   "devDependencies": {
+    "@babel/core": "7",
+    "@babel/plugin-proposal-class-properties": "7",
+    "@babel/plugin-transform-runtime": "7",
+    "@babel/preset-env": "7",
     "@s-ui/mono": "1",
-    "babel-preset-sui": "1.5.0",
     "caniuse-lite": "1.0",
     "fs-extra": "5.0.0",
-    "node-sass": "4.8.3",
+    "node-sass": "^4.11.0",
     "node-sass-package-importer": "5.1.1",
     "now": "11",
-    "parcel-bundler": "1.7.1",
+    "parcel-bundler": "1.11",
     "postcss-cssnext": "3.1.0",
     "postcss-modules": "1.1.0"
   },
