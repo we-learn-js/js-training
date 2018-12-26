@@ -20,22 +20,22 @@
     "wiki:push": "git subtree push --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master"
   },
   "dependencies": {
-    "@firebase/app": "0.2.0",
-    "@firebase/auth": "0.4.2",
+    "@firebase/app": "0.3.5",
+    "@firebase/auth": "0.9.1",
     "@material-ui/icons": "1.0.0-beta.42",
-    "classnames": "2.2.5",
-    "fast-deep-equal": "1.1.0",
+    "classnames": "2.2.6",
+    "fast-deep-equal": "2.0.1",
     "material-ui": "1.0.0-beta.42",
-    "nanobus": "4.3.3",
+    "nanobus": "4.4.0",
     "param-case": "2.1.1",
-    "prismjs": "1.14.0",
-    "react": "16.3",
-    "react-dom": "16.3",
-    "react-loadable": "5.3.1",
-    "react-markdown": "3.3.0",
-    "react-router": "4.2",
-    "react-router-dom": "4.2",
-    "reveal.js": "3.6.0",
+    "prismjs": "1.15.0",
+    "react": "16.7",
+    "react-dom": "16.7",
+    "react-loadable": "5.5.0",
+    "react-markdown": "4.0.4",
+    "react-router": "4.3",
+    "react-router-dom": "4.3",
+    "reveal.js": "3.7.0",
     "three": "0.70.0"
   },
   "devDependencies": {
@@ -45,13 +45,13 @@
     "@babel/preset-env": "7",
     "@s-ui/mono": "1",
     "caniuse-lite": "1.0",
-    "fs-extra": "5.0.0",
+    "fs-extra": "7.0.1",
     "node-sass": "^4.11.0",
-    "node-sass-package-importer": "5.1.1",
+    "node-sass-package-importer": "5.2.0",
     "now": "11",
     "parcel-bundler": "1.11",
     "postcss-cssnext": "3.1.0",
-    "postcss-modules": "1.1.0"
+    "postcss-modules": "1.4.1"
   },
   "config": {
     "sui-mono": {
