@@ -4,7 +4,7 @@
   "description": "JS Training",
   "main": "index.js",
   "scripts": {
-    "reset": "rm -Rf node_modules && npm i",
+    "reset": "npx @s-ui/mono phoenix",
     "build": "parcel build --no-source-maps -d ./build src/index.html && cp ./scripts/fixtures/build/package.json ./build/package.json",
     "clear": "rm -Rf .cache dist build",
     "start": "parcel serve --no-source-maps -p 3000 src/index.html",
