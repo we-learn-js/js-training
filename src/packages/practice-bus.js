@@ -37,7 +37,7 @@
     })
   })
 
-  const getSlideTagFromState = ({ indexv, indexh }) => `${indexv}/${indexh}`
+  const getSlideTagFromState = ({indexv, indexh}) => `${indexv}/${indexh}`
 
   const getStoreStatus = () => {
     let data = localStorage.getItem(NS)
@@ -65,7 +65,7 @@
   const updateClientState = (clientId, slide, status) => {
     let data = getStoreStatus()
     data[clientId] = data[clientId] || {}
-    Object.assign(data[clientId], { slide, status })
+    Object.assign(data[clientId], {slide, status})
     localStorage.setItem(NS, JSON.stringify(data))
   }
 
@@ -80,7 +80,7 @@
   const updateStatusBar = debounce(slide => {
     container.innerHTML = ''
     isQuestionSlide(Reveal.getCurrentSlide()) &&
-      getCurrentClients(slide).forEach(({ status }) => {
+      getCurrentClients(slide).forEach(({status}) => {
         const el = document.createElement('DIV')
         el.className = CLASS_CLIENT + (status ? ` ${CLASS_CLIENT}--active` : '')
         container.appendChild(el)
@@ -91,7 +91,7 @@
     Promise.all([socket, clientId, multiplex]).then(function([
       socket,
       clientId,
-      { secret, id: socketId }
+      {secret, id: socketId}
     ]) {
       var messageData = {
         secret,
@@ -105,9 +105,9 @@
     })
 
   const initMaster = () => {
-    //resetStoredStatus()
+    // resetStoredStatus()
     Promise.all([socket, multiplex]).then(function([socket, multiplex]) {
-      socket.on(multiplex.id, function({ socketId, clientId, slide, status }) {
+      socket.on(multiplex.id, function({socketId, clientId, slide, status}) {
         if (socketId !== multiplex.id || !clientId) {
           return
         }

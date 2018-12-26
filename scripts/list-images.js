@@ -1,9 +1,8 @@
 const glob = require('glob')
 const fs = require('fs-extra')
-const { basename, join } = require('path')
 
 const MD_PATTERN = 'src/**/*.md'
-const LOCAL_IMAGES_REGEXP = /\.\/images\/([\w\-\.]+)/g
+const LOCAL_IMAGES_REGEXP = /\.\/images\/([\w\-.]+)/g
 const OUTPUT_FILE = './src/js-training/config/md-images.js'
 
 const getMarkdownFiles = () => {
@@ -23,13 +22,13 @@ const parseLocalImages = content => {
   let res
   let results = []
   while ((res = LOCAL_IMAGES_REGEXP.exec(content)) !== null) {
-    results.push({ url: res[0], image: res[1] })
+    results.push({url: res[0], image: res[1]})
   }
   return results
 }
 
 const extractLocalImages = async files =>
-  await files.reduce(async (arrP, file) => {
+  files.reduce(async (arrP, file) => {
     const content = await readFile(file)
     const data = parseLocalImages(content)
     const arr = await arrP
@@ -41,7 +40,7 @@ const extractLocalImages = async files =>
 const execute = async () => {
   const files = await getMarkdownFiles()
   const images = await extractLocalImages(files)
-  const imageImports = images.reduce((obj, { image, url }) => {
+  const imageImports = images.reduce((obj, {image, url}) => {
     obj[url] = `  '${image}': {
     url: require('../../md/images/${image}')
   },`

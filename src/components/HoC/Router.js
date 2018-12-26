@@ -11,4 +11,4 @@ const withMatch = Component =>
     }
   }
 
-export { withMatch }
+export {withMatch}

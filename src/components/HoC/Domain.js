@@ -10,22 +10,22 @@ const withDomain = WrappedComponent => props => (
 const withDomainService = (...serviceNames) => WrappedComponent =>
   withDomain(
     class WithDomainService extends React.Component {
-      state = { services: null }
+      state = {services: null}
       async componentDidMount() {
         const services = await Promise.all(
           serviceNames.map(serviceName => this.props.domain.get(serviceName))
         )
-        this.setState({ services })
+        this.setState({services})
       }
       render() {
-        const { services } = this.state
+        const {services} = this.state
         const servicesProps =
           services &&
           services.reduce((obj, service, i) => {
-            return { ...obj, [serviceNames[i]]: service }
+            return {...obj, [serviceNames[i]]: service}
           }, {})
-        const { domain, ...props } = this.props
-        const newProps = { ...props, ...servicesProps }
+        const {domain, ...props} = this.props
+        const newProps = {...props, ...servicesProps}
 
         return services ? <WrappedComponent {...newProps} /> : null
       }
@@ -36,20 +36,20 @@ const withDomainEvent = eventName => WrappedComponent =>
   withDomain(
     class WithDomainEvent extends React.Component {
       listener = data => {
-        this.setState({ [eventName]: data })
+        this.setState({[eventName]: data})
       }
       async componentDidMount() {
-        const { domain } = this.props
+        const {domain} = this.props
         domain.on(eventName, this.listener)
       }
 
       async componentWillUnmount() {
-        const { domain } = this.props
+        const {domain} = this.props
         domain.off(eventName, this.listener)
       }
 
       render() {
-        const { domain, ...props } = this.props
+        const {domain, ...props} = this.props
         return <WrappedComponent {...props} {...this.state} />
       }
     }
@@ -58,15 +58,15 @@ const withDomainEvent = eventName => WrappedComponent =>
 const withServiceResponse = (serviceName, params) => WrappedComponent =>
   withDomainService(serviceName)(
     class WithServiceResponse extends React.Component {
-      state = { response: null }
+      state = {response: null}
       async componentDidMount() {
         const response = await this.props[serviceName].execute(params)
-        this.setState({ response })
+        this.setState({response})
       }
       render() {
-        const { sercice, ...props } = this.props
-        const { response } = this.state
-        const newProps = { ...props, [serviceName]: response }
+        const {sercice, ...props} = this.props
+        const {response} = this.state
+        const newProps = {...props, [serviceName]: response}
 
         return typeof response !== 'undefined' ? (
           <WrappedComponent {...newProps} />
@@ -75,4 +75,4 @@ const withServiceResponse = (serviceName, params) => WrappedComponent =>
     }
   )
 
-export { withDomain, withDomainService, withServiceResponse, withDomainEvent }
+export {withDomain, withDomainService, withServiceResponse, withDomainEvent}

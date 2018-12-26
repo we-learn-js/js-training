@@ -25,7 +25,7 @@ export default class CubeObserverViewport extends ViewportAbstract {
   }
 
   updateCamera() {
-    if (!!!this.mesh) {
+    if (!this.mesh) {
       return
     }
     const xRatio = this.mesh.position.x / this.targetX

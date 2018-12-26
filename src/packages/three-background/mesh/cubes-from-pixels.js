@@ -57,7 +57,7 @@ export default class PixelCubesMesh {
   addColorMaterial(R, G, B) {
     const color = new THREE.Color(R / 255, G / 255, B / 255)
     const hex = PixelCube.prototype.getMaterialId(R, G, B)
-    if (!!this.colors[hex]) {
+    if (this.colors[hex]) {
       return this.colors[hex]
     }
 

@@ -4,7 +4,7 @@ import Snackbar from 'material-ui/Snackbar'
 
 class ConfirmNotification extends React.Component {
   componentWillReceiveProps() {
-    this.setState({ open: true })
+    this.setState({open: true})
   }
 
   handleConfirm = event => {
@@ -12,7 +12,7 @@ class ConfirmNotification extends React.Component {
   }
 
   render() {
-    const { message, buttonText } = this.props
+    const {message, buttonText} = this.props
     return (
       <Snackbar
         open={this.state.open}

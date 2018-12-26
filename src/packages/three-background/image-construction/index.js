@@ -12,7 +12,7 @@ export default class ImageUnderConstruction {
     this.imgUrl = imgUrl
     this.viewports = []
     this.scene = new ImageConstructionScene(this.imgUrl)
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+    this.renderer = new THREE.WebGLRenderer({antialias: true, alpha: true})
 
     // if (this.renderer.shadowMap) {
     //   this.renderer.shadowMap.enabled = true

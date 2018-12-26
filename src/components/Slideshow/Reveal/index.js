@@ -38,14 +38,14 @@ class RevealSlideshow extends React.Component {
     !revealDOM && createRevealDom()
   }
 
-  onSlideChange = ({ previousSlide, currentSlide, indexh, indexv }) => {
+  onSlideChange = ({previousSlide, currentSlide, indexh, indexv}) => {
     this.props.onSlideChange({
       slideId: currentSlide.getAttribute('data-slide-id')
     })
   }
 
   componentDidMount() {
-    const { masterMode } = this.props
+    const {masterMode} = this.props
     const revealConfig = getRevealConfig(masterMode)
     document.body.appendChild(revealDOM)
     if (window.revealReactPresentationAlreadyLoaded) {

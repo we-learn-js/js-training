@@ -9,7 +9,7 @@ export default class RandomCubesMesh extends PixelCubes {
       const x = Math.floor(Math.random() * xRange)
       const y = Math.floor(Math.random() * yRange)
       const z = Math.floor(Math.random() * zRange)
-      const { color } = material
+      const {color} = material
 
       this.addPixel(color.r * 255, color.g * 255, color.b * 255, x, y, z)
       number--

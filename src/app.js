@@ -1,12 +1,12 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom'
 import Loadable from 'react-loadable'
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
+import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles'
 import CssBaseline from 'material-ui/CssBaseline'
-import { requiresAuth } from './components/HoC/Auth'
-import { withMatch } from './components/HoC/Router'
+import {requiresAuth} from './components/HoC/Auth'
+import {withMatch} from './components/HoC/Router'
 import HeaderBar from './components/Layout/Header'
-import { LinearProgress } from 'material-ui/Progress'
+import {LinearProgress} from 'material-ui/Progress'
 
 const theme = createMuiTheme({
   palette: {
@@ -28,7 +28,7 @@ const theme = createMuiTheme({
   }
 })
 
-const Layout = ({ children }) => (
+const Layout = ({children}) => (
   <React.Fragment>
     <HeaderBar />
     {children}

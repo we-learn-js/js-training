@@ -1,50 +1,40 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { withStyles } from 'material-ui/styles'
-import Button from 'material-ui/Button'
 import Avatar from 'material-ui/Avatar'
-import List, { ListItem, ListItemAvatar, ListItemText } from 'material-ui/List'
-import Dialog, { DialogTitle } from 'material-ui/Dialog'
-import PersonIcon from '@material-ui/icons/Person'
-import Typography from 'material-ui/Typography'
-import blue from 'material-ui/colors/blue'
+import List, {ListItem, ListItemAvatar, ListItemText} from 'material-ui/List'
+import Dialog, {DialogTitle} from 'material-ui/Dialog'
 import GoogleIcon from '../../Icon/Google'
 import GitHubIcon from '../../Icon/GitHub'
 import ErrorNotification from '../../../components/Notification/Error'
-import { withDomainService } from '../../../components/Hoc/Domain'
+import {withDomainService} from '../../../components/Hoc/Domain'
 
 class AuthButtonsDialog extends React.Component {
-  state = { error: null }
+  state = {error: null}
   signInWithGithub = async () => {
-    const { onAuth } = this.props
+    const {onAuth} = this.props
     try {
       const user = await this.props.AuthWithGithubService.execute()
       onAuth && onAuth(user)
     } catch (error) {
-      this.setState({ error })
+      this.setState({error})
     }
   }
 
   signInWithGoogle = async () => {
-    const { onAuth } = this.props
+    const {onAuth} = this.props
     try {
       const user = await this.props.AuthWithGoogleService.execute()
       onAuth && onAuth(user)
     } catch (error) {
-      this.setState({ error })
+      this.setState({error})
     }
   }
 
   render() {
-    const {
-      AuthWithGithubService,
-      AuthWithGoogleService,
-      ...props
-    } = this.props
-    const { error } = this.state
+    const {AuthWithGithubService, AuthWithGoogleService, ...props} = this.props
+    const {error} = this.state
     return (
       <React.Fragment>
-        <Dialog open={true} {...props}>
+        <Dialog open {...props}>
           <DialogTitle id="simple-dialog-title">
             Sign in to continue
           </DialogTitle>
@@ -69,11 +59,11 @@ class AuthButtonsDialog extends React.Component {
   }
 }
 
-const AuthButton = ({ Icon, name, onClick, children }) => (
+const AuthButton = ({Icon, name, onClick, children}) => (
   <ListItem button onClick={onClick}>
     <ListItemAvatar>
       <Avatar>
-        <Icon style={{ width: '60%' }} />
+        <Icon style={{width: '60%'}} />
       </Avatar>
     </ListItemAvatar>
     {children}

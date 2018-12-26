@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 import ImageConstruction from '../../3dScene/ImageConstruction'
-import Card, { CardActions } from '../../Card/HomeTopic'
+import Card from '../../Card/HomeTopic'
 import Content from '../../Layout/Content'
 import Grid from 'material-ui/Grid'
 import './index.css'
@@ -22,7 +22,7 @@ const styles = {
   background: '#333'
 }
 
-const Background = ({ children }) => (
+const Background = ({children}) => (
   <div style={styles}>
     <ImageConstruction />
     {children}

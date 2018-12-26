@@ -9,7 +9,7 @@ import {
 import paramCase from 'param-case'
 
 const getUrlFromTitle = title => `/${paramCase(title)}`
-const configToChapter = ({ id, title, markdownName }) => ({
+const configToChapter = ({id, title, markdownName}) => ({
   id,
   title,
   url: {
@@ -37,12 +37,12 @@ class ChaptersRepository {
 
   async findByUrl(url) {
     return configToChapter(
-      CHAPTERS.find(({ title }) => url === getUrlFromTitle(title))
+      CHAPTERS.find(({title}) => url === getUrlFromTitle(title))
     )
   }
 
   async findById(chapterId) {
-    return configToChapter(CHAPTERS.find(({ id }) => id === chapterId))
+    return configToChapter(CHAPTERS.find(({id}) => id === chapterId))
   }
 }
 

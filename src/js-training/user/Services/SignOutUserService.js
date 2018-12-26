@@ -1,7 +1,7 @@
 import bus from '../../bus'
 
 export default class SignOutService {
-  constructor({ firebase }) {
+  constructor({firebase}) {
     this.firebase = firebase
   }
   execute() {
@@ -11,7 +11,7 @@ export default class SignOutService {
         .signOut()
         .then(() => {
           resolve()
-          bus.emit('UserHasChanged', { user: null })
+          bus.emit('UserHasChanged', {user: null})
         }, reject)
     })
   }

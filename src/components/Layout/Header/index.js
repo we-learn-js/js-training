@@ -1,18 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { withStyles } from 'material-ui/styles'
-import Typography from 'material-ui/Typography'
-import Button from 'material-ui/Button'
+import {withStyles} from 'material-ui/styles'
 import IconButton from 'material-ui/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import LoginIcon from '@material-ui/icons/AccountCircle'
 import Avatar from 'material-ui/Avatar'
-import GitHubIcon from '../../Icon/GitHub'
-import AuthButtonsDialog from '../../Auth/ButtonsDialog'
 import Tooltip from 'material-ui/Tooltip'
-import { Link } from 'react-router-dom'
-import { withDomainService } from '../../../components/Hoc/Domain'
-import { withUser } from '../../../components/Hoc/Auth'
+import {Link} from 'react-router-dom'
+import {withDomainService} from '../../../components/Hoc/Domain'
+import {withUser} from '../../../components/Hoc/Auth'
 import './index.css'
 
 const styles = {
@@ -22,7 +17,7 @@ const styles = {
   }
 }
 
-const AppBarButton = ({ title, ...props }) => (
+const AppBarButton = ({title, ...props}) => (
   <Tooltip leaveDelay={300} title={title}>
     <IconButton color="primary" {...props} />
   </Tooltip>
@@ -30,8 +25,8 @@ const AppBarButton = ({ title, ...props }) => (
 
 const UserButton = withStyles(styles)(
   withDomainService('SignOutUserService')(
-    withUser(({ user, classes, SignOutUserService }) => {
-      const { displayName, photoURL } = user || {}
+    withUser(({user, classes, SignOutUserService}) => {
+      const {displayName, photoURL} = user || {}
       return displayName ? (
         <AppBarButton
           title="Sign out"

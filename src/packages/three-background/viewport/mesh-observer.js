@@ -27,7 +27,7 @@ export default class MeshObserverViewport extends ViewportAbstract {
     this.camera.position.y += (-targetY - this.camera.position.y) * 0.03
     this.camera.position.z = this.target.z + this.distance
 
-    if (!!this.target) {
+    if (this.target) {
       return this.camera.lookAt({
         x: this.target.x,
         y: this.target.y - 50,

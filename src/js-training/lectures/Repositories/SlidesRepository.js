@@ -1,5 +1,5 @@
 import ChaptersRepository from '../Repositories/ChaptersRepository'
-import { MD_FOLDER, RAW_PATH } from '../../config/chapters'
+import {MD_FOLDER, RAW_PATH} from '../../config/chapters'
 
 const RAW_GITHUB = RAW_PATH + MD_FOLDER + '/images/'
 const VERTICAL_SEP = /<!--slide-->/gm
@@ -20,7 +20,7 @@ const extractAttributes = markdown => {
   if (attrsMatch) {
     const [, ...keyValues] = attrsMatch[1].match(ATTRIBUTE_REGEX)
     const [key, value] = keyValues
-    return { [key]: value }
+    return {[key]: value}
   } else {
     return {}
   }
@@ -31,14 +31,14 @@ const getSlideId = (chapter, sectionNum, slideNum) =>
 
 const parseSlideId = slideId => {
   const [, chapterId, sectionNum, slideNum] = slideId.split(SEP).map(Number)
-  return { chapterId, sectionNum, slideNum }
+  return {chapterId, sectionNum, slideNum}
 }
 
 class SlidesRepository {
   constructor() {
     this.chaptersRepository = new ChaptersRepository()
   }
-  async get({ chapterId }) {
+  async get({chapterId}) {
     const chapter = await this.chaptersRepository.findById(chapterId)
     const slides = await fetch(chapter.url.rawMarkdown)
       .then(res => res.text())
@@ -48,7 +48,7 @@ class SlidesRepository {
           .map(parseMarkdown)
           .map((sectionMd, i) =>
             sectionMd.split(VERTICAL_SEP).map((content, j) => {
-              const { class: className = '' } = extractAttributes(content)
+              const {class: className = ''} = extractAttributes(content)
               return {
                 id: getSlideId(chapter, i, j),
                 content,
@@ -62,9 +62,9 @@ class SlidesRepository {
     return slides
   }
 
-  async getSlide({ slideId }) {
-    const { chapterId } = parseSlideId(slideId)
-    const slides = await this.get({ chapterId })
+  async getSlide({slideId}) {
+    const {chapterId} = parseSlideId(slideId)
+    const slides = await this.get({chapterId})
     return [].concat(...slides).find(slide => slideId === slide.id)
   }
 }

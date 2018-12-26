@@ -15,11 +15,11 @@ export const CHAPTERS = [
     title: 'Operators',
     markdownName: 'Operators.md'
   },
-  { id: 2, title: 'Objects', markdownName: 'Objects.md' },
-  { id: 3, title: 'Strings', markdownName: 'Strings.md' },
-  { id: 4, title: 'Classes', markdownName: 'Classes.md' },
-  { id: 5, title: 'Symbols', markdownName: 'Symbols.md' },
-  { id: 6, title: 'Modules', markdownName: 'Modules.md' },
+  {id: 2, title: 'Objects', markdownName: 'Objects.md'},
+  {id: 3, title: 'Strings', markdownName: 'Strings.md'},
+  {id: 4, title: 'Classes', markdownName: 'Classes.md'},
+  {id: 5, title: 'Symbols', markdownName: 'Symbols.md'},
+  {id: 6, title: 'Modules', markdownName: 'Modules.md'},
   {
     id: 7,
     title: 'Iterators And Generators',
@@ -40,8 +40,8 @@ export const CHAPTERS = [
     title: 'Async Programming',
     markdownName: 'AsyncProgramming.md'
   },
-  { id: 11, title: 'React', markdownName: 'React.md' },
-  { id: 12, title: 'Testing', markdownName: 'Testing.md' },
+  {id: 11, title: 'React', markdownName: 'React.md'},
+  {id: 12, title: 'Testing', markdownName: 'Testing.md'},
   {
     id: 13,
     title: 'Web Animations API',
@@ -74,9 +74,9 @@ export const CHAPTERS = [
   }
 ]
 export const SECTIONS = [
-  { title: 'Intro', chapters: [0] },
-  { title: 'Syntax', chapters: [1, 2, 3, 4, 5, 6, 7] },
-  { title: 'Core Concepts', chapters: [8, 9, 10] },
-  { title: 'APIs', chapters: [11, 12, 13] },
-  { title: 'Programming', chapters: [14, 15, 16, 17, 18] }
+  {title: 'Intro', chapters: [0]},
+  {title: 'Syntax', chapters: [1, 2, 3, 4, 5, 6, 7]},
+  {title: 'Core Concepts', chapters: [8, 9, 10]},
+  {title: 'APIs', chapters: [11, 12, 13]},
+  {title: 'Programming', chapters: [14, 15, 16, 17, 18]}
 ]

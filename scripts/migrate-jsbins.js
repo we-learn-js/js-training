@@ -2,8 +2,8 @@ require('isomorphic-fetch')
 const glob = require('glob')
 const fs = require('fs-extra')
 const Listr = require('listr')
-const { basename, join } = require('path')
-const { Observable } = require('rxjs/Observable')
+const {basename, join} = require('path')
+const {Observable} = require('rxjs/Observable')
 
 const MD_PATTERN = 'src/**/*.md'
 const JSBIN_REGEXP = /https?:\/\/jsbin\.com\/([a-z]+\/?[0-9]?)\/[\w?,]+/g
@@ -26,7 +26,7 @@ const parseJSBins = content => {
   let res
   let results = []
   while ((res = JSBIN_REGEXP.exec(content)) !== null) {
-    results.push({ url: res[0], bin: res[1] })
+    results.push({url: res[0], bin: res[1]})
   }
   return results
 }
@@ -46,21 +46,21 @@ const extractBinsLinks = async files =>
 
 const parseJSBinDataToFiles = (bin, data) => {
   const description = `Code imported from JS Bin: [${bin}](https://jsbin.com/${bin}/edit)`
-  const res = { name: bin.replace('/', '-'), description, files: [] }
+  const res = {name: bin.replace('/', '-'), description, files: []}
   const cssFileName =
     data.settings.processors.css === 'sass' ? 'src/index.scss' : 'src/index.css'
 
   data.javascript &&
-    res.files.push({ name: 'src/index.js', content: data.javascript })
-  data.html && res.files.push({ name: 'public/index.html', content: data.html })
+    res.files.push({name: 'src/index.js', content: data.javascript})
+  data.html && res.files.push({name: 'public/index.html', content: data.html})
   return res
 }
 
-const getReadmeContent = ({ name, description }) => `# JS Training | ${name}
+const getReadmeContent = ({name, description}) => `# JS Training | ${name}
 
 ${description}
 `
-const getPackageJson = async ({ name, description }) => {
+const getPackageJson = async ({name, description}) => {
   const base = await fs.readJSON(
     'scripts/fixtures/stackblitz-template/package.json'
   )
@@ -86,11 +86,11 @@ const writeFiles = async (folder, descriptor) => {
   await fs.outputJson(
     join(dirPath, 'package.json'),
     await getPackageJson(descriptor),
-    { spaces: 2 }
+    {spaces: 2}
   )
   await Promise.all(
     descriptor.files.map(
-      async ({ name, content }) =>
+      async ({name, content}) =>
         await fs.outputFile(join(dirPath, name), content)
     )
   )
@@ -103,7 +103,7 @@ const execute = async () => {
   const files = await getMarkdownFiles()
   const bins = await extractBinsLinks(files)
 
-  const tasks = bins.map(({ url, bin, file }) => {
+  const tasks = bins.map(({url, bin, file}) => {
     const outputFolder =
       basename(file).replace('.md', '') + '/' + bin.replace('/', '-')
     return {

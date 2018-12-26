@@ -4,11 +4,11 @@ import cx from 'classnames'
 
 class RevealMarkownSlides extends React.Component {
   render() {
-    const { slides } = this.props
+    const {slides} = this.props
     return slides.map((slides, i) => (
       <section key={i}>
         {slides.map(slide => {
-          const { content, id, isExercise, isSolution, isImportant } = slide
+          const {content, id, isExercise, isSolution, isImportant} = slide
           return (
             <section
               key={id}

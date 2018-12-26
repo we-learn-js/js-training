@@ -1,21 +1,21 @@
-import React, { Fragment, PureComponent } from 'react'
+import React, {PureComponent} from 'react'
 import RevealPresentation from '../../Slideshow/Reveal'
 import RevealMarkdown from '../../Slideshow/RevealMarkownSlides'
 import Confirm from '../../../components/Notification/Confirm'
-import { withDomainService } from '../../Hoc/Domain'
+import {withDomainService} from '../../Hoc/Domain'
 
 export default withDomainService('ChapterSlidesService', 'SlideViewService')(
   class ChapterPage extends PureComponent {
     constructor(props) {
       super(props)
-      this.state = { slides: null }
+      this.state = {slides: null}
     }
 
-    handleSlideChange = async ({ slideId }) => {
+    handleSlideChange = async ({slideId}) => {
       const {
         confirmMessage,
         confirmButton
-      } = await this.props.SlideViewService.execute({ slideId })
+      } = await this.props.SlideViewService.execute({slideId})
       this.setState({
         confirmMessage,
         confirmButton
@@ -29,11 +29,11 @@ export default withDomainService('ChapterSlidesService', 'SlideViewService')(
       } = await this.props.ChapterSlidesService.execute({
         url: this.props.match.url
       })
-      this.setState({ slides, masterMode })
+      this.setState({slides, masterMode})
     }
 
     render() {
-      const { slides, masterMode, confirmMessage, confirmButton } = this.state
+      const {slides, masterMode, confirmMessage, confirmButton} = this.state
       return (
         <React.Fragment>
           {slides ? (

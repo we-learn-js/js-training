@@ -10,7 +10,7 @@ export default class MousePosition {
 
   constructor() {
     this._mouseMoveHandler = this._mouseMoveHandler.bind(this)
-    if (!!instance) {
+    if (instance) {
       return instance
     }
     instance = this

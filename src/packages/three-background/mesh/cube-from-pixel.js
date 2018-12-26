@@ -35,6 +35,6 @@ export default class PixelCubeMesh {
 
   getMaterial(R, G, B) {
     const color = new THREE.Color(R / 255, G / 255, B / 255)
-    return new THREE.MeshLambertMaterial({ color })
+    return new THREE.MeshLambertMaterial({color})
   }
 }

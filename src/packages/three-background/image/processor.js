@@ -1,4 +1,4 @@
-import ImagePixel from "./pixel"
+import ImagePixel from './pixel'
 export default class ImageProcessor {
   constructor(image) {
     this.image = image
@@ -24,7 +24,7 @@ export default class ImageProcessor {
     const imgData = this.getImageData()
     let col = 0
     let row = imgData.height
-    const { data } = imgData
+    const {data} = imgData
     const pixels = []
 
     for (let i = 0; i < data.length; i += 4) {
@@ -59,7 +59,7 @@ export default class ImageProcessor {
     while (number > 0) {
       const idx = Math.round(Math.random() * pixels.length)
       const pixel = pixels.splice(idx, 1)[0]
-      if (!!pixel) {
+      if (pixel) {
         group2.push(pixel)
       }
 

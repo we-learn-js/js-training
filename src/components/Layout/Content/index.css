@@ -8,6 +8,7 @@
   &.hasHeader {
     padding-top: 100px;
   }
+  
   &.hasHeader::before {
     position: fixed;
     top: 0;
