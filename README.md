@@ -42,3 +42,21 @@
 * Objects > [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy): Handlers, Reflect, ...
 * Errors handling: Catch errors, throw custom errors
 * Last Session: Group review of current legacy code
+* Mastering the console: https://medium.com/@mattburgess/beyond-console-log-2400fdf4a9d8
+
+
+<!--
+
+## Resources:
+* Missing concepts: https://github.com/leonardomso/33-js-concepts#readme
+* Quiz and Exam:
+https://30secondsofinterviews.org/
+* Code examples for content: https://medium.freecodecamp.org/here-are-examples-of-everything-new-in-ecmascript-2016-2017-and-2018-d52fa3b5a70e
+* Eloquent Javascript: https://eloquentjavascript.net/
+* CSSOM: https://css-tricks.com/an-introduction-and-guide-to-the-css-object-model-cssom/
+* RX-JS: https://www.youtube.com/watch?v=PhggNGsSQyg
+
+## Articles/Videos:
+* Article about code sandbox and competitors
+
+-->
