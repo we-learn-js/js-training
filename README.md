@@ -2,7 +2,7 @@
 
 > JS Training Slides
 
-![Logo](./src/slideshow/images/logo.png)
+![Logo](./src/images/logo.png)
 
 ## Resources
 
