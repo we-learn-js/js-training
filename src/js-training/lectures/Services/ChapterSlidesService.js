@@ -9,7 +9,9 @@ export default class ChapterSlidesService {
     this.slidesRepository = new SlidesRepository()
   }
   async execute({url}) {
-    const {isTeacher} = await this.signedInUserService.execute()
+    const {isTeacher} = (await this.signedInUserService.execute()) || {
+      isTeacher: false
+    }
     const chapter = await this.chpatersRepository.findByUrl(url)
     const slides = await this.slidesRepository.get({chapterId: chapter.id})
     return {...chapter, slides, masterMode: isTeacher}

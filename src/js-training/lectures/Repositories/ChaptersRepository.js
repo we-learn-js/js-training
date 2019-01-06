@@ -9,14 +9,14 @@ import {
 import paramCase from 'param-case'
 
 const getUrlFromTitle = title => `/${paramCase(title)}`
-const configToChapter = ({id, title, markdownName}) => ({
+const configToChapter = ({id, title, markdownPath, markdownName}) => ({
   id,
   title,
   url: {
     route: getUrlFromTitle(title),
-    wiki: WIKI_PATH + markdownName.replace('.md', ''),
-    markdown: CODE_PATH + MD_FOLDER + markdownName,
-    rawMarkdown: RAW_PATH + MD_FOLDER + markdownName
+    wiki: WIKI_PATH + markdownName,
+    markdown: CODE_PATH + MD_FOLDER + markdownName + '.md',
+    rawMarkdown: markdownPath
   }
 })
 
