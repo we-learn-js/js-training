@@ -51,7 +51,7 @@ const ChapterListPage = Loadable({
 const ChapterPage = Loadable({
   loader: () =>
     import('./components/Page/Chapter').then(Chapter =>
-      withMatch(requiresAuth(Chapter.default))
+      withMatch(Chapter.default)
     ),
   loading: () => <LinearProgress />
 })
