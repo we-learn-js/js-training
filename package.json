@@ -7,7 +7,7 @@
     "reset": "npx @s-ui/mono phoenix",
     "build": "parcel build --no-source-maps -d ./build src/index.html && cp ./scripts/fixtures/build/package.json ./build/package.json",
     "clear": "rm -Rf .cache dist build",
-    "start": "parcel serve --no-source-maps -p 3000 src/index.html",
+    "start": "parcel serve -p 3000 src/index.html",
     "dev": "npm run start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "co": "sui-mono commit",
@@ -44,6 +44,7 @@
     "@babel/plugin-proposal-class-properties": "7",
     "@babel/plugin-transform-runtime": "7",
     "@babel/preset-env": "7",
+    "@s-ui/lint": "2",
     "@s-ui/mono": "1",
     "caniuse-lite": "1.0",
     "fs-extra": "7.0.1",
@@ -59,6 +60,11 @@
       "access": "public",
       "packagesFolder": "./src"
     }
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
   },
   "author": "David Almeida <davidbarna@gmail.com>",
   "repository": {
