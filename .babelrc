@@ -1,4 +1,18 @@
 {
-  "presets": ["@babel/preset-env"],
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": [
+            "last 2 Chrome versions",
+            "last 2 Firefox versions",
+            "last 2 iOS versions"
+          ]
+        },
+        "useBuiltIns": "usage"
+      }
+    ]
+  ],
   "plugins": ["@babel/plugin-transform-runtime","@babel/plugin-proposal-class-properties"]
 }

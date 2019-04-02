@@ -30,6 +30,6 @@
 
 * [Functional Programming](./FunctionalProgramming)
 * [Object-Oriented Programming](./ObjectOrientedProgramming)
-* [Object-Oriented Design Principles](./ObjectOrientedDesignPrinciples.m)
+* [Object-Oriented Design Principles](./ObjectOrientedDesignPrinciples)
 * [Design Patterns](./DesignPatterns)
 * [Domain Driven Design](./DomainDrivenDesign)
