@@ -6,8 +6,8 @@ import LoginIcon from '@material-ui/icons/AccountCircle'
 import Avatar from 'material-ui/Avatar'
 import Tooltip from 'material-ui/Tooltip'
 import {Link} from 'react-router-dom'
-import {withDomainService} from '../../../components/Hoc/Domain'
-import {withUser} from '../../../components/Hoc/Auth'
+import {withDomainService} from '../../../components/HoC/Domain'
+import {withUser} from '../../../components/HoC/Auth'
 import './index.css'
 
 const styles = {

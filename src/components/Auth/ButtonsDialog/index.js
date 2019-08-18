@@ -5,7 +5,7 @@ import Dialog, {DialogTitle} from 'material-ui/Dialog'
 import GoogleIcon from '../../Icon/Google'
 import GitHubIcon from '../../Icon/GitHub'
 import ErrorNotification from '../../../components/Notification/Error'
-import {withDomainService} from '../../../components/Hoc/Domain'
+import {withDomainService} from '../../../components/HoC/Domain'
 
 class AuthButtonsDialog extends React.Component {
   state = {error: null}
