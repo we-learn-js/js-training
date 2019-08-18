@@ -2,7 +2,7 @@ import React from 'react'
 import ChapterList from '../../Chapter/List'
 import Content from '../../Layout/Content'
 import Typography from 'material-ui/Typography'
-import {withServiceResponse} from '../../Hoc/Domain'
+import {withServiceResponse} from '../../HoC/Domain'
 
 export default withServiceResponse('ChapterListService')(
   ({ChapterListService, ...props}) =>
