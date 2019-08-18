@@ -5,15 +5,16 @@
   "main": "index.js",
   "scripts": {
     "reset": "npx @s-ui/mono phoenix",
-    "build": "parcel build --no-source-maps -d ./build src/index.html && cp ./scripts/fixtures/build/package.json ./build/package.json",
-    "clear": "rm -Rf .cache dist build",
+    "build": "parcel build --no-source-maps -d ./public src/index.html && cp ./scripts/fixtures/build/package.json ./public/package.json",
+    "serve": "npx serve --single ./public",
+    "clear": "rm -Rf .cache dist public",
     "start": "parcel serve -p 3000 src/index.html",
     "dev": "npm run start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "co": "sui-mono commit",
     "lint": "npx @s-ui/lint js --fix",
-    "deploy": "sui-deploy learn-javascript ./build --now",
-    "build-deploy": "npm run wiki:push && npm run build && npm run deploy",
+    "deploy-to-now": "sui-deploy learn-javascript ./public --now",
+    "build-deploy-to-now": "npm run wiki:push && npm run build && npm run deploy",
     "wiki:add": "git subtree add --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash",
     "wiki:pull": "git subtree pull --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash -m \"Merge changes from origin repository.\"",
     "wiki:push": "git subtree push --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master"
@@ -35,6 +36,7 @@
     "react-router": "4.3",
     "react-router-dom": "4.3",
     "reveal.js": "3.7.0",
+    "serve": "^11.1.0",
     "three": "0.70.0"
   },
   "devDependencies": {
