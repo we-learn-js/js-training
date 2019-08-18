@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react'
 import RevealPresentation from '../../Slideshow/Reveal'
 import RevealMarkdown from '../../Slideshow/RevealMarkownSlides'
 import Confirm from '../../../components/Notification/Confirm'
-import {withDomainService} from '../../Hoc/Domain'
+import {withDomainService} from '../../HoC/Domain'
 
 export default withDomainService('ChapterSlidesService', 'SlideViewService')(
   class ChapterPage extends PureComponent {
