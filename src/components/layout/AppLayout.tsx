@@ -1,34 +1,46 @@
 import React, {useEffect, useLayoutEffect, useRef} from 'react'
 import {
   LayoutManagerWithViewController,
-  withNavigationViewController
+  withNavigationViewController,
+  withNavigationUIController
 } from '@atlaskit/navigation-next'
-import {css} from 'emotion'
 import GlobalNav from './GlobalNav'
 import {mainNavigationView} from '../navigation/views'
 import useChaptersNavigationView from '../providers/useChaptersNavigationView'
+import './index.scss'
 
 type Props = {
   children: React.ReactNode,
   navigationViewController: any,
+  navigationUIController: any,
   path: string
 }
 
-const className = css`
-  font-family: 'system-ui';
-`
-const App = ({children, navigationViewController, path}: Props) => {
+const App = ({
+  children,
+  navigationViewController: viewCtrl,
+  navigationUIController: uiCtrl,
+  path
+}: Props) => {
   const documentsView = useChaptersNavigationView('document')
   const slideshowsView = useChaptersNavigationView('slideshow')
   const domElement = useRef(null)
+  const isHome = path === '/'
+
   useEffect(() => {
-    navigationViewController.addView(mainNavigationView)
-    navigationViewController.addView(documentsView)
-    navigationViewController.addView(slideshowsView)
+    viewCtrl.addView(mainNavigationView)
+    viewCtrl.addView(documentsView)
+    viewCtrl.addView(slideshowsView)
   }, [])
   useEffect(
     () => {
-      if (path === '/') navigationViewController.setView(mainNavigationView.id)
+      if (isHome) {
+        viewCtrl.setView(mainNavigationView.id)
+        uiCtrl.disableResize()
+        uiCtrl.expand()
+      } else {
+        uiCtrl.enableResize()
+      }
     },
     [path]
   )
@@ -40,7 +52,7 @@ const App = ({children, navigationViewController, path}: Props) => {
   )
 
   return (
-    <div ref={domElement} className={className}>
+    <div ref={domElement}>
       <LayoutManagerWithViewController
         globalNavigation={GlobalNav}
         experimental_flyoutOnHover
@@ -53,4 +65,4 @@ const App = ({children, navigationViewController, path}: Props) => {
   )
 }
 
-export default withNavigationViewController(App)
+export default withNavigationUIController(withNavigationViewController(App))

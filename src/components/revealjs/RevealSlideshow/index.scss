@@ -5,12 +5,12 @@
 
 @import "./scss/variables";
 
-// SCSS Imports
+// // SCSS Imports
 @import "~reveal.js/css/reveal.scss";
 @import "~reveal.js/css/theme/template/theme.scss"; //Theme template from reveal.js
 
-// Local overrides
-// @import './scss/listing';
+//Local overrides
+@import "./scss/listing";
 @import "./scss/reveal";
 // @import './scss/highlight';
 @import "./scss/font.scss";
@@ -20,8 +20,4 @@
   position: absolute;
   right: 0;
   width: calc(100% - 80px);
-}
-
-body {
-  background: transparent !important;
 }
