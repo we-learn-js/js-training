@@ -7,7 +7,6 @@ import GitHubIcon from '../../Icon/GitHub'
 import ErrorNotification from '../../../components/Notification/Error'
 import {withDomainService} from '../../hoc/Domain'
 
-// https://gatsby-useauth-example.now.sh/
 class AuthButtonsDialog extends React.Component {
   state = {error: null}
   signInWithGithub = async () => {

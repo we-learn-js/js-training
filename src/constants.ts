@@ -3,7 +3,7 @@ export const urls = {
   documents: '/docs'
 }
 
-export const siteUrl = 'https://learn-javascript.now.sh'
+export const siteUrl = 'https://learn-javascript.dev'
 
 export const sections = [
   {title: 'Intro', chapters: ['Presentation']},

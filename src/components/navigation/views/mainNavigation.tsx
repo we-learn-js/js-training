@@ -2,9 +2,7 @@ import React from 'react'
 import PageIcon from '@atlaskit/icon/glyph/page'
 import ScreenIcon from '@atlaskit/icon/glyph/screen'
 import BitbucketReposIcon from '@atlaskit/icon/glyph/bitbucket/repos'
-import {JiraWordmark} from '@atlaskit/logo'
 import HomeIcon from '@atlaskit/icon/glyph/home'
-import {Wordmark} from '@atlaskit/navigation-next'
 import LinkItem from '../LinkItem'
 import {
   documentsNavigationId,
@@ -22,7 +20,7 @@ const mainNavigationView = {
       items: [
         {
           type: 'Wordmark',
-          wordmark: () => <Wordmark wordmark={JiraWordmark} />,
+          wordmark: () => <h1>JS Training</h1>,
           id: 'js-training-wordmark'
         }
       ]
