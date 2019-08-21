@@ -32,7 +32,7 @@ export default class ImageUnderConstruction {
 
       const cubeAnimation = () => {
         this.runningAnimations.push(this.scene.getCubeAnimator())
-        this.timeoutId = setTimeout(cubeAnimation, 300)
+        this.timeoutId = setTimeout(cubeAnimation, 100)
       }
 
       // this.viewports[1].lookAt(anim.xTarget, anim.yTarget, anim.zTarget)

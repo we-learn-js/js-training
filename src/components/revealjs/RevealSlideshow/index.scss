@@ -1,0 +1,27 @@
+// // Default mixins and settings -----------------
+@import "~reveal.js/css/theme/template/mixins.scss";
+@import "~reveal.js/css/theme/template/settings.scss";
+// // ---------------------------------------------
+
+@import "./scss/variables";
+
+// SCSS Imports
+@import "~reveal.js/css/reveal.scss";
+@import "~reveal.js/css/theme/template/theme.scss"; //Theme template from reveal.js
+
+// Local overrides
+// @import './scss/listing';
+@import "./scss/reveal";
+// @import './scss/highlight';
+@import "./scss/font.scss";
+@import "./scss/js-training";
+
+.full-width-nav-offset {
+  position: absolute;
+  right: 0;
+  width: calc(100% - 80px);
+}
+
+body {
+  background: transparent !important;
+}

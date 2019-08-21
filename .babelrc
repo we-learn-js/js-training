@@ -1,18 +1,8 @@
 {
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "browsers": [
-            "last 2 Chrome versions",
-            "last 2 Firefox versions",
-            "last 2 iOS versions"
-          ]
-        },
-        "useBuiltIns": "usage"
-      }
-    ]
-  ],
-  "plugins": ["@babel/plugin-transform-runtime","@babel/plugin-proposal-class-properties"]
+  "presets": ["babel-preset-gatsby"],
+  "plugins": [
+    "emotion",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-class-properties"
+  ]
 }

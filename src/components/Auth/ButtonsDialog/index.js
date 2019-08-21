@@ -5,8 +5,9 @@ import Dialog, {DialogTitle} from 'material-ui/Dialog'
 import GoogleIcon from '../../Icon/Google'
 import GitHubIcon from '../../Icon/GitHub'
 import ErrorNotification from '../../../components/Notification/Error'
-import {withDomainService} from '../../../components/HoC/Domain'
+import {withDomainService} from '../../hoc/Domain'
 
+// https://gatsby-useauth-example.now.sh/
 class AuthButtonsDialog extends React.Component {
   state = {error: null}
   signInWithGithub = async () => {

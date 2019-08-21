@@ -1,7 +1,7 @@
 import React from 'react'
 import AuthButtonsDialog from '../Auth/ButtonsDialog'
 import {LinearProgress} from 'material-ui/Progress'
-import {withDomainEvent, withDomainService} from '../HoC/Domain'
+import {withDomainEvent, withDomainService} from '../hoc/Domain'
 
 let SignedInUserPromise
 
@@ -38,15 +38,14 @@ const withUser = Component => {
   )
 }
 
-const requiresAuth = Component =>
-  withUser(
-    class RequiredAuth extends React.Component {
-      render() {
-        const {user, ...props} = this.props
-        if (user === undefined) return <LinearProgress variant="query" />
-        return user ? <Component {...props} /> : <AuthButtonsDialog />
-      }
-    }
-  )
+class RequiredAuth extends React.Component {
+  render() {
+    const {user, ...props} = this.props
+    if (user === undefined) return <LinearProgress variant="query" />
+    return user ? <Component {...props} /> : <AuthButtonsDialog />
+  }
+}
+
+const requiresAuth = Component => withUser(RequiredAuth)
 
 export {requiresAuth, withUser}

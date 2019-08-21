@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "target": "es5",
+    "lib": ["es2019"],
+    "jsx": "preserve"
+  }
+}

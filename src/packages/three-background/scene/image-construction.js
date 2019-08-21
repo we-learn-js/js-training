@@ -38,7 +38,7 @@ export default class ImageConstruction {
     const processor = new ImageProcessor(image)
     let pixels = processor.getPixels()
     pixels = processor.removePixelsByRGB(pixels, 255, 255, 255)
-    const pixelsGroups = processor.randomSplit(pixels, pixels.length * 0.2)
+    const pixelsGroups = processor.randomSplit(pixels, pixels.length * 0.1)
     this.selectedPixels = pixelsGroups[0]
     return (this.discardedPixels = pixelsGroups[1])
   }
