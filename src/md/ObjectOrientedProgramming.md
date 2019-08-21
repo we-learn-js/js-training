@@ -34,9 +34,9 @@
 
 > A class can describe any concept that you can talk about when you try to describe your program:
 
-> * Real life concepts: Restaurant, Review, User, ...
-> * Invisible things: Date, TimeZone, ...
-> * Visual parts of the app: TextBox, Button, Window, ...
+> - Real life concepts: Restaurant, Review, User, ...
+> - Invisible things: Date, TimeZone, ...
+> - Visual parts of the app: TextBox, Button, Window, ...
 
 <!--slide-->
 
@@ -52,13 +52,13 @@
 
 ## OOP Principles
 
-> * **Abstraction**
+> - **Abstraction**
 >   Split program into smaller responsibilities and data types (classes).
-> * **Encapsulation**
+> - **Encapsulation**
 >   Hide the internals of a class.
-> * **Inheritance**
+> - **Inheritance**
 >   Inherit members from parent class.
-> * **Polymorphism**
+> - **Polymorphism**
 >   Access a class through its parent interface.
 
 <!--slide-->
@@ -205,7 +205,7 @@ class CityHall {
 > You can't access an employee's instance and check its salary even if you know exactly where is the archive room, as it's not exposed to you on purpose. That info is **private**
 
 ```js
-cityHall.employees[0].salary // Uncaught TypeError: Cannot read property '0' of undefined
+cityHall.employees[0].salary; // Uncaught TypeError: Cannot read property '0' of undefined
 ```
 
 <!--slide-->
@@ -223,24 +223,24 @@ Consider:
 ```js
 class SimpleDate {
   constructor(month, day) {
-    this.month = month
-    this.day = day
+    this.month = month;
+    this.day = day;
   }
   getDay() {
-    return this.day
+    return this.day;
   }
   getMonth() {
-    return this.month
+    return this.month;
   }
   toString() {
-    return new Date(2000, this.month - 1, this.day).toLocaleString()
+    return new Date(2000, this.month - 1, this.day).toLocaleString();
   }
 }
-var halloween = new SimpleDate(10, 31)
-var christmas = new SimpleDate(12, 25)
+var halloween = new SimpleDate(10, 31);
+var christmas = new SimpleDate(12, 25);
 
-console.log(halloween.toString()) // "31/10/2000 0:00:00"
-console.log(christmas.toString()) // "25/12/2000 0:00:00"
+console.log(halloween.toString()); // "31/10/2000 0:00:00"
+console.log(christmas.toString()); // "25/12/2000 0:00:00"
 ```
 
 <!--slide-->
@@ -248,8 +248,8 @@ console.log(christmas.toString()) // "25/12/2000 0:00:00"
 We want to maintain our properties private, so that no consumer will mutate our object.
 
 ```js
-console.log((halloween.month = 3))
-console.log(halloween.toString()) // "31/3/2000 0:00:00"
+console.log((halloween.month = 3));
+console.log(halloween.toString()); // "31/3/2000 0:00:00"
 ```
 
 <!--slide-->
@@ -267,17 +267,17 @@ Underscore prefix convention:
 ```js
 class SimpleDate {
   constructor(month, day) {
-    this._month = month
-    this._day = day
+    this._month = month;
+    this._day = day;
   }
   getDay() {
-    return this._day
+    return this._day;
   }
   getMonth() {
-    return this._month
+    return this._month;
   }
   toString() {
-    return new Date(2000, this._month - 1, this._day).toLocaleString()
+    return new Date(2000, this._month - 1, this._day).toLocaleString();
   }
 }
 ```
@@ -289,17 +289,17 @@ Underscore prefix and suffix convention:
 ```js
 class SimpleDate {
   constructor(month, day) {
-    this.__month__ = month
-    this.__day__ = day
+    this.__month__ = month;
+    this.__day__ = day;
   }
   getDay() {
-    return this.__day__
+    return this.__day__;
   }
   getMonth() {
-    return this.__month__
+    return this.__month__;
   }
   toString() {
-    return new Date(2000, this.__month__ - 1, this.__day__).toLocaleString()
+    return new Date(2000, this.__month__ - 1, this.__day__).toLocaleString();
   }
 }
 ```
@@ -311,8 +311,8 @@ class SimpleDate {
 > The data is still technically accessible to everyone
 
 ```js
-console.log((halloween.__month__ = 3))
-console.log(halloween.toString()) // "31/3/2000 0:00:00"
+console.log((halloween.__month__ = 3));
+console.log(halloween.toString()); // "31/3/2000 0:00:00"
 ```
 
 <!--slide-->
@@ -327,14 +327,14 @@ console.log(halloween.toString()) // "31/3/2000 0:00:00"
 class SimpleDate {
   constructor(month, day) {
     this.getDay = function() {
-      return day
-    }
+      return day;
+    };
     this.getMonth = function() {
-      return month
-    }
+      return month;
+    };
     this.toString = function() {
-      return new Date(2000, this._month - 1, this._day).toLocaleString()
-    }
+      return new Date(2000, this._month - 1, this._day).toLocaleString();
+    };
   }
 }
 ```
@@ -348,13 +348,13 @@ class SimpleDate {
 With prototype:
 
 ```js
-console.log(christmas.getDay == halloween.getDay) // true
+console.log(christmas.getDay == halloween.getDay); // true
 ```
 
 With provileged methods:
 
 ```js
-console.log(christmas.getDay == halloween.getDay) // false
+console.log(christmas.getDay == halloween.getDay); // false
 ```
 
 Note: N instances of `Function` are created and saved in memory for **each** instance of `SimpleDate`.
@@ -364,22 +364,22 @@ Note: N instances of `Function` are created and saved in memory for **each** ins
 ##### Privacy with Symbols
 
 ```js
-let dayKey = Symbol('day')
-let monthKey = Symbol('month')
+let dayKey = Symbol('day');
+let monthKey = Symbol('month');
 
 class SimpleDate {
   constructor(month, day) {
-    this[monthKey] = month
-    this[dayKey] = day
+    this[monthKey] = month;
+    this[dayKey] = day;
   }
   getDay() {
-    return this[dayKey]
+    return this[dayKey];
   }
   getMonth() {
-    return this[monthKey]
+    return this[monthKey];
   }
   toString() {
-    return new Date(2000, this[monthKey] - 1, this[dayKey]).toLocaleString()
+    return new Date(2000, this[monthKey] - 1, this[dayKey]).toLocaleString();
   }
 }
 ```
@@ -401,9 +401,9 @@ class ComplexDate extends SimpleDate {}
 > Symbols are can be accessed with `Object.getOwnPropertySymbols`, but not explicitly
 
 ```js
-let symbolKeys = Object.getOwnPropertySymbols(halloween)
-halloween[symbolKeys[0]] = 3
-console.log(halloween.toString()) // "31/3/2000 0:00:00"
+let symbolKeys = Object.getOwnPropertySymbols(halloween);
+halloween[symbolKeys[0]] = 3;
+console.log(halloween.toString()); // "31/3/2000 0:00:00"
 ```
 
 <!--slide-->
@@ -417,7 +417,7 @@ console.log(halloween.toString()) // "31/3/2000 0:00:00"
 > The `WeakMap` object is a collection of key/value pairs in which the keys are weakly referenced. The keys must be objects and the values can be arbitrary values.
 >
 > ```js
-> new WeakMap([iterable])
+> new WeakMap([iterable]);
 > ```
 
 [MDN // WeakMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)
@@ -427,12 +427,12 @@ console.log(halloween.toString()) // "31/3/2000 0:00:00"
 > Keys of WeakMaps are of the type Object only
 
 ```js
-var wm1 = new WeakMap()
-var o1 = {}
-wm1.set(o1, 37)
-wm2.has(o1) // true
-wm3.delete(o1)
-wm2.has(o1) // false
+var wm1 = new WeakMap();
+var o1 = {};
+wm1.set(o1, 37);
+wm2.has(o1); // true
+wm3.delete(o1);
+wm2.has(o1); // false
 ```
 
 <!--slide-->
@@ -442,24 +442,24 @@ wm2.has(o1) // false
 > We can store private object properties in key/value pairs using our instance as the key, and our class can capture those key/value maps in a closure.
 
 ```js
-let priv = new WeakMap()
+let priv = new WeakMap();
 
 class SimpleDate {
   constructor(month, day) {
-    priv.set(this, { day, month })
+    priv.set(this, { day, month });
   }
   getDay() {
-    return priv.get(this).day
+    return priv.get(this).day;
   }
   getMonth() {
-    return priv.get(this).month
+    return priv.get(this).month;
   }
   toString() {
     return new Date(
       2000,
       priv.get(this).month - 1,
-      priv.get(this).day
-    ).toLocaleString()
+      priv.get(this).day,
+    ).toLocaleString();
   }
 }
 ```
@@ -493,17 +493,17 @@ class ComplexDate extends SimpleDate {}
 ```js
 class SimpleDate {
   constructor(month, day) {
-    this.#month = month
-    this.#day = day
+    this.#month = month;
+    this.#day = day;
   }
   getDay() {
-    return this.#day
+    return this.#day;
   }
   getMonth() {
-    return this.#month
+    return this.#month;
   }
   toString() {
-    return new Date(2000, this.#month - 1, this.#day).toLocaleString()
+    return new Date(2000, this.#month - 1, this.#day).toLocaleString();
   }
 }
 ```
@@ -515,16 +515,20 @@ class SimpleDate {
 ```js
 class SimpleDate {
   constructor(month, day) {
-    this.#month = month
-    this.#day = day
+    this.#month = month;
+    this.#day = day;
   }
-  getDay() { return this.#day }
-  getMonth() { return this.#month }
+  getDay() {
+    return this.#day;
+  }
+  getMonth() {
+    return this.#month;
+  }
   toString() {
-    this.#formatDate(new Date(2000,this.#month-1, this.#day))
+    this.#formatDate(new Date(2000, this.#month - 1, this.#day));
   }
-  #formatDate (date) {
-    return date.toLocaleString()
+  #formatDate(date) {
+    return date.toLocaleString();
   }
 }
 ```
@@ -541,17 +545,17 @@ class SimpleDate {
 
 > **Child** class can extend the **parent** class and:
 >
-> * Redefine properties (defining the new class)
-> * Redefine methods (modifying existing behaviour)
-> * Add new properties and methods
+> - Redefine properties (defining the new class)
+> - Redefine methods (modifying existing behaviour)
+> - Add new properties and methods
 
 ---
 
 > Inheritance has benefits:
 >
-> * Extensibility
-> * Reusability: eliminates redundant code
-> * Abstraction
+> - Extensibility
+> - Reusability: eliminates redundant code
+> - Abstraction
 
 <!--slide-->
 
@@ -671,7 +675,7 @@ Create static method in Animal that returns average age of an array of animals.
 class CameraAbstract {
   captureScene() {} // returns an image
   takePicture() {
-    this.saveImage(this.captureScene())
+    this.saveImage(this.captureScene());
   }
   savePicture() {} // abstract method
 }
@@ -703,16 +707,16 @@ class AnalogicCamera extends CameraAbstract {
 ```js
 class Photographer {
   setCamera(camera) {
-    this.camera = camera
+    this.camera = camera;
   }
   takePicture() {
-    this.camera.takePicture(this.position)
+    this.camera.takePicture(this.position);
   }
 }
 
-var person = new Photographer('Evan')
-person.setCamera(digitalCamera)
-person.takePicture()
+var person = new Photographer('Evan');
+person.setCamera(digitalCamera);
+person.takePicture();
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -723,14 +727,14 @@ A bank holds different types of accounts for its consumers: deposit account, loa
 
 All accounts have customer, balance, and interest rate (monthly based).
 
-* Deposit accounts are allowed to deposit and withdraw money
-* Loan and mortgage accounts can only deposit money
+- Deposit accounts are allowed to deposit and withdraw money
+- Loan and mortgage accounts can only deposit money
 
 All accounts can calculate their interest amount fir a given period (in months.)
 
-* Loan accounts have no interest for the first 3 months.
-* Deposit accounts have no interest if their balance is positive and less than 1000
-* Mortgage accounts 1/2 interest for the first 12 months for the companies and 6 for individuals.
+- Loan accounts have no interest for the first 3 months.
+- Deposit accounts have no interest if their balance is positive and less than 1000
+- Mortgage accounts 1/2 interest for the first 12 months for the companies and 6 for individuals.
 
 Identify classes, interfaces, abstract actions and implement calculation of the interest functionality.
 

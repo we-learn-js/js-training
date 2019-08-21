@@ -11,13 +11,13 @@
 ```js
 // PASS
 it('Array.indexOf should return -1 when the value is not present', () => {
-  expect([1, 2, 3].indexOf(5)).to.equal(-1)
-})
+  expect([1, 2, 3].indexOf(5)).to.equal(-1);
+});
 
 // FAIL
 it('Array.indexOf should return -1 when the value is not present', () => {
-  expect([1, 2, 5, 3].indexOf(5)).to.equal(-1)
-})
+  expect([1, 2, 5, 3].indexOf(5)).to.equal(-1);
+});
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/jovanep?embed
@@ -54,11 +54,11 @@ These functions are used to make the output as explicit as possible.
 describe('Array', () => {
   describe('#indexOf', () => {
     it('should return -1 when the value is not present', () => {
-      expect([1, 2, 3].indexOf(5)).to.equal(-1)
-      expect([1, 2, 3].indexOf(0)).to.equal(-1)
-    })
-  })
-})
+      expect([1, 2, 3].indexOf(5)).to.equal(-1);
+      expect([1, 2, 3].indexOf(0)).to.equal(-1);
+    });
+  });
+});
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/yukori-4?embed
@@ -79,15 +79,15 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testi
 describe('Array', () => {
   describe('#indexOf', () => {
     it('should return -1 when the value is not present', () => {
-      expect([1, 2, 3].indexOf(5)).to.equal(-1)
-      expect([1, 2, 3].indexOf(0)).to.equal(-1)
-    })
+      expect([1, 2, 3].indexOf(5)).to.equal(-1);
+      expect([1, 2, 3].indexOf(0)).to.equal(-1);
+    });
 
     it('should return 2 when the value is on third position', () => {
-      expect([1, 2, 3].indexOf(3)).to.equal(2)
-    })
-  })
-})
+      expect([1, 2, 3].indexOf(3)).to.equal(2);
+    });
+  });
+});
 ```
 
 <!--slide-->
@@ -97,18 +97,18 @@ describe('Array', () => {
   describe('#indexOf', () => {
     describe('When the value is not present', () => {
       it('returns -1 ', () => {
-        expect([1, 2, 3].indexOf(5)).to.equal(-1)
-        expect([1, 2, 3].indexOf(0)).to.equal(-1)
-      })
-    })
+        expect([1, 2, 3].indexOf(5)).to.equal(-1);
+        expect([1, 2, 3].indexOf(0)).to.equal(-1);
+      });
+    });
 
     describe('When the value is present', () => {
       it('returns its position', () => {
-        expect([1, 2, 3].indexOf(3)).to.equal(2)
-      })
-    })
-  })
-})
+        expect([1, 2, 3].indexOf(3)).to.equal(2);
+      });
+    });
+  });
+});
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/buzava?embed
@@ -127,11 +127,11 @@ Tend to be one assertion per test (it).
 
 Many libraries offer slightly different interfaces
 
-* [Must](https://github.com/moll/js-must)
-* [Jasmine](https://jasmine.github.io/edge/introduction.html)
-* [Should](https://shouldjs.github.io/#assertion-empty)
-* [Chai](http://chaijs.com/api/bdd/)
-* many more...
+- [Must](https://github.com/moll/js-must)
+- [Jasmine](https://jasmine.github.io/edge/introduction.html)
+- [Should](https://shouldjs.github.io/#assertion-empty)
+- [Chai](http://chaijs.com/api/bdd/)
+- many more...
 
 <!--slide-->
 
@@ -148,13 +148,13 @@ Many libraries offer slightly different interfaces
 #### Assert
 
 ```js
-var assert = chai.assert
+var assert = chai.assert;
 
-assert.typeOf(foo, 'string')
-assert.equal(foo, 'bar')
-assert.lengthOf(foo, 3)
-assert.property(tea, 'flavors')
-assert.lengthOf(tea.flavors, 3)
+assert.typeOf(foo, 'string');
+assert.equal(foo, 'bar');
+assert.lengthOf(foo, 3);
+assert.property(tea, 'flavors');
+assert.lengthOf(tea.flavors, 3);
 ```
 
 <!--slide-->
@@ -162,14 +162,14 @@ assert.lengthOf(tea.flavors, 3)
 #### Expect
 
 ```js
-var expect = chai.expect
+var expect = chai.expect;
 
-expect(foo).to.be.a('string')
-expect(foo).to.equal('bar')
-expect(foo).to.have.lengthOf(3)
+expect(foo).to.be.a('string');
+expect(foo).to.equal('bar');
+expect(foo).to.have.lengthOf(3);
 expect(tea)
   .to.have.property('flavors')
-  .with.lengthOf(3)
+  .with.lengthOf(3);
 ```
 
 <!--slide-->
@@ -177,12 +177,12 @@ expect(tea)
 #### Should
 
 ```js
-chai.should()
+chai.should();
 
-foo.should.be.a('string')
-foo.should.equal('bar')
-foo.should.have.lengthOf(3)
-tea.should.have.property('flavors').with.lengthOf(3)
+foo.should.be.a('string');
+foo.should.equal('bar');
+foo.should.have.lengthOf(3);
+tea.should.have.property('flavors').with.lengthOf(3);
 ```
 
 <!--slide-->
@@ -194,7 +194,7 @@ expect(object)
   .to.equal(expected) // target is strictly equal (===) to value
   .deep.equal(expected) // target is deeply equal to value.
   .exist // asserts that the target is neither null nor undefined.
-  .contain(val) // assert the inclusion of an object in an array or a substring in a string
+  .contain(val); // assert the inclusion of an object in an array or a substring in a string
 ```
 
 <!--slide-->
@@ -212,7 +212,7 @@ expect(object)
   .empty // asserts that the target’s length is 0
   .arguments // asserts that the target is an arguments object.
   .function // asserts that the target is an function object.
-  .instanceOf(constructor) // asserts that the target is an instance of constructor.
+  .instanceOf(constructor); // asserts that the target is an instance of constructor.
 ```
 
 <!--slide-->
@@ -226,8 +226,8 @@ expect(object)
   .lt(5) // or .below
 
   .satisfy(function(num) {
-    return num > 0
-  })
+    return num > 0;
+  });
 // asserts that the target passes a given truth test.
 ```
 
@@ -248,9 +248,10 @@ expect( () => { ... } ).to
 > Negates any of assertions following in the chain.
 
 ```js
-expect(object).to.not.be.a('string').to.not.be.ok.to.not.be.true.to.not.be.false // assert a value is NOT given type // asserts that the target is NOT truthy // asserts that the target is NOT true // asserts that the target is NOT false
+expect(object).to.not.be.a('string').to.not.be.ok.to.not.be.true.to.not.be
+  .false; // assert a value is NOT given type // asserts that the target is NOT truthy // asserts that the target is NOT true // asserts that the target is NOT false
 
-expect(object).to.not.equal(expected) // target is NOT strictly equal (===) to value
+expect(object).to.not.equal(expected); // target is NOT strictly equal (===) to value
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -287,19 +288,19 @@ Test execution **MUST NOT** have side effects.
 describe('hooks', () => {
   before(() => {
     // runs before all tests in this block
-  })
+  });
   after(() => {
     // runs after all tests in this block
-  })
+  });
   beforeEach(() => {
     // runs before each test in this block
-  })
+  });
   afterEach(() => {
     // runs after each test in this block
-  })
+  });
 
   // test cases
-})
+});
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/nezimuc?embed
@@ -312,16 +313,16 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testi
 
 ```js
 before(() => {
-  fixturesElement = document.createElement('DIV')
-  document.body.appendChild(fixturesElement)
-})
+  fixturesElement = document.createElement('DIV');
+  document.body.appendChild(fixturesElement);
+});
 /* ... */
 beforeEach(() => {
-  button = document.createElement('Button')
-  button.innerHTML = 'TEST APPEND BUTTON'
-  button.id = 'test-append-button'
-  $(fixturesElement).append(button)
-})
+  button = document.createElement('Button');
+  button.innerHTML = 'TEST APPEND BUTTON';
+  button.id = 'test-append-button';
+  $(fixturesElement).append(button);
+});
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/cokuxaj?embed
@@ -332,24 +333,24 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testi
 
 ```js
 before(() => {
-  fixturesElement = document.createElement('DIV')
-  document.body.appendChild(fixturesElement)
-})
+  fixturesElement = document.createElement('DIV');
+  document.body.appendChild(fixturesElement);
+});
 after(() => {
-  document.body.removeChild(fixturesElement)
-})
+  document.body.removeChild(fixturesElement);
+});
 ```
 
 ```js
 beforeEach(() => {
-  button = document.createElement('Button')
-  button.innerHTML = 'TEST APPEND BUTTON'
-  button.id = 'test-append-button'
-  $(fixturesElement).append(button)
-})
+  button = document.createElement('Button');
+  button.innerHTML = 'TEST APPEND BUTTON';
+  button.id = 'test-append-button';
+  $(fixturesElement).append(button);
+});
 afterEach(() => {
-  fixturesElement.removeChild(button)
-})
+  fixturesElement.removeChild(button);
+});
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/pifura-2?embed
@@ -377,19 +378,19 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testi
 ```js
 describe('getUsers', () => {
   beforeEach(() => {
-    sinon.spy($, 'get')
-    getUsers(() => {}, 5)
-  })
+    sinon.spy($, 'get');
+    getUsers(() => {}, 5);
+  });
 
   afterEach(() => {
-    $.get.restore()
-  })
+    $.get.restore();
+  });
 
   it('should make right ajax request to retrieve users', () => {
-    expect($.get).to.have.been.calledOnce
-    expect($.get.firstCall.args[0]).to.contain('/users')
-  })
-})
+    expect($.get).to.have.been.calledOnce;
+    expect($.get.firstCall.args[0]).to.contain('/users');
+  });
+});
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/hirehir-5?embed
@@ -402,8 +403,8 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testi
 
 ```js
 afterEach(() => {
-  $.get.restore()
-})
+  $.get.restore();
+});
 ```
 
 > **Avoid tests' side effects**
@@ -415,19 +416,19 @@ afterEach(() => {
 Recorded activity
 
 ```js
-spy.callCount
+spy.callCount;
 // The number of recorded calls.
 
-spy.args
+spy.args;
 // Array of arguments received, spy.args[0] is an array of arguments received in the first call.
 
-spy.exceptions
+spy.exceptions;
 // Array of exception objects thrown, spy.exceptions[0] is the exception thrown by the first call. If the call did not throw an error, the value at the call’s location in .exceptions will be ‘undefined’.
 
-spy.returnValues
+spy.returnValues;
 // Array of return values, spy.returnValues[0] is the return value of the first call. If the call did not explicitly return a value, the value at the call’s location in .returnValues will be ‘undefined’.
 
-spy.thisValues
+spy.thisValues;
 // Array of this objects, spy.thisValues[0] is the this object for the first call.
 ```
 
@@ -436,28 +437,28 @@ spy.thisValues
 Method calls
 
 ```js
-spy.called
+spy.called;
 // true if the spy was called at least once
 
-spy.calledOnce
+spy.calledOnce;
 // true if spy was called exactly once
 
-spy.calledTwice
+spy.calledTwice;
 // true if the spy was called exactly twice
 
-spy.calledThrice
+spy.calledThrice;
 // true if the spy was called exactly thrice
 
-spy.firstCall.args
+spy.firstCall.args;
 // The first call
 
-spy.secondCall.args
+spy.secondCall.args;
 // The second call
 
-spy.thirdCall.args
+spy.thirdCall.args;
 // The third call
 
-spy.lastCall.args
+spy.lastCall.args;
 // The last call
 ```
 
@@ -478,16 +479,16 @@ spy.calledWithExactly(arg1, arg2, ...)
 Outputs
 
 ```js
-spy.threw()
+spy.threw();
 // Returns true if spy threw an exception at least once.
 
-spy.threw('TypeError')
+spy.threw('TypeError');
 // Returns true if spy threw an exception of the provided type at least once.
 
-spy.threw(obj)
+spy.threw(obj);
 // Returns true if spy threw the provided exception object at least once.
 
-spy.returned(obj)
+spy.returned(obj);
 // Returns true if spy returned the provided value at least once. Uses deep comparison for objects and arrays. Use spy.returned(sinon.match.same(obj)) for strict comparison (see matchers).
 ```
 
@@ -518,12 +519,12 @@ beforeEach(() => {
           { name: 'user9' },
           { name: 'user10' },
           { name: 'user11' },
-          { name: 'user12' }
-        ])
-      }
-    }
-  })
-})
+          { name: 'user12' },
+        ]);
+      },
+    };
+  });
+});
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/fiquqa?embed
@@ -539,16 +540,16 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testi
 Defining behaviour
 
 ```js
-stub.returns(obj)
+stub.returns(obj);
 // Makes the stub return the provided value.
 
-stub.returnsThis()
+stub.returnsThis();
 // Causes the stub to return its this value. Useful for stubbing jQuery-style fluent APIs.
 
-stub.throws()
+stub.throws();
 // Causes the stub to throw an exception (Error).
 
-stub.throws('TypeError')
+stub.throws('TypeError');
 // Causes the stub to throw an exception of the provided type.
 ```
 
@@ -557,22 +558,22 @@ stub.throws('TypeError')
 Filtering calls
 
 ```js
-stub.onFirstCall() // Alias for stub.onCall(0)
+stub.onFirstCall(); // Alias for stub.onCall(0)
 
-stub.onSecondCall() // Alias for stub.onCall(1)
+stub.onSecondCall(); // Alias for stub.onCall(1)
 
-stub.onThirdCall() // Alias for stub.onCall(2)
+stub.onThirdCall(); // Alias for stub.onCall(2)
 
-stub.onCall(n)
+stub.onCall(n);
 // Defines the behaviour of the stub on the nth call.
 // Useful for testing sequential interactions.
 ```
 
 ```js
-var callback = sinon.stub()
-callback.onFirstCall().returns(1)
-callback.onCall(1).throws()
-callback.onThirdCall().returnsThis()
+var callback = sinon.stub();
+callback.onFirstCall().returns(1);
+callback.onCall(1).throws();
+callback.onThirdCall().returnsThis();
 ```
 
 <!--slide-->
@@ -589,12 +590,12 @@ callback.onThirdCall().returnsThis()
 describe('getOneUser', () => {
   it('should filter number of return results', function(done) {
     getOneUser(5).then(function(result) {
-      expect(result).to.be.an('object')
-      expect(result.id).to.equal(1)
-      done()
-    })
-  })
-})
+      expect(result).to.be.an('object');
+      expect(result.id).to.equal(1);
+      done();
+    });
+  });
+});
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/wuliyo?embed
@@ -613,22 +614,22 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testi
 
 ```js
 beforeEach(() => {
-  clock = sinon.useFakeTimers()
-  sinon.spy(console, 'log')
-  countdown(5)
-})
+  clock = sinon.useFakeTimers();
+  sinon.spy(console, 'log');
+  countdown(5);
+});
 
 afterEach(() => {
-  clock.restore()
-  console.log.restore()
-})
+  clock.restore();
+  console.log.restore();
+});
 
 it('should log numbers step by step', () => {
-  clock.tick(500)
-  expect(console.log).to.have.been.calledOnce
-  clock.tick(1000)
-  expect(console.log).to.have.been.calledTwice
-})
+  clock.tick(500);
+  expect(console.log).to.have.been.calledOnce;
+  clock.tick(1000);
+  expect(console.log).to.have.been.calledTwice;
+});
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/sofubep?embed
@@ -646,7 +647,7 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testi
 <!--slide-->
 
 ```js
-server = sinon.fakeServer.create()
+server = sinon.fakeServer.create();
 
 server.respondWith([
   200,
@@ -663,11 +664,11 @@ server.respondWith([
     { name: 'user9' },
     { name: 'user10' },
     { name: 'user11' },
-    { name: 'user12' }
-  ])
-])
+    { name: 'user12' },
+  ]),
+]);
 
-server.respond()
+server.respond();
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testing/kucugaz?embed
@@ -742,8 +743,8 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Testi
 
 > Test behaviours, no methods:
 >
-> * one method, multiple behaviours -> multiple tests
-> * one behaviour, multiple methods -> One test
+> - one method, multiple behaviours -> multiple tests
+> - one behaviour, multiple methods -> One test
 
 <!--slide-->
 

@@ -21,10 +21,10 @@ WAAPI is the imperative way of doing the same.
 
 That opens a new world of control over keyframe-based animations:
 
-* Dynamic values
-* Timelines and playback control
-* Callbacks
-* Off main-thread animations (compositor layer)
+- Dynamic values
+- Timelines and playback control
+- Callbacks
+- Off main-thread animations (compositor layer)
 
 <!--section-->
 
@@ -37,7 +37,7 @@ Let's see what we can actually do.
 ### Create basic element animation
 
 ```js
-element.animate(keyframes, options)
+element.animate(keyframes, options);
 ```
 
 `element.animate()` is shorthand method to create a new web animation.
@@ -53,15 +53,15 @@ element.animate(
   [
     { transform: 'scale(1)', opacity: 1 },
     { transform: 'scale(.7)' },
-    { transform: 'scale(.8)', opacity: 0.2 }
+    { transform: 'scale(.8)', opacity: 0.2 },
   ],
   {
     duration: 500, // milliseconds
     easing: 'ease-in-out', // 'linear', a bezier curve, etc. delay: 10, // milliseconds
     iterations: Infinity, // or a number
-    direction: 'alternate' // 'normal', 'reverse', etc.
-  }
-)
+    direction: 'alternate', // 'normal', 'reverse', etc.
+  },
+);
 ```
 
 <a href="https://codesandbox.io/embed/github/davidbarna/web-animations-api-demos/tree/master/?hidenavigation=1&module=%2Fsrc%2Fdemo-1%2Findex.js&initialpath=%2F%23demo-1">Live demo</a>
@@ -105,15 +105,15 @@ Different formats can be used as shorthands
 element.animate(
   {
     transform: ['scale(1)', 'scale(.7)', 'scale(.8)'],
-    opacity: [1, 0.2]
+    opacity: [1, 0.2],
   },
   {
     duration: 500, // milliseconds
     easing: 'ease-in-out', // 'linear', a bezier curve, etc. delay: 10, // milliseconds
     iterations: Infinity, // or a number
-    direction: 'alternate' // 'normal', 'reverse', etc.
-  }
-)
+    direction: 'alternate', // 'normal', 'reverse', etc.
+  },
+);
 ```
 
 <a href="https://codesandbox.io/embed/github/davidbarna/web-animations-api-demos/tree/master/?hidenavigation=1&module=%2Fsrc%2Fdemo-11%2Findex.js&initialpath=%2F%23demo-11" >Live demo</a>
@@ -130,16 +130,16 @@ CSS percentages can be expressed as offset values
 const animKeyframes = [
   { transform: 'scale(1)', opacity: 1 }, // offset: 0%
   { transform: 'scale(.7)' }, // offset: 50%
-  { transform: 'scale(.8)', opacity: 0.2 } // offset: 100%
-]
+  { transform: 'scale(.8)', opacity: 0.2 }, // offset: 100%
+];
 ```
 
 ```js
 const animKeyframes = [
   { transform: 'scale(1)', opacity: 1, offset: 0.5 }, // offset: 50%
   { transform: 'scale(.7)', offset: 0.7 }, // offset: 70%
-  { transform: 'scale(.8)', opacity: 0.2 } // offset: 100%
-]
+  { transform: 'scale(.8)', opacity: 0.2 }, // offset: 100%
+];
 ```
 
 <a href="https://codesandbox.io/embed/github/davidbarna/web-animations-api-demos/tree/master/?hidenavigation=1&module=%2Fsrc%2Fdemo-10%2Findex.js&initialpath=%2F%23demo-10" >Live demo</a>
@@ -206,8 +206,8 @@ const animOptions = {
   iterations: 2, // or a number
   direction: 'alternate', // 'normal', 'reverse', etc.
   delay: 1000, // milliseconds
-  endDelay: 1000 // milliseconds
-}
+  endDelay: 1000, // milliseconds
+};
 
 // Total animation time: 4000ms
 ```
@@ -220,21 +220,21 @@ Composition of CSS properties that take multiple values.
 
 Composite allows other modes:
 
-* `'replace'` (default) overwrites the previous value with the new one.
+- `'replace'` (default) overwrites the previous value with the new one.
 
-* `'add'` dictates an additive effect, where each successive iteration builds on the last.
+- `'add'` dictates an additive effect, where each successive iteration builds on the last.
 
-* `'accumulate'` is similar but a little smarter: blur(2) and blur(5) become blur(7), not blur(2) blur(5).
+- `'accumulate'` is similar but a little smarter: blur(2) and blur(5) become blur(7), not blur(2) blur(5).
 
 <!--slide-->
 
 ```js
 element.animate({
-  transform: 'translateX(10px) rotate(1turn)'
-})
+  transform: 'translateX(10px) rotate(1turn)',
+});
 element.animate({
-  transform: 'scale(3) translateX(20px)'
-})
+  transform: 'scale(3) translateX(20px)',
+});
 
 // 'replace'    = transform: 'scale(3) translateX(20px)'
 // 'add'        = transform: 'scale(3) translateX(20px) rotate(1turn)'
@@ -245,11 +245,11 @@ element.animate({
 
 ```js
 element.animate({
-  transform: 'scale(.7)'
-})
+  transform: 'scale(.7)',
+});
 element.animate({
-  transform: 'scale(.3) rotate(1turn)'
-})
+  transform: 'scale(.3) rotate(1turn)',
+});
 
 // 'replace'    = transform: 'scale(.3)'
 // 'add'        = transform: 'scale(.3) rotate(1turn)'
@@ -314,11 +314,11 @@ Animations are created with the `KeyframeEffect` constructor.
 var animationEffect = new KeyframeEffect(
   document.getElementById('my-element'), // element to animate
   animKeyframes,
-  animOptions
-)
+  animOptions,
+);
 
-const anim = new Animation(animationEffect)
-anim.play()
+const anim = new Animation(animationEffect);
+anim.play();
 ```
 
 Which is the same as:
@@ -326,7 +326,7 @@ Which is the same as:
 ```js
 const anim = document
   .getElementById('my-element')
-  .animate(animKeyframes, animOptions)
+  .animate(animKeyframes, animOptions);
 ```
 
 ** ⚠︎ `element.animate()` autoplays the animation **
@@ -336,19 +336,19 @@ const anim = document
 ### Animation methods
 
 ```js
-const anim = element.animate(animKeyframes, animOptions)
+const anim = element.animate(animKeyframes, animOptions);
 
-anim.play()
+anim.play();
 // Starts or resumes playing of an animation,
 // or begins the animation again if it previously finished.
-anim.pause()
+anim.pause();
 // Suspends playing of an animation.
-anim.cancel()
+anim.cancel();
 // Clears all keyframes caused by this animation and aborts its playback.
-anim.finish()
+anim.finish();
 // Seeks either end of an animation, depending on whether
 // the animation is playing or reversing.
-anim.reverse()
+anim.reverse();
 // Reverses playback direction, stopping at the start of the animation.
 ```
 
@@ -361,8 +361,8 @@ anim.reverse()
 Sets the speed of an animation
 
 ```js
-const anim = element.animate(/* animation */)
-anim.playbackRate = 2.5 // anim.updatePlaybackRate(2.5)
+const anim = element.animate(/* animation */);
+anim.playbackRate = 2.5; // anim.updatePlaybackRate(2.5)
 ```
 
 <a href="https://codesandbox.io/embed/github/davidbarna/web-animations-api-demos/tree/master/?hidenavigation=1&module=%2Fsrc%2Fdemo-4%2Findex.js&initialpath=%2F%23demo-4&expanddevtools=1" >Live demo</a>
@@ -372,8 +372,8 @@ anim.playbackRate = 2.5 // anim.updatePlaybackRate(2.5)
 ### `Animation.currentTime`
 
 ```js
-var anim = element.animate(/* animation */)
-anim.currentTime = 200 // Set animation to 200ms time
+var anim = element.animate(/* animation */);
+anim.currentTime = 200; // Set animation to 200ms time
 ```
 
 <a href="https://codesandbox.io/embed/github/davidbarna/web-animations-api-demos/tree/master/?hidenavigation=1&module=%2Fsrc%2Fdemo-5%2Findex.js&initialpath=%2F%23demo-5&expanddevtools=1" >Live demo</a>
@@ -383,12 +383,12 @@ anim.currentTime = 200 // Set animation to 200ms time
 ### Animation events
 
 ```js
-var anim = element.animate(/* animation */)
+var anim = element.animate(/* animation */);
 
-anim.onfinish = event => console.log('Animation finished', event)
+anim.onfinish = event => console.log('Animation finished', event);
 // Gets and sets the event handler for the finish event.
 
-anim.oncancel = event => console.log('Animation cancel', event)
+anim.oncancel = event => console.log('Animation cancel', event);
 // Gets and sets the event handler for the cancel event.
 ```
 
@@ -405,7 +405,7 @@ Control animations creating in JavaScript **and CSS**
 > As css statements are converted to the `style` property in the DOM API, CSS `@keyframes` statements are also abstract to instances of `Animation`
 
 ```js
-const anims = element.getAnimations()
+const anims = element.getAnimations();
 ```
 
 <a href="https://codesandbox.io/embed/github/davidbarna/web-animations-api-demos/tree/master/?hidenavigation=1&module=%2Fsrc%2Fdemo-7%2Findex.js&initialpath=%2F%23demo-7&expanddevtools=1" >Live demo</a>
@@ -426,10 +426,10 @@ But a `KeyframeEffect` can be played directly by a timeline.
 const animationEffect = new KeyframeEffect(
   element, // element to animate
   animKeyframes,
-  animOptions
-)
+  animOptions,
+);
 
-document.timeline.play(animationEffect)
+document.timeline.play(animationEffect);
 ```
 
 <a href="https://codesandbox.io/embed/github/davidbarna/web-animations-api-demos/tree/master/?hidenavigation=1&module=%2Fsrc%2Fdemo-9%2Findex.js&initialpath=%2F%23demo-9" >Live demo</a>
@@ -456,10 +456,10 @@ Same as `GroupEffect` but `KeyframeEffect` instances are played sequentially.
 
 Today, this is what we have:
 
-* Chrome, and Opera have foundation implemented.
-* Safari is in development.
-* Edge is under consideration.
-* But Firefox (Nightly) did the job ! 😍
+- Chrome, and Opera have foundation implemented.
+- Safari is in development.
+- Edge is under consideration.
+- But Firefox (Nightly) did the job ! 😍
 
 [CanIUse // Web Animation](https://caniuse.com/#feat=web-animation)
 
@@ -467,9 +467,9 @@ Today, this is what we have:
 
 ### Browser support and dev
 
-* [CodePen // WAAPI](https://codepen.io/danwilson/embed/xGBKVq?height=960): Specific WAAPI features detector by Dan Wilson.
+- [CodePen // WAAPI](https://codepen.io/danwilson/embed/xGBKVq?height=960): Specific WAAPI features detector by Dan Wilson.
 
-* [GitHub // web-animations-js](https://github.com/web-animations/web-animations-js): Polyfill already available with most features.
+- [GitHub // web-animations-js](https://github.com/web-animations/web-animations-js): Polyfill already available with most features.
 
 <!--section-->
 
@@ -489,43 +489,43 @@ Canvas and webgl are bitmap based animations. They have infinite possiblities bu
 
 There are several ways to animate assigning values to `element.style`:
 
-* Vanilla:
-  * `setInterval()`
-  * `requestAnimationFrame()`
-* Libraries:
-  * [jQuery.animate()](http://api.jquery.com/animate/)
-  * [GreenSock](https://greensock.com/gsap)
-  * [AnimeJS](http://animejs.com/)
-  * [VelicityJS](http://velocityjs.org/)
-  * many more...
+- Vanilla:
+  - `setInterval()`
+  - `requestAnimationFrame()`
+- Libraries:
+  - [jQuery.animate()](http://api.jquery.com/animate/)
+  - [GreenSock](https://greensock.com/gsap)
+  - [AnimeJS](http://animejs.com/)
+  - [VelicityJS](http://velocityjs.org/)
+  - many more...
 
 <!--slide-->
 
 #### GSAP (GreenSock)
 
-* **Pros:**
+- **Pros:**
 
-  * It’s extraordinarily performant for something that’s not native.
-  * Many sequencing tools.
-  * They have a ton of other plugins if you want to do fancy things like animate text, morph SVGs, or draw paths.
-  * It solves SVG cross-browser compatibility.
+  - It’s extraordinarily performant for something that’s not native.
+  - Many sequencing tools.
+  - They have a ton of other plugins if you want to do fancy things like animate text, morph SVGs, or draw paths.
+  - It solves SVG cross-browser compatibility.
 
-* **Cons:**
-  * External library
-  * Not always performant: main thread
+- **Cons:**
+  - External library
+  - Not always performant: main thread
 
 <!--slide-->
 
 ### SVG ([SMIL](https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_animation_with_SMIL))
 
-* **Pros:**
+- **Pros:**
 
-  * Tons of unique features: Shape Morphingm, motion path
-  * Wonderfull Filter Animations
+  - Tons of unique features: Shape Morphingm, motion path
+  - Wonderfull Filter Animations
 
-* **Cons:**
-  * Not performant many times
-  * Losing support
+- **Cons:**
+  - Not performant many times
+  - Losing support
 
 <!--slide-->
 
@@ -533,29 +533,29 @@ There are several ways to animate assigning values to `element.style`:
 
 There are several ways to animate in css:
 
-* Native:
-  * `@keyframes` and `animation`
-  * `transition`
-* Libraries:
+- Native:
+  - `@keyframes` and `animation`
+  - `transition`
+- Libraries:
 
-  * [Animate.css](https://daneden.github.io/animate.css/)
-  * [CSShake](http://elrumordelaluz.github.io/csshake/#1)
-  * many more...
+  - [Animate.css](https://daneden.github.io/animate.css/)
+  - [CSShake](http://elrumordelaluz.github.io/csshake/#1)
+  - many more...
 
 <!--slide-->
 
-* **Pros:**
+- **Pros:**
 
-  * Native: You don’t need an external library.
-  * Performance: transforms and opacity cheap to animate.
-  * will-change property for transitions
-  * Motion along a path is coming [caniuse](https://caniuse.com/#feat=css-motion-paths)
-  * Can be controlled by media queries.
+  - Native: You don’t need an external library.
+  - Performance: transforms and opacity cheap to animate.
+  - will-change property for transitions
+  - Motion along a path is coming [caniuse](https://caniuse.com/#feat=css-motion-paths)
+  - Can be controlled by media queries.
 
-* **Cons:**
-  * Sequencing is difficult and unmaintainable
-  * No control over animation
-  * Static unless you use css properties (poor support, no polyfill)
+- **Cons:**
+  - Sequencing is difficult and unmaintainable
+  - No control over animation
+  - Static unless you use css properties (poor support, no polyfill)
 
 <!--slide-->
 
@@ -563,15 +563,15 @@ There are several ways to animate in css:
 
 Create css keyframes animations from javascript.
 
-* **Pros:**
+- **Pros:**
 
-  * All CSS aniamtion pros
-  * Grouping, Sequencing
-  * Control over animations
+  - All CSS aniamtion pros
+  - Grouping, Sequencing
+  - Control over animations
 
-* **Cons:**
-  * Poor support
-  * Sequencing much more advanced in GSAP for instance
+- **Cons:**
+  - Poor support
+  - Sequencing much more advanced in GSAP for instance
 
 <!--section-->
 
@@ -593,11 +593,11 @@ So, let's dig into animations performance in the browser to become better web an
 
 #### JavaScript
 
-* Parse code
-* Evaluate/execute code that modifies DOM elements
-  * Moving them (in the DOM tree)
-  * Adding classes
-  * Modifying `element.style` properties.
+- Parse code
+- Evaluate/execute code that modifies DOM elements
+  - Moving them (in the DOM tree)
+  - Adding classes
+  - Modifying `element.style` properties.
 
 ![](./images/render-phases-all.jpg)
 
@@ -605,8 +605,8 @@ So, let's dig into animations performance in the browser to become better web an
 
 #### Style
 
-* Match selectors (like `.head p`) to DOM elements
-* Calculate final styles for each element
+- Match selectors (like `.head p`) to DOM elements
+- Calculate final styles for each element
 
 ![](./images/render-phases-all.jpg)
 
@@ -642,11 +642,11 @@ Draw the painted layers into the screen in the right order (elements order in pa
 
 What you change matters:
 
-* Some styles need to recalulate positions (layout) on any change.
+- Some styles need to recalulate positions (layout) on any change.
 
-* Some styles only need a re-render of some pixels of a layer (paint).
+- Some styles only need a re-render of some pixels of a layer (paint).
 
-* Some styles only need to alter how an a paint layer is actually drawn into the screen (composite).
+- Some styles only need to alter how an a paint layer is actually drawn into the screen (composite).
 
 <!--slide-->
 
@@ -686,9 +686,9 @@ opacity, transform (translate, scale, rotate, skew, matrix)
 
 ### More about the composite phase
 
-* Style, Layout and Paint are based on calculations from values. They're mapping data to pixels.
-* Paint will map this data to bitmap layers, composed by pixels.
-* Composite layers are more or less DOM/CSS data rasterized to bitmaps and treated like it.
+- Style, Layout and Paint are based on calculations from values. They're mapping data to pixels.
+- Paint will map this data to bitmap layers, composed by pixels.
+- Composite layers are more or less DOM/CSS data rasterized to bitmaps and treated like it.
 
 Pixels-based operations (translate, skew, rotate) are delegated to **GPU**. They don't alter main thread blocking user interaction
 

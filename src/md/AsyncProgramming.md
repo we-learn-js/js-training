@@ -15,9 +15,9 @@
 > Synchronous code as “a bunch of statements in sequence”; so each statement in your code is executed one after the other.
 
 ```js
-console.log('First')
-console.log('Second')
-console.log('Third')
+console.log('First');
+console.log('Second');
+console.log('Third');
 // "First" "Second" "Third"
 ```
 
@@ -37,9 +37,9 @@ Consider:
 var users = jQuery
   .get('//jsonplaceholder.typicode.com/users')
   .done(function(response) {
-    console.log('first log: ' + response.length)
-  })
-console.log('second log: ' + users.length)
+    console.log('first log: ' + response.length);
+  });
+console.log('second log: ' + users.length);
 ```
 
 Output:
@@ -49,8 +49,8 @@ Output:
 "first log: 10"
 ```
 
-* Logs are not made by order of code lines
-* The result of `getUsers` is not an array of users
+- Logs are not made by order of code lines
+- The result of `getUsers` is not an array of users
 
 <!--slide-->
 
@@ -59,8 +59,8 @@ Code executed now:
 ```js
 var users = jQuery
   .get('//jsonplaceholder.typicode.com/users')
-  .done(/* callback */)
-console.log('second log: ' + users.length)
+  .done(/* callback */);
+console.log('second log: ' + users.length);
 ```
 
 Code executed later:
@@ -87,19 +87,19 @@ Consider:
 
 ```js
 function log(content) {
-  console.log(content)
+  console.log(content);
 }
 function printing() {
-  log(1)
+  log(1);
   setTimeout(function callback1() {
-    log(2)
-  }, 0)
+    log(2);
+  }, 0);
   setTimeout(function callback2() {
-    log(3)
-  }, 1000)
-  log(4)
+    log(3);
+  }, 1000);
+  log(4);
 }
-printing()
+printing();
 ```
 
 <!--slide-->
@@ -123,11 +123,11 @@ To get it, we need to dive into runtime concepts.
 
 Javascript engine is composed of:
 
-* **Stack**: Function calls form a stack of frames.
+- **Stack**: Function calls form a stack of frames.
 
-* **Heap**: Objects are allocated in a heap which is just a name to denote a large mostly unstructured region of memory.
+- **Heap**: Objects are allocated in a heap which is just a name to denote a large mostly unstructured region of memory.
 
-* **Queue**: A JavaScript runtime contains a message queue, which is a list of messages to be processed. **A function is associated with each message.** When the stack is empty, a message is taken out of the queue and processed.
+- **Queue**: A JavaScript runtime contains a message queue, which is a list of messages to be processed. **A function is associated with each message.** When the stack is empty, a message is taken out of the queue and processed.
 
 <!--slide-->
 
@@ -142,7 +142,7 @@ Note: source here: http://liberablogo.com/wp-content/uploads/2017/01/chrome.png
 
 ```js
 while (queue.waitForMessage()) {
-  queue.processNextMessage()
+  queue.processNextMessage();
 }
 ```
 
@@ -156,19 +156,19 @@ Let's how it works with our code
 
 ```js
 function log(content) {
-  console.log(content)
+  console.log(content);
 }
 function printing() {
-  log(1)
+  log(1);
   setTimeout(function callback1() {
-    log(2)
-  }, 0)
+    log(2);
+  }, 0);
   setTimeout(function callback2() {
-    log(3)
-  }, 1000)
-  log(4)
+    log(3);
+  }, 1000);
+  log(4);
 }
-printing()
+printing();
 ```
 
 [http://latentflip.com/loupe/](http://latentflip.com/loupe/?code=ZnVuY3Rpb24gbG9nIChjb250ZW50KSB7CiAgY29uc29sZS5sb2coY29udGVudCkKfQpmdW5jdGlvbiBwcmludGluZygpIHsKICAgbG9nKDEpOwogICBzZXRUaW1lb3V0KGZ1bmN0aW9uIGNhbGxiYWNrMSgpIHsgbG9nKDIpOyB9LCAwKTsKICAgc2V0VGltZW91dChmdW5jdGlvbiBjYWxsYmFjazIoKSB7IGxvZygzKTsgfSwgMTAwMCk7CiAgIGxvZyg0KTsKfQpwcmludGluZygpOwo%3D!!!)
@@ -190,10 +190,10 @@ Consider:
 ```js
 function times(count, func, callback) {
   if (!count) {
-    callback()
+    callback();
   } else {
-    func(count)
-    times(--count, func, callback)
+    func(count);
+    times(--count, func, callback);
   }
 }
 ```
@@ -209,12 +209,12 @@ Make it asynchronous, non blocking:
 ```js
 function times(count, func, callback) {
   if (!count) {
-    callback()
+    callback();
   } else {
-    func(count)
+    func(count);
     setTimeout(function posponedTimes() {
-      times(--count, func, callback)
-    }, 0)
+      times(--count, func, callback);
+    }, 0);
   }
 }
 ```
@@ -229,9 +229,9 @@ Consider:
 
 ```js
 function traverseRecursion(current, depth) {
-  var children = current.childNodes
+  var children = current.childNodes;
   for (var i = 0, len = children.length; i < len; i++) {
-    traverseRecursion(children[i], depth + 1)
+    traverseRecursion(children[i], depth + 1);
   }
 }
 ```
@@ -242,14 +242,14 @@ Make it asynchronous, non blocking:
 
 ```js
 function traverseRecursion(current, depth) {
-  var children = current.childNodes
+  var children = current.childNodes;
   for (var i = 0, len = children.length; i < len; i++) {
     setTimeout(
       (function(current, depth) {
-        traverseRecursion(current, depth)
+        traverseRecursion(current, depth);
       })(children[i], depth + 1),
-      0
-    )
+      0,
+    );
   }
 }
 ```
@@ -288,31 +288,31 @@ You've probably ended up with that kind of code
 
 ```js
 function getUsersPhotos(callback, limit) {
-  var result = []
-  var albumsLeftToProcess = 0
+  var result = [];
+  var albumsLeftToProcess = 0;
   getUsers(function(users) {
     users.forEach(function(user) {
       getUserAlbums(
         user.id,
         function(albums) {
           albums.forEach(function(album) {
-            albumsLeftToProcess++
+            albumsLeftToProcess++;
             getAlbumPhotos(
               album.id,
               function(photos) {
                 photos.forEach(function(photo) {
-                  result.push(photo)
-                })
-                --albumsLeftToProcess || callback(result)
+                  result.push(photo);
+                });
+                --albumsLeftToProcess || callback(result);
               },
-              limit
-            )
-          })
+              limit,
+            );
+          });
         },
-        limit
-      )
-    })
-  }, limit)
+        limit,
+      );
+    });
+  }, limit);
 }
 ```
 
@@ -357,15 +357,15 @@ http://callbackhell.com/
 Let's see how it looks like:
 
 ```js
-var promise = getUsers()
+var promise = getUsers();
 promise.then(
   function(users) {
-    console.log(users)
+    console.log(users);
   },
   function(e) {
-    console.error(e.message)
-  }
-)
+    console.error(e.message);
+  },
+);
 ```
 
 Note: `getUsers` returns a promise. Promise always provides functions `then` and `catch`.
@@ -376,36 +376,36 @@ Note: `getUsers` returns a promise. Promise always provides functions `then` and
 
 ### States of a promise
 
-* **pending** - Hasn't resolved or rejected yet
-* **settled** - Has resolved or rejected
-  * **resolved** - The action relating to the promise succeeded
-  * **rejected** - The action relating to the promise failed
+- **pending** - Hasn't resolved or rejected yet
+- **settled** - Has resolved or rejected
+  - **resolved** - The action relating to the promise succeeded
+  - **rejected** - The action relating to the promise failed
 
 <!--slide-->
 
 ```js
-var promise = getUsers() // Promise is pending
+var promise = getUsers(); // Promise is pending
 promise.then(
   function(users) {
     // Promise is resolved and settled
-    console.log(users)
+    console.log(users);
   },
   function(e) {
     // Promise is rejected and settled
-    console.error(e.message)
-  }
-)
+    console.error(e.message);
+  },
+);
 ```
 
 <!--slide-->
 
 ### Immutability of settled promises
 
-* A promise is resolved with a **value**, passed to **resolution handler**
+- A promise is resolved with a **value**, passed to **resolution handler**
 
-* A promise is rejected for a **reason** or **a thrown exception**, passed to the **rejection handler**
+- A promise is rejected for a **reason** or **a thrown exception**, passed to the **rejection handler**
 
-* Once a promise is settled (resolved or rejected), it's immutable and can't be **resolved** with a different value or **rejected** afterwards
+- Once a promise is settled (resolved or rejected), it's immutable and can't be **resolved** with a different value or **rejected** afterwards
 
 [Check full specs](https://promisesaplus.com/)
 
@@ -425,13 +425,13 @@ Then, so there is no race condition between an asynchronous operation completing
 
 ```js
 function reqListener() {
-  console.log(this.responseText)
+  console.log(this.responseText);
 }
 
-var oReq = new XMLHttpRequest()
-oReq.addEventListener('load', reqListener)
-oReq.open('GET', 'http://www.example.org/example.txt')
-oReq.send()
+var oReq = new XMLHttpRequest();
+oReq.addEventListener('load', reqListener);
+oReq.open('GET', 'http://www.example.org/example.txt');
+oReq.send();
 ```
 
 If `load` handler is attached **after** the response, the handler **will not** be executed
@@ -442,12 +442,12 @@ If `load` handler is attached **after** the response, the handler **will not** b
 
 ```js
 function reqListener(response) {
-  console.log(response.text())
+  console.log(response.text());
 }
 
-var oReq = fetch('flowers.jpg')
+var oReq = fetch('flowers.jpg');
 
-oReq.then(reqListener)
+oReq.then(reqListener);
 ```
 
 If `then` handler is attached **after** the response, the handler **will** be executed
@@ -466,12 +466,12 @@ If `then` handler is attached **after** the response, the handler **will** be ex
 getUsers() // returns a promise
   .then(
     function(users) {
-      console.log(users)
+      console.log(users);
     },
     function(e) {
-      console.error(e.message)
-    }
-  )
+      console.error(e.message);
+    },
+  );
 ```
 
 <!--slide-->
@@ -483,12 +483,12 @@ getUsers() // returns a promise
 ```js
 getUsers().then(
   function(users) {
-    console.log(users)
+    console.log(users);
   },
   function(e) {
-    console.error(e.message)
-  }
-)
+    console.error(e.message);
+  },
+);
 ```
 
 <!--slide-->
@@ -500,12 +500,12 @@ getUsers().then(
 ```js
 getUsers().then(
   function(users) {
-    console.log(users)
+    console.log(users);
   },
   function(e) {
-    console.error(e.message)
-  }
-)
+    console.error(e.message);
+  },
+);
 ```
 
 <!--slide-->
@@ -520,12 +520,12 @@ The returned value in the attached handler will resolved a newly created promise
 getUsers()
   // promise 1
   .then(function(users) {
-    return users.filter(user => !!user.active)
+    return users.filter(user => !!user.active);
   })
   // promise 2
   .then(function(activeUsers) {
-    console.log(activeUsers)
-  })
+    console.log(activeUsers);
+  });
 // promise 3
 ```
 
@@ -543,21 +543,21 @@ getUsers()
 getUsers() // promise 1
   .then(
     function onResolve1(users) {
-      throw new Error('No users')
-      return users.filter(user => !!user.active)
+      throw new Error('No users');
+      return users.filter(user => !!user.active);
     },
     function onReject1(e) {
-      console.error(e)
-    }
+      console.error(e);
+    },
   ) // promise 2
   .then(
     function onResolve2(activeUsers) {
-      console.log(activeUsers)
+      console.log(activeUsers);
     },
     function onReject2(e) {
-      console.error(e)
-    }
-  ) // promise 3
+      console.error(e);
+    },
+  ); // promise 3
 ```
 
 Only `onResolve1` and `onRejection2` will be called
@@ -572,17 +572,17 @@ Only `onResolve1` and `onRejection2` will be called
 getUsers()
   // promise 1, of getUsersPhotos
   .then(function(users) {
-    return users.filter(user => !!user.active)
+    return users.filter(user => !!user.active);
   })
   // promise 2, of active users
   .then(function(activeUsers) {
-    return getAlbums(activeUsers[0].id)
+    return getAlbums(activeUsers[0].id);
     // promise 3, of first user's albums
   })
   // promise 3, of first user's albums
   .then(function(firstActiveUserAlbums) {
-    console.log(firstActiveUserAlbums)
-  })
+    console.log(firstActiveUserAlbums);
+  });
 // promise 4, of undefined (nothing was returned)
 ```
 
@@ -597,7 +597,7 @@ getUsers()
 ```js
 new Promise(function(resolve, reject) {
   /* code */
-})
+});
 ```
 
 > In ES6, `Promise` is a new Object that can be instantiated
@@ -607,11 +607,11 @@ new Promise(function(resolve, reject) {
 ```js
 var promise = new Promise(function(resolve, reject) {
   if (Math.random() >= 0.5) {
-    resolve(true)
+    resolve(true);
   } else {
-    reject("It's < 0.5")
+    reject("It's < 0.5");
   }
-})
+});
 ```
 
 <!--slide-->
@@ -641,14 +641,14 @@ Becomes:
 var getUsers = function(limit) {
   return new Promise(function(resolve, reject) {
     jQuery.get('//jsonplaceholder.typicode.com/users').done(function(response) {
-      resolve(response.slice(0, limit))
-    })
-  })
-}
+      resolve(response.slice(0, limit));
+    });
+  });
+};
 
 getUsers(5).then(function(users) {
-  console.log(users)
-})
+  console.log(users);
+});
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -680,11 +680,11 @@ var printUserFirstPhotos = function() {
   getOneUser().then(function(user) {
     return getUserAlbum(user.id).then(function(album) {
       return getAlbumPhotos(album.id).then(function(photos) {
-        console.log(photos.length)
-      })
-    })
-  })
-}
+        console.log(photos.length);
+      });
+    });
+  });
+};
 ```
 
 You are still stuck with pyramides and not understanding promises...
@@ -698,8 +698,8 @@ var printUserFirstPhotos = function() {
   getOneUser()
     .then(user => getUserAlbum(user.id))
     .then(album => getAlbumPhotos(album.id))
-    .then(photos => console.log(photos.length))
-}
+    .then(photos => console.log(photos.length));
+};
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
@@ -714,18 +714,18 @@ var printUserFirstPhotos = function() {
     .then(album => album.id)
     .then(getAlbumPhotos)
     .then(photos => photos.length)
-    .then(console.log)
-}
+    .then(console.log);
+};
 ```
 
 <!--section-->
 
 ### `Promise` static methods
 
-* Promise.all()
-* Promise.race()
-* Promise.reject()
-* Promise.resolve()
+- Promise.all()
+- Promise.race()
+- Promise.reject()
+- Promise.resolve()
 
 <!--slide-->
 
@@ -736,25 +736,25 @@ var printUserFirstPhotos = function() {
 This code
 
 ```js
-var promise = Promise.resolve(5)
+var promise = Promise.resolve(5);
 ```
 
 is the same as
 
 ```js
 var promise = new Promise(function(resolve) {
-  resolve(5)
-})
+  resolve(5);
+});
 ```
 
 <!--slide-->
 
 ```js
 var getSquare = function(x) {
-  return Promise.resolve(x * x)
-}
+  return Promise.resolve(x * x);
+};
 
-getSquare(4).then(square => console.log(square))
+getSquare(4).then(square => console.log(square));
 ```
 
 <!--slide-->
@@ -766,15 +766,15 @@ getSquare(4).then(square => console.log(square))
 This code
 
 ```js
-var promise = Promise.reject('Some error happened')
+var promise = Promise.reject('Some error happened');
 ```
 
 is the same as
 
 ```js
 var promise = new Promise(function(resolve, reject) {
-  reject('Some error happened')
-})
+  reject('Some error happened');
+});
 ```
 
 <!--slide-->
@@ -788,10 +788,10 @@ var promise = Promise.all([
   Promise.resolve(4),
   Promise.resolve(5),
   Promise.resolve('a'),
-  Promise.resolve({})
-])
+  Promise.resolve({}),
+]);
 
-promise.then(values => console.log(values)) // [4,5,"a",{}]
+promise.then(values => console.log(values)); // [4,5,"a",{}]
 ```
 
 <!--slide-->
@@ -803,15 +803,15 @@ var getUserPhotos = function(userId) {
   return getUser(userId)
     .then(user => getUserAlbum(user.id))
     .then(album => getAlbumPhotos(album.id))
-    .then(photos => console.log(photos))
-}
+    .then(photos => console.log(photos));
+};
 
 Promise.all([
   getUserPhotos(2),
   getUserPhotos(4),
   getUserPhotos(5),
-  getUserPhotos(8)
-])
+  getUserPhotos(8),
+]);
 ```
 
 Actually, it doesn't execute anything...
@@ -828,12 +828,12 @@ Actually, it doesn't execute anything...
 var getTimeoutPromise = function(time) {
   return new Promise(function(resolve, reject) {
     setTimeout(function() {
-      reject('Timeout')
-    }, time)
-  })
-}
+      reject('Timeout');
+    }, time);
+  });
+};
 
-var promise = Promise.race([getUserPhotos(), getTimeoutPromise(3000)])
+var promise = Promise.race([getUserPhotos(), getTimeoutPromise(3000)]);
 ```
 
 If `getUserPhotos()` lasts more than 3 seconds, `promise` will be rejected with reason "Timeout"
@@ -843,15 +843,15 @@ If `getUserPhotos()` lasts more than 3 seconds, `promise` will be rejected with 
 #### Remember: promises are... **always asynchronous**
 
 ```js
-console.log('###### case 1 #####')
+console.log('###### case 1 #####');
 Promise.resolve(1)
   .then(x => console.log('then 1.0'))
-  .then(x => console.log('then 1.1'))
+  .then(x => console.log('then 1.1'));
 
-console.log('###### case 2 #####')
+console.log('###### case 2 #####');
 Promise.resolve(1)
   .then(x => console.log('then 2.0'))
-  .then(x => console.log('then 2.1'))
+  .then(x => console.log('then 2.1'));
 
 // "###### case 1 #####"
 // "###### case 2 #####"
@@ -872,21 +872,21 @@ Let's redo our practice about callbacks to play with promises.
 ```js
 var getUsers = function(limit) {
   /* Promise */
-}
+};
 var getUserAlbums = function(userId, limit) {
   /* Promise */
-}
+};
 var getAlbumPhotos = function(albumId, limit) {
   /* Promise */
-}
+};
 
 function getUsersPhotos(limit) {
   // YOUR CODE GOES HERE
 }
 
 getUsersPhotos(6).then(photos =>
-  console.log('Number of photos: ' + photos.length)
-)
+  console.log('Number of photos: ' + photos.length),
+);
 // OUTPUT : "Number of photos: 216"
 ```
 
@@ -904,7 +904,7 @@ function getUsersPhotos(limit) {
     .then(usersAlbums => [].concat(...usersAlbums))
     .then(albums => albums.map(album => getAlbumPhotos(album.id, limit)))
     .then(photosPromises => Promise.all(photosPromises))
-    .then(albumsPhotos => [].concat(...albumsPhotos))
+    .then(albumsPhotos => [].concat(...albumsPhotos));
 }
 ```
 
@@ -923,7 +923,7 @@ It behaves the same as calling `Promise.prototype.then(undefined, onReject)`.
 ```js
 getUsersPhotos(6)
   .then(photos => console.log('Number of photos: ' + photos.length))
-  .catch(e => console.log('getUsersPhotos call failed'))
+  .catch(e => console.log('getUsersPhotos call failed'));
 ```
 
 [MDN // Promise.prototype.catch()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)
@@ -964,7 +964,7 @@ function getUsersPhotos(limit) {
 This snippet...
 
 ```js
-getUsersPhotos(limit).catch(onReject)
+getUsersPhotos(limit).catch(onReject);
 ```
 
 ... is **exactly THE SAME** as
@@ -981,13 +981,13 @@ On the other hand. This snippet...
 ```js
 getUsersPhotos(limit)
   .then(onResolve)
-  .catch(onReject)
+  .catch(onReject);
 ```
 
 ... is **NOT** the same as:
 
 ```js
-getUsersPhotos(limit).then(onResolve, onReject)
+getUsersPhotos(limit).then(onResolve, onReject);
 ```
 
 <!--slide-->
@@ -997,7 +997,7 @@ The snippet...
 ```js
 getUsersPhotos(limit)
   .then(onResolve)
-  .catch(onReject)
+  .catch(onReject);
 ```
 
 It's **exactly THE SAME** as
@@ -1005,7 +1005,7 @@ It's **exactly THE SAME** as
 ```js
 getUsersPhotos(limit)
   .then(onResolve)
-  .then(null, onReject)
+  .then(null, onReject);
 ```
 
 Remember that the `onReject` catches errors from **'previous'** promise that has not a **rejection handler**.
@@ -1017,30 +1017,30 @@ Remember that the `onReject` catches errors from **'previous'** promise that has
 What would be the output of this code?
 
 ```js
-var promise = Promise.resolve(1)
+var promise = Promise.resolve(1);
 
 promise
   .then(x => {
-    return x + 1
+    return x + 1;
   })
   .then(x => {
-    return x + 1
-  })
+    return x + 1;
+  });
 
 var promise2 = promise.then(x => {
-  return x + 1
-})
+  return x + 1;
+});
 var promise3 = promise2
   .then(x => {
-    throw 'Error'
+    throw 'Error';
   })
   .catch(x => {
-    return x
-  })
+    return x;
+  });
 
-promise.then(console.log)
-promise2.then(console.log)
-promise3.then(console.log)
+promise.then(console.log);
+promise2.then(console.log);
+promise3.then(console.log);
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/sigefo?embed
@@ -1048,30 +1048,30 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Async
 <!--slide-->
 
 ```js
-var promise = Promise.resolve(1) // Promise 1: value(1)
+var promise = Promise.resolve(1); // Promise 1: value(1)
 
 promise
   .then(x => {
-    return x + 1
+    return x + 1;
   }) // Promise 2: value(2)
   .then(x => {
-    return x + 1
-  }) // Promise 3: value(3)
+    return x + 1;
+  }); // Promise 3: value(3)
 
 var promise2 = promise.then(x => {
-  return x + 1
-}) // Promise 4: value(2)
+  return x + 1;
+}); // Promise 4: value(2)
 var promise3 = promise2
   .then(x => {
-    throw 'Error'
+    throw 'Error';
   }) // Promise 5: reason("Error")
   .catch(x => {
-    return x
-  }) // Promise 5: value("Error")
+    return x;
+  }); // Promise 5: value("Error")
 
-promise.then(console.log) // 1
-promise2.then(console.log) // 2
-promise3.then(console.log) // 3
+promise.then(console.log); // 1
+promise2.then(console.log); // 2
+promise3.then(console.log); // 3
 ```
 
 <!--slide-->
@@ -1110,17 +1110,17 @@ getUsersPhotos(6)
 getJSON().then(
   function() {
     // resolution handler
-    console.log('JSON loaded !')
+    console.log('JSON loaded !');
   },
   function(e) {
     // rejection handler
-    console.log('Error !')
+    console.log('Error !');
   },
   function(progress) {
     // progress handler
-    console.log(progress + '% loaded !')
-  }
-)
+    console.log(progress + '% loaded !');
+  },
+);
 ```
 
 <!--slide-->
@@ -1128,15 +1128,15 @@ getJSON().then(
 #### The deferred pattern (deferred objects)
 
 ```js
-var deferred = Q.defer()
+var deferred = Q.defer();
 FS.readFile('foo.txt', 'utf-8', function(error, text) {
   if (error) {
-    deferred.reject(new Error(error))
+    deferred.reject(new Error(error));
   } else {
-    deferred.resolve(text)
+    deferred.resolve(text);
   }
-})
-return deferred.promise
+});
+return deferred.promise;
 ```
 
 <!--slide-->
@@ -1150,20 +1150,20 @@ return deferred.promise
 ```js
 FS.readFile('foo.txt', 'utf-8', function(error, text) {
   /* ... */
-})
+});
 ```
 
 ```js
-var readFile = Q.denodeify(FS.readFile)
+var readFile = Q.denodeify(FS.readFile);
 readFile('foo.txt', 'utf-8')
   .then(onResolve)
-  .catch(onReject)
+  .catch(onReject);
 ```
 
 ```js
 Q.nfcall(FS.readFile, 'foo.txt', 'utf-8')
   .then(onResolve)
-  .catch(onReject)
+  .catch(onReject);
 ```
 
 [Q.js](https://github.com/kriskowal/q)
@@ -1174,12 +1174,12 @@ Q.nfcall(FS.readFile, 'foo.txt', 'utf-8')
 
 ```js
 var getUsers = function(callback, limit) {
-  window.fetch('//jsonplaceholder.typicode.com/users').asCallback(callback)
-}
+  window.fetch('//jsonplaceholder.typicode.com/users').asCallback(callback);
+};
 
 getUsers(function(err, result) {
   /* ... */
-}, 5)
+}, 5);
 ```
 
 [Bluebird](http://bluebirdjs.com/docs/getting-started.html)
@@ -1204,17 +1204,17 @@ Promise
 
 ### Promise libraries
 
-* [RSVP.js](https://github.com/tildeio/rsvp.js/)
-* [Q.js](https://github.com/kriskowal/q)
-* [Bluebird](http://bluebirdjs.com/docs/getting-started.html)
+- [RSVP.js](https://github.com/tildeio/rsvp.js/)
+- [Q.js](https://github.com/kriskowal/q)
+- [Bluebird](http://bluebirdjs.com/docs/getting-started.html)
 
 <!--slide-->
 
 ### Promise based new APIs
 
-* [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-* [Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
-* [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API)
+- [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
+- [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API)
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
@@ -1246,13 +1246,13 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Async
 function getFirstCharNumber(text) {
   return firstChar(text)
     .then(upper)
-    .then(text => getChartCode(text)())
+    .then(text => getChartCode(text)());
 }
 ```
 
 ```js
 function getFirstCharNumber(text) {
-  return Promise.resolve(upper(text)).then(text => getChartCode(text)())
+  return Promise.resolve(upper(text)).then(text => getChartCode(text)());
 }
 ```
 
@@ -1276,10 +1276,10 @@ Simple value promise:
 function resolveAfter2Seconds(x) {
   return new Promise(resolve => {
     setTimeout(() => {
-      console.log('resolved: ' + x)
-      resolve(x)
-    }, 2000)
-  })
+      console.log('resolved: ' + x);
+      resolve(x);
+    }, 2000);
+  });
 }
 ```
 
@@ -1287,14 +1287,14 @@ function resolveAfter2Seconds(x) {
 
 ```js
 async function add1(x) {
-  var a = await resolveAfter2Seconds(20)
-  var b = await resolveAfter2Seconds(30)
-  return x + a + b
+  var a = await resolveAfter2Seconds(20);
+  var b = await resolveAfter2Seconds(30);
+  return x + a + b;
 }
 
 add1(10).then(v => {
-  console.log(v) // prints 60 after 4 seconds.
-})
+  console.log(v); // prints 60 after 4 seconds.
+});
 
 // "resolved: 20"
 // "resolved: 30"
@@ -1311,14 +1311,14 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Async
 
 ```js
 async function add2(x) {
-  var a = resolveAfter2Seconds(20)
-  var b = resolveAfter2Seconds(30)
-  return x + (await a) + (await b)
+  var a = resolveAfter2Seconds(20);
+  var b = resolveAfter2Seconds(30);
+  return x + (await a) + (await b);
 }
 
 add2(10).then(v => {
-  console.log(v) // prints 60 after 2 seconds.
-})
+  console.log(v); // prints 60 after 2 seconds.
+});
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/AsyncProgramming/coyovas?embed
@@ -1332,12 +1332,12 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Async
 ```js
 async function f3() {
   try {
-    var z = await Promise.reject(30)
+    var z = await Promise.reject(30);
   } catch (e) {
-    console.log(e) // 30
+    console.log(e); // 30
   }
 }
-f3()
+f3();
 ```
 
 <!--slide-->
@@ -1348,23 +1348,23 @@ f3()
 function getProcessedData(url) {
   return downloadData(url) // returns a promise
     .catch(e => {
-      return downloadFallbackData(url) // returns a promise
+      return downloadFallbackData(url); // returns a promise
     })
     .then(v => {
-      return processDataInWorker(v) // returns a promise
-    })
+      return processDataInWorker(v); // returns a promise
+    });
 }
 ```
 
 ```js
 async function getProcessedData(url) {
-  let v
+  let v;
   try {
-    v = await downloadData(url)
+    v = await downloadData(url);
   } catch (e) {
-    v = await downloadFallbackData(url)
+    v = await downloadFallbackData(url);
   }
-  return processDataInWorker(v)
+  return processDataInWorker(v);
 }
 ```
 
@@ -1372,15 +1372,15 @@ async function getProcessedData(url) {
 
 ## Must Read/Watch
 
-* [Promise/A+ Specification](https://promisesaplus.com/)
+- [Promise/A+ Specification](https://promisesaplus.com/)
 
-* [Nolan Lawson - We have a problem with promises](https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html)
+- [Nolan Lawson - We have a problem with promises](https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html)
 
-* [Fun Fun Function - Promises](https://www.youtube.com/watch?v=2d7s3spWAzo)
+- [Fun Fun Function - Promises](https://www.youtube.com/watch?v=2d7s3spWAzo)
 
-* [Jake Archivald - Tasks, microtasks, queues and schedules](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/)
+- [Jake Archivald - Tasks, microtasks, queues and schedules](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/)
 
-* [You-Dont-Know-JS - async & performance](https://github.com/getify/You-Dont-Know-JS/tree/master/async%20&%20performance)
+- [You-Dont-Know-JS - async & performance](https://github.com/getify/You-Dont-Know-JS/tree/master/async%20&%20performance)
 
 <!--section-->
 
@@ -1395,15 +1395,15 @@ Returns a promise that will resolved after given milliseconds.
 ```js
 Promise.delay = function(ms) {
   // YOUR CODE GOES HERE
-}
+};
 
 Promise.delay(1000).then(function() {
-  console.log('delayed 1000ms')
-})
+  console.log('delayed 1000ms');
+});
 
 setTimeout(function() {
-  console.log('delayed 500ms')
-}, 500)
+  console.log('delayed 500ms');
+}, 500);
 
 // OUTPUT "delayed 500ms" "delayed 1000ms"
 ```
@@ -1417,9 +1417,9 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Async
 ```js
 Promise.delay = function(ms) {
   return new Promise(function(resolve) {
-    setTimeout(resolve, ms)
-  })
-}
+    setTimeout(resolve, ms);
+  });
+};
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -1459,17 +1459,17 @@ We could only implement it with:
 ```js
 Promise.series([
   function() {
-    getDelayed(500, 'promise 1')
+    getDelayed(500, 'promise 1');
   },
   function() {
-    getDelayed(400, 'promise 2')
+    getDelayed(400, 'promise 2');
   },
   function() {
-    getDelayed(300, 'promise 3')
-  }
-])
+    getDelayed(300, 'promise 3');
+  },
+]);
 
 Promise.series = function(promiseConstructors) {
   // YOUR CODE GOES HERE
-}
+};
 ```

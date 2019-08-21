@@ -27,14 +27,14 @@ Note: That definition implies that there is a lexing phase of the engine which i
 > Accesible from everywhere in the program.
 
 ```js
-var a = 1
+var a = 1;
 function print() {
-  console.log(a)
-  a = 2
+  console.log(a);
+  a = 2;
 }
 
-print() // 1
-console.log(a) // 2
+print(); // 1
+console.log(a); // 2
 ```
 
 Note:
@@ -47,14 +47,14 @@ Note:
 > Accesible only from the inner function where it was declared
 
 ```js
-var a = 1
+var a = 1;
 function print() {
-  var b = 2
-  console.log(a, b)
+  var b = 2;
+  console.log(a, b);
 }
 
-print() // 1, 2
-console.log(a, b) // "ReferenceError: b is not defined
+print(); // 1, 2
+console.log(a, b); // "ReferenceError: b is not defined
 ```
 
 Note:
@@ -67,17 +67,17 @@ Note:
 > Accesible only from the inner block where is was declared. Introduced with ES6.
 
 ```js
-var a = 1
+var a = 1;
 
 function print() {
   if (true) {
-    let b = 2
+    let b = 2;
   }
-  console.log(a, b)
+  console.log(a, b);
 }
 
-print() // "ReferenceError: b is not defined
-console.log(a, b) // "ReferenceError: b is not defined
+print(); // "ReferenceError: b is not defined
+console.log(a, b); // "ReferenceError: b is not defined
 ```
 
 Note: `b` is declared in the `if` block `{}`. Then it can only be accessed from it's inner code, not by the `print` body `function () {}`. `let` is used to declare `b` as a block scoped varaibles. Declaring `b` with `var` would make it to belong to the function's scope.
@@ -91,32 +91,32 @@ Note: `b` is declared in the `if` block `{}`. Then it can only be accessed from 
 <!--slide-->
 
 ```js
-var a = 1
+var a = 1;
 
 function print() {
   if (true) {
-    let b = 2
+    let b = 2;
     var printMore = function() {
-      var c = 3
+      var c = 3;
       for (let i = 0; i < 1; i++) {
-        let d = 4
-        console.log(a, b, c, d, i)
+        let d = 4;
+        console.log(a, b, c, d, i);
       }
-    }
-    printMore()
+    };
+    printMore();
   }
 }
 
-print() // 1, 2, 3, 4, 0
+print(); // 1, 2, 3, 4, 0
 ```
 
 Note:
 
-* global scope has access to `a`
-* `print`: function scope has access to `a`
-* `if`: block scope has access to `a`, `b`
-* `printMore`: function scope as access to `a`, `b`, `c`
-* `for`: block scope as access to `a`, `b`, `c`, `d`, `i`
+- global scope has access to `a`
+- `print`: function scope has access to `a`
+- `if`: block scope has access to `a`, `b`
+- `printMore`: function scope as access to `a`, `b`, `c`
+- `for`: block scope as access to `a`, `b`, `c`, `d`, `i`
 
 <!--slide-->
 
@@ -125,13 +125,13 @@ Note:
 > Scope lookup during the lexical phase also stops once it finds the first match. This means you can shadow a variable further up the scope chain.
 
 ```js
-var a = 1
+var a = 1;
 function print() {
-  var a = 2 // shadows global 'a' declaration
-  console.log(a)
+  var a = 2; // shadows global 'a' declaration
+  console.log(a);
 }
-print() // 2
-console.log(a) // 1
+print(); // 2
+console.log(a); // 1
 ```
 
 Note:
@@ -144,14 +144,14 @@ In `print`, a is a function scoped variable. Any assignment will not affect `a` 
 > In Javascript, `var` and `function(){}` declarations are hoisted to the top of the current scope; and hence, those identifiers are available to any code in that scope.
 
 ```js
-var a = 1
+var a = 1;
 function print() {
-  console.log(a)
-  var a = 2 // shadows parent 'a' declaration
-  console.log(a)
+  console.log(a);
+  var a = 2; // shadows parent 'a' declaration
+  console.log(a);
 }
-print() // undefined, 2
-console.log(a) // 1
+print(); // undefined, 2
+console.log(a); // 1
 ```
 
 Note: Value of `a` is undefined on first `console.log` but we could assume that if should have the value of `a` in global scope.
@@ -161,25 +161,25 @@ Note: Value of `a` is undefined on first `console.log` but we could assume that 
 Raw code
 
 ```js
-var a = 1
+var a = 1;
 function print() {
-  console.log(a)
-  var a = 2 // shadows parent 'a' declaration
-  console.log(a)
+  console.log(a);
+  var a = 2; // shadows parent 'a' declaration
+  console.log(a);
 }
-print() // undefined, 2
-console.log(a) // 1
+print(); // undefined, 2
+console.log(a); // 1
 ```
 
 Compiled code
 
 ```js
-var a = 1
+var a = 1;
 function print() {
-  var a // a was hoisted
-  console.log(a) // undefined
-  a = 2
-  console.log(a) // 2
+  var a; // a was hoisted
+  console.log(a); // undefined
+  a = 2;
+  console.log(a); // 2
 }
 ```
 
@@ -193,12 +193,12 @@ Note: behind the scene, a is hoisted on the top of the function body.
 
 ```js
 function doSomething() {
-  console.log(bar) // undefined
-  console.log(foo) // ReferenceError
-  var bar = 1
-  let foo = 2
+  console.log(bar); // undefined
+  console.log(foo); // ReferenceError
+  var bar = 1;
+  let foo = 2;
 }
-doSomething()
+doSomething();
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
@@ -207,25 +207,25 @@ doSomething()
 
 ```js
 function test() {
-  var foo = 33
+  var foo = 33;
   if (true) {
-    let foo = foo + 55 // ReferenceError
+    let foo = foo + 55; // ReferenceError
   }
 }
-test()
+test();
 ```
 
 ```js
-let a = 1
+let a = 1;
 
 function print() {
-  console.log(a) // ReferenceError: a is not defined
+  console.log(a); // ReferenceError: a is not defined
 
-  let a = 2 // shadows parent 'a' declaration
-  console.log(a)
+  let a = 2; // shadows parent 'a' declaration
+  console.log(a);
 }
 
-print() // ReferenceError: a is not defined
+print(); // ReferenceError: a is not defined
 ```
 
 [MDN // Temporal Dead Zone and errors with let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_Dead_Zone_and_errors_with_let)
@@ -242,25 +242,25 @@ Raw code
 
 ```js
 function increment(num) {
-  result = num + 1
-  return result
+  result = num + 1;
+  return result;
 }
 
-console.log(increment(3)) // 4
-console.log(result) // 4
+console.log(increment(3)); // 4
+console.log(result); // 4
 ```
 
 Equivalent code
 
 ```js
-var result
+var result;
 function increment(num) {
-  result = num + 1
-  return result
+  result = num + 1;
+  return result;
 }
 
-console.log(increment(3)) // 4
-console.log(result) // 4
+console.log(increment(3)); // 4
+console.log(result); // 4
 ```
 
 Note: as not declared with `var`, `const` or `let`, the `result` variable is considered global and declared in the global scope. That´s a clear unexpected side effect.
@@ -270,11 +270,11 @@ Note: as not declared with `var`, `const` or `let`, the `result` variable is con
 What would be the output of this code?
 
 ```js
-;(function() {
-  var a = (b = 5)
-})()
+(function() {
+  var a = (b = 5);
+})();
 
-console.log(b)
+console.log(b);
 ```
 
 Note: variable a is declared using the keyword var. What this means is that a is a local variable of the function. On the contrary, b is assigned to the global scope.
@@ -284,23 +284,23 @@ Note: variable a is declared using the keyword var. What this means is that a is
 `var` declares `a` but `b` is declared as a global variable...
 
 ```js
-;(function() {
-  var a = (b = 5)
-})()
+(function() {
+  var a = (b = 5);
+})();
 
-console.log(b) // 5
+console.log(b); // 5
 ```
 
 Equivalent code:
 
 ```js
-var b
-;(function() {
-  var a
-  a = b = 5
-})()
+var b;
+(function() {
+  var a;
+  a = b = 5;
+})();
 
-console.log(b) // 5
+console.log(b); // 5
 ```
 
 <!--slide-->
@@ -309,18 +309,18 @@ console.log(b) // 5
 
 ```js
 // WRONG
-;(function() {
-  var a = (b = 5)
-})()
+(function() {
+  var a = (b = 5);
+})();
 
-console.log(b) // 5
+console.log(b); // 5
 
 // GOOD
-;(function() {
-  var a, b
-  a = b = 5
-})()
-console.log(b) // b is not defined
+(function() {
+  var a, b;
+  a = b = 5;
+})();
+console.log(b); // b is not defined
 ```
 
 <!--section-->
@@ -339,15 +339,15 @@ Here's an example:
 
 ```js
 function foo() {
-  var a = 2
+  var a = 2;
   return function() {
-    console.log(a)
-  }
+    console.log(a);
+  };
 }
 
-var myFunc = foo() // function () { console.log( a ); }
+var myFunc = foo(); // function () { console.log( a ); }
 
-myFunc() // 2
+myFunc(); // 2
 ```
 
 <!--slide-->
@@ -357,17 +357,17 @@ Here's a little more complicated one:
 ```js
 function foo(a) {
   return function() {
-    console.log(++a)
-  }
+    console.log(++a);
+  };
 }
 
-const myFunc5 = foo(5)
-const myFunc8 = foo(8)
+const myFunc5 = foo(5);
+const myFunc8 = foo(8);
 
-myFunc5() // 6 ( 5 + 1 )
-myFunc8() // 9 ( 8 + 1 )
-myFunc5() // 7 ( 6 + 1 )
-myFunc8() // 10 ( 9 + 1 )
+myFunc5(); // 6 ( 5 + 1 )
+myFunc8(); // 9 ( 8 + 1 )
+myFunc5(); // 7 ( 6 + 1 )
+myFunc8(); // 10 ( 9 + 1 )
 ```
 
 <!--section-->
@@ -381,17 +381,17 @@ myFunc8() // 10 ( 9 + 1 )
 ```js
 function addButtons(num) {
   for (var i = 0; i < num; i++) {
-    var $button = jQuery('<button>Button ' + i + '</button>')
+    var $button = jQuery('<button>Button ' + i + '</button>');
 
     $button.click(function() {
-      console.log('This is button' + i)
-    })
+      console.log('This is button' + i);
+    });
 
-    $(document.body).append($button)
+    $(document.body).append($button);
   }
 }
 
-addButtons(10)
+addButtons(10);
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/ScopesAndClosures/tegewu?embed
@@ -405,21 +405,21 @@ Note: "This is button 10" is the response. Why? The scope of `i` is `addButtons`
 ```js
 function getCallBack(currentIndex) {
   return function() {
-    console.log('This is button ' + currentIndex)
-  }
+    console.log('This is button ' + currentIndex);
+  };
 }
 
 function addButtons(num) {
   for (var i = 0; i < num; i++) {
-    var $button = $('<button>Button ' + i + '</button>')
+    var $button = $('<button>Button ' + i + '</button>');
 
-    $button.click(getCallBack(i))
+    $button.click(getCallBack(i));
 
-    $(document.body).append($button)
+    $(document.body).append($button);
   }
 }
 
-addButtons(10)
+addButtons(10);
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/ScopesAndClosures/laturas?embed
@@ -432,10 +432,10 @@ or even:
 $button.click(
   (function(i) {
     return function() {
-      console.log('This is button ' + i)
-    }
-  })(i)
-)
+      console.log('This is button ' + i);
+    };
+  })(i),
+);
 ```
 
 Note: We need to create a new closure with local `i` for each click callback. Now, the callback is created in a new function scope when the local `i` exists with its evaluated value at that moment.
@@ -450,12 +450,12 @@ Note: We need to create a new closure with local `i` for each click callback. No
 function countdown(num) {
   for (var i = 0; i <= num; i += 1) {
     setTimeout(function() {
-      console.log(num - i)
-    }, i * 1000)
+      console.log(num - i);
+    }, i * 1000);
   }
 }
 
-countdown(5)
+countdown(5);
 
 // -1, -1, -1, -1, -1
 ```
@@ -469,11 +469,11 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Scope
 ```js
 function countdown(num) {
   for (var i = 0; i <= num; i += 1) {
-    ;(function(i) {
+    (function(i) {
       setTimeout(function() {
-        console.log(num - i)
-      }, i * 1000)
-    })(i)
+        console.log(num - i);
+      }, i * 1000);
+    })(i);
   }
 }
 ```
@@ -490,12 +490,12 @@ change the scope from `var` (function) to `let` (block)
 function countdown(num) {
   for (let i = 0; i <= num; i += 1) {
     setTimeout(function() {
-      console.log(num - i)
-    }, i * 1000)
+      console.log(num - i);
+    }, i * 1000);
   }
 }
 
-countdown(5)
+countdown(5);
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/ScopesAndClosures/hiduro?embed
@@ -504,4 +504,4 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Scope
 
 ## Must Read
 
-* [Everything you wanted to know about JavaScript scope](https://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/)
+- [Everything you wanted to know about JavaScript scope](https://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/)

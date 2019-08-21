@@ -15,22 +15,22 @@ This method returns an object with two properties: `done` and `value`.
 Iterator on array
 
 ```js
-var array = ['yo', 'ya']
-var it = generateIterator(array)
-console.log(it.next()) // { value: "yo", done: false }
-console.log(it.next()) // { value: "ya", done: false }
-console.log(it.next()) // { value: undefined, done: true }
+var array = ['yo', 'ya'];
+var it = generateIterator(array);
+console.log(it.next()); // { value: "yo", done: false }
+console.log(it.next()); // { value: "ya", done: false }
+console.log(it.next()); // { value: undefined, done: true }
 ```
 
 Iterator on object
 
 ```js
-var obj = { a: 'yo', b: 'ya' }
-var iterator = generateIterator(obj)
-var iteratorResult = iterator.next()
+var obj = { a: 'yo', b: 'ya' };
+var iterator = generateIterator(obj);
+var iteratorResult = iterator.next();
 while (!iteratorResult.done) {
-  console.log(iteratorResult.value)
-  iteratorResult = iterator.next()
+  console.log(iteratorResult.value);
+  iteratorResult = iterator.next();
 }
 // "yo" "ya"
 ```
@@ -52,15 +52,15 @@ interface IteratorResult {
 
 ```js
 function generateIterator(obj) {
-  var nextIndex = 0
-  var keys = Object.keys(obj)
+  var nextIndex = 0;
+  var keys = Object.keys(obj);
   return {
     next: function() {
       return nextIndex < keys.length
         ? { value: obj[keys[nextIndex++]], done: false }
-        : { done: true }
-    }
-  }
+        : { done: true };
+    },
+  };
 }
 ```
 
@@ -96,22 +96,22 @@ interface Iterable {
 <!--slide-->
 
 ```js
-var obj = { a: 'yo', b: 'ya' }
+var obj = { a: 'yo', b: 'ya' };
 for (let value of obj) {
-  console.log(value)
+  console.log(value);
 }
 // TypeError: obj[Symbol.iterator] is not a function
 ```
 
 ```js
-var obj = { a: 'yo', b: 'ya' }
-obj[Symbol.iterator] = generateIterator.bind(null, obj)
+var obj = { a: 'yo', b: 'ya' };
+obj[Symbol.iterator] = generateIterator.bind(null, obj);
 for (let value of obj) {
-  console.log(value)
+  console.log(value);
 }
 // "yo" "ya"
 
-;[...obj] // ["yo", "ya"]
+[...obj]; // ["yo", "ya"]
 ```
 
 ** An iterable may or may not implement the `length` property **
@@ -126,13 +126,13 @@ Array.prototype = {
     ['length']: Number,
     ['push']: Function,
     /* [...] */
-    [Symbol(Symbol.iterator)]: Function
-  }
-}
+    [Symbol(Symbol.iterator)]: Function,
+  },
+};
 ```
 
 ```js
-Array.prototype[Symbol.iterator].toString()
+Array.prototype[Symbol.iterator].toString();
 // "function values() { [native code] }"
 ```
 
@@ -157,10 +157,10 @@ class TextLines {
   // YOUR CODE GOES HERE
 }
 
-var lines = new TextLines(getText())
+var lines = new TextLines(getText());
 
 for (var line of lines) {
-  console.log(line)
+  console.log(line);
 }
 
 // OUTPUT
@@ -177,17 +177,17 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Itera
 ```js
 class TextLines {
   constructor(text) {
-    this._lines = text.split('\n')
+    this._lines = text.split('\n');
   }
   [Symbol.iterator]() {
-    var nextIndex = 0
+    var nextIndex = 0;
     return {
       next: () => {
         return nextIndex < this._lines.length
           ? { value: this._lines[nextIndex++], done: false }
-          : { done: true }
-      }
-    }
+          : { done: true };
+      },
+    };
   }
 }
 ```
@@ -201,10 +201,10 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Itera
 ```js
 class TextLines {
   constructor(text) {
-    this._lines = text.split('\n')
+    this._lines = text.split('\n');
   }
   [Symbol.iterator]() {
-    return this.lines[Symbol.iterator]()
+    return this.lines[Symbol.iterator]();
   }
 }
 ```
@@ -227,13 +227,13 @@ class TextLines {
 
 ```js
 function* gen() {
-  yield 1
+  yield 1;
 }
 
-var iterator = gen()
-iterator // {next: Function , constructor: GeneratorFunction}
-iterator.next() // {value: 1, done: false}
-iterator.next() // {value: undefined, done: true}
+var iterator = gen();
+iterator; // {next: Function , constructor: GeneratorFunction}
+iterator.next(); // {value: 1, done: false}
+iterator.next(); // {value: undefined, done: true}
 ```
 
 <!--slide-->
@@ -254,33 +254,33 @@ iterator.next() // {value: undefined, done: true}
 
 ```js
 function* gen() {
-  yield 1
-  yield 2
-  yield 3
+  yield 1;
+  yield 2;
+  yield 3;
 }
 
-var iterator = gen() // {next: Function , constructor: GeneratorFunction}
-var iterator2 = gen()
-iterator.next() // {value: 1, done: false}
-iterator.next() // {value: 2, done: false}
-iterator2.next() // {value: 1, done: false}
-iterator.next() // {value: 3, done: false}
-iterator.next() // {value: undefined, done: true}
+var iterator = gen(); // {next: Function , constructor: GeneratorFunction}
+var iterator2 = gen();
+iterator.next(); // {value: 1, done: false}
+iterator.next(); // {value: 2, done: false}
+iterator2.next(); // {value: 1, done: false}
+iterator.next(); // {value: 3, done: false}
+iterator.next(); // {value: undefined, done: true}
 ```
 
 <!--slide-->
 
 ```js
 function* foo() {
-  var index = 0
-  while (index <= 2) yield index++
+  var index = 0;
+  while (index <= 2) yield index++;
 }
 
-var iterator = foo()
-iterator.next() // { value: 0, done: false }
-iterator.next() // { value: 1, done: false }
-iterator.next() // { value: 2, done: false }
-iterator.next() // { value: undefined, done: true }
+var iterator = foo();
+iterator.next(); // { value: 0, done: false }
+iterator.next(); // { value: 1, done: false }
+iterator.next(); // { value: 2, done: false }
+iterator.next(); // { value: undefined, done: true }
 ```
 
 <!--slide-->
@@ -289,15 +289,15 @@ From `generateIterator` function to generator function:
 
 ```js
 function generateIterator(obj) {
-  var nextIndex = 0
-  var keys = Object.keys(obj)
+  var nextIndex = 0;
+  var keys = Object.keys(obj);
   return {
     next: function() {
       return nextIndex < keys.length
         ? { value: obj[keys[nextIndex++]], done: false }
-        : { done: true }
-    }
-  }
+        : { done: true };
+    },
+  };
 }
 ```
 
@@ -305,16 +305,16 @@ function generateIterator(obj) {
 
 ```js
 function* generateIterator(obj) {
-  var nextIndex = 0
-  var keys = Object.keys(obj)
-  while (nextIndex < keys.length) yield obj[keys[nextIndex++]]
+  var nextIndex = 0;
+  var keys = Object.keys(obj);
+  while (nextIndex < keys.length) yield obj[keys[nextIndex++]];
 }
 
-var obj = { a: 'yo', b: 'ya' }
-var it = generateIterator(obj)
-it.next().value // { value: "yo", done: false }
-it.next().value // { value: "ya", done: false }
-it.next().done // { value: undefined, done: true }
+var obj = { a: 'yo', b: 'ya' };
+var it = generateIterator(obj);
+it.next().value; // { value: "yo", done: false }
+it.next().value; // { value: "ya", done: false }
+it.next().done; // { value: undefined, done: true }
 ```
 
 <!--slide-->
@@ -325,9 +325,9 @@ From:
 
 ```js
 function* generateIterator(obj) {
-  var nextIndex = 0
-  var keys = Object.keys(obj)
-  while (nextIndex < keys.length) yield obj[keys[nextIndex++]]
+  var nextIndex = 0;
+  var keys = Object.keys(obj);
+  while (nextIndex < keys.length) yield obj[keys[nextIndex++]];
 }
 ```
 
@@ -336,7 +336,7 @@ To:
 ```js
 function* generateIterator(obj) {
   for (let prop of Object.keys(obj)) {
-    yield obj[prop]
+    yield obj[prop];
   }
 }
 ```
@@ -353,15 +353,15 @@ function* generateIterator(obj) {
 
 ```js
 function* gen() {
-  yield 1
-  return 999999
-  yield 2
+  yield 1;
+  return 999999;
+  yield 2;
 }
 
-var iterator = gen()
-iterator.next() // { value:1, done:false }
-iterator.next() // { value:999999, done:true }
-iterator.next() // { value:undefined, done:true }
+var iterator = gen();
+iterator.next(); // { value:1, done:false }
+iterator.next(); // { value:999999, done:true }
+iterator.next(); // { value:undefined, done:true }
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-alertSlide" -->
@@ -372,20 +372,20 @@ iterator.next() // { value:undefined, done:true }
 
 ```js
 function* g() {
-  yield 1
-  yield 2
-  yield 3
-  yield 4
-  yield 5
-  return 6
+  yield 1;
+  yield 2;
+  yield 3;
+  yield 4;
+  yield 5;
+  return 6;
 }
 
 for (var v of g()) {
-  console.log(v)
+  console.log(v);
 }
 // 1 2 3 4 5
 
-console.log(v) // still `5`, not `6` :(
+console.log(v); // still `5`, not `6` :(
 ```
 
 <!--slide-->
@@ -395,7 +395,7 @@ console.log(v) // still `5`, not `6` :(
 > The `yield*` keyword is used to delegate to another **generator** or **iterable** object.
 
 ```js
-yield * [[expression]]
+yield * [[expression]];
 ```
 
 The `yield*` expression iterates over the operand and yields each value returned by it.
@@ -404,21 +404,21 @@ The `yield*` expression iterates over the operand and yields each value returned
 
 ```js
 function* gen1() {
-  yield 2
-  yield 3
+  yield 2;
+  yield 3;
 }
 function* gen2() {
-  yield 1
-  yield* gen1()
-  yield 4
+  yield 1;
+  yield* gen1();
+  yield 4;
 }
 
-var iterator = gen2()
-iterator.next() // { value: 1, done: false }
-iterator.next() // { value: 2, done: false }
-iterator.next() // { value: 3, done: false }
-iterator.next() // { value: 4, done: false }
-iterator.next() // { value: undefined, done: true }
+var iterator = gen2();
+iterator.next(); // { value: 1, done: false }
+iterator.next(); // { value: 2, done: false }
+iterator.next(); // { value: 3, done: false }
+iterator.next(); // { value: 4, done: false }
+iterator.next(); // { value: undefined, done: true }
 ```
 
 <!--slide-->
@@ -427,17 +427,17 @@ Any iterable can be used as well:
 
 ```js
 function* gen() {
-  yield* [1, 2]
-  yield* '34'
+  yield* [1, 2];
+  yield* '34';
 }
 
-var iterator = gen()
+var iterator = gen();
 
-iterator.next() // { value: 1, done: false }
-iterator.next() // { value: 2, done: false }
-iterator.next() // { value: "3", done: false }
-iterator.next() // { value: "4", done: false }
-iterator.next() // { value: undefined, done: true }
+iterator.next(); // { value: 1, done: false }
+iterator.next(); // { value: 2, done: false }
+iterator.next(); // { value: "3", done: false }
+iterator.next(); // { value: "4", done: false }
+iterator.next(); // { value: undefined, done: true }
 ```
 
 <!--slide-->
@@ -458,14 +458,14 @@ Then it's a **generator**.
 
 ```js
 function* gen() {
-  yield* [1, 2]
-  yield* '34'
+  yield* [1, 2];
+  yield* '34';
 }
 
-var iterable = {}
-iterable[Symbol.iterator] = gen
+var iterable = {};
+iterable[Symbol.iterator] = gen;
 
-console.log([...iterable]) // [1, 2, "3", "4"]
+console.log([...iterable]); // [1, 2, "3", "4"]
 ```
 
 <!--slide-->
@@ -474,14 +474,14 @@ console.log([...iterable]) // [1, 2, "3", "4"]
 
 ```js
 function* idMaker() {
-  var index = 0
-  while (true) yield index++
+  var index = 0;
+  while (true) yield index++;
 }
 
-var gen = idMaker()
-console.log(gen.next().value) // 0
-console.log(gen.next().value) // 1
-console.log(gen.next().value) // 2
+var gen = idMaker();
+console.log(gen.next().value); // 0
+console.log(gen.next().value); // 1
+console.log(gen.next().value); // 2
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -512,12 +512,12 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Itera
 ```js
 class TextLines {
   constructor(text) {
-    this._lines = text.split('\n')
+    this._lines = text.split('\n');
   }
 
   *[Symbol.iterator]() {
     for (let line of this._lines) {
-      yield line
+      yield line;
     }
   }
 }
@@ -532,11 +532,11 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Itera
 ```js
 class TextLines {
   constructor(text) {
-    this._lines = text.split('\n')
+    this._lines = text.split('\n');
   }
 
   *[Symbol.iterator]() {
-    yield* this._lines
+    yield* this._lines;
   }
 }
 ```
@@ -552,7 +552,7 @@ class TextLines {
 ```js
 class TextLines {
   constructor(text) {
-    this._text = text
+    this._text = text;
   }
 
   *[Symbol.iterator]() {
@@ -570,18 +570,18 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Itera
 ```js
 class TextLines {
   constructor(text) {
-    this._text = text
+    this._text = text;
   }
 
   *[Symbol.iterator]() {
-    const length = this._text.length
-    let offset = 0
+    const length = this._text.length;
+    let offset = 0;
 
     while (offset < length) {
-      let nextOffset = this._text.indexOf('\n', offset)
-      nextOffset = nextOffset !== -1 ? nextOffset : length
-      yield this._text.slice(offset, nextOffset)
-      offset = nextOffset + 1
+      let nextOffset = this._text.indexOf('\n', offset);
+      nextOffset = nextOffset !== -1 ? nextOffset : length;
+      yield this._text.slice(offset, nextOffset);
+      offset = nextOffset + 1;
     }
   }
 }

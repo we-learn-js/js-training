@@ -75,16 +75,16 @@ React.createElement(
 React code
 
 ```js
-import React from 'react'
+import React from 'react';
 
-React.createElement('div', { align: 'center' }, 'Welcome to JS Training')
+React.createElement('div', { align: 'center' }, 'Welcome to JS Training');
 ```
 
 DOM result
 
 ```html
-<div align='center'>
-    Welcome to JS Training - React
+<div align="center">
+  Welcome to JS Training - React
 </div>
 ```
 
@@ -95,18 +95,18 @@ https://codesandbox.io/s/04nw9zpxxl
 With children elements
 
 ```js
-import React from 'react'
+import React from 'react';
 const reactElement = React.createElement(
   'div',
   { align: 'center' },
   'Welcome to JS Training - React',
   React.createElement('br', null),
-  React.createElement('button', null, 'Start !')
-)
+  React.createElement('button', null, 'Start !'),
+);
 ```
 
 ```html
-<div align='center'>
+<div align="center">
   Welcome to JS Training - React<br />
   <button>Start !</button>
 </div>
@@ -123,20 +123,20 @@ https://codesandbox.io/s/9yrxv8y28o
 JavaScript
 
 ```js
-import React from 'react'
+import React from 'react';
 const reactElement = React.createElement(
   'div',
   { align: 'center' },
-  'Welcome to JS Training'
-)
+  'Welcome to JS Training',
+);
 ```
 
 JSX
 
 ```js
-import React from 'react'
+import React from 'react';
 
-const reactElement = <div align="center">Welcome to JS Training - React</div>
+const reactElement = <div align="center">Welcome to JS Training - React</div>;
 ```
 
 <!--slide-->
@@ -144,15 +144,15 @@ const reactElement = <div align="center">Welcome to JS Training - React</div>
 JavaScript (using children)
 
 ```js
-import React from 'react'
+import React from 'react';
 
 const reactElement = React.createElement(
   'div',
   { align: 'center' },
   'Welcome to JS Training - React',
   React.createElement('br', null),
-  React.createElement('button', null, 'Start !')
-)
+  React.createElement('button', null, 'Start !'),
+);
 ```
 
 JSX (using children)
@@ -163,7 +163,7 @@ const reactElement = (
     Welcome to JS Training - React <br />
     <button>Start !</button>
   </div>
-)
+);
 ```
 
 https://codesandbox.io/s/n57xo06j44
@@ -183,18 +183,18 @@ https://codesandbox.io/s/n57xo06j44
 > As JSX is Javascript, any expression can be embedded using `{}`
 
 ```js
-const userName = 'Evan Graham'
+const userName = 'Evan Graham';
 const reactElement = (
   <div align="center">
     Welcome to JS Training, {userName.toUpperCase()} !
     <br />
     <button>Start !</button>
   </div>
-)
+);
 ```
 
 ```html
-<div align='center'>
+<div align="center">
   Welcome to JS Training, EVAN GRAHAM !
   <br />
   <button></button>
@@ -216,7 +216,7 @@ const reactElement = (
     <br />
     {userName ? <button>Start !</button> : <button>Login</button>}
   </div>
-)
+);
 ```
 
 <!--slide-->
@@ -228,14 +228,20 @@ const reactElement = (
 JSX
 
 ```js
-const items = ['Topic 1', 'Topic 2', 'Topic 3']
-const reactElement = <ul>{items.map(item => <li>{item}</li>)}</ul>
+const items = ['Topic 1', 'Topic 2', 'Topic 3'];
+const reactElement = (
+  <ul>
+    {items.map(item => (
+      <li>{item}</li>
+    ))}
+  </ul>
+);
 ```
 
 HTML
 
 ```html
-<ul align='center'>
+<ul align="center">
   <li>Topic 1</li>
   <li>Topic 2</li>
   <li>Topic 3</li>
@@ -265,23 +271,19 @@ HTML
 HTML
 
 ```html
-<div tabindex="-1"/>
+<div tabindex="-1" />
 <div class="Button" />
-<input
-  readonly
-  style="font-size: 12px;"
-/>
+<input readonly style="font-size: 12px;" />
 ```
 
 JSX (DOM properties)
 
 ```html
-<div tabIndex="-1" />      // Just like node.tabIndex DOM API
-<div className="Button" /> // Just like node.className DOM API
-<input
-  readOnly={true}
-  style={{fontSize: '12px'}}
-/>  // Just like node.readOnly DOM API
+<div tabindex="-1" />
+// Just like node.tabIndex DOM API
+<div className="Button" />
+// Just like node.className DOM API <input readOnly={true} style={{fontSize:
+'12px'}} /> // Just like node.readOnly DOM API
 ```
 
 <!--slide-->
@@ -292,7 +294,7 @@ JSX (DOM properties)
 
 ```js
 function update() {
-  const userName = 'Evan Graham'
+  const userName = 'Evan Graham';
   const reactElement = (
     <div align="center">
       Welcome to JS Training,
@@ -300,11 +302,11 @@ function update() {
       <br />
       Time {new Date().toLocaleTimeString()}.
     </div>
-  )
-  render(reactElement, document.getElementById('root'))
+  );
+  render(reactElement, document.getElementById('root'));
 }
 
-setInterval(update, 1000)
+setInterval(update, 1000);
 ```
 
 Inspect DOM changes with DevTools
@@ -336,17 +338,14 @@ export default props => (
     <br />
     Time {props.time}.
   </div>
-)
+);
 ```
 
 ./index.js
 
 ```js
-import App from './App'
-<App
-  userName="Evan Graham"
-  time={new Date().toLocaleTimeString()}
-/>
+import App from './App';
+<App userName="Evan Graham" time={new Date().toLocaleTimeString()} />;
 ```
 
 https://codesandbox.io/s/9j7joyo79r
@@ -364,7 +363,7 @@ https://codesandbox.io/s/9j7joyo79r
 ```js
 class AppComponent extends React.Component {
   render() {
-    const { userName, time } = this.props
+    const { userName, time } = this.props;
     return (
       <div align="center">
         Welcome to JS Training,
@@ -372,11 +371,11 @@ class AppComponent extends React.Component {
         <br />
         Time {time}.
       </div>
-    )
+    );
   }
 }
 
-export default AppComponent
+export default AppComponent;
 ```
 
 v
@@ -401,20 +400,20 @@ https://codesandbox.io/s/7wnkx5vx7j?module=%2FApp.js
 
 ```js
 class AppComponent extends React.Component {
-  state = { time: null }
+  state = { time: null };
 
   constructor() {
-    super()
+    super();
     setInterval(() => {
       this.setState({
-        time: new Date().toLocaleTimeString()
-      })
-    }, 1000)
+        time: new Date().toLocaleTimeString(),
+      });
+    }, 1000);
   }
 
   render() {
-    const { userName } = this.props
-    const { time } = this.state
+    const { userName } = this.props;
+    const { time } = this.state;
     return (
       <div align="center">
         Welcome to JS Training,
@@ -422,7 +421,7 @@ class AppComponent extends React.Component {
         <br />
         Time {time}.
       </div>
-    )
+    );
   }
 }
 ```
@@ -457,22 +456,22 @@ Clock is now a component that manages its own stsate and is easily resusable.
 
 ```js
 class Clock extends React.Component {
-  state = { time: null }
+  state = { time: null };
 
   constructor() {
-    super()
-    setInterval(this._updateTime.bind(this), 1000)
+    super();
+    setInterval(this._updateTime.bind(this), 1000);
   }
 
   _updateTime() {
     this.setState({
-      time: new Date().toLocaleTimeString()
-    })
+      time: new Date().toLocaleTimeString(),
+    });
   }
 
   render() {
-    const { time } = this.state
-    return <span>{time}</span>
+    const { time } = this.state;
+    return <span>{time}</span>;
   }
 }
 ```
@@ -493,12 +492,12 @@ const Panel = props => (
     align="center"
     style={{
       border: '1px solid grey',
-      padding: '20px'
+      padding: '20px',
     }}
   >
     {props.children}
   </div>
-)
+);
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -515,12 +514,12 @@ const Panel = props => (
     align="center"
     style={{
       border: '1px solid grey',
-      padding: '20px'
+      padding: '20px',
     }}
   >
     {props.children}
   </div>
-)
+);
 ```
 
 https://codesandbox.io/s/kk5j8zlqvo?module=%2Fcomponents%2FApp.js
@@ -562,8 +561,8 @@ https://codesandbox.io/s/234j97x1kj?module=%2FTodoApp.js
 ```js
 // ./components/Title.js
 
-import React from 'react'
-export default ({ text }) => <h1>{text}</h1>
+import React from 'react';
+export default ({ text }) => <h1>{text}</h1>;
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -588,8 +587,8 @@ output
 
 ```js
 // ./components/Title.js
-import React from 'react'
-export default ({ children }) => <h1>{children}</h1>
+import React from 'react';
+export default ({ children }) => <h1>{children}</h1>;
 ```
 
 <!--slide-->
@@ -648,14 +647,14 @@ const LabeledInput = props => (
     {props.label}
     <input type="text" />
   </label>
-)
+);
 
 const CustomForm = props => (
   <form>
     <LabeledInput label="name" />
     <LabeledInput label="surname" />
   </form>
-)
+);
 ```
 
 What if `CustomForm` needs to know whenever an input is edited to make live validation?
@@ -670,7 +669,7 @@ const LabeledInput = props => (
     {props.label}
     <input type="text" onChange={props.onChange} />
   </label>
-)
+);
 
 const CustomForm = props => (
   <form>
@@ -680,7 +679,7 @@ const CustomForm = props => (
       onChange={() => console.log('Surname changed!')}
     />
   </form>
-)
+);
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -689,8 +688,8 @@ const CustomForm = props => (
 
 > Create a new `<TodoForm>` that displays an input form and accepts theses props:
 
-* placeholder: to be displayed in the input
-* onNew: a callback executed everytime the users submits a new todo description
+- placeholder: to be displayed in the input
+- onNew: a callback executed everytime the users submits a new todo description
 
 ```js
 <TodoForm
@@ -707,17 +706,17 @@ https://codesandbox.io/s/21r3l6qyrj
 
 ```js
 const onSubmit = props => e => {
-  e.preventDefault()
-  const input = e.target[0]
-  props.onNew(input.value)
-  input.value = ''
-}
+  e.preventDefault();
+  const input = e.target[0];
+  props.onNew(input.value);
+  input.value = '';
+};
 
 export default props => (
   <form className="todo-form" onSubmit={onSubmit(props)}>
     <input className="new-todo" name="todo" placeholder={props.placeholder} />
   </form>
-)
+);
 ```
 
 https://codesandbox.io/s/l2j1nrp27l?module=%2Fcomponents%2FTodoForm.js
@@ -741,15 +740,15 @@ https://codesandbox.io/s/l2j1nrp27l?module=%2Fcomponents%2FTodoForm.js
 ```js
 class Clock extends React.Component {
   constructor() {
-    super()
+    super();
     setInterval(() => {
-      this.setState({ time: new Date().toLocaleTimeString() })
-    }, 1000)
+      this.setState({ time: new Date().toLocaleTimeString() });
+    }, 1000);
   }
 
   render() {
-    const { time } = this.state
-    return <span>{time}</span>
+    const { time } = this.state;
+    return <span>{time}</span>;
   }
 }
 ```
@@ -761,7 +760,7 @@ class Clock extends React.Component {
 > Create a new `<TodoList>` that displays the list of `todos` from `props.items`.
 
 ```html
-<TodoList items={todos} />
+<TodoList items="{todos}" />
 ```
 
 ```html
@@ -782,7 +781,7 @@ https://codesandbox.io/s/l2j1nrp27l?module=%2FTodoApp.js
 ##### Possible Solution
 
 ```js
-import React from 'react'
+import React from 'react';
 
 export default props => (
   <ul class="todo-list">
@@ -794,7 +793,7 @@ export default props => (
       </li>
     ))}
   </ul>
-)
+);
 ```
 
 https://codesandbox.io/s/611p3687ww?module=%2Fcomponents%2FTodoList.js
@@ -838,8 +837,8 @@ Current State:
 
 ```html
 <ul>
-  <li key={1059}>Evan</li>
-  <li key={1098}>Rachel</li>
+  <li key="{1059}">Evan</li>
+  <li key="{1098}">Rachel</li>
 </ul>
 ```
 
@@ -847,9 +846,9 @@ Next State
 
 ```html
 <ul>
-  <li key={1031}>Robin</li>
-  <li key={1059}>Evan</li>
-  <li key={1098}>Rachel</li>
+  <li key="{1031}">Robin</li>
+  <li key="{1059}">Evan</li>
+  <li key="{1098}">Rachel</li>
 </ul>
 ```
 
@@ -938,10 +937,8 @@ https://codesandbox.io/s/6wv9rxlmk3?module=%2FTodoApp.js
 
 ```html
 <li>
-  <input type="checkbox" class="toggle" value="on">
-  <label>
-    Celebrate with a good lunch <small>(5m 14s)</small>
-  </label>
+  <input type="checkbox" class="toggle" value="on" />
+  <label> Celebrate with a good lunch <small>(5m 14s)</small> </label>
   <button class="destroy"></button>
 </li>
 ```
@@ -957,19 +954,19 @@ https://codesandbox.io/s/4xkjw44yow?module=%2Fcomponents%2FTodoItem.js
 ```js
 export default class TimeAgo extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = { now: Date.now() }
+    super(props);
+    this.state = { now: Date.now() };
     setInterval(() => {
-      this.setState({ now: Date.now() })
-    }, REFRESH_TIME)
+      this.setState({ now: Date.now() });
+    }, REFRESH_TIME);
   }
 
   render() {
-    const { date } = this.props
-    const { now } = this.state
-    const timestamp = new Date(date).getTime()
-    const diff = now - timestamp
-    return prettyMs(diff, PRETTY_MS_OPTIONS)
+    const { date } = this.props;
+    const { now } = this.state;
+    const timestamp = new Date(date).getTime();
+    const diff = now - timestamp;
+    return prettyMs(diff, PRETTY_MS_OPTIONS);
   }
 }
 ```
@@ -1009,10 +1006,10 @@ https://codesandbox.io/s/movoy4xr8p?module=%2FLifeCycle.js
 
 > A container component places our component as part of its content. It's being added to the DOM.
 
-* constructor()
-* componentWillMount()
-* render()
-* componentDidMount()
+- constructor()
+- componentWillMount()
+- render()
+- componentDidMount()
 
 <!--slide-->
 
@@ -1020,10 +1017,10 @@ https://codesandbox.io/s/movoy4xr8p?module=%2FLifeCycle.js
 
 > Our component calls `this.setState()` to update its own state.
 
-* shouldComponentUpdate(nextProps, nextState)
-  * componentWillUpdate(nextProps, nextState)
-  * render()
-  * componentDidUpdate(prevProps, prevState)
+- shouldComponentUpdate(nextProps, nextState)
+  - componentWillUpdate(nextProps, nextState)
+  - render()
+  - componentDidUpdate(prevProps, prevState)
 
 <!--slide-->
 
@@ -1031,11 +1028,11 @@ https://codesandbox.io/s/movoy4xr8p?module=%2FLifeCycle.js
 
 > The container component in which our component was mounted makes a change on the provided props to our component.
 
-* componentWillReceiveProps(nextProps)
-* shouldComponentUpdate(nextProps, nextState)
-  * componentWillUpdate(nextProps, nextState)
-  * render()
-  * componentDidUpdate(prevProps, prevState)
+- componentWillReceiveProps(nextProps)
+- shouldComponentUpdate(nextProps, nextState)
+  - componentWillUpdate(nextProps, nextState)
+  - render()
+  - componentDidUpdate(prevProps, prevState)
 
 <!--slide-->
 
@@ -1043,14 +1040,14 @@ https://codesandbox.io/s/movoy4xr8p?module=%2FLifeCycle.js
 
 > There was an error during rendering, in a lifecycle method, or in the constructor of any child component.
 
-* componentDidCatch()
+- componentDidCatch()
 
 <!--slide-->
 
 #### constructor
 
 ```js
-constructor(props)
+constructor(props);
 ```
 
 > Invoked **before** component is actually mounted.
@@ -1073,7 +1070,7 @@ constructor(props)
 #### component Will Mount
 
 ```js
-componentWillMount()
+componentWillMount();
 ```
 
 > Invoked immediately before mounting occurs (before first render, adding component to the DOM).
@@ -1096,7 +1093,7 @@ componentWillMount() {
 #### component Did Mount
 
 ```js
-componentDidMount()
+componentDidMount();
 ```
 
 > Invoked immediately after a component is mounted. Right after first `render()` (component just added to the DOM).
@@ -1120,7 +1117,7 @@ componentWillUnmount() {
 #### component Will Receive Props
 
 ```js
-componentWillReceiveProps(nextProps)
+componentWillReceiveProps(nextProps);
 ```
 
 > Invoked before a mounted component receives new props.
@@ -1141,7 +1138,7 @@ componentWillReceiveProps(nextProps) {
 #### should Component Update
 
 ```js
-shouldComponentUpdate(nextProps, nextState)
+shouldComponentUpdate(nextProps, nextState);
 ```
 
 > Invoked before rendering when new props or state are being received. Defaults to `true`.
@@ -1161,7 +1158,7 @@ shouldComponentUpdate(nextProps, nextState) {
 #### component Will Update
 
 ```js
-componentWillUpdate(nextProps, nextState)
+componentWillUpdate(nextProps, nextState);
 ```
 
 > Invoked immediately before rendering when new props or state are being received.
@@ -1183,7 +1180,7 @@ componentWillUpdate(nextProps, nextState) {
 #### component Did Update
 
 ```js
-componentDidUpdate(nextProps, nextState)
+componentDidUpdate(nextProps, nextState);
 ```
 
 > Invoked immediately after updating occurs. This method is not called for the initial render.
@@ -1206,7 +1203,7 @@ componentWillUpdate(nextProps, nextState) {
 #### component Will Unmount
 
 ```js
-componentWillUnmount()
+componentWillUnmount();
 ```
 
 > Invoked immediately before a component is unmounted and destroyed.
@@ -1229,7 +1226,7 @@ componentWillUnmount() {
 #### component Did Catch
 
 ```js
-componentDidCatch(error, info)
+componentDidCatch(error, info);
 ```
 
 > Error boundaries are React components that catch JavaScript errors anywhere in their child component tree.
@@ -1256,8 +1253,8 @@ render() {
 
 > There are several performance problems in `<TimeAgo>`
 >
-> * It's re-rendered every time `<TodoList>` is updated.
-> * It might cause memory leaks and errors, not clearing the `setInterval`
+> - It's re-rendered every time `<TodoList>` is updated.
+> - It might cause memory leaks and errors, not clearing the `setInterval`
 
 Refactor `<TimeAgo>` using life cycle functions, fixing these issues.
 
@@ -1292,7 +1289,7 @@ https://codesandbox.io/s/2399w1289y?module=%2Fcomponents%2FTimeAgo.js
 > `<TimeAgo>` calculates `timestamp` on every render.
 
 ```js
-const timestamp = new Date(date).getTime()
+const timestamp = new Date(date).getTime();
 ```
 
 But, as it comes from a prop (date), it's the same value in each render.
@@ -1339,19 +1336,19 @@ https://codesandbox.io/s/zrnyxx683p?module=%2Fcomponents%2FTimeAgo.js
 <!--slide-->
 
 ```js
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Welcome = props => (
   <span>
     Welcome to JS Training,
     <strong> {props.userName.toUpperCase()}</strong>
   </span>
-)
+);
 
 Welcome.propTypes = {
-  userName: PropTypes.string
-}
+  userName: PropTypes.string,
+};
 ```
 
 https://codesandbox.io/s/v034l8yvw7?module=%2Fcomponents%2FWelcome.js
@@ -1363,7 +1360,7 @@ https://codesandbox.io/s/v034l8yvw7?module=%2Fcomponents%2FWelcome.js
 > `PropTypes` exports a range of validators that can be used to make sure the data you receive is valid.
 
 ```js
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 MyComponent.propTypes = {
   // You can declare that a prop is a specific JS type. By default, these
@@ -1381,8 +1378,8 @@ MyComponent.propTypes = {
   optionalNode: PropTypes.node,
 
   // A React element.
-  optionalElement: PropTypes.element
-}
+  optionalElement: PropTypes.element,
+};
 ```
 
 <!--slide-->
@@ -1399,15 +1396,15 @@ MyComponent.propTypes = {
   optionalUnion: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-    PropTypes.instanceOf(Message)
+    PropTypes.instanceOf(Message),
   ]),
 
   // An array of a certain type
   optionalArrayOf: PropTypes.arrayOf(PropTypes.number),
 
   // An object with property values of a certain type
-  optionalObjectOf: PropTypes.objectOf(PropTypes.number)
-}
+  optionalObjectOf: PropTypes.objectOf(PropTypes.number),
+};
 ```
 
 <!--slide-->
@@ -1419,9 +1416,9 @@ MyComponent.propTypes = {
   // An object taking on a particular shape
   optionalObjectWithShape: PropTypes.shape({
     color: PropTypes.string,
-    fontSize: PropTypes.number
-  })
-}
+    fontSize: PropTypes.number,
+  }),
+};
 ```
 
 <!--slide-->
@@ -1445,8 +1442,8 @@ MyComponent.propTypes = {
 
   requiredNode: PropTypes.node.isRequired,
 
-  requiredElement: PropTypes.element.isRequired
-}
+  requiredElement: PropTypes.element.isRequired,
+};
 ```
 
 <!--slide-->
@@ -1466,11 +1463,11 @@ MyComponent.propTypes = {
           '` supplied to' +
           ' `' +
           componentName +
-          '`. Validation failed.'
-      )
+          '`. Validation failed.',
+      );
     }
-  }
-}
+  },
+};
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -1479,9 +1476,9 @@ MyComponent.propTypes = {
 
 Add `propTypes` properties to the following components:
 
-* `<TodoItem>`, all props required but `date`.
-  * `item.date` and `onClickDelete` are optional. Make sure to apply conditional rendering, not showing the date or delete button.
-* `<TimeAgo>`, making sure that `date` is parsable by [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+- `<TodoItem>`, all props required but `date`.
+  - `item.date` and `onClickDelete` are optional. Make sure to apply conditional rendering, not showing the date or delete button.
+- `<TimeAgo>`, making sure that `date` is parsable by [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 
 https://codesandbox.io/s/zrnyxx683p?module=%2Fcomponents%2FTodoItem.js
 
@@ -1492,13 +1489,13 @@ https://codesandbox.io/s/zrnyxx683p?module=%2Fcomponents%2FTodoItem.js
 ```js
 TimeAgo.propTypes = {
   date: function(props, propName, componentName) {
-    const date = props[propName]
+    const date = props[propName];
     if (!Date.parse(date)) {
-      const msg = `Invalid prop '${propName}' supplied to ${componentName}. Not a parsable date.`
-      return new Error(msg)
+      const msg = `Invalid prop '${propName}' supplied to ${componentName}. Not a parsable date.`;
+      return new Error(msg);
     }
-  }
-}
+  },
+};
 ```
 
 https://codesandbox.io/s/mm9pj5350j?module=%2Fcomponents%2FTimeAgo.js
@@ -1517,8 +1514,8 @@ class CustomButton extends React.Component {
 }
 
 CustomButton.defaultProps = {
-  color: 'blue'
-}
+  color: 'blue',
+};
 ```
 
 If `props.color` is not provided, it will be set by default to `'blue'`
@@ -1531,19 +1528,19 @@ If `props.color` is not provided, it will be set by default to `'blue'`
 
 > Sometimes a component may need to directily access its children's DOM elements:
 
-* Managing focus, text selection, or media playback.
-* Triggering imperative animations.
-* Integrating with third-party DOM libraries.
+- Managing focus, text selection, or media playback.
+- Triggering imperative animations.
+- Integrating with third-party DOM libraries.
 
 <!--slide-->
 
 ```js
 function CustomTextInput(props) {
   // textInput must be declared here so the ref callback can refer to it
-  let textInput = null
+  let textInput = null;
 
   function handleClick() {
-    textInput.focus()
+    textInput.focus();
   }
 
   return (
@@ -1551,12 +1548,12 @@ function CustomTextInput(props) {
       <input
         type="text"
         ref={input => {
-          textInput = input
+          textInput = input;
         }}
       />
       <input type="button" value="Focus the text input" onClick={handleClick} />
     </div>
-  )
+  );
 }
 ```
 
@@ -1585,13 +1582,13 @@ https://codesandbox.io/s/mm9pj5350j?module=%2Fcomponents%2FTodoForm.js
 ```js
 class TodoForm extends React.Component {
   onSubmit(e) {
-    e.preventDefault()
-    this.props.onNew(this.textInput.value)
-    this.textInput.value = ''
+    e.preventDefault();
+    this.props.onNew(this.textInput.value);
+    this.textInput.value = '';
   }
 
   render() {
-    const { placeholder } = this.props
+    const { placeholder } = this.props;
     return (
       <form className="todo-form" onSubmit={this.onSubmit.bind(this)}>
         <input
@@ -1601,7 +1598,7 @@ class TodoForm extends React.Component {
           placeholder={placeholder}
         />
       </form>
-    )
+    );
   }
 }
 ```
@@ -1612,6 +1609,6 @@ https://codesandbox.io/s/7579260oq?module=%2Fcomponents%2FTodoForm.js
 
 ## Docs
 
-* [React Official Docs](https://reactjs.org/docs/hello-world.html)
+- [React Official Docs](https://reactjs.org/docs/hello-world.html)
 
-* [Cheat Sheet](https://devhints.io/react)
+- [Cheat Sheet](https://devhints.io/react)

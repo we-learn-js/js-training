@@ -25,18 +25,18 @@
 > Caution: implicit variable declaration will bind to global scope
 
 ```js
-;(function() {
-  a = 1
-  var b = 2
+(function() {
+  a = 1;
+  var b = 2;
   function logB() {
-    console.log(b)
+    console.log(b);
   }
-  logB() // 2
-})()
+  logB(); // 2
+})();
 
-console.log(a) // 1
-console.log(b) // ReferenceError: b is not defined
-logB() // ReferenceError: logB is not defined
+console.log(a); // 1
+console.log(b); // ReferenceError: b is not defined
+logB(); // ReferenceError: logB is not defined
 ```
 
 <!--slide-->
@@ -45,16 +45,16 @@ logB() // ReferenceError: logB is not defined
 
 > Even if any closure as access to global scope, it's good practice to import dependencies of global scope:
 >
-> * Isolates even more the modules (easier to maintain and test)
-> * Provides an easy way to rename global variables
+> - Isolates even more the modules (easier to maintain and test)
+> - Provides an easy way to rename global variables
 
 ```js
-;(function(win, doc) {
-  const ELEMENT_ID = 'my-element'
+(function(win, doc) {
+  const ELEMENT_ID = 'my-element';
   win.addEventListener('load', function() {
-    doc.body.appendChild(doc.createElement('DIV'))
-  })
-})(window, document)
+    doc.body.appendChild(doc.createElement('DIV'));
+  });
+})(window, document);
 ```
 
 <!--slide-->
@@ -74,22 +74,22 @@ var weekDay = (function() {
     'Wednesday',
     'Thursday',
     'Friday',
-    'Saturday'
-  ]
+    'Saturday',
+  ];
   function getName(number) {
-    return names[number]
+    return names[number];
   }
   function getNumber(name) {
-    return names.indexOf(name)
+    return names.indexOf(name);
   }
   return {
     name: getName,
-    number: getNumber
-  }
-})()
+    number: getNumber,
+  };
+})();
 
-console.log(weekDay.name(0)) // "Sunday"
-console.log(weekDay.number('Monday')) // 1
+console.log(weekDay.name(0)); // "Sunday"
+console.log(weekDay.number('Monday')); // 1
 ```
 
 <!--slide-->
@@ -104,21 +104,21 @@ console.log(weekDay.number('Monday')) // 1
 
 ```js
 var counterModule = (function() {
-  var counter = 0
+  var counter = 0;
   return {
     incrementCounter: function() {
-      return counter++
+      return counter++;
     },
     resetCounter: function() {
-      console.log('counter value prior to reset: ' + counter)
-      counter = 0
-    }
-  }
-})()
+      console.log('counter value prior to reset: ' + counter);
+      counter = 0;
+    },
+  };
+})();
 
-counterModule.incrementCounter()
-counterModule.incrementCounter()
-counterModule.resetCounter() // "counter value prior to reset: 2"
+counterModule.incrementCounter();
+counterModule.incrementCounter();
+counterModule.resetCounter(); // "counter value prior to reset: 2"
 ```
 
 <!--section-->
@@ -138,10 +138,10 @@ counterModule.resetCounter() // "counter value prior to reset: 2"
 > All modules are obtained by its **path**, thanks to the `require` function that is always available in Node.js environments
 
 ```js
-var counterModule = require('./modules/counter')
-counterModule.incrementCounter()
-counterModule.incrementCounter()
-counterModule.resetCounter() // "counter value prior to reset: 2"
+var counterModule = require('./modules/counter');
+counterModule.incrementCounter();
+counterModule.incrementCounter();
+counterModule.resetCounter(); // "counter value prior to reset: 2"
 ```
 
 <!--slide-->
@@ -158,8 +158,8 @@ Import a module from package:
 
 ```js
 // Import angular to create a module
-var angular = require('angular')
-var ngModule = angular.module('my-module', [])
+var angular = require('angular');
+var ngModule = angular.module('my-module', []);
 ```
 
 <!--slide-->
@@ -174,10 +174,10 @@ Import React module:
 
 ```js
 // Import React to create a component
-var React = require('react')
+var React = require('react');
 class HelloMessage extends React.Component {
   render() {
-    return <div>Hello {this.props.name}</div>
+    return <div>Hello {this.props.name}</div>;
   }
 }
 ```
@@ -188,8 +188,8 @@ class HelloMessage extends React.Component {
 
 > `require` loads js files and executes doing the following:
 >
-> * It injects the empty object `exports` ready to be augmented with new properties and methods.
-> * It injects a `module` object with the `exports` object as its property, so the full module can be replaced instead of augmenting the original
+> - It injects the empty object `exports` ready to be augmented with new properties and methods.
+> - It injects a `module` object with the `exports` object as its property, so the full module can be replaced instead of augmenting the original
 
 <!--slide-->
 
@@ -197,11 +197,11 @@ class HelloMessage extends React.Component {
 
 ```js
 function require(name) {
-  var code = new Function('exports', 'module', readFile(name))
+  var code = new Function('exports', 'module', readFile(name));
   var exports = {},
-    module = { exports: exports }
-  code(exports, module)
-  return module.exports
+    module = { exports: exports };
+  code(exports, module);
+  return module.exports;
 }
 ```
 
@@ -213,17 +213,17 @@ Consider:
 
 ```js
 var counterModule = (function() {
-  var counter = 0
+  var counter = 0;
   return {
     incrementCounter: function() {
-      return counter++
+      return counter++;
     },
     resetCounter: function() {
-      console.log('counter value prior to reset: ' + counter)
-      counter = 0
-    }
-  }
-})()
+      console.log('counter value prior to reset: ' + counter);
+      counter = 0;
+    },
+  };
+})();
 ```
 
 <!--slide-->
@@ -232,28 +232,28 @@ In CommonJs:
 
 ```js
 // modules/counter.js
-var counter = 0
+var counter = 0;
 module.exports = {
   incrementCounter: function() {
-    return counter++
+    return counter++;
   },
   resetCounter: function() {
-    console.log('counter value prior to reset: ' + counter)
-    counter = 0
-  }
-}
+    console.log('counter value prior to reset: ' + counter);
+    counter = 0;
+  },
+};
 ```
 
 ```js
 // modules/counter.js
-var counter = 0
+var counter = 0;
 exports.incrementCounter = function() {
-  return counter++
-}
+  return counter++;
+};
 exports.resetCounter = function() {
-  console.log('counter value prior to reset: ' + counter)
-  counter = 0
-}
+  console.log('counter value prior to reset: ' + counter);
+  counter = 0;
+};
 ```
 
 <!--slide-->
@@ -266,32 +266,32 @@ exports.resetCounter = function() {
 
 ```js
 function require(name) {
-  if (name in require.cache) return require.cache[name]
+  if (name in require.cache) return require.cache[name];
 
-  var code = new Function('exports, module', readFile(name))
+  var code = new Function('exports, module', readFile(name));
   var exports = {},
-    module = { exports: exports }
-  code(exports, module)
+    module = { exports: exports };
+  code(exports, module);
 
-  require.cache[name] = module.exports
-  return module.exports
+  require.cache[name] = module.exports;
+  return module.exports;
 }
-require.cache = Object.create(null)
+require.cache = Object.create(null);
 ```
 
 <!--slide-->
 
 ```js
-var counterModule = require('./modules/counter')
-counterModule.incrementCounter()
-counterModule.incrementCounter()
-counterModule.resetCounter() // "counter value prior to reset: 2"
+var counterModule = require('./modules/counter');
+counterModule.incrementCounter();
+counterModule.incrementCounter();
+counterModule.resetCounter(); // "counter value prior to reset: 2"
 ```
 
 ```js
-var counterModule = require('./modules/counter')
-counterModule.incrementCounter()
-counterModule.resetCounter() // "counter value prior to reset: 3"
+var counterModule = require('./modules/counter');
+counterModule.incrementCounter();
+counterModule.resetCounter(); // "counter value prior to reset: 3"
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -303,10 +303,10 @@ counterModule.resetCounter() // "counter value prior to reset: 3"
 ```js
 var month = require(function(module, exports) {
   // YOUR CODE GOES HERE
-})
+});
 
-console.log(month.name(2)) // March
-console.log(month.number('November')) // 10
+console.log(month.name(2)); // March
+console.log(month.number('November')); // 10
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Modules/zapuqus?embed
@@ -329,19 +329,19 @@ var month = require(function(module, exports) {
     'September',
     'October',
     'November',
-    'December'
-  ]
+    'December',
+  ];
   function getName(number) {
-    return NAMES[number]
+    return NAMES[number];
   }
   function getNumber(name) {
-    return NAMES.indexOf(name)
+    return NAMES.indexOf(name);
   }
   module.exports = {
     name: getName,
-    number: getNumber
-  }
-})
+    number: getNumber,
+  };
+});
 ```
 
 <!--section-->
@@ -380,16 +380,16 @@ const NAMES = [
   'September',
   'October',
   'November',
-  'December'
-]
+  'December',
+];
 function getName(number) {
-  return NAMES[number]
+  return NAMES[number];
 }
 function getNumber(name) {
-  return NAMES.indexOf(name)
+  return NAMES.indexOf(name);
 }
 
-export { NAMES, getName as name, getNumber as number }
+export { NAMES, getName as name, getNumber as number };
 ```
 
 <!--slide-->
@@ -417,14 +417,14 @@ export const NAMES = [
   'September',
   'October',
   'November',
-  'December'
-]
+  'December',
+];
 
 export function name(number) {
-  return NAMES[number]
+  return NAMES[number];
 }
 export function number(name) {
-  return NAMES.indexOf(name)
+  return NAMES.indexOf(name);
 }
 ```
 
@@ -447,10 +447,10 @@ export function number(name) {
 
 ```js
 function getName(number) {
-  return NAMES[number]
+  return NAMES[number];
 }
 function getNumber(name) {
-  return NAMES.indexOf(name)
+  return NAMES.indexOf(name);
 }
 export const NAMES = [
   'January',
@@ -464,12 +464,12 @@ export const NAMES = [
   'September',
   'October',
   'November',
-  'December'
-]
+  'December',
+];
 export default {
   name: getName,
-  number: getNumber
-}
+  number: getNumber,
+};
 ```
 
 <!--slide-->
@@ -487,9 +487,9 @@ export default {
 > Any member exported can be imported as is or renamed.
 >
 > ```js
-> import { member } from 'module-name'
-> import { member as alias } from 'module-name'
-> import * as name from 'module-name'
+> import { member } from 'module-name';
+> import { member as alias } from 'module-name';
+> import * as name from 'module-name';
 > ```
 
 ````
@@ -512,16 +512,16 @@ Importing members separately
 
 ```js
 // main.js
-import { NAMES, name as getMonthName, number } from './modules/months'
-console.log(getMonthName(2)) // March
+import { NAMES, name as getMonthName, number } from './modules/months';
+console.log(getMonthName(2)); // March
 ```
 
 Importing all members
 
 ```js
 // main.js
-import * as month from './modules/months'
-console.log(month.name(2)) // March
+import * as month from './modules/months';
+console.log(month.name(2)); // March
 ```
 
 <!--slide-->
@@ -558,16 +558,16 @@ export default {
 Importing default:
 
 ```js
-import month from './modules/months'
-console.log(month.name(2)) // March
+import month from './modules/months';
+console.log(month.name(2)); // March
 ```
 
 Importing default and members
 
 ```js
-import month, { NAMES as monthNames } from './modules/months'
-console.log(month.name(2)) // March
-console.log(monthNames) // ["January", "February", "March", "April", ...
+import month, { NAMES as monthNames } from './modules/months';
+console.log(month.name(2)); // March
+console.log(monthNames); // ["January", "February", "March", "April", ...
 ```
 
 <!--slide-->
@@ -596,11 +596,11 @@ export function number (name) { return NAMES.indexOf(name) }
 ````
 
 ```js
-export * from './modules/months'
+export * from './modules/months';
 ```
 
 ```js
-export { name as getMonthName } from './modules/months'
+export { name as getMonthName } from './modules/months';
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
@@ -618,10 +618,10 @@ export default getNumber
 export {round as getRound, PI}
 ```
 
-* Import all methods as **math**
-* Import square function as **square**
-* Import number function as **number**
-* Import all methods as **math** and getNumber as **number**
+- Import all methods as **math**
+- Import square function as **square**
+- Import number function as **number**
+- Import all methods as **math** and getNumber as **number**
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
 
@@ -639,7 +639,7 @@ export {round as getRound, PI}
 ```
 
 ```js
-import * as math from 'math'
+import * as math from 'math';
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
@@ -658,7 +658,7 @@ export {round as getRound, PI}
 ```
 
 ```js
-import { getSquare as square } from 'math'
+import { getSquare as square } from 'math';
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->
@@ -677,7 +677,7 @@ export {round as getRound, PI}
 ```
 
 ```js
-import number from 'math'
+import number from 'math';
 ```
 
 <!--slide--><!-- .slide: class="jsTraining-responseSlide" -->

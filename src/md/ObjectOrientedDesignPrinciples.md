@@ -8,11 +8,11 @@
 
 SOLID stands for:
 
-* **S** – Single-responsiblity principle (SRP)
-* **O** – Open-closed principle (OCP)
-* **L** – Liskov substitution principle (LSP)
-* **I** – Interface segregation principle (ISP)
-* **D** – Dependency Inversion Principle (DIP)
+- **S** – Single-responsiblity principle (SRP)
+- **O** – Open-closed principle (OCP)
+- **L** – Liskov substitution principle (LSP)
+- **I** – Interface segregation principle (ISP)
+- **D** – Dependency Inversion Principle (DIP)
 
 <!--slide-->
 
@@ -87,7 +87,7 @@ class EntityController {
     if (this.validateNotSpam() && this.validateLoggedUser()) {
       // Save the comment to database
     } else {
-      return false
+      return false;
     }
   }
   validateNotSpam() {
@@ -110,15 +110,15 @@ class EntityController {
 ```js
 class EntityController {
   constructor(validators) {
-    this.validators = validators
+    this.validators = validators;
   }
   addComment(comment) {
     const isValid = this.validators.reduce((isValid, validator) => {
-      return validator.validate(comment) || isValid
-    }, true)
+      return validator.validate(comment) || isValid;
+    }, true);
 
     if (!isValid) {
-      return false
+      return false;
     }
     // Save the comment to database
   }
@@ -132,12 +132,12 @@ Could also be lazy (stop of first failure):
 ```js
 class EntityController {
   constructor(validators) {
-    this.validators = validators
+    this.validators = validators;
   }
   addComment(comment) {
     for (var i = 0; this.validators.length; i++) {
       if (!this.validators[i].validate(comment)) {
-        return false
+        return false;
       }
     }
     // Save the comment to database
@@ -152,7 +152,7 @@ Now `EntityController` is extendable with more validations, without actually mod
 ```js
 class IValidator {
   validate() {
-    throw new Error('Expected IValidator.validate() not implemented')
+    throw new Error('Expected IValidator.validate() not implemented');
   }
 }
 class SpamValidator extends IValidator {
@@ -165,8 +165,8 @@ class UserLoggedValidator extends IValidator {
     /* Check if user has session */
   }
 }
-var ctrl = new EntityController([new SpamValidator(), new SessionValidator()])
-ctrl.addComment('a comment')
+var ctrl = new EntityController([new SpamValidator(), new SessionValidator()]);
+ctrl.addComment('a comment');
 ```
 
 <!--slide-->
@@ -198,24 +198,24 @@ ctrl.addComment('a comment')
 ```js
 class Rectangle {
   constructor(width, height) {
-    this.width = width
-    this.height = height
+    this.width = width;
+    this.height = height;
   }
   getArea() {
-    return this.width * this.height
+    return this.width * this.height;
   }
 }
 class Square extends Rectangle {
   constructor(width, height) {
-    this.width = width
-    this.height = width
+    this.width = width;
+    this.height = width;
   }
 }
 
-var square = new Square(4, 6)
-var rectangle = new Rectangle(4, 6)
+var square = new Square(4, 6);
+var rectangle = new Rectangle(4, 6);
 
-square.getArea() === rectangle.getArea() // False
+square.getArea() === rectangle.getArea(); // False
 ```
 
 Square violates rectangle laws of geometry.
@@ -255,13 +255,13 @@ class Penguin extends Bird {
 
 ```js
 function birdBehaviorSequence1(bird) {
-  bird.eat('corn')
-  bird.walk(30)
+  bird.eat('corn');
+  bird.walk(30);
 }
 function birdBehaviorSequence2(bird) {
-  bird.eat('corn')
-  bird.speak()
-  bird.fly(30)
+  bird.eat('corn');
+  bird.speak();
+  bird.fly(30);
 }
 ```
 
@@ -376,7 +376,7 @@ class TVRemove extends TVInterface {
 class TVWatcher {
   watchChannel(device, channel) {
     while (device.currentChannel !== channel) {
-      device.nextChannel()
+      device.nextChannel();
     }
   }
 }
@@ -389,8 +389,8 @@ class TVWatcher {
 > The interface does not have to do with what a class is, or what properties it has,
 > It has to do with:
 >
-> * What are the operations
-> * What are the name of theses operations and its required inputs (parameters)
+> - What are the operations
+> - What are the name of theses operations and its required inputs (parameters)
 
 <!--slide-->
 
@@ -467,13 +467,13 @@ TVWatcher would expect `ChannelsControlInterface` and `MiniRemote` would have to
 
 What are dependencies?
 
-* Framework
-* Third Party Libraries
-* Database
-* File system
-* Email service
-* Web service
-* ...
+- Framework
+- Third Party Libraries
+- Database
+- File system
+- Email service
+- Web service
+- ...
 
 <!--slide-->
 
@@ -504,10 +504,10 @@ What are dependencies?
 ```js
 class FormCtrl {
   onSuccess() {
-    AlertLibrary.message('Data saved in database!')
+    AlertLibrary.message('Data saved in database!');
   }
   onError() {
-    AlertLibrary.message('Error!')
+    AlertLibrary.message('Error!');
   }
 }
 ```
@@ -527,21 +527,21 @@ class FormCtrl {
 ```js
 class IMessageService {
   showMessage() {
-    throw new Error('IMessageService.showMessage not implemented')
+    throw new Error('IMessageService.showMessage not implemented');
   }
 }
 class FormMessageService extends IMessageService {
   showMessage(msg) {
-    AlertLibrary.message(msg)
+    AlertLibrary.message(msg);
   }
 }
 class FormCtrl {
   constructor(messageService) {
     // Expects object the implements IMessageService
-    this.messages = messageService
+    this.messages = messageService;
   }
   onSuccess() {
-    this.messages.showMessage('Data saved in database!')
+    this.messages.showMessage('Data saved in database!');
   }
   /**/
 }
@@ -583,14 +583,14 @@ Responsibility is defined as a contract or obligation of a class and is related 
 
 There are 2 types of responsibilities:
 
-* **Knowing** - responsibilities of an object includes
-  * Knowing about private encapsulated data-member data
-  * Knowing about related objects
-  * Knowing about things it can derive or calculate
-* **Doing** - responsibility of an object includes
-  * Doing something itself-assign, calculate, create
-  * Initiating action in other objects
-  * Controlling and coordinating activities in other objects
+- **Knowing** - responsibilities of an object includes
+  - Knowing about private encapsulated data-member data
+  - Knowing about related objects
+  - Knowing about things it can derive or calculate
+- **Doing** - responsibility of an object includes
+  - Doing something itself-assign, calculate, create
+  - Initiating action in other objects
+  - Controlling and coordinating activities in other objects
 
 <!--slide-->
 
@@ -629,10 +629,10 @@ Example: A class in charge of filtering, processing a lot of instances of a clas
 
 > In general, a class `B` should be responsible for creating instances of class `A` if one, or preferably more, of the following apply:
 
-> * Instances of `B` contains instances of `A`
-> * Instances of `B` record instances of `A` to a file or database
-> * Instances of `B` closely use instances of `A`
-> * Instances of `B` have data needed on instantiate `A`
+> - Instances of `B` contains instances of `A`
+> - Instances of `B` record instances of `A` to a file or database
+> - Instances of `B` closely use instances of `A`
+> - Instances of `B` have data needed on instantiate `A`
 
 Example: factories for simple instances, builders of complex objects
 
@@ -680,9 +680,9 @@ Example: Object that only save information in a database
 
 > A class with high coupling relies on many other classes. It makes the code:
 
-* Not reusable
-* Hard to understand in isolation
-* Easily brojken with other class changes
+- Not reusable
+- Hard to understand in isolation
+- Easily brojken with other class changes
 
 > A class should depend in as few as possible objecs/interfaces
 
@@ -735,10 +735,10 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Objec
 
 > LoginForm has several responsibilities.
 >
-> * Manage UI inputs
-> * Send http requests
-> * Show interface messages
-> * Change page
+> - Manage UI inputs
+> - Send http requests
+> - Show interface messages
+> - Change page
 
 <!--section-->
 

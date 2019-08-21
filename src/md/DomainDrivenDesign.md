@@ -120,11 +120,11 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 > What could be the ubiquitous language of an e-commerce?
 
-> * **Catalog**: Users on your website must be able to search and see information about products
-> * **Orders, Payment**: Your customers should be able to place orders, pay for it and receive their goodies
+> - **Catalog**: Users on your website must be able to search and see information about products
+> - **Orders, Payment**: Your customers should be able to place orders, pay for it and receive their goodies
 >   Delivery: your employees should have a tool to manage deliveries on new orders and update delivery info for users.
-> * **Inventory**: Your solution must provide inventory control for each product that is available to sell
-> * **Customer** management: Your solution must be able to manage customer registries
+> - **Inventory**: Your solution must provide inventory control for each product that is available to sell
+> - **Customer** management: Your solution must be able to manage customer registries
 
 [Source](https://www.codeproject.com/Articles/1094774/Domain-Driven-Design-A-hands-on-Example-Part-of)
 
@@ -236,12 +236,12 @@ The Domain, with bounded contexts
 
 ### Business value of DDD
 
-> * Useful and meaningful **model** of its **domain**
-> * **Domain Experts** contribute to software design
-> * Better **user experience**
-> * Clear boundaries
-> * **Better architecture** organization
-> * Iterative and continuous modeling in an Agile fashion
+> - Useful and meaningful **model** of its **domain**
+> - **Domain Experts** contribute to software design
+> - Better **user experience**
+> - Clear boundaries
+> - **Better architecture** organization
+> - Iterative and continuous modeling in an Agile fashion
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
@@ -448,23 +448,23 @@ When the system archives or completely deletes information about a customer, it 
 ```js
 class SignUpUserRequest {
   constructor(email, password) {
-    this.email = email
-    this.password = password
+    this.email = email;
+    this.password = password;
   }
 }
 class SignUpUserResponse {
   constructor(user) {
-    this.id = user.getId()
-    this.email = user.getEmail()
+    this.id = user.getId();
+    this.email = user.getEmail();
   }
 }
 class SignUpUserService {
   constructor(userRepository) {
-    this.userRepository = userRepository
+    this.userRepository = userRepository;
   }
   execute(signUpUserRequest) {
     /* Creation of user using userRepository ... */
-    return new SignUpUserResponse(user)
+    return new SignUpUserResponse(user);
   }
 }
 ```
@@ -523,9 +523,9 @@ class UserService {
 
 > In DDD, Domain Events are fundamental building blocks that help:
 >
-> * Communicate with other **Bounded Contexts**.
-> * Improve performance and scalability, pushing for **eventual consistency**.
-> * Serve as historical checkpoints.
+> - Communicate with other **Bounded Contexts**.
+> - Improve performance and scalability, pushing for **eventual consistency**.
+> - Serve as historical checkpoints.
 
 > All Events should be represented as verbs in the past tense, as they’re things that have been completed in the past — for example, CustomerRelocated, CargoShipped, or InventoryLossageRecorded.
 
@@ -548,22 +548,22 @@ class UserService {
 ```js
 class DomainEventAbstract {
   constructor() {
-    this._occurredOn = new Date()
+    this._occurredOn = new Date();
   }
   /**
    * @returns Date
    */
   occurredOn() {
-    return this._occuredOn
+    return this._occuredOn;
   }
 }
 class UserRegistered extends DomainEventAbstract {
   constructor(userId) {
-    super()
-    this._userId = userId
+    super();
+    this._userId = userId;
   }
   userId() {
-    return this._userId
+    return this._userId;
   }
 }
 ```
@@ -575,8 +575,8 @@ class SignUpUserService {
   /* ... */
   execute(signUpUserRequest) {
     /* Creation of user using userRepository ... */
-    DomainEventPublisher.publish(new UserRegistered(user.getId()))
-    return new SignUpUserResponse(user)
+    DomainEventPublisher.publish(new UserRegistered(user.getId()));
+    return new SignUpUserResponse(user);
   }
 }
 ```
@@ -761,23 +761,23 @@ class CreateOrderFromCart {
 ```js
 class SignUpUserRequest {
   constructor(email, password) {
-    this.email = email
-    this.password = password
+    this.email = email;
+    this.password = password;
   }
 }
 class SignUpUserResponse {
   constructor(user) {
-    this.id = user.getId()
-    this.email = user.getEmail()
+    this.id = user.getId();
+    this.email = user.getEmail();
   }
 }
 class SignUpUserService {
   constructor(userRepository) {
-    this.userRepository = userRepository
+    this.userRepository = userRepository;
   }
   execute(signUpUserRequest) {
     /* Creation of user using userRepository ... */
-    return new SignUpUserResponse(user)
+    return new SignUpUserResponse(user);
   }
 }
 ```
@@ -819,9 +819,9 @@ class SignUpController extends Controller {
 
 > They are operations that fulfill infrastructure concerns, such as
 >
-> * sending emails
-> * storing data in database
-> * logging meaningful data
+> - sending emails
+> - storing data in database
+> - logging meaningful data
 
 > In terms of Hexagonal Architecture, they live outside the Domain boundary.
 

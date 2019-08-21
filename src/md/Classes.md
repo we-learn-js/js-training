@@ -22,7 +22,7 @@ class User {
     this.name = name;
   }
 }
-var user = new User("Evan");
+var user = new User('Evan');
 ```
 
 <!--slide-->
@@ -35,7 +35,7 @@ class User {
     this.name = name;
   }
 }
-var user = new User("Evan");
+var user = new User('Evan');
 ```
 
 is the same as:
@@ -44,7 +44,7 @@ is the same as:
 function User(name) {
   this.name = name;
 }
-var user = new User("Evan");
+var user = new User('Evan');
 ```
 
 <!--slide-->
@@ -54,7 +54,7 @@ var user = new User("Evan");
 Unlike **function declarations**, **class declarations** are not hoisted.
 
 ```js
-var user = new User("Evan"); // ReferenceError
+var user = new User('Evan'); // ReferenceError
 class User {
   constructor(name) {
     this.name = name;
@@ -63,7 +63,7 @@ class User {
 ```
 
 ```js
-var user = new User("Evan"); // { name: 'Evan' }
+var user = new User('Evan'); // { name: 'Evan' }
 function User(name) {
   this.name = name;
 }
@@ -83,7 +83,7 @@ var User = class {
     this.name = name;
   }
 };
-var user = new User("Evan");
+var user = new User('Evan');
 ```
 
 ```js
@@ -92,7 +92,7 @@ var User = class GoogleUser {
     this.name = name;
   }
 };
-var user = new User("Evan");
+var user = new User('Evan');
 ```
 
 <!--slide-->
@@ -105,7 +105,7 @@ var User = class GoogleUser {
     this.name = name;
   }
 };
-var user = new User("Evan");
+var user = new User('Evan');
 ```
 
 is the same as:
@@ -114,7 +114,7 @@ is the same as:
 var User = function GoogleUser(name) {
   this.name = name;
 };
-var user = new User("Evan");
+var user = new User('Evan');
 ```
 
 <!--slide-->
@@ -141,7 +141,7 @@ class User {
     this.name = name;
   }
 }
-var user = new User("Evan");
+var user = new User('Evan');
 ```
 
 <!--slide-->
@@ -158,7 +158,7 @@ class User {
     this.name = name;
   }
 }
-var user = new User("Evan");
+var user = new User('Evan');
 console.log(user.__proto__.constructor === User); // true
 console.log({}.__proto__.constructor === Object); // true
 console.log(Object.prototype.constructor === Object); // true
@@ -176,10 +176,10 @@ class User {
     this.name = name;
   }
   sayName() {
-    console.log("My name is " + this.name);
+    console.log('My name is ' + this.name);
   }
   orderItem(item) {
-    console.log(item + " purchased: delivery in 3 days");
+    console.log(item + ' purchased: delivery in 3 days');
   }
 }
 ```
@@ -193,10 +193,10 @@ var User = function(name) {
   this.name = name;
 };
 User.prototype.sayName = function() {
-  console.log("My name is " + this.name);
+  console.log('My name is ' + this.name);
 };
 User.prototype.orderItem = function(item) {
-  console.log(item + " purchased: delivery in 3 days");
+  console.log(item + ' purchased: delivery in 3 days');
 };
 ```
 
@@ -292,18 +292,18 @@ class User {
     this.lastName = lastName;
   }
   getFullName() {
-    return this.firstName + " " + this.lastName;
+    return this.firstName + ' ' + this.lastName;
   }
   setFullName(name) {
-    var words = name.toString().split(" ");
-    this.firstName = words[0] || "";
-    this.lastName = words[1] || "";
+    var words = name.toString().split(' ');
+    this.firstName = words[0] || '';
+    this.lastName = words[1] || '';
   }
 }
 
-var user = new User("Evan", "Graham");
+var user = new User('Evan', 'Graham');
 console.log(user.getFullName()); // "Evan Graham"
-user.setFullName("David Smith");
+user.setFullName('David Smith');
 console.log(user.getFullName()); // "David Smith"
 ```
 
@@ -318,18 +318,18 @@ class User {
     this.lastName = lastName;
   }
   get fullName() {
-    return this.firstName + " " + this.lastName;
+    return this.firstName + ' ' + this.lastName;
   }
   set fullName(name) {
-    var words = name.toString().split(" ");
-    this.firstName = words[0] || "";
-    this.lastName = words[1] || "";
+    var words = name.toString().split(' ');
+    this.firstName = words[0] || '';
+    this.lastName = words[1] || '';
   }
 }
 
-var user = new User("Evan", "Graham");
+var user = new User('Evan', 'Graham');
 console.log(user.fullName); // "Evan Graham"
-user.fullName = "David Smith";
+user.fullName = 'David Smith';
 console.log(user.fullName); // "David Smith"
 ```
 
@@ -402,15 +402,15 @@ class Animal {
     this.name = name;
   }
   speak() {
-    console.log(this.name + " makes a noise.");
+    console.log(this.name + ' makes a noise.');
   }
 }
 class Dog extends Animal {
   speak() {
-    console.log(this.name + " barks.");
+    console.log(this.name + ' barks.');
   }
 }
-var d = new Dog("Mitzie");
+var d = new Dog('Mitzie');
 d.speak(); // "Mitzie barks."
 ```
 
@@ -423,17 +423,17 @@ var User = function(name) {
   this.name = name;
 };
 User.prototype.sayName = function() {
-  console.log("My name is " + this.name);
+  console.log('My name is ' + this.name);
 };
 User.prototype.orderItem = function(item) {
-  console.log(item + " purchased: delivery in 3 days");
+  console.log(item + ' purchased: delivery in 3 days');
 };
 var PremiumUser = function(name) {
   this.name = name;
 };
 PremiumUser.prototype = new User();
 PremiumUser.prototype.orderItem = function(item) {
-  console.log(item + " purchased: delivery in 1 day");
+  console.log(item + ' purchased: delivery in 1 day');
 };
 ```
 
@@ -447,15 +447,15 @@ class User {
     this.name = name;
   }
   sayName() {
-    console.log("My name is " + this.name);
+    console.log('My name is ' + this.name);
   }
   orderItem(item) {
-    console.log(item + " purchased: delivery in 3 days");
+    console.log(item + ' purchased: delivery in 3 days');
   }
 }
 class PremiumUser extends User {
   orderItem(item) {
-    console.log(item + " purchased: delivery in 1 day");
+    console.log(item + ' purchased: delivery in 1 day');
   }
 }
 ```
@@ -498,17 +498,17 @@ Point.distance === ColorPoint.distance; // false
 ```js
 class PremiumUser extends User {
   constructor(name) {
-    super(name + " (Premium User)");
+    super(name + ' (Premium User)');
   }
   orderItem(item) {
     super.orderItem(item);
-    console.log("Delivery in 1 day as Premium User");
+    console.log('Delivery in 1 day as Premium User');
   }
 }
 
-var user = new PremiumUser("Evan");
+var user = new PremiumUser('Evan');
 user.sayName(); // "My name is Evan"
-user.orderItem("TV");
+user.orderItem('TV');
 // "TV purchased: delivery in 1 day"
 // "Delivery in 1 day as Premium User"
 ```
@@ -522,7 +522,7 @@ class Point {
     this.y = y;
   }
   toString() {
-    return "(" + this.x + ", " + this.y + ")";
+    return '(' + this.x + ', ' + this.y + ')';
   }
 }
 var point = new Point(5, 10);
@@ -538,13 +538,13 @@ class ColorPoint extends Point {
     this.color = color;
   }
   toString() {
-    return super.toString() + " in " + this.color;
+    return super.toString() + ' in ' + this.color;
   }
 }
 
 var point = new Point(5, 10);
 console.log(point.toString()); // "(5, 10)"
-var colorPoint = new ColorPoint(5, 10, "Green");
+var colorPoint = new ColorPoint(5, 10, 'Green');
 console.log(colorPoint.toString()); // "(5, 10) in Green"
 ```
 
@@ -635,7 +635,7 @@ class Employee {
   }
 
   getFullName() {
-    return this._firstName + " " + this._familyName;
+    return this._firstName + ' ' + this._familyName;
   }
 }
 
@@ -647,7 +647,7 @@ class Manager {
   }
 
   getFullName() {
-    return this._firstName + " " + this._familyName;
+    return this._firstName + ' ' + this._familyName;
   }
 
   addEmployee(...args) {
@@ -682,9 +682,9 @@ class Manager extends Employee {
 Create getter for employee names:
 
 ```js
-var manager = new Manager("Evan", "Graham");
-var employee1 = new Employee("Rachel", "Green");
-var employee2 = new Employee("David", "Smith");
+var manager = new Manager('Evan', 'Graham');
+var employee1 = new Employee('Rachel', 'Green');
+var employee2 = new Employee('David', 'Smith');
 
 manager.addEmployee(employee1, employee2);
 

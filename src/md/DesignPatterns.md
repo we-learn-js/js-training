@@ -27,16 +27,16 @@
 ```js
 class Input {
   setElement(inputElement) {
-    this.element = inputElement
+    this.element = inputElement;
   }
   getValue() {}
   setValue() {}
   validate() {
-    var type = this.element.getAttribute('type')
+    var type = this.element.getAttribute('type');
     if (type === 'phone') {
-      return /^[0-9]{11}$/g.test(this.getValue())
+      return /^[0-9]{11}$/g.test(this.getValue());
     } else if (type === 'email') {
-      return this.getValue().indexOf('@') !== -1
+      return this.getValue().indexOf('@') !== -1;
     }
   }
   /* ... */
@@ -75,14 +75,14 @@ validate () {
 ```js
 var emailValidator = {
   validate(value) {
-    return value.indexOf('@') !== -1
-  }
-}
+    return value.indexOf('@') !== -1;
+  },
+};
 var phoneValidator = {
   validate(value) {
-    return /^[0-9]{11}$/g.test(value)
-  }
-}
+    return /^[0-9]{11}$/g.test(value);
+  },
+};
 ```
 
 <!--slide-->
@@ -92,10 +92,10 @@ var phoneValidator = {
 ```js
 class InputValidationStrategy {
   selectValidator(validator) {
-    this._validator = validator
+    this._validator = validator;
   }
   validate() {
-    this._validator.validate(this.getValue())
+    this._validator.validate(this.getValue());
   }
 }
 ```
@@ -113,14 +113,14 @@ class Input extends InputValidationStrategy {
 }
 class InputEmail {
   constructor() {
-    super()
-    this.selectValidator(emailValidator)
+    super();
+    this.selectValidator(emailValidator);
   }
 }
 class InputPhone {
   constructor() {
-    super()
-    this.selectValidator(phoneValidator)
+    super();
+    this.selectValidator(phoneValidator);
   }
 }
 ```
@@ -184,9 +184,9 @@ class AbstractDuck {
 
 #### New feature: robot ducks are added to DuckLand
 
-* `SteamDuck` swims with steam jet and flies with steam jet
-* `PropellerDuck` swims with propeller jet and flies with propeller
-* `HybridDuck` swims with steam jet and flies with propeller
+- `SteamDuck` swims with steam jet and flies with steam jet
+- `PropellerDuck` swims with propeller jet and flies with propeller
+- `HybridDuck` swims with steam jet and flies with propeller
 
 <!--slide-->
 
@@ -242,22 +242,22 @@ class AbstractDuck {
 ```js
 class FlyBehavior {
   fly() {
-    throw new Error('This method must be overwritten')
+    throw new Error('This method must be overwritten');
   }
 }
 class FlyWithWings extends FlyBehavior {
   fly() {
-    console.log('Flap!Flap!')
+    console.log('Flap!Flap!');
   }
 }
 class FlyWithPropeller extends FlyBehavior {
   fly() {
-    console.log('Fluflufluflu!')
+    console.log('Fluflufluflu!');
   }
 }
 class FlyWithSteamJet extends FlyBehavior {
   fly() {
-    console.log('Psht!Psht!Psht!')
+    console.log('Psht!Psht!Psht!');
   }
 }
 ```
@@ -271,23 +271,23 @@ class FlyWithSteamJet extends FlyBehavior {
 ```js
 class SteamDuck extends AbstractDuck {
   constructor() {
-    super()
-    this.setFlyBehavior(new FlyWithSteamJet())
-    this.setSwimBehavior(new SwimWithSteamJet())
+    super();
+    this.setFlyBehavior(new FlyWithSteamJet());
+    this.setSwimBehavior(new SwimWithSteamJet());
   }
 }
 class PropellerDuck extends AbstractDuck {
   constructor() {
-    super()
-    this.setFlyBehavior(new FlyWithPropeller())
-    this.setSwimBehavior(new SwimWithPropeller())
+    super();
+    this.setFlyBehavior(new FlyWithPropeller());
+    this.setSwimBehavior(new SwimWithPropeller());
   }
 }
 class HybridDuck extends SteamDuck {
   constructor() {
-    super()
-    this.setSwimBehavior(new SwimWithSteamJet())
-    this.setFlyBehavior(new SwimWithPropeller())
+    super();
+    this.setSwimBehavior(new SwimWithSteamJet());
+    this.setFlyBehavior(new SwimWithPropeller());
   }
 }
 ```
@@ -296,9 +296,9 @@ class HybridDuck extends SteamDuck {
 
 ### Related OO Principles:
 
-* Open-Close (SOLID)
-* Protected Variations (GRASP)
-* Favor composition over inheritance
+- Open-Close (SOLID)
+- Protected Variations (GRASP)
+- Favor composition over inheritance
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
@@ -323,18 +323,18 @@ class Person {
   constructor(transportMode) {
     switch (transportMode) {
       case 'car':
-        this.transportStrategy = new PersonCarTransportation(this)
-        break
+        this.transportStrategy = new PersonCarTransportation(this);
+        break;
       case 'publicTransports':
-        this.transportStrategy = new PersonPublicTransportation(this)
-        break
+        this.transportStrategy = new PersonPublicTransportation(this);
+        break;
       default:
-        this.transportStrategy = new PersonWalkTransportation(this)
+        this.transportStrategy = new PersonWalkTransportation(this);
     }
   }
 
   goToAddress(address) {
-    this.transportStrategy.goToAddress(address)
+    this.transportStrategy.goToAddress(address);
   }
 }
 ```
@@ -348,19 +348,19 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Desig
 ```js
 class Person {
   constructor(transportMode) {
-    this.transportStrategy = transportMode
+    this.transportStrategy = transportMode;
   }
 
   goToAddress(address) {
-    this.transportStrategy.goToAddress(address)
+    this.transportStrategy.goToAddress(address);
   }
 }
 
-const destination = 'Plaça Catalunya, Barcelona'
+const destination = 'Plaça Catalunya, Barcelona';
 
-new Person(new PersonCarTransportation()).goToAddress(destination)
-new Person(new PersonPublicTransportation()).goToAddress(destination)
-new Person(new PersonWalkTransportation()).goToAddress(destination)
+new Person(new PersonCarTransportation()).goToAddress(destination);
+new Person(new PersonPublicTransportation()).goToAddress(destination);
+new Person(new PersonWalkTransportation()).goToAddress(destination);
 ```
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/DesignPatterns/judiji-2?embed
@@ -464,30 +464,30 @@ class TallMario extends MarioState {
 ```js
 class SuperMario {
   constructor() {
-    this.setState(this.getNormalState())
+    this.setState(this.getNormalState());
   }
   setState(state) {
-    this.state = state
+    this.state = state;
   }
 
   collisionWithStar(star) {
-    this.state.collisionWithStar(star)
+    this.state.collisionWithStar(star);
   }
   collisionWithMushroom(mushroom) {
-    this.state.collisionWithMushroom(mushroom)
+    this.state.collisionWithMushroom(mushroom);
   }
   collisionWithEnemy(enemy) {
-    this.state.collisionWithEnemy(enemy)
+    this.state.collisionWithEnemy(enemy);
   }
 
   getInvincibleState() {
-    return new InvincibleMario(this)
+    return new InvincibleMario(this);
   }
   getNormalState() {
-    return new NormalMario(this)
+    return new NormalMario(this);
   }
   getTallState() {
-    return new TallMario(this)
+    return new TallMario(this);
   }
 }
 ```
@@ -496,8 +496,8 @@ class SuperMario {
 
 ### Related OO Principles:
 
-* High Cohesion (GRASP)
-* Favor composition over inheritance
+- High Cohesion (GRASP)
+- Favor composition over inheritance
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
@@ -507,7 +507,7 @@ class SuperMario {
 
 > Now transport mode depends on if our user has a car, a bike, etc.
 
-* Apply State pattern to `Person` class.
+- Apply State pattern to `Person` class.
 
 https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/DesignPatterns/xijoyen?embed
 
@@ -518,21 +518,21 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Desig
 ```js
 class PersonState {
   constructor(person) {
-    this.person = person
+    this.person = person;
   }
   goToAddress(address) {
-    console.log(`Go by foot, managing sidewalks, stop lights, etc`)
+    console.log(`Go by foot, managing sidewalks, stop lights, etc`);
   }
 }
 class PersonWithCarState extends PersonState {
   goToAddress(address) {
-    console.log(`Go by car, managing traffic, stop lights, etc`)
+    console.log(`Go by car, managing traffic, stop lights, etc`);
   }
 }
 class PersonWithTransportCreditState extends PersonState {
   goToAddress(address) {
-    this.person.publicTransportCredit--
-    console.log(`Go by public Transportation, going to bus stop, paying, etc`)
+    this.person.publicTransportCredit--;
+    console.log(`Go by public Transportation, going to bus stop, paying, etc`);
   }
 }
 ```
@@ -555,18 +555,18 @@ https://stackblitz.com/github/we-learn-js/js-training-code/tree/master/src/Desig
 const Flyable = Sup =>
   class extends Sup {
     fly() {
-      console.log('Flap, Flap!')
+      console.log('Flap, Flap!');
     }
-  }
+  };
 const Swimable = Sup =>
   class extends Sup {
     quack() {
-      console.log('Quack!')
+      console.log('Quack!');
     }
-  }
+  };
 class Duck extends Swimable(Flyable(null)) {
   swim() {
-    console.log('Chop!')
+    console.log('Chop!');
   }
 }
 ```
@@ -577,8 +577,8 @@ class Duck extends Swimable(Flyable(null)) {
 
 ### Related OO Principles:
 
-* Interface Segregation Principle (SOLID)
-* Favor composition over inheritance
+- Interface Segregation Principle (SOLID)
+- Favor composition over inheritance
 
 <!--section-->
 
@@ -601,16 +601,16 @@ class Duck extends Swimable(Flyable(null)) {
 A global session object that publishes changes by events
 
 ```js
-import pubSub from './pubsub.js'
+import pubSub from './pubsub.js';
 
 export class Session {
-  static SESSION_CHANGE = 'session:change'
+  static SESSION_CHANGE = 'session:change';
   static setUser(user) {
-    this.user = user
-    pubSub.publish(Session.SESSION_CHANGE, this.user)
+    this.user = user;
+    pubSub.publish(Session.SESSION_CHANGE, this.user);
   }
   static getUser() {
-    return this.user
+    return this.user;
   }
 }
 ```
@@ -620,22 +620,22 @@ export class Session {
 The header, which always displays currents user's name, listens to the event:
 
 ```js
-import pubSub from './pubsub.js'
-import Session from './session.js'
+import pubSub from './pubsub.js';
+import Session from './session.js';
 
 class AppHeader {
   constructor(domElement) {
-    this.title = domElement.getElementsByClassName('title')[0]
+    this.title = domElement.getElementsByClassName('title')[0];
     this._sessionHandler = pubSub.subscribe(
       Session.SESSION_CHANGE,
-      this.setUser.bind(this)
-    )
+      this.setUser.bind(this),
+    );
   }
   setUser(user) {
-    this.title.innerHTML = 'User: ' + user.name
+    this.title.innerHTML = 'User: ' + user.name;
   }
   destroy() {
-    this._sessionHandler.dispose()
+    this._sessionHandler.dispose();
   }
 }
 ```
@@ -648,29 +648,29 @@ Event bus implmentation
 
 ```js
 // pubsub.js
-var subscribers = {}
+var subscribers = {};
 export default {
   publish(topic, data) {
     if (!subscribers[topic]) {
-      return
+      return;
     }
     subscribers[topic].forEach(function(subscriber) {
-      subscriber(data)
-    })
+      subscriber(data);
+    });
   },
   subscribe(topic, callback) {
-    var index
+    var index;
     if (!subscribers[topic]) {
-      subscribers[topic] = []
+      subscribers[topic] = [];
     }
-    index = subscribers[topic].push(callback) - 1
+    index = subscribers[topic].push(callback) - 1;
     return {
       dispose: function() {
-        subscribers[topic].splice(index, 1)
-      }
-    }
-  }
-}
+        subscribers[topic].splice(index, 1);
+      },
+    };
+  },
+};
 ```
 
 <!--slide-->
@@ -687,8 +687,8 @@ export default {
 
 ### Related OO Principles:
 
-* Low coupling
-* Indirection (GRASP)
+- Low coupling
+- Indirection (GRASP)
 
 <!--section-->
 
@@ -803,9 +803,9 @@ console.log(beverage.getDescription() + “ $” + beverage.cost())
 
 ### Related OO Principles:
 
-* Open/Close Principle (SOLID)
-* Favor composition over inheritance
-* Low coupling
+- Open/Close Principle (SOLID)
+- Favor composition over inheritance
+- Low coupling
 
 <!--section-->
 
@@ -836,25 +836,25 @@ console.log(beverage.getDescription() + “ $” + beverage.cost())
 ```js
 class WeatherData {
   constructor() {
-    this.observers = []
+    this.observers = [];
   }
   setMeasurements(temperature, humidity) {
-    this.temperature = temperature
-    this.humidity = humidity
-    this.notifyObservers({ temperature, humidity })
+    this.temperature = temperature;
+    this.humidity = humidity;
+    this.notifyObservers({ temperature, humidity });
   }
   registerObserver(observer) {
-    this.observers.push(observer)
+    this.observers.push(observer);
   }
   removeObserver(observer) {
     this.observers = this.observers.filter(
-      observer => observer !== observerToRemove
-    )
+      observer => observer !== observerToRemove,
+    );
   }
   notifyObservers(data) {
     this.observers.forEach(function(observer) {
-      observer(data)
-    })
+      observer(data);
+    });
   }
 }
 ```
@@ -864,8 +864,8 @@ class WeatherData {
 ```js
 class WeatherConsole {
   constructor(weatherData) {
-    this.weatherData = weatherData
-    this.weatherData.registerObserver(this.log.bind(this))
+    this.weatherData = weatherData;
+    this.weatherData.registerObserver(this.log.bind(this));
   }
   log(data) {
     console.log(
@@ -873,8 +873,8 @@ class WeatherConsole {
         data.temperature +
         'F degrees and ' +
         data.humidity +
-        '% humidity.'
-    )
+        '% humidity.',
+    );
   }
 }
 ```
@@ -890,27 +890,27 @@ class WeatherConsole {
 ```js
 class Observable {
   constructor() {
-    this.observers = []
+    this.observers = [];
   }
   registerObserver(observer) {
-    this.observers.push(observer)
+    this.observers.push(observer);
   }
   removeObserver(observer) {
     this.observers = this.observers.filter(function(observer) {
-      return observer !== observerToRemove
-    })
+      return observer !== observerToRemove;
+    });
   }
   notifyObservers(data) {
     this.observers.forEach(function(observer) {
-      observer(data)
-    })
+      observer(data);
+    });
   }
 }
 class WeatherData extends Observable {
   setMeasurements(temperature, humidity) {
-    this.temperature = temperature
-    this.humidity = humidity
-    this.notifyObservers({ temperature, humidity })
+    this.temperature = temperature;
+    this.humidity = humidity;
+    this.notifyObservers({ temperature, humidity });
   }
 }
 ```
@@ -922,9 +922,9 @@ class WeatherData extends Observable {
 ```js
 class WheatherConsole {
   constructor(weatherData) {
-    this.weatherData = weatherData
-    this.observer = this.log.bind(this)
-    this.weatherData.registerObserver(this._observer)
+    this.weatherData = weatherData;
+    this.observer = this.log.bind(this);
+    this.weatherData.registerObserver(this._observer);
   }
   log(data) {
     console.log(
@@ -932,11 +932,11 @@ class WheatherConsole {
         data.temperature +
         'F degrees and ' +
         data.humidity +
-        '% humidity.'
-    )
+        '% humidity.',
+    );
   }
   destroy() {
-    this.weatherData.removeObserver(this._observer)
+    this.weatherData.removeObserver(this._observer);
   }
 }
 ```
@@ -1016,9 +1016,9 @@ https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Observer
 
 ### Related OO Principles:
 
-* Indirection (GRASP)
-* Low coupling
-* Favor composition over inheritance
+- Indirection (GRASP)
+- Low coupling
+- Favor composition over inheritance
 
 <!--section-->
 
@@ -1035,29 +1035,29 @@ https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Observer
 <!--slide-->
 
 ```js
-import Espresso from './espresso'
-import Decaf from './decaf'
-import DarkRoast from './dark-roast'
+import Espresso from './espresso';
+import Decaf from './decaf';
+import DarkRoast from './dark-roast';
 
 class CoffeeShop {
   orderCoffee(type, condiments) {
-    var beverage
+    var beverage;
     if (type == 'espresso') {
-      beverage = new Espresso()
+      beverage = new Espresso();
     } else if ((type = 'decaf')) {
-      beverage = new Decaf()
+      beverage = new Decaf();
     } else if ((type = 'darkroast')) {
-      beverage = new DarkRoast()
+      beverage = new DarkRoast();
     }
     if (condiments.indexOf('mocha') !== -1) {
-      beverage = new Mocha(beverage)
+      beverage = new Mocha(beverage);
     }
     if (condiments.indexOf('milk') !== -1) {
-      beverage = new Milk(beverage)
+      beverage = new Milk(beverage);
     }
 
-    beverage.prepare()
-    return beverage
+    beverage.prepare();
+    return beverage;
   }
 }
 ```
@@ -1078,24 +1078,24 @@ class CoffeeShop {
 class BeverageFactory {
   static createCondimentedCoffee(beverage, condiments) {
     if (condiments.indexOf('mocha') !== -1) {
-      beverage = new Mocha(beverage)
+      beverage = new Mocha(beverage);
     }
     if (condiments.indexOf('milk') !== -1) {
-      beverage = new Milk(beverage)
+      beverage = new Milk(beverage);
     }
   }
   static createCoffee(type, condiments) {
-    var beverage
+    var beverage;
     if (type == 'espresso') {
-      beverage = new Espresso()
+      beverage = new Espresso();
     } else if ((type = 'decaf')) {
-      beverage = new Decaf()
+      beverage = new Decaf();
     } else if ((type = 'darkroast')) {
-      beverage = new DarkRoast()
+      beverage = new DarkRoast();
     }
-    var beverage = this.createCondimentedCoffee(beverage, condiments)
-    beverage.prepare()
-    return beverage
+    var beverage = this.createCondimentedCoffee(beverage, condiments);
+    beverage.prepare();
+    return beverage;
   }
 }
 ```
@@ -1111,8 +1111,8 @@ class BeverageFactory {
 ```js
 class CoffeeShop {
   prepareCoffee(type, condiments) {
-    var beverage = BeverageFactory.createCondimentedCoffee(type, condiments)
-    return beverage
+    var beverage = BeverageFactory.createCondimentedCoffee(type, condiments);
+    return beverage;
   }
 }
 ```
@@ -1163,13 +1163,13 @@ class CondimentFactory {
 
 ```js
 class BeverageFactory {
-  static coffeeFactory = CoffeeFactory
-  static condimentFactory = CondimentFactory
+  static coffeeFactory = CoffeeFactory;
+  static condimentFactory = CondimentFactory;
   createCoffee(type, condiments) {
-    var beverage = this.coffeeFactory.createCoffee(type)
-    beverage = this.condimentFactory.createCondiment(beverage, condiments)
-    beverage.prepare()
-    return beverage
+    var beverage = this.coffeeFactory.createCoffee(type);
+    beverage = this.condimentFactory.createCondiment(beverage, condiments);
+    beverage.prepare();
+    return beverage;
   }
 }
 ```
@@ -1179,11 +1179,11 @@ class BeverageFactory {
 ```js
 class CoffeeShop {
   constructor() {
-    this.factory = BeverageFactory
+    this.factory = BeverageFactory;
   }
   prepareCoffee(type, condiments) {
-    var beverage = this.factory.createCoffee(type, condiments)
-    return beverage
+    var beverage = this.factory.createCoffee(type, condiments);
+    return beverage;
   }
 }
 ```
@@ -1193,16 +1193,16 @@ class CoffeeShop {
 ```js
 class HealthyCondimentFactory extends BeverageFactory {
   static createMilk(beverage) {
-    return new LowFatMilk(beverage)
+    return new LowFatMilk(beverage);
   }
 }
 class HealthyBeverageFactory extends BeverageFactory {
-  static condimentFactory = HealthyCondimentFactory
+  static condimentFactory = HealthyCondimentFactory;
 }
 class HealthyCoffeeShop extends CoffeeShop {
   constructor() {
-    super()
-    this.factory = HealthyBeverageFactory
+    super();
+    this.factory = HealthyBeverageFactory;
   }
 }
 ```
@@ -1211,9 +1211,9 @@ class HealthyCoffeeShop extends CoffeeShop {
 
 ### Related OO Principles:
 
-* Creator (GRASP)
-* Pure Fabrication (GRASP)
-* Open-Close Principle (SOLID)
+- Creator (GRASP)
+- Pure Fabrication (GRASP)
+- Open-Close Principle (SOLID)
 
 <!--section-->
 
@@ -1230,9 +1230,9 @@ class HealthyCoffeeShop extends CoffeeShop {
 ### Example: Global cache object with instance getter
 
 ```js
-import Cache from './cache'
-var cache = Cache.getInstance()
-cache.set('myVar', 1)
+import Cache from './cache';
+var cache = Cache.getInstance();
+cache.set('myVar', 1);
 ```
 
 <!--slide-->
@@ -1282,8 +1282,8 @@ export default new Cache()
 Usage:
 
 ```js
-import cache from './cache'
-cache.set('myVar', 1)
+import cache from './cache';
+cache.set('myVar', 1);
 ```
 
 <!--slide-->
@@ -1313,16 +1313,16 @@ cache.set('myVar', 1)
 ```js
 class ICommand {
   execute() {
-    throw new Error('ICommand.execute not implemented')
+    throw new Error('ICommand.execute not implemented');
   }
 }
 class TurnOnCommand extends ICommand {
   // Command receiver
   constructor(device) {
-    this.device = device
+    this.device = device;
   }
   execute() {
-    device.turnOn()
+    device.turnOn();
   }
 }
 ```
@@ -1333,10 +1333,10 @@ class TurnOnCommand extends ICommand {
 class RemoteControlButton {
   // Command invoker
   setCommand(command) {
-    this.command = command
+    this.command = command;
   }
   onPress() {
-    this.command.execute()
+    this.command.execute();
   }
 }
 class RemoteControl {
@@ -1345,11 +1345,11 @@ class RemoteControl {
       new RemoteControlButton(),
       new RemoteControlButton(),
       new RemoteControlButton(),
-      new RemoteControlButton()
-    ]
+      new RemoteControlButton(),
+    ];
   }
   setCommand(slot, command) {
-    this.buttons[slot].setCommand(command)
+    this.buttons[slot].setCommand(command);
   }
 }
 ```
@@ -1361,17 +1361,17 @@ class RemoteControl {
 ```js
 class AlarmCommand {
   constructor(device) {
-    this.alarm = alarm
+    this.alarm = alarm;
   }
 }
 class EnableAlarm extends AlarmCommand {
   execute() {
-    this.alarm.enable()
+    this.alarm.enable();
   }
 }
 class DisableAlarm extends AlarmCommand {
   execute() {
-    this.alarm.disable()
+    this.alarm.disable();
   }
 }
 ```
@@ -1404,11 +1404,11 @@ alarms.forEach(function(alarm){
 ```js
 class LoggerFactory {
   static getLogger() {
-    return window.console
+    return window.console;
   }
 }
-var logger = LoggerFactory.getLogger()
-logger.log('something happened')
+var logger = LoggerFactory.getLogger();
+logger.log('something happened');
 ```
 
 <!--slide-->
@@ -1440,12 +1440,12 @@ class AjaxLogger {
 ```js
 class AjaxLoggerAdapter {
   static log(...args) {
-    AjaxLogger.sendLog(...args)
+    AjaxLogger.sendLog(...args);
   }
 }
 class LoggerFactory {
   static getLogger() {
-    return AjaxLoggerAdapter
+    return AjaxLoggerAdapter;
   }
 }
 ```
@@ -1465,17 +1465,17 @@ class LoggerFactory {
 ### Example: Jquery is THE Façade to forget about cross-browser's implementations
 
 ```js
-$(element).click(onClick)
+$(element).click(onClick);
 ```
 
 ```js
 function click(element, func) {
   if (window.addEventListener) {
-    element.addEventListener('click', func, false)
+    element.addEventListener('click', func, false);
   } else if (window.attachEvent) {
-    element.attachEvent('onclick', func)
+    element.attachEvent('onclick', func);
   } else {
-    element['onclick'] = func
+    element['onclick'] = func;
   }
 }
 ```
@@ -1483,14 +1483,14 @@ function click(element, func) {
 <!--slide-->
 
 ```js
-$(element).css({ top: '30px', left: '100px' })
+$(element).css({ top: '30px', left: '100px' });
 ```
 
 ```js
 function css(element, properties) {
   Object.keys(properties).forEach(function(key) {
-    element.style[key] = properties[key]
-  })
+    element.style[key] = properties[key];
+  });
 }
 ```
 
@@ -1513,10 +1513,10 @@ function css(element, properties) {
 ```js
 class Parser {
   parse(data) {
-    var labels = this._parseLabels(data)
-    var names = this._parseNames(data)
-    var metas = this._parseMetas(data)
-    return { labels, names, metas }
+    var labels = this._parseLabels(data);
+    var names = this._parseNames(data);
+    var metas = this._parseMetas(data);
+    return { labels, names, metas };
   }
   _parseLabels(data) {
     /* parsing algorithm */
@@ -1564,22 +1564,22 @@ class MyController extends BaseController {
 ```js
 class Person {
   constructor(firstName, lastName) {
-    this.firstName = firstName
-    this.lastName = lastName
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
   valueOf() {
-    return this.firstName + ' ' + this.lastName
+    return this.firstName + ' ' + this.lastName;
   }
 }
-console.log(new Person('Evan', 'Graham') == 'Evan Graham') // true
+console.log(new Person('Evan', 'Graham') == 'Evan Graham'); // true
 ```
 
 <!--slide-->
 
 ### Related OO Principles
 
-* Open/Close Principle (SOLID)
-* Protected variations (GRASP)
+- Open/Close Principle (SOLID)
+- Protected variations (GRASP)
 
 <!--section-->
 
@@ -1603,16 +1603,16 @@ console.log(new Person('Evan', 'Graham') == 'Evan Graham') // true
 
 ```js
 // Collection of elements
-$('.container').css({ opacity: 0.5 })
+$('.container').css({ opacity: 0.5 });
 $('.container')
   .find('div')
-  .css({ opacity: 0.5 })
+  .css({ opacity: 0.5 });
 $('.container')
   .children()
-  .css({ opacity: 0.5 })
+  .css({ opacity: 0.5 });
 
 // Single element
-$(element).css({ opacity: 0.5 })
+$(element).css({ opacity: 0.5 });
 ```
 
 <!--slide-->
@@ -1622,19 +1622,19 @@ $(element).css({ opacity: 0.5 })
 ```js
 class Directory {
   constructor(files) {
-    this.files = files
-    this.children = []
+    this.files = files;
+    this.children = [];
   }
   add(directory) {
-    this.children.push(directory)
-    child.parent = this
+    this.children.push(directory);
+    child.parent = this;
   }
   getFiles() {
     const childrenFiles = this.children.reduce((files, directory) => {
-      return files.push(directory.getFiles())
-    }, [])
+      return files.push(directory.getFiles());
+    }, []);
 
-    return [...this.files, ...childrenFiles]
+    return [...this.files, ...childrenFiles];
   }
 }
 ```
@@ -1658,10 +1658,10 @@ class Directory {
 ```js
 class Users {
   getOne(id) {
-    return executeSql('SELECT * FROM Users WHERE id = ' + id)
+    return executeSql('SELECT * FROM Users WHERE id = ' + id);
   }
   getCount() {
-    return executeSql('SELECT COUNT(*) FROM Users')
+    return executeSql('SELECT COUNT(*) FROM Users');
   }
 }
 ```
@@ -1671,24 +1671,24 @@ class Users {
 #### Improving performance with cache
 
 ```js
-var cache = {}
-var count = null
+var cache = {};
+var count = null;
 class UsersProxy {
   constructor(users) {
-    this.users = users
+    this.users = users;
   }
   getOne(id) {
     if (cache[id]) {
-      return cache[id]
+      return cache[id];
     } else {
-      return (cache[id] = this.users.getOne(id))
+      return (cache[id] = this.users.getOne(id));
     }
   }
   getCount() {
     if (count !== null) {
-      return count
+      return count;
     } else {
-      return (count = this.users.getCount())
+      return (count = this.users.getCount());
     }
   }
 }
@@ -1701,23 +1701,23 @@ class UsersProxy {
 ```js
 class UsersPaginator {
   constructor() {
-    this.page = 0
-    this.usersPerPage = 10
-    this.loadList()
+    this.page = 0;
+    this.usersPerPage = 10;
+    this.loadList();
   }
   nextPage() {
-    this.page++
-    this.loadList()
+    this.page++;
+    this.loadList();
   }
   prevPage() {
-    this.page--
-    this.loadList()
+    this.page--;
+    this.loadList();
   }
   loadList() {
-    let offset = this.usersPerPage * this.page
+    let offset = this.usersPerPage * this.page;
     return executeSql(
-      'SELECT * FROM Users LIMIT ' + offset + ',' + offset + this.usersPerPage
-    )
+      'SELECT * FROM Users LIMIT ' + offset + ',' + offset + this.usersPerPage,
+    );
   }
 }
 ```
@@ -1729,7 +1729,7 @@ Note: What if user clicks "nextPage" button very fastly. We really need to load 
 ```js
 class UsersPaginatorProxy extends UsersPaginator {
   loadList() {
-    _.debounce(this.loadList.bind(this), 300)
+    _.debounce(this.loadList.bind(this), 300);
   }
 }
 ```
@@ -1742,11 +1742,11 @@ class UsersPaginatorProxy extends UsersPaginator {
 ### Example: Proxy method to extend behaviour
 
 ```js
-var proxied = jQuery.ajax // Preserving original function
+var proxied = jQuery.ajax; // Preserving original function
 jQuery.ajax = function() {
-  jQuery('#loading').dialog({ modal: true })
-  return proxied.apply(this, arguments)
-}
+  jQuery('#loading').dialog({ modal: true });
+  return proxied.apply(this, arguments);
+};
 ```
 
 <!--slide-->
@@ -1840,20 +1840,20 @@ jQuery.ajax = function() {
 ```js
 class Observable {
   constructor() {
-    this.observers = []
+    this.observers = [];
   }
   registerObserver(observer) {
-    this.observers.push(observer)
+    this.observers.push(observer);
   }
   removeObserver(observer) {
     this.observers = this.observers.filter(function(observer) {
-      return observer !== observerToRemove
-    })
+      return observer !== observerToRemove;
+    });
   }
   notifyObservers(data) {
     this.observers.forEach(function(observer) {
-      observer(data)
-    })
+      observer(data);
+    });
   }
 }
 ```
@@ -1865,16 +1865,16 @@ class Observable {
 ```js
 class PlayList extends Observable {
   constructor(songs) {
-    this.songs = songs
+    this.songs = songs;
   }
   get length() {
-    this.songs.length
+    this.songs.length;
   }
   get current() {
-    this.current
+    this.current;
   }
   play(songIndex) {
-    this.current = songIndex
+    this.current = songIndex;
     // execute song play
   }
 }
@@ -1887,29 +1887,29 @@ class PlayList extends Observable {
 ```js
 class PlayerCtrl {
   constructor(playlist) {
-    this.playlist = playlist
-    this.view = new PlayerView(this, playlist)
+    this.playlist = playlist;
+    this.view = new PlayerView(this, playlist);
   }
   next() {
-    this.changeSong(this.playlist.current + 1)
+    this.changeSong(this.playlist.current + 1);
   }
   previous() {
-    this.changeSong(this.playlist.current - 1)
+    this.changeSong(this.playlist.current - 1);
   }
   stop() {
-    this.changeSong(null)
+    this.changeSong(null);
   }
   shuffle() {
-    var index = Math.round(Math.random() * this.playlist.length)
-    this.changeSong(songIndex)
+    var index = Math.round(Math.random() * this.playlist.length);
+    this.changeSong(songIndex);
   }
   changeSong(index) {
-    const { playlist, view } = this
-    playlist.play(index)
-    view.toggleNext(playlist.current < playlist.length)
-    view.togglePrevious(playlist.current > 0)
-    view.toggleStop(playlist.current !== null)
-    view.togglePlay(playlist.current === null)
+    const { playlist, view } = this;
+    playlist.play(index);
+    view.toggleNext(playlist.current < playlist.length);
+    view.togglePrevious(playlist.current > 0);
+    view.toggleStop(playlist.current !== null);
+    view.togglePlay(playlist.current === null);
   }
 }
 ```
@@ -1921,18 +1921,18 @@ class PlayerCtrl {
 ```js
 class PlayerView {
   constructor(controller) {
-    this.controller = controller
-    this.setEvents()
+    this.controller = controller;
+    this.setEvents();
   }
   setEvents() {
-    $('.next').click(this.controller.next.bind(this.controller))
-    $('.prev').click(this.controller.prev.bind(this.controller))
-    $('.stop').click(this.controller.stop.bind(this.controller))
-    $('.play').click(this.controller.play.bind(this.controller))
-    $('.shuffle').click(this.controller.shuffle.bind(this.controller))
+    $('.next').click(this.controller.next.bind(this.controller));
+    $('.prev').click(this.controller.prev.bind(this.controller));
+    $('.stop').click(this.controller.stop.bind(this.controller));
+    $('.play').click(this.controller.play.bind(this.controller));
+    $('.shuffle').click(this.controller.shuffle.bind(this.controller));
   }
   onItemChange(item) {
-    this.setTitle(item.title + ' - ' + item.author)
+    this.setTitle(item.title + ' - ' + item.author);
   }
   setTitle(title) {
     /* change title in the view */
@@ -1962,9 +1962,9 @@ class PlayerView {
 
 > Involve object instantiation and all provide a way to decouple a client from objects it needs to instantiate.
 
-> * Singleton
-> * Factory
-> * Builder
+> - Singleton
+> - Factory
+> - Builder
 
 <!--slide-->
 
@@ -1972,12 +1972,12 @@ class PlayerView {
 
 > Let you compose classes or objects into larger structures
 
-> * Proxy
-> * Decorator
-> * Adapter
-> * Façade
-> * Composite
-> * Bridge
+> - Proxy
+> - Decorator
+> - Adapter
+> - Façade
+> - Composite
+> - Bridge
 
 <!--slide-->
 
@@ -1985,13 +1985,13 @@ class PlayerView {
 
 > Concerned with how classes and objects interact and distribute responsibility
 
-> * Template Method
-> * Iterator
-> * Command
-> * Observer
-> * State
-> * Strategy
-> * Mediator
+> - Template Method
+> - Iterator
+> - Command
+> - Observer
+> - State
+> - Strategy
+> - Mediator
 
 <!--section-->
 
