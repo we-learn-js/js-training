@@ -60,7 +60,7 @@ As Uncle Bob wrote in [Screaming Architecture](https://8thlight.com/blog/uncle-b
 
 <!--slide-->
 
-![Domain Model example](http://www.agiledata.org/images/admInitialDomainModel.gif)
+![Domain Model example](http://www.agiledata.org//images/admInitialDomainModel.gif)
 
 <!--slide-->
 
@@ -154,13 +154,13 @@ The Domain, with bounded contexts
 
 "Product" in the Catalog context
 
-![Catalog Product](./images/ddd-product-in-catalog.png)
+![Catalog Product](/images/ddd-product-in-catalog.png)
 
 <!--slide-->
 
 "Product" in the Orders context
 
-![Orders Product](./images/ddd-product-in-orders.png)
+![Orders Product](/images/ddd-product-in-orders.png)
 
 <!--slide-->
 
@@ -176,7 +176,7 @@ The Domain, with bounded contexts
 
 <!--slide-->
 
-![Bounded Context](https://martinfowler.com/bliki/images/boundedContext/sketch.png)
+![Bounded Context](https://martinfowler.com/bliki//images/boundedContext/sketch.png)
 
 <!--slide-->
 
@@ -369,7 +369,7 @@ When the system archives or completely deletes information about a customer, it 
 
 <!--slide-->
 
-![Aggregates](https://www.lavinski.me/content/images/2014/Apr/Domain-Driven-Design-Concepts.png)
+![Aggregates](https://www.lavinski.me/content//images/2014/Apr/Domain-Driven-Design-Concepts.png)
 
 <!--slide--><!-- .slide: class="jsTraining-questionSlide" -->
 
@@ -702,7 +702,7 @@ In the second queue, a worker inserts the information into a Logs Server or a Da
 
 <!--slide-->
 
-![Catalog Product](./images/ddd-hexa-arch.png)
+![Catalog Product](/images/ddd-hexa-arch.png)
 
 <!--slide-->
 

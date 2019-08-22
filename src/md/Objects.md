@@ -342,7 +342,7 @@ measures.weight = 95;
 console.log(user.measures.weight); // 95
 ```
 
-![](./images/objects-playground-1.png)
+![](/images/objects-playground-1.png)
 
 <!--slide-->
 
@@ -432,7 +432,7 @@ console.log(cat.firstName); // "Tom"
 console.log(mouse.firstName); // "Jerry"
 ```
 
-![](./images/objects-playground-2.png)
+![](/images/objects-playground-2.png)
 
 <!--slide-->
 

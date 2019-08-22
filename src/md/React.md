@@ -24,7 +24,7 @@ Every time you modify the DOM, the browser does the job (parses html, sets layou
 
 If you modify the dom in several places in your source code, the flow may be repeated many times and unnecessary operations may be executed.
 
-![render-flow](https://developers.google.com/web/fundamentals/performance/rendering/images/intro/frame-full.jpg) [source](https://developers.google.com/web/fundamentals/performance/rendering/)
+![render-flow](https://developers.google.com/web/fundamentals/performance/rendering//images/intro/frame-full.jpg) [source](https://developers.google.com/web/fundamentals/performance/rendering/)
 
 <!--slide-->
 

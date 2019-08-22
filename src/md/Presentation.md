@@ -8,7 +8,7 @@
 
 ### Me!
 
-![me](./images/avatar.jpg)
+![me](/images/avatar.jpg)
 
 [davidbarna@github](https://github.com/davidbarna)
 
