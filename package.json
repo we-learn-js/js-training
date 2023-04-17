@@ -79,7 +79,7 @@
     "gatsby-plugin-typescript": "^2.1.2",
     "gatsby-source-filesystem": "^2.1.8",
     "gatsby-transformer-code": "^0.1.0",
-    "gatsby-transformer-remark": "^2.6.10",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.2.5",
     "node-sass-package-importer": "5.2.0",
     "ts-node": "^8.3.0",
