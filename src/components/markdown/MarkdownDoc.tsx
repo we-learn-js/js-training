@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import {coy} from 'react-syntax-highlighter/dist/esm/styles/prism'
 
@@ -30,6 +31,7 @@ const MarkdownPage = ({children}: Props) => {
     <div style={{margin: 'auto', maxWidth: '960px', minWidth: '600px'}}>
       <ReactMarkdown
         className="markdown-body"
+        remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         components={MDComponents}
       >
