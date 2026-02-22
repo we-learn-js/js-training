@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 import cx from 'classnames'
 
 class RevealMarkownSlides extends React.Component {
@@ -19,7 +20,7 @@ class RevealMarkownSlides extends React.Component {
                 'jsTraining-importantSlide': isImportant
               })}
             >
-              <ReactMarkdown source={content} escapeHtml={false} />
+              <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
             </section>
           )
         })}

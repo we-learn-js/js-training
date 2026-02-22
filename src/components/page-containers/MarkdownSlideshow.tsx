@@ -6,7 +6,6 @@ import {mapMarkdownDtoToChapter} from '../../lib/mappers/markdown'
 import RevealPresentation from '../revealjs/RevealSlideshow'
 import RevealMarkownSlides from '../revealjs/RevealMarkownSlides'
 import {slideshowsNavigationId} from '../providers/useChaptersNavigationView'
-import ChapterSeo from '../chapters/ChapterSeo'
 import {MarkdownDto} from '../../types'
 import DocumentIcon from '@atlaskit/icon/glyph/document'
 import ScreenCornerLink from '../elements/buttons/ScreenCornerLink'
@@ -55,13 +54,22 @@ const MarkdownSlideshowContainer = ({
   }, [])
   return (
     <>
-      <ChapterSeo chapter={chapter} />
       <MarkdownSlideshow markdown={{content, slug}} />
       <ScreenCornerLink
         Icon={DocumentIcon}
         text={'Document'}
         to={chapter.paths.document}
       />
+    </>
+  )
+}
+
+export function Head({data}: {data: {markdownRemark: MarkdownDto}}) {
+  const chapter = mapMarkdownDtoToChapter(data.markdownRemark)
+  return (
+    <>
+      <title>{chapter.seo.title}</title>
+      <link rel="canonical" href={chapter.seo.canonicalUrl} />
     </>
   )
 }

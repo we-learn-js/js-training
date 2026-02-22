@@ -1,9 +1,9 @@
+import path from 'path'
 import {Chapter} from '../types'
 import {mapMarkdownDtoToChapter} from '../lib/mappers/markdown'
-const templatesDir = '../components/page-containers'
 const templatePaths = {
-  markdownPage: require.resolve(`${templatesDir}/MarkdownDocument.tsx`),
-  markdownSlideshow: require.resolve(`${templatesDir}/MarkdownSlideshow.tsx`)
+  markdownPage: path.resolve(process.cwd(), 'src/components/page-containers/MarkdownDocument.tsx'),
+  markdownSlideshow: path.resolve(process.cwd(), 'src/components/page-containers/MarkdownSlideshow.tsx')
 }
 
 type PageConfig = {

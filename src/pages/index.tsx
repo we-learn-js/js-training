@@ -1,6 +1,5 @@
 import React from 'react'
 import ImageConstruction from '../components/3d/ImageConstruction'
-import Seo from '../components/root/Seo'
 import {css} from 'emotion'
 import {withLowPriority} from '../components/hoc/Priority'
 import HomeCard from '../components/elements/cards/HomeCard'
@@ -28,7 +27,6 @@ const IndexPage = () => {
   return (
     <>
       <div className={className}>
-        <Seo title="Welcome to JS Training" />
         <LazyImageConstruction />
       </div>
       <div className={cardsClass}>
@@ -55,6 +53,10 @@ const IndexPage = () => {
       </div>
     </>
   )
+}
+
+export function Head() {
+  return <title>JS Training</title>
 }
 
 export default IndexPage
