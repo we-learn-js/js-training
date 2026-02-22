@@ -244,3 +244,53 @@ const handlers = useMemo(() => ({
 ```
 
 One allocation. One dependency check. One stable reference.
+
+<!--section-->
+
+## When to use / when not to
+
+> Memoization has a cost. Always measure before optimising.
+
+<!--slide-->
+
+### When to use
+
+- **`useCallback`** — when passing a callback to a `React.memo`-wrapped child component
+- **`useMemo`** — when a computation is genuinely expensive and its inputs change rarely
+
+```jsx
+const filtered = useMemo(
+  () => largeList.filter(item => item.active),
+  [largeList]
+)
+```
+
+<!--slide-->
+
+### When not to use
+
+- The child is **not wrapped** in `React.memo` — the re-render happens anyway
+- The computation is **trivial** — memoization overhead exceeds the savings
+- You haven't **measured** a real performance problem
+
+> Premature memoization is premature optimisation.
+
+<!--slide-->
+
+### The hidden cost
+
+Every `useCallback` and `useMemo` call, on **every render**:
+
+- **Allocates memory** to store the cached value and its dependencies array
+- **Runs a comparison** of all dependency values
+
+Memoization that doesn't prevent a re-render is **pure overhead**.
+
+<!--slide-->
+
+### Rule of thumb
+
+> Measure first, memoize second.
+
+Use the React DevTools Profiler to identify actual bottlenecks
+before reaching for `useCallback` or `useMemo`.
