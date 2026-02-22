@@ -25,7 +25,7 @@ export const sections = [
   },
   {
     title: 'APIs and Libraries',
-    chapters: ['React', 'Testing', 'WebAnimationsAPI']
+    chapters: ['React', 'ReactMemoization', 'Testing', 'WebAnimationsAPI']
   },
   {
     title: 'Programming Paradigms',

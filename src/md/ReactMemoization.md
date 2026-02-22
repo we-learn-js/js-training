@@ -75,7 +75,7 @@ const cache = new Map()
 function expensiveCalc(n) {
   if (cache.has(n)) return cache.get(n)
 
-  const result = /* ... heavy computation ... */
+  const result = compute(n) // expensive operation
   cache.set(n, result)
   return result
 }
@@ -255,7 +255,7 @@ One allocation. One dependency check. One stable reference.
 
 ### When to use
 
-- **`useCallback`** — when passing a callback to a `React.memo`-wrapped child component
+- **`useCallback`** — when passing a callback to a `React.memo`-wrapped child, or when a function is a dependency in a `useEffect`
 - **`useMemo`** — when a computation is genuinely expensive and its inputs change rarely
 
 ```jsx
