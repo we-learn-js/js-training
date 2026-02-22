@@ -29,6 +29,7 @@
     "fast-deep-equal": "2.0.1",
     "firebase": "^8.10.1",
     "friendly-url": "^1.0.3",
+    "github-markdown-css": "^5.9.0",
     "nanobus": "4.4.0",
     "param-case": "2.1.1",
     "prismjs": "1.15.0",
