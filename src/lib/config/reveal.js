@@ -1,6 +1,6 @@
 const REVEAL_CDN = '//unpkg.com/reveal.js@3.6.0'
 
-export default masterMode => ({
+const revealConfig = masterMode => ({
   controls: false,
   progress: true,
   slideNumber: true,
@@ -32,3 +32,5 @@ export default masterMode => ({
     }
   ]
 })
+
+export default revealConfig

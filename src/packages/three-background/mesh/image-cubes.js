@@ -1,10 +1,6 @@
 import PixelCubes from './cubes-from-pixels'
 
 export default class ImageCubesMesh extends PixelCubes {
-  constructor() {
-    super()
-  }
-
   addPixels(pixels) {
     for (let pixel of Array.from(pixels)) {
       this.addPixel(
