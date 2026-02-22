@@ -93,3 +93,61 @@ Instead of creating a new function object on every call,
 return the **same reference** as long as the inputs haven't changed.
 
 > This is exactly what React's memoization hooks do.
+
+<!--section-->
+
+## React rendering and referential equality
+
+> By default, every time a parent component re-renders, all its children re-render too —
+> even if their props have not changed.
+
+<!--slide-->
+
+### React.memo
+
+> `React.memo` is a higher-order component that **skips re-rendering**
+> when props are shallowly equal to the previous render.
+
+```jsx
+const Button = React.memo(({ onClick, label }) => {
+  console.log('Button rendered')
+  return <button onClick={onClick}>{label}</button>
+})
+```
+
+`Button` will only re-render if `onClick` or `label` actually change.
+
+<!--slide-->
+
+### The referential equality trap
+
+```jsx
+function Parent() {
+  const handleClick = () => console.log('clicked')
+  //                  ↑ new object on every render of Parent
+
+  return <Button onClick={handleClick} label="Click me" />
+}
+```
+
+`React.memo` compares `onClick` using `===`.
+
+`handleClick` is a new object every time → comparison is always `false`.
+
+> **`Button` re-renders on every parent render, regardless of `React.memo`.**
+
+<!--slide-->
+
+### The root cause
+
+```jsx
+const prev = () => console.log('clicked')
+const next = () => console.log('clicked')
+
+prev === next // false — different objects, same body
+```
+
+`React.memo`'s shallow comparison cannot tell that two functions
+with identical bodies are "the same".
+
+> We need to **preserve the reference** across renders.
