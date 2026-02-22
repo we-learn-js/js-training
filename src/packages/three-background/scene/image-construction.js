@@ -4,10 +4,8 @@ import ImageProcessor from '../image/processor'
 import ImageCubesMesh from '../mesh/image-cubes'
 import RandomCubesMesh from '../mesh/random-cubes'
 import PixelCubeMesh from '../mesh/cube-from-pixel'
-import PixelCubesMesh from '../mesh/cubes-from-pixels'
 import MainLight from '../light/main'
 import CubePlacementAnimator from '../animator/cube-placement'
-import GroundMesh from '../mesh/ground'
 
 const backgroundColor = 0x333333
 

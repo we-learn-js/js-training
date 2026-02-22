@@ -5,10 +5,8 @@ import Prism from 'prismjs'
 
 let slidesDOM, revealDOM
 
-let dependenciesLoaded = false
 const highlightCode = () => {
-  Array.from(document.querySelectorAll('pre code')).map(el => {
-    const elem = document.createElement('PRE')
+  Array.from(document.querySelectorAll('pre code')).forEach(el => {
     if (el.firstChild) {
       el.innerHTML = Prism.highlight(
         el.firstChild.nodeValue,
@@ -44,7 +42,6 @@ class RevealSlideshow extends React.Component {
     ])
 
     const Reveal = await import('reveal.js/js/reveal.js')
-    dependenciesLoaded = true
     window.Reveal = Reveal
     const {masterMode} = this.props
     const revealConfig = getRevealConfig(masterMode)

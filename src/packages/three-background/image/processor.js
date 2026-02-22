@@ -28,7 +28,6 @@ export default class ImageProcessor {
     const pixels = []
 
     for (let i = 0; i < data.length; i += 4) {
-      const value = data[i]
       col++
       if (i % (imgData.width * 4) === 0) {
         col = 0

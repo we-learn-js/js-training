@@ -1,8 +1,47 @@
 # js-training
 
-> JS Training Slides
+> Interactive JavaScript training website — slideshows and documents generated from Markdown files.
 
 ![Logo](./static/images/logo.png)
+
+Built with Gatsby v5, React 18, and Reveal.js. Each Markdown file in `src/md/` becomes both a slideshow (`/slides/<name>`) and a readable document (`/docs/<name>`).
+
+## Quick Start
+
+**Requirements:** Node 20 LTS (`nvm use`)
+
+```bash
+npm install --legacy-peer-deps
+npm run develop      # http://localhost:8000
+npm run build        # production build → /public
+npm run serve        # serve production build locally
+```
+
+> The `--legacy-peer-deps` flag is required because `@atlaskit/navigation-next` declares a peer dep on React 16.
+
+## Content
+
+Markdown content lives in `src/md/` and is managed as a **git subtree** from the [js-training wiki](https://github.com/we-learn-js/js-training.wiki.git):
+
+```bash
+npm run wiki:pull   # pull latest content from wiki
+npm run wiki:push   # push content changes back to wiki
+```
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to add or edit content.
+
+## Tech Stack
+
+| Layer      | Technology                         |
+| ---------- | ---------------------------------- |
+| Framework  | Gatsby 5                           |
+| UI         | React 18                           |
+| Slideshows | Reveal.js 3                        |
+| Styling    | Sass + Emotion + styled-components |
+| Navigation | Atlaskit navigation-next           |
+| Auth       | Firebase 8                         |
+| Markdown   | react-markdown 9 + rehype-raw      |
+| Language   | TypeScript + JavaScript            |
 
 ## Resources
 
@@ -17,45 +56,29 @@
 
 ### CheatSheets
 
-- [es6](https://devhints.io/es6)
-- [js-array](https://devhints.io/js-array)
-- [js-promises](https://devhints.io/promise)
-- [react](https://devhints.io/react)
-- [bash](https://devhints.io/bash)
+- [ES6](https://devhints.io/es6)
+- [JS Array](https://devhints.io/js-array)
+- [JS Promises](https://devhints.io/promise)
+- [React](https://devhints.io/react)
+- [Bash](https://devhints.io/bash)
 
 ### Quizzes
 
-- http://perfectionkills.com/javascript-quiz-es6/
-- http://www.codequizzes.com/javascript
+- [ES6 Quiz](http://perfectionkills.com/javascript-quiz-es6/)
+- [Code Quizzes](http://www.codequizzes.com/javascript)
 - [Questions every JS developer should know](https://medium.com/javascript-scene/10-interview-questions-every-javascript-developer-should-know-6fa6bdf5ad95)
 
-### Further practice
+### Further Practice
 
 - [ES6 katas](https://github.com/nothnk/es6katas)
 - [JS katas](https://github.com/pedrovgs/JavaScriptKatas)
 
 ## Content Proposals
 
-- Async Programming > [Async Iterators](http://2ality.com/2016/10/asynchronous-iteration.html#for-await-of),
+- Async Programming > [Async Iterators](http://2ality.com/2016/10/asynchronous-iteration.html#for-await-of)
 - DOM API (as introduction to React/JSX)
 - Functional Programming [Trampolines](https://blog.logrocket.com/using-trampolines-to-manage-large-recursive-loops-in-javascript-d8c9db095ae3)
 - Objects > [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy): Handlers, Reflect, ...
 - Errors handling: Catch errors, throw custom errors
 - Last Session: Group review of current legacy code
-- Mastering the console: https://medium.com/@mattburgess/beyond-console-log-2400fdf4a9d8
-
-<!--
-
-## Resources:
-* Missing concepts: https://github.com/leonardomso/33-js-concepts#readme
-* Quiz and Exam:
-https://30secondsofinterviews.org/
-* Code examples for content: https://medium.freecodecamp.org/here-are-examples-of-everything-new-in-ecmascript-2016-2017-and-2018-d52fa3b5a70e
-* Eloquent Javascript: https://eloquentjavascript.net/
-* CSSOM: https://css-tricks.com/an-introduction-and-guide-to-the-css-object-model-cssom/
-* RX-JS: https://www.youtube.com/watch?v=PhggNGsSQyg
-
-## Articles/Videos:
-* Article about code sandbox and competitors
-
--->
+- [Mastering the console](https://medium.com/@mattburgess/beyond-console-log-2400fdf4a9d8)

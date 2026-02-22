@@ -41,10 +41,6 @@ export function Head({data}: {data: {markdownRemark: MarkdownDto}}) {
       <title>{chapter.seo.title}</title>
       <link rel="canonical" href={chapter.seo.canonicalUrl} />
       <base target="_blank" />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css"
-      />
     </>
   )
 }

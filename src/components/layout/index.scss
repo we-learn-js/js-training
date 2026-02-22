@@ -10,3 +10,8 @@ body {
   font-family: 'system-ui' !important;
   box-sizing: border-box;
 }
+
+[data-testid='Content'] {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
