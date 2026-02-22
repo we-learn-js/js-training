@@ -4,12 +4,18 @@ import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import 'github-markdown-css'
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
-import {coy} from 'react-syntax-highlighter/dist/esm/styles/prism'
+import {oneLight} from 'react-syntax-highlighter/dist/esm/styles/prism'
+
+const oneLightNoShadow = {
+  ...oneLight,
+  'code[class*="language-"]': {...oneLight['code[class*="language-"]'], textShadow: 'none'},
+  'pre[class*="language-"]': {...oneLight['pre[class*="language-"]'], textShadow: 'none'},
+}
 
 const StyledCodeBlock = ({node, inline, className, children, ...props}: any) => {
   const match = /language-(\w+)/.exec(className || '')
   return !inline && match ? (
-    <SyntaxHighlighter language={match[1]} style={coy as any}>
+    <SyntaxHighlighter language={match[1]} style={oneLightNoShadow as any}>
       {String(children).replace(/\n$/, '')}
     </SyntaxHighlighter>
   ) : (
