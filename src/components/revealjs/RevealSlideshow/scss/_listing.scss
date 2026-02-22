@@ -45,7 +45,7 @@
   &-url {
     position: relative;
     color: $headingColor;
-    top: -$heading2Size/3;
+    top: calc(-#{$heading2Size} / 3);
   }
 
   &-list {
@@ -68,7 +68,7 @@
     a {
       display: block;
       line-height: $headingLineHeight;
-      padding: $blockMargin/2 $blockMargin;
+      padding: ($blockMargin * 0.5) $blockMargin;
 
       &:hover {
         background-color: rgba(#000, 0.5);

@@ -1,24 +1,21 @@
-require('ts-node').register({transpileOnly: true})
+const path = require('path')
 
 module.exports = {
   siteMetadata: {
     title: `JS Training`,
-    description: `Slideshows to lean javascript`,
+    description: `Slideshows to learn javascript`,
     author: `@gatsbyjs`
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-gtag`,
       options: {
         trackingId: 'UA-146160304-1'
       }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -27,12 +24,29 @@ module.exports = {
       }
     },
     `gatsby-transformer-remark`,
-    `gatsby-plugin-typescript`,
-    `gatsby-plugin-sass`,
     {
-      resolve: `gatsby-plugin-favicon`,
+      resolve: `gatsby-plugin-sass`,
       options: {
-        logo: './static/images/logo.png'
+        sassOptions: {
+          loadPaths: [
+            path.resolve(__dirname, 'node_modules'),
+            path.resolve(__dirname, 'src')
+          ],
+          quietDeps: true,
+          silenceDeprecations: ['import', 'legacy-js-api', 'color-functions', 'global-builtin']
+        }
+      }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `JS Training`,
+        short_name: `js-training`,
+        start_url: `/`,
+        background_color: `#663399`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `static/images/logo.png`
       }
     }
   ]

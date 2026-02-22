@@ -5,7 +5,6 @@ import MarkdownDoc from '../markdown/MarkdownDoc'
 import Document from '../layout/Document'
 import {documentsNavigationId} from '../providers/useChaptersNavigationView'
 import {mapMarkdownDtoToChapter} from '../../lib/mappers/markdown'
-import ChapterSeo from '../chapters/ChapterSeo'
 import {MarkdownDto} from '../../types'
 import ScreenCornerLink from '../elements/buttons/ScreenCornerLink'
 import ScreenIcon from '@atlaskit/icon/glyph/screen'
@@ -23,7 +22,6 @@ const MarkdownPage = ({data, navigationViewController, ...props}: Props) => {
   const chapter = mapMarkdownDtoToChapter(node)
   return (
     <>
-      <ChapterSeo chapter={chapter} />
       <Document>
         <MarkdownDoc>{node.rawMarkdownBody}</MarkdownDoc>
         <ScreenCornerLink
@@ -32,6 +30,21 @@ const MarkdownPage = ({data, navigationViewController, ...props}: Props) => {
           to={chapter.paths.slideshow}
         />
       </Document>
+    </>
+  )
+}
+
+export function Head({data}: {data: {markdownRemark: MarkdownDto}}) {
+  const chapter = mapMarkdownDtoToChapter(data.markdownRemark)
+  return (
+    <>
+      <title>{chapter.seo.title}</title>
+      <link rel="canonical" href={chapter.seo.canonicalUrl} />
+      <base target="_blank" />
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css"
+      />
     </>
   )
 }

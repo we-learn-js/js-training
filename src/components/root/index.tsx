@@ -31,7 +31,7 @@ const Root = ({children}: Props) => {
 }
 
 type WrapperProps = {
-  element: React.React.Node,
+  element: React.ReactNode,
   props: any
 }
 

@@ -5,7 +5,7 @@ const useMarkdownFiles = () => {
     graphql`
       query MyQuery {
         markdownPages: allMarkdownRemark(
-          sort: {fields: headings___value, order: ASC}
+          sort: {headings: {value: ASC}}
         ) {
           nodes {
             timeToRead

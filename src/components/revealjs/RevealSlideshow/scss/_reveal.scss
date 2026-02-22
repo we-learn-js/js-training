@@ -76,7 +76,7 @@
 
     code {
       background: rgba(#000, 0.7);
-      padding: $blockMargin/2;
+      padding: $blockMargin * 0.5;
       line-height: 125%;
     }
 

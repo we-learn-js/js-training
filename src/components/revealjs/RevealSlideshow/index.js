@@ -66,8 +66,8 @@ class RevealSlideshow extends React.Component {
 
   componentWillUnmount() {
     document.body.removeChild(revealDOM)
-    Reveal.removeEventListener('slidechanged', this.onSlideChange)
-    Reveal.removeEventListeners()
+    window.Reveal && window.Reveal.removeEventListener('slidechanged', this.onSlideChange)
+    window.Reveal && window.Reveal.removeEventListeners()
   }
 
   render() {

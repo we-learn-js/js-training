@@ -1,17 +1,11 @@
-import {useMemo} from 'react'
-import {useSubscription} from 'use-subscription'
+import {useSyncExternalStore} from 'react'
 import {globalHistory} from '@reach/router'
 
 function useLocation() {
-  const subscription = useMemo(
-    () => ({
-      getCurrentValue: () => globalHistory.location,
-      subscribe: callback => globalHistory.listen(callback)
-    }),
-    []
+  return useSyncExternalStore(
+    cb => globalHistory.listen(cb),
+    () => globalHistory.location
   )
-
-  return useSubscription(subscription)
 }
 
 export default useLocation
