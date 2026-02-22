@@ -151,3 +151,96 @@ prev === next // false — different objects, same body
 with identical bodies are "the same".
 
 > We need to **preserve the reference** across renders.
+
+<!--section-->
+
+## useCallback and useMemo
+
+<!--slide-->
+
+### useCallback
+
+> `useCallback` returns a **memoized function reference**.
+> It only creates a new function when one of its dependencies changes.
+
+```jsx
+const handleClick = useCallback(() => {
+  console.log('clicked')
+}, []) // empty array: stable reference for the component's lifetime
+```
+
+[React docs // useCallback](https://react.dev/reference/react/useCallback)
+
+<!--slide-->
+
+### Fixing the referential equality trap
+
+```jsx
+function Parent() {
+  const handleClick = useCallback(() => {
+    console.log('clicked')
+  }, [])
+
+  return <Button onClick={handleClick} label="Click me" />
+}
+```
+
+`handleClick` is now the **same reference** across renders.
+
+`React.memo` sees `onClick` as unchanged → `Button` skips re-rendering.
+
+<!--slide-->
+
+### useMemo
+
+> `useMemo` returns a **memoized value**.
+> It only recomputes when one of its dependencies changes.
+
+```jsx
+const sortedList = useMemo(() => {
+  return [...items].sort((a, b) => a.name.localeCompare(b.name))
+}, [items])
+```
+
+Use this for expensive computations whose result depends on specific values.
+
+[React docs // useMemo](https://react.dev/reference/react/useMemo)
+
+<!--slide-->
+
+### useCallback is useMemo
+
+`useCallback(fn, deps)` is equivalent to `useMemo(() => fn, deps)`.
+
+```jsx
+const handleClick = useCallback(() => doSomething(), [])
+
+// is the same as:
+const handleClick = useMemo(() => () => doSomething(), [])
+```
+
+> React implements `useCallback` as a specialised `useMemo` internally.
+>
+> They are the same mechanism — one for functions, one for values.
+
+<!--slide-->
+
+### One useMemo over several useCallbacks
+
+When grouping related handlers (e.g., a context value), memoize the whole object once:
+
+```jsx
+// Instead of this:
+const onCreate = useCallback(() => { /* ... */ }, [])
+const onUpdate = useCallback(() => { /* ... */ }, [])
+const onDelete = useCallback(() => { /* ... */ }, [])
+
+// Prefer this:
+const handlers = useMemo(() => ({
+  onCreate: () => { /* ... */ },
+  onUpdate: () => { /* ... */ },
+  onDelete: () => { /* ... */ },
+}), [])
+```
+
+One allocation. One dependency check. One stable reference.
