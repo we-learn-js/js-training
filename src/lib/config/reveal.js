@@ -1,3 +1,5 @@
+import slideshowBackground from '../../components/revealjs/RevealSlideshow/images/slideshow-background.png'
+
 const REVEAL_CDN = '//unpkg.com/reveal.js@3.6.0'
 
 const revealConfig = masterMode => ({
@@ -11,7 +13,7 @@ const revealConfig = masterMode => ({
   },
   hideAddressBar: true,
   transition: 'slide',
-  parallaxBackgroundImage: require('../../components/revealjs/RevealSlideshow/images/slideshow-background.png'),
+  parallaxBackgroundImage: slideshowBackground,
   parallaxBackgroundSize: '',
   parallaxBackgroundHorizontal: 100,
   parallaxBackgroundVertical: 100,
