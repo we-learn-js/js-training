@@ -17,7 +17,7 @@
   "dependencies": {
     "@atlaskit/button": "^13.4.0",
     "@atlaskit/global-navigation": "^7.6.0",
-    "@atlaskit/icon": "^21.11.0",
+    "@atlaskit/icon": "^31.0.0",
     "@atlaskit/logo": "^13.8.0",
     "@atlaskit/navigation-next": "^6.8.3",
     "@atlaskit/theme": "^12.6.0",
