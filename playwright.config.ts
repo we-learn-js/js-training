@@ -22,5 +22,5 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
-  reporter: [['html'], ['list']],
+  reporter: isCI ? [['github'], ['html'], ['list']] : [['html'], ['list']],
 })
