@@ -23,6 +23,7 @@
 ## APIs & Libraries
 
 - [React](./React)
+- [React Memoization](./ReactMemoization)
 - [Testing](./Testing)
 - [Web Animations API](./WebAnimationsAPI)
 

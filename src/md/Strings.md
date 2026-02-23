@@ -30,6 +30,20 @@ a == b; // false as a and b are type Object and reference different objects
 a == 'foo'; // true as the Object (a) is converted to String 'foo' before comparison
 ```
 
+<!--slide-->
+
+### Avoid `new String()`
+
+> `new String()` is almost never useful in practice — always use string literals.
+
+```js
+// Bad
+const s = new String('hello'); // typeof === "object"
+
+// Good
+const s = 'hello'; // typeof === "string"
+```
+
 <!--section-->
 
 ## Template strings (ES6)
@@ -38,7 +52,7 @@ a == 'foo'; // true as the Object (a) is converted to String 'foo' before compar
 
 > You can use multi-line strings and string interpolation features with them.
 
-> Template literals are enclosed by the backtick `` `, not`'`or`"`
+> Template literals are enclosed by the backtick (`` ` ``), not `'` or `"`
 
 [MDN // Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
 
@@ -64,12 +78,8 @@ Regular string:
 ```js
 //prettier-ignore
 const str = 'string text line 1\n' +
-'string text line 2\n' +
-'string text line 3'
-//prettier-ignore
-const str = "string text line 1\n" +
-"string text line 2\n" +
-"string text line 3"
+  'string text line 2\n' +
+  'string text line 3'
 ```
 
 Template string:
@@ -99,7 +109,7 @@ text1 === text2; // true
 
 ### Expression interpolation
 
-> In order to embed expressions within normal strings, you must enclosed them inside a `${}`
+> In order to embed expressions within normal strings, you must enclose them inside a `${}`
 
 ```js
 const a = 5;
@@ -115,6 +125,53 @@ console.log(text1);
 
 <!--section-->
 
+## Tagged Template Literals
+
+> A **tag** is a function placed before a template literal. It receives the string parts and interpolated values separately, and controls the output.
+
+```js
+function tag(strings, ...values) {
+  console.log(strings); // ['Hello, ', '!']
+  console.log(values);  // ['world']
+}
+
+tag`Hello, ${'world'}!`;
+```
+
+<!--slide-->
+
+### Real-world usage
+
+> Tags are used by many popular libraries: `styled-components`, `graphql-tag`, `sql`, and more.
+
+```js
+function highlight(strings, ...values) {
+  return strings.reduce((result, str, i) =>
+    `${result}${str}${values[i] ? `<mark>${values[i]}</mark>` : ''}`, '');
+}
+
+const name = 'world';
+highlight`Hello, ${name}!`; // "Hello, <mark>world</mark>!"
+```
+
+<!--slide-->
+
+### `String.raw`
+
+> `String.raw` is a built-in tag that returns the raw string, with backslash sequences left unprocessed.
+
+```js
+String.raw`Line1\nLine2`;   // "Line1\\nLine2" (not a newline)
+`Line1\nLine2`;             // "Line1
+                            //  Line2"
+```
+
+Useful for regular expressions, Windows paths, and LaTeX strings.
+
+<!--section-->
+
 ## Further Info
 
-[exploringjs.com // Template literals](http://exploringjs.com/es6/ch_template-literals.html)
+[MDN // Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
+
+[MDN // String.raw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/raw)
