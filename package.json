@@ -32,7 +32,7 @@
     "github-markdown-css": "^5.9.0",
     "nanobus": "4.4.0",
     "param-case": "2.1.1",
-    "prismjs": "1.15.0",
+    "prismjs": "1.30.0",
     "prop-types": "^15.7.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
