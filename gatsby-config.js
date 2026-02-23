@@ -1,6 +1,7 @@
 const path = require('path')
 
 module.exports = {
+  pathPrefix: '/js-training',
   siteMetadata: {
     title: `JS Training`,
     description: `Slideshows to learn javascript`,
