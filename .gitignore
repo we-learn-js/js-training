@@ -23,4 +23,8 @@ node_modules
 
 report.html
 
+# Playwright
+playwright-report/
+test-results/
+
 

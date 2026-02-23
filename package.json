@@ -9,7 +9,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "dev": "npm run develop",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
     "wiki:add": "git subtree add --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash",
     "wiki:pull": "git subtree pull --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master --squash -m \"Merge changes from origin repository.\"",
     "wiki:push": "git subtree push --prefix=src/md git@github.com:we-learn-js/js-training.wiki.git master"
@@ -51,6 +52,7 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "@playwright/test": "^1.58.2",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
     "caniuse-lite": "^1.0.30000989",

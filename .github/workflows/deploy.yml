@@ -4,6 +4,10 @@ on:
   push:
     branches: [master]
 
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
@@ -18,9 +22,21 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - run: npm install --legacy-peer-deps
+      - run: npm ci --legacy-peer-deps
 
-      - run: npm run build -- --prefix-paths
+      - name: Restore Gatsby cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .cache
+            public
+          key: gatsby-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**') }}
+          restore-keys: |
+            gatsby-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-
+            gatsby-${{ runner.os }}-
+
+      - name: Build
+        run: npm run build -- --prefix-paths
         env:
           NODE_OPTIONS: --max-old-space-size=4096
 
