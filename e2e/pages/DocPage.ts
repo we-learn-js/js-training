@@ -10,7 +10,7 @@ export class DocPage {
   }
 
   async goto(chapter = 'operators') {
-    await this.page.goto(`/docs/${chapter}`)
+    await this.page.goto(`docs/${chapter}`)
   }
 
   headings(): Locator {

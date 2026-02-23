@@ -6,7 +6,7 @@ export default defineConfig({
   testDir: './e2e/tests',
   retries: isCI ? 2 : 0,
   use: {
-    baseURL: isCI ? 'http://localhost:9000/js-training' : 'http://localhost:8000',
+    baseURL: isCI ? 'http://localhost:9000/js-training/' : 'http://localhost:8000/',
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure',
   },

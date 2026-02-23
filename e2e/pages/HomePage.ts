@@ -4,7 +4,7 @@ export class HomePage {
   constructor(readonly page: Page) {}
 
   async goto() {
-    await this.page.goto('/')
+    await this.page.goto('.')
   }
 
   card(label: string): Locator {

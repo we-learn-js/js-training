@@ -4,7 +4,7 @@ export class SlideshowPage {
   constructor(readonly page: Page) {}
 
   async goto(chapter = 'presentation') {
-    await this.page.goto(`/slides/${chapter}`)
+    await this.page.goto(`slides/${chapter}`)
   }
 
   async waitForReady() {
