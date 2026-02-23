@@ -4,23 +4,56 @@ on:
   push:
   pull_request:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   e2e:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
-      - run: npm install --legacy-peer-deps
-      - run: npx playwright install chromium --with-deps
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci --legacy-peer-deps
+
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Playwright system dependencies
+        run: npx playwright install-deps chromium
+
+      - name: Install Playwright browser
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install chromium
+
+      - name: Restore Gatsby cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .cache
+            public
+          key: gatsby-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**') }}
+          restore-keys: |
+            gatsby-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-
+            gatsby-${{ runner.os }}-
+
       - name: Build
         run: npm run build -- --prefix-paths
         env:
           NODE_OPTIONS: --max-old-space-size=4096
+
       - name: Run E2E tests
         run: npx playwright test
+
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
