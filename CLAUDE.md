@@ -49,14 +49,11 @@ Brief explanation.
 ### Chapters (src/md/)
 
 Grouped by topic in `Home.md`:
+
 - **ECMAScript Syntax:** Operators, Objects, Strings, Classes, Symbols, Modules, IteratorsAndGenerators
 - **Core Concepts:** ScopesAndClosures, Functions, AsyncProgramming
 - **APIs & Libraries:** React, Testing, WebAnimationsAPI
 - **Programming Paradigms:** FunctionalProgramming, ObjectOrientedProgramming, ObjectOrientedDesignPrinciples, DesignPatterns, DomainDrivenDesign
-
-## Git
-
-**Never commit without explicit user approval.** Always present what you plan to commit and ask before running any `git commit` command.
 
 ## Skills
 
