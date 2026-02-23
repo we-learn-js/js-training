@@ -54,6 +54,10 @@ Grouped by topic in `Home.md`:
 - **APIs & Libraries:** React, Testing, WebAnimationsAPI
 - **Programming Paradigms:** FunctionalProgramming, ObjectOrientedProgramming, ObjectOrientedDesignPrinciples, DesignPatterns, DomainDrivenDesign
 
+## Git
+
+**Never commit without explicit user approval.** Always present what you plan to commit and ask before running any `git commit` command.
+
 ## Skills
 
 ### Content Review

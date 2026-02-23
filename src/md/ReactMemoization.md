@@ -396,11 +396,181 @@ The comparison of `items` between renders costs more than computing `.length` di
 ### Cascading memoization
 
 ```jsx
+// ❌ Three layers of memoization for a single pipeline
 const a = useMemo(() => compute(x), [x])
 const b = useMemo(() => transform(a), [a])
 const c = useMemo(() => format(b), [b])
 ```
 
-Every layer adds allocation and comparison overhead. If `x` changes frequently, all three recompute anyway — and you've paid the overhead on every render.
+Every layer adds allocation and comparison overhead. If `x` changes frequently, all three recompute anyway.
+
+```jsx
+// ✅ One memoization for the whole pipeline
+const c = useMemo(() => format(transform(compute(x))), [x])
+```
 
 > Measure with the React DevTools Profiler before adding layers of memoization.
+
+<!--section-->
+
+## Functions outside components
+
+> Every function defined inside a component is recreated on every render.
+>
+> Functions defined **outside** the component are created once — at module load time.
+
+<!--slide-->
+
+### A component with a big function inside
+
+```jsx
+function ProductCard({ product }) {
+  const getDisplayInfo = (product) => {
+    const name = product.name.trim().toUpperCase()
+    const price = product.discount
+      ? product.price * (1 - product.discount / 100)
+      : product.price
+    const formattedPrice = `$${price.toFixed(2)}`
+    const badge = product.stock === 0
+      ? 'Out of stock'
+      : product.stock < 5 ? 'Low stock' : null
+    return { name, formattedPrice, badge }
+  }
+
+  const { name, formattedPrice, badge } = getDisplayInfo(product)
+  return (
+    <div>
+      <h2>{name}</h2>
+      <span>{formattedPrice}</span>
+      {badge && <span className="badge">{badge}</span>}
+    </div>
+  )
+}
+```
+
+<!--slide-->
+
+### The impact at scale
+
+`getDisplayInfo` is defined inside `ProductCard`.
+
+Every render of every `ProductCard` allocates a new function object,
+parses its body, and creates a new closure.
+
+```txt
+1 ProductCard  →   1 new getDisplayInfo per render
+100 ProductCards →  100 new getDisplayInfo per render cycle
+```
+
+> The bigger the function body, the more work the JS engine does per render — multiplied by every instance on the page.
+
+<!--slide-->
+
+### Split into small, focused functions
+
+`getDisplayInfo` does four things. Give each its own function:
+
+```js
+const formatName = (name) =>
+  name.trim().toUpperCase()
+
+const applyDiscount = (price, discount) =>
+  discount ? price * (1 - discount / 100) : price
+
+const formatPrice = (price) =>
+  `$${price.toFixed(2)}`
+
+const getStockBadge = (stock) =>
+  stock === 0 ? 'Out of stock' : stock < 5 ? 'Low stock' : null
+```
+
+Each function does one thing. Each is independently testable.
+
+<!--slide-->
+
+### Hoist them out of the component
+
+```jsx
+const formatName    = (name) => name.trim().toUpperCase()
+const applyDiscount = (price, discount) => discount ? price * (1 - discount / 100) : price
+const formatPrice   = (price) => `$${price.toFixed(2)}`
+const getStockBadge = (stock) => stock === 0 ? 'Out of stock' : stock < 5 ? 'Low stock' : null
+
+function ProductCard({ product }) {
+  const name  = formatName(product.name)
+  const price = formatPrice(applyDiscount(product.price, product.discount))
+  const badge = getStockBadge(product.stock)
+  return (
+    <div>
+      <h2>{name}</h2>
+      <span>{price}</span>
+      {badge && <span className="badge">{badge}</span>}
+    </div>
+  )
+}
+```
+
+These 4 functions are created **once**, no matter how many `ProductCard`s render.
+
+> If a function doesn't use `props`, `state`, or hooks — it doesn't belong inside the component.
+
+<!--slide-->
+
+### Currying for event handlers
+
+Form field handlers close over `profile` and `onChange` — they can't simply be hoisted:
+
+```jsx
+// ❌ One function body per field, all recreated on every render
+function ProfileForm({ profile, onChange }) {
+  const handleName  = (e) => onChange({ ...profile, name:  e.target.value })
+  const handleEmail = (e) => onChange({ ...profile, email: e.target.value })
+  const handlePhone = (e) => onChange({ ...profile, phone: e.target.value })
+
+  return (
+    <form>
+      <input onChange={handleName}  value={profile.name} />
+      <input onChange={handleEmail} value={profile.email} />
+      <input onChange={handlePhone} value={profile.phone} />
+    </form>
+  )
+}
+```
+
+Three function bodies. Add a field → add another.
+
+<!--slide-->
+
+### Currying for event handlers — solution
+
+```jsx
+// ✅ Curried: onChange → profile → field → event
+const makeFieldHandler = (onChange) => (profile) => (field) => (e) =>
+  onChange({ ...profile, [field]: e.target.value })
+
+function ProfileForm({ profile, onChange }) {
+  const handleField = makeFieldHandler(onChange)(profile)
+  //                  one partial application — no body
+
+  return (
+    <form>
+      <input onChange={handleField('name')}  value={profile.name} />
+      <input onChange={handleField('email')} value={profile.email} />
+      <input onChange={handleField('phone')} value={profile.phone} />
+    </form>
+  )
+}
+```
+
+`makeFieldHandler` is defined once. The component contains **no function bodies**.
+Add a field → add one line in JSX, nothing else.
+
+<!--slide-->
+
+### The rule
+
+> If it's pure, hoist it.
+> If it needs component data, pass that data as a parameter.
+> Reach for `useCallback` only when you've exhausted these options.
+
+Hoisting is free — no hooks overhead, no dependency arrays, no re-creation.
