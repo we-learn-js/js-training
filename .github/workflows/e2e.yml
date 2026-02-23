@@ -1,0 +1,29 @@
+name: E2E Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm install --legacy-peer-deps
+      - run: npx playwright install chromium --with-deps
+      - name: Build
+        run: npm run build -- --prefix-paths
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+      - name: Run E2E tests
+        run: npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
