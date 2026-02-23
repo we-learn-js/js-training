@@ -4,6 +4,6 @@
     "start": "serve --single ."
   },
   "dependencies": {
-    "serve": "latest"
+    "serve": "^14.2.5"
   }
 }
