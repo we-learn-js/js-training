@@ -4,41 +4,63 @@
 
 ## Functions are objects
 
-> Functions in JavaScript are objects.
->
-> Every function declaration creates a **new instance** — a new object in memory.
-
-[MDN // Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
-
-<!--slide-->
-
-### Each declaration is a new instance
+> In JavaScript, almost everything is an object.
 
 ```js
-const greet = () => 'Hello'
-const greet2 = () => 'Hello'
-
-greet === greet2 // false
+typeof []        // "object"
+typeof {}        // "object"
+typeof function() {} // "function" — but still an object
 ```
 
-Two functions with identical bodies are **different objects**.
+Functions inherit from `Object` — they have properties, can be stored, passed, and returned.
+
+[MDN // Function object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)
 
 <!--slide-->
 
-### Unlike primitives
+### Primitives are the exception
 
-Primitive values with the same content are equal:
+```js
+typeof 'hello'  // "string"
+typeof 42       // "number"
+typeof true     // "boolean"
+```
+
+> Primitives are not objects.
+> They are compared by **value**.
 
 ```js
 'hello' === 'hello' // true
 42 === 42           // true
 ```
 
-Functions are not — `===` compares **references**, not content:
+<!--slide-->
+
+### Objects are compared by reference
 
 ```js
-(() => {}) === (() => {}) // false
+const a = {}
+const b = {}
+
+a === b // false
 ```
+
+`a` and `b` are different objects in memory, even though their content is identical.
+
+> `===` on objects compares **memory references**, not content.
+
+<!--slide-->
+
+### Functions follow the same rule
+
+```js
+const greet  = () => 'Hello'
+const greet2 = () => 'Hello'
+
+greet === greet2 // false
+```
+
+Each declaration allocates a **new function object** in memory.
 
 <!--slide-->
 
@@ -57,42 +79,6 @@ function MyComponent() {
 
 > Every render produces a new `handleClick` instance,
 > even though nothing about it has changed.
-
-<!--section-->
-
-## Memoization
-
-> Memoization is an optimization technique that **caches the result** of a function call
-> and returns the cached result when the same inputs occur again.
-
-<!--slide-->
-
-### Caching computed values
-
-```js
-const cache = new Map()
-
-function expensiveCalc(n) {
-  if (cache.has(n)) return cache.get(n)
-
-  const result = compute(n) // expensive operation
-  cache.set(n, result)
-  return result
-}
-```
-
-The function runs the computation once per unique input, then returns the cached result.
-
-<!--slide-->
-
-### Caching function instances
-
-The same idea applies to **function references**.
-
-Instead of creating a new function object on every call,
-return the **same reference** as long as the inputs haven't changed.
-
-> This is exactly what React's memoization hooks do.
 
 <!--section-->
 
@@ -116,6 +102,28 @@ const Button = React.memo(({ onClick, label }) => {
 ```
 
 `Button` will only re-render if `onClick` or `label` actually change.
+
+<!--slide-->
+
+### How React.memo works
+
+```jsx
+// Simplified
+function memo(Component) {
+  let prevProps = null
+  let prevResult = null
+  return function Memoized(props) {
+    if (prevProps !== null && shallowEqual(props, prevProps)) {
+      return prevResult           // ← skip re-render
+    }
+    prevProps = props
+    prevResult = <Component {...props} />
+    return prevResult
+  }
+}
+```
+
+It stores the previous props and result, and returns the cached result when props haven't changed.
 
 <!--slide-->
 
@@ -173,6 +181,24 @@ const handleClick = useCallback(() => {
 
 <!--slide-->
 
+### How useCallback works
+
+```jsx
+// Simplified
+function useCallback(fn, deps) {
+  const ref = useRef(null)
+  if (ref.current === null || !depsEqual(ref.current.deps, deps)) {
+    ref.current = { fn, deps }
+  }
+  return ref.current.fn
+}
+```
+
+On each render, it compares `deps` against the previous call.
+If they are equal, it returns the **same function reference** as before.
+
+<!--slide-->
+
 ### Fixing the referential equality trap
 
 ```jsx
@@ -205,6 +231,24 @@ const sortedList = useMemo(() => {
 Use this for expensive computations whose result depends on specific values.
 
 [React docs // useMemo](https://react.dev/reference/react/useMemo)
+
+<!--slide-->
+
+### How useMemo works
+
+```jsx
+// Simplified
+function useMemo(factory, deps) {
+  const ref = useRef(null)
+  if (ref.current === null || !depsEqual(ref.current.deps, deps)) {
+    ref.current = { value: factory(), deps }
+  }
+  return ref.current.value
+}
+```
+
+Same mechanism as `useCallback` — stores the last result and deps,
+recomputes only when deps change.
 
 <!--slide-->
 
@@ -294,3 +338,69 @@ Memoization that doesn't prevent a re-render is **pure overhead**.
 
 Use the React DevTools Profiler to identify actual bottlenecks
 before reaching for `useCallback` or `useMemo`.
+
+<!--section-->
+
+## Common pitfalls
+
+> Memoization done wrong adds overhead without eliminating re-renders.
+
+<!--slide-->
+
+### useCallback without React.memo
+
+```jsx
+function Parent() {
+  const handleClick = useCallback(() => console.log('clicked'), [])
+  //                  ↑ overhead on every render of Parent
+
+  return <Child onClick={handleClick} />  // ← Child is not memoized
+}
+```
+
+`Child` re-renders on every `Parent` render regardless.
+
+> `useCallback` only helps when the receiving component is wrapped in `React.memo`.
+
+<!--slide-->
+
+### Dependencies that always change
+
+```jsx
+function Component({ items }) {
+  const filtered = useMemo(
+    () => items.filter(item => item.active),
+    [{ items }]  // ← new object on every render
+  )
+}
+```
+
+The dependency array is compared with `===`. An inline object is always a new reference — deps are always "changed", the memo never hits.
+
+**Fix:** pass `items` directly, not wrapped in an object.
+
+<!--slide-->
+
+### Trivial computations
+
+```jsx
+const count = useMemo(() => items.length, [items])
+```
+
+The comparison of `items` between renders costs more than computing `.length` directly.
+
+> `useMemo` pays off only when the computation is significantly more expensive than a dependency comparison.
+
+<!--slide-->
+
+### Cascading memoization
+
+```jsx
+const a = useMemo(() => compute(x), [x])
+const b = useMemo(() => transform(a), [a])
+const c = useMemo(() => format(b), [b])
+```
+
+Every layer adds allocation and comparison overhead. If `x` changes frequently, all three recompute anyway — and you've paid the overhead on every render.
+
+> Measure with the React DevTools Profiler before adding layers of memoization.
