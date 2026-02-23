@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_we_learn_js_js_training=self.webpackChunk_we_learn_js_js_training||[]).push([[720],{15339:function(n,_,e){e.r(_)}}]);
