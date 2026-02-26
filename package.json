@@ -21,7 +21,7 @@
     "@atlaskit/icon": "^21.11.0",
     "@atlaskit/logo": "^13.8.0",
     "@atlaskit/navigation-next": "^6.8.3",
-    "@atlaskit/theme": "^12.6.0",
+    "@atlaskit/theme": "^21.0.5",
     "@babel/runtime": "^7.5.5",
     "@reach/router": "^1.2.1",
     "babel-plugin-emotion": "^10.0.15",
