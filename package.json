@@ -28,7 +28,7 @@
     "classnames": "2.2.6",
     "emotion": "^10.0.14",
     "fast-deep-equal": "2.0.1",
-    "firebase": "^8.10.1",
+    "firebase": "^12.12.0",
     "friendly-url": "^1.0.3",
     "github-markdown-css": "^5.9.0",
     "nanobus": "4.4.0",
