@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import {withLowPriority} from '../../hoc/Priority'
 
 const styles = {
@@ -9,29 +9,34 @@ const styles = {
   left: 0
 }
 
-class ImageConstruction3d extends React.Component {
-  async componentDidMount() {
-    const imageUrl = (await import('./images/logo-small.png')).default
-    const UnderConstruction = (await import('../../../packages/three-background/image-construction'))
-      .default
-    this.scene = new UnderConstruction(imageUrl)
-    this.scene.appendTo(this.element)
-    this.resizeHandler = () => this.scene.resize()
-    window.addEventListener('resize', this.resizeHandler)
-  }
+const ImageConstruction3d = () => {
+  const elRef = useRef(null)
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.resizeHandler)
-    this.scene.destroy()
-  }
+  useEffect(() => {
+    let cancelled = false
+    let scene
+    let onResize
 
-  shouldComponentUpdate() {
-    return false
-  }
+    ;(async () => {
+      const imageUrl = (await import('./images/logo-small.png')).default
+      const UnderConstruction = (
+        await import('../../../packages/three-background/image-construction')
+      ).default
+      if (cancelled) return
+      scene = new UnderConstruction(imageUrl)
+      scene.appendTo(elRef.current)
+      onResize = () => scene.resize()
+      window.addEventListener('resize', onResize)
+    })()
 
-  render() {
-    return <div style={styles} ref={el => (this.element = el)} />
-  }
+    return () => {
+      cancelled = true
+      if (onResize) window.removeEventListener('resize', onResize)
+      scene?.destroy()
+    }
+  }, [])
+
+  return <div style={styles} ref={elRef} />
 }
 
 export default withLowPriority(ImageConstruction3d)

@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react'
 import {graphql} from 'gatsby'
 import {withNavigationViewController} from '@atlaskit/navigation-next'
-import MarkdownParser from '../../lib/mappers/MarkdownParser'
+import {parseSlides} from '../../lib/mappers/MarkdownParser'
 import {mapMarkdownDtoToChapter} from '../../lib/mappers/markdown'
 import RevealPresentation from '../revealjs/RevealSlideshow'
-import RevealMarkownSlides from '../revealjs/RevealMarkownSlides'
+import RevealMarkdownSlides from '../revealjs/RevealMarkdownSlides'
 import {slideshowsNavigationId} from '../providers/useChaptersNavigationView'
 import {MarkdownDto} from '../../types'
 import DocumentIcon from '@atlaskit/icon/glyph/document'
@@ -18,16 +18,11 @@ type Props = {
 }
 
 const MarkdownSlideshow = ({markdown: {content, slug}}: Props) => {
-  const slides = MarkdownParser.parseSlides(content, slug)
+  const slides = parseSlides(content, slug)
   return (
     <>
-      <RevealPresentation
-        className="full-width-nav-offset"
-        masterMode={false}
-        // eslint-disable-next-line
-        onSlideChange={({slideId}) => console.log('onSlideChange', slideId)} 
-      >
-        <RevealMarkownSlides slides={slides} />
+      <RevealPresentation className="full-width-nav-offset">
+        <RevealMarkdownSlides slides={slides} />
       </RevealPresentation>
     </>
   )
