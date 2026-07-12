@@ -1,22 +1,14 @@
-export type MarkdownDto = {
-  id: string,
-  fields: {
-    fileBasename: string
-  },
-  timeToRead: number,
-  headings: Array<{value: string}>
-}
-
 export type Chapter = {
-  id: string,
-  title: string,
+  id: string
+  title: string
+  slug: string
   seo: {
-    title: string,
+    title: string
     canonicalUrl: string
-  },
-  filename: string,
+  }
+  filename: string
   paths: {
-    slideshow: string,
+    slideshow: string
     document: string
   }
 }

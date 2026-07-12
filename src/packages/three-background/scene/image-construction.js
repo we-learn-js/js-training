@@ -1,11 +1,11 @@
 import THREE from 'three'
-import ImageSource from '../image/source'
+import CubePlacementAnimator from '../animator/cube-placement'
 import ImageProcessor from '../image/processor'
+import ImageSource from '../image/source'
+import MainLight from '../light/main'
+import PixelCubeMesh from '../mesh/cube-from-pixel'
 import ImageCubesMesh from '../mesh/image-cubes'
 import RandomCubesMesh from '../mesh/random-cubes'
-import PixelCubeMesh from '../mesh/cube-from-pixel'
-import MainLight from '../light/main'
-import CubePlacementAnimator from '../animator/cube-placement'
 
 const backgroundColor = 0x333333
 

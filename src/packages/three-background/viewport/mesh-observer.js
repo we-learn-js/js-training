@@ -1,6 +1,6 @@
 import THREE from 'three'
-import ViewportAbstract from './abstract'
 import MousePosition from '../mouse/position'
+import ViewportAbstract from './abstract'
 
 export default class MeshObserverViewport extends ViewportAbstract {
   constructor(fov = 30, distance = 1000) {

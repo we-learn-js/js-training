@@ -1,4 +1,4 @@
-import { Page, Locator } from '@playwright/test'
+import type {Locator, Page} from '@playwright/test'
 
 export class HomePage {
   constructor(readonly page: Page) {}
@@ -8,7 +8,7 @@ export class HomePage {
   }
 
   card(label: string): Locator {
-    return this.page.getByRole('article').filter({ hasText: label })
+    return this.page.getByRole('article').filter({hasText: label})
   }
 
   async clickCard(label: string) {

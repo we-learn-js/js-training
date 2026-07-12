@@ -1,4 +1,4 @@
-import { Page, Locator } from '@playwright/test'
+import type {Locator, Page} from '@playwright/test'
 
 export class SlideshowPage {
   constructor(readonly page: Page) {}
@@ -10,7 +10,7 @@ export class SlideshowPage {
   async waitForReady() {
     await this.page
       .locator('section[data-slide-id].present')
-      .waitFor({ timeout: 10_000 })
+      .waitFor({timeout: 10_000})
   }
 
   get revealContainer(): Locator {
@@ -35,7 +35,9 @@ export class SlideshowPage {
 
   async waitForSlideChange(fromSlideId: string) {
     await this.page
-      .locator(`section[data-slide-id]:not([data-slide-id="${fromSlideId}"]).present`)
-      .waitFor({ timeout: 5_000 })
+      .locator(
+        `section[data-slide-id]:not([data-slide-id="${fromSlideId}"]).present`
+      )
+      .waitFor({timeout: 5_000})
   }
 }

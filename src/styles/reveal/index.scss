@@ -1,0 +1,12 @@
+// Custom reveal.js theme, compiled from the reveal.js theme template.
+// Import order matters: template settings first, then our overrides,
+// then the template itself (which reads the overridden variables).
+@import 'reveal.js/css/theme/template/mixins';
+@import 'reveal.js/css/theme/template/settings';
+@import './variables';
+@import 'reveal.js/css/theme/template/theme';
+
+// Local overrides
+@import './reveal';
+@import './font';
+@import './js-training';

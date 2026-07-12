@@ -2,12 +2,14 @@
 
 ## Project Overview
 
-A frontend course built with Gatsby and reveal.js, aimed at taking low-to-mid level engineers to expert level. Covers JavaScript fundamentals, programming paradigms, and key libraries/frameworks.
+A frontend course built with Astro (Vite), React islands, and reveal.js 5, aimed at taking low-to-mid level engineers to expert level. Covers JavaScript fundamentals, programming paradigms, and key libraries/frameworks. Bun is the runtime/package manager; Biome handles lint + format.
 
 Content is written in Markdown under `src/md/`. Each file is a course chapter rendered as a reveal.js slideshow. The wiki (`src/md/`) is synced via git subtree to a separate GitHub wiki repo.
 
-**Dev server:** `npm run dev` (Gatsby)
-**Build:** `npm run build`
+**Dev server:** `bun run dev` (Astro, serves under `/js-training`)
+**Build:** `bun run build`
+**Lint/format:** `bun run lint` / `bun run format` (Biome)
+**E2E tests:** `bun run test` (Playwright)
 
 ## Content Structure
 

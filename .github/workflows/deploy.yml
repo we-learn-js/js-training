@@ -17,30 +17,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
+      - uses: oven-sh/setup-bun@v2
 
-      - run: npm ci --legacy-peer-deps
-
-      - name: Restore Gatsby cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            .cache
-            public
-          key: gatsby-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**') }}
-          restore-keys: |
-            gatsby-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-
-            gatsby-${{ runner.os }}-
+      - run: bun install --frozen-lockfile
 
       - name: Build
-        run: npm run build -- --prefix-paths
-        env:
-          NODE_OPTIONS: --max-old-space-size=4096
+        run: bun run build
 
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./dist

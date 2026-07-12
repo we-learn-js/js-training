@@ -1,0 +1,143 @@
+---
+import {sections} from '../constants'
+import {getChapters} from '../lib/chapters'
+import {withBase} from '../lib/paths'
+
+type Props = {
+  type?: 'document' | 'slideshow'
+}
+
+const {type = 'document'} = Astro.props
+const heading = type === 'document' ? 'Documents' : 'Slideshows'
+const chapters = (await getChapters()).map(({chapter}) => chapter)
+const currentPath = Astro.url.pathname.replace(/\/$/, '')
+---
+
+<aside class="sidebar">
+  <a class="sidebar__brand" href={withBase('/')}>JS Training</a>
+  <h2 class="sidebar__heading">{heading}</h2>
+  <nav class="sidebar__nav">
+    {
+      sections.map(section => (
+        <section class="sidebar__section">
+          <h3 class="sidebar__section-title">{section.title}</h3>
+          <ul class="sidebar__list">
+            {section.chapters.map(filename => {
+              const chapter = chapters.find(c => c.filename === filename)
+              if (!chapter) return null
+              const href = withBase(chapter.paths[type])
+              return (
+                <li>
+                  <a
+                    class:list={[
+                      'sidebar__link',
+                      {'sidebar__link--active': currentPath === href}
+                    ]}
+                    href={href}
+                  >
+                    {chapter.title}
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        </section>
+      ))
+    }
+  </nav>
+  <a
+    class="sidebar__repo"
+    href="https://github.com/we-learn-js/js-training/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Repository
+  </a>
+</aside>
+
+<style lang="scss">
+  $gold: #daa520;
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    min-width: 280px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+    background-color: #fafafa;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar__brand {
+    display: block;
+    padding: 20px 24px;
+    background-color: $gold;
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .sidebar__heading {
+    margin: 0;
+    padding: 16px 24px 8px;
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6b6b6b;
+  }
+
+  .sidebar__nav {
+    flex: 1;
+  }
+
+  .sidebar__section-title {
+    margin: 12px 0 4px;
+    padding: 0 24px;
+    font-size: 0.75em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+  }
+
+  .sidebar__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sidebar__link {
+    display: block;
+    padding: 6px 24px;
+    color: #333;
+    font-size: 0.9em;
+    text-decoration: none;
+
+    &:hover {
+      background-color: rgba($gold, 0.15);
+    }
+
+    &--active {
+      background-color: rgba($gold, 0.25);
+      font-weight: 600;
+    }
+  }
+
+  .sidebar__repo {
+    display: block;
+    padding: 16px 24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: #6b6b6b;
+    font-size: 0.85em;
+    text-decoration: none;
+
+    &:hover {
+      color: $gold;
+    }
+  }
+</style>
