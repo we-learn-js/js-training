@@ -1,0 +1,28 @@
+---
+import {withBase} from '../lib/paths'
+import '../styles/global.scss'
+
+type Props = {
+  title: string
+  canonicalUrl?: string
+}
+
+const {title, canonicalUrl} = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Slideshows to learn javascript" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href={withBase('/favicon.ico')} sizes="any" />
+    <link rel="manifest" href={withBase('/manifest.webmanifest')} />
+    <title>{title}</title>
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

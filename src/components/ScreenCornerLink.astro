@@ -1,0 +1,74 @@
+---
+type Props = {
+  href: string
+  text: string
+  kind: 'screen' | 'document'
+}
+
+const {href, text, kind} = Astro.props
+---
+
+<a class="corner-link" href={href} aria-label={text}>
+  {
+    kind === 'screen' ? (
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <rect x="2" y="4" width="20" height="13" rx="2" />
+        <path d="M8 21h8M12 17v4" />
+      </svg>
+    ) : (
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <path d="M14 2v6h6M9 13h6M9 17h6" />
+      </svg>
+    )
+  }
+  <span class="corner-link__text">{text}</span>
+</a>
+
+<style lang="scss">
+  $gold: #daa520;
+
+  .corner-link {
+    position: fixed;
+    z-index: 100;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    text-decoration: none;
+    font-size: 0.8em;
+    color: #fff;
+    background-color: rgba($gold, 0.4);
+    border-radius: 3px;
+
+    &:hover {
+      background-color: rgba($gold, 0.8);
+
+      .corner-link__text {
+        display: inline;
+      }
+    }
+  }
+
+  .corner-link__text {
+    display: none;
+    margin-left: 4px;
+  }
+</style>

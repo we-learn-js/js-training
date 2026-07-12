@@ -2,46 +2,45 @@
 
 > Interactive JavaScript training website — slideshows and documents generated from Markdown files.
 
-![Logo](./static/images/logo.png)
+![Logo](./public/images/logo.png)
 
-Built with Gatsby v5, React 18, and Reveal.js. Each Markdown file in `src/md/` becomes both a slideshow (`/slides/<name>`) and a readable document (`/docs/<name>`).
+Built with Astro (Vite), React 19 islands, and Reveal.js 5. Each Markdown file in `src/md/` becomes both a slideshow (`/slides/<name>`) and a readable document (`/docs/<name>`).
 
 ## Quick Start
 
-**Requirements:** Node 20 LTS (`nvm use`)
+**Requirements:** [Bun](https://bun.sh) 1.x
 
 ```bash
-npm install --legacy-peer-deps
-npm run develop      # http://localhost:8000
-npm run build        # production build → /public
-npm run serve        # serve production build locally
+bun install
+bun run dev          # http://localhost:4321/js-training
+bun run build        # production build → /dist
+bun run serve        # serve production build locally
 ```
-
-> The `--legacy-peer-deps` flag is required because `@atlaskit/navigation-next` declares a peer dep on React 16.
 
 ## Content
 
 Markdown content lives in `src/md/` and is managed as a **git subtree** from the [js-training wiki](https://github.com/we-learn-js/js-training.wiki.git):
 
 ```bash
-npm run wiki:pull   # pull latest content from wiki
-npm run wiki:push   # push content changes back to wiki
+bun run wiki:pull   # pull latest content from wiki
+bun run wiki:push   # push content changes back to wiki
 ```
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to add or edit content.
 
 ## Tech Stack
 
-| Layer      | Technology                         |
-| ---------- | ---------------------------------- |
-| Framework  | Gatsby 5                           |
-| UI         | React 18                           |
-| Slideshows | Reveal.js 3                        |
-| Styling    | Sass + Emotion + styled-components |
-| Navigation | Atlaskit navigation-next           |
-| Auth       | Firebase 8                         |
-| Markdown   | react-markdown 9 + rehype-raw      |
-| Language   | TypeScript + JavaScript            |
+| Layer       | Technology                          |
+| ----------- | ----------------------------------- |
+| Framework   | Astro 5 (Vite)                      |
+| UI islands  | React 19                            |
+| Slideshows  | Reveal.js 5                         |
+| Styling     | Sass + Astro scoped styles          |
+| Highlighting| Shiki (build time)                  |
+| Lint/format | Biome                               |
+| Runtime     | Bun                                 |
+| Testing     | Playwright (e2e)                    |
+| Language    | TypeScript                          |
 
 ## Resources
 

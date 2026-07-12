@@ -1,10 +1,14 @@
 {
+  "extends": "astro/tsconfigs/base",
+  "include": [
+    ".astro/types.d.ts",
+    "src/**/*",
+    "e2e/**/*",
+    "playwright.config.ts"
+  ],
+  "exclude": ["dist", "node_modules"],
   "compilerOptions": {
-    "esModuleInterop": true,
-    "target": "ES2020",
-    "lib": ["ES2020", "DOM"],
-    "jsx": "preserve",
-    "moduleResolution": "bundler",
-    "strict": false
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }

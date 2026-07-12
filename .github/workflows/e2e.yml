@@ -15,45 +15,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
+      - uses: oven-sh/setup-bun@v2
 
-      - run: npm ci --legacy-peer-deps
+      - run: bun install --frozen-lockfile
+
+      - name: Lint
+        run: bun run lint
 
       - name: Cache Playwright browsers
         id: playwright-cache
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          key: playwright-${{ runner.os }}-${{ hashFiles('bun.lock') }}
 
       - name: Install Playwright system dependencies
-        run: npx playwright install-deps chromium
+        run: bunx playwright install-deps chromium
 
       - name: Install Playwright browser
         if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: npx playwright install chromium
-
-      - name: Restore Gatsby cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            .cache
-            public
-          key: gatsby-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**') }}
-          restore-keys: |
-            gatsby-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-
-            gatsby-${{ runner.os }}-
+        run: bunx playwright install chromium
 
       - name: Build
-        run: npm run build -- --prefix-paths
-        env:
-          NODE_OPTIONS: --max-old-space-size=4096
+        run: bun run build
 
       - name: Run E2E tests
-        run: npx playwright test
+        run: bunx playwright test
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4

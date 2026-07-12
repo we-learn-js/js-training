@@ -2,75 +2,79 @@
 
 ## Requirements
 
-- Node 20 LTS — run `nvm use` at the project root (`.nvmrc` is set to `20`)
-- npm 8+ (comes with Node 20)
+- [Bun](https://bun.sh) 1.x — runtime and package manager
+- Node 20+ (used by the Astro CLI and Playwright; `.nvmrc` is set to `20`)
 
 ## Local Development
 
 ```bash
-npm install --legacy-peer-deps
-npm run develop   # starts dev server at http://localhost:8000
+bun install
+bun run dev       # starts dev server at http://localhost:4321/js-training
 ```
 
-The `--legacy-peer-deps` flag is required because `@atlaskit/navigation-next` declares a peer dep on React 16 and was abandoned before React 18 was released.
-
 ```bash
-npm run build     # production build → /public
-npm run serve     # serve /public locally
+bun run build     # production build → /dist
+bun run serve     # serve /dist locally
+bun run lint      # Biome lint + format check
+bun run format    # apply Biome fixes
+bun run test      # Playwright e2e tests
 ```
 
 ## Project Structure
 
 ```
 /
-├── gatsby-config.js        # Gatsby plugins (Sass, image, manifest, gtag)
-├── gatsby-node.ts          # Page generation + webpack config
-├── gatsby-browser.js       # Client-side providers (NavigationProvider, etc.)
-├── gatsby-ssr.js           # SSR wrappers (minimal, Atlaskit is client-only)
+├── astro.config.mjs        # Astro config (base path, React, markdown pipeline)
+├── biome.json              # Biome lint + format config
+├── playwright.config.ts    # E2E test config
+├── public/                 # Static assets (images, favicon, manifest)
 ├── src/
 │   ├── md/                 # Markdown content (git subtree from wiki)
-│   ├── components/         # React components
-│   │   ├── layout/         # AppLayout, GlobalNav
-│   │   ├── navigation/     # Navigation views, hooks, link items
-│   │   ├── page-containers/ # MarkdownDocument, MarkdownSlideshow (Gatsby page templates)
-│   │   ├── markdown/       # MarkdownDoc (react-markdown renderer)
-│   │   ├── revealjs/       # RevealSlideshow + RevealMarkownSlides
-│   │   ├── elements/       # Reusable buttons, cards
-│   │   ├── hoc/            # Higher-order components (Priority, Auth, Domain)
-│   │   └── root/           # RootWrapper, PageWrapper
-│   ├── lib/
-│   │   ├── config/         # firebase.js, reveal.js config, chapters.js
-│   │   ├── mappers/        # MarkdownParser (slide splitting), markdown.ts (DTO → Chapter)
-│   │   ├── user/Services/  # Auth services (Google, GitHub, SignOut)
-│   │   ├── lectures/       # Chapter/slide services and repositories
-│   │   ├── graphql-fragments/ # Shared GraphQL fragments
-│   │   ├── index.js        # Service factory (lazy Firebase loading)
-│   │   └── pages.ts        # Page generation logic called from gatsby-node.ts
+│   ├── content.config.ts   # Astro content collection over src/md
 │   ├── pages/
-│   │   ├── index.tsx       # Home page
-│   │   └── 404.tsx         # 404 page
-│   ├── mocks/
-│   │   └── atlaskit-navigation-next.js  # SSR-safe mock (aliased by webpack during build-html)
+│   │   ├── index.astro     # Home page
+│   │   ├── docs/[slug].astro    # Document pages
+│   │   ├── slides/[slug].astro  # Slideshow pages
+│   │   └── 404.astro       # 404 page
+│   ├── layouts/
+│   │   └── Base.astro      # HTML shell (head, favicon, manifest)
+│   ├── components/
+│   │   ├── Sidebar.astro          # Chapter navigation sidebar
+│   │   ├── HomeCard.astro         # Home page cards
+│   │   ├── ScreenCornerLink.astro # Doc ⇄ slideshow corner toggle
+│   │   ├── RevealDeck.tsx         # Reveal.js 5 island (client only)
+│   │   └── ThreeBackground.tsx    # three.js homepage hero island
+│   ├── lib/
+│   │   ├── chapters.ts     # Content collection → Chapter mapping
+│   │   ├── slides.ts       # Build-time slide markdown → HTML (unified + Shiki)
+│   │   ├── paths.ts        # withBase() helper for the /js-training base path
+│   │   ├── remark-base-images.mjs  # Prefixes /images/... with the base path
+│   │   ├── config/         # reveal.ts config, chapters.js constants
+│   │   └── mappers/        # MarkdownParser (slide splitting)
+│   ├── packages/three-background/  # Legacy three.js scene (homepage hero)
+│   ├── styles/
+│   │   ├── global.scss     # Base page styles
+│   │   └── reveal/         # Custom Reveal.js theme (template + overrides)
 │   ├── constants.ts        # URL prefixes, chapter sections list
 │   └── types.ts            # TypeScript type definitions
-└── static/                 # Static assets (images, logo)
+└── e2e/                    # Playwright tests + page objects
 ```
 
 ## How Pages Are Generated
 
 Each `.md` file in `src/md/` produces **two pages**:
 
-| URL pattern            | Template                                               |
-| ---------------------- | ------------------------------------------------------ |
-| `/docs/<kebab-name>`   | `src/components/page-containers/MarkdownDocument.tsx`  |
-| `/slides/<kebab-name>` | `src/components/page-containers/MarkdownSlideshow.tsx` |
+| URL pattern            | Template                      |
+| ---------------------- | ----------------------------- |
+| `/docs/<kebab-name>`   | `src/pages/docs/[slug].astro` |
+| `/slides/<kebab-name>` | `src/pages/slides/[slug].astro` |
 
 **Flow:**
 
-1. `gatsby-source-filesystem` picks up files from `src/md/`
-2. `gatsby-transformer-remark` parses them into `MarkdownRemark` GraphQL nodes
-3. `gatsby-node.ts → onCreateNode` adds `fields.path` (doc/slideshow URLs) and `fields.fileBasename`
-4. `gatsby-node.ts → createPages` calls `src/lib/pages.ts → getPages()`, which queries GraphQL for all chapters and calls `createPage()` for each doc/slideshow pair
+1. The `chapters` content collection (`src/content.config.ts`) globs `src/md/*.md`, keeping the raw file basename as the entry id
+2. `src/lib/chapters.ts → getChapters()` maps entries to chapters (title from the first `# h1`; files without one, like `_Footer.md`, are skipped)
+3. Both page templates call `getChapters()` in `getStaticPaths()` — the camelCase filename becomes the kebab-case slug
+4. Documents render with Astro's built-in markdown pipeline; slides are split by `src/lib/mappers/MarkdownParser.ts` and rendered to HTML at build time by `src/lib/slides.ts`, then booted client side by the `RevealDeck` island
 
 ## Adding or Editing Content
 
@@ -136,17 +140,19 @@ Visible content.
 Note: This text only appears in speaker view, not projected.
 ```
 
+Open the speaker view with `S` while in a slideshow.
+
 ### Images
 
-Place images in `static/images/` and reference them as `/images/my-image.png`.
+Place images in `public/images/` and reference them as `/images/my-image.png`. The base path (`/js-training`) is prefixed automatically at build time.
 
 ### Registering a new chapter
 
-New chapters are picked up automatically by Gatsby — just add the `.md` file. To add it to the **navigation sidebar**, register it in `src/constants.ts` under the appropriate section:
+New chapters are picked up automatically — just add the `.md` file. To add it to the **navigation sidebar**, register it in `src/constants.ts` under the appropriate section:
 
 ```typescript
 // src/constants.ts
-export const SECTIONS = [
+export const sections = [
   {
     title: 'JavaScript Syntax',
     chapters: [
@@ -164,36 +170,19 @@ export const SECTIONS = [
 `src/md/` is managed as a git subtree pointing to the `js-training.wiki` GitHub repository:
 
 ```bash
-npm run wiki:pull   # merge latest changes from the wiki into src/md/
-npm run wiki:push   # push changes in src/md/ back to the wiki
+bun run wiki:pull   # merge latest changes from the wiki into src/md/
+bun run wiki:push   # push changes in src/md/ back to the wiki
 ```
 
 You can also edit markdown directly in `src/md/` and commit normally — the subtree just keeps the wiki in sync.
 
-## Navigation Structure
+## Base Path
 
-The sidebar uses Atlaskit `navigation-next` with a three-view hierarchy:
-
-```
-Main view  →  Documents view  →  individual chapter
-           →  Slideshows view →  individual chapter
-```
-
-Views are defined in:
-
-- `src/components/navigation/views/mainNavigation.tsx` — top-level menu
-- `src/components/providers/useChaptersNavigationView.tsx` — generates doc/slideshow views from the chapter list in `constants.ts`
-
-The active view switches automatically based on the current URL path (handled in `src/components/layout/AppLayout.tsx`).
-
-## SSR / Build Quirks
-
-**`@atlaskit/navigation-next`** calls `localStorage` at module initialisation time, which breaks Gatsby's server-side rendering. During the `build-html` and `develop-html` webpack stages it is replaced with a no-op mock via a webpack alias configured in `gatsby-node.ts`. The full Atlaskit shell only runs in the browser (hydrated via `gatsby-browser.js`).
-
-**Sass deprecations** — Reveal.js v3 ships legacy SCSS that triggers dart-sass warnings. These are suppressed via `silenceDeprecations` in `gatsby-config.js`. Do not remove that config unless Reveal.js is upgraded.
+The site deploys to GitHub Pages under `/js-training` (`base` in `astro.config.mjs`). Astro does **not** prefix internal links automatically — always wrap internal hrefs with `withBase()` from `src/lib/paths.ts`. The dev and preview servers also serve under `/js-training`, so a missing prefix fails locally and in e2e, not just in production.
 
 ## Architecture Notes
 
-- **Service factory** — `src/lib/index.js` exports a `JsTraining` class that lazy-loads Firebase and dynamically imports services on first use. This keeps Firebase out of the initial bundle.
-- **Event bus** — `src/lib/bus.js` is a tiny `nanobus` instance used for auth state events between services and UI.
-- **`MarkdownParser`** — `src/lib/mappers/MarkdownParser.ts` splits raw markdown into a 2D array of slides using the `<!--section-->` / `<!--slide-->` separators before passing them to Reveal.js.
+- **`MarkdownParser`** — `src/lib/mappers/MarkdownParser.ts` splits raw markdown into a 2D array of slides using the `<!--section-->` / `<!--slide-->` separators. E2E slide ids (`data-slide-id`) come from it — change with care.
+- **Build-time slide rendering** — `src/lib/slides.ts` converts each slide's markdown to HTML during the build (unified: remark-gfm + rehype-raw + Shiki). The browser only receives static markup; the `RevealDeck` island just initialises Reveal.js 5.
+- **Reveal theme** — `src/styles/reveal/` compiles the reveal.js theme template with custom variables plus local overrides. Sass `@import` deprecation warnings from the template are silenced in `astro.config.mjs`.
+- **three.js hero** — `src/packages/three-background/` is legacy code pinned to three 0.70, loaded lazily as a `client:idle` island (`ThreeBackground.tsx`). Candidate for a future port to current three.js.

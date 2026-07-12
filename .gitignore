@@ -6,25 +6,19 @@ npm-debug.log*
 # Dependency directories
 node_modules
 
-# Directory for distribution
+# Build output
 /dist
 
-# Optional npm cache directory
-.npm
+# Astro generated types
+.astro/
 
 # OSX
 .DS_Store
 
 /tmp
-/dist
-/.cache
-/build
-/public
 
 report.html
 
 # Playwright
 playwright-report/
 test-results/
-
-

@@ -1,0 +1,15 @@
+{
+  "name": "JS Training",
+  "short_name": "js-training",
+  "start_url": "/js-training/",
+  "background_color": "#663399",
+  "theme_color": "#663399",
+  "display": "minimal-ui",
+  "icons": [
+    {
+      "src": "/js-training/images/logo.png",
+      "sizes": "420x420",
+      "type": "image/png"
+    }
+  ]
+}

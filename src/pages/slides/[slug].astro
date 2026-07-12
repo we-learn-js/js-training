@@ -1,0 +1,32 @@
+---
+import RevealDeck from '../../components/RevealDeck'
+import ScreenCornerLink from '../../components/ScreenCornerLink.astro'
+import Base from '../../layouts/Base.astro'
+import {getChapters} from '../../lib/chapters'
+import {withBase} from '../../lib/paths'
+import {renderSlides} from '../../lib/slides'
+
+export async function getStaticPaths() {
+  const chapters = await getChapters()
+  return chapters.map(({chapter, entry}) => ({
+    params: {slug: chapter.slug},
+    props: {chapter, entry}
+  }))
+}
+
+const {chapter, entry} = Astro.props
+const sections = await renderSlides(entry.body ?? '', chapter.paths.slideshow)
+---
+
+<Base title={chapter.seo.title} canonicalUrl={chapter.seo.canonicalUrl}>
+  <RevealDeck
+    client:only="react"
+    sections={sections}
+    backgroundImage={withBase('/images/slideshow-background.png')}
+  />
+  <ScreenCornerLink
+    kind="document"
+    text="Document"
+    href={withBase(chapter.paths.document)}
+  />
+</Base>

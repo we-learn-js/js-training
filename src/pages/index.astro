@@ -1,0 +1,52 @@
+---
+import HomeCard from '../components/HomeCard.astro'
+import ThreeBackground from '../components/ThreeBackground'
+import Base from '../layouts/Base.astro'
+import {withBase} from '../lib/paths'
+---
+
+<Base title="JS Training">
+  <div class="hero">
+    <ThreeBackground client:idle imageUrl={withBase('/images/logo-small.png')} />
+  </div>
+  <div class="cards">
+    <HomeCard
+      label="Documents"
+      title="Read content"
+      image={withBase('/images/card-practice.png')}
+      href={withBase('/docs/presentation')}
+    />
+    <HomeCard
+      label="Slideshows"
+      title="Teaching sessions"
+      image={withBase('/images/card-slideshow.png')}
+      href={withBase('/slides/presentation')}
+    />
+    <HomeCard
+      label="Markdowns"
+      title="Check source"
+      image={withBase('/images/card-wiki.png')}
+      href="https://github.com/we-learn-js/js-training/tree/master/src/md"
+      target="_blank"
+    />
+  </div>
+</Base>
+
+<style>
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    background: #333;
+  }
+
+  .cards {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 820px;
+    margin: auto;
+  }
+</style>

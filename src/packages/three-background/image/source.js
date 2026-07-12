@@ -4,7 +4,7 @@ export default class ImageSource {
     image.crossOrigin = 'Anonymous'
     image.src = url
 
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       image.addEventListener('load', event => resolve(event.target))
       return (image.onerror = evt => reject())
     })
